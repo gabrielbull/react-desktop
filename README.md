@@ -17,13 +17,26 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 
 ### Todos OS X
 
-- [x] Button
-- [x] TextInput
+- [x] Push Button
+- [ ] Textured Rounded Button
+- [ ] Gradient Button
+- [ ] Pop Up Button
+- [ ] Check Box Button
+- [ ] Radio Button
+- [x] Text Field
+- [ ] Search Field
+- [ ] Secure Text Field
+- [ ] Title Bar
+- [ ] Toolbar
+- [ ] Space Toolbar Item
+- [ ] Flexible Space Toolbar Item
 
 ### Todos Windows
 
 - [ ] Button
 - [ ] TextInput
+- [ ] TitleBar
+- [ ] Toolbar
 
 ## Screenshots
 

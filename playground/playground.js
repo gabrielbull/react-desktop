@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Button from '../src/Button';
-import TextInput from '../src/TextInput';
+import { PushButton, TextField } from '../src/Main';
 
 ReactDOM.render(
   (
     <div>
-      <TextInput defaultValue="" placeholder="Username"/>
-      <Button>Cancel</Button>
-      <Button color="blue">Submit</Button>
+      <TextField style={{width: '160px'}} defaultValue="" placeholder="Username"/>
+      <PushButton>Cancel</PushButton>
+      <PushButton color="blue">Submit</PushButton>
     </div>
   ),
   document.getElementById('main')

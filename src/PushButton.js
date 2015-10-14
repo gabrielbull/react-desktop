@@ -44,10 +44,11 @@ var styles = {
 };
 
 @Styling
-class Button extends Component {
+class PushButton extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]).isRequired,
-    color: PropTypes.string
+    color: PropTypes.string,
+    style: PropTypes.object
   };
 
   get styles() {
@@ -55,9 +56,13 @@ class Button extends Component {
   };
 
   render() {
-    const { children, color, ...props } = this.props;
+    let { style, children, color, ...props } = this.props;
 
     let styles = this.styles;
+    if (style) {
+      styles = Object.assign({}, this.styles, style);
+    }
+
     if (color === 'blue') {
       styles = Object.assign({}, this.styles, this.styles.blue);
     }
@@ -74,4 +79,4 @@ class Button extends Component {
   }
 }
 
-export default Button;
+export default PushButton;

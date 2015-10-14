@@ -3,7 +3,7 @@
   "author": "Gabriel Bull",
   "version": "0.1.1",
   "description": "OS X and Windows UI components built with React",
-  "main": "./lib",
+  "main": "./lib/Main.js",
   "keywords": [
     "react",
     "react-component",

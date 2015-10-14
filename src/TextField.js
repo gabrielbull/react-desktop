@@ -29,8 +29,9 @@ var styles = {
 };
 
 @Styling
-class TextInput extends Component {
+class TextField extends Component {
   static propTypes = {
+    style: PropTypes.object
   };
 
   get styles() {
@@ -38,17 +39,22 @@ class TextInput extends Component {
   };
 
   render() {
-    const { ...props } = this.props;
+    const { style, ...props } = this.props;
+
+    let styles = this.styles;
+    if (style) {
+      styles = Object.assign({}, this.styles, style);
+    }
 
     return (
       <input
         ref="element"
         type="text"
-        style={this.styles}
+        style={styles}
         {...props}
       />
     );
   }
 }
 
-export default TextInput;
+export default TextField;
