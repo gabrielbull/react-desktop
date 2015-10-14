@@ -17,13 +17,13 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 
 ### Todos OS X
 
-[x] Button
-[] TextInput
+- [x] Button
+- [ ] TextInput
 
 ### Todos Windows
 
-[] Button
-[] TextInput
+- [ ] Button
+- [ ] TextInput
 
 ## Screenshots
 
