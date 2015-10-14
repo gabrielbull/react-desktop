@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Styling, { mergeStyles, applyStyle, parseStyle } from '../Styling';
+import WindowState from '../WindowState';
 
 var styles = {
   osx_10_11: {
@@ -62,12 +63,25 @@ var styles = {
       }
     },
 
+    selectedUnfocused: {
+      backgroundImage: '-webkit-linear-gradient(top, #e5e5e5 0%, #e5e5e5 100%)',
+      borderTopColor: '#c7c7c7',
+      borderBottomColor: '#a6a6a6',
+      borderRightColor: '#b7b7b7',
+      borderLeftColor: '#b7b7b7',
+      borderRightWidth: '0px',
+      paddingRight: '12px',
+      paddingLeft: '12px',
+      color: '#000000'
+    },
+
     ':active': {
       backgroundColor: '#f0f0f0'
     }
   }
 };
 
+@WindowState
 @Styling
 class Tab extends Component {
   static propTypes = {
@@ -81,7 +95,7 @@ class Tab extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { selected: props.selected };
+    this.state = { selected: props.selected, windowFocused: true };
   }
 
   get styles() {
@@ -104,12 +118,17 @@ class Tab extends Component {
       styles = mergeStyles(styles, this.styles.nextSelected);
     }
 
-    if (this.state.selected) {
+    if (this.state.selected && this.state.windowFocused) {
       styles = mergeStyles(styles, this.styles.selected);
       if (this.props.firstChild) {
         styles = mergeStyles(styles, { paddingLeft: '11px' });
       }
       activeStyles = this.styles.selected[':active'];
+    } else if (this.state.selected) {
+      styles = mergeStyles(styles, this.styles.selectedUnfocused);
+      if (this.props.firstChild) {
+        styles = mergeStyles(styles, { paddingLeft: '11px' });
+      }
     }
 
     return (
