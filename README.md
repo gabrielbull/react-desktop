@@ -41,3 +41,20 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 ## Screenshots
 
 <img src="https://raw.githubusercontent.com/gabrielbull/react-desktop/master/docs/screenshots/osx.png" width="600">
+
+## Usage
+
+Simple usage:
+
+```jsx
+<TitleBar title="Page" controls={true}/>
+
+<TitleBar title="TitleBar with Toolbar" controls={true}>
+  <Toolbar/>
+</TitleBar>
+
+<TextField defaultValue="" placeholder="Username"/>
+
+<PushButton>Cancel</PushButton>
+<PushButton color="blue">Submit</PushButton>
+```
