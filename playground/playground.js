@@ -5,7 +5,7 @@ import Button from '../src/Button';
 ReactDOM.render(
   (
     <div>
-      <Button>Modifier les réglages.</Button>
+      <Button>Button</Button>
     </div>
   ),
   document.getElementById('main')

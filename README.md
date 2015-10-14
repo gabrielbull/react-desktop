@@ -24,3 +24,7 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 
 [] Button
 [] TextInput
+
+## Screenshots
+
+<img src="https://raw.githubusercontent.com/gabrielbull/react-desktop/master/docs/button-osx.png" width="98">
