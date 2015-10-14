@@ -11,7 +11,9 @@ var styles = {
 class Box extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
-    style: PropTypes.object
+    style: PropTypes.object,
+    title: PropTypes.string,
+    selected: PropTypes.bool
   };
 
   constructor(props) {

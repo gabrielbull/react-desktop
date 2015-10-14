@@ -14,7 +14,8 @@ class SegmentedControl extends Component {
   static Item = ItemClass;
 
   static propTypes = {
-    children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array])
+    children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
+    style: PropTypes.object
   };
 
   get styles() {
