@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Styling, { mergeStyles, applyStyle } from './Styling';
+import WindowState from './WindowState';
 
 var styles = {
   osx_10_11: {
@@ -43,6 +44,7 @@ var styles = {
   }
 };
 
+@WindowState
 @Styling
 class PushButton extends Component {
   static propTypes = {
@@ -50,6 +52,11 @@ class PushButton extends Component {
     color: PropTypes.string,
     style: PropTypes.object
   };
+
+  constructor() {
+    super();
+    this.state = { windowFocused: true };
+  }
 
   get styles() {
     return mergeStyles(styles.osx_10_11, this.props.style);
@@ -59,7 +66,7 @@ class PushButton extends Component {
     let { children, color, ...props } = this.props;
 
     let styles = this.styles;
-    if (color === 'blue') {
+    if (color === 'blue' && this.state.windowFocused) {
       styles = Object.assign({}, this.styles, this.styles.blue);
     }
 

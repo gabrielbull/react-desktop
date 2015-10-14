@@ -30,6 +30,7 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 - [x] Toolbar
 - [ ] Space Toolbar Item
 - [ ] Flexible Space Toolbar Item
+- [x] Box
 
 ### Todos Windows
 
@@ -47,7 +48,7 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 Simple usage:
 
 ```jsx
-import { TitleBar, PushButton, TextField, Toolbar } from 'react-desktop';
+import { TitleBar, PushButton, TextField, Toolbar, Box } from 'react-desktop';
 
 <TitleBar title="Page" controls={true}/>
 
@@ -55,8 +56,11 @@ import { TitleBar, PushButton, TextField, Toolbar } from 'react-desktop';
   <Toolbar/>
 </TitleBar>
 
-<TextField defaultValue="" placeholder="Username"/>
+<Box>
+  <TextField defaultValue="" placeholder="Username"/>
 
-<PushButton>Cancel</PushButton>
-<PushButton color="blue">Submit</PushButton>
+  <PushButton>Cancel</PushButton>
+  <PushButton color="blue">Submit</PushButton>
+</Box>
 ```
+
