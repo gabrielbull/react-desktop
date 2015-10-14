@@ -1,6 +1,37 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+function changeStyleCase(prop) {
+  let property = prop;
+  switch (prop) {
+  case 'backgroundColor':
+    property = 'background-color';
+    break;
+  case 'backgroundImage':
+    property = 'background-image';
+    break;
+  case 'borderColor':
+    property = 'border-color';
+    break;
+  case 'borderTopColor':
+    property = 'border-top-color';
+    break;
+  case 'borderBottomColor':
+    property = 'border-bottom-color';
+    break;
+  case 'borderLeftColor':
+    property = 'border-left-color';
+    break;
+  case 'borderRightColor':
+    property = 'border-right-color';
+    break;
+  case 'boxShadow':
+    property = 'box-shadow';
+    break;
+  }
+  return property;
+}
+
 function addStyle(selector, styles) {
   selector = selector.replace(/:placeholder/, '::-webkit-input-placeholder');
 
@@ -8,36 +39,14 @@ function addStyle(selector, styles) {
   const style = document.createElement('style');
   let stylesheet = selector + ' {\n';
 
-  for (var prop in styles) {
-    if (styles.hasOwnProperty(prop)) {
-      let property = prop;
-      switch (prop) {
-      case 'backgroundColor':
-        property = 'background-color';
-        break;
-      case 'backgroundImage':
-        property = 'background-image';
-        break;
-      case 'borderColor':
-        property = 'border-color';
-        break;
-      case 'borderTopColor':
-        property = 'border-top-color';
-        break;
-      case 'borderBottomColor':
-        property = 'border-bottom-color';
-        break;
-      case 'borderLeftColor':
-        property = 'border-left-color';
-        break;
-      case 'borderRightColor':
-        property = 'border-right-color';
-        break;
-      case 'boxShadow':
-        property = 'box-shadow';
-        break;
+  if (typeof styles === 'string') {
+    stylesheet += styles;
+  } else {
+    for (let prop in styles) {
+      if (styles.hasOwnProperty(prop)) {
+        let property = changeStyleCase(prop);
+        stylesheet += '  ' + property + ': ' + styles[prop] + ' !important;\n';
       }
-      stylesheet += '  ' + property + ': ' + styles[prop] + ' !important;\n';
     }
   }
 
@@ -67,6 +76,16 @@ export function applyStyle(merged) {
   return styles;
 }
 
+export function parseStyle(styles) {
+  let style = '';
+  for (var prop in styles) {
+    if (styles.hasOwnProperty(prop) && typeof styles[prop] !== 'object') {
+      style += `${changeStyleCase(prop)}: ${styles[prop]}; `;
+    }
+  }
+  return style;
+}
+
 export default function Styling(ComposedComponent) {
   return class extends Component {
     stylesheets = [];
@@ -80,6 +99,18 @@ export default function Styling(ComposedComponent) {
           this.stylesheets = [
             ...this.stylesheets,
             addStyle('[data-reactid="' + id + '"]' + state, this.refs.component.styles[state])
+          ];
+        }
+      }
+
+      if (this.refs.component.refs.element) {
+        const element = ReactDOM.findDOMNode(this.refs.component.refs.element);
+        const activeStyle = element.getAttribute('data-active-style');
+        const id = element.getAttribute('data-reactid');
+        if (activeStyle) {
+          this.stylesheets = [
+            ...this.stylesheets,
+            addStyle('[data-reactid="' + id + '"]:active', activeStyle)
           ];
         }
       }

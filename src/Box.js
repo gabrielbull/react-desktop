@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import Styling, { mergeStyles, applyStyle } from './Styling';
+import SegmentedControl from './SegmentedControl';
 
 var styles = {
   osx_10_11: {
     WebkitUserSelect: 'none',
     cursor: 'default',
-    padding: '20px',
     backgroundColor: 'rgba(0, 0, 0, .04)',
     borderWidth: '1px',
     borderStyle: 'solid',
@@ -13,7 +13,12 @@ var styles = {
     borderLeftColor: 'rgba(0, 0, 0, .037)',
     borderRightColor: 'rgba(0, 0, 0, .037)',
     borderBottomColor: 'rgba(0, 0, 0, .026)',
-    borderRadius: '4px'
+    borderRadius: '4px',
+
+    segmentedControls: {
+      position: 'relative',
+      paddingTop: '10px'
+    }
   }
 };
 
@@ -28,8 +33,15 @@ class Box extends Component {
   }
 
   render() {
+    const hasSegmentedControls = typeof this.props.children === 'object' && this.props.children.type === SegmentedControl;
+
+    let styles = this.styles;
+    if (hasSegmentedControls) {
+      styles = mergeStyles(styles, this.styles.segmentedControls);
+    }
+
     return (
-      <div style={applyStyle(this.styles)}>
+      <div style={applyStyle(styles)}>
         {this.props.children}
       </div>
     );

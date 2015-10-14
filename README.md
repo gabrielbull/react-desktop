@@ -31,6 +31,7 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 - [ ] Space Toolbar Item
 - [ ] Flexible Space Toolbar Item
 - [x] Box
+- [x] Segmented Control
 
 ### Todos Windows
 
@@ -50,17 +51,40 @@ Simple usage:
 ```jsx
 import { TitleBar, PushButton, TextField, Toolbar, Box } from 'react-desktop';
 
-<TitleBar title="Page" controls={true}/>
+class MyApp extends React.Component {
+  constructor() {
+    super();
+    this.state = { selectedTab: 'login' };
+  }
 
-<TitleBar title="TitleBar with Toolbar" controls={true}>
-  <Toolbar/>
-</TitleBar>
-
-<Box>
-  <TextField defaultValue="" placeholder="Username"/>
-
-  <PushButton>Cancel</PushButton>
-  <PushButton color="blue">Submit</PushButton>
-</Box>
+  render() {
+    return (
+      <div>
+        <TitleBar title="Page" controls={true}/>
+        
+        <TitleBar title="TitleBar with Toolbar" controls={true}>
+          <Toolbar/>
+        </TitleBar>
+        
+        <Box>
+          <SegmentedControl>
+            <SegmentedControl.Item 
+              title="Login"
+              selected={this.state.selectedTab === 'login'}
+              onPress={() => { this.setState({ selectedTab: 'login' }) } }
+            >
+              
+              <TextField defaultValue="" placeholder="Username"/>
+            
+              <PushButton>Cancel</PushButton>
+              <PushButton color="blue">Submit</PushButton>
+              
+            </SegmentedControl.Item>
+          </SegmentedControl>
+        </Box>
+      </div>
+    );
+  }
+}
 ```
 

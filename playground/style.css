@@ -5,7 +5,7 @@ body {
   max-width: 600px;
 }
 
-#main>div>*, .window>div>* {
+#main>div>*, .form>* {
   -webkit-appearance: none;
   margin-right: 20px;
   margin-bottom: 20px;
@@ -18,4 +18,9 @@ body {
 .window {
   padding: 20px;
   background-color: #ececec;
+}
+
+.form {
+  padding: 20px;
+  padding-bottom: 0;
 }

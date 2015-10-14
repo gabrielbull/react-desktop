@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { TitleBar, PushButton, TextField, Toolbar, Box } from '../src/Main';
+import { TitleBar, PushButton, TextField, Toolbar, Box, SegmentedControl } from '../src/Main';
 
 ReactDOM.render(
   (
@@ -12,10 +12,33 @@ ReactDOM.render(
 
       <div className="window">
         <Box>
-          <TextField style={{width: '160px'}} defaultValue="" placeholder="Username"/>
-          <PushButton>Cancel</PushButton>
-          <PushButton color="blue">Submit</PushButton>
+          <SegmentedControl>
+            <SegmentedControl.Item
+              title="Login"
+              selected={true}
+              onPress={() => { console.log('select login'); } }
+              className="form"
+            >
+              <TextField defaultValue="" placeholder="Username"/>
+
+              <PushButton>Cancel</PushButton>
+              <PushButton color="blue">Submit</PushButton>
+            </SegmentedControl.Item>
+            <SegmentedControl.Item
+              title="Tab 1"
+              selected={false}
+              onPress={() => { console.log('select tab 1'); } }
+            >
+            </SegmentedControl.Item>
+            <SegmentedControl.Item
+              title="Settings"
+              selected={false}
+              onPress={() => { console.log('select settings'); } }
+            >
+            </SegmentedControl.Item>
+          </SegmentedControl>
         </Box>
+
       </div>
     </div>
   ),
