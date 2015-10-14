@@ -30,7 +30,8 @@ class Tabs extends Component {
       let props = this.props.tabs[i].props;
       if (i === 0) {
         props = Object.assign({}, props, { firstChild: true });
-      } else if (i === (len - 1)) {
+      }
+      if (i === (len - 1)) {
         props = Object.assign({}, props, { lastChild: true });
       }
 
