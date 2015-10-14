@@ -1,0 +1,9 @@
+body {
+  margin: 20px;
+  font-family: serif;
+  background: #ececec;
+}
+
+* {
+  -webkit-appearance: none;
+}
