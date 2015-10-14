@@ -12,30 +12,30 @@ function addStyle(selector, styles) {
     if (styles.hasOwnProperty(prop)) {
       let property = prop;
       switch (prop) {
-        case 'backgroundColor':
-          property = 'background-color';
-          break;
-        case 'backgroundImage':
-          property = 'background-image';
-          break;
-        case 'borderColor':
-          property = 'border-color';
-          break;
-        case 'borderTopColor':
-          property = 'border-top-color';
-          break;
-        case 'borderBottomColor':
-          property = 'border-bottom-color';
-          break;
-        case 'borderLeftColor':
-          property = 'border-left-color';
-          break;
-        case 'borderRightColor':
-          property = 'border-right-color';
-          break;
-        case 'boxShadow':
-          property = 'box-shadow';
-          break;
+      case 'backgroundColor':
+        property = 'background-color';
+        break;
+      case 'backgroundImage':
+        property = 'background-image';
+        break;
+      case 'borderColor':
+        property = 'border-color';
+        break;
+      case 'borderTopColor':
+        property = 'border-top-color';
+        break;
+      case 'borderBottomColor':
+        property = 'border-bottom-color';
+        break;
+      case 'borderLeftColor':
+        property = 'border-left-color';
+        break;
+      case 'borderRightColor':
+        property = 'border-right-color';
+        break;
+      case 'boxShadow':
+        property = 'box-shadow';
+        break;
       }
       stylesheet += '  ' + property + ': ' + styles[prop] + ' !important;\n';
     }

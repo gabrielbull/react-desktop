@@ -23,7 +23,7 @@ var styles = {
     fontFamily: '"San Francisco", "Helvetica Neue", "Lucida Grande"',
     fontSize: '13px',
 
-    'blue': {
+    blue: {
       backgroundImage: '-webkit-linear-gradient(top, #6cb3fa 0%, #087eff 100%)',
       borderTopColor: '#4ca2f9',
       borderBottomColor: '#015cff',

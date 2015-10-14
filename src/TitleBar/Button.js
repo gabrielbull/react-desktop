@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 
 const styles = {
   osx_10_11: {
+    WebkitUserSelect: 'none',
+    cursor: 'default',
     width: '10px',
     height: '10px',
     borderWidth: '1px',
     borderStyle: 'solid',
     borderRadius: '50%',
-    marginTop: '6px',
-    marginBottom: '6px',
+    marginTop: '5px',
+    marginBottom: '4px',
     marginLeft: '4px',
     marginRight: '4px',
     lineHeight: 0

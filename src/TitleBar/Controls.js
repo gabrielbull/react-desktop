@@ -5,7 +5,10 @@ import Resize from './Resize';
 
 var styles = {
   osx_10_11: {
-    display: 'flex'
+    WebkitUserSelect: 'none',
+    cursor: 'default',
+    display: 'flex',
+    width: '60px'
   }
 };
 
