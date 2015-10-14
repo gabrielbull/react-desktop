@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 function addStyle(selector, styles) {
+  selector = selector.replace(/:placeholder/, '::-webkit-input-placeholder');
+
   const head = document.getElementsByTagName('head')[0];
   const style = document.createElement('style');
   let stylesheet = selector + ' {\n';
@@ -28,6 +30,9 @@ function addStyle(selector, styles) {
       case 'borderRightColor':
         property = 'border-right-color';
         break;
+      case 'boxShadow':
+        property = 'box-shadow';
+        break;
       }
       stylesheet += '  ' + property + ': ' + styles[prop] + ' !important;\n';
     }
@@ -46,7 +51,7 @@ function Styling(ComposedComponent) {
     stylesheets = [];
 
     componentDidMount() {
-      let states = [':hover', ':active', ':focus'];
+      let states = [':hover', ':active', ':focus', ':placeholder'];
       for (let state of states) {
         if (this.refs.component.styles[state]) {
           const element = ReactDOM.findDOMNode(this);

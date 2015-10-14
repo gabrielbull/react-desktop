@@ -18,7 +18,7 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 ### Todos OS X
 
 - [x] Button
-- [ ] TextInput
+- [x] TextInput
 
 ### Todos Windows
 
@@ -27,4 +27,4 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/gabrielbull/react-desktop/master/docs/button-osx.png" width="98">
+<img src="https://raw.githubusercontent.com/gabrielbull/react-desktop/master/docs/osx.png" width="364">

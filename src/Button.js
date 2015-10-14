@@ -23,8 +23,17 @@ var styles = {
     fontFamily: '"San Francisco", "Helvetica Neue", "Lucida Grande"',
     fontSize: '13px',
 
+    'blue': {
+      backgroundImage: '-webkit-linear-gradient(top, #6cb3fa 0%, #087eff 100%)',
+      borderTopColor: '#4ca2f9',
+      borderBottomColor: '#015cff',
+      borderLeftColor: '#267ffc',
+      borderRightColor: '#267ffc',
+      color: 'rgba(255, 255, 255, .9)'
+    },
+
     ':active': {
-      backgroundImage: '-webkit-linear-gradient(top, #4c98fe 0%,#0564e3 100%)',
+      backgroundImage: '-webkit-linear-gradient(top, #4c98fe 0%, #0564e3 100%)',
       borderTopColor: '#247fff',
       borderBottomColor: '#003ddb',
       borderLeftColor: '#125eed',
@@ -45,12 +54,17 @@ class Button extends Component {
   };
 
   render() {
-    const { children, ...props } = this.props;
+    const { children, color, ...props } = this.props;
+
+    let styles = this.styles;
+    if (color === 'blue') {
+      styles = Object.assign({}, this.styles, this.styles.blue);
+    }
 
     return (
       <button
         ref="element"
-        style={this.styles}
+        style={styles}
         {...props}
       >
         {children}
