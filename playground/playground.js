@@ -11,13 +11,12 @@ ReactDOM.render(
       </TitleBar>
 
       <div className="window">
-        <Box>
+        <Box className="box">
           <SegmentedControl>
             <SegmentedControl.Item
               title="Login"
               selected={true}
               onPress={() => { console.log('select login'); } }
-              className="form"
             >
               <TextField defaultValue="" placeholder="Username"/>
 
