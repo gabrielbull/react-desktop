@@ -26,8 +26,8 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 - [x] Text Field
 - [ ] Search Field
 - [ ] Secure Text Field
-- [ ] Title Bar
-- [ ] Toolbar
+- [x] Title Bar
+- [x] Toolbar
 - [ ] Space Toolbar Item
 - [ ] Flexible Space Toolbar Item
 
@@ -40,4 +40,4 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/gabrielbull/react-desktop/master/docs/osx.png" width="364">
+<img src="https://raw.githubusercontent.com/gabrielbull/react-desktop/master/docs/screenshots/osx.png" width="600">

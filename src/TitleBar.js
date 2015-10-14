@@ -7,12 +7,25 @@ var styles = {
     WebkitUserSelect: 'none',
     cursor: 'default',
     display: 'flex',
-    backgroundImage: '-webkit-linear-gradient(top, #ffffff 0px, #ededed 1px, #e7e7e7 2px, #d1d1d1 100%)',
+    alignItems: 'center',
+    height: '20px',
+    backgroundImage: '-webkit-linear-gradient(top, #ededed 0px, #e7e7e7 2px, #d1d1d1 100%)',
     borderBottomWidth: '1px',
     borderBottomStyle: 'solid',
     borderBottomColor: '#afafaf',
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
+    borderTopColor: '#ffffff',
+    borderTopLeftRadius: '5px',
+    borderTopRightRadius: '5px',
     paddingLeft: '3px',
     paddingRight: '3px',
+
+    toolbar: {
+      height: '36px',
+      paddingLeft: '9px',
+      paddingRight: '9px'
+    },
 
     title: {
       WebkitUserSelect: 'none',
@@ -22,8 +35,7 @@ var styles = {
       color: '#2e2e2e',
       flex: 1,
       textAlign: 'center',
-      lineHeight: '21px',
-      paddingRight: '60px'
+      lineHeight: '21px'
     }
   }
 };
@@ -31,8 +43,10 @@ var styles = {
 @Styling
 class TitleBar extends Component {
   static propTypes = {
+    children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
     style: PropTypes.object,
-    title: PropTypes.string
+    title: PropTypes.string,
+    controls: PropTypes.bool
   };
 
   get styles() {
@@ -40,17 +54,35 @@ class TitleBar extends Component {
   }
 
   render() {
+    let { children, controls, title, ...props } = this.props;
+
+    let styles = this.styles;
+    if (children) {
+      styles = mergeStyles(styles, this.styles.toolbar);
+    }
+
+    let titleStyle = this.styles.title;
+    if (this.props.controls) {
+      titleStyle = Object.assign(titleStyle, {paddingRight: '60px'});
+    }
+
+    controls = !controls || <Controls/>;
+    title = !title || (
+        <div style={titleStyle}>
+          {this.props.title}
+        </div>
+      );
+
     return (
-    <div
-      ref="element"
-      {...this.props}
-      style={applyStyle(this.styles)}
-    >
-      <Controls/>
-      <div style={this.styles.title}>
-        {this.props.title}
+      <div
+        ref="element"
+        {...props}
+        style={applyStyle(styles)}
+      >
+        {controls}
+        {title}
+        {children}
       </div>
-    </div>
     );
   }
 }

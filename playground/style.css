@@ -1,12 +1,21 @@
 body {
   margin: 20px;
   font-family: serif;
-  background: #ececec;
+  background: #272727;
   max-width: 600px;
 }
 
-#main>div>* {
+#main>div>*, .window>* {
   -webkit-appearance: none;
   margin-right: 20px;
   margin-bottom: 20px;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+
+.window {
+  padding: 20px;
+  background-color: #ececec;
 }

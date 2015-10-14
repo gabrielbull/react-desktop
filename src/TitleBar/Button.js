@@ -10,8 +10,7 @@ const styles = {
     borderWidth: '1px',
     borderStyle: 'solid',
     borderRadius: '50%',
-    marginTop: '5px',
-    marginBottom: '4px',
+    marginBottom: '.5px',
     marginLeft: '4px',
     marginRight: '4px',
     lineHeight: 0
