@@ -46,7 +46,8 @@ var styles = {
 @Styling
 class Button extends Component {
   static propTypes = {
-    children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]).isRequired
+    children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]).isRequired,
+    color: PropTypes.string
   };
 
   get styles() {
