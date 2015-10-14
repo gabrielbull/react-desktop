@@ -47,6 +47,8 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 Simple usage:
 
 ```jsx
+import { TitleBar, PushButton, TextField, Toolbar } from 'react-desktop';
+
 <TitleBar title="Page" controls={true}/>
 
 <TitleBar title="TitleBar with Toolbar" controls={true}>
