@@ -12,27 +12,30 @@ function addStyle(selector, styles) {
     if (styles.hasOwnProperty(prop)) {
       let property = prop;
       switch (prop) {
-      case 'backgroundColor':
-        property = 'background-color';
-        break;
-      case 'backgroundImage':
-        property = 'background-image';
-        break;
-      case 'borderTopColor':
-        property = 'border-top-color';
-        break;
-      case 'borderBottomColor':
-        property = 'border-bottom-color';
-        break;
-      case 'borderLeftColor':
-        property = 'border-left-color';
-        break;
-      case 'borderRightColor':
-        property = 'border-right-color';
-        break;
-      case 'boxShadow':
-        property = 'box-shadow';
-        break;
+        case 'backgroundColor':
+          property = 'background-color';
+          break;
+        case 'backgroundImage':
+          property = 'background-image';
+          break;
+        case 'borderColor':
+          property = 'border-color';
+          break;
+        case 'borderTopColor':
+          property = 'border-top-color';
+          break;
+        case 'borderBottomColor':
+          property = 'border-bottom-color';
+          break;
+        case 'borderLeftColor':
+          property = 'border-left-color';
+          break;
+        case 'borderRightColor':
+          property = 'border-right-color';
+          break;
+        case 'boxShadow':
+          property = 'box-shadow';
+          break;
       }
       stylesheet += '  ' + property + ': ' + styles[prop] + ' !important;\n';
     }
@@ -46,7 +49,25 @@ function addStyle(selector, styles) {
   return style;
 }
 
-function Styling(ComposedComponent) {
+export function mergeStyles(...styles) {
+  let merged = {};
+  for (let style of styles) {
+    merged = Object.assign(merged, style);
+  }
+  return merged;
+}
+
+export function applyStyle(merged) {
+  let styles = {};
+  for (var prop in merged) {
+    if (merged.hasOwnProperty(prop) && typeof merged[prop] !== 'object') {
+      styles[prop] = merged[prop];
+    }
+  }
+  return styles;
+}
+
+export default function Styling(ComposedComponent) {
   return class extends Component {
     stylesheets = [];
 
@@ -64,6 +85,10 @@ function Styling(ComposedComponent) {
       }
     }
 
+    componentWillUpdate(nextProps, nextState) {
+      this.refs.component.setState(nextState);
+    }
+
     componentWillUnmount() {
       for (let element of this.stylesheets) {
         element.parentNode.removeChild(element);
@@ -77,5 +102,3 @@ function Styling(ComposedComponent) {
     }
   };
 }
-
-export default Styling;

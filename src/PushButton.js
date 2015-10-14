@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Styling from './Styling';
+import Styling, { mergeStyles, applyStyle } from './Styling';
 
 var styles = {
   osx_10_11: {
@@ -52,17 +52,13 @@ class PushButton extends Component {
   };
 
   get styles() {
-    return styles.osx_10_11;
-  };
+    return mergeStyles(styles.osx_10_11, this.props.style);
+  }
 
   render() {
-    let { style, children, color, ...props } = this.props;
+    let { children, color, ...props } = this.props;
 
     let styles = this.styles;
-    if (style) {
-      styles = Object.assign({}, this.styles, style);
-    }
-
     if (color === 'blue') {
       styles = Object.assign({}, this.styles, this.styles.blue);
     }
@@ -70,8 +66,8 @@ class PushButton extends Component {
     return (
       <button
         ref="element"
-        style={styles}
         {...props}
+        style={applyStyle(styles)}
       >
         {children}
       </button>

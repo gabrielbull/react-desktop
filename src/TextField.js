@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Styling from './Styling';
+import Styling, { mergeStyles, applyStyle } from './Styling';
 
 var styles = {
   osx_10_11: {
@@ -35,23 +35,16 @@ class TextField extends Component {
   };
 
   get styles() {
-    return styles.osx_10_11;
-  };
+    return mergeStyles(styles.osx_10_11, this.props.style);
+  }
 
   render() {
-    const { style, ...props } = this.props;
-
-    let styles = this.styles;
-    if (style) {
-      styles = Object.assign({}, this.styles, style);
-    }
-
     return (
       <input
         ref="element"
         type="text"
-        style={styles}
-        {...props}
+        {...this.props}
+        style={applyStyle(this.styles)}
       />
     );
   }

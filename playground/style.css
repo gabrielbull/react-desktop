@@ -2,9 +2,10 @@ body {
   margin: 20px;
   font-family: serif;
   background: #ececec;
+  max-width: 600px;
 }
 
-* {
+#main>div>* {
   -webkit-appearance: none;
   margin-right: 20px;
   margin-bottom: 20px;
