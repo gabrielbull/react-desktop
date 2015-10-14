@@ -6,7 +6,7 @@ ReactDOM.render(
   (
     <div>
       <TitleBar title="Page" controls={true}/>
-      <TitleBar controls={true} className="no-margin-bottom">
+      <TitleBar title="TitleBar with Toolbar" controls={true} className="no-margin-bottom">
         <Toolbar/>
       </TitleBar>
       <div className="window">

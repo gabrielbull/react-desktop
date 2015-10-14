@@ -86,7 +86,9 @@ export default function Styling(ComposedComponent) {
     }
 
     componentWillUpdate(nextProps, nextState) {
-      this.refs.component.setState(nextState);
+      if (nextState) {
+        this.refs.component.setState(nextState);
+      }
     }
 
     componentWillUnmount() {

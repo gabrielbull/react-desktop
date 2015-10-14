@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import WindowState from './WindowState';
 import Styling, { mergeStyles, applyStyle } from './Styling';
 import Controls from './TitleBar/Controls';
 
@@ -21,6 +22,11 @@ var styles = {
     paddingLeft: '3px',
     paddingRight: '3px',
 
+    unfocused: {
+      backgroundImage: '-webkit-linear-gradient(top, #f8f8f8 0px, #f8f8f8 2px, #f6f6f6 100%)',
+      borderBottomColor: '#cecece'
+    },
+
     toolbar: {
       height: '36px',
       paddingLeft: '9px',
@@ -32,14 +38,19 @@ var styles = {
       cursor: 'default',
       fontFamily: '"San Francisco", "Helvetica Neue", "Lucida Grande"',
       fontSize: '13px',
-      color: '#2e2e2e',
+      color: '#676767',
       flex: 1,
       textAlign: 'center',
-      lineHeight: '21px'
+      lineHeight: '21px',
+
+      unfocused: {
+        color: '#b8b8b8'
+      }
     }
   }
 };
 
+@WindowState
 @Styling
 class TitleBar extends Component {
   static propTypes = {
@@ -48,6 +59,11 @@ class TitleBar extends Component {
     title: PropTypes.string,
     controls: PropTypes.bool
   };
+
+  constructor() {
+    super();
+    this.state = { windowFocused: true };
+  }
 
   get styles() {
     return mergeStyles(styles.osx_10_11, this.props.style);
@@ -64,6 +80,11 @@ class TitleBar extends Component {
     let titleStyle = this.styles.title;
     if (this.props.controls) {
       titleStyle = Object.assign(titleStyle, {paddingRight: '60px'});
+    }
+
+    if (!this.state.windowFocused) {
+      styles = mergeStyles(styles, this.styles.unfocused);
+      titleStyle = mergeStyles(titleStyle, this.styles.title.unfocused);
     }
 
     controls = !controls || <Controls/>;
