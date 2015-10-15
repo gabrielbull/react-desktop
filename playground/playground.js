@@ -28,10 +28,10 @@ document.body.innerHTML = `
 
 ReactDOM.render(
   (
-    <Window chrome={true} style={{marginBottom: '60px'}}>
+    <Window chrome style={{marginBottom: '60px'}}>
       <TitleBar
         title="TitleBar"
-        controls={true}
+        controls
         onClosePress={() => { alert('close'); }}
         onMinimizePress={() => { alert('minimize'); }}
         onResizePress={() => { alert('resize'); }}
@@ -43,8 +43,8 @@ ReactDOM.render(
 
 ReactDOM.render(
   (
-    <Window chrome={true}>
-      <TitleBar title="TitleBar with Toolbar" controls={true}>
+    <Window chrome>
+      <TitleBar title="TitleBar with Toolbar" controls>
         <Toolbar/>
       </TitleBar>
 
@@ -52,7 +52,7 @@ ReactDOM.render(
         <SegmentedControl>
           <SegmentedControl.Item
             title="Selected"
-            selected={true}
+            selected
             onPress={() => { console.log('select login'); } }
             className="form"
           >
@@ -75,7 +75,7 @@ ReactDOM.render(
                 <PushButton>PushButton</PushButton>
                 <PushButton onPress="submit" color="blue">PushButton Blue</PushButton>
 
-                <IndeterminateCircularProgressIndicator absolute={true}/>
+                <IndeterminateCircularProgressIndicator absolute/>
               </Form.Row>
             </Form>
           </SegmentedControl.Item>

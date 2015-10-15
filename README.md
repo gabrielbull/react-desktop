@@ -76,7 +76,7 @@ class MyApp extends React.Component {
       <Window>
         <TitleBar 
           title="My App" 
-          controls={true}
+          controls
           onClosePress={() => { alert('close'); }}
           onResizePress={() => { alert('resize'); }}
           onMinimizePress={() => { alert('minimize'); }}
@@ -103,7 +103,7 @@ class MyApp extends React.Component {
                   <PushButton onPress={() => { alert('cancel'); }}>Cancel</PushButton>
                   <PushButton onPress="submit" color="blue">Submit</PushButton>
                   
-                  <IndeterminateCircularProgressIndicator visible={true} absolute={true}/>
+                  <IndeterminateCircularProgressIndicator visible absolute/>
                 </Form.Row>
               </Form>              
             </SegmentedControl.Item>
