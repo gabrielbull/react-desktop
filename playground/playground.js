@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {
   TitleBar,
@@ -26,76 +26,86 @@ document.body.innerHTML = `
   <script src="/.js"></script>
 `;
 
-ReactDOM.render(
-  (
-    <Window chrome style={{marginBottom: '60px'}}>
-      <TitleBar
-        title="TitleBar"
-        controls
-        onClosePress={() => { alert('close'); }}
-        onMinimizePress={() => { alert('minimize'); }}
-        onResizePress={() => { alert('resize'); }}
-      />
-    </Window>
-  ),
-  document.getElementById('window1')
-);
+class Window1 extends Component {
+  render() {
+    return (
+      <Window chrome style={{marginBottom: '60px'}}>
+        <TitleBar
+          title="TitleBar"
+          controls
+          onClosePress={() => { alert('close'); }}
+          onMinimizePress={() => { alert('minimize'); }}
+          onResizePress={() => { alert('resize'); }}
+        />
+      </Window>
+    );
+  }
+}
 
-ReactDOM.render(
-  (
-    <Window chrome>
-      <TitleBar title="TitleBar with Toolbar" controls>
-        <Toolbar/>
-      </TitleBar>
+class Window2 extends Component {
+  componentDidMount() {
+    console.log(this.refs);
+  }
 
-      <Box className="box">
-        <SegmentedControl>
-          <SegmentedControl.Item
-            title="Selected"
-            selected
-            onPress={() => { console.log('select login'); } }
-            className="form"
-          >
-            <Form onSubmit={() => { alert('form submitted'); } }>
-              <Label color="red">
-                There was an error submitting this form.
-              </Label>
+  render() {
+    return (
 
-              <Form.Row>
-                <Label>Label:</Label>
-                <TextField defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
-              </Form.Row>
+      <Window chrome>
+        <TitleBar title="TitleBar with Toolbar" controls>
+          <Toolbar/>
+        </TitleBar>
 
-              <Form.Row>
-                <Label>Longer label:</Label>
-                <TextField defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
-              </Form.Row>
+        <Box className="box">
+          <SegmentedControl>
+            <SegmentedControl.Item
+              title="Selected"
+              selected
+              onPress={() => { console.log('select login'); } }
+              className="form"
+            >
+              <Form onSubmit={() => { alert('form submitted'); } }>
+                <Label color="red">
+                  There was an error submitting this form.
+                </Label>
 
-              <Form.Row>
-                <PushButton>PushButton</PushButton>
-                <PushButton onPress="submit" color="blue">PushButton Blue</PushButton>
+                <Form.Row>
+                  <Label ref="label">Label:</Label>
+                  <TextField defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
+                </Form.Row>
 
-                <IndeterminateCircularProgressIndicator absolute/>
-              </Form.Row>
-            </Form>
-          </SegmentedControl.Item>
+                <Form.Row>
+                  <Label>Longer label:</Label>
+                  <TextField defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
+                </Form.Row>
 
-          <SegmentedControl.Item
-            title="Segmented"
-            selected={false}
-            onPress={() => { console.log('select tab 1'); } }
-          >
-          </SegmentedControl.Item>
+                <Form.Row>
+                  <PushButton>PushButton</PushButton>
+                  <PushButton onPress="submit" color="blue">PushButton Blue</PushButton>
 
-          <SegmentedControl.Item
-            title="Control"
-            selected={false}
-            onPress={() => { console.log('select settings'); } }
-          >
-          </SegmentedControl.Item>
-        </SegmentedControl>
-      </Box>
-    </Window>
-  ),
-  document.getElementById('window2')
-);
+                  <IndeterminateCircularProgressIndicator absolute/>
+                </Form.Row>
+              </Form>
+            </SegmentedControl.Item>
+
+            <SegmentedControl.Item
+              title="Segmented"
+              selected={false}
+              onPress={() => { console.log('select tab 1'); } }
+            >
+            </SegmentedControl.Item>
+
+            <SegmentedControl.Item
+              title="Control"
+              selected={false}
+              onPress={() => { console.log('select settings'); } }
+            >
+            </SegmentedControl.Item>
+          </SegmentedControl>
+        </Box>
+      </Window>
+    );
+  }
+}
+
+ReactDOM.render(<Window1/>, document.getElementById('window1'));
+ReactDOM.render(<Window2/>, document.getElementById('window2'));
