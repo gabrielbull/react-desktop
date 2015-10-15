@@ -13,7 +13,13 @@ var styles = {
     chrome: {
       borderTopLeftRadius: '4px',
       borderTopRightRadius: '4px',
-      boxShadow: '0 0 1px rgba(0, 0, 0, .55),  0 5px 20px rgba(0, 0, 0, .2)'
+      borderBottomLeftRadius: '4px',
+      borderBottomRightRadius: '4px',
+      boxShadow:
+        '0 0 1px rgba(0, 0, 0, .5), ' + // Border
+        '0 15px 25px rgba(0, 0, 0, .1), ' +
+        '0 0 30px rgba(0, 0, 0, .06), ' +
+        '0 0 60px rgba(0, 0, 0, .06)'
     },
 
     content: {

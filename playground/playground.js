@@ -28,7 +28,7 @@ document.body.innerHTML = `
 
 ReactDOM.render(
   (
-    <Window chrome={true} style={{marginBottom: '40px'}}>
+    <Window chrome={true} style={{marginBottom: '60px'}}>
       <TitleBar
         title="TitleBar"
         controls={true}
