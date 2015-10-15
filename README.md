@@ -23,6 +23,7 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 - [ ] Pop Up Button
 - [ ] Check Box Button
 - [ ] Radio Button
+- [x] Label
 - [x] Text Field
 - [ ] Search Field
 - [ ] Secure Text Field
@@ -33,6 +34,7 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 - [x] Box
 - [x] Segmented Control
 - [x] Indeterminate Circular Progress Indicator
+- [x] Form
 
 ### Todos Windows
 
@@ -82,9 +84,13 @@ class MyApp extends React.Component {
               selected={this.state.selectedTab === 'login'}
               onPress={() => { this.setState({ selectedTab: 'login' }) } }
             >
-              
-              <TextField defaultValue="" placeholder="Username"/>
-            
+              <Form>
+                <Form.Row>
+                  <Label>Username</Label>
+                  <TextField defaultValue="" placeholder="Username"/>
+                </Form.Row>
+              </Form>
+
               <PushButton>Cancel</PushButton>
               <PushButton color="blue">Submit</PushButton>
               
@@ -98,4 +104,3 @@ class MyApp extends React.Component {
   }
 }
 ```
-

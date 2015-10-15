@@ -5,3 +5,5 @@ export const TextField = require('./TextField');
 export const Box = require('./Box');
 export const SegmentedControl = require('./SegmentedControl');
 export const IndeterminateCircularProgressIndicator = require('./IndeterminateCircularProgressIndicator');
+export const Form = require('./Form');
+export const Label = require('./Label');

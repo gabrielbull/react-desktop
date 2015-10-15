@@ -7,7 +7,9 @@ import {
   Toolbar,
   Box,
   SegmentedControl,
-  IndeterminateCircularProgressIndicator
+  IndeterminateCircularProgressIndicator,
+  Form,
+  Label
 } from '../src/Main';
 
 ReactDOM.render(
@@ -32,12 +34,24 @@ ReactDOM.render(
                 onPress={() => { console.log('select login'); } }
                 className="form"
               >
-                <TextField defaultValue="" placeholder="TextField"/>
 
-                <PushButton>PushButton</PushButton>
-                <PushButton color="blue">PushButton Blue</PushButton>
+                <Form>
+                  <Form.Row>
+                    <Label>Label:</Label>
+                    <TextField defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
+                  </Form.Row>
+                  <Form.Row>
+                    <Label>Longer label:</Label>
+                    <TextField defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
+                  </Form.Row>
+                </Form>
 
-                <IndeterminateCircularProgressIndicator/>
+                <div className="buttons">
+                  <PushButton>PushButton</PushButton>
+                  <PushButton color="blue">PushButton Blue</PushButton>
+
+                  <IndeterminateCircularProgressIndicator/>
+                </div>
 
               </SegmentedControl.Item>
               <SegmentedControl.Item
