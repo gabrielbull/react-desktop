@@ -45,6 +45,7 @@ class Resize extends Component {
   }
 
   render() {
+    const { style, ...props } = this.props;
     const displayIcon = this.state.iconVisible ? { opacity: 1 } : { opacity: 0 };
     const iconStyle = Object.assign({}, this.styles.icon, displayIcon);
 
@@ -54,12 +55,12 @@ class Resize extends Component {
     }
 
     return (
-      <div style={applyStyle(styles)}>
+      <a style={applyStyle(styles)} {...props}>
         <svg x="0px" y="0px" viewBox="0 0 6 5.9"  style={iconStyle}>
           <path fill="#006400" d="M5.4,0h-4L6,4.5V0.6C5.7,0.6,5.3,0.3,5.4,0z"/>
           <path fill="#006400" d="M0.6,5.9h4L0,1.4l0,3.9C0.3,5.3,0.6,5.6,0.6,5.9z"/>
         </svg>
-      </div>
+      </a>
     );
   }
 }

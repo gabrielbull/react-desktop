@@ -45,6 +45,7 @@ class Minimize extends Component {
   }
 
   render() {
+    const { style, ...props } = this.props;
     const displayIcon = this.state.iconVisible ? { opacity: 1 } : { opacity: 0 };
     const iconStyle = Object.assign({}, this.styles.icon, displayIcon);
 
@@ -54,11 +55,11 @@ class Minimize extends Component {
     }
 
     return (
-      <div style={applyStyle(styles)}>
+      <a style={applyStyle(styles)} {...props}>
         <svg x="0px" y="0px" viewBox="0 0 8 1.1" style={iconStyle}>
           <rect fill="#995700" width="8" height="1.1"/>
         </svg>
-      </div>
+      </a>
     );
   }
 }

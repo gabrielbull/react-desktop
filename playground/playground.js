@@ -16,7 +16,13 @@ import {
 ReactDOM.render(
   (
     <Window chrome={true} style={{marginBottom: '30px'}}>
-      <TitleBar title="TitleBar" controls={true} onClosePress={() => { alert('close'); }}/>
+      <TitleBar
+        title="TitleBar"
+        controls={true}
+        onClosePress={() => { alert('close'); }}
+        onMinimizePress={() => { alert('minimize'); }}
+        onResizePress={() => { alert('resize'); }}
+      />
     </Window>
   ),
   document.getElementById('window1')
