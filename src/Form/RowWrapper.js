@@ -1,9 +1,15 @@
-import React, { Component, Children } from 'react';
+import React, { Component, Children, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import Row from './Row';
 import Label from '../Label';
 
 class RowWrapper extends Component {
+  static propTypes = {
+    children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
+    style: PropTypes.object,
+    form: PropTypes.element
+  };
+
   get labels() {
     let labels = [];
     Children.map(this.props.children, function (child, index) {

@@ -20,7 +20,9 @@ class Label extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
     style: PropTypes.object,
-    color: PropTypes.string
+    color: PropTypes.string,
+    row: PropTypes.element,
+    form: PropTypes.element
   };
 
   componentDidMount() {

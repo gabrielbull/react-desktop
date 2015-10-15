@@ -23,7 +23,8 @@ var styles = {
 class Row extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
-    style: PropTypes.object
+    style: PropTypes.object,
+    form: PropTypes.element
   };
 
   componentDidMount() {

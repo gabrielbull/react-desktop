@@ -59,13 +59,13 @@ class Form extends Component {
     let maxWidth = 0;
     let rows = [];
 
-    for(var prop in this.refs) {
-        if(this.refs.hasOwnProperty(prop)) {
-          let row = ReactDOM.findDOMNode(this.refs[prop]);
-          rows = [...rows, row];
-          maxWidth =
-            row.offsetWidth > maxWidth ? row.offsetWidth : maxWidth;
-        }
+    for (var prop in this.refs) {
+      if (this.refs.hasOwnProperty(prop)) {
+        let row = ReactDOM.findDOMNode(this.refs[prop]);
+        rows = [...rows, row];
+        maxWidth =
+          row.offsetWidth > maxWidth ? row.offsetWidth : maxWidth;
+      }
     }
 
     for (let row of rows) {
@@ -91,7 +91,7 @@ class Form extends Component {
       const isLast = index + 1 === Children.count(children);
       if (isLast) {
         element = cloneElement(element, {
-          style: mergeStyles({}, element.props.style, { marginBottom: '0' })
+          style: mergeStyles({}, element.props.style, {marginBottom: '0'})
         });
       }
 
@@ -99,14 +99,14 @@ class Form extends Component {
         let ref = `row-${index}`;
         return (
           <RowWrapper ref={ref} style={style}>
-            {cloneElement(element, { form: this })}
+            {cloneElement(element, {form: this})}
           </RowWrapper>
         );
       } else if (element.type === Label) {
         let ref = `label-${index}`;
         return (
           <RowWrapper ref={ref} style={this.styles.label}>
-            {cloneElement(element, { form: this })}
+            {cloneElement(element, {form: this})}
           </RowWrapper>
         );
       }
