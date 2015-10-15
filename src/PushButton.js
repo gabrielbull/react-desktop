@@ -50,7 +50,9 @@ class PushButton extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]).isRequired,
     color: PropTypes.string,
-    style: PropTypes.object
+    style: PropTypes.object,
+    onClick: PropTypes.func,
+    onPress: PropTypes.func
   };
 
   constructor() {
@@ -63,18 +65,21 @@ class PushButton extends Component {
   }
 
   render() {
-    let { children, color, ...props } = this.props;
+    let { children, color, onPress, ...props } = this.props;
 
     let styles = this.styles;
     if (color === 'blue' && this.state.windowFocused) {
       styles = Object.assign({}, this.styles, this.styles.blue);
     }
 
+    onPress = this.props.onClick ? this.props.onClick : this.props.onPress;
+
     return (
       <button
         ref="element"
         {...props}
         style={applyStyle(styles)}
+        onClick={onPress}
       >
         {children}
       </button>

@@ -96,7 +96,7 @@ class MyApp extends React.Component {
               <PushButton>Cancel</PushButton>
               <PushButton color="blue">Submit</PushButton>
               
-              <IndeterminateCircularProgressIndicator/>
+              <IndeterminateCircularProgressIndicator visible={true}/>
               
             </SegmentedControl.Item>
           </SegmentedControl>

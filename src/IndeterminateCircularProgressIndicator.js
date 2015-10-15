@@ -11,15 +11,16 @@ var styles = {
 @Styling
 class IndeterminateCircularProgressIndicator extends Component {
   static propTypes = {
-    style: PropTypes.object
+    style: PropTypes.object,
+    visible: PropTypes.bool
   };
 
   framerate = 60;
   duration = 1800;
 
-  constructor() {
+  constructor(props) {
     super();
-    this.state = {windowFocused: true};
+    this.state = { visible: props.visible !== false };
   }
 
   componentDidMount() {
@@ -64,8 +65,15 @@ class IndeterminateCircularProgressIndicator extends Component {
   render() {
     let { style, ...props } = this.props;
 
+    let styles = this.styles;
+    if (!this.state.visible) {
+      styles = mergeStyles(styles, { visibility: 'hidden' });
+    } else {
+      styles = mergeStyles(styles, { visibility: 'visible' });
+    }
+
     return (
-      <svg x="0px" y="0px" viewBox="0 0 32.3 32.3" style={this.styles} {...props}>
+      <svg x="0px" y="0px" viewBox="0 0 32.3 32.3" style={styles} {...props}>
         <path
           ref="0"
           fill="#000000"
