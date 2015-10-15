@@ -73,7 +73,13 @@ class MyApp extends React.Component {
   render() {
     return (
       <div>
-        <TitleBar title="Page" controls={true}/>
+        <TitleBar 
+          title="Page" 
+          controls={true}
+          onClosePress={() => { alert('close'); }}
+          onResizePress={() => { alert('resize'); }}
+          onMinimizePress={() => { alert('minimize'); }}
+        />
         
         <TitleBar title="TitleBar with Toolbar" controls={true}>
           <Toolbar/>

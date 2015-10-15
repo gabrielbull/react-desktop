@@ -45,6 +45,7 @@ class Close extends Component {
   }
 
   render() {
+    const { style, ...props } = this.props;
     const displayIcon = this.state.iconVisible ? { opacity: 1 } : { opacity: 0 };
     const iconStyle = Object.assign({}, this.styles.icon, displayIcon);
 
@@ -54,11 +55,11 @@ class Close extends Component {
     }
 
     return (
-      <div style={applyStyle(styles)}>
+      <a style={applyStyle(styles)} {...props}>
         <svg x="0px" y="0px" viewBox="0 0 6.4 6.4" style={iconStyle}>
           <polygon fill="#4d0000" points="6.4,0.8 5.6,0 3.2,2.4 0.8,0 0,0.8 2.4,3.2 0,5.6 0.8,6.4 3.2,4 5.6,6.4 6.4,5.6 4,3.2 "/>
         </svg>
-      </div>
+      </a>
     );
   }
 }

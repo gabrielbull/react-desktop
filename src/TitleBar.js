@@ -57,7 +57,10 @@ class TitleBar extends Component {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
     style: PropTypes.object,
     title: PropTypes.string,
-    controls: PropTypes.bool
+    controls: PropTypes.bool,
+    onClosePress: PropTypes.func,
+    onMinimizePress: PropTypes.func,
+    onResizePress: PropTypes.func
   };
 
   constructor() {
@@ -87,7 +90,7 @@ class TitleBar extends Component {
       titleStyle = mergeStyles(titleStyle, this.styles.title.unfocused);
     }
 
-    controls = !controls || <Controls/>;
+    controls = !controls || <Controls {...this.props}/>;
     title = !title || (
         <div style={titleStyle}>
           {this.props.title}

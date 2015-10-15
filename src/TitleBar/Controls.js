@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Close from './Close';
 import Minimize from './Minimize';
 import Resize from './Resize';
@@ -13,6 +13,12 @@ var styles = {
 };
 
 class Controls extends Component {
+  static propTypes = {
+    onClosePress: PropTypes.func,
+    onMinimizePress: PropTypes.func,
+    onResizePress: PropTypes.func
+  };
+
   get styles() {
     return styles.osx_10_11;
   };
@@ -36,9 +42,9 @@ class Controls extends Component {
   render() {
     return (
       <div style={this.styles} onMouseEnter={this.mouseEnter.bind(this)} onMouseLeave={this.mouseLeave.bind(this)}>
-        <Close ref="close"/>
-        <Minimize ref="minimize"/>
-        <Resize ref="resize"/>
+        <Close onClick={this.props.onClosePress} ref="close"/>
+        <Minimize onClick={this.props.onMinimizePress} ref="minimize"/>
+        <Resize onClick={this.props.onResizePress} ref="resize"/>
       </div>
     );
   }

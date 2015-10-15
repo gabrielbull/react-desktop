@@ -16,7 +16,7 @@ ReactDOM.render(
   (
     <div>
       <div className="window-shadow">
-        <TitleBar title="TitleBar" controls={true}/>
+        <TitleBar title="TitleBar" controls={true} onClosePress={() => { alert('close'); }}/>
         <div className="window"/>
       </div>
 
