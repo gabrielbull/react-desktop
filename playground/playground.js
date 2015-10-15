@@ -60,16 +60,16 @@ class Window2 extends Component {
             <SegmentedControl.Item
               title="Selected"
               selected
-              onPress={() => { console.log('select login'); } }
+              onPress={() => { console.log('select login'); }}
               className="form"
             >
-              <Form onSubmit={() => { alert('form submitted'); } }>
+              <Form onSubmit={() => { alert('form submitted'); }}>
                 <Label color="red">
                   There was an error submitting this form.
                 </Label>
 
                 <Form.Row>
-                  <Label ref="label">Label:</Label>
+                  <Label>Label:</Label>
                   <TextField defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
                 </Form.Row>
 

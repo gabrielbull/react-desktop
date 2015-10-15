@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Styling, { mergeStyles, applyStyle } from './Styling';
 import Row from './Form/Row';
 import Label from './Label';
+import RowWrapper from './Form/RowWrapper';
 
 var styles = {
   osx_10_11: {
@@ -21,8 +22,8 @@ var styles = {
 class Form extends Component {
   static Row = Row;
 
-  rowRefs = [];
-  otherRefs = [];
+  labels = [];
+  rows = [];
 
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
@@ -30,54 +31,46 @@ class Form extends Component {
     onSubmit: PropTypes.func
   };
 
-  componentDidMount() {
+  registerRow(row) {
+    this.rows = [...this.rows, row];
+  }
+
+  registerLabel(label) {
+    this.labels = [...this.labels, label];
+    this.applyWithToLabels();
     this.applyWithToRows();
   }
 
-  applyWithToRows() {
-    let allLabels = [];
+  applyWithToLabels() {
     let maxWidth = 0;
-    for (let row of this.rows) {
-      for (let label of row.labels) {
-        label = ReactDOM.findDOMNode(label);
-        allLabels = [...allLabels, label];
-        maxWidth =
-          label.offsetWidth > maxWidth ? label.offsetWidth : maxWidth;
-      }
-    }
-    maxWidth++;
-
-    for (let label of allLabels) {
-      label.style.width = `${maxWidth}px`;
-    }
-
-    maxWidth = 0;
-    for (let row of this.rows) {
-      row = ReactDOM.findDOMNode(row);
+    let labels = [];
+    for (let label of this.labels) {
+      label = ReactDOM.findDOMNode(label);
+      labels = [...labels, label];
       maxWidth =
-        row.offsetWidth > maxWidth ? row.offsetWidth : maxWidth;
+        label.offsetWidth > maxWidth ? label.offsetWidth : maxWidth;
     }
-
-    for (let element of this.otherElements) {
-      element = ReactDOM.findDOMNode(element);
-      element.style.width = `${maxWidth}px`;
+    for (let label of labels) {
+      label.style.width = `${maxWidth + 1}px`;
     }
   }
 
-  get rows() {
+  applyWithToRows() {
+    let maxWidth = 0;
     let rows = [];
-    for (let rowRef of this.rowRefs) {
-      rows = [...rows, this.refs[rowRef]];
-    }
-    return rows;
-  }
 
-  get otherElements() {
-    let elements = [];
-    for (let otherRef of this.otherRefs) {
-      elements = [...elements, this.refs[otherRef]];
+    for(var prop in this.refs) {
+        if(this.refs.hasOwnProperty(prop)) {
+          let row = ReactDOM.findDOMNode(this.refs[prop]);
+          rows = [...rows, row];
+          maxWidth =
+            row.offsetWidth > maxWidth ? row.offsetWidth : maxWidth;
+        }
     }
-    return elements;
+
+    for (let row of rows) {
+      row.style.width = `${maxWidth}px`;
+    }
   }
 
   get styles() {
@@ -91,30 +84,34 @@ class Form extends Component {
     }
   };
 
-  getRefKey = (props, prefix, index) => {
-    return props.ref ? props.ref : `${prefix}-${index}`;
-  };
-
   render() {
     let { onSubmit, children, style, ...props } = this.props;
 
     children = Children.map(children, function (element, index) {
+      const isLast = index + 1 === Children.count(children);
+      if (isLast) {
+        element = cloneElement(element, {
+          style: mergeStyles({}, element.props.style, { marginBottom: '0' })
+        });
+      }
+
       if (element.type === Row) {
-        let ref = this.getRefKey(element.props, 'row', index);
-        this.rowRefs = [...this.rowRefs, ref];
-        return cloneElement(element, { style: style, ref: ref });
+        let ref = `row-${index}`;
+        return (
+          <RowWrapper ref={ref} style={style}>
+            {cloneElement(element, { form: this })}
+          </RowWrapper>
+        );
       } else if (element.type === Label) {
-        let ref = this.getRefKey(element.props, 'label', index);
-        this.otherRefs = [...this.otherRefs, ref];
-        return cloneElement(element, { ref: ref, style: mergeStyles({}, element.props.style, this.styles.label) });
+        let ref = `label-${index}`;
+        return (
+          <RowWrapper ref={ref} style={this.styles.label}>
+            {cloneElement(element, { form: this })}
+          </RowWrapper>
+        );
       }
       return element;
     }.bind(this));
-
-    let lastRow = children[children.length - 1];
-    children[children.length - 1] = cloneElement(lastRow, {
-      style: mergeStyles({}, lastRow.props.style, { marginBottom: '0' })
-    });
 
     return (
       <form {...props} onSubmit={this.submit.bind(this)} style={applyStyle(this.styles)}>

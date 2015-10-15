@@ -14,31 +14,22 @@ var styles = {
     alignItems: 'center',
     marginBottom: '20px',
 
-    label: {
-      marginRight: '10px',
-      textAlign: 'right'
-    },
-
     buttonRow: {
-      marginTop: '4px',
+      marginTop: '4px'
     }
   }
 };
 
 class Row extends Component {
-  labelRefs = [];
-
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
     style: PropTypes.object
   };
 
-  get labels() {
-    let labels = [];
-    for (let labelRef of this.labelRefs) {
-      labels = [...labels, this.refs[labelRef]];
+  componentDidMount() {
+    if (this.props.form) {
+      this.props.form.registerRow(this);
     }
-    return labels;
   }
 
   get styles() {
@@ -46,28 +37,18 @@ class Row extends Component {
   }
 
   render() {
-    let { children, style, ...props } = this.props;
+    let { children, style, form, ...props } = this.props;
     let isButtonsRow = null;
 
     children = Children.map(children, function (element, index) {
       if (element.type === Label) {
         isButtonsRow = false;
-        let style = element.props.style ? mergeStyles(element.props.style, this.styles.label) : this.styles.label;
-        let ref;
-        if (element.props.ref) {
-          ref = element.props.ref;
-          this.labelRefs = [...this.labelRefs, element.props.ref];
-        } else {
-          ref = `label-${index}`;
-          this.labelRefs = [...this.labelRefs, ref];
-        }
-        return cloneElement(element, { style: style, ref: ref });
       } else if (element.type === TextField) {
         isButtonsRow = false;
       } else if (element.type === PushButton && isButtonsRow === null) {
         isButtonsRow = true;
       }
-      return element;
+      return cloneElement(element, { form: form, row: this });
     }.bind(this));
 
     let styles = this.styles;

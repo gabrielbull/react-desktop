@@ -7,7 +7,12 @@ var styles = {
     cursor: 'default',
     fontFamily: '"San Francisco", "Helvetica Neue", "Lucida Grande"',
     fontSize: '13px',
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
+
+    rowLabel: {
+      textAlign: 'right',
+      marginRight: '12px'
+    }
   }
 };
 
@@ -18,12 +23,18 @@ class Label extends Component {
     color: PropTypes.string
   };
 
+  componentDidMount() {
+    if (this.props.row && this.props.form) {
+      this.props.form.registerLabel(this);
+    }
+  }
+
   get styles() {
     return mergeStyles(styles.osx_10_11, this.props.style);
   }
 
   render() {
-    let { children, style, color, ...props } = this.props;
+    let { children, style, color, row, form, ...props } = this.props;
 
     let styles = this.styles;
     if (color) {
@@ -31,6 +42,10 @@ class Label extends Component {
       case 'red': color = '#fd2700'; break;
       }
       styles = mergeStyles(styles, { color: color });
+    }
+
+    if (row) {
+      styles = mergeStyles(styles, this.styles.rowLabel);
     }
 
     return (
