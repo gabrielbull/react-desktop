@@ -13,7 +13,8 @@ var styles = {
 class Label extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
-    style: PropTypes.object
+    style: PropTypes.object,
+    color: PropTypes.string
   };
 
   get styles() {
@@ -21,10 +22,18 @@ class Label extends Component {
   }
 
   render() {
-    const { children, style, ...props } = this.props;
+    let { children, style, color, ...props } = this.props;
+
+    let styles = this.styles;
+    if (color) {
+      switch (color) {
+      case 'red': color = '#fd2700'; break;
+      }
+      styles = mergeStyles(styles, { color: color });
+    }
 
     return (
-      <div ref="label" {...props} style={applyStyle(this.styles)}>
+      <div ref="label" {...props} style={applyStyle(styles)}>
         {children}
       </div>
     );

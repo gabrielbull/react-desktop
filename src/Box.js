@@ -35,6 +35,7 @@ class Box extends Component {
     let segmentedControlsPadding = {};
     let styles = this.styles;
     if (hasSegmentedControls) {
+      styles = mergeStyles(styles, { marginTop: '10px' });
       segmentedControlsPadding = { height: '10px' };
     }
 

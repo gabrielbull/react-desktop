@@ -52,7 +52,7 @@ class PushButton extends Component {
     color: PropTypes.string,
     style: PropTypes.object,
     onClick: PropTypes.func,
-    onPress: PropTypes.func
+    onPress: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.func])
   };
 
   constructor() {
@@ -64,6 +64,10 @@ class PushButton extends Component {
     return mergeStyles(styles.osx_10_11, this.props.style);
   }
 
+  submit() {
+    alert('submit');
+  }
+
   render() {
     let { children, color, onPress, ...props } = this.props;
 
@@ -73,6 +77,9 @@ class PushButton extends Component {
     }
 
     onPress = this.props.onClick ? this.props.onClick : this.props.onPress;
+    if (onPress === 'submit') {
+      onPress = this.submit.bind(this);
+    }
 
     return (
       <button

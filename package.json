@@ -1,13 +1,20 @@
 {
   "name": "react-desktop",
   "author": "Gabriel Bull",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "OS X and Windows UI components built with React",
   "main": "./lib/Main.js",
   "keywords": [
     "react",
     "react-component",
+    "electron",
+    "node-webkit",
+    "native",
     "desktop",
+    "ui",
+    "user",
+    "interface",
+    "component",
     "os x",
     "windows"
   ],

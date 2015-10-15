@@ -1,3 +1,4 @@
+export const Window = require('./Window');
 export const TitleBar = require('./TitleBar');
 export const Toolbar = require('./Toolbar');
 export const PushButton = require('./PushButton');
