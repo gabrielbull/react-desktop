@@ -43,10 +43,6 @@ class Window1 extends Component {
 }
 
 class Window2 extends Component {
-  componentDidMount() {
-    console.log(this.refs);
-  }
-
   render() {
     return (
 
