@@ -33,7 +33,7 @@ class Box extends Component {
   }
 
   render() {
-    const { children, style, ...props } = this.props;
+    const { children, style, className, ...props } = this.props;
     const hasSegmentedControls = typeof children === 'object' && children.type === SegmentedControl;
 
     let styles = this.styles;
@@ -43,7 +43,9 @@ class Box extends Component {
 
     return (
       <div {...props} style={applyStyle(styles)}>
-        {this.props.children}
+        <div className={className}>
+          {this.props.children}
+        </div>
       </div>
     );
   }

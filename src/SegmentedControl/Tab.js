@@ -16,11 +16,11 @@ var styles = {
     borderRightWidth: '1px',
     borderRightStyle: 'solid',
     borderRightColor: '#d8d8d8',
-    paddingTop: '1.5px',
-    paddingBottom: 0,
+    paddingTop: '1px',
+    paddingBottom: '1px',
     paddingLeft: '11px',
     paddingRight: '11px',
-    lineHeight: '16.5px',
+    lineHeight: '16px',
     fontFamily: '"San Francisco", "Helvetica Neue", "Lucida Grande"',
     fontSize: '13px',
     boxShadow: '0 1px rgba(0, 0, 0, .039), 0 0 .5px rgba(0, 0, 0, .1)',
@@ -48,6 +48,7 @@ var styles = {
       borderTopColor: '#4ca2f9',
       borderBottomColor: '#015cff',
       borderLeftColor: '#267ffc',
+      borderRightColor: '#267ffc',
       color: 'rgba(255, 255, 255, .9)',
       borderRightWidth: '0px',
       paddingRight: '12px',
@@ -55,10 +56,10 @@ var styles = {
 
       ':active': {
         backgroundImage: '-webkit-linear-gradient(top, #4c98fe 0%, #0564e3 100%) !important',
-        borderTopColor: '#247fff',
-        borderBottomColor: '#003ddb',
-        borderLeftColor: '#125eed',
-        borderRightColor: '#125eed',
+        borderTopColor: '#247fff !important',
+        borderBottomColor: '#003ddb !important',
+        borderLeftColor: '#125eed !important',
+        borderRightColor: '#125eed !important',
         color: 'rgba(255, 255, 255, .9)'
       }
     },
@@ -123,11 +124,17 @@ class Tab extends Component {
       if (this.props.firstChild) {
         styles = mergeStyles(styles, { paddingLeft: '11px' });
       }
+      if (this.props.lastChild) {
+        styles = mergeStyles(styles, { borderRightWidth: '1px' });
+      }
       activeStyles = this.styles.selected[':active'];
     } else if (this.state.selected) {
       styles = mergeStyles(styles, this.styles.selectedUnfocused);
       if (this.props.firstChild) {
         styles = mergeStyles(styles, { paddingLeft: '11px' });
+      }
+      if (this.props.lastChild) {
+        styles = mergeStyles(styles, { borderRightWidth: '1px' });
       }
     }
 

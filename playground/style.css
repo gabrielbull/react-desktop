@@ -1,18 +1,24 @@
 body {
-  margin: 20px;
+  padding: 30px 40px;
   font-family: serif;
-  background: #272727;
+  background: white;
   max-width: 600px;
 }
 
 #main>div>*, input, button {
   -webkit-appearance: none;
-  margin-right: 20px;
+  margin-right: 14px;
   margin-bottom: 20px;
 }
 
 .no-margin-bottom {
   margin-bottom: 0 !important;
+}
+
+.window-shadow {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, .55),  0 5px 20px rgba(0, 0, 0, .2);
 }
 
 .window {
@@ -21,7 +27,7 @@ body {
 }
 
 .box {
-  padding: 24px 20px 0 20px !important;
+  padding: 16px 20px 0 20px;
 }
 
 .form {

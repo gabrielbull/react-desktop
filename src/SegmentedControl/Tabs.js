@@ -7,7 +7,7 @@ var styles = {
     WebkitUserSelect: 'none',
     cursor: 'default',
     position: 'absolute',
-    top: '-10px',
+    top: '-11px',
     left: 0,
     width: '100%',
     display: 'flex',
@@ -31,11 +31,12 @@ class Tabs extends Component {
       if (i === 0) {
         props = Object.assign({}, props, { firstChild: true });
       }
+
       if (i === (len - 1)) {
         props = Object.assign({}, props, { lastChild: true });
       }
 
-      if (this.props.tabs[i + 1] && this.props.tabs[i + 1].props.selected) {
+      if (this.props.tabs[i + 1] && this.props.tabs[i + 1].props && this.props.tabs[i + 1].props.selected) {
         props = Object.assign({}, props, { nextSelected: true });
       }
 
