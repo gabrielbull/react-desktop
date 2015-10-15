@@ -2,7 +2,7 @@
 <!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Calque_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 302.6 49.2" enable-background="new 0 0 302.6 49.2" xml:space="preserve">
+	 viewBox="0 0 302.6 49.2" enable-background="new 0 0 302.6 49.2" xml:space="preserve" width="280" height="50">
 <g>
 	<path fill="#333333" d="M85.3,37.9c-5-9.4-5.8-10.8-7.1-11.2h-4.4v11.2h-3.6V11.9c2.5-0.1,5.3-0.2,8-0.2c5,0,8.1,2.8,8.1,6.8
 		c0,4.1-2.9,6.2-4.6,7c1.5,0.8,2.4,2.1,7.9,12.5H85.3z M76.6,14.6h-2.8v9.2h5.7c1.7-0.7,3.1-2.6,3.1-4.6
@@ -37,29 +37,29 @@
 		c3.6,0,5.9-3,5.9-6.9C297.7,24.1,295.7,21.3,292.2,21.3z"/>
 </g>
 <g>
-	
+
 		<rect x="19.3" y="2.2" transform="matrix(0.7071 0.7071 -0.7071 0.7071 12.5509 -15.1816)" fill="#9B61A8" width="10.7" height="10.7"/>
-	
+
 		<rect x="10.7" y="4.5" transform="matrix(0.9659 0.2588 -0.2588 0.9659 3.0954 -3.8265)" fill="#38C4E8" width="10.7" height="10.7"/>
-	
+
 		<rect x="4.5" y="10.7" transform="matrix(0.9659 -0.2588 0.2588 0.9659 -3.8265 3.0954)" fill="#2083C6" width="10.7" height="10.7"/>
-	
+
 		<rect x="2.2" y="19.3" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -15.1816 12.5509)" fill="#0CA796" width="10.7" height="10.7"/>
-	
+
 		<rect x="4.5" y="27.8" transform="matrix(0.2588 -0.9659 0.9659 0.2588 -24.6983 34.0568)" fill="#4BBFAE" width="10.7" height="10.7"/>
-	
+
 		<rect x="10.7" y="34" transform="matrix(-0.2588 -0.9659 0.9659 -0.2588 -17.7764 65.0793)" fill="#5EC2A7" width="10.7" height="10.7"/>
-	
+
 		<rect x="19.3" y="36.3" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 12.5509 88.4847)" fill="#F6CE2D" width="10.7" height="10.7"/>
-	
+
 		<rect x="27.8" y="34" transform="matrix(-0.9659 -0.2588 0.2588 -0.9659 54.9285 85.9511)" fill="#9B61A8" width="10.7" height="10.7"/>
-	
+
 		<rect x="27.8" y="34" transform="matrix(-0.9659 -0.2588 0.2588 -0.9659 54.9285 85.9511)" fill="#FDD463" width="10.7" height="10.7"/>
-	
+
 		<rect x="34" y="27.8" transform="matrix(-0.9659 0.2588 -0.2588 -0.9659 85.9511 54.9285)" fill="#F99E3E" width="10.7" height="10.7"/>
-	
+
 		<rect x="36.3" y="19.3" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 88.4847 12.5509)" fill="#F6873C" width="10.7" height="10.7"/>
-	
+
 		<rect x="34" y="10.7" transform="matrix(-0.2588 0.9659 -0.9659 -0.2588 65.0793 -17.7764)" fill="#F47931" width="10.7" height="10.7"/>
 	<polygon fill="#EF383A" points="36.9,3.3 26.6,6.1 29.8,5.2 32.2,7.6 28.1,11.6 29.3,16.4 39.7,13.6 	"/>
 </g>
