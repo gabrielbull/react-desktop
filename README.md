@@ -45,7 +45,7 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/gabrielbull/react-desktop/master/docs/screenshots/osx.png" width="656">
+<img src="https://raw.githubusercontent.com/gabrielbull/react-desktop/master/docs/screenshots/osx.png" width="655">
 
 ## Usage
 
