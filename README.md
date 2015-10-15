@@ -1,4 +1,4 @@
-# React Desktop
+# ![React Desktop](https://rawgit.com/gabrielbull/react-desktop/master/docs/react-desktop.svg "React Desktop")
 
 [![Build Status](https://travis-ci.org/gabrielbull/react-desktop.svg)](https://travis-ci.org/gabrielbull/react-desktop)
 [![Code Climate](https://codeclimate.com/github/gabrielbull/react-desktop/badges/gpa.svg)](https://codeclimate.com/github/gabrielbull/react-desktop)
