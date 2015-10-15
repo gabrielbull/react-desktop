@@ -12,7 +12,7 @@ React UI Components for OS X and Windows.
 
 ## Contributing
 
-This library is in it's infancy and was created to fulfill the lack of such libraries for tools like node-webkit or
+This library is in its infancy and was created to fulfill the lack of such libraries for tools like node-webkit or
 Electron.js. As such, everyone is welcome to contribute and add more components.
 
 ### Todos OS X
@@ -32,6 +32,7 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 - [ ] Flexible Space Toolbar Item
 - [x] Box
 - [x] Segmented Control
+- [x] Indeterminate Circular Progress Indicator
 
 ### Todos Windows
 
@@ -49,7 +50,15 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 Simple usage:
 
 ```jsx
-import { TitleBar, PushButton, TextField, Toolbar, Box } from 'react-desktop';
+import { 
+  TitleBar, 
+  PushButton, 
+  TextField, 
+  Toolbar, 
+  Box, 
+  SegmentedControl,
+  IndeterminateCircularProgressIndicator 
+} from 'react-desktop';
 
 class MyApp extends React.Component {
   constructor() {
@@ -78,6 +87,8 @@ class MyApp extends React.Component {
             
               <PushButton>Cancel</PushButton>
               <PushButton color="blue">Submit</PushButton>
+              
+              <IndeterminateCircularProgressIndicator/>
               
             </SegmentedControl.Item>
           </SegmentedControl>

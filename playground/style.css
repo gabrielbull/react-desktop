@@ -5,7 +5,7 @@ body {
   max-width: 600px;
 }
 
-#main>div>*, input, button {
+#main>div>* {
   -webkit-appearance: none;
   margin-right: 14px;
   margin-bottom: 20px;
@@ -27,8 +27,15 @@ body {
 }
 
 .box {
-  padding: 16px 20px 0 20px;
+  padding: 16px 20px 20px 20px;
 }
 
 .form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form input, .form button {
+  margin-right: 20px;
 }

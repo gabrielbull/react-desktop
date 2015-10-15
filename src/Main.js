@@ -4,3 +4,4 @@ export const PushButton = require('./PushButton');
 export const TextField = require('./TextField');
 export const Box = require('./Box');
 export const SegmentedControl = require('./SegmentedControl');
+export const IndeterminateCircularProgressIndicator = require('./IndeterminateCircularProgressIndicator');

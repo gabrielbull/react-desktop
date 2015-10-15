@@ -1,6 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { TitleBar, PushButton, TextField, Toolbar, Box, SegmentedControl } from '../src/Main';
+import {
+  TitleBar,
+  PushButton,
+  TextField,
+  Toolbar,
+  Box,
+  SegmentedControl,
+  IndeterminateCircularProgressIndicator
+} from '../src/Main';
 
 ReactDOM.render(
   (
@@ -22,11 +30,15 @@ ReactDOM.render(
                 title="Selected"
                 selected={true}
                 onPress={() => { console.log('select login'); } }
+                className="form"
               >
                 <TextField defaultValue="" placeholder="TextField"/>
 
                 <PushButton>PushButton</PushButton>
                 <PushButton color="blue">PushButton Blue</PushButton>
+
+                <IndeterminateCircularProgressIndicator/>
+
               </SegmentedControl.Item>
               <SegmentedControl.Item
                 title="Segmented"
