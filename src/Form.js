@@ -8,6 +8,9 @@ var styles = {
   osx_10_11: {
     WebkitUserSelect: 'none',
     cursor: 'default',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
 
     label: {
       marginBottom: '20px'
@@ -19,6 +22,7 @@ class Form extends Component {
   static Row = Row;
 
   rowRefs = [];
+  otherRefs = [];
 
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
@@ -27,6 +31,10 @@ class Form extends Component {
   };
 
   componentDidMount() {
+    this.applyWithToRows();
+  }
+
+  applyWithToRows() {
     let allLabels = [];
     let maxWidth = 0;
     for (let row of this.rows) {
@@ -42,6 +50,18 @@ class Form extends Component {
     for (let label of allLabels) {
       label.style.width = `${maxWidth}px`;
     }
+
+    maxWidth = 0;
+    for (let row of this.rows) {
+      row = ReactDOM.findDOMNode(row);
+      maxWidth =
+        row.offsetWidth > maxWidth ? row.offsetWidth : maxWidth;
+    }
+
+    for (let element of this.otherElements) {
+      element = ReactDOM.findDOMNode(element);
+      element.style.width = `${maxWidth}px`;
+    }
   }
 
   get rows() {
@@ -50,6 +70,14 @@ class Form extends Component {
       rows = [...rows, this.refs[rowRef]];
     }
     return rows;
+  }
+
+  get otherElements() {
+    let elements = [];
+    for (let otherRef of this.otherRefs) {
+      elements = [...elements, this.refs[otherRef]];
+    }
+    return elements;
   }
 
   get styles() {
@@ -63,22 +91,22 @@ class Form extends Component {
     }
   };
 
+  getRefKey = (props, prefix, index) => {
+    return props.ref ? props.ref : `${prefix}-${index}`;
+  };
+
   render() {
     let { onSubmit, children, style, ...props } = this.props;
 
     children = Children.map(children, function (element, index) {
       if (element.type === Row) {
-        let ref;
-        if (element.props.ref) {
-          ref = element.props.ref;
-          this.rowRefs = [...this.rowRefs, element.props.ref];
-        } else {
-          ref = `row-${index}`;
-          this.rowRefs = [...this.rowRefs, ref];
-        }
+        let ref = this.getRefKey(element.props, 'row', index);
+        this.rowRefs = [...this.rowRefs, ref];
         return cloneElement(element, { style: style, ref: ref });
       } else if (element.type === Label) {
-        return cloneElement(element, { style: mergeStyles({}, element.props.style, this.styles.label) });
+        let ref = this.getRefKey(element.props, 'label', index);
+        this.otherRefs = [...this.otherRefs, ref];
+        return cloneElement(element, { ref: ref, style: mergeStyles({}, element.props.style, this.styles.label) });
       }
       return element;
     }.bind(this));

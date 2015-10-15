@@ -6,7 +6,8 @@ var styles = {
     WebkitUserSelect: 'none',
     cursor: 'default',
     fontFamily: '"San Francisco", "Helvetica Neue", "Lucida Grande"',
-    fontSize: '13px'
+    fontSize: '13px',
+    whiteSpace: 'nowrap'
   }
 };
 

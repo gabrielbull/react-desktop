@@ -3,6 +3,7 @@ import Styling, { mergeStyles, applyStyle } from './Styling';
 
 var styles = {
   osx_10_11: {
+    WebkitUserSelect: 'none',
     borderWidth: '1px',
     borderStyle: 'solid',
     borderColor: '#b0b0b0',
