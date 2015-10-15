@@ -64,10 +64,6 @@ class PushButton extends Component {
     return mergeStyles(styles.osx_10_11, this.props.style);
   }
 
-  submit() {
-    alert('submit');
-  }
-
   render() {
     let { children, color, onPress, ...props } = this.props;
 
@@ -76,13 +72,17 @@ class PushButton extends Component {
       styles = Object.assign({}, this.styles, this.styles.blue);
     }
 
-    onPress = this.props.onClick ? this.props.onClick : this.props.onPress;
-    if (onPress === 'submit') {
-      onPress = this.submit.bind(this);
+    let type = 'button';
+    if (this.props.onPress === 'submit') {
+      type = 'submit';
+      onPress = null;
+    } else {
+      onPress = this.props.onClick ? this.props.onClick : this.props.onPress;
     }
 
     return (
       <button
+        type={type}
         ref="element"
         {...props}
         style={applyStyle(styles)}

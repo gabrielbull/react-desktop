@@ -52,7 +52,8 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 Simple usage:
 
 ```jsx
-import { 
+import {
+  Window,
   TitleBar, 
   PushButton, 
   TextField, 
@@ -72,19 +73,17 @@ class MyApp extends React.Component {
 
   render() {
     return (
-      <div>
+      <Window>
         <TitleBar 
-          title="Page" 
+          title="My App" 
           controls={true}
           onClosePress={() => { alert('close'); }}
           onResizePress={() => { alert('resize'); }}
           onMinimizePress={() => { alert('minimize'); }}
-        />
-        
-        <TitleBar title="TitleBar with Toolbar" controls={true}>
+        >
           <Toolbar/>
         </TitleBar>
-        
+                
         <Box>
           <SegmentedControl>
             <SegmentedControl.Item 
@@ -99,17 +98,18 @@ class MyApp extends React.Component {
                   <Label>Username</Label>
                   <TextField defaultValue="" placeholder="Username"/>
                 </Form.Row>
-              </Form>
-
-              <PushButton>Cancel</PushButton>
-              <PushButton color="blue">Submit</PushButton>
-              
-              <IndeterminateCircularProgressIndicator visible={true}/>
-              
+                
+                <Form.Row>
+                  <PushButton onPress={() => { alert('cancel'); }}>Cancel</PushButton>
+                  <PushButton onPress="submit" color="blue">Submit</PushButton>
+                  
+                  <IndeterminateCircularProgressIndicator visible={true}/>
+                </Form.Row>
+              </Form>              
             </SegmentedControl.Item>
           </SegmentedControl>
         </Box>
-      </div>
+      </Window>
     );
   }
 }

@@ -2,11 +2,16 @@ import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import ReactDOM from 'react-dom';
 import Styling, { mergeStyles, applyStyle } from './Styling';
 import Row from './Form/Row';
+import Label from './Label';
 
 var styles = {
   osx_10_11: {
     WebkitUserSelect: 'none',
-    cursor: 'default'
+    cursor: 'default',
+
+    label: {
+      marginBottom: '20px'
+    }
   }
 };
 
@@ -17,7 +22,8 @@ class Form extends Component {
 
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
-    style: PropTypes.object
+    style: PropTypes.object,
+    onSubmit: PropTypes.func
   };
 
   componentDidMount() {
@@ -50,8 +56,15 @@ class Form extends Component {
     return mergeStyles(styles.osx_10_11, this.props.style);
   }
 
+  submit = event => {
+    event.preventDefault();
+    if (this.props.onSubmit) {
+      this.props.onSubmit();
+    }
+  };
+
   render() {
-    let { children, style, ...props } = this.props;
+    let { onSubmit, children, style, ...props } = this.props;
 
     children = Children.map(children, function (element, index) {
       if (element.type === Row) {
@@ -64,14 +77,16 @@ class Form extends Component {
           this.rowRefs = [...this.rowRefs, ref];
         }
         return cloneElement(element, { style: style, ref: ref });
+      } else if (element.type === Label) {
+        return cloneElement(element, { style: mergeStyles({}, element.props.style, this.styles.label) });
       }
       return element;
     }.bind(this));
 
     return (
-      <div {...props} style={applyStyle(this.styles)}>
+      <form {...props} onSubmit={this.submit.bind(this)} style={applyStyle(this.styles)}>
         {children}
-      </div>
+      </form>
     );
   }
 }

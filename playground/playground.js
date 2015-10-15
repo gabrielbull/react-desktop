@@ -15,7 +15,7 @@ import {
 
 ReactDOM.render(
   (
-    <Window chrome={true} style={{marginBottom: '30px'}}>
+    <Window chrome={true} style={{marginBottom: '40px'}}>
       <TitleBar
         title="TitleBar"
         controls={true}
