@@ -111,6 +111,11 @@ class Form extends Component {
       return element;
     }.bind(this));
 
+    let lastRow = children[children.length - 1];
+    children[children.length - 1] = cloneElement(lastRow, {
+      style: mergeStyles({}, lastRow.props.style, { marginBottom: '0' })
+    });
+
     return (
       <form {...props} onSubmit={this.submit.bind(this)} style={applyStyle(this.styles)}>
         {children}

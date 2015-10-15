@@ -91,7 +91,7 @@ class MyApp extends React.Component {
               selected={this.state.selectedTab === 'login'}
               onPress={() => { this.setState({ selectedTab: 'login' }) } }
             >
-              <Form>
+              <Form onSubmit={() => { alert('submit'); }}>
                 <Label color="red">Error</Label>
                 
                 <Form.Row>
@@ -103,7 +103,7 @@ class MyApp extends React.Component {
                   <PushButton onPress={() => { alert('cancel'); }}>Cancel</PushButton>
                   <PushButton onPress="submit" color="blue">Submit</PushButton>
                   
-                  <IndeterminateCircularProgressIndicator visible={true}/>
+                  <IndeterminateCircularProgressIndicator visible={true} absolute={true}/>
                 </Form.Row>
               </Form>              
             </SegmentedControl.Item>

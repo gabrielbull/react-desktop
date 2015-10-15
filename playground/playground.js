@@ -75,7 +75,7 @@ ReactDOM.render(
                 <PushButton>PushButton</PushButton>
                 <PushButton onPress="submit" color="blue">PushButton Blue</PushButton>
 
-                <IndeterminateCircularProgressIndicator/>
+                <IndeterminateCircularProgressIndicator absolute={true}/>
               </Form.Row>
             </Form>
           </SegmentedControl.Item>

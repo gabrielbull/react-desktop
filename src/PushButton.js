@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import Styling, { mergeStyles, applyStyle } from './Styling';
 import WindowState from './WindowState';
 
@@ -58,6 +59,18 @@ class PushButton extends Component {
   constructor() {
     super();
     this.state = { windowFocused: true };
+  }
+
+  componentDidMount() {
+    if (ReactDOM.findDOMNode(this).previousSibling) {
+      this.applySiblingStyle();
+    }
+  }
+
+  applySiblingStyle() {
+    if (!this.refs.element.style.marginLeft) {
+      this.refs.element.style.marginLeft = '12px';
+    }
   }
 
   get styles() {

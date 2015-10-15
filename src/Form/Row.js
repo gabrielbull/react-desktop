@@ -20,7 +20,7 @@ var styles = {
     },
 
     buttonRow: {
-      marginTop: '24px',
+      marginTop: '4px',
     }
   }
 };
