@@ -13,6 +13,19 @@ import {
   Window
 } from '../src/Main';
 
+document.title = 'React Desktop Playground';
+document.body.style.padding = '30px 40px';
+document.body.style.background = 'white';
+document.body.style.display = 'flex';
+document.body.style.flexDirection = 'column';
+document.body.style.alignItems = 'center';
+
+document.body.innerHTML = `
+  <div id="window1" style="width: 600px;"></div>
+  <div id="window2" style="width: 600px;"></div>
+  <script src="/.js"></script>
+`;
+
 ReactDOM.render(
   (
     <Window chrome={true} style={{marginBottom: '40px'}}>

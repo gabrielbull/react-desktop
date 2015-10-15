@@ -1,7 +1,7 @@
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-  entry: {
-    app: './playground/playground.js'
-  },
+  entry: './playground/playground.js',
 
   output: {
     path: './playground',
@@ -10,6 +10,7 @@ module.exports = {
   },
 
   devServer: {
+    filename: 'playground.js',
     contentBase: './playground'
   },
 
@@ -21,5 +22,7 @@ module.exports = {
         loader: 'babel-loader?stage=0'
       }
     ]
-  }
+  },
+
+  plugins: [new HtmlWebpackPlugin()]
 };

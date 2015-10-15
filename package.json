@@ -1,7 +1,7 @@
 {
   "name": "react-desktop",
   "author": "Gabriel Bull",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "OS X and Windows UI components built with React",
   "main": "./lib/Main.js",
   "keywords": [
@@ -23,8 +23,7 @@
     "type": "git",
     "url": "https://github.com/gabrielbull/react-desktop.git"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "peerDependencies": {
     "react": "~0.14",
     "react-dom": "~0.14"
@@ -37,6 +36,7 @@
     "chai": "^3.3.0",
     "eslint": "^1.6.0",
     "eslint-plugin-react": "^3.5.1",
+    "html-webpack-plugin": "^1.6.2",
     "mocha": "^2.3.3",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.0"
