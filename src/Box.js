@@ -14,11 +14,7 @@ var styles = {
     borderRightColor: 'rgba(0, 0, 0, .037)',
     borderBottomColor: 'rgba(0, 0, 0, .026)',
     borderRadius: '4px',
-
-    segmentedControls: {
-      position: 'relative',
-      paddingTop: '10px'
-    }
+    position: 'relative'
   }
 };
 
@@ -33,19 +29,19 @@ class Box extends Component {
   }
 
   render() {
-    const { children, style, className, ...props } = this.props;
+    const { children, style, ...props } = this.props;
     const hasSegmentedControls = typeof children === 'object' && children.type === SegmentedControl;
 
+    let segmentedControlsPadding = {};
     let styles = this.styles;
     if (hasSegmentedControls) {
-      styles = mergeStyles(styles, this.styles.segmentedControls);
+      segmentedControlsPadding = { height: '10px' };
     }
 
     return (
       <div {...props} style={applyStyle(styles)}>
-        <div className={className}>
-          {this.props.children}
-        </div>
+        <div style={segmentedControlsPadding}/>
+        {this.props.children}
       </div>
     );
   }
