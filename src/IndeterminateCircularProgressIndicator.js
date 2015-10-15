@@ -65,7 +65,7 @@ class IndeterminateCircularProgressIndicator extends Component {
     let { style, ...props } = this.props;
 
     return (
-      <svg x="0px" y="0px" viewBox="0 0 32.3 32.3" style={this.styles}>
+      <svg x="0px" y="0px" viewBox="0 0 32.3 32.3" style={this.styles} {...props}>
         <path
           ref="0"
           fill="#000000"

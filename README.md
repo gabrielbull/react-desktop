@@ -59,7 +59,9 @@ import {
   Toolbar, 
   Box, 
   SegmentedControl,
-  IndeterminateCircularProgressIndicator 
+  IndeterminateCircularProgressIndicator,
+  Form,
+  Label
 } from 'react-desktop';
 
 class MyApp extends React.Component {
