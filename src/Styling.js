@@ -88,31 +88,41 @@ export function parseStyle(styles) {
 
 export default function Styling(ComposedComponent) {
   return class extends Component {
-    stylesheets = [];
+    stylesheets = {};
 
     componentDidMount() {
+      this.applyInlineStyles();
+      this.applyPropStyles();
+    }
+
+    applyInlineStyles() {
       let states = [':hover', ':active', ':focus', ':placeholder'];
       for (let state of states) {
         if (this.refs.component.styles[state]) {
           const element = ReactDOM.findDOMNode(this);
           const id = element.getAttribute('data-reactid');
-          this.stylesheets = [
-            ...this.stylesheets,
-            addStyle('[data-reactid="' + id + '"]' + state, this.refs.component.styles[state])
-          ];
+          this.stylesheets[state] = addStyle('[data-reactid="' + id + '"]' + state, this.refs.component.styles[state])
         }
       }
+    }
 
+    applyPropStyles() {
       if (this.refs.component.refs.element) {
         const element = ReactDOM.findDOMNode(this.refs.component.refs.element);
         const activeStyle = element.getAttribute('data-active-style');
         const id = element.getAttribute('data-reactid');
-        if (activeStyle) {
-          this.stylesheets = [
-            ...this.stylesheets,
-            addStyle('[data-reactid="' + id + '"]:active', activeStyle)
-          ];
+        if (activeStyle && !this.stylesheets['data-active-style']) {
+          this.stylesheets['data-active-style'] = addStyle('[data-reactid="' + id + '"]:active', activeStyle);
+        } else if (this.stylesheets['data-active-style']) {
+          this.removeStylesheet(this.stylesheets['data-active-style']);
+          delete this.stylesheets['data-active-style'];
         }
+      }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+      if (this.refs.component.refs.element) {
+        this.applyPropStyles();
       }
     }
 
@@ -123,9 +133,16 @@ export default function Styling(ComposedComponent) {
     }
 
     componentWillUnmount() {
-      for (let element of this.stylesheets) {
-        element.parentNode.removeChild(element);
+      for(var prop in this.stylesheets) {
+          if(this.stylesheets.hasOwnProperty(prop)) {
+            this.removeStylesheet(this.stylesheets[prop]);
+            delete this.stylesheets[prop];
+          }
       }
+    }
+
+    removeStylesheet(stylesheet) {
+      stylesheet.parentNode.removeChild(stylesheet);
     }
 
     render() {
