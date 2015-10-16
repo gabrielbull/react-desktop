@@ -1,6 +1,4 @@
-# OS generated files #
-######################
-
+# OS generated files
 .DS_Store
 .DS_Store?
 ._*
@@ -9,12 +7,15 @@
 ehthumbs.db
 Thumbs.db
 
-# Node #
-########
-
+# Node
 /node_modules
 
 # react-desktop #
 ########
 
 /lib
+
+# Logs
+logs
+*.log
+npm-debug.log*
