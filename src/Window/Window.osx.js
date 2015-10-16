@@ -1,5 +1,5 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
-import Styling, { mergeStyles, applyStyle } from './Styling';
+import Styling, { mergeStyles, applyStyle } from '../Styling';
 import TitleBar from '../TitleBar';
 import TitleBarOSX from '../TitleBar/TitleBar.osx';
 

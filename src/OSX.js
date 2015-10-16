@@ -1,5 +1,5 @@
-export const Window = require('./Window');
-export const TitleBar = require('./TitleBar');
+export const Window = require('./Window/Window.osx');
+export const TitleBar = require('./TitleBar/TitleBar.osx');
 export const Toolbar = require('./Toolbar');
 export const PushButton = require('./PushButton');
 export const TextField = require('./TextField');
@@ -8,5 +8,3 @@ export const SegmentedControl = require('./SegmentedControl');
 export const IndeterminateCircularProgressIndicator = require('./IndeterminateCircularProgressIndicator');
 export const Form = require('./Form');
 export const Label = require('./Label');
-export const OSX = require('./OSX');
-export const Windows = require('./Windows');

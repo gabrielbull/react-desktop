@@ -27,7 +27,7 @@ class Controls extends Component {
     return (
       <div style={this.styles}>
         <Minimize onClick={this.props.onMinimizePress} ref="minimize"/>
-        <Maximize onClick={this.props.onResizePress} ref="resize"/>
+        <Maximize onClick={this.props.onMaximizePress} ref="maximize"/>
         <Close onClick={this.props.onClosePress} ref="close"/>
       </div>
     );
