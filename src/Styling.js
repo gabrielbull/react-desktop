@@ -12,7 +12,7 @@ function addStyle(selector, styles) {
 
   const head = document.getElementsByTagName('head')[0];
   const style = document.createElement('style');
-  let stylesheet = selector + ' {\n';
+  let stylesheet = `${selector} {\n`;
 
   if (typeof styles === 'string') {
     stylesheet += styles;
@@ -20,7 +20,7 @@ function addStyle(selector, styles) {
     for (let prop in styles) {
       if (styles.hasOwnProperty(prop)) {
         let property = changeStyleCase(prop);
-        stylesheet += '  ' + property + ': ' + styles[prop] + ' !important;\n';
+        stylesheet += `  ${property}: ${styles[prop]} !important;\n`;
       }
     }
   }
@@ -85,7 +85,7 @@ export default function Styling(ComposedComponent) {
         if (this.refs.component.styles[state]) {
           const element = ReactDOM.findDOMNode(this);
           const id = element.getAttribute('data-reactid');
-          this.stylesheets[state] = addStyle('[data-reactid="' + id + '"]' + state, this.refs.component.styles[state])
+          this.stylesheets[state] = addStyle(`[data-reactid="${id}"]${state}`, this.refs.component.styles[state])
         }
       }
     }
