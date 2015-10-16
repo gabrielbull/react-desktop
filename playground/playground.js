@@ -13,6 +13,9 @@ import {
   Window
 } from '../src/Main';
 
+import WindowWindows from '../src/Window/Window.windows';
+import TitleBarWindows from '../src/TitleBar/TitleBar.windows';
+
 document.title = 'React Desktop Playground';
 document.body.style.padding = '30px 40px';
 document.body.style.background = 'white';
@@ -29,20 +32,37 @@ document.body.innerHTML = `
 class Window1 extends Component {
   render() {
     return (
-      <Window chrome style={{marginBottom: '60px'}}>
-        <TitleBar
-          title="TitleBar"
+      <WindowWindows chrome style={{marginBottom: '60px'}}>
+        <TitleBarWindows
+          title="Store"
           controls
-          onClosePress={() => { alert('close'); }}
-          onMinimizePress={() => { alert('minimize'); }}
-          onResizePress={() => { alert('resize'); }}
         />
-      </Window>
+      </WindowWindows>
     );
   }
 }
 
-class Window2 extends Component {
+/*class Window1 extends Component {
+ render() {
+ return (
+ <Window chrome style={{marginBottom: '60px'}}>
+ <TitleBar
+ title="TitleBar"
+ controls
+ onClosePress={() => { alert('close'); }}
+ onMinimizePress={() => { alert('minimize'); }}
+ onResizePress={() => { alert('resize'); }}
+ />
+ </Window>
+ <WindowWindows chrome style={{marginBottom: '60px'}}>
+ </WindowWindows>
+ );
+ }
+ }
+
+*/
+
+ class Window2 extends Component {
   constructor() {
     super();
     this.state = { selectedTab: 'login' };
@@ -110,4 +130,4 @@ class Window2 extends Component {
 }
 
 ReactDOM.render(<Window1/>, document.getElementById('window1'));
-ReactDOM.render(<Window2/>, document.getElementById('window2'));
+//ReactDOM.render(<Window2/>, document.getElementById('window2'));
