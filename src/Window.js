@@ -8,6 +8,7 @@ class Window extends Component {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
     style: PropTypes.object,
     chrome: PropTypes.bool,
+    border: PropTypes.string,
     visible: PropTypes.bool,
     display: PropTypes.bool
   };

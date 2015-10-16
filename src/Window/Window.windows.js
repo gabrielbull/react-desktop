@@ -54,7 +54,7 @@ class WindowWindows extends Component {
   }
 
   render() {
-    let { style, chrome, children, visible, display, ...props } = this.props;
+    let { style, border, chrome, children, visible, display, ...props } = this.props;
 
     let styles = this.styles;
 
@@ -88,6 +88,10 @@ class WindowWindows extends Component {
       styles = mergeStyles(styles, { display: 'none' });
     } else {
       styles = mergeStyles(styles, { display: 'flex' });
+    }
+
+    if (border) {
+      styles = mergeStyles(styles, { borderColor: border });
     }
 
     return (
