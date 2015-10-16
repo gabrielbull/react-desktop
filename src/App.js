@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Window from './Window';
+import Demo from './Demo';
 import Header from './Header';
 
 ReactDOM.render(<Header/>, document.getElementById('header'));
-ReactDOM.render(<Window/>, document.getElementById('main'));
+ReactDOM.render(<Demo/>, document.getElementById('main'));

@@ -11,7 +11,7 @@ import {
   IndeterminateCircularProgressIndicator,
   Form,
   Label
-} from 'react-desktop';
+} from 'react-desktop/lib/OSX';
 
 export default class extends Component {
   constructor() {
