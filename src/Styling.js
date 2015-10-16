@@ -133,11 +133,11 @@ export default function Styling(ComposedComponent) {
     }
 
     componentWillUnmount() {
-      for(var prop in this.stylesheets) {
-          if(this.stylesheets.hasOwnProperty(prop)) {
-            this.removeStylesheet(this.stylesheets[prop]);
-            delete this.stylesheets[prop];
-          }
+      for (var prop in this.stylesheets) {
+        if (this.stylesheets.hasOwnProperty(prop)) {
+          this.removeStylesheet(this.stylesheets[prop]);
+          delete this.stylesheets[prop];
+        }
       }
     }
 
