@@ -97,7 +97,7 @@ class Tab extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { selected: props.selected, windowFocused: true };
+    this.state = {selected: props.selected, windowFocused: true};
   }
 
   get styles() {
@@ -123,19 +123,19 @@ class Tab extends Component {
     if (this.state.selected && this.state.windowFocused) {
       styles = mergeStyles(styles, this.styles.selected);
       if (this.props.firstChild) {
-        styles = mergeStyles(styles, { paddingLeft: '11px' });
+        styles = mergeStyles(styles, {paddingLeft: '11px'});
       }
       if (this.props.lastChild) {
-        styles = mergeStyles(styles, { borderRightWidth: '1px' });
+        styles = mergeStyles(styles, {borderRightWidth: '1px', paddingRight: '11px'});
       }
       activeStyles = this.styles.selected[':active'];
     } else if (this.state.selected) {
       styles = mergeStyles(styles, this.styles.selectedUnfocused);
       if (this.props.firstChild) {
-        styles = mergeStyles(styles, { paddingLeft: '11px' });
+        styles = mergeStyles(styles, {paddingLeft: '11px'});
       }
       if (this.props.lastChild) {
-        styles = mergeStyles(styles, { borderRightWidth: '1px' });
+        styles = mergeStyles(styles, {borderRightWidth: '1px', paddingRight: '11px'});
       }
     }
 
