@@ -33,6 +33,7 @@
 3. Advanced Usage
  * [Electron.js](/docs/advanced-usage/Electron-js.md)
  * [node-webkit](/docs/advanced-usage/node-webkit.md)
-4. [Contributing](https://github.com/gabrielbull/react-desktop/blob/master/CONTRIBUTING.md)
+4. [Contributing](/CONTRIBUTING.md)
 5. [Testing](/Testing.md)
 6. [Frequently Asked Questions](/FAQ.md)
+7. [Change Log](/CHANGELOG.md)

@@ -18,7 +18,11 @@ React UI Components for OS X El Capitan and Windows 10.
 
 This library has been created to provide to bring a native desktop experience to the web. It works extremely well with tools such as [node-webkit](http://nwjs.io) or [Electron.js](http://electron.atom.io)!
 
-Everyone is welcome to contribute and add more components whilst following the [contributing guidelines](https://github.com/gabrielbull/react-desktop/blob/master/CONTRIBUTING.md).
+Everyone is welcome to contribute and add more components/documentation whilst following the [contributing guidelines](/CONTRIBUTING.md).
+
+## Documentation
+
+
 
 ### Todos OS X
 
