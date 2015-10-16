@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+/**
+ * Dasherizes a camelCased string.
+ * @param {String} prop
+ * @returns {String}
+ */
 function changeStyleCase(prop) {
   return prop.replace(/([A-Z])/g, function (g) {
     return `-${g.toLowerCase()}`;
   });
 }
 
+/**
+ * Creates a new style element and append the provided array of styles.
+ * @param {String} selector
+ * @param {String[]} styles Array of css styles to append to new stylesheet.
+ * @returns {Element.style}
+ */
 function addStyle(selector, styles) {
   selector = selector.replace(/:placeholder/, '::-webkit-input-placeholder');
 
@@ -17,7 +28,7 @@ function addStyle(selector, styles) {
   if (typeof styles === 'string') {
     stylesheet += styles;
   } else {
-    for (let prop in styles) {
+    for (const prop in styles) {
       if (styles.hasOwnProperty(prop)) {
         stylesheet += `  ${changeStyleCase(prop)}: ${styles[prop]} !important;\n`;
       }
@@ -32,6 +43,11 @@ function addStyle(selector, styles) {
   return style;
 }
 
+/**
+ * Create a new style element from raw css string.
+ * @param {String} stylesheet Raw CSS Stylesheet string.
+ * @returns {Element.style}
+ */
 function addRawStyle(stylesheet) {
   const head = document.getElementsByTagName('head')[0];
   const style = document.createElement('style');
@@ -41,9 +57,14 @@ function addRawStyle(stylesheet) {
   return style;
 }
 
+/**
+ * Merges multiple style objects (Usually default OS styling and component props.style)
+ * @param {Object[]} styles
+ * @returns {Object}
+ */
 export function mergeStyles(...styles) {
   let merged = {};
-  for (let style of styles) {
+  for (const style of styles) {
     merged = Object.assign(merged, style);
   }
   return merged;
@@ -51,7 +72,7 @@ export function mergeStyles(...styles) {
 
 export function applyStyle(merged) {
   let styles = {};
-  for (var prop in merged) {
+  for (const prop in merged) {
     if (merged.hasOwnProperty(prop) && typeof merged[prop] !== 'object') {
       styles[prop] = merged[prop];
     }
@@ -61,7 +82,7 @@ export function applyStyle(merged) {
 
 export function parseStyle(styles) {
   let style = '';
-  for (var prop in styles) {
+  for (const prop in styles) {
     if (styles.hasOwnProperty(prop) && typeof styles[prop] !== 'object') {
       style += `${changeStyleCase(prop)}: ${styles[prop]}; `;
     }
@@ -79,10 +100,10 @@ export default function Styling(ComposedComponent) {
     }
 
     applyInlineStyles() {
-      let states = [':hover', ':active', ':focus', ':placeholder'];
+      const states = [':hover', ':active', ':focus', ':placeholder'];
       const element = ReactDOM.findDOMNode(this);
       const id = element.getAttribute('data-reactid');
-      for (let state of states) {
+      for (const state of states) {
         if (this.refs.component.styles[state]) {
           this.stylesheets[state] = addStyle(`[data-reactid="${id}"]${state}`, this.refs.component.styles[state])
         }
@@ -90,7 +111,7 @@ export default function Styling(ComposedComponent) {
     }
 
     applyPropStyles() {
-      let states = ['hover', 'active', 'focus', 'hover-selector', 'active-selector', 'focus-selector'];
+      const states = ['hover', 'active', 'focus', 'hover-selector', 'active-selector', 'focus-selector'];
       if (this.refs.component.refs.element) {
         const element = ReactDOM.findDOMNode(this.refs.component.refs.element);
         const id = element.getAttribute('data-reactid');
@@ -127,7 +148,7 @@ export default function Styling(ComposedComponent) {
     }
 
     componentWillUnmount() {
-      for (var prop in this.stylesheets) {
+      for (const prop in this.stylesheets) {
         if (this.stylesheets.hasOwnProperty(prop)) {
           this.removeStylesheet(this.stylesheets[prop]);
           delete this.stylesheets[prop];
@@ -135,6 +156,10 @@ export default function Styling(ComposedComponent) {
       }
     }
 
+    /**
+     * Removes the specified stylesheet.
+     * @param {Object} stylesheet
+     */
     removeStylesheet(stylesheet) {
       stylesheet.parentNode.removeChild(stylesheet);
     }
