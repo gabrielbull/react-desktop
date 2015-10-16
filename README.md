@@ -55,7 +55,13 @@ Guides on installation, components and advanced usage are found in the [document
 
 ## Screenshots
 
+### OS X El Capitan
+
 <img src="https://raw.githubusercontent.com/gabrielbull/react-desktop/master/docs/screenshots/osx.png" width="655">
+
+### Windows 10
+
+<img src="https://raw.githubusercontent.com/gabrielbull/react-desktop/master/docs/screenshots/win.png" width="228">
 
 ## Usage
 

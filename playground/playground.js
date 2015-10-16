@@ -10,7 +10,6 @@ import {
   IndeterminateCircularProgressIndicator,
   Form,
   Label,
-  Windows,
   Window,
   Desktop
 } from '../src/Main';
@@ -28,6 +27,8 @@ document.body.innerHTML = `
   <script src="/.js"></script>
 `;
 
+Desktop.OS = 'win';
+
 class Window1 extends Component {
   constructor() {
     super();
@@ -35,15 +36,15 @@ class Window1 extends Component {
 
   render() {
     return (
-      <Windows.Window chrome style={{marginBottom: '60px'}}>
-        <Windows.TitleBar
+      <Window chrome style={{marginBottom: '60px'}}>
+        <TitleBar
           title="TitleBar"
           controls
           onClosePress={() => { alert('close'); }}
           onMinimizePress={() => { alert('minimize'); }}
           onMaximizePress={() => { alert('mazimize'); }}
         />
-      </Windows.Window>
+      </Window>
     );
   }
 }
