@@ -1,4 +1,4 @@
-# [![React Desktop](https://rawgit.com/gabrielbull/react-desktop/master/docs/react-desktop.svg "React Desktop")](http://gabrielbull.github.io/react-desktop/)
+# [![React Desktop](https://rawgit.com/gabrielbull/react-desktop/master/docs/resources/react-desktop.svg "React Desktop")](http://gabrielbull.github.io/react-desktop/)
 
 [![Build Status](https://travis-ci.org/gabrielbull/react-desktop.svg)](https://travis-ci.org/gabrielbull/react-desktop)
 [![Code Climate](https://codeclimate.com/github/gabrielbull/react-desktop/badges/gpa.svg)](https://codeclimate.com/github/gabrielbull/react-desktop)
@@ -12,7 +12,7 @@ React UI Components for OS X El Capitan and Windows 10.
 
 > npm install react-desktop --save
 
-<a href="http://gabrielbull.github.io/react-desktop/" target="_blank">![Demo](https://rawgit.com/gabrielbull/react-desktop/master/docs/demo.svg "Demo")</a>
+<a href="http://gabrielbull.github.io/react-desktop/" target="_blank">![Demo](https://rawgit.com/gabrielbull/react-desktop/master/docs/resources/demo.svg "Demo")</a>
 
 ## Contributing
 
