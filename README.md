@@ -26,31 +26,32 @@ Guides on installation, components and advanced usage are found in the [document
 
 ## Todos OS X
 
+- [x] Window
+- [x] Title Bar
+- [x] Toolbar
+- [ ] Space Toolbar Item
+- [ ] Flexible Space Toolbar Item
+- [x] Segmented Control
+- [x] Box
+- [x] Label
+- [x] Form
 - [x] Push Button
 - [ ] Textured Rounded Button
 - [ ] Gradient Button
 - [ ] Pop Up Button
 - [ ] Check Box Button
 - [ ] Radio Button
-- [x] Label
 - [x] Text Field
 - [ ] Search Field
 - [ ] Secure Text Field
-- [x] Title Bar
-- [x] Toolbar
-- [ ] Space Toolbar Item
-- [ ] Flexible Space Toolbar Item
-- [x] Box
-- [x] Segmented Control
 - [x] Indeterminate Circular Progress Indicator
-- [x] Form
 
 ## Todos Windows
 
+- [x] Window
+- [x] Title Bar
 - [ ] Button
 - [ ] TextInput
-- [ ] TitleBar
-- [ ] Toolbar
 
 ## Screenshots
 
