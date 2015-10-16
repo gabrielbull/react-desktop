@@ -10,7 +10,7 @@ function detectOS() {
       return 'osx';
     }
     if (process.platform.includes('win')) {
-      return 'windows';
+      return 'win';
     }
   }
 
@@ -20,7 +20,7 @@ function detectOS() {
       return 'osx';
     }
     if (navigator.userAgent.includes('Windows')) {
-      return 'windows';
+      return 'win';
     }
   }
 
