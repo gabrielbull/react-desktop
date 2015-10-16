@@ -23,11 +23,15 @@ export default function WindowState(ComposedComponent) {
     }
 
     windowFocus() {
-      this.refs.component.setState({ windowFocused: true });
+      if (this.refs.component) {
+        this.refs.component.setState({ windowFocused: true });
+      }
     }
 
     windowBlur() {
-      this.refs.component.setState({ windowFocused: false });
+      if (this.refs.component) {
+        this.refs.component.setState({windowFocused: false});
+      }
     }
 
     render() {

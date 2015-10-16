@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, Children } from 'react';
+import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import Styling, { mergeStyles, applyStyle } from './Styling';
 import ItemClass from './SegmentedControl/Item';
 import Tabs from './SegmentedControl/Tabs';
@@ -29,11 +29,22 @@ class SegmentedControl extends Component {
     return mergeStyles(styles.osx_10_11, this.props.style);
   }
 
+  select(item) {
+    this.refs.tabs.select(item);
+  }
+
+  unselect(item) {
+    this.refs.tabs.unselect(item);
+  }
+
   render() {
     let { children, style, visible, display, ...props} = this.props;
 
-    children = Children.map(children, child => child);
-    const tabs = <Tabs tabs={children}/>;
+    children = Children.map(children, function (child, index) {
+      return cloneElement(child, { control: this, tabId: index });
+    }.bind(this));
+
+    const tabs = <Tabs ref="tabs" tabs={children}/>;
 
     let styles = this.styles;
     if (!this.state.visible) {
@@ -51,7 +62,7 @@ class SegmentedControl extends Component {
     return (
       <div style={applyStyle(styles)} ref="element" {...props}>
         {tabs}
-        {this.props.children}
+        {children}
       </div>
     );
   }

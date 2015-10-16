@@ -88,6 +88,7 @@ class Tab extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     selected: PropTypes.bool.isRequired,
+    tabId: PropTypes.number,
     firstChild: PropTypes.bool,
     lastChild: PropTypes.bool,
     nextSelected: PropTypes.bool,

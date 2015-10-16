@@ -43,9 +43,13 @@ class Window1 extends Component {
 }
 
 class Window2 extends Component {
+  constructor() {
+    super();
+    this.state = { selectedTab: 'login' };
+  }
+
   render() {
     return (
-
       <Window chrome>
         <TitleBar title="TitleBar with Toolbar" controls>
           <Toolbar/>
@@ -55,8 +59,8 @@ class Window2 extends Component {
           <SegmentedControl>
             <SegmentedControl.Item
               title="Selected"
-              selected
-              onPress={() => { console.log('select login'); }}
+              selected={this.state.selectedTab === 'login'}
+              onPress={() => { this.setState({ selectedTab: 'login' }) }}
               className="form"
             >
               <Form onSubmit={() => { alert('form submitted'); }}>
@@ -85,16 +89,18 @@ class Window2 extends Component {
 
             <SegmentedControl.Item
               title="Segmented"
-              selected={false}
-              onPress={() => { console.log('select tab 1'); } }
+              selected={this.state.selectedTab === 'segmented'}
+              onPress={() => { this.setState({ selectedTab: 'segmented' }) }}
             >
+              <Label>Hello World</Label>
             </SegmentedControl.Item>
 
             <SegmentedControl.Item
               title="Control"
-              selected={false}
-              onPress={() => { console.log('select settings'); } }
+              selected={this.state.selectedTab === 'control'}
+              onPress={() => { this.setState({ selectedTab: 'control' }) }}
             >
+              <Label>Goodbye World</Label>
             </SegmentedControl.Item>
           </SegmentedControl>
         </Box>

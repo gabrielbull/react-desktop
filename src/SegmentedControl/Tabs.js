@@ -24,6 +24,14 @@ class Tabs extends Component {
     return styles.osx_10_11;
   }
 
+  select(item) {
+    this.refs[item.props.tabId].setState({ selected: true });
+  }
+
+  unselect(item) {
+    this.refs[item.props.tabId].setState({ selected: false });
+  }
+
   render() {
     let tabs = [];
     for (let i = 0, len = this.props.tabs.length; i < len; ++i) {
@@ -40,7 +48,7 @@ class Tabs extends Component {
         props = Object.assign({}, props, { nextSelected: true });
       }
 
-      tabs = [...tabs, <Tab key={i} {...props}/>];
+      tabs = [...tabs, <Tab ref={props.tabId} item={this.props.tabs[i]} key={i} {...props}/>];
     }
 
     return (
