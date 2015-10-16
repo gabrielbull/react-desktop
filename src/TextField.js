@@ -32,7 +32,8 @@ var styles = {
 @Styling
 class TextField extends Component {
   static propTypes = {
-    style: PropTypes.object
+    style: PropTypes.object,
+    form: PropTypes.any
   };
 
   get styles() {
@@ -40,11 +41,13 @@ class TextField extends Component {
   }
 
   render() {
+    const { form, style, ...props } = this.props;
+
     return (
       <input
         ref="element"
         type="text"
-        {...this.props}
+        {...props}
         style={applyStyle(this.styles)}
       />
     );

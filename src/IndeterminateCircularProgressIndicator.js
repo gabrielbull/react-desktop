@@ -24,6 +24,7 @@ var styles = {
 class IndeterminateCircularProgressIndicator extends Component {
   static propTypes = {
     style: PropTypes.object,
+    form: PropTypes.any,
     absolute: PropTypes.bool,
     visible: PropTypes.bool
   };
@@ -85,7 +86,7 @@ class IndeterminateCircularProgressIndicator extends Component {
   }
 
   render() {
-    let { style, absolute, visible, ...props } = this.props;
+    let { style, absolute, visible, form, ...props } = this.props;
 
     let styles = this.styles;
     if (!this.state.visible) {
