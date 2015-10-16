@@ -58,6 +58,15 @@ function addStyle(selector, styles) {
   return style;
 }
 
+function addRawStyle(stylesheet) {
+  const head = document.getElementsByTagName('head')[0];
+  const style = document.createElement('style');
+  style.type = 'text/css';
+  style.appendChild(document.createTextNode(stylesheet));
+  head.appendChild(style);
+  return style;
+}
+
 export function mergeStyles(...styles) {
   let merged = {};
   for (let style of styles) {
@@ -107,15 +116,26 @@ export default function Styling(ComposedComponent) {
     }
 
     applyPropStyles() {
+      let states = ['hover', 'active', 'focus', 'hover-selector', 'active-selector', 'focus-selector'];
       if (this.refs.component.refs.element) {
         const element = ReactDOM.findDOMNode(this.refs.component.refs.element);
-        const activeStyle = element.getAttribute('data-active-style');
-        const id = element.getAttribute('data-reactid');
-        if (activeStyle && !this.stylesheets['data-active-style']) {
-          this.stylesheets['data-active-style'] = addStyle('[data-reactid="' + id + '"]:active', activeStyle);
-        } else if (this.stylesheets['data-active-style']) {
-          this.removeStylesheet(this.stylesheets['data-active-style']);
-          delete this.stylesheets['data-active-style'];
+
+        for (let state of states) {
+          const attrName = `data-${state}-style`;
+          const style = element.getAttribute(attrName);
+          const id = element.getAttribute('data-reactid');
+
+          if (style && !this.stylesheets[attrName]) {
+            if (state.match(/\-selector$/)) {
+              state = state.replace(/\-selector$/, '');
+              this.stylesheets[attrName] = addRawStyle(`[data-reactid="${id}"]:${state} ${style}`);
+            } else {
+              this.stylesheets[attrName] = addStyle(`[data-reactid="${id}"]:${state}`, style);
+            }
+          } else if (this.stylesheets[attrName]) {
+            this.removeStylesheet(this.stylesheets[attrName]);
+            delete this.stylesheets[attrName];
+          }
         }
       }
     }
