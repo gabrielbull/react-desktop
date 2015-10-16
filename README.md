@@ -1,4 +1,4 @@
-# [![React Desktop](https://rawgit.com/gabrielbull/react-desktop/master/docs/react-desktop.svg "React Desktop")](http://gabrielbull.github.io/react-desktop/)
+# [![React Desktop](https://rawgit.com/gabrielbull/react-desktop/master/docs/resources/react-desktop.svg "React Desktop")](http://gabrielbull.github.io/react-desktop/)
 
 [![Build Status](https://travis-ci.org/gabrielbull/react-desktop.svg)](https://travis-ci.org/gabrielbull/react-desktop)
 [![Code Climate](https://codeclimate.com/github/gabrielbull/react-desktop/badges/gpa.svg)](https://codeclimate.com/github/gabrielbull/react-desktop)
@@ -8,16 +8,23 @@
 [![npm version](https://img.shields.io/npm/v/react-desktop.svg)](https://www.npmjs.org/package/react-desktop)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gabrielbull/react-desktop?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-OS X and Windows UI components built with React.
+React UI Components for OS X El Capitan and Windows 10.
 
-<a href="http://gabrielbull.github.io/react-desktop/" target="_blank">![Demo](https://rawgit.com/gabrielbull/react-desktop/master/docs/demo.svg "Demo")</a>
+> npm install react-desktop --save
+
+<a href="http://gabrielbull.github.io/react-desktop/" target="_blank">![Demo](https://rawgit.com/gabrielbull/react-desktop/master/docs/resources/demo.svg "Demo")</a>
 
 ## Contributing
 
-This library is in its infancy and was created to fulfill the lack of such libraries for tools like node-webkit or
-Electron.js. As such, everyone is welcome to contribute and add more components.
+This library has been created to bring a native desktop experience to the web. It works extremely well with tools such as [node-webkit](http://nwjs.io) or [Electron.js](http://electron.atom.io)!
 
-### Todos OS X
+Everyone is welcome to contribute and add more components/documentation whilst following the [contributing guidelines](/CONTRIBUTING.md).
+
+## Documentation
+
+Guides on installation, components and advanced usage are found in the [documentation](/docs/README.md).
+
+## Todos OS X
 
 - [x] Push Button
 - [ ] Textured Rounded Button
@@ -38,7 +45,7 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 - [x] Indeterminate Circular Progress Indicator
 - [x] Form
 
-### Todos Windows
+## Todos Windows
 
 - [ ] Button
 - [ ] TextInput
@@ -54,6 +61,7 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 Simple usage:
 
 ```jsx
+import React from 'react';
 import {
   Window,
   TitleBar, 
