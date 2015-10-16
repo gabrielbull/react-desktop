@@ -8,14 +8,17 @@
 [![npm version](https://img.shields.io/npm/v/react-desktop.svg)](https://www.npmjs.org/package/react-desktop)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gabrielbull/react-desktop?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-OS X and Windows UI components built with React.
+React UI Components for OS X El Capitan and Windows 10.
+
+> npm install react-desktop --save
 
 <a href="http://gabrielbull.github.io/react-desktop/" target="_blank">![Demo](https://rawgit.com/gabrielbull/react-desktop/master/docs/demo.svg "Demo")</a>
 
 ## Contributing
 
-This library is in its infancy and was created to fulfill the lack of such libraries for tools like node-webkit or
-Electron.js. As such, everyone is welcome to contribute and add more components.
+This library has been created to provide to bring a native desktop experience to the web. It works extremely well with tools such as [node-webkit](http://nwjs.io) or [Electron.js](http://electron.atom.io)!
+
+Everyone is welcome to contribute and add more components whilst following the [contributing guidelines](https://github.com/gabrielbull/react-desktop/blob/master/CONTRIBUTING.md).
 
 ### Todos OS X
 
@@ -54,6 +57,7 @@ Electron.js. As such, everyone is welcome to contribute and add more components.
 Simple usage:
 
 ```jsx
+import React from 'react';
 import {
   Window,
   TitleBar, 
