@@ -6,6 +6,7 @@ import Controls from './TitleBar/Controls';
 var styles = {
   osx_10_11: {
     WebkitUserSelect: 'none',
+    WebkitAppRegion: 'drag',
     cursor: 'default',
     display: 'flex',
     alignItems: 'center',
