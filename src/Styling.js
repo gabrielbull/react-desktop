@@ -12,15 +12,14 @@ function addStyle(selector, styles) {
 
   const head = document.getElementsByTagName('head')[0];
   const style = document.createElement('style');
-  let stylesheet = selector + ' {\n';
+  let stylesheet = `${selector} {\n`;
 
   if (typeof styles === 'string') {
     stylesheet += styles;
   } else {
     for (let prop in styles) {
       if (styles.hasOwnProperty(prop)) {
-        let property = changeStyleCase(prop);
-        stylesheet += '  ' + property + ': ' + styles[prop] + ' !important;\n';
+        stylesheet += `  ${changeStyleCase(prop)}: ${styles[prop]} !important;\n`;
       }
     }
   }
@@ -81,11 +80,11 @@ export default function Styling(ComposedComponent) {
 
     applyInlineStyles() {
       let states = [':hover', ':active', ':focus', ':placeholder'];
+      const element = ReactDOM.findDOMNode(this);
+      const id = element.getAttribute('data-reactid');
       for (let state of states) {
         if (this.refs.component.styles[state]) {
-          const element = ReactDOM.findDOMNode(this);
-          const id = element.getAttribute('data-reactid');
-          this.stylesheets[state] = addStyle('[data-reactid="' + id + '"]' + state, this.refs.component.styles[state])
+          this.stylesheets[state] = addStyle(`[data-reactid="${id}"]${state}`, this.refs.component.styles[state])
         }
       }
     }
@@ -94,11 +93,11 @@ export default function Styling(ComposedComponent) {
       let states = ['hover', 'active', 'focus', 'hover-selector', 'active-selector', 'focus-selector'];
       if (this.refs.component.refs.element) {
         const element = ReactDOM.findDOMNode(this.refs.component.refs.element);
+        const id = element.getAttribute('data-reactid');
 
         for (let state of states) {
           const attrName = `data-${state}-style`;
           const style = element.getAttribute(attrName);
-          const id = element.getAttribute('data-reactid');
 
           if (style && !this.stylesheets[attrName]) {
             if (state.match(/\-selector$/)) {
