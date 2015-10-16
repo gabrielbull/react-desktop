@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 const styles = {
   osx_10_11: {
     WebkitUserSelect: 'none',
+    WebkitAppRegion: 'no-drag',
     cursor: 'default',
     width: '10px',
     height: '10px',
