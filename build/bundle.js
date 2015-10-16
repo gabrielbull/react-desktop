@@ -46,15 +46,7 @@
 
 	'use strict';
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var _react = __webpack_require__(1);
 
@@ -64,136 +56,16 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reactDesktop = __webpack_require__(158);
+	var _Window = __webpack_require__(158);
 
-	var App = (function (_Component) {
-	  _inherits(App, _Component);
+	var _Window2 = _interopRequireDefault(_Window);
 
-	  function App() {
-	    _classCallCheck(this, App);
+	var _Header = __webpack_require__(182);
 
-	    _get(Object.getPrototypeOf(App.prototype), 'constructor', this).call(this);
-	    this.state = {
-	      selectedTab: 'segmented',
-	      load: false
-	    };
-	  }
+	var _Header2 = _interopRequireDefault(_Header);
 
-	  _createClass(App, [{
-	    key: 'submit',
-	    value: function submit() {
-	      this.refs.error.setState({ display: false });
-	      this.refs.loader.setState({ visible: true });
-	      setTimeout((function () {
-	        this.refs.loader.setState({ visible: false });
-	        this.refs.error.setState({ display: true });
-	      }).bind(this), 2000);
-	    }
-	  }, {
-	    key: 'cancel',
-	    value: function cancel() {
-	      this.refs.error.setState({ display: false });
-	      this.refs.loader.setState({ visible: false });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this = this;
-
-	      return _react2['default'].createElement(
-	        _reactDesktop.Window,
-	        { chrome: true },
-	        _react2['default'].createElement(
-	          _reactDesktop.TitleBar,
-	          { title: 'TitleBar with Toolbar', controls: true },
-	          _react2['default'].createElement(_reactDesktop.Toolbar, null)
-	        ),
-	        _react2['default'].createElement(
-	          _reactDesktop.Box,
-	          { className: 'box' },
-	          _react2['default'].createElement(
-	            _reactDesktop.SegmentedControl,
-	            null,
-	            _react2['default'].createElement(
-	              _reactDesktop.SegmentedControl.Item,
-	              {
-	                title: 'Segmented',
-	                selected: this.state.selectedTab === 'segmented',
-	                onPress: function () {
-	                  _this.setState({ selectedTab: 'segmented' });
-	                },
-	                className: 'form'
-	              },
-	              _react2['default'].createElement(
-	                _reactDesktop.Form,
-	                { onSubmit: this.submit.bind(this) },
-	                _react2['default'].createElement(
-	                  _reactDesktop.Label,
-	                  { ref: 'error', color: 'red', align: 'center', display: false },
-	                  'There was an error submitting this form.'
-	                ),
-	                _react2['default'].createElement(
-	                  _reactDesktop.Form.Row,
-	                  null,
-	                  _react2['default'].createElement(
-	                    _reactDesktop.Label,
-	                    null,
-	                    'Label:'
-	                  ),
-	                  _react2['default'].createElement(_reactDesktop.TextField, { defaultValue: '', placeholder: 'TextField', style: { width: '200px' } })
-	                ),
-	                _react2['default'].createElement(
-	                  _reactDesktop.Form.Row,
-	                  null,
-	                  _react2['default'].createElement(
-	                    _reactDesktop.Label,
-	                    null,
-	                    'Longer label:'
-	                  ),
-	                  _react2['default'].createElement(_reactDesktop.TextField, { defaultValue: '', placeholder: 'TextField', style: { width: '200px' } })
-	                ),
-	                _react2['default'].createElement(
-	                  _reactDesktop.Form.Row,
-	                  null,
-	                  _react2['default'].createElement(
-	                    _reactDesktop.PushButton,
-	                    { onPress: this.cancel.bind(this) },
-	                    'PushButton'
-	                  ),
-	                  _react2['default'].createElement(
-	                    _reactDesktop.PushButton,
-	                    { onPress: 'submit', color: 'blue' },
-	                    'PushButton Blue'
-	                  ),
-	                  _react2['default'].createElement(_reactDesktop.IndeterminateCircularProgressIndicator, { ref: 'loader', absolute: true, visible: false })
-	                )
-	              )
-	            ),
-	            _react2['default'].createElement(
-	              _reactDesktop.SegmentedControl.Item,
-	              {
-	                title: 'Control',
-	                selected: this.state.selectedTab === 'control',
-	                onPress: function () {
-	                  _this.setState({ selectedTab: 'control' });
-	                }
-	              },
-	              _react2['default'].createElement(
-	                _reactDesktop.Label,
-	                null,
-	                'Hello World'
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return App;
-	})(_react.Component);
-
-	_reactDom2['default'].render(_react2['default'].createElement(App, null), document.getElementById('main'));
+	_reactDom2['default'].render(_react2['default'].createElement(_Header2['default'], null), document.getElementById('header'));
+	_reactDom2['default'].render(_react2['default'].createElement(_Window2['default'], null), document.getElementById('main'));
 
 /***/ },
 /* 1 */
@@ -19751,29 +19623,189 @@
 	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
-	var Window = __webpack_require__(159);
-	exports.Window = Window;
-	var TitleBar = __webpack_require__(161);
-	exports.TitleBar = TitleBar;
-	var Toolbar = __webpack_require__(168);
-	exports.Toolbar = Toolbar;
-	var PushButton = __webpack_require__(169);
-	exports.PushButton = PushButton;
-	var TextField = __webpack_require__(170);
-	exports.TextField = TextField;
-	var Box = __webpack_require__(171);
-	exports.Box = Box;
-	var SegmentedControl = __webpack_require__(172);
-	exports.SegmentedControl = SegmentedControl;
-	var IndeterminateCircularProgressIndicator = __webpack_require__(176);
-	exports.IndeterminateCircularProgressIndicator = IndeterminateCircularProgressIndicator;
-	var Form = __webpack_require__(177);
-	exports.Form = Form;
-	var Label = __webpack_require__(179);
-	exports.Label = Label;
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(157);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _reactDesktop = __webpack_require__(159);
+
+	var _default = (function (_Component) {
+	  _inherits(_default, _Component);
+
+	  function _default() {
+	    _classCallCheck(this, _default);
+
+	    _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).call(this);
+	    this.state = {
+	      selectedTab: 'segmented',
+	      load: false
+	    };
+	  }
+
+	  _createClass(_default, [{
+	    key: 'submit',
+	    value: function submit() {
+	      this.refs.error.setState({ display: false });
+	      this.refs.loader.setState({ visible: true });
+	      setTimeout((function () {
+	        this.refs.loader.setState({ visible: false });
+	        this.refs.error.setState({ display: true });
+	      }).bind(this), 2000);
+	    }
+	  }, {
+	    key: 'cancel',
+	    value: function cancel() {
+	      this.refs.error.setState({ display: false });
+	      this.refs.loader.setState({ visible: false });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this = this;
+
+	      return _react2['default'].createElement(
+	        _reactDesktop.Window,
+	        { chrome: true },
+	        _react2['default'].createElement(
+	          _reactDesktop.TitleBar,
+	          { title: 'TitleBar with Toolbar', controls: true },
+	          _react2['default'].createElement(_reactDesktop.Toolbar, null)
+	        ),
+	        _react2['default'].createElement(
+	          _reactDesktop.Box,
+	          { className: 'box' },
+	          _react2['default'].createElement(
+	            _reactDesktop.SegmentedControl,
+	            null,
+	            _react2['default'].createElement(
+	              _reactDesktop.SegmentedControl.Item,
+	              {
+	                title: 'Segmented',
+	                selected: this.state.selectedTab === 'segmented',
+	                onPress: function () {
+	                  _this.setState({ selectedTab: 'segmented' });
+	                },
+	                className: 'form'
+	              },
+	              _react2['default'].createElement(
+	                _reactDesktop.Form,
+	                { onSubmit: this.submit.bind(this) },
+	                _react2['default'].createElement(
+	                  _reactDesktop.Label,
+	                  { ref: 'error', color: 'red', align: 'center', display: false },
+	                  'There was an error submitting this form.'
+	                ),
+	                _react2['default'].createElement(
+	                  _reactDesktop.Form.Row,
+	                  null,
+	                  _react2['default'].createElement(
+	                    _reactDesktop.Label,
+	                    null,
+	                    'Label:'
+	                  ),
+	                  _react2['default'].createElement(_reactDesktop.TextField, { defaultValue: '', placeholder: 'TextField', style: { width: '200px' } })
+	                ),
+	                _react2['default'].createElement(
+	                  _reactDesktop.Form.Row,
+	                  null,
+	                  _react2['default'].createElement(
+	                    _reactDesktop.Label,
+	                    null,
+	                    'Longer label:'
+	                  ),
+	                  _react2['default'].createElement(_reactDesktop.TextField, { defaultValue: '', placeholder: 'TextField', style: { width: '200px' } })
+	                ),
+	                _react2['default'].createElement(
+	                  _reactDesktop.Form.Row,
+	                  null,
+	                  _react2['default'].createElement(
+	                    _reactDesktop.PushButton,
+	                    { onPress: this.cancel.bind(this) },
+	                    'PushButton'
+	                  ),
+	                  _react2['default'].createElement(
+	                    _reactDesktop.PushButton,
+	                    { onPress: 'submit', color: 'blue' },
+	                    'PushButton Blue'
+	                  ),
+	                  _react2['default'].createElement(_reactDesktop.IndeterminateCircularProgressIndicator, { ref: 'loader', absolute: true, visible: false })
+	                )
+	              )
+	            ),
+	            _react2['default'].createElement(
+	              _reactDesktop.SegmentedControl.Item,
+	              {
+	                title: 'Control',
+	                selected: this.state.selectedTab === 'control',
+	                onPress: function () {
+	                  _this.setState({ selectedTab: 'control' });
+	                }
+	              },
+	              _react2['default'].createElement(
+	                _reactDesktop.Label,
+	                null,
+	                'Hello World'
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return _default;
+	})(_react.Component);
+
+	exports['default'] = _default;
+	module.exports = exports['default'];
 
 /***/ },
 /* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	var Window = __webpack_require__(160);
+	exports.Window = Window;
+	var TitleBar = __webpack_require__(162);
+	exports.TitleBar = TitleBar;
+	var Toolbar = __webpack_require__(169);
+	exports.Toolbar = Toolbar;
+	var PushButton = __webpack_require__(170);
+	exports.PushButton = PushButton;
+	var TextField = __webpack_require__(171);
+	exports.TextField = TextField;
+	var Box = __webpack_require__(172);
+	exports.Box = Box;
+	var SegmentedControl = __webpack_require__(173);
+	exports.SegmentedControl = SegmentedControl;
+	var IndeterminateCircularProgressIndicator = __webpack_require__(177);
+	exports.IndeterminateCircularProgressIndicator = IndeterminateCircularProgressIndicator;
+	var Form = __webpack_require__(178);
+	exports.Form = Form;
+	var Label = __webpack_require__(180);
+	exports.Label = Label;
+
+/***/ },
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19800,11 +19832,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Styling = __webpack_require__(160);
+	var _Styling = __webpack_require__(161);
 
 	var _Styling2 = _interopRequireDefault(_Styling);
 
-	var _TitleBar = __webpack_require__(161);
+	var _TitleBar = __webpack_require__(162);
 
 	var _TitleBar2 = _interopRequireDefault(_TitleBar);
 
@@ -19919,7 +19951,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 160 */
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20171,7 +20203,7 @@
 	}
 
 /***/ },
-/* 161 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20198,15 +20230,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _WindowState = __webpack_require__(162);
+	var _WindowState = __webpack_require__(163);
 
 	var _WindowState2 = _interopRequireDefault(_WindowState);
 
-	var _Styling = __webpack_require__(160);
+	var _Styling = __webpack_require__(161);
 
 	var _Styling2 = _interopRequireDefault(_Styling);
 
-	var _TitleBarControls = __webpack_require__(163);
+	var _TitleBarControls = __webpack_require__(164);
 
 	var _TitleBarControls2 = _interopRequireDefault(_TitleBarControls);
 
@@ -20358,7 +20390,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 162 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20446,7 +20478,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 163 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20469,15 +20501,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Close = __webpack_require__(164);
+	var _Close = __webpack_require__(165);
 
 	var _Close2 = _interopRequireDefault(_Close);
 
-	var _Minimize = __webpack_require__(166);
+	var _Minimize = __webpack_require__(167);
 
 	var _Minimize2 = _interopRequireDefault(_Minimize);
 
-	var _Resize = __webpack_require__(167);
+	var _Resize = __webpack_require__(168);
 
 	var _Resize2 = _interopRequireDefault(_Resize);
 
@@ -20550,7 +20582,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 164 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20577,15 +20609,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Styling = __webpack_require__(160);
+	var _Styling = __webpack_require__(161);
 
 	var _Styling2 = _interopRequireDefault(_Styling);
 
-	var _Button = __webpack_require__(165);
+	var _Button = __webpack_require__(166);
 
 	var _Button2 = _interopRequireDefault(_Button);
 
-	var _WindowState = __webpack_require__(162);
+	var _WindowState = __webpack_require__(163);
 
 	var _WindowState2 = _interopRequireDefault(_WindowState);
 
@@ -20675,7 +20707,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 165 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20760,7 +20792,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 166 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20787,15 +20819,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Styling = __webpack_require__(160);
+	var _Styling = __webpack_require__(161);
 
 	var _Styling2 = _interopRequireDefault(_Styling);
 
-	var _Button = __webpack_require__(165);
+	var _Button = __webpack_require__(166);
 
 	var _Button2 = _interopRequireDefault(_Button);
 
-	var _WindowState = __webpack_require__(162);
+	var _WindowState = __webpack_require__(163);
 
 	var _WindowState2 = _interopRequireDefault(_WindowState);
 
@@ -20885,7 +20917,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 167 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20912,15 +20944,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Styling = __webpack_require__(160);
+	var _Styling = __webpack_require__(161);
 
 	var _Styling2 = _interopRequireDefault(_Styling);
 
-	var _Button = __webpack_require__(165);
+	var _Button = __webpack_require__(166);
 
 	var _Button2 = _interopRequireDefault(_Button);
 
-	var _WindowState = __webpack_require__(162);
+	var _WindowState = __webpack_require__(163);
 
 	var _WindowState2 = _interopRequireDefault(_WindowState);
 
@@ -21011,7 +21043,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 168 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21038,7 +21070,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Styling = __webpack_require__(160);
+	var _Styling = __webpack_require__(161);
 
 	var _Styling2 = _interopRequireDefault(_Styling);
 
@@ -21113,7 +21145,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 169 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21144,11 +21176,11 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Styling = __webpack_require__(160);
+	var _Styling = __webpack_require__(161);
 
 	var _Styling2 = _interopRequireDefault(_Styling);
 
-	var _WindowState = __webpack_require__(162);
+	var _WindowState = __webpack_require__(163);
 
 	var _WindowState2 = _interopRequireDefault(_WindowState);
 
@@ -21300,7 +21332,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 170 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21327,7 +21359,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Styling = __webpack_require__(160);
+	var _Styling = __webpack_require__(161);
 
 	var _Styling2 = _interopRequireDefault(_Styling);
 
@@ -21427,7 +21459,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 171 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21454,11 +21486,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Styling = __webpack_require__(160);
+	var _Styling = __webpack_require__(161);
 
 	var _Styling2 = _interopRequireDefault(_Styling);
 
-	var _SegmentedControl = __webpack_require__(172);
+	var _SegmentedControl = __webpack_require__(173);
 
 	var _SegmentedControl2 = _interopRequireDefault(_SegmentedControl);
 
@@ -21555,7 +21587,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 172 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21582,15 +21614,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Styling = __webpack_require__(160);
+	var _Styling = __webpack_require__(161);
 
 	var _Styling2 = _interopRequireDefault(_Styling);
 
-	var _SegmentedControlItem = __webpack_require__(173);
+	var _SegmentedControlItem = __webpack_require__(174);
 
 	var _SegmentedControlItem2 = _interopRequireDefault(_SegmentedControlItem);
 
-	var _SegmentedControlTabs = __webpack_require__(174);
+	var _SegmentedControlTabs = __webpack_require__(175);
 
 	var _SegmentedControlTabs2 = _interopRequireDefault(_SegmentedControlTabs);
 
@@ -21687,7 +21719,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 173 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21714,7 +21746,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Styling = __webpack_require__(160);
+	var _Styling = __webpack_require__(161);
 
 	var _Styling2 = _interopRequireDefault(_Styling);
 
@@ -21809,7 +21841,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 174 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21836,11 +21868,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Styling = __webpack_require__(160);
+	var _Styling = __webpack_require__(161);
 
 	var _Styling2 = _interopRequireDefault(_Styling);
 
-	var _Tab = __webpack_require__(175);
+	var _Tab = __webpack_require__(176);
 
 	var _Tab2 = _interopRequireDefault(_Tab);
 
@@ -21923,7 +21955,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 175 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21946,11 +21978,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Styling = __webpack_require__(160);
+	var _Styling = __webpack_require__(161);
 
 	var _Styling2 = _interopRequireDefault(_Styling);
 
-	var _WindowState = __webpack_require__(162);
+	var _WindowState = __webpack_require__(163);
 
 	var _WindowState2 = _interopRequireDefault(_WindowState);
 
@@ -22127,7 +22159,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 176 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22158,7 +22190,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Styling = __webpack_require__(160);
+	var _Styling = __webpack_require__(161);
 
 	var _Styling2 = _interopRequireDefault(_Styling);
 
@@ -22375,7 +22407,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 177 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22408,19 +22440,19 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Styling = __webpack_require__(160);
+	var _Styling = __webpack_require__(161);
 
 	var _Styling2 = _interopRequireDefault(_Styling);
 
-	var _FormRow = __webpack_require__(178);
+	var _FormRow = __webpack_require__(179);
 
 	var _FormRow2 = _interopRequireDefault(_FormRow);
 
-	var _Label = __webpack_require__(179);
+	var _Label = __webpack_require__(180);
 
 	var _Label2 = _interopRequireDefault(_Label);
 
-	var _FormRowWrapper = __webpack_require__(180);
+	var _FormRowWrapper = __webpack_require__(181);
 
 	var _FormRowWrapper2 = _interopRequireDefault(_FormRowWrapper);
 
@@ -22640,7 +22672,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 178 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22671,19 +22703,19 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Styling = __webpack_require__(160);
+	var _Styling = __webpack_require__(161);
 
 	var _Styling2 = _interopRequireDefault(_Styling);
 
-	var _Label = __webpack_require__(179);
+	var _Label = __webpack_require__(180);
 
 	var _Label2 = _interopRequireDefault(_Label);
 
-	var _TextField = __webpack_require__(170);
+	var _TextField = __webpack_require__(171);
 
 	var _TextField2 = _interopRequireDefault(_TextField);
 
-	var _PushButton = __webpack_require__(169);
+	var _PushButton = __webpack_require__(170);
 
 	var _PushButton2 = _interopRequireDefault(_PushButton);
 
@@ -22793,7 +22825,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 179 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22820,7 +22852,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Styling = __webpack_require__(160);
+	var _Styling = __webpack_require__(161);
 
 	var _Styling2 = _interopRequireDefault(_Styling);
 
@@ -22935,7 +22967,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22968,11 +23000,11 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Row = __webpack_require__(178);
+	var _Row = __webpack_require__(179);
 
 	var _Row2 = _interopRequireDefault(_Row);
 
-	var _Label = __webpack_require__(179);
+	var _Label = __webpack_require__(180);
 
 	var _Label2 = _interopRequireDefault(_Label);
 
@@ -23030,6 +23062,164 @@
 
 	exports['default'] = RowWrapper;
 	module.exports = exports['default'];
+
+/***/ },
+/* 182 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Logo = __webpack_require__(183);
+
+	var _Logo2 = _interopRequireDefault(_Logo);
+
+	var style = {
+	  width: '100%',
+	  background: '#222222',
+	  padding: '10px 20px',
+	  textAlign: 'center'
+	};
+
+	var _default = (function (_Component) {
+	  _inherits(_default, _Component);
+
+	  function _default() {
+	    _classCallCheck(this, _default);
+
+	    _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
+	  }
+
+	  _createClass(_default, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        { style: style },
+	        _react2['default'].createElement(_Logo2['default'], { width: '200px' })
+	      );
+	    }
+	  }]);
+
+	  return _default;
+	})(_react.Component);
+
+	exports['default'] = _default;
+	module.exports = exports['default'];
+
+/***/ },
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	      value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _default = (function (_Component) {
+	      _inherits(_default, _Component);
+
+	      function _default() {
+	            _classCallCheck(this, _default);
+
+	            _get(Object.getPrototypeOf(_default.prototype), "constructor", this).apply(this, arguments);
+	      }
+
+	      _createClass(_default, [{
+	            key: "render",
+	            value: function render() {
+	                  return _react2["default"].createElement(
+	                        "svg",
+	                        _extends({ x: "0px", y: "0px", viewBox: "0 0 302.6 49.2" }, this.props),
+	                        _react2["default"].createElement(
+	                              "g",
+	                              null,
+	                              _react2["default"].createElement("path", { fill: "#ffffff", d: "M85.3,37.9c-5-9.4-5.8-10.8-7.1-11.2h-4.4v11.2h-3.6V11.9c2.5-0.1,5.3-0.2,8-0.2c5,0,8.1,2.8,8.1,6.8 c0,4.1-2.9,6.2-4.6,7c1.5,0.8,2.4,2.1,7.9,12.5H85.3z M76.6,14.6h-2.8v9.2h5.7c1.7-0.7,3.1-2.6,3.1-4.6 C82.6,16.3,80.5,14.6,76.6,14.6z" }),
+	                              _react2["default"].createElement("path", { fill: "#ffffff", d: "M107,28.7H94.4c0,3.6,2,6.7,6,6.7c2.2,0,4.2-0.5,6.3-1.5l-0.2,2.9c-2,1-4.1,1.5-6.8,1.5 c-5.4,0-8.6-4.2-8.6-9.7c0-6.2,3.9-10.3,8.8-10.3c4.7,0,7.3,3.4,7.3,7.7C107.2,26.8,107.1,28.1,107,28.7z M99.4,21.1 c-2.7,0-4.4,2.6-4.8,5.1h9.4C104,23.3,102.2,21.1,99.4,21.1z" }),
+	                              _react2["default"].createElement("path", { fill: "#ffffff", d: "M126.1,37.9c-0.5,0.2-1.3,0.3-2,0.3c-1.5,0-2.6-0.7-2.9-2.3H121c-1.3,1.3-3.2,2.4-5.8,2.4 c-3,0-5.3-2-5.3-4.9c0-3.5,3-6.7,11-7.1V24c0-1.7-1-2.8-2.8-2.8c-1.9,0-4.4,0.9-6.5,2.3l-0.3-2.6c2.1-1.5,4.8-2.5,7.9-2.5 c3.1,0,5.2,1.8,5.2,4.9c0,1.2-0.1,8.9-0.1,9.7c0,1.5,0.7,2.3,2.2,2.4L126.1,37.9z M120.8,28.8c-6.2,0.3-7.6,2.6-7.6,4.1 c0,1.6,1.1,2.7,3.3,2.7c1.7,0,3.4-0.8,4.4-1.7V28.8z" }),
+	                              _react2["default"].createElement("path", { fill: "#ffffff", d: "M143,22.7c-1.3-0.7-3.2-1.4-5.1-1.4c-3.4,0-5.8,3.1-5.8,6.8c0,4.1,2.1,7.2,6,7.2c2,0,3.7-0.6,5.3-1.3 l-0.2,3c-1.8,0.9-3.8,1.3-5.9,1.3c-5.5,0-8.7-4.1-8.7-9.6c0-6,3.9-10.3,9.5-10.3c2.2,0,3.9,0.6,5.3,1.4L143,22.7z" }),
+	                              _react2["default"].createElement("path", { fill: "#ffffff", d: "M152.5,38.3c-3.1,0-5-2-5-4.8c0-1.2,0-6.7,0-10.3v-1.6h-1.7v-1.4l4.6-5.1h0.4v3.7h6.1v2.8h-6.1 c0,0,0,7.4,0,10.7c0,2,1,3,3,3c1,0,2.1-0.1,3.3-0.5v2.5C155.8,37.9,154.2,38.3,152.5,38.3z" }),
+	                              _react2["default"].createElement("path", { fill: "#ffffff", d: "M177.4,38c-2.4,0-5.4,0-7.7-0.1V11.9c2.6-0.1,6-0.2,8.6-0.2c8,0,14.2,4.6,14.2,12.3 C192.5,33.2,186.2,38,177.4,38z M177.3,14.6h-4V35h4.7c6.1,0,10.8-3.5,10.8-10.2C188.8,18.1,184.3,14.6,177.3,14.6z" }),
+	                              _react2["default"].createElement("path", { fill: "#ffffff", d: "M211.6,28.7H199c0,3.6,2,6.7,6,6.7c2.2,0,4.2-0.5,6.3-1.5l-0.2,2.9c-2,1-4.1,1.5-6.8,1.5 c-5.4,0-8.6-4.2-8.6-9.7c0-6.2,3.9-10.3,8.8-10.3c4.7,0,7.3,3.4,7.3,7.7C211.8,26.8,211.7,28.1,211.6,28.7z M204,21.1 c-2.7,0-4.4,2.6-4.8,5.1h9.4C208.6,23.3,206.8,21.1,204,21.1z" }),
+	                              _react2["default"].createElement("path", { fill: "#ffffff", d: "M219.7,38.3c-2.2,0-3.9-0.5-5.3-1.5l0.5-2.9c1.3,1,3.3,1.6,5.2,1.6c1.7,0,3.6-0.7,3.6-2.6 c0-3.8-8.6-3-8.6-8.9c0-3.7,3.3-5.6,6.9-5.6c1.7,0,3.4,0.5,4.6,1.1l-0.5,2.8c-1.3-0.6-3-1.1-4.6-1.1c-1.6,0-3.1,0.8-3.1,2.3 c0,3.8,8.7,3,8.7,8.8C227.2,36.5,223.5,38.3,219.7,38.3z" }),
+	                              _react2["default"].createElement("path", { fill: "#ffffff",
+	                                    d: "M243.1,37.9l-7.1-9.7h-0.8v9.7h-3.4V8h3.4v18.9c1.2-1.2,7.4-8,7.4-8h4.6l-8.4,8l8.4,11.1H243.1z" }),
+	                              _react2["default"].createElement("path", { fill: "#ffffff", d: "M255.5,38.3c-3.1,0-5-2-5-4.8c0-1.2,0-6.7,0-10.3v-1.6h-1.7v-1.4l4.6-5.1h0.4v3.7h6.1v2.8h-6.1 c0,0,0,7.4,0,10.7c0,2,1,3,3,3c1,0,2.1-0.1,3.3-0.5v2.5C258.9,37.9,257.3,38.3,255.5,38.3z" }),
+	                              _react2["default"].createElement("path", { fill: "#ffffff", d: "M270.8,38.3c-5.3,0-8.7-4.3-8.7-9.7c0-5.8,3.8-10.2,9.5-10.2c5.3,0,8.7,4.3,8.7,9.7 C280.3,33.9,276.6,38.3,270.8,38.3z M271.2,21.2c-3.4,0-5.6,3.1-5.6,6.9c0,3.9,2.2,7.4,5.7,7.4c3.4,0,5.6-3.1,5.6-7 C276.9,24.7,274.8,21.2,271.2,21.2z" }),
+	                              _react2["default"].createElement("path", { fill: "#ffffff", d: "M291.3,38.2c-1.2,0-2.5-0.3-3.3-0.7v10.2h-3.4V19l3.3-0.3l-0.1,2.1h0.2c1.3-1.4,3.3-2.4,5.3-2.4 c4.9,0,7.9,4.1,7.9,9.6C301.2,34,297.3,38.2,291.3,38.2z M292.2,21.3c-1.6,0-3.1,0.5-4.1,1.3v11.7c1,0.7,2.5,1.1,3.8,1.1 c3.6,0,5.9-3,5.9-6.9C297.7,24.1,295.7,21.3,292.2,21.3z" })
+	                        ),
+	                        _react2["default"].createElement(
+	                              "g",
+	                              null,
+	                              _react2["default"].createElement("rect", { x: "19.3", y: "2.2", transform: "matrix(0.7071 0.7071 -0.7071 0.7071 12.5509 -15.1816)", fill: "#9B61A8",
+	                                    width: "10.7", height: "10.7" }),
+	                              _react2["default"].createElement("rect", { x: "10.7", y: "4.5", transform: "matrix(0.9659 0.2588 -0.2588 0.9659 3.0954 -3.8265)", fill: "#38C4E8",
+	                                    width: "10.7", height: "10.7" }),
+	                              _react2["default"].createElement("rect", { x: "4.5", y: "10.7", transform: "matrix(0.9659 -0.2588 0.2588 0.9659 -3.8265 3.0954)", fill: "#2083C6",
+	                                    width: "10.7", height: "10.7" }),
+	                              _react2["default"].createElement("rect", { x: "2.2", y: "19.3", transform: "matrix(0.7071 -0.7071 0.7071 0.7071 -15.1816 12.5509)", fill: "#0CA796",
+	                                    width: "10.7", height: "10.7" }),
+	                              _react2["default"].createElement("rect", { x: "4.5", y: "27.8", transform: "matrix(0.2588 -0.9659 0.9659 0.2588 -24.6983 34.0568)", fill: "#4BBFAE",
+	                                    width: "10.7", height: "10.7" }),
+	                              _react2["default"].createElement("rect", { x: "10.7", y: "34", transform: "matrix(-0.2588 -0.9659 0.9659 -0.2588 -17.7764 65.0793)", fill: "#5EC2A7",
+	                                    width: "10.7", height: "10.7" }),
+	                              _react2["default"].createElement("rect", { x: "19.3", y: "36.3", transform: "matrix(-0.7071 -0.7071 0.7071 -0.7071 12.5509 88.4847)", fill: "#F6CE2D",
+	                                    width: "10.7", height: "10.7" }),
+	                              _react2["default"].createElement("rect", { x: "27.8", y: "34", transform: "matrix(-0.9659 -0.2588 0.2588 -0.9659 54.9285 85.9511)", fill: "#9B61A8",
+	                                    width: "10.7", height: "10.7" }),
+	                              _react2["default"].createElement("rect", { x: "27.8", y: "34", transform: "matrix(-0.9659 -0.2588 0.2588 -0.9659 54.9285 85.9511)", fill: "#FDD463",
+	                                    width: "10.7", height: "10.7" }),
+	                              _react2["default"].createElement("rect", { x: "34", y: "27.8", transform: "matrix(-0.9659 0.2588 -0.2588 -0.9659 85.9511 54.9285)", fill: "#F99E3E",
+	                                    width: "10.7", height: "10.7" }),
+	                              _react2["default"].createElement("rect", { x: "36.3", y: "19.3", transform: "matrix(-0.7071 0.7071 -0.7071 -0.7071 88.4847 12.5509)", fill: "#F6873C",
+	                                    width: "10.7", height: "10.7" }),
+	                              _react2["default"].createElement("rect", { x: "34", y: "10.7", transform: "matrix(-0.2588 0.9659 -0.9659 -0.2588 65.0793 -17.7764)", fill: "#F47931",
+	                                    width: "10.7", height: "10.7" }),
+	                              _react2["default"].createElement("polygon", { fill: "#EF383A", points: "36.9,3.3 26.6,6.1 29.8,5.2 32.2,7.6 28.1,11.6 29.3,16.4 39.7,13.6 \t" })
+	                        )
+	                  );
+	            }
+	      }]);
+
+	      return _default;
+	})(_react.Component);
+
+	exports["default"] = _default;
+	module.exports = exports["default"];
 
 /***/ }
 /******/ ]);

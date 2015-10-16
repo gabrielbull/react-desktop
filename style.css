@@ -1,5 +1,5 @@
 body {
-  margin: 30px 40px;
+  margin: 0;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
@@ -9,8 +9,16 @@ body {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  background: url("background.png");
+  background-size: 80px 160px;
+}
+
+#header {
+  position: fixed;
+  width: 100%;
 }
 
 #main {
+  margin-top: 140px;
   width: 600px;
 }
