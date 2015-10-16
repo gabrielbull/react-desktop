@@ -1,28 +1,28 @@
 import React, { Component, PropTypes } from 'react';
-import Styling, { mergeStyles, applyStyle } from '../Styling';
+import Styling, { mergeStyles, applyStyle } from '../../Styling';
 import Button from './Button';
-import WindowState from '../WindowState';
+import WindowState from '../../WindowState';
 
 var styles = {
   osx_10_11: {
-    backgroundColor: '#28c940',
-    borderColor: '#12ac28',
+    backgroundColor: '#ffbd2e',
+    borderColor: '#e1a116',
 
     unfocused: {
       backgroundColor: '#dddddd',
-      borderColor: '#d0d0d0'
+      borderColor: '#d0d0d0',
     },
 
     icon: {
-      width: '6px',
-      height: '6px',
-      marginTop: '2px',
-      marginLeft: '2px'
+      width: '8px',
+      height: '8px',
+      marginTop: '1px',
+      marginLeft: '1px'
     },
 
     ':active': {
-      backgroundColor: '#1f9a31',
-      borderColor: '#128622'
+      backgroundColor: '#bf9123',
+      borderColor: '#ad7d15'
     }
   }
 };
@@ -30,7 +30,7 @@ var styles = {
 @Button
 @WindowState
 @Styling
-class Resize extends Component {
+class Minimize extends Component {
   static propTypes = {
     style: PropTypes.object
   };
@@ -56,13 +56,12 @@ class Resize extends Component {
 
     return (
       <a style={applyStyle(styles)} {...props}>
-        <svg x="0px" y="0px" viewBox="0 0 6 5.9"  style={iconStyle}>
-          <path fill="#006400" d="M5.4,0h-4L6,4.5V0.6C5.7,0.6,5.3,0.3,5.4,0z"/>
-          <path fill="#006400" d="M0.6,5.9h4L0,1.4l0,3.9C0.3,5.3,0.6,5.6,0.6,5.9z"/>
+        <svg x="0px" y="0px" viewBox="0 0 8 1.1" style={iconStyle}>
+          <rect fill="#995700" width="8" height="1.1"/>
         </svg>
       </a>
     );
   }
 }
 
-export default Resize;
+export default Minimize;

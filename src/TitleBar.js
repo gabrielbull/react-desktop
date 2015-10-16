@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import WindowState from './WindowState';
 import Styling, { mergeStyles, applyStyle } from './Styling';
-import Controls from './TitleBar/Controls';
+import Controls from './TitleBar/Controls.osx/Controls';
 
 var styles = {
   osx_10_11: {

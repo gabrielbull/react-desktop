@@ -1,12 +1,12 @@
 import React, { Component, PropTypes } from 'react';
-import Styling, { mergeStyles, applyStyle } from '../Styling';
+import Styling, { mergeStyles, applyStyle } from '../../Styling';
 import Button from './Button';
-import WindowState from '../WindowState';
+import WindowState from '../../WindowState';
 
-var styles = {
+const styles = {
   osx_10_11: {
-    backgroundColor: '#ffbd2e',
-    borderColor: '#e1a116',
+    backgroundColor: '#ff5f57',
+    borderColor: '#e2463f',
 
     unfocused: {
       backgroundColor: '#dddddd',
@@ -14,15 +14,15 @@ var styles = {
     },
 
     icon: {
-      width: '8px',
-      height: '8px',
-      marginTop: '1px',
-      marginLeft: '1px'
+      width: '6px',
+      height: '6px',
+      marginTop: '2px',
+      marginLeft: '2px'
     },
 
     ':active': {
-      backgroundColor: '#bf9123',
-      borderColor: '#ad7d15'
+      backgroundColor: '#bf4943',
+      borderColor: '#ad3934'
     }
   }
 };
@@ -30,7 +30,7 @@ var styles = {
 @Button
 @WindowState
 @Styling
-class Minimize extends Component {
+class Close extends Component {
   static propTypes = {
     style: PropTypes.object
   };
@@ -56,12 +56,12 @@ class Minimize extends Component {
 
     return (
       <a style={applyStyle(styles)} {...props}>
-        <svg x="0px" y="0px" viewBox="0 0 8 1.1" style={iconStyle}>
-          <rect fill="#995700" width="8" height="1.1"/>
+        <svg x="0px" y="0px" viewBox="0 0 6.4 6.4" style={iconStyle}>
+          <polygon fill="#4d0000" points="6.4,0.8 5.6,0 3.2,2.4 0.8,0 0,0.8 2.4,3.2 0,5.6 0.8,6.4 3.2,4 5.6,6.4 6.4,5.6 4,3.2 "/>
         </svg>
       </a>
     );
   }
 }
 
-export default Minimize;
+export default Close;
