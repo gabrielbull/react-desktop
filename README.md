@@ -24,7 +24,7 @@ Everyone is welcome to contribute and add more components/documentation whilst f
 
 Guides on installation, components and advanced usage are found in the [documentation](/docs/README.md).
 
-### Todos OS X
+## Todos OS X
 
 - [x] Push Button
 - [ ] Textured Rounded Button
@@ -45,7 +45,7 @@ Guides on installation, components and advanced usage are found in the [document
 - [x] Indeterminate Circular Progress Indicator
 - [x] Form
 
-### Todos Windows
+## Todos Windows
 
 - [ ] Button
 - [ ] TextInput
