@@ -19,8 +19,7 @@ function addStyle(selector, styles) {
   } else {
     for (let prop in styles) {
       if (styles.hasOwnProperty(prop)) {
-        let property = changeStyleCase(prop);
-        stylesheet += `  ${property}: ${styles[prop]} !important;\n`;
+        stylesheet += `  ${changeStyleCase(prop)}: ${styles[prop]} !important;\n`;
       }
     }
   }
