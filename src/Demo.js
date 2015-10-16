@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import WindowOSX from './Window';
 import WindowWindows from './Window.windows';
+import TransitionGroup from 'react-addons-transition-group';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export default class extends Component {
   constructor() {
@@ -20,11 +22,11 @@ export default class extends Component {
   }
 
   render() {
-    let Window;
+    let window;
     if (this.state.os === 'osx') {
-      Window = WindowOSX;
+      window = (<div key="osx"><WindowOSX/></div>);
     } else {
-      Window = WindowWindows;
+      window = (<div key="win"><WindowWindows/></div>);
     }
 
     return (
@@ -42,8 +44,10 @@ export default class extends Component {
           </div>
         </div>
 
-        <Window/>
+        <ReactCSSTransitionGroup style={{position: 'relative'}} transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+          {window}
+        </ReactCSSTransitionGroup>
       </div>
     );
-  }
+  }//<Window/>
 }

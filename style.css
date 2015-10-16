@@ -121,3 +121,32 @@ body {
 .switch input:checked + label:after {
   margin-left: 21px;
 }
+
+.example-enter {
+  opacity: 0;
+  transform: translate(-100px,0);
+  width: 600px;
+  position: absolute;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: all .8s;
+  transform: translate(0,0);
+}
+
+.example-leave {
+  opacity: 1;
+  width: 600px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0;
+  width: 600px;
+  position: absolute;
+  transition: all .8s;
+  transform: translate(100px,0);
+}
