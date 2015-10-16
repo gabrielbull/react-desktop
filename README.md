@@ -61,7 +61,7 @@ Guides on installation, components and advanced usage are found in the [document
 
 ### Windows 10
 
-<img src="https://raw.githubusercontent.com/gabrielbull/react-desktop/master/docs/screenshots/win.png" width="228">
+<img src="https://raw.githubusercontent.com/gabrielbull/react-desktop/master/docs/screenshots/win.png" width="628">
 
 ## Usage
 
