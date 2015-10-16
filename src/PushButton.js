@@ -54,12 +54,14 @@ class PushButton extends Component {
     color: PropTypes.string,
     style: PropTypes.object,
     onClick: PropTypes.func,
-    onPress: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.func])
+    onPress: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.func]),
+    visible: PropTypes.bool,
+    display: PropTypes.bool
   };
 
-  constructor() {
+  constructor(props) {
     super();
-    this.state = { windowFocused: true };
+    this.state = { windowFocused: true, visible: props.visible !== false, display: props.display !== false };
   }
 
   componentDidMount() {
@@ -79,7 +81,7 @@ class PushButton extends Component {
   }
 
   render() {
-    let { children, color, onPress, form, ...props } = this.props;
+    let { children, color, onPress, form, display, visible, ...props } = this.props;
 
     let styles = this.styles;
     if (color === 'blue' && this.state.windowFocused) {
@@ -92,6 +94,18 @@ class PushButton extends Component {
       onPress = null;
     } else {
       onPress = this.props.onClick ? this.props.onClick : this.props.onPress;
+    }
+
+    if (!this.state.visible) {
+      styles = mergeStyles(styles, { visibility: 'hidden' });
+    } else {
+      styles = mergeStyles(styles, { visibility: 'visible' });
+    }
+
+    if (!this.state.display) {
+      styles = mergeStyles(styles, { display: 'none' });
+    } else {
+      styles = mergeStyles(styles, { display: 'block' });
     }
 
     return (

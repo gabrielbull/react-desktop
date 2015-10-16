@@ -32,15 +32,22 @@ class Window extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
     style: PropTypes.object,
-    chrome: PropTypes.bool
+    chrome: PropTypes.bool,
+    visible: PropTypes.bool,
+    display: PropTypes.bool
   };
+
+  constructor(props) {
+    super();
+    this.state = { visible: props.visible !== false, display: props.display !== false };
+  }
 
   get styles() {
     return mergeStyles(styles.osx_10_11, this.props.style);
   }
 
   render() {
-    let { style, chrome, children, ...props } = this.props;
+    let { style, chrome, children, visible, display, ...props } = this.props;
 
     let styles = this.styles;
     if (chrome) {
@@ -58,6 +65,18 @@ class Window extends Component {
         return element;
       }
     }.bind(this));
+
+    if (!this.state.visible) {
+      styles = mergeStyles(styles, { visibility: 'hidden' });
+    } else {
+      styles = mergeStyles(styles, { visibility: 'visible' });
+    }
+
+    if (!this.state.display) {
+      styles = mergeStyles(styles, { display: 'none' });
+    } else {
+      styles = mergeStyles(styles, { display: 'flex' });
+    }
 
     return (
       <div style={applyStyle(styles)} {...props}>

@@ -27,20 +27,39 @@ var styles = {
 class Box extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
-    style: PropTypes.object
+    style: PropTypes.object,
+    visible: PropTypes.bool,
+    display: PropTypes.bool
   };
+
+  constructor(props) {
+    super();
+    this.state = { visible: props.visible !== false, display: props.display !== false };
+  }
 
   get styles() {
     return mergeStyles(styles.osx_10_11, this.props.style);
   }
 
   render() {
-    const { children, style, ...props } = this.props;
+    const { children, style, visible, display, ...props } = this.props;
     const hasSegmentedControls = typeof children === 'object' && children.type === SegmentedControl;
 
     let styles = this.styles;
     if (hasSegmentedControls) {
       styles = mergeStyles(styles, this.styles.segmentedControls);
+    }
+
+    if (!this.state.visible) {
+      styles = mergeStyles(styles, { visibility: 'hidden' });
+    } else {
+      styles = mergeStyles(styles, { visibility: 'visible' });
+    }
+
+    if (!this.state.display) {
+      styles = mergeStyles(styles, { display: 'none' });
+    } else {
+      styles = mergeStyles(styles, { display: 'block' });
     }
 
     return (

@@ -24,8 +24,15 @@ class Row extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
     style: PropTypes.object,
-    form: PropTypes.any
+    form: PropTypes.any,
+    visible: PropTypes.bool,
+    display: PropTypes.bool
   };
+
+  constructor(props) {
+    super();
+    this.state = { visible: props.visible !== false, display: props.display !== false };
+  }
 
   componentDidMount() {
     if (this.props.form) {
@@ -38,7 +45,7 @@ class Row extends Component {
   }
 
   render() {
-    let { children, style, form, ...props } = this.props;
+    let { children, style, form, display, visible, ...props } = this.props;
     let isButtonsRow = null;
 
     children = Children.map(children, function (element, index) {
@@ -55,6 +62,18 @@ class Row extends Component {
     let styles = this.styles;
     if (isButtonsRow) {
       styles = mergeStyles(styles, this.styles.buttonRow);
+    }
+
+    if (!this.state.visible) {
+      styles = mergeStyles(styles, { visibility: 'hidden' });
+    } else {
+      styles = mergeStyles(styles, { visibility: 'visible' });
+    }
+
+    if (!this.state.display) {
+      styles = mergeStyles(styles, { display: 'none' });
+    } else {
+      styles = mergeStyles(styles, { display: 'flex' });
     }
 
     return (

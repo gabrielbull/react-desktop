@@ -33,22 +33,42 @@ var styles = {
 class TextField extends Component {
   static propTypes = {
     style: PropTypes.object,
-    form: PropTypes.any
+    form: PropTypes.any,
+    visible: PropTypes.bool,
+    display: PropTypes.bool
   };
+
+  constructor(props) {
+    super();
+    this.state = { visible: props.visible !== false, display: props.display !== false };
+  }
 
   get styles() {
     return mergeStyles(styles.osx_10_11, this.props.style);
   }
 
   render() {
-    const { form, style, ...props } = this.props;
+    const { form, style, visible, display, ...props } = this.props;
+
+    let styles = this.styles;
+    if (!this.state.visible) {
+      styles = mergeStyles(styles, { visibility: 'hidden' });
+    } else {
+      styles = mergeStyles(styles, { visibility: 'visible' });
+    }
+
+    if (!this.state.display) {
+      styles = mergeStyles(styles, { display: 'none' });
+    } else {
+      styles = mergeStyles(styles, { display: 'block' });
+    }
 
     return (
       <input
         ref="element"
         type="text"
         {...props}
-        style={applyStyle(this.styles)}
+        style={applyStyle(styles)}
       />
     );
   }

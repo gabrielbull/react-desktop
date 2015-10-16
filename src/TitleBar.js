@@ -60,12 +60,14 @@ class TitleBar extends Component {
     controls: PropTypes.bool,
     onClosePress: PropTypes.func,
     onMinimizePress: PropTypes.func,
-    onResizePress: PropTypes.func
+    onResizePress: PropTypes.func,
+    visible: PropTypes.bool,
+    display: PropTypes.bool
   };
 
-  constructor() {
+  constructor(props) {
     super();
-    this.state = { windowFocused: true };
+    this.state = { windowFocused: true, visible: props.visible !== false, display: props.display !== false };
   }
 
   get styles() {
@@ -73,7 +75,7 @@ class TitleBar extends Component {
   }
 
   render() {
-    let { children, controls, title, ...props } = this.props;
+    let { children, controls, title, visible, display, ...props } = this.props;
 
     let styles = this.styles;
     if (children) {
@@ -96,6 +98,18 @@ class TitleBar extends Component {
           {this.props.title}
         </div>
       );
+
+    if (!this.state.visible) {
+      styles = mergeStyles(styles, { visibility: 'hidden' });
+    } else {
+      styles = mergeStyles(styles, { visibility: 'visible' });
+    }
+
+    if (!this.state.display) {
+      styles = mergeStyles(styles, { display: 'none' });
+    } else {
+      styles = mergeStyles(styles, { display: 'flex' });
+    }
 
     return (
       <div

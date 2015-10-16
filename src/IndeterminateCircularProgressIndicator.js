@@ -26,7 +26,8 @@ class IndeterminateCircularProgressIndicator extends Component {
     style: PropTypes.object,
     form: PropTypes.any,
     absolute: PropTypes.bool,
-    visible: PropTypes.bool
+    visible: PropTypes.bool,
+    display: PropTypes.bool
   };
 
   framerate = 60;
@@ -34,7 +35,7 @@ class IndeterminateCircularProgressIndicator extends Component {
 
   constructor(props) {
     super();
-    this.state = { visible: props.visible !== false };
+    this.state = { visible: props.visible !== false, display: props.display !== false };
   }
 
   componentDidMount() {
@@ -86,13 +87,19 @@ class IndeterminateCircularProgressIndicator extends Component {
   }
 
   render() {
-    let { style, absolute, visible, form, ...props } = this.props;
+    let { style, absolute, visible, display, form, ...props } = this.props;
 
     let styles = this.styles;
     if (!this.state.visible) {
       styles = mergeStyles(styles, { visibility: 'hidden' });
     } else {
       styles = mergeStyles(styles, { visibility: 'visible' });
+    }
+
+    if (!this.state.display) {
+      styles = mergeStyles(styles, { display: 'none' });
+    } else {
+      styles = mergeStyles(styles, { display: 'block' });
     }
 
     if (absolute) {

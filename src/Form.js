@@ -28,8 +28,15 @@ class Form extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
     style: PropTypes.object,
-    onSubmit: PropTypes.func
+    onSubmit: PropTypes.func,
+    visible: PropTypes.bool,
+    display: PropTypes.bool
   };
+
+  constructor(props) {
+    super();
+    this.state = { visible: props.visible !== false, display: props.display !== false };
+  }
 
   registerRow(row) {
     this.rows = [...this.rows, row];

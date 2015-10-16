@@ -60,7 +60,7 @@ class Window2 extends Component {
               className="form"
             >
               <Form onSubmit={() => { alert('form submitted'); }}>
-                <Label color="red">
+                <Label color="red" align="center">
                   There was an error submitting this form.
                 </Label>
 
