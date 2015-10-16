@@ -10,7 +10,7 @@
 
 OS X and Windows UI components built with React.
 
-[![Demo](https://rawgit.com/gabrielbull/react-desktop/master/docs/demo.svg "Demo")](http://gabrielbull.github.io/react-desktop/)
+<a href="http://gabrielbull.github.io/react-desktop/" target="_blank">![Demo](https://rawgit.com/gabrielbull/react-desktop/master/docs/demo.svg "Demo")</a>
 
 ## Contributing
 
