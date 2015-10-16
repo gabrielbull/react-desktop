@@ -1,4 +1,4 @@
-# ![React Desktop](https://rawgit.com/gabrielbull/react-desktop/master/docs/react-desktop.svg "React Desktop")
+# [![React Desktop](https://rawgit.com/gabrielbull/react-desktop/master/docs/react-desktop.svg "React Desktop")](http://gabrielbull.github.io/react-desktop/)
 
 [![Build Status](https://travis-ci.org/gabrielbull/react-desktop.svg)](https://travis-ci.org/gabrielbull/react-desktop)
 [![Code Climate](https://codeclimate.com/github/gabrielbull/react-desktop/badges/gpa.svg)](https://codeclimate.com/github/gabrielbull/react-desktop)
@@ -9,6 +9,8 @@
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gabrielbull/react-desktop?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 OS X and Windows UI components built with React.
+
+[![Demo](https://rawgit.com/gabrielbull/react-desktop/master/docs/demo.svg "Demo")](http://gabrielbull.github.io/react-desktop/)
 
 ## Contributing
 
