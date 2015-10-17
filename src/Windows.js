@@ -1,2 +1,2 @@
-export const Window = require('./Window/Window.windows');
-export const TitleBar = require('./TitleBar/TitleBar.windows');
+export { default as Window } from './Window/Window.windows';
+export { default as TitleBar } from './TitleBar/TitleBar.windows';
