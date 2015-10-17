@@ -1,53 +1,43 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import Styling, { mergeStyles, applyStyle } from './Styling';
-import WindowState from './WindowState';
+import Styling, { mergeStyles, applyStyle } from './../Styling';
+import WindowState from './../WindowState';
 
 var styles = {
-  osx_10_11: {
+  windows_10: {
     WebkitUserSelect: 'none',
     cursor: 'default',
-    backgroundColor: '#ffffff',
+    backgroundColor: 'rgb(202,202,202)',
     outline: 'none',
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderRadius: '5px',
-    borderTopColor: '#c8c8c8',
-    borderBottomColor: '#acacac',
-    borderLeftColor: '#c2c2c2',
-    borderRightColor: '#c2c2c2',
-    boxShadow: '0 1px rgba(0, 0, 0, .039)',
+    borderColor: 'rgb(112,112,112)',
     paddingTop: 0,
     paddingBottom: 0,
     paddingLeft: '13px',
     paddingRight: '13px',
-    lineHeight: '19px',
-    fontFamily: '"San Francisco", "Helvetica Neue", "Lucida Grande"',
-    fontSize: '13px',
+    lineHeight: '23px',
+    fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
+    fontSize: '12px',
 
     blue: {
-      backgroundImage: '-webkit-linear-gradient(top, #6cb3fa 0%, #087eff 100%)',
-      borderTopColor: '#4ca2f9',
-      borderBottomColor: '#015cff',
-      borderLeftColor: '#267ffc',
-      borderRightColor: '#267ffc',
-      color: 'rgba(255, 255, 255, .9)'
+
     },
 
+    ':hover': {
+      borderColor: 'rgba(51,153,255,0.7)',
+      backgroundColor: 'rgba(51,153,255,0.4)'
+    },
     ':active': {
-      backgroundImage: '-webkit-linear-gradient(top, #4c98fe 0%, #0564e3 100%)',
-      borderTopColor: '#247fff',
-      borderBottomColor: '#003ddb',
-      borderLeftColor: '#125eed',
-      borderRightColor: '#125eed',
-      color: 'rgba(255, 255, 255, .9  )'
+      borderColor: 'rgba(51,153,255,0.9)',
+      backgroundColor: 'rgba(41,143,245,0.4)'
     }
   }
 };
 
 @WindowState
 @Styling
-class PushButton extends Component {
+class Button extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]).isRequired,
     form: PropTypes.any,
@@ -77,7 +67,7 @@ class PushButton extends Component {
   }
 
   get styles() {
-    return mergeStyles(styles.osx_10_11, this.props.style);
+    return mergeStyles(styles.windows_10, this.props.style);
   }
 
   render() {
@@ -85,7 +75,7 @@ class PushButton extends Component {
 
     let styles = this.styles;
     if (color === 'blue' && this.state.windowFocused) {
-      styles = mergeStyles(this.styles, this.styles.blue);
+      styles = Object.assign({}, this.styles, this.styles.blue);
     }
 
     let type = 'button';
@@ -122,4 +112,4 @@ class PushButton extends Component {
   }
 }
 
-export default PushButton;
+export default Button;
