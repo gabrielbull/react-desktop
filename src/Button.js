@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { OS } from './Desktop';
-import TextFieldOSX from './TextField/TextField.osx';
-import TextFieldWindows from './TextField/TextField.windows';
+import ButtonOSX from './Button/PushButton.osx';
+import ButtonWindows from './Button/Button.windows';
 
-class TextField extends Component {
+class Button extends Component {
   static propTypes = {
     style: PropTypes.object,
     form: PropTypes.any,
@@ -13,11 +13,11 @@ class TextField extends Component {
 
   render() {
     if (OS === 'win') {
-      return <TextFieldWindows {...this.props}/>
+      return <ButtonWindows {...this.props}/>
     } else {
-      return <TextFieldOSX {...this.props}/>
+      return <ButtonOSX {...this.props}/>
     }
   }
 }
 
-export default TextField;
+export default Button;

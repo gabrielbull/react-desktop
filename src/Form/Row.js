@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Styling, { mergeStyles, applyStyle } from '../Styling';
 import Label from '../Label';
 import TextField from '../TextField';
-import PushButton from '../PushButton';
+import PushButton from '../Button/PushButton.osx';
 
 var styles = {
   osx_10_11: {

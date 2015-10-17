@@ -1,10 +1,10 @@
 export const Window = require('./Window/Window.osx');
 export const TitleBar = require('./TitleBar/TitleBar.osx');
 export const Toolbar = require('./Toolbar');
-export const PushButton = require('./PushButton');
-export const TextField = require('./TextField');
+export const PushButton = require('./Button/PushButton.osx');
+export const TextField = require('./TextField/TextField.osx');
 export const Box = require('./Box');
 export const SegmentedControl = require('./SegmentedControl');
 export const IndeterminateCircularProgressIndicator = require('./IndeterminateCircularProgressIndicator');
 export const Form = require('./Form');
-export const Label = require('./Label');
+export const Label = require('./Label/Label.osx');

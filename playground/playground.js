@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {
   TitleBar,
-  PushButton,
+  Button,
   TextField,
   Toolbar,
   Box,
@@ -87,8 +87,8 @@ class Window2 extends Component {
                 </Form.Row>
 
                 <Form.Row>
-                  <PushButton>PushButton</PushButton>
-                  <PushButton onPress="submit" color="blue">PushButton Blue</PushButton>
+                  <Button>Button</Button>
+                  <Button onPress="submit" color="blue">Button Blue</Button>
 
                   <IndeterminateCircularProgressIndicator absolute/>
                 </Form.Row>
