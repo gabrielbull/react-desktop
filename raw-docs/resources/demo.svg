@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 78.5 28.5" enable-background="new 0 0 78.5 28.5" xml:space="preserve" width="78" height="28">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="39.25" y1="-1.627996e-09" x2="39.25" y2="28.5">
+	<stop  offset="0" style="stop-color:#0090FF"/>
+	<stop  offset="1" style="stop-color:#0079D7"/>
+</linearGradient>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="url(#SVGID_1_)" d="M3,0h72.5c1.7,0,3,1.3,3,3v22.5c0,1.7-1.3,3-3,3H3
+	c-1.7,0-3-1.3-3-3V3C0,1.3,1.3,0,3,0z"/>
+<polygon fill="#FFFFFF" points="65.6,14.2 59.4,8 58.4,9 63.6,14.2 58.4,19.5 59.4,20.5 64.6,15.2 64.6,15.2 "/>
+<text transform="matrix(1 0 0 1 12.375 19.1514)" fill="#FFFFFF" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="13.244px">Demo</text>
+</svg>
