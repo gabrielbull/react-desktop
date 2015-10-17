@@ -20,10 +20,10 @@ export default class extends Component {
         <nav>
           <ul>
             <li>
-              <a onClick={this.click} href="/react-desktop/">Docs</a>
+              <a onClick={this.click} href="/react-desktop/docs/">Docs</a>
             </li>
             <li>
-              <a onClick={this.click} href="/react-desktop/demo">Demo</a>
+              <a onClick={this.click} href="/react-desktop/demo/">Demo</a>
             </li>
           </ul>
         </nav>

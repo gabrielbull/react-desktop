@@ -15,6 +15,7 @@
     "babel-loader": "^5.3.2",
     "css-loader": "^0.19.0",
     "file-loader": "^0.8.4",
+    "gulp": "^3.9.0",
     "node-sass": "^3.3.3",
     "sass-loader": "^3.0.0",
     "style-loader": "^0.12.4",
@@ -25,6 +26,6 @@
   },
   "scripts": {
     "start": "webpack-dev-server --colors --inline --port 3000 --hot --history-api-fallback",
-    "bundle": "PROD_DEV=1 webpack"
+    "bundle": "PROD_DEV=1 webpack && gulp bundle"
   }
 }

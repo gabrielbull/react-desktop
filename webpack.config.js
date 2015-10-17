@@ -6,8 +6,12 @@ module.exports = {
   output: {
     path: '.',
     filename: './build/bundle.js',
-    publicPath: '/',
+    publicPath: '/react-desktop/',
     libraryTarget: "var"
+  },
+
+  devServer: {
+    contentBase: './'
   },
 
   module: {
