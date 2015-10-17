@@ -5,8 +5,12 @@ import ButtonWindows from './Button/Button.windows';
 
 class Button extends Component {
   static propTypes = {
-    style: PropTypes.object,
+    children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]).isRequired,
     form: PropTypes.any,
+    color: PropTypes.string,
+    style: PropTypes.object,
+    onClick: PropTypes.func,
+    onPress: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.func]),
     visible: PropTypes.bool,
     display: PropTypes.bool
   };
