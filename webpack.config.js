@@ -38,8 +38,8 @@ module.exports = {
         loader: 'file'
       },
       {
-        test: /\.svg$/,
-        loader: 'svg-inline'
+        test: /\.(html|svg)/,
+        loader: 'raw'
       }
     ]
   }

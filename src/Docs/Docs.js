@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import ReadMe from '../../raw-docs/README.html';
 
 export default class extends Component {
   render() {
     return (
       <div>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        Coming soon!
+        <div dangerouslySetInnerHTML={{__html: ReadMe}} />
       </div>
     );
   }
