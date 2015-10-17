@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { history } from '../Router';
-import ReadMe from '../../raw-docs/index.html';
+import styles from './Docs.scss';
 
 export default class extends Component {
   componentDidMount() {
@@ -43,7 +43,7 @@ export default class extends Component {
     }
 
     return (
-      <div ref="element">
+      <div ref="element" className="docs">
         <div dangerouslySetInnerHTML={{__html: content}} />
       </div>
     );

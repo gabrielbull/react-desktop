@@ -1,0 +1,19 @@
+.docs {
+  padding: 10px 100px;
+
+  li a {
+    color: #2083c6;
+
+    &:visited {
+      color: #2083c6;
+    }
+
+    &:hover {
+      color: lighten(#2083c6, 20%);
+    }
+
+    &:active {
+      color: darken(#2083c6, 20%);
+    }
+  }
+}
