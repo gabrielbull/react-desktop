@@ -11,6 +11,7 @@ var styles = {
     },
 
     ':hover': {
+      transition: 'background-color 0.1s',
       backgroundColor: '#e5e5e5'
     },
 
