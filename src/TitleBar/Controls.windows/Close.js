@@ -11,6 +11,7 @@ const styles = {
     },
 
     ':hover': {
+      transition: 'background-color 0.1s',
       backgroundColor: '#e81123'
     },
 

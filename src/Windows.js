@@ -1,6 +1,5 @@
-export const Window = require('./Window/Window.windows');
-export const TextField = require('./TextField/TextField.windows');
-export const TitleBar = require('./TitleBar/TitleBar.windows');
-export const Button = require('./Button/Button.windows');
-export const Label = require('./Label/Label.windows');
-
+export { default as TextField } from './TextField/TextField.windows';
+export { default as Button } from './Button/Button.windows';
+export { default as Label }from './Label/Label.windows';
+export { default as Window } from './Window/Window.windows';
+export { default as TitleBar } from './TitleBar/TitleBar.windows';

@@ -47,7 +47,7 @@ class Close extends Component {
   render() {
     const { style, ...props } = this.props;
     const displayIcon = this.state.iconVisible ? { opacity: 1 } : { opacity: 0 };
-    const iconStyle = Object.assign({}, this.styles.icon, displayIcon);
+    const iconStyle = mergeStyles(this.styles.icon, displayIcon);
 
     let styles = this.styles;
     if (!this.state.windowFocused && !this.state.iconVisible) {
