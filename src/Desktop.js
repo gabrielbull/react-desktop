@@ -30,4 +30,4 @@ export default class Desktop {
   })();
 }
 
-export let OS = Desktop.OS;
+export const OS = Desktop.OS;

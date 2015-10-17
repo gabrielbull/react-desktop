@@ -103,14 +103,14 @@ class Form extends Component {
       }
 
       if (element.type === Row) {
-        let ref = `row-${index}`;
+        const ref = `row-${index}`;
         return (
           <RowWrapper ref={ref} style={style}>
             {cloneElement(element, {form: this})}
           </RowWrapper>
         );
       } else if (element.type === Label) {
-        let ref = `label-${index}`;
+        const ref = `label-${index}`;
         return (
           <RowWrapper ref={ref} style={this.styles.label}>
             {cloneElement(element, {form: this})}
