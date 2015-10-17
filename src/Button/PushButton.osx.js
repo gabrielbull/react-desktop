@@ -85,7 +85,7 @@ class PushButton extends Component {
 
     let styles = this.styles;
     if (color === 'blue' && this.state.windowFocused) {
-      styles = Object.assign({}, this.styles, this.styles.blue);
+      styles = mergeStyles(this.styles, this.styles.blue);
     }
 
     let type = 'button';
