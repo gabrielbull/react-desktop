@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: url("./background.png");
+  background-size: 80px 160px;
+}
+
+#main {
+  margin-top: 57px;
+}

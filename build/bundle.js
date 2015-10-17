@@ -56,16 +56,20 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Demo = __webpack_require__(158);
+	var _DemoDemo = __webpack_require__(158);
 
-	var _Demo2 = _interopRequireDefault(_Demo);
+	var _DemoDemo2 = _interopRequireDefault(_DemoDemo);
 
-	var _Header = __webpack_require__(202);
+	var _SharedHeaderHeader = __webpack_require__(201);
 
-	var _Header2 = _interopRequireDefault(_Header);
+	var _SharedHeaderHeader2 = _interopRequireDefault(_SharedHeaderHeader);
 
-	_reactDom2['default'].render(_react2['default'].createElement(_Header2['default'], null), document.getElementById('header'));
-	_reactDom2['default'].render(_react2['default'].createElement(_Demo2['default'], null), document.getElementById('main'));
+	var _SharedDocumentDocumentScss = __webpack_require__(205);
+
+	var _SharedDocumentDocumentScss2 = _interopRequireDefault(_SharedDocumentDocumentScss);
+
+	_reactDom2['default'].render(_react2['default'].createElement(_SharedHeaderHeader2['default'], null), document.getElementById('header'));
+	_reactDom2['default'].render(_react2['default'].createElement(_DemoDemo2['default'], null), document.getElementById('main'));
 
 /***/ },
 /* 1 */
@@ -19642,21 +19646,21 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Window = __webpack_require__(159);
+	var _WindowOsx = __webpack_require__(159);
 
-	var _Window2 = _interopRequireDefault(_Window);
+	var _WindowOsx2 = _interopRequireDefault(_WindowOsx);
 
 	var _WindowWindows = __webpack_require__(191);
 
 	var _WindowWindows2 = _interopRequireDefault(_WindowWindows);
 
-	var _reactAddonsTransitionGroup = __webpack_require__(194);
+	var _SharedOsToggleOsToggle = __webpack_require__(194);
 
-	var _reactAddonsTransitionGroup2 = _interopRequireDefault(_reactAddonsTransitionGroup);
+	var _SharedOsToggleOsToggle2 = _interopRequireDefault(_SharedOsToggleOsToggle);
 
-	var _reactAddonsCssTransitionGroup = __webpack_require__(197);
+	var _DemoScss = __webpack_require__(199);
 
-	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
+	var _DemoScss2 = _interopRequireDefault(_DemoScss);
 
 	var _default = (function (_Component) {
 	  _inherits(_default, _Component);
@@ -19672,12 +19676,8 @@
 
 	  _createClass(_default, [{
 	    key: 'changeOs',
-	    value: function changeOs() {
-	      if (this.refs['switch'].checked) {
-	        this.setState({ os: 'win' });
-	      } else {
-	        this.setState({ os: 'osx' });
-	      }
+	    value: function changeOs(os) {
+	      this.setState({ os: os });
 	    }
 	  }, {
 	    key: 'render',
@@ -19687,7 +19687,7 @@
 	        window = _react2['default'].createElement(
 	          'div',
 	          { key: 'osx' },
-	          _react2['default'].createElement(_Window2['default'], null)
+	          _react2['default'].createElement(_WindowOsx2['default'], null)
 	        );
 	      } else {
 	        window = _react2['default'].createElement(
@@ -19699,35 +19699,11 @@
 
 	      return _react2['default'].createElement(
 	        'div',
-	        null,
-	        _react2['default'].createElement(
-	          'div',
-	          { className: 'toggle' },
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'option' },
-	            'OS X'
-	          ),
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'switch' },
-	            _react2['default'].createElement('input', { ref: 'switch', id: 'toggle', type: 'checkbox', onChange: this.changeOs.bind(this) }),
-	            _react2['default'].createElement('label', { htmlFor: 'toggle' })
-	          ),
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'option' },
-	            'Windows'
-	          )
-	        ),
-	        _react2['default'].createElement(
-	          _reactAddonsCssTransitionGroup2['default'],
-	          { style: { position: 'relative' }, transitionName: 'example', transitionEnterTimeout: 500, transitionLeaveTimeout: 300 },
-	          window
-	        )
+	        { className: 'demo' },
+	        _react2['default'].createElement(_SharedOsToggleOsToggle2['default'], { onChange: this.changeOs.bind(this) }),
+	        window
 	      );
 	    }
-	    //<Window/>
 	  }]);
 
 	  return _default;
@@ -20111,12 +20087,23 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	/**
+	 * Dasherizes a camelCased string.
+	 * @param {String} prop
+	 * @returns {String}
+	 */
 	function changeStyleCase(prop) {
 	  return prop.replace(/([A-Z])/g, function (g) {
 	    return '-' + g.toLowerCase();
 	  });
 	}
 
+	/**
+	 * Creates a new style element and append the provided array of styles.
+	 * @param {String} selector
+	 * @param {String[]} styles Array of css styles to append to new stylesheet.
+	 * @returns {Element.style}
+	 */
 	function addStyle(selector, styles) {
 	  selector = selector.replace(/:placeholder/, '::-webkit-input-placeholder');
 
@@ -20129,8 +20116,7 @@
 	  } else {
 	    for (var prop in styles) {
 	      if (styles.hasOwnProperty(prop)) {
-	        var property = changeStyleCase(prop);
-	        stylesheet += '  ' + property + ': ' + styles[prop] + ' !important;\n';
+	        stylesheet += '  ' + changeStyleCase(prop) + ': ' + styles[prop] + ' !important;\n';
 	      }
 	    }
 	  }
@@ -20143,6 +20129,11 @@
 	  return style;
 	}
 
+	/**
+	 * Create a new style element from raw css string.
+	 * @param {String} stylesheet Raw CSS Stylesheet string.
+	 * @returns {Element.style}
+	 */
 	function addRawStyle(stylesheet) {
 	  var head = document.getElementsByTagName('head')[0];
 	  var style = document.createElement('style');
@@ -20151,6 +20142,12 @@
 	  head.appendChild(style);
 	  return style;
 	}
+
+	/**
+	 * Merges multiple style objects (Usually default OS styling and component props.style)
+	 * @param {Object[]} styles
+	 * @returns {Object}
+	 */
 
 	function mergeStyles() {
 	  var merged = {};
@@ -20228,6 +20225,8 @@
 	      key: 'applyInlineStyles',
 	      value: function applyInlineStyles() {
 	        var states = [':hover', ':active', ':focus', ':placeholder'];
+	        var element = _reactDom2['default'].findDOMNode(this);
+	        var id = element.getAttribute('data-reactid');
 	        var _iteratorNormalCompletion2 = true;
 	        var _didIteratorError2 = false;
 	        var _iteratorError2 = undefined;
@@ -20237,8 +20236,6 @@
 	            var state = _step2.value;
 
 	            if (this.refs.component.styles[state]) {
-	              var element = _reactDom2['default'].findDOMNode(this);
-	              var id = element.getAttribute('data-reactid');
 	              this.stylesheets[state] = addStyle('[data-reactid="' + id + '"]' + state, this.refs.component.styles[state]);
 	            }
 	          }
@@ -20263,6 +20260,7 @@
 	        var states = ['hover', 'active', 'focus', 'hover-selector', 'active-selector', 'focus-selector'];
 	        if (this.refs.component.refs.element) {
 	          var element = _reactDom2['default'].findDOMNode(this.refs.component.refs.element);
+	          var id = element.getAttribute('data-reactid');
 
 	          var _iteratorNormalCompletion3 = true;
 	          var _didIteratorError3 = false;
@@ -20274,7 +20272,6 @@
 
 	              var attrName = 'data-' + state + '-style';
 	              var style = element.getAttribute(attrName);
-	              var id = element.getAttribute('data-reactid');
 
 	              if (style && !this.stylesheets[attrName]) {
 	                if (state.match(/\-selector$/)) {
@@ -20328,6 +20325,11 @@
 	          }
 	        }
 	      }
+
+	      /**
+	       * Removes the specified stylesheet.
+	       * @param {Object} stylesheet
+	       */
 	    }, {
 	      key: 'removeStylesheet',
 	      value: function removeStylesheet(stylesheet) {
@@ -20433,36 +20435,6 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-	function detectOS() {
-	  // explicit set these to avoid issues
-	  var window = window || null;
-	  var navigator = navigator || null;
-	  var process = process || window ? window.process : null || null;
-
-	  // via node
-	  if (process && process.platform) {
-	    if (process.platform === 'darwin') {
-	      return 'osx';
-	    }
-	    if (process.platform.includes('win')) {
-	      return 'windows';
-	    }
-	  }
-
-	  // via user agent
-	  if (navigator && navigator.userAgent) {
-	    if (navigator.userAgent.includes('Macintosh')) {
-	      return 'osx';
-	    }
-	    if (navigator.userAgent.includes('Windows')) {
-	      return 'windows';
-	    }
-	  }
-
-	  // default to osx
-	  return 'osx';
-	}
-
 	var Desktop = (function () {
 	  function Desktop() {
 	    _classCallCheck(this, Desktop);
@@ -20470,7 +20442,35 @@
 
 	  _createClass(Desktop, null, [{
 	    key: 'OS',
-	    value: detectOS(),
+	    value: (function () {
+	      // explicitly set these to avoid issues
+	      var window = window || null;
+	      var navigator = navigator || null;
+	      var process = process || window ? window.process : null || null;
+
+	      // via node
+	      if (process && process.platform) {
+	        if (process.platform === 'darwin') {
+	          return 'osx';
+	        }
+	        if (process.platform.includes('win')) {
+	          return 'win';
+	        }
+	      }
+
+	      // via user agent
+	      if (navigator && navigator.userAgent) {
+	        if (navigator.userAgent.includes('Macintosh')) {
+	          return 'osx';
+	        }
+	        if (navigator.userAgent.includes('Windows')) {
+	          return 'win';
+	        }
+	      }
+
+	      // default to osx
+	      return 'osx';
+	    })(),
 	    enumerable: true
 	  }]);
 
@@ -21619,6 +21619,7 @@
 	    },
 
 	    ':hover': {
+	      transition: 'background-color 0.1s',
 	      backgroundColor: '#e81123'
 	    },
 
@@ -21819,6 +21820,7 @@
 	    },
 
 	    ':hover': {
+	      transition: 'background-color 0.1s',
 	      backgroundColor: '#e5e5e5'
 	    },
 
@@ -21937,6 +21939,7 @@
 	    },
 
 	    ':hover': {
+	      transition: 'background-color 0.1s',
 	      backgroundColor: '#e5e5e5'
 	    },
 
@@ -24278,799 +24281,447 @@
 /* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(195);
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(157);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _OsToggleScss = __webpack_require__(195);
+
+	var _OsToggleScss2 = _interopRequireDefault(_OsToggleScss);
+
+	var _default = (function (_Component) {
+	  _inherits(_default, _Component);
+
+	  function _default() {
+	    _classCallCheck(this, _default);
+
+	    _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
+	  }
+
+	  _createClass(_default, [{
+	    key: 'change',
+	    value: function change() {
+	      if (this.refs['switch'].checked) {
+	        this.props.onChange('win');
+	      } else {
+	        this.props.onChange('osx');
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'toggle' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'option' },
+	          'OS X'
+	        ),
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'switch' },
+	          _react2['default'].createElement('input', { ref: 'switch', id: 'toggle', type: 'checkbox', onChange: this.change.bind(this) }),
+	          _react2['default'].createElement('label', { htmlFor: 'toggle' })
+	        ),
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'option' },
+	          'Windows'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return _default;
+	})(_react.Component);
+
+	exports['default'] = _default;
+	module.exports = exports['default'];
 
 /***/ },
 /* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactTransitionGroup
-	 */
+	// style-loader: Adds some css to the DOM by adding a <style> tag
 
-	'use strict';
-
-	var React = __webpack_require__(2);
-	var ReactTransitionChildMapping = __webpack_require__(196);
-
-	var assign = __webpack_require__(39);
-	var emptyFunction = __webpack_require__(15);
-
-	var ReactTransitionGroup = React.createClass({
-	  displayName: 'ReactTransitionGroup',
-
-	  propTypes: {
-	    component: React.PropTypes.any,
-	    childFactory: React.PropTypes.func
-	  },
-
-	  getDefaultProps: function () {
-	    return {
-	      component: 'span',
-	      childFactory: emptyFunction.thatReturnsArgument
-	    };
-	  },
-
-	  getInitialState: function () {
-	    return {
-	      children: ReactTransitionChildMapping.getChildMapping(this.props.children)
-	    };
-	  },
-
-	  componentWillMount: function () {
-	    this.currentlyTransitioningKeys = {};
-	    this.keysToEnter = [];
-	    this.keysToLeave = [];
-	  },
-
-	  componentDidMount: function () {
-	    var initialChildMapping = this.state.children;
-	    for (var key in initialChildMapping) {
-	      if (initialChildMapping[key]) {
-	        this.performAppear(key);
-	      }
-	    }
-	  },
-
-	  componentWillReceiveProps: function (nextProps) {
-	    var nextChildMapping = ReactTransitionChildMapping.getChildMapping(nextProps.children);
-	    var prevChildMapping = this.state.children;
-
-	    this.setState({
-	      children: ReactTransitionChildMapping.mergeChildMappings(prevChildMapping, nextChildMapping)
-	    });
-
-	    var key;
-
-	    for (key in nextChildMapping) {
-	      var hasPrev = prevChildMapping && prevChildMapping.hasOwnProperty(key);
-	      if (nextChildMapping[key] && !hasPrev && !this.currentlyTransitioningKeys[key]) {
-	        this.keysToEnter.push(key);
-	      }
-	    }
-
-	    for (key in prevChildMapping) {
-	      var hasNext = nextChildMapping && nextChildMapping.hasOwnProperty(key);
-	      if (prevChildMapping[key] && !hasNext && !this.currentlyTransitioningKeys[key]) {
-	        this.keysToLeave.push(key);
-	      }
-	    }
-
-	    // If we want to someday check for reordering, we could do it here.
-	  },
-
-	  componentDidUpdate: function () {
-	    var keysToEnter = this.keysToEnter;
-	    this.keysToEnter = [];
-	    keysToEnter.forEach(this.performEnter);
-
-	    var keysToLeave = this.keysToLeave;
-	    this.keysToLeave = [];
-	    keysToLeave.forEach(this.performLeave);
-	  },
-
-	  performAppear: function (key) {
-	    this.currentlyTransitioningKeys[key] = true;
-
-	    var component = this.refs[key];
-
-	    if (component.componentWillAppear) {
-	      component.componentWillAppear(this._handleDoneAppearing.bind(this, key));
-	    } else {
-	      this._handleDoneAppearing(key);
-	    }
-	  },
-
-	  _handleDoneAppearing: function (key) {
-	    var component = this.refs[key];
-	    if (component.componentDidAppear) {
-	      component.componentDidAppear();
-	    }
-
-	    delete this.currentlyTransitioningKeys[key];
-
-	    var currentChildMapping = ReactTransitionChildMapping.getChildMapping(this.props.children);
-
-	    if (!currentChildMapping || !currentChildMapping.hasOwnProperty(key)) {
-	      // This was removed before it had fully appeared. Remove it.
-	      this.performLeave(key);
-	    }
-	  },
-
-	  performEnter: function (key) {
-	    this.currentlyTransitioningKeys[key] = true;
-
-	    var component = this.refs[key];
-
-	    if (component.componentWillEnter) {
-	      component.componentWillEnter(this._handleDoneEntering.bind(this, key));
-	    } else {
-	      this._handleDoneEntering(key);
-	    }
-	  },
-
-	  _handleDoneEntering: function (key) {
-	    var component = this.refs[key];
-	    if (component.componentDidEnter) {
-	      component.componentDidEnter();
-	    }
-
-	    delete this.currentlyTransitioningKeys[key];
-
-	    var currentChildMapping = ReactTransitionChildMapping.getChildMapping(this.props.children);
-
-	    if (!currentChildMapping || !currentChildMapping.hasOwnProperty(key)) {
-	      // This was removed before it had fully entered. Remove it.
-	      this.performLeave(key);
-	    }
-	  },
-
-	  performLeave: function (key) {
-	    this.currentlyTransitioningKeys[key] = true;
-
-	    var component = this.refs[key];
-	    if (component.componentWillLeave) {
-	      component.componentWillLeave(this._handleDoneLeaving.bind(this, key));
-	    } else {
-	      // Note that this is somewhat dangerous b/c it calls setState()
-	      // again, effectively mutating the component before all the work
-	      // is done.
-	      this._handleDoneLeaving(key);
-	    }
-	  },
-
-	  _handleDoneLeaving: function (key) {
-	    var component = this.refs[key];
-
-	    if (component.componentDidLeave) {
-	      component.componentDidLeave();
-	    }
-
-	    delete this.currentlyTransitioningKeys[key];
-
-	    var currentChildMapping = ReactTransitionChildMapping.getChildMapping(this.props.children);
-
-	    if (currentChildMapping && currentChildMapping.hasOwnProperty(key)) {
-	      // This entered again before it fully left. Add it again.
-	      this.performEnter(key);
-	    } else {
-	      this.setState(function (state) {
-	        var newChildren = assign({}, state.children);
-	        delete newChildren[key];
-	        return { children: newChildren };
-	      });
-	    }
-	  },
-
-	  render: function () {
-	    // TODO: we could get rid of the need for the wrapper node
-	    // by cloning a single child
-	    var childrenToRender = [];
-	    for (var key in this.state.children) {
-	      var child = this.state.children[key];
-	      if (child) {
-	        // You may need to apply reactive updates to a child as it is leaving.
-	        // The normal React way to do it won't work since the child will have
-	        // already been removed. In case you need this behavior you can provide
-	        // a childFactory function to wrap every child, even the ones that are
-	        // leaving.
-	        childrenToRender.push(React.cloneElement(this.props.childFactory(child), { ref: key, key: key }));
-	      }
-	    }
-	    return React.createElement(this.props.component, this.props, childrenToRender);
-	  }
-	});
-
-	module.exports = ReactTransitionGroup;
+	// load the styles
+	var content = __webpack_require__(196);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(198)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./OsToggle.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./OsToggle.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
 /* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @typechecks static-only
-	 * @providesModule ReactTransitionChildMapping
-	 */
+	exports = module.exports = __webpack_require__(197)();
+	// imports
 
-	'use strict';
 
-	var flattenChildren = __webpack_require__(115);
+	// module
+	exports.push([module.id, ".toggle {\n  background: rgba(255, 255, 255, 0.4);\n  display: -ms-flexbox;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-align-items: center;\n  -ms-flex-align: center;\n  align-items: center;\n  -webkit-justify-content: center;\n  justify-content: center;\n  width: 200px;\n  border-radius: 42px;\n  border: 1px solid rgba(255, 255, 255, 0.8); }\n  .toggle .option {\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    font-size: 12px;\n    width: 50px;\n    text-align: right;\n    cursor: default;\n    color: #333; }\n    .toggle .option:last-of-type {\n      text-align: left; }\n  .toggle .switch {\n    display: table-cell;\n    vertical-align: middle;\n    padding: 6px 10px; }\n    .toggle .switch input {\n      position: absolute;\n      margin-left: -9999px;\n      visibility: hidden; }\n    .toggle .switch input + label {\n      display: block;\n      position: relative;\n      cursor: pointer;\n      outline: none;\n      -webkit-user-select: none;\n      -moz-user-select: none;\n      -ms-user-select: none;\n      user-select: none;\n      padding: 2px;\n      width: 30px;\n      height: 12px;\n      background-color: #008ffe;\n      border-radius: 18px; }\n    .toggle .switch input + label:before,\n    .toggle .switch input + label:after {\n      display: block;\n      position: absolute;\n      top: 1px;\n      left: 1px;\n      bottom: 1px;\n      content: \"\"; }\n    .toggle .switch input + label:before {\n      right: 1px;\n      background: rgba(255, 255, 255, 0.9);\n      border-radius: 12px;\n      transition: background 0.4s; }\n    .toggle .switch input + label:after {\n      width: 14px;\n      background: -moz-linear-gradient(top, #008ffe, #0079d7);\n      background: -webkit-linear-gradient(top, #008ffe, #0079d7);\n      background: -ms-linear-gradient(top, #008ffe, #0079d7);\n      background: linear-gradient(top, #008ffe, #0079d7);\n      border-radius: 100%;\n      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);\n      transition: margin 0.4s; }\n    .toggle .switch input:checked + label:after {\n      margin-left: 19px; }\n", ""]);
 
-	var ReactTransitionChildMapping = {
-	  /**
-	   * Given `this.props.children`, return an object mapping key to child. Just
-	   * simple syntactic sugar around flattenChildren().
-	   *
-	   * @param {*} children `this.props.children`
-	   * @return {object} Mapping of key to child
-	   */
-	  getChildMapping: function (children) {
-	    if (!children) {
-	      return children;
-	    }
-	    return flattenChildren(children);
-	  },
+	// exports
 
-	  /**
-	   * When you're adding or removing children some may be added or removed in the
-	   * same render pass. We want to show *both* since we want to simultaneously
-	   * animate elements in and out. This function takes a previous set of keys
-	   * and a new set of keys and merges them with its best guess of the correct
-	   * ordering. In the future we may expose some of the utilities in
-	   * ReactMultiChild to make this easy, but for now React itself does not
-	   * directly have this concept of the union of prevChildren and nextChildren
-	   * so we implement it here.
-	   *
-	   * @param {object} prev prev children as returned from
-	   * `ReactTransitionChildMapping.getChildMapping()`.
-	   * @param {object} next next children as returned from
-	   * `ReactTransitionChildMapping.getChildMapping()`.
-	   * @return {object} a key set that contains all keys in `prev` and all keys
-	   * in `next` in a reasonable order.
-	   */
-	  mergeChildMappings: function (prev, next) {
-	    prev = prev || {};
-	    next = next || {};
-
-	    function getValueForKey(key) {
-	      if (next.hasOwnProperty(key)) {
-	        return next[key];
-	      } else {
-	        return prev[key];
-	      }
-	    }
-
-	    // For each key of `next`, the list of keys to insert before that key in
-	    // the combined list
-	    var nextKeysPending = {};
-
-	    var pendingKeys = [];
-	    for (var prevKey in prev) {
-	      if (next.hasOwnProperty(prevKey)) {
-	        if (pendingKeys.length) {
-	          nextKeysPending[prevKey] = pendingKeys;
-	          pendingKeys = [];
-	        }
-	      } else {
-	        pendingKeys.push(prevKey);
-	      }
-	    }
-
-	    var i;
-	    var childMapping = {};
-	    for (var nextKey in next) {
-	      if (nextKeysPending.hasOwnProperty(nextKey)) {
-	        for (i = 0; i < nextKeysPending[nextKey].length; i++) {
-	          var pendingNextKey = nextKeysPending[nextKey][i];
-	          childMapping[nextKeysPending[nextKey][i]] = getValueForKey(pendingNextKey);
-	        }
-	      }
-	      childMapping[nextKey] = getValueForKey(nextKey);
-	    }
-
-	    // Finally, add the keys which didn't appear before any key in `next`
-	    for (i = 0; i < pendingKeys.length; i++) {
-	      childMapping[pendingKeys[i]] = getValueForKey(pendingKeys[i]);
-	    }
-
-	    return childMapping;
-	  }
-	};
-
-	module.exports = ReactTransitionChildMapping;
 
 /***/ },
 /* 197 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	module.exports = __webpack_require__(198);
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
 
 /***/ },
 /* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @typechecks
-	 * @providesModule ReactCSSTransitionGroup
-	 */
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0;
 
-	'use strict';
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
 
-	var React = __webpack_require__(2);
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
 
-	var assign = __webpack_require__(39);
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
 
-	var ReactTransitionGroup = __webpack_require__(195);
-	var ReactCSSTransitionGroupChild = __webpack_require__(199);
-
-	function createTransitionTimeoutPropValidator(transitionType) {
-	  var timeoutPropName = 'transition' + transitionType + 'Timeout';
-	  var enabledPropName = 'transition' + transitionType;
-
-	  return function (props) {
-	    // If the transition is enabled
-	    if (props[enabledPropName]) {
-	      // If no timeout duration is provided
-	      if (!props[timeoutPropName]) {
-	        return new Error(timeoutPropName + ' wasn\'t supplied to ReactCSSTransitionGroup: ' + 'this can cause unreliable animations and won\'t be supported in ' + 'a future version of React. See ' + 'https://fb.me/react-animation-transition-group-timeout for more ' + 'information.');
-
-	        // If the duration isn't a number
-	      } else if (typeof props[timeoutPropName] !== 'number') {
-	          return new Error(timeoutPropName + ' must be a number (in milliseconds)');
-	        }
-	    }
-	  };
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
 	}
 
-	var ReactCSSTransitionGroup = React.createClass({
-	  displayName: 'ReactCSSTransitionGroup',
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
 
-	  propTypes: {
-	    transitionName: ReactCSSTransitionGroupChild.propTypes.name,
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
 
-	    transitionAppear: React.PropTypes.bool,
-	    transitionEnter: React.PropTypes.bool,
-	    transitionLeave: React.PropTypes.bool,
-	    transitionAppearTimeout: createTransitionTimeoutPropValidator('Appear'),
-	    transitionEnterTimeout: createTransitionTimeoutPropValidator('Enter'),
-	    transitionLeaveTimeout: createTransitionTimeoutPropValidator('Leave')
-	  },
+	function createStyleElement() {
+		var styleElement = document.createElement("style");
+		var head = getHeadElement();
+		styleElement.type = "text/css";
+		head.appendChild(styleElement);
+		return styleElement;
+	}
 
-	  getDefaultProps: function () {
-	    return {
-	      transitionAppear: false,
-	      transitionEnter: true,
-	      transitionLeave: true
-	    };
-	  },
+	function createLinkElement() {
+		var linkElement = document.createElement("link");
+		var head = getHeadElement();
+		linkElement.rel = "stylesheet";
+		head.appendChild(linkElement);
+		return linkElement;
+	}
 
-	  _wrapChild: function (child) {
-	    // We need to provide this childFactory so that
-	    // ReactCSSTransitionGroupChild can receive updates to name, enter, and
-	    // leave while it is leaving.
-	    return React.createElement(ReactCSSTransitionGroupChild, {
-	      name: this.props.transitionName,
-	      appear: this.props.transitionAppear,
-	      enter: this.props.transitionEnter,
-	      leave: this.props.transitionLeave,
-	      appearTimeout: this.props.transitionAppearTimeout,
-	      enterTimeout: this.props.transitionEnterTimeout,
-	      leaveTimeout: this.props.transitionLeaveTimeout
-	    }, child);
-	  },
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
 
-	  render: function () {
-	    return React.createElement(ReactTransitionGroup, assign({}, this.props, { childFactory: this._wrapChild }));
-	  }
-	});
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement());
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement();
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				styleElement.parentNode.removeChild(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement();
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				styleElement.parentNode.removeChild(styleElement);
+			};
+		}
 
-	module.exports = ReactCSSTransitionGroup;
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		var blob = new Blob([css], { type: "text/css" });
+
+		var oldSrc = linkElement.href;
+
+		linkElement.href = URL.createObjectURL(blob);
+
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
 
 /***/ },
 /* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @typechecks
-	 * @providesModule ReactCSSTransitionGroupChild
-	 */
+	// style-loader: Adds some css to the DOM by adding a <style> tag
 
-	'use strict';
-
-	var React = __webpack_require__(2);
-	var ReactDOM = __webpack_require__(3);
-
-	var CSSCore = __webpack_require__(200);
-	var ReactTransitionEvents = __webpack_require__(201);
-
-	var onlyChild = __webpack_require__(155);
-
-	// We don't remove the element from the DOM until we receive an animationend or
-	// transitionend event. If the user screws up and forgets to add an animation
-	// their node will be stuck in the DOM forever, so we detect if an animation
-	// does not start and if it doesn't, we just call the end listener immediately.
-	var TICK = 17;
-
-	var ReactCSSTransitionGroupChild = React.createClass({
-	  displayName: 'ReactCSSTransitionGroupChild',
-
-	  propTypes: {
-	    name: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.shape({
-	      enter: React.PropTypes.string,
-	      leave: React.PropTypes.string,
-	      active: React.PropTypes.string
-	    }), React.PropTypes.shape({
-	      enter: React.PropTypes.string,
-	      enterActive: React.PropTypes.string,
-	      leave: React.PropTypes.string,
-	      leaveActive: React.PropTypes.string,
-	      appear: React.PropTypes.string,
-	      appearActive: React.PropTypes.string
-	    })]).isRequired,
-
-	    // Once we require timeouts to be specified, we can remove the
-	    // boolean flags (appear etc.) and just accept a number
-	    // or a bool for the timeout flags (appearTimeout etc.)
-	    appear: React.PropTypes.bool,
-	    enter: React.PropTypes.bool,
-	    leave: React.PropTypes.bool,
-	    appearTimeout: React.PropTypes.number,
-	    enterTimeout: React.PropTypes.number,
-	    leaveTimeout: React.PropTypes.number
-	  },
-
-	  transition: function (animationType, finishCallback, userSpecifiedDelay) {
-	    var node = ReactDOM.findDOMNode(this);
-
-	    if (!node) {
-	      if (finishCallback) {
-	        finishCallback();
-	      }
-	      return;
-	    }
-
-	    var className = this.props.name[animationType] || this.props.name + '-' + animationType;
-	    var activeClassName = this.props.name[animationType + 'Active'] || className + '-active';
-	    var timeout = null;
-
-	    var endListener = function (e) {
-	      if (e && e.target !== node) {
-	        return;
-	      }
-
-	      clearTimeout(timeout);
-
-	      CSSCore.removeClass(node, className);
-	      CSSCore.removeClass(node, activeClassName);
-
-	      ReactTransitionEvents.removeEndEventListener(node, endListener);
-
-	      // Usually this optional callback is used for informing an owner of
-	      // a leave animation and telling it to remove the child.
-	      if (finishCallback) {
-	        finishCallback();
-	      }
-	    };
-
-	    CSSCore.addClass(node, className);
-
-	    // Need to do this to actually trigger a transition.
-	    this.queueClass(activeClassName);
-
-	    // If the user specified a timeout delay.
-	    if (userSpecifiedDelay) {
-	      // Clean-up the animation after the specified delay
-	      timeout = setTimeout(endListener, userSpecifiedDelay);
-	    } else {
-	      // DEPRECATED: this listener will be removed in a future version of react
-	      ReactTransitionEvents.addEndEventListener(node, endListener);
-	    }
-	  },
-
-	  queueClass: function (className) {
-	    this.classNameQueue.push(className);
-
-	    if (!this.timeout) {
-	      this.timeout = setTimeout(this.flushClassNameQueue, TICK);
-	    }
-	  },
-
-	  flushClassNameQueue: function () {
-	    if (this.isMounted()) {
-	      this.classNameQueue.forEach(CSSCore.addClass.bind(CSSCore, ReactDOM.findDOMNode(this)));
-	    }
-	    this.classNameQueue.length = 0;
-	    this.timeout = null;
-	  },
-
-	  componentWillMount: function () {
-	    this.classNameQueue = [];
-	  },
-
-	  componentWillUnmount: function () {
-	    if (this.timeout) {
-	      clearTimeout(this.timeout);
-	    }
-	  },
-
-	  componentWillAppear: function (done) {
-	    if (this.props.appear) {
-	      this.transition('appear', done, this.props.appearTimeout);
-	    } else {
-	      done();
-	    }
-	  },
-
-	  componentWillEnter: function (done) {
-	    if (this.props.enter) {
-	      this.transition('enter', done, this.props.enterTimeout);
-	    } else {
-	      done();
-	    }
-	  },
-
-	  componentWillLeave: function (done) {
-	    if (this.props.leave) {
-	      this.transition('leave', done, this.props.leaveTimeout);
-	    } else {
-	      done();
-	    }
-	  },
-
-	  render: function () {
-	    return onlyChild(this.props.children);
-	  }
-	});
-
-	module.exports = ReactCSSTransitionGroupChild;
+	// load the styles
+	var content = __webpack_require__(200);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(198)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./Demo.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./Demo.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
 /* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule CSSCore
-	 * @typechecks
-	 */
+	exports = module.exports = __webpack_require__(197)();
+	// imports
 
-	'use strict';
 
-	var invariant = __webpack_require__(13);
+	// module
+	exports.push([module.id, ".demo {\n  margin: 30px 0;\n  width: 600px; }\n  .demo .toggle {\n    margin: 0 200px 60px; }\n", ""]);
 
-	/**
-	 * The CSSCore module specifies the API (and implements most of the methods)
-	 * that should be used when dealing with the display of elements (via their
-	 * CSS classes and visibility on screen. It is an API focused on mutating the
-	 * display and not reading it as no logical state should be encoded in the
-	 * display of elements.
-	 */
+	// exports
 
-	var CSSCore = {
-
-	  /**
-	   * Adds the class passed in to the element if it doesn't already have it.
-	   *
-	   * @param {DOMElement} element the element to set the class on
-	   * @param {string} className the CSS className
-	   * @return {DOMElement} the element passed in
-	   */
-	  addClass: function (element, className) {
-	    !!/\s/.test(className) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'CSSCore.addClass takes only a single class name. "%s" contains ' + 'multiple classes.', className) : invariant(false) : undefined;
-
-	    if (className) {
-	      if (element.classList) {
-	        element.classList.add(className);
-	      } else if (!CSSCore.hasClass(element, className)) {
-	        element.className = element.className + ' ' + className;
-	      }
-	    }
-	    return element;
-	  },
-
-	  /**
-	   * Removes the class passed in from the element
-	   *
-	   * @param {DOMElement} element the element to set the class on
-	   * @param {string} className the CSS className
-	   * @return {DOMElement} the element passed in
-	   */
-	  removeClass: function (element, className) {
-	    !!/\s/.test(className) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'CSSCore.removeClass takes only a single class name. "%s" contains ' + 'multiple classes.', className) : invariant(false) : undefined;
-
-	    if (className) {
-	      if (element.classList) {
-	        element.classList.remove(className);
-	      } else if (CSSCore.hasClass(element, className)) {
-	        element.className = element.className.replace(new RegExp('(^|\\s)' + className + '(?:\\s|$)', 'g'), '$1').replace(/\s+/g, ' ') // multiple spaces to one
-	        .replace(/^\s*|\s*$/g, ''); // trim the ends
-	      }
-	    }
-	    return element;
-	  },
-
-	  /**
-	   * Helper to add or remove a class from an element based on a condition.
-	   *
-	   * @param {DOMElement} element the element to set the class on
-	   * @param {string} className the CSS className
-	   * @param {*} bool condition to whether to add or remove the class
-	   * @return {DOMElement} the element passed in
-	   */
-	  conditionClass: function (element, className, bool) {
-	    return (bool ? CSSCore.addClass : CSSCore.removeClass)(element, className);
-	  },
-
-	  /**
-	   * Tests whether the element has the class specified.
-	   *
-	   * @param {DOMNode|DOMWindow} element the element to set the class on
-	   * @param {string} className the CSS className
-	   * @return {boolean} true if the element has the class, false if not
-	   */
-	  hasClass: function (element, className) {
-	    !!/\s/.test(className) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'CSS.hasClass takes only a single class name.') : invariant(false) : undefined;
-	    if (element.classList) {
-	      return !!className && element.classList.contains(className);
-	    }
-	    return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
-	  }
-
-	};
-
-	module.exports = CSSCore;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 201 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactTransitionEvents
-	 */
-
-	'use strict';
-
-	var ExecutionEnvironment = __webpack_require__(9);
-
-	/**
-	 * EVENT_NAME_MAP is used to determine which event fired when a
-	 * transition/animation ends, based on the style property used to
-	 * define that event.
-	 */
-	var EVENT_NAME_MAP = {
-	  transitionend: {
-	    'transition': 'transitionend',
-	    'WebkitTransition': 'webkitTransitionEnd',
-	    'MozTransition': 'mozTransitionEnd',
-	    'OTransition': 'oTransitionEnd',
-	    'msTransition': 'MSTransitionEnd'
-	  },
-
-	  animationend: {
-	    'animation': 'animationend',
-	    'WebkitAnimation': 'webkitAnimationEnd',
-	    'MozAnimation': 'mozAnimationEnd',
-	    'OAnimation': 'oAnimationEnd',
-	    'msAnimation': 'MSAnimationEnd'
-	  }
-	};
-
-	var endEvents = [];
-
-	function detectEvents() {
-	  var testEl = document.createElement('div');
-	  var style = testEl.style;
-
-	  // On some platforms, in particular some releases of Android 4.x,
-	  // the un-prefixed "animation" and "transition" properties are defined on the
-	  // style object but the events that fire will still be prefixed, so we need
-	  // to check if the un-prefixed events are useable, and if not remove them
-	  // from the map
-	  if (!('AnimationEvent' in window)) {
-	    delete EVENT_NAME_MAP.animationend.animation;
-	  }
-
-	  if (!('TransitionEvent' in window)) {
-	    delete EVENT_NAME_MAP.transitionend.transition;
-	  }
-
-	  for (var baseEventName in EVENT_NAME_MAP) {
-	    var baseEvents = EVENT_NAME_MAP[baseEventName];
-	    for (var styleName in baseEvents) {
-	      if (styleName in style) {
-	        endEvents.push(baseEvents[styleName]);
-	        break;
-	      }
-	    }
-	  }
-	}
-
-	if (ExecutionEnvironment.canUseDOM) {
-	  detectEvents();
-	}
-
-	// We use the raw {add|remove}EventListener() call because EventListener
-	// does not know how to remove event listeners and we really should
-	// clean up. Also, these events are not triggered in older browsers
-	// so we should be A-OK here.
-
-	function addEventListener(node, eventName, eventListener) {
-	  node.addEventListener(eventName, eventListener, false);
-	}
-
-	function removeEventListener(node, eventName, eventListener) {
-	  node.removeEventListener(eventName, eventListener, false);
-	}
-
-	var ReactTransitionEvents = {
-	  addEndEventListener: function (node, eventListener) {
-	    if (endEvents.length === 0) {
-	      // If CSS transitions are not supported, trigger an "end animation"
-	      // event immediately.
-	      window.setTimeout(eventListener, 0);
-	      return;
-	    }
-	    endEvents.forEach(function (endEvent) {
-	      addEventListener(node, endEvent, eventListener);
-	    });
-	  },
-
-	  removeEndEventListener: function (node, eventListener) {
-	    if (endEvents.length === 0) {
-	      return;
-	    }
-	    endEvents.forEach(function (endEvent) {
-	      removeEventListener(node, endEvent, eventListener);
-	    });
-	  }
-	};
-
-	module.exports = ReactTransitionEvents;
-
-/***/ },
-/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25093,16 +24744,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Logo = __webpack_require__(203);
+	var _Logo = __webpack_require__(202);
 
 	var _Logo2 = _interopRequireDefault(_Logo);
 
-	var style = {
-	  width: '100%',
-	  background: '#222222',
-	  padding: '10px 20px',
-	  textAlign: 'center'
-	};
+	var _HeaderScss = __webpack_require__(203);
+
+	var _HeaderScss2 = _interopRequireDefault(_HeaderScss);
 
 	var _default = (function (_Component) {
 	  _inherits(_default, _Component);
@@ -25117,8 +24765,8 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2['default'].createElement(
-	        'div',
-	        { style: style },
+	        'header',
+	        null,
 	        _react2['default'].createElement(_Logo2['default'], { width: '200px' })
 	      );
 	    }
@@ -25131,7 +24779,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 203 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25226,6 +24874,92 @@
 
 	exports["default"] = _default;
 	module.exports = exports["default"];
+
+/***/ },
+/* 203 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(204);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(198)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Header.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Header.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 204 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(197)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "#header {\n  position: fixed;\n  width: 100%; }\n\nheader {\n  width: 100%;\n  background: #222222;\n  padding: 10px 20px;\n  text-align: center; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 205 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(206);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(198)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Document.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Document.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 206 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(197)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "body {\n  margin: 0;\n  display: -ms-flexbox;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: column;\n  -ms-flex-direction: column;\n  flex-direction: column;\n  -webkit-align-items: center;\n  -ms-flex-align: center;\n  align-items: center;\n  background: url(" + __webpack_require__(207) + ");\n  background-size: 80px 160px; }\n\n#main {\n  margin-top: 57px; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 207 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAFACAYAAAA7/HcbAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsSAAALEgHS3X78AAAEUElEQVR42u3bMWoUYBRG0YwE0b2kDqS1yBayoVRWWc+sI3sRbGIxBkyQgKDcz8w5zYA8ZIrLI/7PHB6OT08Xvzg+XsBfd3v1+z//UH8xztvh5v7lBnzt88fT57fvb/9F5sz9ydzd9enTBiQlQFICJHVZfwHO0/Nriw1ISoCkBEjq8OXr2++A8C98+vmvDxuQ1OXqS7m59z1nAzJBgKQESEqApARISoCkBEjKJYSEd0AmuISYS+ZsQCYIkJQASQmQlABJCZCUAEm5hJDwDsgElxBzyZwNyAQBkhIgKQGSEiApAZISICmXEBLeAZngEmIumbMBmSBAUgIkJUBSAiQlQFICJOUSQsI7IBNcQswlczYgEwRISoCkBEhKgKQESEqApFxCSHgHZIJLiLlkzgZkggBJCZCUAEkJkJQASQmQlEsICe+ATHAJMZfM2YBMECApAZISICkBkhIgKQGScgkh4R2QCS4h5pI5G5AJAiQlQFICJCVAUgIkJUBSLiEkvAMywSXEXDJnAzJBgKQESEqApARISoCkBEjKJYSEd0AmuISYS+ZsQCYIkJQASQmQlABJCZCUAEm5hJDwDsgElxBzyZwNyAQBkhIgKQGSEiApAZISICmXEBLeAZngEmIumbMBmSBAUgIkJUBSAiQlQFICJOUSQsI7IBNcQswlczYgEwRISoCkBEhKgKQESEqApFxCSHgHZIJLiLlkzgZkggBJCZCUAEkJkJQASQmQlEsICe+ATHAJMZfM2YBMECApAZK6rL8A5+n26vRpA5ISICkBkjo8HF9eQo6P9VfiPXr+me81G5DU4eb+7Vvw+ou6uf9z7u769GkDkhIgKQGScgkh8fzaYgOSEiApAZLyOyEk/I9oJvidEHPJnA3IBAGSEiApAZISICkBkhIgKZcQEt4BmeASYi6ZswGZIEBSAiQlQFICJCVAUgIk5RJCwjsgE1xCzCVzNiATBEhKgKQESEqApARISoCkXEJIeAdkgkuIuWTOBmSCAEkJkJQASQmQlABJCZCUSwgJ74BMcAkxl8zZgEwQICkBkhIgKQGSEiApAZJyCSHhHZAJLiHmkjkbkAkCJCVAUgIkJUBSAiQlQFIuISS8AzLBJcRcMmcDMkGApARISoCkBEhKgKQESMolhIR3QCa4hJhL5mxAJgiQlABJCZCUAEkJkJQASbmEkPAOyASXEHPJnA3IBAGSEiApAZISICkBkhIgKZcQEt4BmeASYi6ZswGZIEBSAiQlQFICJCVAUgIk5RJCwjsgE1xCzCVzNiATBEhKgKQESEqApARISoCkXEJIeAdkgkuIuWTOBmSCAEkJkJQASQmQlABJCZCUSwgJ74BMcAkxl8zZgEwQICkBkhIgKQGSEiApAZJyCSHhHZAJLiHmkjkbkAkCJCVAUgIkJUBSAiQlQFIuISS8AzLBJcRcMmcDMkGApARI6rL+Apyn26vTpw1ISoCkBEjqBy8haLl28NnKAAAAAElFTkSuQmCC"
 
 /***/ }
 /******/ ]);

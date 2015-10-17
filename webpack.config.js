@@ -16,6 +16,22 @@ module.exports = {
         test: /\.js/,
         exclude: /node_modules/,
         loader: 'babel-loader?stage=0'
+      },
+      {
+        test: /\.scss|\.css$/,
+        loaders: [
+          'style',
+          'css',
+          'sass'
+        ]
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|woff|woff2)$/,
+        loader: 'url?limit=10000&name=[path][name].[ext]'
+      },
+      {
+        test: /\.(eot|ttf)$/,
+        loader: 'file'
       }
     ]
   }
