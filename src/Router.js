@@ -10,6 +10,7 @@ export default (
   <Router history={history}>
     <Route path="/react-desktop/" component={Docs}/>
     <Route path="/react-desktop/docs/" component={Docs}/>
+    <Route path="/react-desktop/docs/*" component={Docs}/>
     <Route path="/react-desktop/demo/" component={Demo}/>
   </Router>
 );
