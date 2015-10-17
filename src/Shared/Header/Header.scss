@@ -4,9 +4,83 @@
   width: 100%;
 }
 
+#main {
+  margin-top: 63px;
+}
+
 header {
   width: 100%;
-  background: #222222;
-  padding: 10px 20px;
-  text-align: center;
+  background: #192436;
+  padding: 10px 100px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+
+  &>a {
+    flex-grow: 0;
+  }
+
+  nav {
+    margin-left: 40px;
+    flex-grow: 1;
+
+    &:last-child {
+      flex-grow: 0;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+
+      li {
+        margin: 0;
+        padding: 0;
+
+        a {
+          display: block;
+          padding: 0 12px;
+          color: white;
+          font-weight: 200;
+          text-decoration: none;
+          line-height: 40px;
+
+          &.github {
+            display: flex;
+            align-items: center;
+
+            span {
+              display: flex;
+              align-items: center;
+            }
+            svg {
+              margin-right: 8px;
+              width: 20px;
+              height: 20px;
+
+              * {
+                fill: white;
+              }
+            }
+          }
+
+          &:hover {
+            color: #38c4e8;
+            svg * {
+              fill: #38c4e8;
+            }
+          }
+
+          &:active {
+            color: darken(#38c4e8, 20%);
+            svg * {
+              fill: darken(#38c4e8, 20%);
+            }
+          }
+        }
+      }
+    }
+  }
 }

@@ -1,4 +1,11 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+
 body {
+  width: 100%;
+  height: 100%;
   margin: 0;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -9,10 +16,5 @@ body {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  background: url("./background.png");
-  background-size: 80px 160px;
-}
-
-#main {
-  margin-top: 57px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

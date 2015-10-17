@@ -32,6 +32,10 @@ module.exports = {
       {
         test: /\.(eot|ttf)$/,
         loader: 'file'
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline'
       }
     ]
   }

@@ -8,7 +8,6 @@
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
-  width: 200px;
   border-radius: 42px;
   border: 1px solid rgba(255, 255, 255, .8);
 
@@ -17,15 +16,15 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 12px;
-    width: 50px;
-    text-align: right;
-    cursor: default;
-    color: #333;
+    padding: 0 10px;
 
-    &:last-of-type {
-      text-align: left;
+    svg {
+      width: 16px;
+      height: 16px;
+
+      * {
+        fill: #333;
+      }
     }
   }
 

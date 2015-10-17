@@ -13,6 +13,14 @@ export default class extends Component {
     };
   }
 
+  componentDidMount() {
+    document.body.className = 'demo-background';
+  }
+
+  componentWillUnmount() {
+    document.body.className = '';
+  }
+
   changeOs(os) {
     this.setState({ os: os });
   }

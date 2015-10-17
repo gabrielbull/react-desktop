@@ -1,8 +1,13 @@
+.demo-background {
+  background: url("./background.png");
+  background-size: 80px 160px;
+}
+
 .demo {
   margin: 30px 0;
   width: 600px;
 
   .toggle {
-    margin: 0 200px 60px;
+    margin: 0 217px 60px;
   }
 }
