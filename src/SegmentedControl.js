@@ -45,19 +45,10 @@ class SegmentedControl extends Component {
     }.bind(this));
 
     const tabs = <Tabs ref="tabs" tabs={children}/>;
-
-    let styles = this.styles;
-    if (!this.state.visible) {
-      styles = mergeStyles(styles, { visibility: 'hidden' });
-    } else {
-      styles = mergeStyles(styles, { visibility: 'visible' });
-    }
-
-    if (!this.state.display) {
-      styles = mergeStyles(styles, { display: 'none' });
-    } else {
-      styles = mergeStyles(styles, { display: 'block' });
-    }
+    const styles = mergeStyles(this.styles, {
+      visibility: this.state.visible ? 'visible' : 'hidden',
+      display: this.state.display ? 'block' : 'none'
+    });
 
     return (
       <div style={applyStyle(styles)} ref="element" {...props}>

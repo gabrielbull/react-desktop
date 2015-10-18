@@ -46,8 +46,8 @@ class LabelWindows extends Component {
 
   render() {
     let { children, style, color, row, form, align, display, visible, ...props } = this.props;
-
     let styles = this.styles;
+
     if (color) {
       switch (color) {
       case 'red': color = '#fd2700'; break;
@@ -63,17 +63,10 @@ class LabelWindows extends Component {
       styles = mergeStyles(styles, { textAlign: align });
     }
 
-    if (!this.state.visible) {
-      styles = mergeStyles(styles, { visibility: 'hidden' });
-    } else {
-      styles = mergeStyles(styles, { visibility: 'visible' });
-    }
-
-    if (!this.state.display) {
-      styles = mergeStyles(styles, { display: 'none' });
-    } else {
-      styles = mergeStyles(styles, { display: 'block' });
-    }
+    styles = mergeStyles(styles, {
+      visibility: this.state.visible ? 'visible' : 'hidden',
+      display: this.state.display ? 'block' : 'none'
+    });
 
     return (
       <div ref="label" {...props} style={applyStyle(styles)}>
