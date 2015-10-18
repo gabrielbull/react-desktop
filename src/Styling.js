@@ -135,7 +135,7 @@ export default function Styling(ComposedComponent) {
       }
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate() {
       if (this.refs.component.refs.element) {
         this.applyPropStyles();
       }

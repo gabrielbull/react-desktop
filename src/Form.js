@@ -1,6 +1,6 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import ReactDOM from 'react-dom';
-import Styling, { mergeStyles, applyStyle } from './Styling';
+import { mergeStyles, applyStyle } from './Styling';
 import Row from './Form/Row';
 import Label from './Label';
 import RowWrapper from './Form/RowWrapper';

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Styling, { mergeStyles, applyStyle, parseStyle } from '../../Styling';
+import Styling, { mergeStyles, applyStyle } from '../../Styling';
 import Button from './Button';
 import WindowState from '../../WindowState';
 

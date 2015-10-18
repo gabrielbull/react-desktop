@@ -1,5 +1,5 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
-import Styling, { mergeStyles, applyStyle } from './Styling';
+import { mergeStyles, applyStyle } from './Styling';
 import ItemClass from './SegmentedControl/Item';
 import Tabs from './SegmentedControl/Tabs';
 

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Styling, { mergeStyles, applyStyle } from '../Styling';
+import { mergeStyles, applyStyle } from './../Styling';
 
 var styles = {
   windows_10: {

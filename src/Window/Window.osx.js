@@ -1,5 +1,5 @@
-import React, { Component, PropTypes, Children, cloneElement } from 'react';
-import Styling, { mergeStyles, applyStyle } from '../Styling';
+import React, { Component, PropTypes, Children } from 'react';
+import { mergeStyles, applyStyle } from '../Styling';
 import TitleBar from '../TitleBar';
 import TitleBarOSX from '../TitleBar/TitleBar.osx';
 
@@ -55,13 +55,13 @@ class WindowOSX extends Component {
       styles = mergeStyles(styles, this.styles.chrome);
     }
 
-    const titleBar = Children.map(children, function (element, index) {
+    const titleBar = Children.map(children, function (element) {
       if (element.type === TitleBar || element.type === TitleBarOSX) {
         return element;
       }
     }.bind(this));
 
-    children = Children.map(children, function (element, index) {
+    children = Children.map(children, function (element) {
       if (element.type !== TitleBar && element.type !== TitleBarOSX) {
         return element;
       }

@@ -1,6 +1,5 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
-import ReactDOM from 'react-dom';
-import Styling, { mergeStyles, applyStyle } from '../Styling';
+import { mergeStyles, applyStyle } from '../Styling';
 import Label from '../Label';
 import TextField from '../TextField';
 import PushButton from '../Button/PushButton.osx';
@@ -48,7 +47,7 @@ class Row extends Component {
     let { children, style, form, display, visible, ...props } = this.props;
     let isButtonsRow = null;
 
-    children = Children.map(children, function (element, index) {
+    children = Children.map(children, function (element) {
       if (element.type === Label) {
         isButtonsRow = false;
       } else if (element.type === TextField) {

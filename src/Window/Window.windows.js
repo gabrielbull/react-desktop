@@ -1,5 +1,5 @@
-import React, { Component, PropTypes, Children, cloneElement } from 'react';
-import Styling, { mergeStyles, applyStyle } from '../Styling';
+import React, { Component, PropTypes, Children } from 'react';
+import { mergeStyles, applyStyle } from '../Styling';
 import WindowState from '../WindowState';
 import TitleBar from '../TitleBar';
 import TitleBarWindows from '../TitleBar/TitleBar.windows';
@@ -66,13 +66,13 @@ class WindowWindows extends Component {
       }
     }
 
-    const titleBar = Children.map(children, function (element, index) {
+    const titleBar = Children.map(children, function (element) {
       if (element.type === TitleBar || element.type === TitleBarWindows) {
         return element;
       }
     }.bind(this));
 
-    children = Children.map(children, function (element, index) {
+    children = Children.map(children, function (element) {
       if (element.type !== TitleBar && element.type !== TitleBarWindows) {
         return element;
       }

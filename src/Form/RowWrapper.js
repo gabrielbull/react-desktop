@@ -1,5 +1,4 @@
 import React, { Component, Children, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 import Row from './Row';
 import Label from '../Label';
 
@@ -12,9 +11,9 @@ class RowWrapper extends Component {
 
   get labels() {
     let labels = [];
-    Children.map(this.props.children, function (child, index) {
+    Children.map(this.props.children, function (child) {
       if (child.type === Row) {
-        Children.map(child.props.children, function (child, index) {
+        Children.map(child.props.children, function (child) {
           if (child.type === Label) {
             labels = [...labels, child];
           }
