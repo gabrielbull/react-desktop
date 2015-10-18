@@ -1,2 +1,5 @@
-import IndeterminateCircularProgressIndicator from './Progress/IndeterminateCircularProgressIndicator.osx';
+/**
+ * @deprecated
+ */
+import IndeterminateCircularProgressIndicator from './ProgressCircle/IndeterminateCircularProgressIndicator.osx';
 export default IndeterminateCircularProgressIndicator;
