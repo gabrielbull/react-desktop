@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import { findDOMNode } from 'react-dom';
 
 /**
  * Dasherizes a camelCased string.
@@ -101,7 +101,7 @@ export default function Styling(ComposedComponent) {
 
     applyInlineStyles() {
       const states = [':hover', ':active', ':focus', ':placeholder'];
-      const element = ReactDOM.findDOMNode(this);
+      const element = findDOMNode(this);
       const id = element.getAttribute('data-reactid');
       for (const state of states) {
         if (this.refs.component.styles[state]) {
@@ -113,7 +113,7 @@ export default function Styling(ComposedComponent) {
     applyPropStyles() {
       const states = ['hover', 'active', 'focus', 'hover-selector', 'active-selector', 'focus-selector'];
       if (this.refs.component.refs.element) {
-        const element = ReactDOM.findDOMNode(this.refs.component.refs.element);
+        const element = findDOMNode(this.refs.component.refs.element);
         const id = element.getAttribute('data-reactid');
 
         for (let state of states) {

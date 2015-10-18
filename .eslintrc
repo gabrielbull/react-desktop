@@ -23,6 +23,7 @@
     "indent": [2, 2],
     "quotes": [2, "single"],
     "no-unused-vars": 1,
+    "no-undef": 1,
 
     // JSX
     "jsx-quotes": 1,

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
+import { findDOMNode } from 'react-dom';
 import Styling, { mergeStyles, applyStyle } from '../Styling';
 
 var styles = {
@@ -40,7 +40,7 @@ class IndeterminateCircularProgressIndicatorOSX extends Component {
 
   componentDidMount() {
     this.animate();
-    if (ReactDOM.findDOMNode(this).previousSibling) {
+    if (findDOMNode(this).previousSibling) {
       this.applySiblingStyle();
     }
   }
