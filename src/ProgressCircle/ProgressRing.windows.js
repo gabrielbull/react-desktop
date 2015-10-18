@@ -58,10 +58,10 @@ class ProgressRingWindows extends Component {
 
   animate() {
     /*this.currentStep = 0;
-    this.steps = this.duration / this.framerate;
-    this.increment = 1 / this.steps;
-    this.animateStep();
-    this.interval = setInterval(this.animateStep.bind(this), 1000 / this.framerate);*/
+     this.steps = this.duration / this.framerate;
+     this.increment = 1 / this.steps;
+     this.animateStep();
+     this.interval = setInterval(this.animateStep.bind(this), 1000 / this.framerate);*/
   }
 
   animateStep() {
@@ -110,7 +110,8 @@ class ProgressRingWindows extends Component {
     const svg = (
       <svg
         id="field"
-        ref="element" x="0px" y="0px" viewBox="0 0 150 150" style={applyStyle(styles)} {...props}>
+        ref="element" x="0px" y="0px" viewBox="0 0 150 150" style={applyStyle(styles)} {...props}
+      >
         <circle id="ball" ref="0" fill="#000000" cx="66" cy="7.3" r="7.3" style={{position: 'absolute'}}/>
         <circle ref="1" fill="#000000" cx="66" cy="142.7" r="7.3"/>
         <circle ref="2" fill="#000000" cx="7.3" cy="41.2" r="7.3"/>

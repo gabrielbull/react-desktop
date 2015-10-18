@@ -4,8 +4,8 @@ window.requestAnimationFrame =
   window.webkitRequestAnimationFrame ||
   window.msRequestAnimationFrame;
 
-var field = document.getElementById("field");
-var ball = document.getElementById("ball");
+var field = document.getElementById('field');
+var ball = document.getElementById('ball');
 
 var maxX = field.clientWidth - ball.offsetWidth;
 var maxY = field.clientHeight - ball.offsetHeight;
