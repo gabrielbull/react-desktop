@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import Styling, { mergeStyles, applyStyle } from './../Styling';
-import WindowState from './../WindowState';
+import Styling, { mergeStyles, applyStyle } from '../Styling';
+import WindowState from '../WindowState';
 
 var styles = {
   windows_10: {
