@@ -1,5 +1,5 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
-import ReactDOM from 'react-dom';
+import { findDOMNode } from 'react-dom';
 import { mergeStyles, applyStyle } from './Styling';
 import Row from './Form/Row';
 import Label from './Label';
@@ -52,7 +52,7 @@ class Form extends Component {
     let maxWidth = 0;
     let labels = [];
     for (let label of this.labels) {
-      label = ReactDOM.findDOMNode(label);
+      label = findDOMNode(label);
       labels = [...labels, label];
       maxWidth =
         label.offsetWidth > maxWidth ? label.offsetWidth : maxWidth;
@@ -68,7 +68,7 @@ class Form extends Component {
 
     for (var prop in this.refs) {
       if (this.refs.hasOwnProperty(prop)) {
-        let row = ReactDOM.findDOMNode(this.refs[prop]);
+        let row = findDOMNode(this.refs[prop]);
         rows = [...rows, row];
         maxWidth =
           row.offsetWidth > maxWidth ? row.offsetWidth : maxWidth;

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
+import { findDOMNode } from 'react-dom';
 import Styling, { mergeStyles, applyStyle } from '../Styling';
 import WindowState from '../WindowState';
 
@@ -55,7 +55,7 @@ class Button extends Component {
   }
 
   componentDidMount() {
-    if (ReactDOM.findDOMNode(this).previousSibling) {
+    if (findDOMNode(this).previousSibling) {
       this.applySiblingStyle();
     }
   }

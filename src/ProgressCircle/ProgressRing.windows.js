@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
+import { findDOMNode } from 'react-dom';
 import Styling, { mergeStyles, applyStyle } from '../Styling';
 
 var styles = {
@@ -41,7 +41,7 @@ class ProgressRingWindows extends Component {
   componentDidMount() {
     require('./ProgressRing.windows/Animation.js');
     //this.animate();
-    if (ReactDOM.findDOMNode(this).previousSibling) {
+    if (findDOMNode(this).previousSibling) {
       this.applySiblingStyle();
     }
   }
