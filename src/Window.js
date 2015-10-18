@@ -14,7 +14,6 @@ class Window extends Component {
   };
 
   render() {
-    console.log(Desktop.os);
     if (Desktop.os === 'win') {
       return <WindowWindows {...this.props}/>
     } else {
