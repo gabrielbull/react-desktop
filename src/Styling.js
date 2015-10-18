@@ -65,7 +65,7 @@ function addRawStyle(stylesheet) {
 export function mergeStyles(...styles) {
   let merged = {};
   for (const style of styles) {
-    merged = Object.assign(merged, style);
+    Object.assign(merged, style);
   }
   return merged;
 }
