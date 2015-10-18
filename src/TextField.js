@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { OS } from './Desktop';
+import Desktop from './Desktop';
 import TextFieldOSX from './TextField/TextField.osx';
 import TextFieldWindows from './TextField/TextField.windows';
 
@@ -12,7 +12,7 @@ class TextField extends Component {
   };
 
   render() {
-    if (OS === 'win') {
+    if (Desktop.os === 'win') {
       return <TextFieldWindows {...this.props}/>
     } else {
       return <TextFieldOSX {...this.props}/>

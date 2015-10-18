@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { OS } from './Desktop';
+import Desktop from './Desktop';
 import WindowOSX from './Window/Window.osx';
 import WindowWindows from './Window/Window.windows';
 
@@ -14,7 +14,8 @@ class Window extends Component {
   };
 
   render() {
-    if (OS === 'win') {
+    console.log(Desktop.os);
+    if (Desktop.os === 'win') {
       return <WindowWindows {...this.props}/>
     } else {
       return <WindowOSX {...this.props}/>

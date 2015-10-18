@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { OS } from './Desktop';
+import Desktop from './Desktop';
 import TitleBarOX from './TitleBar/TitleBar.osx';
 import TitleBarWindows from './TitleBar/TitleBar.windows';
 
@@ -18,7 +18,7 @@ class TitleBar extends Component {
   };
 
   render() {
-    if (OS === 'win') {
+    if (Desktop.os === 'win') {
       return <TitleBarWindows {...this.props}/>
     } else {
       return <TitleBarOX {...this.props}/>

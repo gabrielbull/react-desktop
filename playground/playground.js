@@ -27,7 +27,7 @@ document.body.innerHTML = `
   <script src="/.js"></script>
 `;
 
-Desktop.OS = 'win';
+Desktop.os = 'win';
 
 class Window1 extends Component {
   constructor() {

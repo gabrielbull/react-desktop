@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { OS } from './Desktop';
+import Desktop from './Desktop';
 import LabelOSX from './Label/Label.osx';
 import LabelWindows from './Label/Label.windows';
 
@@ -16,7 +16,7 @@ class Label extends Component {
   };
 
   render() {
-    if (OS === 'win') {
+    if (Desktop.os === 'win') {
       return <LabelWindows {...this.props}/>
     } else {
       return <LabelOSX {...this.props}/>

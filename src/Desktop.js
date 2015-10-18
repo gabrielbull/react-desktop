@@ -1,5 +1,15 @@
 export default class Desktop {
-  static OS = (function () {
+  static _os;
+
+  static set os(value) {
+    Desktop._os = value;
+  }
+
+  static get os() {
+    if (Desktop._os) {
+      return Desktop._os;
+    }
+
     // explicitly set these to avoid issues
     const window = window || null;
     const navigator = navigator || null;
@@ -27,7 +37,5 @@ export default class Desktop {
 
     // default to osx
     return 'osx';
-  })();
+  }
 }
-
-export const OS = Desktop.OS;

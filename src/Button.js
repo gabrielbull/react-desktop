@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { OS } from './Desktop';
+import Desktop from './Desktop';
 import ButtonOSX from './Button/PushButton.osx';
 import ButtonWindows from './Button/Button.windows';
 
@@ -16,7 +16,7 @@ class Button extends Component {
   };
 
   render() {
-    if (OS === 'win') {
+    if (Desktop.os === 'win') {
       return <ButtonWindows {...this.props}/>
     } else {
       return <ButtonOSX {...this.props}/>
