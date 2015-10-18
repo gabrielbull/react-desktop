@@ -5,9 +5,15 @@ export {default as Button } from './Button';
 export {default as TextField } from './TextField';
 export {default as Box } from './Box';
 export {default as SegmentedControl } from './SegmentedControl';
-export {default as IndeterminateCircularProgressIndicator } from './IndeterminateCircularProgressIndicator';
 export {default as Form } from './Form';
 export {default as Label } from './Label';
 export {default as Desktop } from './Desktop';
-export {default as OSX } from './OSX';
-export {default as Windows } from './Windows';
+export {default as ProgressCircle } from './ProgressCircle';
+
+export * as Windows from './Windows';
+export * as OSX from './OSX';
+
+/**
+ * @deprecated
+ */
+export {default as IndeterminateCircularProgressIndicator } from './IndeterminateCircularProgressIndicator';

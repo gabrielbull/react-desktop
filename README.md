@@ -51,7 +51,8 @@ Guides on installation, components and advanced usage are found in the [document
 - [x] Window
 - [x] Title Bar
 - [ ] Button
-- [ ] TextInput
+- [ ] Text Input
+- [ ] Progress Ring
 
 ## Screenshots
 

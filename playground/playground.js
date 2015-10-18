@@ -7,7 +7,7 @@ import {
   Toolbar,
   Box,
   SegmentedControl,
-  IndeterminateCircularProgressIndicator,
+  ProgressCircle,
   Form,
   Label,
   Window,
@@ -90,7 +90,7 @@ class Window2 extends Component {
                   <Button>Button</Button>
                   <Button onPress="submit" color="blue">Button Blue</Button>
 
-                  <IndeterminateCircularProgressIndicator absolute/>
+                  <ProgressCircle absolute/>
                 </Form.Row>
               </Form>
             </SegmentedControl.Item>
