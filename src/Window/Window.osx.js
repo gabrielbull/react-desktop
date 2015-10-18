@@ -67,17 +67,10 @@ class WindowOSX extends Component {
       }
     }.bind(this));
 
-    if (!this.state.visible) {
-      styles = mergeStyles(styles, { visibility: 'hidden' });
-    } else {
-      styles = mergeStyles(styles, { visibility: 'visible' });
-    }
-
-    if (!this.state.display) {
-      styles = mergeStyles(styles, { display: 'none' });
-    } else {
-      styles = mergeStyles(styles, { display: 'flex' });
-    }
+    styles = mergeStyles(styles, {
+      visibility: this.state.visible ? 'visible' : 'hidden',
+      display: this.state.display ? 'flex' : 'none'
+    });
 
     return (
       <div style={applyStyle(styles)} {...props}>

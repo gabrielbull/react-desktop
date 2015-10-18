@@ -82,8 +82,8 @@ class PushButton extends Component {
 
   render() {
     let { children, color, onPress, form, display, visible, ...props } = this.props;
-
     let styles = this.styles;
+
     if (color === 'blue' && this.state.windowFocused) {
       styles = mergeStyles(this.styles, this.styles.blue);
     }
@@ -96,17 +96,10 @@ class PushButton extends Component {
       onPress = this.props.onClick ? this.props.onClick : this.props.onPress;
     }
 
-    if (!this.state.visible) {
-      styles = mergeStyles(styles, { visibility: 'hidden' });
-    } else {
-      styles = mergeStyles(styles, { visibility: 'visible' });
-    }
-
-    if (!this.state.display) {
-      styles = mergeStyles(styles, { display: 'none' });
-    } else {
-      styles = mergeStyles(styles, { display: 'block' });
-    }
+    styles = mergeStyles(styles, {
+      visibility: this.state.visible ? 'visible' : 'hidden',
+      display: this.state.display ? 'block' : 'none'
+    });
 
     return (
       <button
