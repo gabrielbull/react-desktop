@@ -14,20 +14,7 @@ import {
   Desktop
 } from '../src/index';
 
-document.title = 'React Desktop Playground';
-document.body.style.padding = '30px 40px';
-document.body.style.background = 'white';
-document.body.style.display = 'flex';
-document.body.style.flexDirection = 'column';
-document.body.style.alignItems = 'center';
-
-document.body.innerHTML = `
-  <div id="window1" style="width: 600px;"></div>
-  <div id="window2" style="width: 600px;"></div>
-  <script src="/.js"></script>
-`;
-
-class Window1 extends Component {
+export class Window1 extends Component {
   constructor() {
     super();
   }
@@ -48,7 +35,7 @@ class Window1 extends Component {
 }
 
 
-class Window2 extends Component {
+export class Window2 extends Component {
   constructor() {
     super();
     this.state = {selectedTab: 'login'};
@@ -112,7 +99,3 @@ class Window2 extends Component {
     );
   }
 }
-
-
-ReactDOM.render(<Window1/>, document.getElementById('window1'));
-ReactDOM.render(<Window2/>, document.getElementById('window2'));

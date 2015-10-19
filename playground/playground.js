@@ -13,6 +13,7 @@ import {
   Window,
   Desktop
 } from '../src/index';
+import {Window1, Window2} from './playground.win';
 
 document.title = 'React Desktop Playground';
 document.body.style.padding = '30px 40px';
@@ -26,68 +27,6 @@ document.body.innerHTML = `
   <div id="window2" style="width: 600px;"></div>
   <script src="/.js"></script>
 `;
-
-Desktop.os = 'win';
-
-class Window1 extends Component {
-  constructor() {
-    super();
-  }
-
-  render() {
-    return (
-      <Window chrome style={{marginBottom: '60px'}}>
-        <TitleBar
-          title="TitleBar"
-          controls
-          onClosePress={() => { alert('close'); }}
-          onMinimizePress={() => { alert('minimize'); }}
-          onMaximizePress={() => { alert('mazimize'); }}
-        />
-      </Window>
-    );
-  }
-}
-
-
-class Window2 extends Component {
-  constructor() {
-    super();
-    this.state = {selectedTab: 'login'};
-  }
-
-  render() {
-    return (
-      <Window chrome>
-        <TitleBar title="TitleBar with Toolbar" controls>
-          <Toolbar/>
-        </TitleBar>
-
-        <Form onSubmit={() => { alert('form submitted'); }}>
-          <Label color="red" align="center">
-            There was an error submitting this form.
-          </Label>
-
-          <Form.Row>
-            <TextInput header="Label" defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
-          </Form.Row>
-
-          <Form.Row>
-            <Label>Longer label:</Label>
-            <TextInput defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
-          </Form.Row>
-
-          <Form.Row>
-            <Button>Button</Button>
-            <Button onPress="submit" color="blue">Button Blue</Button>
-
-            <IndeterminateProgressWheel absolute/>
-          </Form.Row>
-        </Form>
-      </Window>
-    );
-  }
-}
 
 ReactDOM.render(<Window1/>, document.getElementById('window1'));
 ReactDOM.render(<Window2/>, document.getElementById('window2'));
