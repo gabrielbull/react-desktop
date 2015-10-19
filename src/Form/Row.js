@@ -1,8 +1,12 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import { mergeStyles, applyStyle } from '../Styling';
 import Label from '../Label';
-import TextField from '../TextField';
-import PushButton from '../Button/PushButton.osx';
+import TextInput from '../TextInput';
+import TextFieldOSX from '../TextInput/TextField.osx';
+import TextBoxWindows from '../TextInput/TextBox.windows';
+import Button from '../Button';
+import PushButtonOSX from '../Button/PushButton.osx';
+import ButtonWindows from '../Button/Button.windows';
 
 var styles = {
   osx_10_11: {
@@ -50,9 +54,12 @@ class Row extends Component {
     children = Children.map(children, function (element) {
       if (element.type === Label) {
         isButtonsRow = false;
-      } else if (element.type === TextField) {
+      } else if (element.type === TextInput || element.type === TextFieldOSX || element.type === TextBoxWindows) {
         isButtonsRow = false;
-      } else if (element.type === PushButton && isButtonsRow === null) {
+      } else if (
+        (element.type === Button || element.type === PushButtonOSX || element.type === ButtonWindows) &&
+        isButtonsRow === null
+      ) {
         isButtonsRow = true;
       }
       return cloneElement(element, { form: form, row: this });

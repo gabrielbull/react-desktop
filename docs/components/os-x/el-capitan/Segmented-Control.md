@@ -1,1 +1,0 @@
-## Segmented Control

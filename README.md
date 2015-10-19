@@ -50,8 +50,10 @@ Guides on installation, components and advanced usage are found in the [document
 
 - [x] Window
 - [x] Title Bar
+- [ ] Label
+- [ ] Form
 - [ ] Button
-- [ ] Text Input
+- [ ] Text Box
 - [x] Indeterminate Progress Ring
 - [ ] Indeterminate Progress Bar
 - [ ] Determinate Progress Bar

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {
   TitleBar,
   Button,
-  TextField,
+  TextInput,
   Toolbar,
   Box,
   SegmentedControl,
@@ -63,55 +63,28 @@ class Window2 extends Component {
           <Toolbar/>
         </TitleBar>
 
-        <Box className="box">
-          <SegmentedControl>
-            <SegmentedControl.Item
-              title="Selected"
-              selected={this.state.selectedTab === 'login'}
-              onPress={() => { this.setState({ selectedTab: 'login' }) }}
-              className="form"
-            >
-              <Form onSubmit={() => { alert('form submitted'); }}>
-                <Label color="red" align="center">
-                  There was an error submitting this form.
-                </Label>
+        <Form onSubmit={() => { alert('form submitted'); }}>
+          <Label color="red" align="center">
+            There was an error submitting this form.
+          </Label>
 
-                <Form.Row>
-                  <Label>Label:</Label>
-                  <TextField defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
-                </Form.Row>
+          <Form.Row>
+            <Label>Label:</Label>
+            <TextInput defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
+          </Form.Row>
 
-                <Form.Row>
-                  <Label>Longer label:</Label>
-                  <TextField defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
-                </Form.Row>
+          <Form.Row>
+            <Label>Longer label:</Label>
+            <TextInput defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
+          </Form.Row>
 
-                <Form.Row>
-                  <Button>Button</Button>
-                  <Button onPress="submit" color="blue">Button Blue</Button>
+          <Form.Row>
+            <Button>Button</Button>
+            <Button onPress="submit" color="blue">Button Blue</Button>
 
-                  <IndeterminateProgressWheel absolute/>
-                </Form.Row>
-              </Form>
-            </SegmentedControl.Item>
-
-            <SegmentedControl.Item
-              title="Segmented"
-              selected={this.state.selectedTab === 'segmented'}
-              onPress={() => { this.setState({ selectedTab: 'segmented' }) }}
-            >
-              <Label>Hello World</Label>
-            </SegmentedControl.Item>
-
-            <SegmentedControl.Item
-              title="Control"
-              selected={this.state.selectedTab === 'control'}
-              onPress={() => { this.setState({ selectedTab: 'control' }) }}
-            >
-              <Label>Goodbye World</Label>
-            </SegmentedControl.Item>
-          </SegmentedControl>
-        </Box>
+            <IndeterminateProgressWheel absolute/>
+          </Form.Row>
+        </Form>
       </Window>
     );
   }

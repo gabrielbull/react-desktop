@@ -11,7 +11,7 @@ var styles = {
 
     container: {
       position: 'relative',
-      height: '16px'
+      height: '20px'
     },
 
     absolute: {

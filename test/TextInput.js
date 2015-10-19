@@ -1,17 +1,16 @@
 import { expect } from 'chai';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import TextField from '../src/TextField';
+import TextField from '../src/TextInput';
 
-describe('TextField', () => {
-  it('create text field component with a placeholder', () => {
+describe('TextInput', () => {
+  it('create text input component with a placeholder', () => {
     const string = renderToString(<TextField placeholder="Placeholder Text" />);
     expect(string).to.match(/placeholder="Placeholder Text"/);
   });
 
-  it('create text field component with default text value', () => {
+  it('create text input component with default text value', () => {
     const string = renderToString(<TextField defaultValue="Default Text" />);
     expect(string).to.match(/value="Default Text"/);
   });
-
 });
