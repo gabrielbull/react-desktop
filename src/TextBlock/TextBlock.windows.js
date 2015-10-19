@@ -8,7 +8,7 @@ var styles = {
     lineHeight: '25.96px',
     fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
     fontSize: '12px',
-    whiteSpace: 'nowrap',
+    whiteSpace: 'nowrap'
   },
 
   rowLabel: {
@@ -31,7 +31,7 @@ class TextBlockWindows extends Component {
 
   constructor(props) {
     super();
-    this.state = { visible: props.visible !== false, display: props.display !== false };
+    this.state = {visible: props.visible !== false, display: props.display !== false};
   }
 
   componentDidMount() {
@@ -50,9 +50,11 @@ class TextBlockWindows extends Component {
 
     if (color) {
       switch (color) {
-        case 'red': color = '#fd2700'; break;
+      case 'red':
+        color = '#fd2700';
+        break;
       }
-      componentStyle = mergeStyles(componentStyle, { color: color });
+      componentStyle = mergeStyles(componentStyle, {color: color});
     }
 
     if (row) {
@@ -60,7 +62,7 @@ class TextBlockWindows extends Component {
     }
 
     if (align) {
-      componentStyle = mergeStyles(componentStyle, { textAlign: align });
+      componentStyle = mergeStyles(componentStyle, {textAlign: align});
     }
 
     componentStyle = mergeStyles(componentStyle, {

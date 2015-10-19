@@ -73,7 +73,7 @@ class Row extends Component {
     });
 
     return (
-      <div style={style} style={style} {...props}>
+      <div style={style} {...props}>
         {children}
       </div>
     );

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Styling, { mergeStyles, applyStyle } from '../../Styling';
+import Styling, { applyStyle } from '../../Styling';
 import WindowState from '../../WindowState';
 
 var styles = {
@@ -40,10 +40,6 @@ class Minimize extends Component {
   constructor() {
     super();
     this.state = { windowFocused: true };
-  }
-
-  get styles() {
-    return mergeStyles(styles.windows_10, this.props.style);
   }
 
   render() {

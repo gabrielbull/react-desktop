@@ -87,6 +87,7 @@ var styles = {
 class Tab extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
+    style: PropTypes.object,
     selected: PropTypes.bool.isRequired,
     tabId: PropTypes.number,
     firstChild: PropTypes.bool,
