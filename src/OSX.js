@@ -7,5 +7,5 @@ export { default as PushButton } from './Button/PushButton.osx';
 export { default as SegmentedControl } from './SegmentedControl/SegmentedControl.osx';
 export { default as TextField } from './TextInput/TextField.osx';
 export { default as TitleBar } from './TitleBar/TitleBar.osx';
-export { default as Toolbar } from './Toolbar';
+export { default as Toolbar } from './Toolbar/Toolbar.osx';
 export { default as Window } from './Window/Window.osx';

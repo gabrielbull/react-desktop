@@ -1,14 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import { mergeStyles } from './Styling';
+import Desktop from './Desktop';
+import ToolbarOSX from './Toolbar/Toolbar.osx';
 
-var styles = {
-  osx_10_11: {
-    WebkitUserSelect: 'none',
-    cursor: 'default'
-  }
-};
-
-class Toolbar extends Component {
+class TitleBar extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
     style: PropTypes.object,
@@ -16,28 +10,13 @@ class Toolbar extends Component {
     display: PropTypes.bool
   };
 
-  constructor(props) {
-    super();
-    this.state = { visible: props.visible !== false, display: props.display !== false };
-  }
-
-  get styles() {
-    return mergeStyles(styles.osx_10_11, this.props.style);
-  }
-
   render() {
-    const {style, visible, display, ...props } = this.props;
-    const styles = mergeStyles(this.styles, {
-      visibility: this.state.visible ? 'visible' : 'hidden',
-      display: this.state.display ? 'block' : 'none'
-    });
-
-    return (
-      <div style={styles} {...props}>
-        {this.props.children}
-      </div>
-    );
+    if (Desktop.os === 'win') {
+      return <div {...this.props}/>
+    } else {
+      return <ToolbarOSX {...this.props}/>
+    }
   }
 }
 
-export default Toolbar;
+export default TitleBar;
