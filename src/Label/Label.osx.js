@@ -1,18 +1,18 @@
 import React, { Component, PropTypes } from 'react';
-import { mergeStyles, applyStyle } from '../Styling';
+import { mergeStyles } from '../Styling';
 
 var styles = {
-  osx_10_11: {
+  label: {
     WebkitUserSelect: 'none',
     cursor: 'default',
     fontFamily: '"San Francisco", "Helvetica Neue", "Lucida Grande"',
     fontSize: '13px',
-    whiteSpace: 'nowrap',
+    whiteSpace: 'nowrap'
+  },
 
-    rowLabel: {
-      textAlign: 'right',
-      marginRight: '12px'
-    }
+  rowLabel: {
+    textAlign: 'right',
+    marginRight: '12px'
   }
 };
 
@@ -39,36 +39,37 @@ class LabelOSX extends Component {
     }
   }
 
-  get styles() {
-    return mergeStyles(styles.osx_10_11, this.props.style);
-  }
-
   render() {
-    let { children, style, color, row, form, align, display, visible, ...props } = this.props;
-    let styles = this.styles;
+    const { children, style, color, row, form, align, display, visible, ...props } = this.props;
 
-    if (color) {
-      switch (color) {
-      case 'red': color = '#fd2700'; break;
+    let componentStyle = mergeStyles(styles.label, style);
+    let componentColor = color;
+    if (componentColor) {
+      switch (componentColor) {
+      case 'red': componentColor = '#fd2700'; break;
       }
-      styles = mergeStyles(styles, { color: color });
+      componentStyle = mergeStyles(componentStyle, { color: componentColor });
     }
 
     if (row) {
-      styles = mergeStyles(styles, this.styles.rowLabel);
+      componentStyle = mergeStyles(componentStyle, styles.rowLabel);
     }
 
     if (align) {
-      styles = mergeStyles(styles, { textAlign: align });
+      componentStyle = mergeStyles(componentStyle, { textAlign: align });
     }
 
-    styles = mergeStyles(styles, {
+    componentStyle = mergeStyles(componentStyle, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
     });
 
     return (
-      <div ref="label" {...props} style={applyStyle(styles)}>
+      <div
+        ref="label"
+        style={componentStyle}
+        {...props}
+      >
         {children}
       </div>
     );

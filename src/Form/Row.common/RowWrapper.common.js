@@ -2,7 +2,7 @@ import React, { Component, Children, PropTypes } from 'react';
 import Row from './Row.common';
 import Label from '../../Label';
 import LabelOSX from '../../Label/Label.osx';
-import LabelWindows from '../../Label/Label.windows';
+import LabelWindows from '../../TextBlock/TextBlock.windows';
 
 class RowWrapper extends Component {
   static propTypes = {

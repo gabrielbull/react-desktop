@@ -4,7 +4,7 @@ import Styling, { mergeStyles, applyStyle } from '../Styling';
 import WindowState from '../WindowState';
 
 var styles = {
-  windows_10: {
+  button: {
     WebkitUserSelect: 'none',
     cursor: 'default',
     backgroundColor: 'rgb(202,202,202)',
@@ -20,14 +20,11 @@ var styles = {
     fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
     fontSize: '12px',
 
-    blue: {
-
-    },
-
     ':hover': {
       borderColor: 'rgba(51,153,255,0.7)',
       backgroundColor: 'rgba(51,153,255,0.4)'
     },
+
     ':active': {
       borderColor: 'rgba(51,153,255,0.9)',
       backgroundColor: 'rgba(41,143,245,0.4)'
@@ -66,17 +63,8 @@ class Button extends Component {
     }
   }
 
-  get styles() {
-    return mergeStyles(styles.windows_10, this.props.style);
-  }
-
   render() {
-    let { children, color, onPress, form, display, visible, ...props } = this.props;
-    let styles = this.styles;
-
-    if (color === 'blue' && this.state.windowFocused) {
-      styles = Object.assign({}, this.styles, this.styles.blue);
-    }
+    let { style, children, color, onPress, form, display, visible, ...props } = this.props;
 
     let type = 'button';
     if (this.props.onPress === 'submit') {
@@ -86,18 +74,19 @@ class Button extends Component {
       onPress = this.props.onClick ? this.props.onClick : this.props.onPress;
     }
 
-    styles = mergeStyles(styles, {
+    style = mergeStyles(style, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
     });
 
     return (
       <button
-        type={type}
         ref="element"
-        {...props}
-        style={applyStyle(styles)}
+        type={type}
         onClick={onPress}
+        data-style={applyStyle(styles.button)}
+        style={style}
+        {...props}
       >
         {children}
       </button>

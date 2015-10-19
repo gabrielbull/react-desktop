@@ -1,8 +1,8 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
-import { mergeStyles, applyStyle } from '../../Styling';
+import { mergeStyles } from '../../Styling';
 import Label from '../../Label';
 import LabelOSX from '../../Label/Label.osx';
-import LabelWindows from '../../Label/Label.windows';
+import LabelWindows from '../../TextBlock/TextBlock.windows';
 import TextInput from '../../TextInput';
 import TextFieldOSX from '../../TextInput/TextField.osx';
 import TextBoxWindows from '../../TextInput/TextBox.windows';
@@ -11,17 +11,17 @@ import PushButtonOSX from '../../Button/PushButton.osx';
 import ButtonWindows from '../../Button/Button.windows';
 
 var styles = {
-  common: {
+  row: {
     WebkitUserSelect: 'none',
     cursor: 'default',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: '20px',
+    marginBottom: '20px'
+  },
 
-    buttonRow: {
-      marginTop: '4px'
-    }
+  buttonRow: {
+    marginTop: '4px'
   }
 };
 
@@ -45,10 +45,6 @@ class Row extends Component {
     }
   }
 
-  get styles() {
-    return mergeStyles(styles.common, this.props.style);
-  }
-
   render() {
     let { children, style, form, display, visible, ...props } = this.props;
     let isButtonsRow = null;
@@ -67,18 +63,17 @@ class Row extends Component {
       return cloneElement(element, { form: form, row: this });
     }.bind(this));
 
-    let styles = this.styles;
     if (isButtonsRow) {
-      styles = mergeStyles(styles, this.styles.buttonRow);
+      style = mergeStyles(style, styles.buttonRow);
     }
 
-    styles = mergeStyles(styles, {
+    style = mergeStyles(style, styles.row, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'flex' : 'none'
     });
 
     return (
-      <div {...props} style={applyStyle(styles)}>
+      <div style={style} style={style} {...props}>
         {children}
       </div>
     );

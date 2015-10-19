@@ -1,33 +1,43 @@
 import React, { Component, PropTypes } from 'react';
 import Styling, { mergeStyles, applyStyle } from '../../Styling';
-import Button from './Button';
 import WindowState from '../../WindowState';
 
 var styles = {
-  osx_10_11: {
+  button: {
+    WebkitUserSelect: 'none',
+    WebkitAppRegion: 'no-drag',
+    cursor: 'default',
+    width: '10px',
+    height: '10px',
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderRadius: '50%',
+    marginBottom: '.5px',
+    marginLeft: '4px',
+    marginRight: '4px',
+    lineHeight: 0,
     backgroundColor: '#ffbd2e',
     borderColor: '#e1a116',
-
-    unfocused: {
-      backgroundColor: '#dddddd',
-      borderColor: '#d0d0d0',
-    },
-
-    icon: {
-      width: '8px',
-      height: '8px',
-      marginTop: '1px',
-      marginLeft: '1px'
-    },
 
     ':active': {
       backgroundColor: '#bf9123',
       borderColor: '#ad7d15'
     }
+  },
+
+  unfocused: {
+    backgroundColor: '#dddddd',
+    borderColor: '#d0d0d0',
+  },
+
+  icon: {
+    width: '8px',
+    height: '8px',
+    marginTop: '1px',
+    marginLeft: '1px'
   }
 };
 
-@Button
 @WindowState
 @Styling
 class Minimize extends Component {
@@ -40,22 +50,22 @@ class Minimize extends Component {
     this.state = { iconVisible: false, windowFocused: true };
   }
 
-  get styles() {
-    return mergeStyles(styles.osx_10_11, this.props.style);
-  }
-
   render() {
     const { style, ...props } = this.props;
     const displayIcon = this.state.iconVisible ? { opacity: 1 } : { opacity: 0 };
-    const iconStyle = mergeStyles(this.styles.icon, displayIcon);
+    const iconStyle = mergeStyles(styles.icon, displayIcon);
 
-    let styles = this.styles;
+    let componentStyle = style;
     if (!this.state.windowFocused && !this.state.iconVisible) {
-      styles = mergeStyles(styles, styles.unfocused)
+      componentStyle = mergeStyles(componentStyle, styles.unfocused)
     }
 
     return (
-      <a style={applyStyle(styles)} {...props}>
+      <a
+        data-style={applyStyle(styles.button)}
+        style={componentStyle}
+        {...props}
+      >
         <svg x="0px" y="0px" viewBox="0 0 8 1.1" style={iconStyle}>
           <rect fill="#995700" width="8" height="1.1"/>
         </svg>

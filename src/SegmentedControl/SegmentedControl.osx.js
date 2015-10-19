@@ -1,12 +1,12 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
-import { mergeStyles, applyStyle } from '../Styling';
+import { mergeStyles } from '../Styling';
 import Item from './Item.osx/Item.osx';
 import Tabs from './Tabs.osx/Tabs.osx';
 
 var styles = {
-  osx_10_11: {
+  segmentedControl: {
     WebkitUserSelect: 'none',
-    cursor: 'default',
+    cursor: 'default'
   }
 };
 
@@ -25,10 +25,6 @@ class SegmentedControl extends Component {
     this.state = { visible: props.visible !== false, display: props.display !== false };
   }
 
-  get styles() {
-    return mergeStyles(styles.osx_10_11, this.props.style);
-  }
-
   select(item) {
     this.refs.tabs.select(item);
   }
@@ -45,13 +41,18 @@ class SegmentedControl extends Component {
     }.bind(this));
 
     const tabs = <Tabs ref="tabs" tabs={children}/>;
-    const styles = mergeStyles(this.styles, {
+
+    style = mergeStyles(styles.segmentedControl, style, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
     });
 
     return (
-      <div style={applyStyle(styles)} ref="element" {...props}>
+      <div
+        ref="element"
+        style={style}
+        {...props}
+      >
         {tabs}
         {children}
       </div>

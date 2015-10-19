@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import { mergeStyles, applyStyle } from '../../Styling';
+import { mergeStyles } from '../../Styling';
 
 var styles = {
-  osx_10_11: {
+  item: {
     WebkitUserSelect: 'none',
     cursor: 'default',
   }
@@ -34,20 +34,20 @@ class Item extends Component {
     }
   }
 
-  get styles() {
-    return mergeStyles(styles.osx_10_11, this.props.style);
-  }
-
   render() {
     const { control, style, title, children, selected, visible, display, ...props } = this.props;
     const content = this.state.selected ? children : '';
-    const styles = mergeStyles(this.styles, {
+
+    let componentStyle = mergeStyles(style, styles.item, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
     });
 
     return (
-      <div {...props} style={applyStyle(styles)}>
+      <div
+        style={componentStyle}
+        {...props}
+      >
         {content}
       </div>
     );

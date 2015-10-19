@@ -4,7 +4,7 @@ import Minimize from './Minimize';
 import Resize from './Resize';
 
 var styles = {
-  osx_10_11: {
+  controls: {
     WebkitUserSelect: 'none',
     cursor: 'default',
     display: 'flex',
@@ -19,14 +19,10 @@ class Controls extends Component {
     onResizePress: PropTypes.func
   };
 
-  get styles() {
-    return styles.osx_10_11;
-  };
-
   mouseEnter() {
     for (let prop in this.refs) {
       if(this.refs.hasOwnProperty(prop)) {
-        this.refs[prop].mouseEnter();
+        this.refs[prop].setState({iconVisible: true});
       }
     }
   }
@@ -34,14 +30,14 @@ class Controls extends Component {
   mouseLeave() {
     for (let prop in this.refs) {
       if(this.refs.hasOwnProperty(prop)) {
-        this.refs[prop].mouseLeave();
+        this.refs[prop].setState({iconVisible: false});
       }
     }
   }
 
   render() {
     return (
-      <div style={this.styles} onMouseEnter={this.mouseEnter.bind(this)} onMouseLeave={this.mouseLeave.bind(this)}>
+      <div style={styles.controls} onMouseEnter={this.mouseEnter.bind(this)} onMouseLeave={this.mouseLeave.bind(this)}>
         <Close onClick={this.props.onClosePress} ref="close"/>
         <Minimize onClick={this.props.onMinimizePress} ref="minimize"/>
         <Resize onClick={this.props.onResizePress} ref="resize"/>

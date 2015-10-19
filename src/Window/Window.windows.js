@@ -1,31 +1,31 @@
 import React, { Component, PropTypes, Children } from 'react';
-import { mergeStyles, applyStyle } from '../Styling';
+import { mergeStyles } from '../Styling';
 import WindowState from '../WindowState';
 import TitleBar from '../TitleBar';
 import TitleBarWindows from '../TitleBar/TitleBar.windows';
 
 var styles = {
-  windows_10: {
+  window: {
     WebkitUserSelect: 'none',
     cursor: 'default',
     backgroundColor: '#ffffff',
     display: 'flex',
     flexDirection: 'column',
+  },
 
-    chrome: {
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      borderColor: '#1883d7',
-      boxShadow: '0 2px 11px 3px rgba(0, 0, 0, .2)'
-    },
+  chrome: {
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: '#1883d7',
+    boxShadow: '0 2px 11px 3px rgba(0, 0, 0, .2)'
+  },
 
-    unfocused: {
-      borderColor: '#aaaaaa'
-    },
+  unfocused: {
+    borderColor: '#aaaaaa'
+  },
 
-    content: {
-      margin: '24px 20px 20px 20px'
-    }
+  content: {
+    margin: '24px 20px 20px 20px'
   }
 };
 
@@ -50,19 +50,18 @@ class WindowWindows extends Component {
   }
 
   get styles() {
-    return mergeStyles(styles.windows_10, this.props.style);
+    return mergeStyles(styles.window, this.props.style);
   }
 
   render() {
     let { style, border, chrome, children, visible, display, ...props } = this.props;
 
-    let styles = this.styles;
-
+    let compoentStyle = this.styles;
     if (chrome) {
-      styles = mergeStyles(styles, this.styles.chrome);
+      compoentStyle = mergeStyles(compoentStyle, styles.chrome);
 
       if (!this.state.windowFocused) {
-        styles = mergeStyles(styles, this.styles.unfocused);
+        compoentStyle = mergeStyles(compoentStyle, styles.unfocused);
       }
     }
 
@@ -78,7 +77,7 @@ class WindowWindows extends Component {
       }
     }.bind(this));
 
-    styles = mergeStyles(styles, {
+    compoentStyle = mergeStyles(compoentStyle, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'flex' : 'none'
     });
@@ -88,9 +87,12 @@ class WindowWindows extends Component {
     }
 
     return (
-      <div style={applyStyle(styles)} {...props}>
+      <div
+        style={compoentStyle}
+        {...props}
+      >
         {titleBar}
-        <div style={applyStyle(this.styles.content)}>
+        <div style={styles.content}>
           {children}
         </div>
       </div>

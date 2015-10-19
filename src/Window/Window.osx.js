@@ -1,31 +1,31 @@
 import React, { Component, PropTypes, Children } from 'react';
-import { mergeStyles, applyStyle } from '../Styling';
+import { mergeStyles } from '../Styling';
 import TitleBar from '../TitleBar';
 import TitleBarOSX from '../TitleBar/TitleBar.osx';
 
 var styles = {
-  osx_10_11: {
+  window: {
     WebkitUserSelect: 'none',
     cursor: 'default',
     backgroundColor: '#ececec',
     display: 'flex',
     flexDirection: 'column',
+  },
 
-    chrome: {
-      borderTopLeftRadius: '4px',
-      borderTopRightRadius: '4px',
-      borderBottomLeftRadius: '4px',
-      borderBottomRightRadius: '4px',
-      boxShadow:
-        '0 0 1px rgba(0, 0, 0, .5), ' + // Border
-        '0 15px 25px rgba(0, 0, 0, .1), ' +
-        '0 0 30px rgba(0, 0, 0, .06), ' +
-        '0 0 60px rgba(0, 0, 0, .06)'
-    },
+  chrome: {
+    borderTopLeftRadius: '4px',
+    borderTopRightRadius: '4px',
+    borderBottomLeftRadius: '4px',
+    borderBottomRightRadius: '4px',
+    boxShadow:
+    '0 0 1px rgba(0, 0, 0, .5), ' + // Border
+    '0 15px 25px rgba(0, 0, 0, .1), ' +
+    '0 0 30px rgba(0, 0, 0, .06), ' +
+    '0 0 60px rgba(0, 0, 0, .06)'
+  },
 
-    content: {
-      margin: '24px 20px 20px 20px'
-    }
+  content: {
+    margin: '24px 20px 20px 20px'
   }
 };
 
@@ -44,15 +44,15 @@ class WindowOSX extends Component {
   }
 
   get styles() {
-    return mergeStyles(styles.osx_10_11, this.props.style);
+    return mergeStyles(styles.window, this.props.style);
   }
 
   render() {
     let { style, chrome, children, visible, display, ...props } = this.props;
 
-    let styles = this.styles;
+    let componentStyle = this.styles;
     if (chrome) {
-      styles = mergeStyles(styles, this.styles.chrome);
+      componentStyle = mergeStyles(componentStyle, styles.chrome);
     }
 
     const titleBar = Children.map(children, function (element) {
@@ -67,15 +67,15 @@ class WindowOSX extends Component {
       }
     }.bind(this));
 
-    styles = mergeStyles(styles, {
+    componentStyle = mergeStyles(componentStyle, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'flex' : 'none'
     });
 
     return (
-      <div style={applyStyle(styles)} {...props}>
+      <div style={componentStyle} {...props}>
         {titleBar}
-        <div style={applyStyle(this.styles.content)}>
+        <div style={styles.content}>
           {children}
         </div>
       </div>

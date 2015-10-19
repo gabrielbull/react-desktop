@@ -1,23 +1,23 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import { findDOMNode } from 'react-dom';
-import { mergeStyles, applyStyle } from '../Styling';
+import { mergeStyles } from '../Styling';
 import Row from './Row.common/Row.common';
 import RowWrapper from './Row.common/RowWrapper.common';
 import Label from '../Label';
 import LabelOSX from '../Label/Label.osx';
-import LabelWindows from '../Label/Label.windows';
+import LabelWindows from '../TextBlock/TextBlock.windows';
 
 var styles = {
-  common: {
+  table: {
     WebkitUserSelect: 'none',
     cursor: 'default',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'center'
+  },
 
-    label: {
-      marginBottom: '20px'
-    }
+  labelRow: {
+    marginBottom: '20px'
   }
 };
 
@@ -82,10 +82,6 @@ class Form extends Component {
     }
   }
 
-  get styles() {
-    return mergeStyles(styles.common, this.props.style);
-  }
-
   submit = event => {
     event.preventDefault();
     if (this.props.onSubmit) {
@@ -95,12 +91,13 @@ class Form extends Component {
 
   render() {
     let { onSubmit, children, style, ...props } = this.props;
+    let componentStyle = mergeStyles(styles.table, style);
 
     children = Children.map(children, function (element, index) {
       const isLast = index + 1 === Children.count(children);
       if (isLast) {
         element = cloneElement(element, {
-          style: mergeStyles({}, element.props.style, {marginBottom: '0'})
+          style: mergeStyles(element.props.style, {marginBottom: '0'})
         });
       }
 
@@ -114,7 +111,7 @@ class Form extends Component {
       } else if (element.type === Label || element.type === LabelOSX || element.type === LabelWindows) {
         const ref = `label-${index}`;
         return (
-          <RowWrapper ref={ref} style={this.styles.label}>
+          <RowWrapper ref={ref} style={styles.labelRow}>
             {cloneElement(element, {form: this})}
           </RowWrapper>
         );
@@ -123,7 +120,11 @@ class Form extends Component {
     }.bind(this));
 
     return (
-      <form {...props} onSubmit={this.submit.bind(this)} style={applyStyle(this.styles)}>
+      <form
+        onSubmit={this.submit.bind(this)}
+        style={componentStyle}
+        {...props}
+      >
         {children}
       </form>
     );

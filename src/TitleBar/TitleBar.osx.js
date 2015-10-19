@@ -4,7 +4,7 @@ import Styling, { mergeStyles, applyStyle } from '../Styling';
 import Controls from './Controls.osx/Controls';
 
 var styles = {
-  osx_10_11: {
+  titleBar: {
     WebkitUserSelect: 'none',
     WebkitAppRegion: 'drag',
     cursor: 'default',
@@ -21,38 +21,37 @@ var styles = {
     borderTopLeftRadius: '5px',
     borderTopRightRadius: '5px',
     paddingLeft: '3px',
-    paddingRight: '3px',
+    paddingRight: '3px'
+  },
 
-    unfocused: {
-      backgroundImage: '-webkit-linear-gradient(top, #f8f8f8 0px, #f8f8f8 2px, #f6f6f6 100%)',
-      borderBottomColor: '#cecece'
-    },
+  unfocusedTitleBar: {
+    backgroundImage: '-webkit-linear-gradient(top, #f8f8f8 0px, #f8f8f8 2px, #f6f6f6 100%)',
+    borderBottomColor: '#cecece'
+  },
 
-    toolbar: {
-      height: '36px',
-      paddingLeft: '9px',
-      paddingRight: '9px'
-    },
+  toolbar: {
+    height: '36px',
+    paddingLeft: '9px',
+    paddingRight: '9px'
+  },
 
-    title: {
-      WebkitUserSelect: 'none',
-      cursor: 'default',
-      fontFamily: '"San Francisco", "Helvetica Neue", "Lucida Grande"',
-      fontSize: '13px',
-      color: '#676767',
-      flex: 1,
-      textAlign: 'center',
-      lineHeight: '21px',
+  title: {
+    WebkitUserSelect: 'none',
+    cursor: 'default',
+    fontFamily: '"San Francisco", "Helvetica Neue", "Lucida Grande"',
+    fontSize: '13px',
+    color: '#676767',
+    flex: 1,
+    textAlign: 'center',
+    lineHeight: '21px'
+  },
 
-      unfocused: {
-        color: '#b8b8b8'
-      }
-    }
+  unfocusedTitle: {
+    color: '#b8b8b8'
   }
 };
 
 @WindowState
-@Styling
 class TitleBarOSX extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
@@ -68,29 +67,33 @@ class TitleBarOSX extends Component {
 
   constructor(props) {
     super();
-    this.state = { windowFocused: true, visible: props.visible !== false, display: props.display !== false };
+    this.state = {
+      windowFocused: true,
+      visible: props.visible !== false,
+      display: props.display !== false
+    };
   }
 
   get styles() {
-    return mergeStyles(styles.osx_10_11, this.props.style);
+    return mergeStyles(styles.titleBar, this.props.style);
   }
 
   render() {
     let { children, controls, title, visible, display, ...props } = this.props;
 
-    let styles = this.styles;
+    let componentStyle = this.styles;
     if (children) {
-      styles = mergeStyles(styles, this.styles.toolbar);
+      componentStyle = mergeStyles(componentStyle, styles.toolbar);
     }
 
-    let titleStyle = this.styles.title;
+    let titleStyle = styles.title;
     if (this.props.controls) {
       titleStyle = Object.assign(titleStyle, {paddingRight: '60px'});
     }
 
     if (!this.state.windowFocused) {
-      styles = mergeStyles(styles, this.styles.unfocused);
-      titleStyle = mergeStyles(titleStyle, this.styles.title.unfocused);
+      componentStyle = mergeStyles(componentStyle, styles.unfocusedTitleBar);
+      titleStyle = mergeStyles(titleStyle, styles.unfocusedTitle);
     }
 
     controls = !controls || <Controls {...this.props}/>;
@@ -100,7 +103,7 @@ class TitleBarOSX extends Component {
         </div>
       );
 
-    styles = mergeStyles(styles, {
+    componentStyle = mergeStyles(componentStyle, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'flex' : 'none'
     });
@@ -108,8 +111,8 @@ class TitleBarOSX extends Component {
     return (
       <div
         ref="element"
+        style={componentStyle}
         {...props}
-        style={applyStyle(styles)}
       >
         {controls}
         {title}

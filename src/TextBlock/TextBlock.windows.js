@@ -1,23 +1,23 @@
 import React, { Component, PropTypes } from 'react';
-import { mergeStyles, applyStyle } from '../Styling';
+import { mergeStyles } from '../Styling';
 
 var styles = {
-  windows_10: {
+  textBlock: {
     WebkitUserSelect: 'none',
     cursor: 'default',
     lineHeight: '25.96px',
     fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
     fontSize: '12px',
     whiteSpace: 'nowrap',
+  },
 
-    rowLabel: {
-      textAlign: 'right',
-      marginRight: '12px'
-    }
+  rowLabel: {
+    textAlign: 'right',
+    marginRight: '12px'
   }
 };
 
-class LabelWindows extends Component {
+class TextBlockWindows extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
     style: PropTypes.object,
@@ -41,39 +41,43 @@ class LabelWindows extends Component {
   }
 
   get styles() {
-    return mergeStyles(styles.windows_10, this.props.style);
+    return mergeStyles(styles.textBlock, this.props.style);
   }
 
   render() {
     let { children, style, color, row, form, align, display, visible, ...props } = this.props;
-    let styles = this.styles;
+    let componentStyle = this.styles;
 
     if (color) {
       switch (color) {
-      case 'red': color = '#fd2700'; break;
+        case 'red': color = '#fd2700'; break;
       }
-      styles = mergeStyles(styles, { color: color });
+      componentStyle = mergeStyles(componentStyle, { color: color });
     }
 
     if (row) {
-      styles = mergeStyles(styles, this.styles.rowLabel);
+      componentStyle = mergeStyles(componentStyle, styles.rowLabel);
     }
 
     if (align) {
-      styles = mergeStyles(styles, { textAlign: align });
+      componentStyle = mergeStyles(componentStyle, { textAlign: align });
     }
 
-    styles = mergeStyles(styles, {
+    componentStyle = mergeStyles(componentStyle, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
     });
 
     return (
-      <div ref="label" {...props} style={applyStyle(styles)}>
+      <div
+        ref="label"
+        style={componentStyle}
+        {...props}
+      >
         {children}
       </div>
     );
   }
 }
 
-export default LabelWindows;
+export default TextBlockWindows;

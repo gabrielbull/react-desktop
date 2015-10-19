@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import Styling, { mergeStyles, applyStyle, parseStyle } from '../../Styling';
+import Styling, { mergeStyles, applyStyle } from '../../Styling';
 import WindowState from '../../WindowState';
 
 var styles = {
-  osx_10_11: {
+  tab: {
     WebkitUserSelect: 'none',
     cursor: 'default',
     backgroundColor: '#ffffff',
@@ -25,60 +25,60 @@ var styles = {
     fontSize: '13px',
     boxShadow: '0 1px rgba(0, 0, 0, .039), 0 0 .5px rgba(0, 0, 0, .1)',
 
-    firstChild: {
-      borderLeftWidth: '1px',
-      borderLeftStyle: 'solid',
-      borderLeftColor: '#b8b8b8',
-      borderTopLeftRadius: '5px',
-      borderBottomLeftRadius: '5px'
-    },
-
-    lastChild: {
-      borderRightColor: '#b8b8b8',
-      borderTopRightRadius: '5px',
-      borderBottomRightRadius: '5px'
-    },
-
-    nextSelected: {
-      borderRightWidth: '0px'
-    },
-
-    selected: {
-      backgroundImage: '-webkit-linear-gradient(top, #6cb3fa 0%, #087eff 100%)',
-      borderTopColor: '#4ca2f9',
-      borderBottomColor: '#015cff',
-      borderLeftColor: '#267ffc',
-      borderRightColor: '#267ffc',
-      color: 'rgba(255, 255, 255, .9)',
-      borderRightWidth: '0px',
-      paddingRight: '12px',
-      paddingLeft: '12px',
-
-      ':active': {
-        backgroundImage: '-webkit-linear-gradient(top, #4c98fe 0%, #0564e3 100%) !important',
-        borderTopColor: '#247fff !important',
-        borderBottomColor: '#003ddb !important',
-        borderLeftColor: '#125eed !important',
-        borderRightColor: '#125eed !important',
-        color: 'rgba(255, 255, 255, .9)'
-      }
-    },
-
-    selectedUnfocused: {
-      backgroundImage: '-webkit-linear-gradient(top, #e5e5e5 0%, #e5e5e5 100%)',
-      borderTopColor: '#c7c7c7',
-      borderBottomColor: '#a6a6a6',
-      borderRightColor: '#b7b7b7',
-      borderLeftColor: '#b7b7b7',
-      borderRightWidth: '0px',
-      paddingRight: '12px',
-      paddingLeft: '12px',
-      color: '#000000'
-    },
-
     ':active': {
       backgroundColor: '#f0f0f0'
     }
+  },
+
+  firstChild: {
+    borderLeftWidth: '1px',
+    borderLeftStyle: 'solid',
+    borderLeftColor: '#b8b8b8',
+    borderTopLeftRadius: '5px',
+    borderBottomLeftRadius: '5px'
+  },
+
+  lastChild: {
+    borderRightColor: '#b8b8b8',
+    borderTopRightRadius: '5px',
+    borderBottomRightRadius: '5px'
+  },
+
+  nextSelected: {
+    borderRightWidth: '0px'
+  },
+
+  selected: {
+    backgroundImage: '-webkit-linear-gradient(top, #6cb3fa 0%, #087eff 100%)',
+    borderTopColor: '#4ca2f9',
+    borderBottomColor: '#015cff',
+    borderLeftColor: '#267ffc',
+    borderRightColor: '#267ffc',
+    color: 'rgba(255, 255, 255, .9)',
+    borderRightWidth: '0px',
+    paddingRight: '12px',
+    paddingLeft: '12px',
+  },
+
+  selectedActive: {
+    backgroundImage: '-webkit-linear-gradient(top, #4c98fe 0%, #0564e3 100%) !important',
+    borderTopColor: '#247fff !important',
+    borderBottomColor: '#003ddb !important',
+    borderLeftColor: '#125eed !important',
+    borderRightColor: '#125eed !important',
+    color: 'rgba(255, 255, 255, .9)'
+  },
+
+  selectedUnfocused: {
+    backgroundImage: '-webkit-linear-gradient(top, #e5e5e5 0%, #e5e5e5 100%)',
+    borderTopColor: '#c7c7c7',
+    borderBottomColor: '#a6a6a6',
+    borderRightColor: '#b7b7b7',
+    borderLeftColor: '#b7b7b7',
+    borderRightWidth: '0px',
+    paddingRight: '12px',
+    paddingLeft: '12px',
+    color: '#000000'
   }
 };
 
@@ -104,51 +104,49 @@ class Tab extends Component {
     };
   }
 
-  get styles() {
-    return mergeStyles(styles.osx_10_11);
-  }
-
   render() {
-    let styles = this.styles;
-    let activeStyle;
+    let { style, nextSelected, ...props } = this.props;
+
+    let cssStyle = styles.tab;
+    let componentStyle = style;
 
     if (this.props.firstChild) {
-      styles = mergeStyles(styles, this.styles.firstChild);
+      componentStyle = mergeStyles(componentStyle, styles.firstChild);
     }
 
     if (this.props.lastChild) {
-      styles = mergeStyles(styles, this.styles.lastChild);
+      componentStyle = mergeStyles(componentStyle, styles.lastChild);
     }
 
-    if (this.props.nextSelected) {
-      styles = mergeStyles(styles, this.styles.nextSelected);
+    if (nextSelected) {
+      componentStyle = mergeStyles(componentStyle, styles.nextSelected);
     }
 
     if (this.state.selected && this.state.windowFocused) {
-      styles = mergeStyles(styles, this.styles.selected);
+      componentStyle = mergeStyles(componentStyle, styles.selected);
       if (this.props.firstChild) {
-        styles = mergeStyles(styles, {paddingLeft: '11px'});
+        componentStyle = mergeStyles(componentStyle, {paddingLeft: '11px'});
       }
       if (this.props.lastChild) {
-        styles = mergeStyles(styles, {borderRightWidth: '1px', paddingRight: '11px'});
+        componentStyle = mergeStyles(componentStyle, {borderRightWidth: '1px', paddingRight: '11px'});
       }
-      activeStyle = this.styles.selected[':active'];
+      cssStyle = mergeStyles(cssStyle, {':active': styles.selectedActive});
     } else if (this.state.selected) {
-      styles = mergeStyles(styles, this.styles.selectedUnfocused);
+      componentStyle = mergeStyles(componentStyle, styles.selectedUnfocused);
       if (this.props.firstChild) {
-        styles = mergeStyles(styles, {paddingLeft: '11px'});
+        componentStyle = mergeStyles(componentStyle, {paddingLeft: '11px'});
       }
       if (this.props.lastChild) {
-        styles = mergeStyles(styles, {borderRightWidth: '1px', paddingRight: '11px'});
+        componentStyle = mergeStyles(componentStyle, {borderRightWidth: '1px', paddingRight: '11px'});
       }
     }
 
     return (
       <div
         ref="element"
-        style={applyStyle(styles)}
         onClick={this.props.onPress}
-        data-active-style={parseStyle(activeStyle)}
+        data-style={applyStyle(cssStyle)}
+        style={componentStyle}
       >
         {this.props.title}
       </div>

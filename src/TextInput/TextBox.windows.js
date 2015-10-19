@@ -2,23 +2,23 @@ import React, { Component, PropTypes } from 'react';
 import Styling, { mergeStyles, applyStyle } from '../Styling';
 
 var styles = {
-  windows_10: {
+  textBox: {
     WebkitUserSelect: 'none',
-    borderWidth: '1px',
+    borderWidth: '2px',
     borderStyle: 'solid',
-    borderColor: 'rgba(171,173,179,1)',
+    borderColor: 'rgba(148, 148, 148, 1)',
     padding: '2px',
     lineHeight: '23px',
     fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
     fontSize: '12px',
 
-    ':focus': {
-      outline: 'none',
-      borderColor: '#1883d7'
+    ':hover': {
+      borderColor: 'rgba(100, 100, 100, 1)'
     },
 
-    ':hover': {
-      borderColor: 'rgba(51,153,255,0.7)'
+    ':focus': {
+      outline: 'none',
+      borderColor: 'rgba(0, 120, 215, 1)'
     },
 
     ':placeholder': {
@@ -30,12 +30,13 @@ var styles = {
 };
 
 @Styling
-class TextFieldWindows extends Component {
+class TextBoxWindows extends Component {
   static propTypes = {
     style: PropTypes.object,
     form: PropTypes.any,
     visible: PropTypes.bool,
-    display: PropTypes.bool
+    display: PropTypes.bool,
+    header: PropTypes.string
   };
 
   constructor(props) {
@@ -43,26 +44,31 @@ class TextFieldWindows extends Component {
     this.state = {visible: props.visible !== false, display: props.display !== false};
   }
 
-  get styles() {
-    return mergeStyles(styles.windows_10, this.props.style);
-  }
-
   render() {
-    const { form, style, visible, display, ...props } = this.props;
-    const styles = mergeStyles(this.styles, {
+    const { header, form, style, visible, display, ...props } = this.props;
+    const componentStyle = mergeStyles(style, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
     });
 
-    return (
+    const input = (
       <input
-        ref="element"
         type="text"
+        data-style={applyStyle(styles.textBox)}
+        style={componentStyle}
         {...props}
-        style={applyStyle(styles)}
       />
     );
+
+    if (header) {
+      return (
+        <div>
+          {input}
+        </div>
+      );
+    }
+    return input;
   }
 }
 
-export default TextFieldWindows;
+export default TextBoxWindows;

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { mergeStyles } from '../Styling';
 
 var styles = {
-  osx_10_11: {
+  toolbar: {
     WebkitUserSelect: 'none',
     cursor: 'default'
   }
@@ -22,7 +22,7 @@ class Toolbar extends Component {
   }
 
   get styles() {
-    return mergeStyles(styles.osx_10_11, this.props.style);
+    return mergeStyles(styles.toolbar, this.props.style);
   }
 
   render() {

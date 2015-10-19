@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Styling, { mergeStyles, applyStyle } from '../Styling';
 
 var styles = {
-  osx_10_11: {
+  textField: {
     WebkitUserSelect: 'none',
     borderWidth: '1px',
     borderStyle: 'solid',
@@ -43,13 +43,9 @@ class TextFieldOSX extends Component {
     this.state = { visible: props.visible !== false, display: props.display !== false };
   }
 
-  get styles() {
-    return mergeStyles(styles.osx_10_11, this.props.style);
-  }
-
   render() {
     const { form, style, visible, display, ...props } = this.props;
-    const styles = mergeStyles(this.styles, {
+    const componentStyle = mergeStyles(this.styles, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
     });
@@ -58,8 +54,9 @@ class TextFieldOSX extends Component {
       <input
         ref="element"
         type="text"
+        data-style={applyStyle(styles.textField)}
+        style={componentStyle}
         {...props}
-        style={applyStyle(styles)}
       />
     );
   }

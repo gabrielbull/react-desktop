@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 
+const pseudos = [
+  'hover',
+  'active',
+  'focus',
+  'placeholder',
+  'first-child',
+  'last-child',
+];
+
 /**
  * Dasherizes a camelCased string.
  * @param {String} prop
@@ -13,42 +22,11 @@ function changeStyleCase(prop) {
 }
 
 /**
- * Creates a new style element and append the provided array of styles.
- * @param {String} selector
- * @param {String[]} styles Array of css styles to append to new stylesheet.
- * @returns {Element.style}
- */
-function addStyle(selector, styles) {
-  selector = selector.replace(/:placeholder/, '::-webkit-input-placeholder');
-
-  const head = document.getElementsByTagName('head')[0];
-  const style = document.createElement('style');
-  let stylesheet = `${selector} {\n`;
-
-  if (typeof styles === 'string') {
-    stylesheet += styles;
-  } else {
-    for (const prop in styles) {
-      if (styles.hasOwnProperty(prop)) {
-        stylesheet += `  ${changeStyleCase(prop)}: ${styles[prop]} !important;\n`;
-      }
-    }
-  }
-
-  stylesheet += '}\n';
-
-  style.type = 'text/css';
-  style.appendChild(document.createTextNode(stylesheet));
-  head.appendChild(style);
-  return style;
-}
-
-/**
  * Create a new style element from raw css string.
  * @param {String} stylesheet Raw CSS Stylesheet string.
- * @returns {Element.style}
+ * @returns {Element}
  */
-function addRawStyle(stylesheet) {
+function addStyle(stylesheet) {
   const head = document.getElementsByTagName('head')[0];
   const style = document.createElement('style');
   style.type = 'text/css';
@@ -59,7 +37,7 @@ function addRawStyle(stylesheet) {
 
 /**
  * Merges multiple style objects (Usually default OS styling and component props.style)
- * @param {Object[]} styles
+ * @param {Object} styles
  * @returns {Object}
  */
 export function mergeStyles(...styles) {
@@ -70,24 +48,45 @@ export function mergeStyles(...styles) {
   return merged;
 }
 
-export function applyStyle(merged) {
-  let styles = {};
-  for (const prop in merged) {
-    if (merged.hasOwnProperty(prop) && typeof merged[prop] !== 'object') {
-      styles[prop] = merged[prop];
-    }
-  }
-  return styles;
-}
-
-export function parseStyle(styles) {
+export function applyStyle(styles, currentState) {
   let style = '';
+  let pseudoStyles = {};
+  let childStyles = {};
   for (const prop in styles) {
     if (styles.hasOwnProperty(prop) && typeof styles[prop] !== 'object') {
       style += `${changeStyleCase(prop)}: ${styles[prop]}; `;
+    } else if (styles.hasOwnProperty(prop) && typeof styles[prop] === 'object') {
+      const stateName = prop.substring(1);
+      if (pseudos.indexOf(stateName) !== -1) {
+        pseudoStyles[stateName] = applyStyle(styles[prop], stateName);
+      } else {
+        if (currentState) {
+          childStyles['&:' + currentState + ' ' + prop] = applyStyle(styles[prop]);
+        } else {
+          childStyles[prop] = applyStyle(styles[prop]);
+        }
+      }
     }
   }
-  return style;
+
+  style = `& { ${style}}`;
+
+  for (const state in pseudoStyles) {
+    if (pseudoStyles.hasOwnProperty(state)) {
+      const content = pseudoStyles[state].replace(/\& \{/, `&:${state} {`);
+      style += ' ' + content;
+    }
+  }
+
+  for (const selector in childStyles) {
+    if (childStyles.hasOwnProperty(selector)) {
+      let content = childStyles[selector].replace(/\& \{/, `& ${selector} {`);
+      content = content.replace('& &', '&');
+      style += ' ' + content;
+    }
+  }
+
+  return style.trim();
 }
 
 export default function Styling(ComposedComponent) {
@@ -95,49 +94,45 @@ export default function Styling(ComposedComponent) {
     stylesheets = {};
 
     componentDidMount() {
-      this.applyInlineStyles();
-      this.applyPropStyles();
+      var component = findDOMNode(this.refs.component);
+      this.applyStyle(component, true);
     }
 
-    applyInlineStyles() {
-      const states = [':hover', ':active', ':focus', ':placeholder'];
-      const element = findDOMNode(this);
-      const id = element.getAttribute('data-reactid');
-      for (const state of states) {
-        if (this.refs.component.styles[state]) {
-          this.stylesheets[state] = addStyle(`[data-reactid="${id}"]${state}`, this.refs.component.styles[state])
-        }
-      }
-    }
-
-    applyPropStyles() {
-      const states = ['hover', 'active', 'focus', 'hover-selector', 'active-selector', 'focus-selector'];
-      if (this.refs.component.refs.element) {
-        const element = findDOMNode(this.refs.component.refs.element);
+    applyStyle(element, doNotForce) {
+      if (element.getAttribute || !doNotForce) {
         const id = element.getAttribute('data-reactid');
 
-        for (let state of states) {
-          const attrName = `data-${state}-style`;
-          const style = element.getAttribute(attrName);
+        let style = element.getAttribute('data-style');
+        element.removeAttribute('data-style');
 
-          if (style && !this.stylesheets[attrName]) {
-            if (state.match(/\-selector$/)) {
-              state = state.replace(/\-selector$/, '');
-              this.stylesheets[attrName] = addRawStyle(`[data-reactid="${id}"]:${state} ${style}`);
-            } else {
-              this.stylesheets[attrName] = addStyle(`[data-reactid="${id}"]:${state}`, style);
+        if (style) {
+          const escapedId = id.replace(/\$/g, '$\\');
+          style = style.replace(/&([ :a-zA-Z0-9]*)? \{/g, `[data-reactid="${escapedId}"]$1 {`);
+          style = style.replace(/\$\\/g, '$');
+
+          if (this.stylesheets[id]) {
+            if (this.stylesheets[id].innerHTML.trim() !== style) {
+              this.removeStylesheet(this.stylesheets[id]);
+              delete this.stylesheets[id];
+              this.stylesheets[id] = addStyle(style);
             }
-          } else if (this.stylesheets[attrName]) {
-            this.removeStylesheet(this.stylesheets[attrName]);
-            delete this.stylesheets[attrName];
+          } else {
+            this.stylesheets[id] = addStyle(style);
+          }
+        }
+
+        if (element.childNodes) {
+          for (var i = 0, len = element.childNodes.length; i < len; ++i) {
+            this.applyStyle(element.childNodes[i], doNotForce);
           }
         }
       }
     }
 
     componentDidUpdate() {
-      if (this.refs.component.refs.element) {
-        this.applyPropStyles();
+      if (this.refs.component) {
+        var component = findDOMNode(this.refs.component);
+        this.applyStyle(component, true);
       }
     }
 

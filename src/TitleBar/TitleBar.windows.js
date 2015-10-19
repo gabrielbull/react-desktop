@@ -1,35 +1,34 @@
 import React, { Component, PropTypes } from 'react';
 import WindowState from '../WindowState';
-import Styling, { mergeStyles, applyStyle } from '../Styling';
+import { mergeStyles } from '../Styling';
 import Controls from './Controls.windows/Controls';
 
 var styles = {
-  windows_10: {
+  titleBar: {
     WebkitUserSelect: 'none',
     WebkitAppRegion: 'drag',
     cursor: 'default',
     display: 'flex',
     alignItems: 'center',
-    height: '31px',
+    height: '31px'
+  },
 
-    title: {
-      WebkitUserSelect: 'none',
-      cursor: 'default',
-      paddingLeft: '12px',
-      fontFamily: '"Segoe UI", "Arial"',
-      fontSize: '12px',
-      color: '#000000',
-      flex: 1,
+  title: {
+    WebkitUserSelect: 'none',
+    cursor: 'default',
+    paddingLeft: '12px',
+    fontFamily: '"Segoe UI", "Arial"',
+    fontSize: '12px',
+    color: '#000000',
+    flex: 1
+  },
 
-      unfocused: {
-        color: '#a9a9a9'
-      }
-    }
+  unfocusedTitle: {
+    color: '#a9a9a9'
   }
 };
 
 @WindowState
-@Styling
 class TitleBarWindows extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
@@ -53,18 +52,17 @@ class TitleBarWindows extends Component {
   }
 
   get styles() {
-    return mergeStyles(styles.windows_10, this.props.style);
+    return mergeStyles(styles.titleBar, this.props.style);
   }
 
   render() {
-    let { children, controls, title, visible, display, ...props } = this.props;
+    let { children, style, controls, title, visible, display, ...props } = this.props;
 
-    let styles = this.styles;
-    let titleStyle = this.styles.title;
+    let componentStyle = this.styles;
+    let titleStyle = styles.title;
 
     if (!this.state.windowFocused) {
-      styles = mergeStyles(styles, this.styles.unfocused);
-      titleStyle = mergeStyles(titleStyle, this.styles.title.unfocused);
+      titleStyle = mergeStyles(titleStyle, styles.unfocusedTitle);
     }
 
     controls = !controls || <Controls {...this.props}/>;
@@ -74,7 +72,7 @@ class TitleBarWindows extends Component {
         </div>
       );
 
-    styles = mergeStyles(styles, {
+    componentStyle = mergeStyles(componentStyle, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'flex' : 'none'
     });
@@ -82,8 +80,8 @@ class TitleBarWindows extends Component {
     return (
       <div
         ref="element"
+        style={componentStyle}
         {...props}
-        style={applyStyle(styles)}
       >
         {title}
         {controls}

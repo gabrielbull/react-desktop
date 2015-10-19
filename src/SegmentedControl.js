@@ -3,6 +3,8 @@ import Desktop from './Desktop';
 import SegmentedControlOSX from './SegmentedControl/SegmentedControl.osx';
 
 class SegmentedControl extends Component {
+  static Item = SegmentedControlOSX.Item;
+
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
     style: PropTypes.object,

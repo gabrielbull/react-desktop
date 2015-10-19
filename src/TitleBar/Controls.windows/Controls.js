@@ -4,7 +4,7 @@ import Minimize from './Minimize';
 import Maximize from './Maximize';
 
 var styles = {
-  windows_10: {
+  controls: {
     WebkitUserSelect: 'none',
     cursor: 'default',
     display: 'flex',
@@ -19,13 +19,9 @@ class Controls extends Component {
     onMaximizePress: PropTypes.func
   };
 
-  get styles() {
-    return styles.windows_10;
-  };
-
   render() {
     return (
-      <div style={this.styles}>
+      <div style={styles.controls}>
         <Minimize onClick={this.props.onMinimizePress} ref="minimize"/>
         <Maximize onClick={this.props.onMaximizePress} ref="maximize"/>
         <Close onClick={this.props.onClosePress} ref="close"/>

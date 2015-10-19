@@ -69,8 +69,7 @@ class Window2 extends Component {
           </Label>
 
           <Form.Row>
-            <Label>Label:</Label>
-            <TextInput defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
+            <TextInput header="Label" defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
           </Form.Row>
 
           <Form.Row>

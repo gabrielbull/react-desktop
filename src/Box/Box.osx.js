@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { mergeStyles, applyStyle } from '../Styling';
+import { mergeStyles } from '../Styling';
 import SegmentedControl from '../SegmentedControl';
 
 var styles = {
-  osx_10_11: {
+  box: {
     WebkitUserSelect: 'none',
     cursor: 'default',
     backgroundColor: 'rgba(0, 0, 0, .04)',
@@ -15,12 +15,12 @@ var styles = {
     borderBottomColor: 'rgba(0, 0, 0, .026)',
     borderRadius: '4px',
     position: 'relative',
-    padding: '23px 18px 22px 18px',
+    padding: '23px 18px 22px 18px'
+  },
 
-    segmentedControls: {
-      marginTop: '10px',
-      paddingTop: '33px'
-    }
+  segmentedControls: {
+    marginTop: '10px',
+    paddingTop: '33px'
   }
 };
 
@@ -34,29 +34,35 @@ class Box extends Component {
 
   constructor(props) {
     super();
-    this.state = { visible: props.visible !== false, display: props.display !== false };
+    this.state = {
+      visible: props.visible !== false,
+      display: props.display !== false
+    };
   }
 
   get styles() {
-    return mergeStyles(styles.osx_10_11, this.props.style);
+    return mergeStyles(styles.box, this.props.style);
   }
 
   render() {
     const { children, style, visible, display, ...props } = this.props;
     const hasSegmentedControls = typeof children === 'object' && children.type === SegmentedControl;
 
-    let styles = this.styles;
+    let componentStyle = this.styles;
     if (hasSegmentedControls) {
-      styles = mergeStyles(styles, this.styles.segmentedControls);
+      componentStyle = mergeStyles(componentStyle, styles.segmentedControls);
     }
 
-    styles = mergeStyles(styles, {
+    componentStyle = mergeStyles(componentStyle, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
     });
 
     return (
-      <div {...props} style={applyStyle(styles)}>
+      <div
+        style={componentStyle}
+        {...props}
+      >
         {this.props.children}
       </div>
     );

@@ -1,26 +1,25 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
-import Styling, { mergeStyles, applyStyle } from '../../Styling';
+import { mergeStyles } from '../../Styling';
 
 var styles = {
-  osx_10_11: {
+  progress: {
     width: '16px',
-    height: '16px',
+    height: '16px'
+  },
 
-    container: {
-      position: 'relative',
-      height: '16px'
-    },
+  container: {
+    position: 'relative',
+    height: '16px'
+  },
 
-    absolute: {
-      position: 'absolute',
-      top: 0,
-      left: 0
-    }
+  absolute: {
+    position: 'absolute',
+    top: 0,
+    left: 0
   }
 };
 
-@Styling
 class IndeterminateCircularProgressIndicatorOSX extends Component {
   static propTypes = {
     style: PropTypes.object,
@@ -82,25 +81,27 @@ class IndeterminateCircularProgressIndicatorOSX extends Component {
     return this.steps - step;
   }
 
-  get styles() {
-    return mergeStyles(styles.osx_10_11, this.props.style);
-  }
-
   render() {
-    let { style, absolute, visible, display, form, ...props } = this.props;
-    let styles = this.styles;
+    const { style, absolute, visible, display, form, ...props } = this.props;
 
-    styles = mergeStyles(styles, {
+    let componentStyle = mergeStyles(style, styles.progress, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
     });
 
     if (absolute) {
-      styles = mergeStyles(styles, this.styles.absolute);
+      componentStyle = mergeStyles(componentStyle, styles.absolute);
     }
 
     const svg = (
-      <svg ref="element" x="0px" y="0px" viewBox="0 0 32.3 32.3" style={applyStyle(styles)} {...props}>
+      <svg
+        ref="element"
+        x="0px"
+        y="0px"
+        viewBox="0 0 32.3 32.3"
+        style={componentStyle}
+        {...props}
+      >
         <path
           ref="0"
           fill="#000000"
@@ -179,7 +180,7 @@ class IndeterminateCircularProgressIndicatorOSX extends Component {
     let content = svg;
     if (absolute) {
       content = (
-        <div style={applyStyle(this.styles.container)}>
+        <div style={styles.container}>
           {svg}
         </div>
       );

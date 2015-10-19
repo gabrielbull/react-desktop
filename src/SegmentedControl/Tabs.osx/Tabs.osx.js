@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Tab from './Tab.osx';
 
 var styles = {
-  osx_10_11: {
+  tabs: {
     WebkitUserSelect: 'none',
     cursor: 'default',
     position: 'absolute',
@@ -18,10 +18,6 @@ class Tabs extends Component {
   static propTypes = {
     tabs: PropTypes.array.isRequired
   };
-
-  get styles() {
-    return styles.osx_10_11;
-  }
 
   select(item) {
     this.refs[item.props.tabId].setState({ selected: true });
@@ -51,7 +47,7 @@ class Tabs extends Component {
     }
 
     return (
-      <div style={this.styles}>
+      <div style={styles.tabs}>
         {tabs}
       </div>
     );
