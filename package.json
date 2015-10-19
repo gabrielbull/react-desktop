@@ -3,7 +3,7 @@
   "author": "Gabriel Bull",
   "version": "0.1.31",
   "description": "React UI Components for OS X El Capitan and Windows 10",
-  "main": "./lib/Main.js",
+  "main": "./lib/index.js",
   "keywords": [
     "react",
     "react-component",
