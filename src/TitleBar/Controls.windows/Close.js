@@ -16,14 +16,19 @@ const styles = {
 
     ':hover': {
       transition: 'background-color 0.1s',
-      backgroundColor: '#e81123'
+      backgroundColor: '#e81123',
+
+      polygon: {
+        fill: '#ffffff'
+      }
     },
 
     ':active': {
       backgroundColor: '#f1707a',
 
+
       polygon: {
-        fill: 'white'
+        fill: '#000000'
       }
     }
   },
