@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
-import Styling, { mergeStyles, applyStyle } from '../Styling';
+import Styling, { mergeStyles, applyStyle } from '../../Styling';
 
 var styles = {
   osx_10_11: {

@@ -52,7 +52,9 @@ Guides on installation, components and advanced usage are found in the [document
 - [x] Title Bar
 - [ ] Button
 - [ ] Text Input
-- [ ] Progress Ring
+- [x] Indeterminate Progress Ring
+- [ ] Indeterminate Progress Bar
+- [ ] Determinate Progress Bar
 
 ## Screenshots
 

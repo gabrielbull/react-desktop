@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
-import Styling, { mergeStyles, applyStyle } from '../Styling';
+import Styling, { mergeStyles, applyStyle } from '../../Styling';
+import { startAnimation } from './Animation';
 
 var styles = {
-  osx_10_11: {
-    width: '16px',
-    height: '16px',
+  windows_10: {
+    width: '20px',
+    height: '20px',
     position: 'relative',
 
     container: {
@@ -39,8 +40,15 @@ class ProgressRingWindows extends Component {
   }
 
   componentDidMount() {
-    require('./ProgressRing.windows/Animation.js');
-    //this.animate();
+    startAnimation(
+      this.refs[0],
+      this.refs[1],
+      this.refs[2],
+      this.refs[3],
+      this.refs[4],
+      this.refs[5]
+    );
+
     if (findDOMNode(this).previousSibling) {
       this.applySiblingStyle();
     }
@@ -56,39 +64,12 @@ class ProgressRingWindows extends Component {
     }
   }
 
-  animate() {
-    /*this.currentStep = 0;
-     this.steps = this.duration / this.framerate;
-     this.increment = 1 / this.steps;
-     this.animateStep();
-     this.interval = setInterval(this.animateStep.bind(this), 1000 / this.framerate);*/
-  }
-
-  animateStep() {
-    this.currentStep++;
-    if (this.currentStep > this.steps) {
-      this.currentStep = 1;
-    }
-
-    for (let i = 0, len = 12; i < len; ++i) {
-      this.refs[11 - i].style.opacity = this.increment * this.findStep(i);
-    }
-  }
-
-  findStep(index) {
-    let step = this.currentStep + (this.steps / 12 * index);
-    if (step > this.steps) {
-      step = -this.steps + step;
-    }
-    return this.steps - step;
-  }
-
   get styles() {
-    return mergeStyles(styles.osx_10_11, this.props.style);
+    return mergeStyles(styles.windows_10, this.props.style);
   }
 
   render() {
-    let { style, absolute, visible, display, form, ...props } = this.props;
+    let { color, style, absolute, visible, display, form, ...props } = this.props;
     let styles = this.styles;
 
     styles = mergeStyles(styles, {
@@ -100,17 +81,23 @@ class ProgressRingWindows extends Component {
       styles = mergeStyles(styles, this.styles.absolute);
     }
 
+    if (!color) {
+      color = '#1883d7';
+    }
+
     const svg = (
       <svg
         id="field"
+        width="200px"
+        height="200px"
         ref="element" x="0px" y="0px" viewBox="0 0 150 150" style={applyStyle(styles)} {...props}
       >
-        <circle id="ball" ref="0" fill="#000000" cx="66" cy="7.3" r="7.3" style={{position: 'absolute'}}/>
-        <circle ref="1" fill="#000000" cx="66" cy="142.7" r="7.3"/>
-        <circle ref="2" fill="#000000" cx="7.3" cy="41.2" r="7.3"/>
-        <circle ref="3" fill="#000000" cx="7.3" cy="108.9" r="7.3"/>
-        <circle ref="4" fill="#000000" cx="124.6" cy="108.9" r="7.3"/>
-        <circle ref="5" fill="#000000" cx="124.6" cy="41.2" r="7.3"/>
+        <circle ref="0" fill={color} fillOpacity="0" cx="75" cy="75" r="7.3"/>
+        <circle ref="1" fill={color} fillOpacity="0" cx="75" cy="75" r="7.3"/>
+        <circle ref="2" fill={color} fillOpacity="0" cx="75" cy="75" r="7.3"/>
+        <circle ref="3" fill={color} fillOpacity="0" cx="75" cy="75" r="7.3"/>
+        <circle ref="4" fill={color} fillOpacity="0" cx="75" cy="75" r="7.3"/>
+        <circle ref="5" fill={color} fillOpacity="0" cx="75" cy="75" r="7.3"/>
       </svg>
     );
 

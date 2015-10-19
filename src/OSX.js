@@ -5,6 +5,7 @@ export { default as PushButton } from './Button/PushButton.osx';
 export { default as TextField } from './TextField';
 export { default as Box } from './Box';
 export { default as SegmentedControl } from './SegmentedControl';
-export { default as IndeterminateCircularProgressIndicator } from './ProgressCircle/IndeterminateCircularProgressIndicator.osx';
+export { default as IndeterminateCircularProgressIndicator } from
+  './IndeterminateProgressWheel/IndeterminateCircularProgressIndicator.osx/IndeterminateCircularProgressIndicator.osx';
 export { default as Form } from './Form';
 export { default as Label } from './Label';

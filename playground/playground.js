@@ -7,12 +7,12 @@ import {
   Toolbar,
   Box,
   SegmentedControl,
-  ProgressCircle,
+  IndeterminateProgressWheel,
   Form,
   Label,
   Window,
   Desktop
-} from '../src/Main';
+} from '../src/index';
 
 document.title = 'React Desktop Playground';
 document.body.style.padding = '30px 40px';
@@ -90,7 +90,7 @@ class Window2 extends Component {
                   <Button>Button</Button>
                   <Button onPress="submit" color="blue">Button Blue</Button>
 
-                  <ProgressCircle absolute/>
+                  <IndeterminateProgressWheel absolute/>
                 </Form.Row>
               </Form>
             </SegmentedControl.Item>

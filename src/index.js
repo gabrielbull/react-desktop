@@ -8,12 +8,7 @@ export {default as SegmentedControl } from './SegmentedControl';
 export {default as Form } from './Form';
 export {default as Label } from './Label';
 export {default as Desktop } from './Desktop';
-export {default as ProgressCircle } from './ProgressCircle';
+export {default as IndeterminateProgressWheel } from './IndeterminateProgressWheel';
 
 export * as Windows from './Windows';
 export * as OSX from './OSX';
-
-/**
- * @deprecated
- */
-export {default as IndeterminateCircularProgressIndicator } from './IndeterminateCircularProgressIndicator';
