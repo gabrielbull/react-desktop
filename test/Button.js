@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import Button from '../src/Button';
 
-describe('PushButton', () => {
+describe('Button', () => {
   it('create button component with text', () => {
     const string = ReactDOMServer.renderToString(<Button>Hello</Button>);
     expect(string).to.match(/Hello/);
