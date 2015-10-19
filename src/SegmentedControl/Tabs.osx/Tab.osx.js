@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import Styling, { mergeStyles, applyStyle, parseStyle } from '../Styling';
-import WindowState from '../WindowState';
+import Styling, { mergeStyles, applyStyle, parseStyle } from '../../Styling';
+import WindowState from '../../WindowState';
 
 var styles = {
   osx_10_11: {

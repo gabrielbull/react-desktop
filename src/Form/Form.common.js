@@ -1,8 +1,8 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import { findDOMNode } from 'react-dom';
 import { mergeStyles, applyStyle } from '../Styling';
-import Row from './Row/Row';
-import RowWrapper from './Row/RowWrapper';
+import Row from './Row.common/Row.common';
+import RowWrapper from './Row.common/RowWrapper.common';
 import Label from '../Label';
 import LabelOSX from '../Label/Label.osx';
 import LabelWindows from '../Label/Label.windows';

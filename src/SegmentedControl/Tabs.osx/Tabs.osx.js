@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Tab from './Tab';
+import Tab from './Tab.osx';
 
 var styles = {
   osx_10_11: {
