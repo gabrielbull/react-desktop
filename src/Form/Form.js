@@ -1,12 +1,14 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import { findDOMNode } from 'react-dom';
-import { mergeStyles, applyStyle } from './Styling';
-import Row from './Form/Row';
-import Label from './Label';
-import RowWrapper from './Form/RowWrapper';
+import { mergeStyles, applyStyle } from '../Styling';
+import Row from './Row/Row';
+import RowWrapper from './Row/RowWrapper';
+import Label from '../Label';
+import LabelOSX from '../Label/Label.osx';
+import LabelWindows from '../Label/Label.windows';
 
 var styles = {
-  osx_10_11: {
+  common: {
     WebkitUserSelect: 'none',
     cursor: 'default',
     display: 'flex',
@@ -81,7 +83,7 @@ class Form extends Component {
   }
 
   get styles() {
-    return mergeStyles(styles.osx_10_11, this.props.style);
+    return mergeStyles(styles.common, this.props.style);
   }
 
   submit = event => {
@@ -109,7 +111,7 @@ class Form extends Component {
             {cloneElement(element, {form: this})}
           </RowWrapper>
         );
-      } else if (element.type === Label) {
+      } else if (element.type === Label || element.type === LabelOSX || element.type === LabelWindows) {
         const ref = `label-${index}`;
         return (
           <RowWrapper ref={ref} style={this.styles.label}>

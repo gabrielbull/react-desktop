@@ -1,7 +1,7 @@
 export {default as Box } from './Box';
 export {default as Button } from './Button';
 export {default as Desktop } from './Desktop';
-export {default as Form } from './Form';
+export {default as Form } from './Form/Form';
 export {default as IndeterminateProgressWheel } from './IndeterminateProgressWheel';
 export {default as Label } from './Label';
 export {default as SegmentedControl } from './SegmentedControl';

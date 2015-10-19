@@ -1,4 +1,5 @@
 export { default as Button } from './Button/Button.windows';
+export {default as Form } from './Form/Form';
 export { default as IndeterminateProgressRing }
   from './IndeterminateProgressWheel/IndeterminateProgressRing.windows/IndeterminateProgressRing.windows';
 export { default as Label }from './Label/Label.windows';

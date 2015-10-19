@@ -1,6 +1,8 @@
 import React, { Component, Children, PropTypes } from 'react';
 import Row from './Row';
-import Label from '../Label';
+import Label from '../../Label';
+import LabelOSX from '../../Label/Label.osx';
+import LabelWindows from '../../Label/Label.windows';
 
 class RowWrapper extends Component {
   static propTypes = {
@@ -14,7 +16,7 @@ class RowWrapper extends Component {
     Children.map(this.props.children, function (child) {
       if (child.type === Row) {
         Children.map(child.props.children, function (child) {
-          if (child.type === Label) {
+          if (child.type === Label || child.type === LabelOSX || child.type === LabelWindows) {
             labels = [...labels, child];
           }
         });

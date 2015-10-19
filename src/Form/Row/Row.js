@@ -1,15 +1,17 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
-import { mergeStyles, applyStyle } from '../Styling';
-import Label from '../Label';
-import TextInput from '../TextInput';
-import TextFieldOSX from '../TextInput/TextField.osx';
-import TextBoxWindows from '../TextInput/TextBox.windows';
-import Button from '../Button';
-import PushButtonOSX from '../Button/PushButton.osx';
-import ButtonWindows from '../Button/Button.windows';
+import { mergeStyles, applyStyle } from '../../Styling';
+import Label from '../../Label';
+import LabelOSX from '../../Label/Label.osx';
+import LabelWindows from '../../Label/Label.windows';
+import TextInput from '../../TextInput';
+import TextFieldOSX from '../../TextInput/TextField.osx';
+import TextBoxWindows from '../../TextInput/TextBox.windows';
+import Button from '../../Button';
+import PushButtonOSX from '../../Button/PushButton.osx';
+import ButtonWindows from '../../Button/Button.windows';
 
 var styles = {
-  osx_10_11: {
+  common: {
     WebkitUserSelect: 'none',
     cursor: 'default',
     display: 'flex',
@@ -44,7 +46,7 @@ class Row extends Component {
   }
 
   get styles() {
-    return mergeStyles(styles.osx_10_11, this.props.style);
+    return mergeStyles(styles.common, this.props.style);
   }
 
   render() {
@@ -52,7 +54,7 @@ class Row extends Component {
     let isButtonsRow = null;
 
     children = Children.map(children, function (element) {
-      if (element.type === Label) {
+      if (element.type === Label || element.type === LabelOSX || element.type === LabelWindows) {
         isButtonsRow = false;
       } else if (element.type === TextInput || element.type === TextFieldOSX || element.type === TextBoxWindows) {
         isButtonsRow = false;
