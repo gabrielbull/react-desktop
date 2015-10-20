@@ -52,7 +52,9 @@ var styles = {
 class CheckboxWindows extends Component {
   static propTypes = {
     style: PropTypes.object,
+    row: PropTypes.any,
     form: PropTypes.any,
+    label: PropTypes.string,
     visible: PropTypes.bool,
     display: PropTypes.bool
   };
@@ -76,7 +78,7 @@ class CheckboxWindows extends Component {
   }
 
   render() {
-    let { children, style, color, row, form, align, display, visible, label, ...props } = this.props;
+    let { style, row, form, display, visible, label, ...props } = this.props;
     let componentStyle = this.styles;
     let checkedStyle = {display: 'none'};
 

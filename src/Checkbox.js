@@ -5,7 +5,9 @@ import CheckboxWindows from './Checkbox/Checkbox.windows';
 class Checkbox extends Component {
   static propTypes = {
     style: PropTypes.object,
+    row: PropTypes.any,
     form: PropTypes.any,
+    label: PropTypes.string,
     visible: PropTypes.bool,
     display: PropTypes.bool
   };
