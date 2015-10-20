@@ -58,7 +58,7 @@ export default class extends Component {
           <Form.Row sty>
             <Button ref="submit" onPress="submit" color="blue">Button Blue</Button>
             <Button ref="button" onPress={this.cancel.bind(this)}>Button</Button>
-            <IndeterminateProgressRing ref="loader" absolute visible={false}/>
+            <IndeterminateProgressRing ref="loader" size={30} absolute visible={false}/>
           </Form.Row>
 
         </Form>
