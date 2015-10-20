@@ -88,7 +88,6 @@ class Form extends Component {
       }
     }
 
-    console.log(maxWidth);
     for (let row of rows) {
       row.style.width = `${maxWidth}px`;
     }

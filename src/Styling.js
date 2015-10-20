@@ -10,7 +10,7 @@ const pseudos = [
   'last-child',
 ];
 
-const prefixedClasses = ['user-select', 'app-region'];
+const prefixedClasses = ['user-select', 'app-region', 'transform', 'transition'];
 
 const prefixes = [
   '-webkit-',

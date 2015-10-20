@@ -5,29 +5,47 @@ import WindowState from '../WindowState';
 
 var styles = {
   button: {
-    WebkitUserSelect: 'none',
+    userSelect: 'none',
     cursor: 'default',
-    backgroundColor: 'rgb(202,202,202)',
+    backgroundColor: '#cccccc',
     outline: 'none',
-    borderWidth: '1px',
+    borderWidth: '2px',
     borderStyle: 'solid',
-    borderColor: 'rgb(112,112,112)',
+    borderColor: '#cccccc',
     paddingTop: 0,
     paddingBottom: 0,
-    paddingLeft: '13px',
-    paddingRight: '13px',
-    lineHeight: '23px',
+    paddingLeft: '32px',
+    paddingRight: '32px',
+    lineHeight: '28px',
     fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
-    fontSize: '12px',
+    fontSize: '15px',
 
     ':hover': {
-      borderColor: 'rgba(51,153,255,0.7)',
-      backgroundColor: 'rgba(51,153,255,0.4)'
+      borderColor: '#7a7a7a'
     },
 
     ':active': {
-      borderColor: 'rgba(51,153,255,0.9)',
-      backgroundColor: 'rgba(41,143,245,0.4)'
+      borderColor: '#999999',
+      backgroundColor: '#999999',
+      transform: 'scale(0.97)',
+      transition: 'transform .1s ease-in'
+    }
+  },
+
+  buttonBlue: {
+    color: '#ffffff',
+    borderColor: '#0078d7',
+    backgroundColor: '#0078d7',
+
+    ':hover': {
+      borderColor: '#004e8c'
+    },
+
+    ':active': {
+      borderColor: '#004e8c',
+      backgroundColor: '#004e8c',
+      transform: 'none',
+      transition: 'none'
     }
   }
 };
@@ -66,6 +84,12 @@ class Button extends Component {
   render() {
     let { style, children, color, onPress, form, display, visible, ...props } = this.props;
 
+    let componentStyle = style;
+    let cssStyle = styles.button;
+    if (color === 'blue' && this.state.windowFocused) {
+      cssStyle = mergeStyles(cssStyle, styles.buttonBlue);
+    }
+
     let type = 'button';
     if (this.props.onPress === 'submit') {
       type = 'submit';
@@ -74,7 +98,7 @@ class Button extends Component {
       onPress = this.props.onClick ? this.props.onClick : this.props.onPress;
     }
 
-    style = mergeStyles(style, {
+    componentStyle = mergeStyles(componentStyle, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
     });
@@ -84,8 +108,8 @@ class Button extends Component {
         ref="element"
         type={type}
         onClick={onPress}
-        data-style={applyStyle(styles.button)}
-        style={style}
+        data-style={applyStyle(cssStyle)}
+        style={componentStyle}
         {...props}
       >
         {children}
