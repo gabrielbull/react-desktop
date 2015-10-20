@@ -10,6 +10,14 @@ const pseudos = [
   'last-child',
 ];
 
+const prefixedClasses = ['user-select', 'app-region'];
+
+const prefixes = [
+  '-webkit-',
+  '-moz-',
+  '-ms-'
+];
+
 /**
  * Dasherizes a camelCased string.
  * @param {String} prop
@@ -19,6 +27,37 @@ function changeStyleCase(prop) {
   return prop.replace(/([A-Z])/g, function (g) {
     return `-${g.toLowerCase()}`;
   });
+}
+
+function parseStyle(prop, value) {
+  prop = changeStyleCase(prop);
+  let returnValue = '';
+  if (prefixedClasses.indexOf(prop) !== -1) {
+    for (let prefix of prefixes) {
+      returnValue += `${prefix}${prop}: ${value}; `;
+    }
+    if (returnValue) {
+      returnValue += `${prop}: ${value}; `;
+      return returnValue;
+    }
+  }
+
+  return `${prop}: ${value}; `;
+}
+
+function prefixPseudos(pseudoStyles, stateName, styles) {
+  if (stateName === 'placeholder') {
+    styles = applyStyle(styles, stateName);
+
+    pseudoStyles[':-webkit-input-placeholder'] = styles;
+    pseudoStyles[':-moz-placeholder'] = styles;
+    pseudoStyles['-ms-input-placeholder'] = styles;
+    pseudoStyles['placeholder'] = styles;
+
+    return pseudoStyles;
+  }
+  pseudoStyles[stateName] = applyStyle(styles, stateName);
+  return pseudoStyles;
 }
 
 /**
@@ -54,11 +93,11 @@ export function applyStyle(styles, currentState) {
   let childStyles = {};
   for (const prop in styles) {
     if (styles.hasOwnProperty(prop) && typeof styles[prop] !== 'object') {
-      style += `${changeStyleCase(prop)}: ${styles[prop]}; `;
+      style += parseStyle(prop, styles[prop]);
     } else if (styles.hasOwnProperty(prop) && typeof styles[prop] === 'object') {
       const stateName = prop.substring(1);
       if (pseudos.indexOf(stateName) !== -1) {
-        pseudoStyles[stateName] = applyStyle(styles[prop], stateName);
+        pseudoStyles = prefixPseudos(pseudoStyles, stateName, styles[prop]);
       } else {
         if (currentState) {
           childStyles['&:' + currentState + ' ' + prop] = applyStyle(styles[prop]);
@@ -107,7 +146,7 @@ export default function Styling(ComposedComponent) {
 
         if (style) {
           const escapedId = id.replace(/\$/g, '$\\');
-          style = style.replace(/&([ :a-zA-Z0-9]*)? \{/g, `[data-reactid="${escapedId}"]$1 {`);
+          style = style.replace(/&([\- :a-zA-Z0-9]*)? \{/g, `[data-reactid="${escapedId}"]$1 {`);
           style = style.replace(/\$\\/g, '$');
 
           if (this.stylesheets[id]) {

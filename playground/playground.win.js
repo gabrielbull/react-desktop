@@ -4,6 +4,7 @@ import {
   TitleBar,
   Button,
   TextInput,
+  TextBlock,
   Toolbar,
   Box,
   SegmentedControl,
@@ -23,19 +24,10 @@ export class Window1 extends Component {
 
   render() {
     return (
-      <Window chrome style={{marginBottom: '60px'}}>
-        <TitleBar
-          title="TitleBar"
-          controls
-          onClosePress={() => { alert('close'); }}
-          onMinimizePress={() => { alert('minimize'); }}
-          onMaximizePress={() => { alert('mazimize'); }}
-        />
-      </Window>
+      <div/>
     );
   }
 }
-
 
 export class Window2 extends Component {
   constructor() {
@@ -45,28 +37,25 @@ export class Window2 extends Component {
 
   render() {
     return (
-      <Window chrome>
-        <TitleBar title="TitleBar with Toolbar" controls>
-          <Toolbar/>
-        </TitleBar>
+      <Window chrome style={{backgroundColor: '#f2f2f2'}}>
+        <TitleBar title="TitleBar" controls/>
 
         <Form onSubmit={() => { alert('form submitted'); }}>
-          <Label color="red" align="center">
+          <TextBlock color="red">
             There was an error submitting this form.
-          </Label>
+          </TextBlock>
 
           <Form.Row>
-            <TextInput header="Label" defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
+            <TextInput header="Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
           </Form.Row>
 
           <Form.Row>
-            <Label>Longer label:</Label>
-            <TextInput defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
+            <TextInput header="Longer Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
           </Form.Row>
 
           <Form.Row>
-            <Button>Button</Button>
             <Button onPress="submit" color="blue">Button Blue</Button>
+            <Button>Button</Button>
 
             <IndeterminateProgressWheel absolute/>
           </Form.Row>

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import { findDOMNode } from 'react-dom';
 import { mergeStyles } from '../Styling';
+import Desktop from '../Desktop';
 import Row from './Row.common/Row.common';
 import RowWrapper from './Row.common/RowWrapper.common';
 import Label from '../Label';
@@ -16,8 +17,12 @@ var styles = {
     alignItems: 'center'
   },
 
-  labelRow: {
+  labelRowOsx: {
     marginBottom: '20px'
+  },
+
+  labelRowWin: {
+    marginBottom: '10px'
   }
 };
 
@@ -42,12 +47,18 @@ class Form extends Component {
 
   registerRow(row) {
     this.rows = [...this.rows, row];
+    if (Desktop.os === 'win') {
+      this.applyWithToRows();
+    }
   }
+
 
   registerLabel(label) {
     this.labels = [...this.labels, label];
-    this.applyWithToLabels();
-    this.applyWithToRows();
+    if (Desktop.os === 'osx') {
+      this.applyWithToLabels();
+      this.applyWithToRows();
+    }
   }
 
   applyWithToLabels() {
@@ -77,6 +88,7 @@ class Form extends Component {
       }
     }
 
+    console.log(maxWidth);
     for (let row of rows) {
       row.style.width = `${maxWidth}px`;
     }
@@ -111,7 +123,7 @@ class Form extends Component {
       } else if (element.type === Label || element.type === LabelOSX || element.type === LabelWindows) {
         const ref = `label-${index}`;
         return (
-          <RowWrapper ref={ref} style={styles.labelRow}>
+          <RowWrapper ref={ref} style={Desktop.os === 'win' ? styles.labelRowWin : styles.labelRowOsx}>
             {cloneElement(element, {form: this})}
           </RowWrapper>
         );

@@ -21,7 +21,7 @@ var styles = {
     paddingLeft: '11px',
     paddingRight: '11px',
     lineHeight: '16px',
-    fontFamily: '"San Francisco", "Helvetica Neue", "Lucida Grande"',
+    fontFamily: '"San Francisco", "Helvetica Neue", "Lucida Grande", Arial, sans-serif',
     fontSize: '13px',
     boxShadow: '0 1px rgba(0, 0, 0, .039), 0 0 .5px rgba(0, 0, 0, .1)',
 

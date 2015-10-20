@@ -7,7 +7,7 @@ var styles = {
     cursor: 'default',
     lineHeight: '25.96px',
     fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
-    fontSize: '12px',
+    fontSize: '14px',
     whiteSpace: 'nowrap'
   },
 
@@ -51,7 +51,7 @@ class TextBlockWindows extends Component {
     if (color) {
       switch (color) {
       case 'red':
-        color = '#fd2700';
+        color = '#c50500';
         break;
       }
       componentStyle = mergeStyles(componentStyle, {color: color});

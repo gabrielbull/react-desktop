@@ -22,7 +22,7 @@ var styles = {
     paddingLeft: '13px',
     paddingRight: '13px',
     lineHeight: '19px',
-    fontFamily: '"San Francisco", "Helvetica Neue", "Lucida Grande"',
+    fontFamily: '"San Francisco", "Helvetica Neue", "Lucida Grande", Arial, sans-serif',
     fontSize: '13px',
 
     ':active': {

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import { mergeStyles } from '../../Styling';
+import Desktop from '../../Desktop';
 import Label from '../../Label';
 import LabelOSX from '../../Label/Label.osx';
 import LabelWindows from '../../TextBlock/TextBlock.windows';
@@ -16,12 +17,23 @@ var styles = {
     cursor: 'default',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
+  },
+
+  rowOsx: {
     marginBottom: '20px'
   },
 
-  buttonRow: {
+  rowWin: {
+    marginBottom: '12px'
+  },
+
+  buttonRowOsx: {
     marginTop: '4px'
+  },
+
+  buttonRowWin: {
+    marginTop: '30px'
   }
 };
 
@@ -48,6 +60,7 @@ class Row extends Component {
   render() {
     let { children, style, form, display, visible, ...props } = this.props;
     let isButtonsRow = null;
+    let componentStyle = mergeStyles(style, styles.row, Desktop.os === 'win' ? styles.rowWin : styles.rowOsx);
 
     children = Children.map(children, function (element) {
       if (element.type === Label || element.type === LabelOSX || element.type === LabelWindows) {
@@ -64,16 +77,16 @@ class Row extends Component {
     }.bind(this));
 
     if (isButtonsRow) {
-      style = mergeStyles(style, styles.buttonRow);
+      componentStyle = mergeStyles(componentStyle, Desktop.os === 'win' ? styles.buttonRowWin : styles.buttonRowOsx);
     }
 
-    style = mergeStyles(style, styles.row, {
+    componentStyle = mergeStyles(componentStyle, styles.row, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'flex' : 'none'
     });
 
     return (
-      <div style={style} {...props}>
+      <div style={componentStyle} {...props}>
         {children}
       </div>
     );

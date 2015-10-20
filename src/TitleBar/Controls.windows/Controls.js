@@ -8,7 +8,7 @@ var styles = {
     WebkitUserSelect: 'none',
     cursor: 'default',
     display: 'flex',
-    height: '31px'
+    height: '32px'
   }
 };
 

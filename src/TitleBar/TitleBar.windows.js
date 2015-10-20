@@ -5,12 +5,13 @@ import Controls from './Controls.windows/Controls';
 
 var styles = {
   titleBar: {
-    WebkitUserSelect: 'none',
-    WebkitAppRegion: 'drag',
+    userSelect: 'none',
+    appRegion: 'drag',
     cursor: 'default',
     display: 'flex',
     alignItems: 'center',
-    height: '31px'
+    height: '31px',
+    backgroundColor: '#ffffff'
   },
 
   title: {

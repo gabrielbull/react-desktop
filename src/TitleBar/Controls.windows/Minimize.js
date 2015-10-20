@@ -8,7 +8,7 @@ var styles = {
     WebkitAppRegion: 'no-drag',
     cursor: 'default',
     width: '46px',
-    height: '28px',
+    height: '100%',
     lineHeight: 0,
     display: 'flex',
     justifyContent: 'center',
