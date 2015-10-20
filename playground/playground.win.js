@@ -3,19 +3,12 @@ import ReactDOM from 'react-dom';
 import {
   TitleBar,
   Button,
-  TextInput,
+  TextBox,
   TextBlock,
-  Toolbar,
-  Box,
-  SegmentedControl,
-  IndeterminateProgressWheel,
+  IndeterminateProgressRing,
   Form,
-  Label,
   Window,
-  Desktop
-} from '../src/index';
-
-Desktop.os = 'win';
+} from '../src/Windows';
 
 export class Window1 extends Component {
   constructor() {
@@ -46,18 +39,18 @@ export class Window2 extends Component {
           </TextBlock>
 
           <Form.Row>
-            <TextInput header="Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
+            <TextBox header="Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
           </Form.Row>
 
           <Form.Row>
-            <TextInput header="Longer Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
+            <TextBox header="Longer Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
           </Form.Row>
 
           <Form.Row>
             <Button onPress="submit" color="blue">Button Blue</Button>
             <Button>Button</Button>
 
-            <IndeterminateProgressWheel absolute/>
+            <IndeterminateProgressRing absolute/>
           </Form.Row>
         </Form>
       </Window>

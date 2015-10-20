@@ -2,17 +2,16 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {
   TitleBar,
-  Button,
-  TextInput,
+  PushButton,
+  TextField,
   Toolbar,
   Box,
   SegmentedControl,
-  IndeterminateProgressWheel,
+  IndeterminateCircularProgressIndicator,
   Form,
   Label,
-  Window,
-  Desktop
-} from '../src/index';
+  Window
+} from '../src/OSX';
 
 export class Window1 extends Component {
   constructor() {
@@ -63,19 +62,19 @@ export class Window2 extends Component {
 
                 <Form.Row>
                   <Label>Label:</Label>
-                  <TextInput defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
+                  <TextField defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
                 </Form.Row>
 
                 <Form.Row>
                   <Label>Longer label:</Label>
-                  <TextInput defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
+                  <TextField defaultValue="" placeholder="TextField" style={{width: '200px'}}/>
                 </Form.Row>
 
                 <Form.Row>
-                  <Button>PushButton</Button>
-                  <Button onPress="submit" color="blue">PushButton Blue</Button>
+                  <PushButton>PushButton</PushButton>
+                  <PushButton onPress="submit" color="blue">PushButton Blue</PushButton>
 
-                  <IndeterminateProgressWheel absolute/>
+                  <IndeterminateCircularProgressIndicator absolute/>
                 </Form.Row>
               </Form>
             </SegmentedControl.Item>
