@@ -62,18 +62,22 @@ function animateCircle(circle, last) {
   });
 }
 
+let currentTry = 0;
 export function startAnimation(...elements) {
   if (requestAnimationFrame) {
-    setTimeout(function () {
-      bounding = 75 - elements[0].getBBox().width / 2;
+    if (elements[0].getBBox().width === 0 && currentTry <= 100) {
+      currentTry++;
+      setTimeout(() => startAnimation(...elements), 100);
+      return;
+    }
+    bounding = 75 - elements[0].getBBox().width / 2;
 
-      animateCircle(elements[0])
-        .then(animateCircle.bind(null, elements[1]))
-        .then(animateCircle.bind(null, elements[2]))
-        .then(animateCircle.bind(null, elements[3]))
-        .then(animateCircle.bind(null, elements[4]))
-        .then(animateCircle.bind(null, elements[5], true))
-        .then(startAnimation.bind(null, ...elements));
-    }, 0);
+    animateCircle(elements[0])
+      .then(animateCircle.bind(null, elements[1]))
+      .then(animateCircle.bind(null, elements[2]))
+      .then(animateCircle.bind(null, elements[3]))
+      .then(animateCircle.bind(null, elements[4]))
+      .then(animateCircle.bind(null, elements[5], true))
+      .then(startAnimation.bind(null, ...elements));
   }
 }

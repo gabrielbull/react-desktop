@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Styling, { mergeStyles, applyStyle } from '../Styling';
+import TextBlockWindows from '../TextBlock/TextBlock.windows';
 
 var styles = {
   textBox: {
@@ -66,6 +67,9 @@ class TextBoxWindows extends Component {
     if (header) {
       return (
         <div>
+          <TextBlockWindows style={{marginBottom: '5px'}}>
+            {header}
+          </TextBlockWindows>
           {input}
         </div>
       );

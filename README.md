@@ -26,37 +26,38 @@ Guides on installation, components and advanced usage are found in the [document
 
 ## Todos OS X
 
-- [x] Window
-- [x] Title Bar
-- [x] Toolbar
-- [ ] Space Toolbar Item
-- [ ] Flexible Space Toolbar Item
-- [x] Segmented Control
 - [x] Box
-- [x] Label
-- [x] Form
-- [x] Push Button
-- [ ] Textured Rounded Button
-- [ ] Gradient Button
-- [ ] Pop Up Button
 - [ ] Check Box Button
+- [x] Indeterminate Circular Progress Indicator
+- [ ] Gradient Button
+- [ ] Flexible Space Toolbar Item
+- [x] Form
+- [x] Label
+- [ ] Pop Up Button
+- [x] Push Button
 - [ ] Radio Button
-- [x] Text Field
 - [ ] Search Field
 - [ ] Secure Text Field
-- [x] Indeterminate Circular Progress Indicator
+- [x] Segmented Control
+- [ ] Space Toolbar Item
+- [x] Text Field
+- [ ] Textured Rounded Button
+- [x] Title Bar
+- [x] Toolbar
+- [x] Window
 
 ## Todos Windows
 
-- [x] Window
-- [x] Title Bar
-- [ ] Label
-- [ ] Form
-- [ ] Button
-- [ ] Text Box
-- [x] Indeterminate Progress Ring
-- [ ] Indeterminate Progress Bar
+- [x] Button
+- [x] Checkbox
 - [ ] Determinate Progress Bar
+- [x] Form
+- [ ] Indeterminate Progress Bar
+- [x] Indeterminate Progress Ring
+- [x] Text Block
+- [x] Text Box
+- [x] Title Bar
+- [x] Window
 
 ## Screenshots
 
