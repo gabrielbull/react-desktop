@@ -5,6 +5,7 @@ const pseudos = [
   'hover',
   'active',
   'focus',
+  'checked',
   'placeholder',
   'first-child',
   'last-child',

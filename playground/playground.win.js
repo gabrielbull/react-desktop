@@ -8,6 +8,7 @@ import {
   IndeterminateProgressRing,
   Form,
   Window,
+  Checkbox,
 } from '../src/Windows';
 
 export class Window1 extends Component {
@@ -44,6 +45,13 @@ export class Window2 extends Component {
 
           <Form.Row>
             <TextBox header="Longer Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
+          </Form.Row>
+
+          <Form.Row>
+            <Checkbox label="Test label"/>
+          </Form.Row>
+          <Form.Row>
+            <Checkbox label="Default checked" defaultChecked/>
           </Form.Row>
 
           <Form.Row>

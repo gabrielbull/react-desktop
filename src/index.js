@@ -10,6 +10,7 @@ export {default as TextInput } from './TextInput';
 export {default as Toolbar } from './Toolbar';
 export {default as TitleBar } from './TitleBar';
 export {default as Window } from './Window';
+export {default as Checkbox } from './Checkbox';
 
 export * as Windows from './Windows';
 export * as OSX from './OSX';
