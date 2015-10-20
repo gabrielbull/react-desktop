@@ -13,14 +13,21 @@ class IndeterminateProgressWheel extends Component {
     style: PropTypes.object,
     visible: PropTypes.bool,
     display: PropTypes.bool,
-    color: PropTypes.string
+    color: PropTypes.string,
+    size: PropTypes.number
   };
+
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState) {
+      this.refs.component.setState(nextState);
+    }
+  }
 
   render() {
     if (Desktop.os === 'win') {
-      return <IndeterminateProgressRingWindows {...this.props}/>
+      return <IndeterminateProgressRingWindows ref="component" {...this.props}/>
     } else {
-      return <IndeterminateCircularProgressIndicatorOSX {...this.props}/>
+      return <IndeterminateCircularProgressIndicatorOSX ref="component" {...this.props}/>
     }
   }
 }

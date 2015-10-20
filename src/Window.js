@@ -13,11 +13,17 @@ class Window extends Component {
     display: PropTypes.bool
   };
 
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState) {
+      this.refs.component.setState(nextState);
+    }
+  }
+
   render() {
     if (Desktop.os === 'win') {
-      return <WindowWindows {...this.props}/>
+      return <WindowWindows ref="component" {...this.props}/>
     } else {
-      return <WindowOSX {...this.props}/>
+      return <WindowOSX ref="component" {...this.props}/>
     }
   }
 }

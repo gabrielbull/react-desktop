@@ -3,7 +3,7 @@ import Desktop from './Desktop';
 import SegmentedControlOSX from './SegmentedControl/SegmentedControl.osx';
 
 class SegmentedControl extends Component {
-  static Item = SegmentedControlOSX.Item;
+  static Item = Desktop.os === 'win' ? (<div/>) : SegmentedControlOSX.Item;
 
   static propTypes = {
     children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
@@ -12,11 +12,17 @@ class SegmentedControl extends Component {
     display: PropTypes.bool
   };
 
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState) {
+      this.refs.component.setState(nextState);
+    }
+  }
+
   render() {
     if (Desktop.os === 'win') {
-      return <div {...this.props}/>
+      return <div ref="component" {...this.props}/>
     } else {
-      return <SegmentedControlOSX {...this.props}/>
+      return <SegmentedControlOSX ref="component" {...this.props}/>
     }
   }
 }

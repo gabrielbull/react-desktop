@@ -11,11 +11,17 @@ class TextField extends Component {
     display: PropTypes.bool
   };
 
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState) {
+      this.refs.component.setState(nextState);
+    }
+  }
+
   render() {
     if (Desktop.os === 'win') {
-      return <TextBoxWindows {...this.props}/>
+      return <TextBoxWindows ref="component" {...this.props}/>
     } else {
-      return <TextFieldOSX {...this.props}/>
+      return <TextFieldOSX ref="component" {...this.props}/>
     }
   }
 }

@@ -15,11 +15,17 @@ class Button extends Component {
     display: PropTypes.bool
   };
 
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState) {
+      this.refs.component.setState(nextState);
+    }
+  }
+
   render() {
     if (Desktop.os === 'win') {
-      return <ButtonWindows {...this.props}/>
+      return <ButtonWindows ref="component" {...this.props}/>
     } else {
-      return <ButtonOSX {...this.props}/>
+      return <ButtonOSX ref="component" {...this.props}/>
     }
   }
 }

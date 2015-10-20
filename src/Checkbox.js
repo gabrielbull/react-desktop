@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import Desktop from './Desktop';
-//import TextFieldOSX from './TextInput/TextField.osx';
 import CheckboxWindows from './Checkbox/Checkbox.windows';
 
 class Checkbox extends Component {
@@ -11,11 +10,17 @@ class Checkbox extends Component {
     display: PropTypes.bool
   };
 
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState) {
+      this.refs.component.setState(nextState);
+    }
+  }
+
   render() {
     if (Desktop.os === 'win') {
-      return <CheckboxWindows {...this.props}/>
+      return <CheckboxWindows ref="component" {...this.props}/>
     } else {
-      return <CheckboxWindows {...this.props}/>
+      return <CheckboxWindows ref="component" {...this.props}/>
     }
   }
 }

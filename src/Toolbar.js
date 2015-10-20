@@ -10,11 +10,17 @@ class TitleBar extends Component {
     display: PropTypes.bool
   };
 
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState) {
+      this.refs.component.setState(nextState);
+    }
+  }
+
   render() {
     if (Desktop.os === 'win') {
-      return <div {...this.props}/>
+      return <div ref="component" {...this.props}/>
     } else {
-      return <ToolbarOSX {...this.props}/>
+      return <ToolbarOSX ref="component" {...this.props}/>
     }
   }
 }

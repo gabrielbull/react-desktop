@@ -17,11 +17,17 @@ class TitleBar extends Component {
     display: PropTypes.bool
   };
 
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState) {
+      this.refs.component.setState(nextState);
+    }
+  }
+
   render() {
     if (Desktop.os === 'win') {
-      return <TitleBarWindows {...this.props}/>
+      return <TitleBarWindows ref="component" {...this.props}/>
     } else {
-      return <TitleBarOX {...this.props}/>
+      return <TitleBarOX ref="component" {...this.props}/>
     }
   }
 }

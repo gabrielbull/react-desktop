@@ -15,11 +15,17 @@ class Label extends Component {
     display: PropTypes.bool
   };
 
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState) {
+      this.refs.component.setState(nextState);
+    }
+  }
+
   render() {
     if (Desktop.os === 'win') {
-      return <TextBlockWindows {...this.props}/>
+      return <TextBlockWindows ref="component" {...this.props}/>
     } else {
-      return <LabelOSX {...this.props}/>
+      return <LabelOSX ref="component" {...this.props}/>
     }
   }
 }

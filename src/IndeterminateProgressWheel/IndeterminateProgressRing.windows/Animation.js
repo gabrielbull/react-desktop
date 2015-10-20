@@ -64,14 +64,16 @@ function animateCircle(circle, last) {
 
 export function startAnimation(...elements) {
   if (requestAnimationFrame) {
-    bounding = 75 - elements[0].getBBox().width / 2;
+    setTimeout(function () {
+      bounding = 75 - elements[0].getBBox().width / 2;
 
-    animateCircle(elements[0])
-      .then(animateCircle.bind(null, elements[1]))
-      .then(animateCircle.bind(null, elements[2]))
-      .then(animateCircle.bind(null, elements[3]))
-      .then(animateCircle.bind(null, elements[4]))
-      .then(animateCircle.bind(null, elements[5], true))
-      .then(startAnimation.bind(null, ...elements));
+      animateCircle(elements[0])
+        .then(animateCircle.bind(null, elements[1]))
+        .then(animateCircle.bind(null, elements[2]))
+        .then(animateCircle.bind(null, elements[3]))
+        .then(animateCircle.bind(null, elements[4]))
+        .then(animateCircle.bind(null, elements[5], true))
+        .then(startAnimation.bind(null, ...elements));
+    }, 0);
   }
 }

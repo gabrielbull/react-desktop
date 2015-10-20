@@ -30,7 +30,8 @@ class ProgressRingWindows extends Component {
     style: PropTypes.object,
     visible: PropTypes.bool,
     display: PropTypes.bool,
-    color: PropTypes.string
+    color: PropTypes.string,
+    size: PropTypes.number
   };
 
   constructor(props) {
@@ -64,8 +65,9 @@ class ProgressRingWindows extends Component {
   }
 
   render() {
-    const { color, style, absolute, visible, display, form, ...props } = this.props;
+    const { size, color, style, absolute, visible, display, form, ...props } = this.props;
 
+    let containerStyle = {...styles.container};
     let componentStyle = mergeStyles(style, styles.progress, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
@@ -78,6 +80,18 @@ class ProgressRingWindows extends Component {
     let componentColor = color;
     if (!componentColor) {
       componentColor = '#1883d7';
+    }
+
+    if (size) {
+      componentStyle = {
+        ...componentStyle,
+        width: size + 'px',
+        height: size + 'px'
+      };
+      containerStyle = {
+        ...containerStyle,
+        height: size + 'px'
+      };
     }
 
     const svg = (
@@ -102,7 +116,7 @@ class ProgressRingWindows extends Component {
     let content = svg;
     if (absolute) {
       content = (
-        <div style={styles.container}>
+        <div style={containerStyle}>
           {svg}
         </div>
       );
