@@ -7,6 +7,7 @@ import {
   TextBlock,
   TextBox,
   Button,
+  Checkbox,
   IndeterminateProgressRing,
 } from 'react-desktop/lib/Windows';
 
@@ -19,21 +20,15 @@ export default class extends Component {
   }
 
   submit() {
-    this.refs.submit.setState({display: false});
-    this.refs.button.setState({display: false});
     this.refs.error.setState({display: false});
     this.refs.loader.setState({visible: true});
     setTimeout(function () {
-      this.refs.submit.setState({display: true});
-      this.refs.button.setState({display: true});
       this.refs.error.setState({display: true});
       this.refs.loader.setState({visible: false});
     }.bind(this), 4000);
   }
 
   cancel() {
-    this.refs.submit.setState({display: true});
-    this.refs.button.setState({display: true});
     this.refs.error.setState({display: false});
     this.refs.loader.setState({visible: false});
   }
@@ -56,10 +51,14 @@ export default class extends Component {
             <TextBox header="Longer Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
           </Form.Row>
 
+          <Form.Row>
+            <Checkbox label="Default checked" defaultChecked/>
+          </Form.Row>
+
           <Form.Row sty>
             <Button ref="submit" onPress="submit" color="blue">Button Blue</Button>
             <Button ref="button" onPress={this.cancel.bind(this)}>Button</Button>
-            <IndeterminateProgressRing style={{zoom: 2}} ref="loader" visible={false}/>
+            <IndeterminateProgressRing ref="loader" absolute visible={false}/>
           </Form.Row>
 
         </Form>
