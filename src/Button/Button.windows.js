@@ -19,12 +19,15 @@ var styles = {
     lineHeight: '28px',
     fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
     fontSize: '15px',
+    color: '#000000',
 
     ':hover': {
+      color: '#000000',
       borderColor: '#7a7a7a'
     },
 
     ':active': {
+      color: '#000000',
       borderColor: '#999999',
       backgroundColor: '#999999',
       transform: 'scale(0.97)',
@@ -86,7 +89,7 @@ class Button extends Component {
 
     let componentStyle = style;
     let cssStyle = styles.button;
-    if (color === 'blue' && this.state.windowFocused) {
+    if (color === 'blue') {
       cssStyle = mergeStyles(cssStyle, styles.buttonBlue);
     }
 
