@@ -48,9 +48,6 @@ export class Window2 extends Component {
           </Form.Row>
 
           <Form.Row>
-            <Checkbox label="Test label"/>
-          </Form.Row>
-          <Form.Row>
             <Checkbox label="Default checked" defaultChecked/>
           </Form.Row>
 
