@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Styling, { mergeStyles, applyStyle } from '../Styling';
+import DesktopComponent from '../DesktopComponent';
 
 var styles = {
   checkbox: {
@@ -22,14 +22,14 @@ var styles = {
       borderColor: '#007CD1'
     },
 
-    ':checked': {
-      background: '#007CD1',
-      borderColor: '#007CD1'
-    },
-
     ':hover': {
       borderColor: 'rgba(100, 100, 100, 1)'
-    },
+    }
+  },
+
+  ':checked': {
+    background: '#007CD1',
+    borderColor: '#007CD1'
   },
 
   label: {
@@ -37,9 +37,14 @@ var styles = {
     fontSize: '14px',
     lineHeight: '27px',
     position: 'relative',
+    color: '#000000',
   },
 
-  checked: {
+  labelDark: {
+    color: '#ffffff',
+  },
+
+  svgChecked: {
     position: 'absolute',
     top: '5px',
     left: '6px',
@@ -48,29 +53,18 @@ var styles = {
   }
 };
 
-@Styling
+@DesktopComponent
 class CheckboxWindows extends Component {
   static propTypes = {
-    style: PropTypes.object,
-    row: PropTypes.any,
-    form: PropTypes.any,
     label: PropTypes.string,
-    visible: PropTypes.bool,
-    display: PropTypes.bool,
     onChange: PropTypes.func
   };
 
   constructor(props) {
     super();
     this.state = {
-      visible: props.visible !== false,
-      display: props.display !== false,
       checked: props.defaultChecked === true
     };
-  }
-
-  get styles() {
-    return mergeStyles(styles.checkbox, this.props.style);
   }
 
   onChange(event) {
@@ -81,28 +75,35 @@ class CheckboxWindows extends Component {
   }
 
   render() {
-    let { style, row, form, display, visible, label, ...props } = this.props;
-    let componentStyle = this.styles;
+    let { style, label, ...props } = this.props;
+    let componentStyle = {...styles.checkbox, ...style};
     let checkedStyle = {display: 'none'};
+    let labelStyle = styles.label;
 
     if (this.state.checked) {
-      checkedStyle = styles['checked'];
+      checkedStyle = styles.svgChecked;
+      componentStyle = {...componentStyle, ...styles[':checked']};
     }
 
-    componentStyle = mergeStyles(componentStyle, {
+    componentStyle = {
+      ...componentStyle,
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'inline-block' : 'none'
-    });
+    };
+
+    if (this.state.requestedTheme === 'dark') {
+      labelStyle = {...labelStyle, ...styles.labelDark};
+    }
 
     return (
-      <label style={styles.label}>
+      <label style={labelStyle}>
         <input
           ref="element"
           type="checkbox"
-          {...props}
-          data-style={applyStyle(componentStyle)}
+          style={componentStyle}
           checked={this.state.checked}
           onChange={this.onChange.bind(this)}
+          {...props}
         />
         <svg x="0px" y="0px" viewBox="0 0 6.4 6.4" style={checkedStyle}>
           <polygon fill="#fff" points="0,3.3 2.2,5.5 6.4,1.23 6.1,0.9 2.2,4.8 0.3,2.9 "/>
