@@ -40,13 +40,13 @@ class Window extends Component {
   filterChildren() {
     let titleBar = '';
     let otherChildren = [];
-    Children.map(this.props.children, function (element) {
+    Children.map(this.props.children, (element) => {
       if (element.type === TitleBar || element.type === TitleBarWindows) {
         titleBar = element;
       } else {
         otherChildren = [...otherChildren, element];
       }
-    }.bind(this));
+    });
 
     return [titleBar, ...otherChildren];
   }

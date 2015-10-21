@@ -62,7 +62,7 @@ class Row extends Component {
     let isButtonsRow = null;
     let componentStyle = mergeStyles(style, styles.row, Desktop.os === 'win' ? styles.rowWin : styles.rowOsx);
 
-    children = Children.map(children, function (element) {
+    children = Children.map(children, (element) => {
       if (element.type === Label || element.type === LabelOSX || element.type === LabelWindows) {
         isButtonsRow = false;
       } else if (element.type === TextInput || element.type === TextFieldOSX || element.type === TextBoxWindows) {
@@ -74,7 +74,7 @@ class Row extends Component {
         isButtonsRow = true;
       }
       return cloneElement(element, { form: form, row: this });
-    }.bind(this));
+    });
 
     if (isButtonsRow) {
       componentStyle = mergeStyles(componentStyle, Desktop.os === 'win' ? styles.buttonRowWin : styles.buttonRowOsx);

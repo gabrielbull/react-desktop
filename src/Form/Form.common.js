@@ -95,7 +95,7 @@ class Form extends Component {
     let { onSubmit, children, style, ...props } = this.props;
     let componentStyle = {...styles.table, ...style};
 
-    children = Children.map(children, function (element, index) {
+    children = Children.map(children, (element, index) => {
       const isLast = index + 1 === Children.count(children);
       if (isLast) {
         element = cloneElement(element, {
@@ -119,7 +119,7 @@ class Form extends Component {
         );
       }
       return element;
-    }.bind(this));
+    });
 
     return (
       <form

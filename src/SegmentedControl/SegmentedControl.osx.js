@@ -36,9 +36,9 @@ class SegmentedControl extends Component {
   render() {
     let { children, style, visible, display, ...props} = this.props;
 
-    children = Children.map(children, function (child, index) {
+    children = Children.map(children, (child, index) => {
       return cloneElement(child, { control: this, tabId: index });
-    }.bind(this));
+    });
 
     const tabs = <Tabs ref="tabs" tabs={children}/>;
 
