@@ -9,6 +9,7 @@ import {
   Form,
   Window,
   Checkbox,
+  SplitView
 } from '../src/Windows';
 
 export class Window1 extends Component {
@@ -31,8 +32,14 @@ export class Window2 extends Component {
 
   render() {
     return (
-      <Window chrome style={{backgroundColor: '#f2f2f2'}}>
+      <Window chrome darkTheme>
         <TitleBar title="TitleBar" controls/>
+
+        <SplitView>
+          <SplitView.View>
+
+          </SplitView.View>
+        </SplitView>
 
         <Form onSubmit={() => { alert('form submitted'); }}>
           <TextBlock color="red">

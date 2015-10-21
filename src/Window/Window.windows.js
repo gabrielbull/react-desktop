@@ -13,6 +13,10 @@ var styles = {
     flexDirection: 'column',
   },
 
+  windowDark: {
+    backgroundColor: '#171717'
+  },
+
   chrome: {
     borderWidth: '1px',
     borderStyle: 'solid',
@@ -37,7 +41,12 @@ class WindowWindows extends Component {
     chrome: PropTypes.bool,
     border: PropTypes.string,
     visible: PropTypes.bool,
-    display: PropTypes.bool
+    display: PropTypes.bool,
+    darkTheme: PropTypes.bool
+  };
+
+  static childContextTypes = {
+    theme: PropTypes.string
   };
 
   constructor(props) {
@@ -49,19 +58,21 @@ class WindowWindows extends Component {
     };
   }
 
-  get styles() {
-    return mergeStyles(styles.window, this.props.style);
+  getChildContext() {
+    return {
+      theme: this.props.darkTheme ? 'dark' : 'light'
+    };
   }
 
   render() {
-    let { style, border, chrome, children, visible, display, ...props } = this.props;
+    let { style, darkTheme, border, chrome, children, visible, display, ...props } = this.props;
 
-    let compoentStyle = this.styles;
+    let componentStyle = mergeStyles(styles.window, style);
     if (chrome) {
-      compoentStyle = mergeStyles(compoentStyle, styles.chrome);
+      componentStyle = mergeStyles(componentStyle, styles.chrome);
 
       if (!this.state.windowFocused) {
-        compoentStyle = mergeStyles(compoentStyle, styles.unfocused);
+        componentStyle = mergeStyles(componentStyle, styles.unfocused);
       }
     }
 
@@ -77,18 +88,22 @@ class WindowWindows extends Component {
       }
     }.bind(this));
 
-    compoentStyle = mergeStyles(compoentStyle, {
+    componentStyle = mergeStyles(componentStyle, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'flex' : 'none'
     });
 
     if (border) {
-      styles = mergeStyles(styles, { borderColor: border });
+      componentStyle = mergeStyles(componentStyle, { borderColor: border });
+    }
+
+    if (darkTheme) {
+      componentStyle = mergeStyles(componentStyle, styles.windowDark);
     }
 
     return (
       <div
-        style={compoentStyle}
+        style={componentStyle}
         {...props}
       >
         {titleBar}

@@ -46,6 +46,11 @@ class Close extends Component {
     style: PropTypes.object
   };
 
+  static contextTypes = {
+    theme: PropTypes.string,
+    background: PropTypes.string
+  };
+
   constructor() {
     super();
     this.state = {windowFocused: true};
@@ -57,6 +62,10 @@ class Close extends Component {
     let svgFill = '#000000';
     if (!this.state.windowFocused) {
       svgFill = 'rgba(0, 0, 0, .4)';
+    }
+
+    if (this.context.theme === 'dark') {
+      svgFill = '#ffffff';
     }
 
     return (

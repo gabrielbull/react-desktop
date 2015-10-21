@@ -13,6 +13,7 @@ class TitleBar extends Component {
     onMinimizePress: PropTypes.func,
     onMaximizePress: PropTypes.func,
     onResizePress: PropTypes.func,
+    background: PropTypes.string,
     visible: PropTypes.bool,
     display: PropTypes.bool
   };

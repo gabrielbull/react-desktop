@@ -48,7 +48,7 @@
     "react/no-did-update-set-state": 1,
     "react/no-multi-comp": 1,
     "react/no-unknown-property": 1,
-    "react/prop-types": 1,
+    //"react/prop-types": 1, // does not work with inherited propTypes
     "react/require-extension": 1,
     "react/self-closing-comp": 1,
     "react/wrap-multilines": 1

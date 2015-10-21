@@ -19,6 +19,20 @@ class Controls extends Component {
     onMaximizePress: PropTypes.func
   };
 
+  static childContextTypes = {
+    theme: PropTypes.string
+  };
+
+  static contextTypes = {
+    theme: PropTypes.string
+  };
+
+  getChildContext() {
+    return {
+      theme: this.context.theme
+    };
+  }
+
   render() {
     return (
       <div style={styles.controls}>

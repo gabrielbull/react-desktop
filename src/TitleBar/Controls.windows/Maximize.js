@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Styling, { applyStyle } from '../../Styling';
+import Styling, { mergeStyles, applyStyle } from '../../Styling';
 import WindowState from '../../WindowState';
 
 var styles = {
@@ -24,6 +24,17 @@ var styles = {
     }
   },
 
+  buttonColorBackground: {
+    ':hover': {
+      transition: 'background-color 0.1s',
+      backgroundColor: 'rgba(255, 255, 255, .13)'
+    },
+
+    ':active': {
+      backgroundColor: 'rgba(255, 255, 255, .23)'
+    }
+  },
+
   icon: {
     width: '10px',
     height: '10px'
@@ -35,6 +46,11 @@ var styles = {
 class Resize extends Component {
   static propTypes = {
     style: PropTypes.object
+  };
+
+  static contextTypes = {
+    theme: PropTypes.string,
+    background: PropTypes.string
   };
 
   constructor() {
@@ -50,9 +66,15 @@ class Resize extends Component {
       svgFill = 'rgba(0, 0, 0, .4)';
     }
 
+    let cssStyle = styles.button;
+    if (this.context.theme === 'dark' || this.context.background) {
+      svgFill = '#ffffff';
+      cssStyle = mergeStyles(cssStyle, styles.buttonColorBackground);
+    }
+
     return (
       <a
-        data-style={applyStyle(styles.button)}
+        data-style={applyStyle(cssStyle)}
         style={style}
         {...props}
       >

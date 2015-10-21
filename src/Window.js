@@ -10,7 +10,8 @@ class Window extends Component {
     chrome: PropTypes.bool,
     border: PropTypes.string,
     visible: PropTypes.bool,
-    display: PropTypes.bool
+    display: PropTypes.bool,
+    darkTheme: PropTypes.bool
   };
 
   componentWillUpdate(nextProps, nextState) {
