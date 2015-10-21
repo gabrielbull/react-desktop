@@ -7,7 +7,7 @@
     "react-addons-transition-group": "^0.14.0",
     "react-desktop": "^0.1.27",
     "react-dom": "^0.14.0",
-    "react-router": "https://github.com/rackt/react-router.git#update-react"
+    "react-router": "https://github.com/rackt/react-router.git#master"
   },
   "devDependencies": {
     "babel": "^5.8.23",
