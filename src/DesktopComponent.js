@@ -72,6 +72,14 @@ function ExtendComposedComponent (ComposedComponent) {
       return childContext;
     }
 
+    setState(state) {
+      if (state.requestedTheme) {
+        this._updateRequestedTheme = true;
+        this.context.requestedTheme = state.requestedTheme;
+      }
+      ComposedComponent.prototype.setState.apply(this, [state]);
+    }
+
     componentDidMount() {
       if (window && windowStateEnabled) {
         window.addEventListener('focus', this.windowFocus.bind(this));
@@ -90,6 +98,14 @@ function ExtendComposedComponent (ComposedComponent) {
       if (ComposedComponent.prototype.componentWillUnmount) {
         ComposedComponent.prototype.componentWillUnmount.apply(this);
       }
+    }
+
+    render(...params) {
+      if (!this._updateRequestedTheme) {
+        this.state.requestedTheme = this.context.requestedTheme;
+      }
+      this._updateRequestedTheme = null;
+      return ComposedComponent.prototype.render.apply(this, params);
     }
 
     windowFocus() {

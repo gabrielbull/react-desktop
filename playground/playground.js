@@ -34,7 +34,8 @@ class Switch extends Component {
   constructor() {
     super();
     this.state = {
-      os: localStorage['os'] ? localStorage['os'] : 'osx'
+      os: localStorage['os'] ? localStorage['os'] : 'osx',
+      theme: localStorage['theme'] ? localStorage['theme'] : 'light'
     };
   }
 
@@ -51,24 +52,41 @@ class Switch extends Component {
     localStorage['os'] = event.target.value;
   }
 
+  toggleTheme() {
+    this.state.theme = this.state.theme === 'light' ? 'dark' : 'light';
+    if (this.window2.refs.window) {
+      this.window2.refs.window.setState({requestedTheme: this.state.theme});
+    }
+    localStorage['theme'] = this.state.theme;
+  }
+
   render() {
+    const isChecked = this.state.theme === 'dark';
+
     return (
-      <div style={{backgroundColor: 'rgba(0,0,0,.8)', 'height': '100%'}}>
+      <div style={{backgroundColor: 'rgba(0,0,0,.8)', width: '140px', 'height': '100%'}}>
         <select value={this.state.os} onChange={this.changeOs.bind(this)} style={{margin: '10px'}}>
           <option value="osx">OS X</option>
           <option value="win">Windows</option>
         </select>
+
+        <br/>
+
+        <label style={{margin: '10px', fontFamily: 'sans-serif', color: 'white', fontSize: '11px'}}>
+          <input type="checkbox" onChange={this.toggleTheme.bind(this)} defaultChecked={isChecked}/>
+          Dark Theme
+        </label>
       </div>
     );
   }
 
   renderWindows() {
     if (this.state.os === 'osx') {
-      ReactDOM.render(<Window1OSX/>, document.getElementById('window1'));
-      ReactDOM.render(<Window2OSX/>, document.getElementById('window2'));
+      ReactDOM.render(<Window1OSX theme={this.state.theme}/>, document.getElementById('window1'));
+      this.window2 = ReactDOM.render(<Window2OSX theme={this.state.theme}/>, document.getElementById('window2'));
     } else {
-      ReactDOM.render(<Window1Win/>, document.getElementById('window1'));
-      ReactDOM.render(<Window2Win/>, document.getElementById('window2'));
+      ReactDOM.render(<Window1Win theme={this.state.theme}/>, document.getElementById('window1'));
+      this.window2 = ReactDOM.render(<Window2Win theme={this.state.theme}/>, document.getElementById('window2'));
     }
   }
 }

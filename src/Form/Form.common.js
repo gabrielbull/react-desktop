@@ -1,6 +1,6 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import { findDOMNode } from 'react-dom';
-import { mergeStyles } from '../Styling';
+import DesktopComponent from '../DesktopComponent';
 import Desktop from '../Desktop';
 import Row from './Row.common/Row.common';
 import RowWrapper from './Row.common/RowWrapper.common';
@@ -10,7 +10,7 @@ import LabelWindows from '../TextBlock/TextBlock.windows';
 
 var styles = {
   table: {
-    WebkitUserSelect: 'none',
+    userSelect: 'none',
     cursor: 'default',
     display: 'flex',
     flexDirection: 'column',
@@ -26,6 +26,7 @@ var styles = {
   }
 };
 
+@DesktopComponent
 class Form extends Component {
   static Row = Row;
 
@@ -33,17 +34,8 @@ class Form extends Component {
   rows = [];
 
   static propTypes = {
-    children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
-    style: PropTypes.object,
-    onSubmit: PropTypes.func,
-    visible: PropTypes.bool,
-    display: PropTypes.bool
+    onSubmit: PropTypes.func
   };
-
-  constructor(props) {
-    super();
-    this.state = { visible: props.visible !== false, display: props.display !== false };
-  }
 
   registerRow(row) {
     this.rows = [...this.rows, row];
@@ -51,7 +43,6 @@ class Form extends Component {
       this.applyWithToRows();
     }
   }
-
 
   registerLabel(label) {
     this.labels = [...this.labels, label];
@@ -102,13 +93,13 @@ class Form extends Component {
 
   render() {
     let { onSubmit, children, style, ...props } = this.props;
-    let componentStyle = mergeStyles(styles.table, style);
+    let componentStyle = {...styles.table, ...style};
 
     children = Children.map(children, function (element, index) {
       const isLast = index + 1 === Children.count(children);
       if (isLast) {
         element = cloneElement(element, {
-          style: mergeStyles(element.props.style, {marginBottom: '0'})
+          style: {...element.props.style, marginBottom: '0'}
         });
       }
 

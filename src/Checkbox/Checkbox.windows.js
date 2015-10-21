@@ -56,12 +56,12 @@ class CheckboxWindows extends Component {
     form: PropTypes.any,
     label: PropTypes.string,
     visible: PropTypes.bool,
-    display: PropTypes.bool
+    display: PropTypes.bool,
+    onChange: PropTypes.func
   };
 
   constructor(props) {
     super();
-    this.onChange = this.onChange.bind(this);
     this.state = {
       visible: props.visible !== false,
       display: props.display !== false,
@@ -75,6 +75,9 @@ class CheckboxWindows extends Component {
 
   onChange(event) {
     this.setState({ checked: event.target.checked });
+    if (this.props.onChange) {
+      this.props.onChange(event);
+    }
   }
 
   render() {
@@ -99,7 +102,7 @@ class CheckboxWindows extends Component {
           {...props}
           data-style={applyStyle(componentStyle)}
           checked={this.state.checked}
-          onChange={this.onChange}
+          onChange={this.onChange.bind(this)}
         />
         <svg x="0px" y="0px" viewBox="0 0 6.4 6.4" style={checkedStyle}>
           <polygon fill="#fff" points="0,3.3 2.2,5.5 6.4,1.23 6.1,0.9 2.2,4.8 0.3,2.9 "/>

@@ -25,14 +25,9 @@ export class Window1 extends Component {
 }
 
 export class Window2 extends Component {
-  constructor() {
-    super();
-    this.state = {selectedTab: 'login'};
-  }
-
   render() {
     return (
-      <Window chrome requestedTheme="dark">
+      <Window ref="window" chrome requestedTheme={this.props.theme}>
         <TitleBar title="TitleBar" controls/>
 
         <SplitView>
@@ -41,7 +36,7 @@ export class Window2 extends Component {
           </SplitView.View>
         </SplitView>
 
-        <Form onSubmit={() => { alert('form submitted'); }}>
+        <Form>
           <TextBlock color="red">
             There was an error submitting this form.
           </TextBlock>
@@ -62,7 +57,7 @@ export class Window2 extends Component {
             <Button onPress="submit" color="blue">Button Blue</Button>
             <Button>Button</Button>
 
-            <IndeterminateProgressRing absolute/>
+            <IndeterminateProgressRing size={32} absolute/>
           </Form.Row>
         </Form>
       </Window>
