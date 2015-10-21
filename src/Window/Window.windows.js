@@ -1,7 +1,8 @@
 import React, { Component, PropTypes, Children } from 'react';
 import DesktopComponent, { WindowState }  from '../DesktopComponent';
-import TitleBar from '../TitleBar';
-import TitleBarWindows from '../TitleBar/TitleBar.windows';
+import TitleBar from '../TitleBar/TitleBar.windows';
+import Grid from '../Grid/Grid.windows';
+import SplitView from '../SplitView/SplitView.windows';
 
 var styles = {
   window: {
@@ -24,10 +25,6 @@ var styles = {
 
   unfocused: {
     borderColor: '#aaaaaa'
-  },
-
-  content: {
-    margin: '24px 20px 20px 20px'
   }
 };
 
@@ -40,15 +37,20 @@ class Window extends Component {
   filterChildren() {
     let titleBar = '';
     let otherChildren = [];
+    let hasGrid = false;
     Children.map(this.props.children, (element) => {
-      if (element.type === TitleBar || element.type === TitleBarWindows) {
+      if (element.type === Grid || element.type === SplitView) {
+        hasGrid = true;
+      }
+
+      if (element.type === TitleBar) {
         titleBar = element;
       } else {
         otherChildren = [...otherChildren, element];
       }
     });
 
-    return [titleBar, ...otherChildren];
+    return [titleBar, hasGrid, ...otherChildren];
   }
 
   render() {
@@ -56,9 +58,11 @@ class Window extends Component {
 
     let componentStyle = {...styles.window, ...style};
     if (chrome) {
-      componentStyle = {...componentStyle, ...styles.chrome};
-
-      componentStyle = {...componentStyle, borderColor: this.state.color };
+      componentStyle = {
+        ...componentStyle,
+        ...styles.chrome,
+        borderColor: this.state.color
+      };
 
       if (!this.state.windowFocused) {
         componentStyle = {...componentStyle, ...styles.unfocused}
@@ -79,16 +83,22 @@ class Window extends Component {
       componentStyle = {...componentStyle, backgroundColor: this.state.background};
     }
 
-    const [titleBar, ...children] = this.filterChildren();
+    const [titleBar, hasGrid, ...children] = this.filterChildren();
+
+    let content;
+    if (hasGrid) {
+      content = children;
+    } else {
+      content = <Grid>{children}</Grid>;
+    }
+
     return (
       <div
         style={componentStyle}
         {...props}
       >
         {titleBar}
-        <div style={styles.content}>
-          {children}
-        </div>
+        {content}
       </div>
     );
   }

@@ -30,13 +30,15 @@ export class Window2 extends Component {
 
     return (
       <Window ref="window" background={background} color="#cc7f29" chrome requestedTheme={this.props.theme}>
-        <TitleBar title="TitleBar" controls/>
+        <TitleBar title="My Windows Application" controls/>
 
-        <SplitView>
-          <SplitView.Pane isOpen openLenght={20}>
-
-          </SplitView.Pane>
-          <SplitView.Content requestedTheme="light" background="#ffffff">
+        <SplitView isOpen openLenght={20}>
+          <SplitView.Item
+            title="Welcome"
+            padding="20px 30px"
+            requestedTheme="light"
+            background="#ffffff"
+          >
             <Form>
               <TextBlock color="red">
                 There was an error submitting this form.
@@ -61,7 +63,7 @@ export class Window2 extends Component {
                 <IndeterminateProgressRing size={32} color absolute/>
               </Form.Row>
             </Form>
-          </SplitView.Content>
+          </SplitView.Item>
         </SplitView>
       </Window>
     );
