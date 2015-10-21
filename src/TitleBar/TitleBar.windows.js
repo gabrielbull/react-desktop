@@ -72,7 +72,9 @@ class TitleBar extends Component {
     }
 
     if (background) {
-      componentStyle = {...componentStyle, background: background};
+      componentStyle = {...componentStyle, backgroundColor: background};
+    } else if (this.state.background) {
+      componentStyle = {...componentStyle, backgroundColor: this.state.background};
     }
 
     const controlsComponent = !controls || <Controls {...this.props}/>;

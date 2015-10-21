@@ -64,7 +64,7 @@ function ExtendComposedComponent (ComposedComponent) {
       this.state.color = this.context.color;
 
       if (!context || !context.background) {
-        this.context.background = background ? this.convertColor(background) : this.convertColor('white');
+        this.context.background = background ? this.convertColor(background) : null;
       }
       this.state.background = this.context.background;
 
