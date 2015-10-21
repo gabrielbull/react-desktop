@@ -56,7 +56,7 @@ export class Window2 extends Component {
           </Form.Row>
 
           <Form.Row>
-            <Button onPress="submit" color push>Button Blue</Button>
+            <Button onPress="submit" color push>Button With Color</Button>
             <Button push>Button</Button>
 
             <IndeterminateProgressRing size={32} absolute/>

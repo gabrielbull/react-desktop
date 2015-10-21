@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import DesktopComponent from '../DesktopComponent';
+import { darkenColor } from '../Color';
 
 var styles = {
   button: {
@@ -32,7 +33,7 @@ var styles = {
     }
   },
 
-  buttonBlue: {
+  colorButton: {
     color: '#ffffff',
     borderColor: '#0078d7',
     backgroundColor: '#0078d7',
@@ -43,9 +44,7 @@ var styles = {
 
     ':active': {
       borderColor: '#004e8c',
-      backgroundColor: '#004e8c',
-      transform: 'none',
-      transition: 'none'
+      backgroundColor: '#004e8c'
     }
   },
 
@@ -82,10 +81,26 @@ class Button extends Component {
     let componentStyle = {...styles.button, ...style};
     switch (color) {
     case true:
-      componentStyle = {...componentStyle, ...styles.buttonBlue};
+      styles.colorButton = {
+        ...styles.colorButton,
+        borderColor: this.state.color,
+        backgroundColor: this.state.color,
+        ':hover': {
+          ...styles.colorButton[':hover'],
+          borderColor: darkenColor(this.state.color, .35)
+        },
+
+        ':active': {
+          ...styles.colorButton[':active'],
+          borderColor: darkenColor(this.state.color, .35),
+          backgroundColor: darkenColor(this.state.color, .35)
+        }
+      };
+
+      componentStyle = {...componentStyle, ...styles.colorButton};
       break;
     case 'blue':
-      componentStyle = {...componentStyle, ...styles.buttonBlue};
+      componentStyle = {...componentStyle, ...styles.colorButton};
       break;
     }
 

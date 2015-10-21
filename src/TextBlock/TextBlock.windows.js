@@ -36,7 +36,7 @@ class TextBlockWindows extends Component {
     if (color) {
       switch (color) {
       case 'red':
-        color = '#c50500';
+        color = this.state.requestedTheme === 'dark' ? '#c92e00' : '#c50500';
         break;
       }
       componentStyle = {...componentStyle, color: color};
