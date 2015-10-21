@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import Styling, { applyStyle } from '../../Styling';
-import WindowState from '../../WindowState';
+import { getState } from 'radium';
+import DesktopComponent, { WindowState } from '../../DesktopComponent';
 
 const styles = {
   button: {
-    WebkitUserSelect: 'none',
+    userSelect: 'none',
     WebkitAppRegion: 'no-drag',
     cursor: 'default',
     width: '46px',
@@ -17,19 +17,10 @@ const styles = {
     ':hover': {
       transition: 'background-color 0.1s',
       backgroundColor: '#e81123',
-
-      polygon: {
-        fill: '#ffffff'
-      }
     },
 
     ':active': {
       backgroundColor: '#f1707a',
-
-
-      polygon: {
-        fill: '#000000'
-      }
     }
   },
 
@@ -39,39 +30,31 @@ const styles = {
   }
 };
 
-@WindowState
-@Styling
+@DesktopComponent(WindowState)
 class Close extends Component {
-  static propTypes = {
-    style: PropTypes.object
-  };
-
-  static contextTypes = {
-    theme: PropTypes.string,
-    background: PropTypes.string
-  };
-
-  constructor() {
-    super();
-    this.state = {windowFocused: true};
-  }
-
   render() {
     const { style, ...props } = this.props;
 
     let svgFill = '#000000';
-    if (!this.state.windowFocused) {
+    if (!this.state.windowFocused && this.state.requestedTheme !== 'dark') {
       svgFill = 'rgba(0, 0, 0, .4)';
     }
 
-    if (this.context.theme === 'dark') {
+    let componentStyle = {...styles.button, ...style};
+    if (this.state.requestedTheme === 'dark' || this.context.background) {
+      svgFill = '#ffffff';
+      componentStyle = {...componentStyle, ...styles.buttonColorBackground};
+    }
+
+    if (getState(this.state, null, ':active')) {
+      svgFill = '#000000';
+    } else if (getState(this.state, null, ':hover')) {
       svgFill = '#ffffff';
     }
 
     return (
       <a
-        data-style={applyStyle(styles.button)}
-        style={style}
+        style={componentStyle}
         {...props}
       >
         <svg x="0px" y="0px" viewBox="0 0 10.2 10.2" style={styles.icon}>

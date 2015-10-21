@@ -33,7 +33,7 @@ var styles = {
 };
 
 @DesktopComponent(WindowState)
-class WindowWindows extends Component {
+class Window extends Component {
   static propTypes = {
     chrome: PropTypes.bool,
     border: PropTypes.string
@@ -94,4 +94,4 @@ class WindowWindows extends Component {
   }
 }
 
-export default WindowWindows;
+export default Window;

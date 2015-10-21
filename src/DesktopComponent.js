@@ -6,7 +6,7 @@ export const WindowState = 'WindowState';
 function ExtendComposedComponent (ComposedComponent) {
   const windowStateEnabled = this.windowStateEnabled ? true : false;
 
-  //@Radium
+  @Radium
   class Compoment extends ComposedComponent {
     static propTypes = {
       children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),

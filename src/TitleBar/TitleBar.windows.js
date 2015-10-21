@@ -1,12 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-//import WindowState from '../WindowState';
-import { mergeStyles } from '../Styling';
 import DesktopComponent, { WindowState }  from '../DesktopComponent';
 import Controls from './Controls.windows/Controls';
 
 var styles = {
   titleBar: {
-    WebkitUserSelect: 'none',
+    userSelect: 'none',
     WebkitAppRegion: 'drag',
     cursor: 'default',
     display: 'flex',
@@ -39,7 +37,7 @@ var styles = {
 };
 
 @DesktopComponent(WindowState)
-class TitleBarWindows extends Component {
+class TitleBar extends Component {
   static propTypes = {
     title: PropTypes.string,
     controls: PropTypes.bool,
@@ -55,11 +53,11 @@ class TitleBarWindows extends Component {
     let componentStyle = {...styles.titleBar, ...style};
     let titleStyle = styles.title;
 
-    if (!this.state.windowFocused && this.context.theme !== 'dark') {
+    if (!this.state.windowFocused && this.state.requestedTheme !== 'dark') {
       titleStyle = {...titleStyle, ...styles.unfocusedTitle};
     }
 
-    if (this.context.theme === 'dark') {
+    if (this.state.requestedTheme === 'dark') {
       titleStyle = {...titleStyle, ...styles.titleDark};
     }
 
@@ -97,4 +95,4 @@ class TitleBarWindows extends Component {
   }
 }
 
-export default TitleBarWindows;
+export default TitleBar;

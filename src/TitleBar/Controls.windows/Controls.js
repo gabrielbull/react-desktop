@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import DesktopComponent   from '../../DesktopComponent';
 import Close from './Close';
 import Minimize from './Minimize';
 import Maximize from './Maximize';
@@ -12,26 +13,13 @@ var styles = {
   }
 };
 
+@DesktopComponent
 class Controls extends Component {
   static propTypes = {
     onClosePress: PropTypes.func,
     onMinimizePress: PropTypes.func,
     onMaximizePress: PropTypes.func
   };
-
-  static childContextTypes = {
-    theme: PropTypes.string
-  };
-
-  static contextTypes = {
-    theme: PropTypes.string
-  };
-
-  getChildContext() {
-    return {
-      theme: this.context.theme
-    };
-  }
 
   render() {
     return (

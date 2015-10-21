@@ -1,10 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import Styling, { mergeStyles, applyStyle } from '../../Styling';
-import WindowState from '../../WindowState';
+import DesktopComponent, { WindowState } from '../../DesktopComponent';
 
 var styles = {
   button: {
-    WebkitUserSelect: 'none',
+    userSelect: 'none',
     WebkitAppRegion: 'no-drag',
     cursor: 'default',
     width: '46px',
@@ -16,11 +15,11 @@ var styles = {
 
     ':hover': {
       transition: 'background-color 0.1s',
-      backgroundColor: '#e5e5e5',
+      backgroundColor: '#e5e5e5'
     },
 
     ':active': {
-      backgroundColor: '#cccccc',
+      backgroundColor: '#cccccc'
     }
   },
 
@@ -41,41 +40,25 @@ var styles = {
   }
 };
 
-@WindowState
-@Styling
-class Resize extends Component {
-  static propTypes = {
-    style: PropTypes.object
-  };
-
-  static contextTypes = {
-    theme: PropTypes.string,
-    background: PropTypes.string
-  };
-
-  constructor() {
-    super();
-    this.state = { windowFocused: true };
-  }
-
+@DesktopComponent(WindowState)
+class Maximize extends Component {
   render() {
     const { style, ...props } = this.props;
 
     let svgFill = '#000000';
-    if (!this.state.windowFocused) {
+    if (!this.state.windowFocused && this.state.requestedTheme !== 'dark') {
       svgFill = 'rgba(0, 0, 0, .4)';
     }
 
-    let cssStyle = styles.button;
-    if (this.context.theme === 'dark' || this.context.background) {
+    let componentStyle = {...styles.button, ...style};
+    if (this.state.requestedTheme === 'dark' || this.context.background) {
       svgFill = '#ffffff';
-      cssStyle = mergeStyles(cssStyle, styles.buttonColorBackground);
+      componentStyle = {...componentStyle, ...styles.buttonColorBackground};
     }
 
     return (
       <a
-        data-style={applyStyle(cssStyle)}
-        style={style}
+        style={componentStyle}
         {...props}
       >
         <svg x="0px" y="0px" viewBox="0 0 10.2 10.2" style={styles.icon}>
@@ -89,4 +72,4 @@ class Resize extends Component {
   }
 }
 
-export default Resize;
+export default Maximize;
