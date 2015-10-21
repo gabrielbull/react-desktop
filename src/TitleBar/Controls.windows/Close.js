@@ -41,7 +41,7 @@ class Close extends Component {
     }
 
     let componentStyle = {...styles.button, ...style};
-    if (this.state.requestedTheme === 'dark' || this.context.background) {
+    if (this.state.requestedTheme === 'dark' || this.isDarkColor(this.state.background)) {
       svgFill = '#ffffff';
       componentStyle = {...componentStyle, ...styles.buttonColorBackground};
     }

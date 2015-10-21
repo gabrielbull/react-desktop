@@ -19,7 +19,6 @@ var styles = {
   chrome: {
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: '#1883d7',
     boxShadow: '0 2px 11px 3px rgba(0, 0, 0, .2)'
   },
 
@@ -35,8 +34,7 @@ var styles = {
 @DesktopComponent(WindowState)
 class Window extends Component {
   static propTypes = {
-    chrome: PropTypes.bool,
-    border: PropTypes.string
+    chrome: PropTypes.bool
   };
 
   filterChildren() {
@@ -54,11 +52,13 @@ class Window extends Component {
   }
 
   render() {
-    let { style, border, chrome, ...props } = this.props;
+    let { style, chrome, ...props } = this.props;
 
     let componentStyle = {...styles.window, ...style};
     if (chrome) {
       componentStyle = {...componentStyle, ...styles.chrome};
+
+      componentStyle = {...componentStyle, borderColor: this.state.color };
 
       if (!this.state.windowFocused) {
         componentStyle = {...componentStyle, ...styles.unfocused}
@@ -71,12 +71,12 @@ class Window extends Component {
       display: this.state.display ? 'flex' : 'none'
     };
 
-    if (border) {
-      componentStyle = {...componentStyle, borderColor: border };
-    }
-
     if (this.state.requestedTheme === 'dark') {
       componentStyle = {...componentStyle, ...styles.windowDark};
+    }
+
+    if (this.state.background) {
+      componentStyle = {...componentStyle, backgroundColor: this.state.background};
     }
 
     const [titleBar, ...children] = this.filterChildren();

@@ -55,7 +55,10 @@ class Switch extends Component {
   toggleTheme() {
     this.state.theme = this.state.theme === 'light' ? 'dark' : 'light';
     if (this.window2.refs.window) {
-      this.window2.refs.window.setState({requestedTheme: this.state.theme});
+      this.window2.refs.window.setState({
+        requestedTheme: this.state.theme,
+        background: this.state.theme === 'dark' ? '#1f1f1f' : 'white'
+    });
     }
     localStorage['theme'] = this.state.theme;
   }

@@ -26,8 +26,9 @@ export class Window1 extends Component {
 
 export class Window2 extends Component {
   render() {
+    const background = this.props.theme === 'dark' ? '#1f1f1f' : 'white';
     return (
-      <Window ref="window" chrome requestedTheme={this.props.theme}>
+      <Window ref="window" background={background} color="#cc7f29" chrome requestedTheme={this.props.theme}>
         <TitleBar title="TitleBar" controls/>
 
         <SplitView>

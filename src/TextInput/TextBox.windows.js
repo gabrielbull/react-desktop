@@ -29,12 +29,33 @@ var styles = {
   },
 
   textBoxDarkTheme: {
-    borderColor: 'rgba(148, 148, 148, .2)',
-    backgroundColor: 'rgba(255, 255, 255, .1)'
+    borderColor: 'rgba(255, 255, 255, .41)',
+    backgroundColor: 'rgba(0, 0, 0, .4)',
+    color: '#ffffff',
+
+    ':hover': {
+      borderColor: 'rgba(255, 255, 255, .94)',
+      backgroundColor: 'rgba(0, 0, 0, .6)'
+    },
+
+    ':focus': {
+      outline: 'none',
+      borderColor: 'rgba(0, 120, 215, 1)',
+      backgroundColor: 'rgba(255, 255, 255, 1)',
+      color: '#000000'
+    }
   },
 
   ':placeholder': {
     color: '#636363'
+  },
+
+  ':placeholderDarkTheme': {
+    color: 'rgba(255, 255, 255, .64)',
+
+    ':focus': {
+      color: 'rgba(0, 0, 0, .41)'
+    }
   }
 };
 
@@ -44,7 +65,9 @@ class TextBoxWindows extends Component {
     header: PropTypes.string
   };
 
-  static placeHolderSyle = styles[':placeholder'];
+  getPlaceholderStyle() {
+    return this.state.requestedTheme === 'dark' ? styles[':placeholderDarkTheme'] : styles[':placeholder'];
+  }
 
   render() {
     const { header, style, ...props } = this.props;
@@ -59,11 +82,12 @@ class TextBoxWindows extends Component {
       componentStyle = {...componentStyle, ...styles.textBoxDarkTheme};
     }
 
+    componentStyle[':focus'] = {...componentStyle[':focus'], borderColor: this.state.color};
+
     const input = (
       <input
         ref="input"
         type="text"
-        placeholderStyle={styles[':placeholder']}
         style={componentStyle}
         {...props}
       />
