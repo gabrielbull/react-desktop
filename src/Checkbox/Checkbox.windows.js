@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import DesktopComponent from '../DesktopComponent';
+import { getState } from 'radium';
 
 var styles = {
   checkbox: {
@@ -7,32 +8,46 @@ var styles = {
     WebkitAppearance: 'none',
     borderWidth: '2px',
     borderStyle: 'solid',
-    borderColor: 'rgba(171,173,179,1)',
+    borderColor: 'rgba(0, 0, 0, .8)',
     padding: '8px',
     color: '#fff',
     verticalAlign: 'bottom',
     marginRight: '9px',
 
     ':focus': {
-      outline: 'none',
-      borderColor: '#007CD1'
-    },
-
-    ':active': {
-      borderColor: '#007CD1'
-    },
-
-    ':hover': {
-      borderColor: 'rgba(100, 100, 100, 1)'
+      outline: 'none'
     }
   },
 
   checkboxDark: {
-    borderColor: 'rgba(255, 255, 255, 1)',
+    borderColor: 'rgba(255, 255, 255, .82)',
   },
 
-  ':checked': {
-    background: '#007CD1',
+  'checkbox:active': {
+    borderColor: 'rgba(0, 0, 0, 0)',
+    backgroundColor: 'rgba(0, 0, 0, .57)'
+  },
+
+  'checkbox:hover': {
+    borderColor: 'rgba(0, 0, 0, 1)'
+  },
+
+  'checkbox:checked': {
+    backgroundColor: '#007CD1',
+    borderColor: '#007CD1'
+  },
+
+  'checkboxDark:active': {
+    borderColor: 'rgba(255, 255, 255, 0)',
+    backgroundColor: 'rgba(255, 255, 255, .63)'
+  },
+
+  'checkboxDark:hover': {
+    borderColor: 'rgba(255, 255, 255, 1)'
+  },
+
+  'checkboxDark:checked': {
+    backgroundColor: '#007CD1',
     borderColor: '#007CD1'
   },
 
@@ -42,24 +57,28 @@ var styles = {
     lineHeight: '27px',
     position: 'relative',
     color: '#000000',
+
+    ':hover': {},
+    ':active': {}
   },
 
   labelDark: {
-    color: '#ffffff',
+    color: '#ffffff'
   },
 
-  svgChecked: {
+  svg: {
     position: 'absolute',
-    top: '5px',
-    left: '6px',
+    top: '6px',
+    left: '5px',
     color: '#fff',
-    height: '16px',
+    height: '16px'
   }
 };
 
 @DesktopComponent
 class CheckboxWindows extends Component {
   static propTypes = {
+    color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     label: PropTypes.string,
     onChange: PropTypes.func
   };
@@ -79,7 +98,7 @@ class CheckboxWindows extends Component {
   }
 
   render() {
-    let { style, label, ...props } = this.props;
+    let { style, label, color, ...props } = this.props;
     let componentStyle = {...styles.checkbox, ...style};
     let checkedStyle = {display: 'none'};
     let labelStyle = styles.label;
@@ -95,11 +114,44 @@ class CheckboxWindows extends Component {
       labelStyle = {...labelStyle, ...styles.labelDark};
     }
 
-
     if (this.state.checked) {
-      checkedStyle = styles.svgChecked;
-      componentStyle = {...componentStyle, ...styles[':checked']};
-      console.log(componentStyle);
+      checkedStyle = styles.svg;
+      componentStyle = {
+        ...componentStyle,
+        ...(this.state.requestedTheme === 'dark' ? styles['checkboxDark:checked'] : styles['checkbox:checked'])
+      };
+
+      switch (color) {
+      case 'blue':
+        break;
+      default:
+        if (color) {
+          componentStyle = {
+            ...componentStyle,
+            backgroundColor: color,
+            borderColor: color
+          };
+        } else {
+          componentStyle = {
+            ...componentStyle,
+            backgroundColor: this.state.color,
+            borderColor: this.state.color
+          };
+        }
+        break;
+      }
+    }
+
+    if (getState(this.state, null, ':active')) {
+      componentStyle = {
+        ...componentStyle,
+        ...(this.state.requestedTheme === 'dark' ? styles['checkboxDark:active'] : styles['checkbox:active'])
+      };
+    } else if (getState(this.state, null, ':hover')) {
+      componentStyle = {
+        ...componentStyle,
+        ...(this.state.requestedTheme === 'dark' ? styles['checkboxDark:hover'] : styles['checkbox:hover'])
+      };
     }
 
     return (
