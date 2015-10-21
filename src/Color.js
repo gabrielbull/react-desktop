@@ -17,6 +17,20 @@ function colorLuminance(hex, lum) {
   return rgb;
 }
 
+function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
+}
+
+export function transparentize(color, amount) {
+  const c = hexToRgb(color);
+  return `rgba(${c.r}, ${c.g}, ${c.b}, ${1 - amount})`;
+}
+
 export function darkenColor(color, percent) {
   return colorLuminance(color, -percent);
 }

@@ -1,24 +1,13 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {
-  TitleBar,
-  Button,
-  TextInput,
-  Toolbar,
-  Box,
-  SegmentedControl,
-  IndeterminateProgressWheel,
-  Form,
-  Label,
-  Window,
-  Desktop
-} from '../src/index';
 import {Window1 as Window1OSX, Window2 as Window2OSX} from './playground.osx';
 import {Window1 as Window1Win, Window2 as Window2Win} from './playground.win';
 
 document.title = 'React Desktop Playground';
 document.body.style.padding = '30px 40px';
 document.body.style.background = 'white';
+document.body.style.backgroundImage = 'url(el-capitan-2.jpg)';
+document.body.style.backgroundSize = 'cover';
 document.body.style.display = 'flex';
 document.body.style.flexDirection = 'column';
 document.body.style.alignItems = 'center';

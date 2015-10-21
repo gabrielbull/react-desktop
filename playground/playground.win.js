@@ -11,6 +11,7 @@ import {
   Checkbox,
   SplitView
 } from '../src/Windows';
+import * as Icons from './Windows/Assets/Icons';
 
 export class Window1 extends Component {
   constructor() {
@@ -25,6 +26,11 @@ export class Window1 extends Component {
 }
 
 export class Window2 extends Component {
+  constructor() {
+    super();
+    this.state = {selectedTab: 'welcome'};
+  }
+
   render() {
     const background = this.props.theme === 'dark' ? '#1f1f1f' : 'white';
 
@@ -35,7 +41,10 @@ export class Window2 extends Component {
         <SplitView isOpen openLenght={20}>
           <SplitView.Item
             title="Welcome"
-            padding="20px 30px"
+            icon={Icons.welcomeIcon}
+            selected={this.state.selectedTab === 'welcome'}
+            onPress={() => { this.setState({ selectedTab: 'welcome' }) }}
+            padding="40px 30px"
             requestedTheme="light"
             background="#ffffff"
           >
@@ -64,6 +73,15 @@ export class Window2 extends Component {
               </Form.Row>
             </Form>
           </SplitView.Item>
+          <SplitView.Item
+            title="Form"
+            icon={Icons.formIcon}
+            selected={this.state.selectedTab === 'form'}
+            onPress={() => { this.setState({ selectedTab: 'form' }) }}
+            padding="40px 30px"
+            requestedTheme="light"
+            background="#ffffff"
+          />
         </SplitView>
       </Window>
     );

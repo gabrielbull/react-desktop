@@ -4,7 +4,7 @@ import Content from '../Content/Content.windows';
 
 const styles = {
   content: {
-    width: '80%'
+    flex: '1'
   }
 };
 
@@ -12,32 +12,32 @@ const styles = {
 class Item extends Component {
   static propTypes = {
     title: PropTypes.string,
+    onPress: PropTypes.func,
     margin: PropTypes.string,
-    padding: PropTypes.string
+    padding: PropTypes.string,
+    selected: PropTypes.bool
   };
+
+  constructor(props, context, updater) {
+    const {selected, ...properties} = props;
+    super(properties, context, updater);
+    this.state = {
+      selected: selected
+    };
+  }
 
   render() {
     const { children, style, ...props } = this.props;
 
-    let componentStyle = {
-      ...styles.content,
-      margin: this.props.margin,
-      padding: this.props.padding,
-      ...style
-    };
-
-    if (this.state.background) {
-      componentStyle.backgroundColor = this.state.background;
+    if (!this.state.selected) {
+      return null;
     }
 
     return (
       <div
-        style={componentStyle}
-        {...props}
+        style={{...styles.content, ...style}}
       >
-        <Content>
-          {children}
-        </Content>
+        <Content {...props}>{children}</Content>
       </div>
     );
   }

@@ -4,7 +4,8 @@ import Item from './Item/Item.window';
 
 const styles = {
   pane: {
-    width: '20%'
+    width: '200px',
+    marginTop: '48px'
   }
 };
 
@@ -28,8 +29,10 @@ class Pane extends Component {
 
   filterChildren(children) {
     return Children.map(children, function (child) {
+      const { onPress } = child.props;
+
       return (
-        <Item>
+        <Item onPress={onPress}>
           {child}
         </Item>
       );
@@ -38,7 +41,6 @@ class Pane extends Component {
 
   render() {
     let { children, style, ...props } = this.props;
-
     children = this.filterChildren(children);
 
     return (
