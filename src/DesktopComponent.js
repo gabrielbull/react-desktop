@@ -1,50 +1,65 @@
 import { PropTypes } from 'react';
+import Radium from 'radium';
 
 export const WindowState = 'WindowState';
 
 function ExtendComposedComponent (ComposedComponent) {
-  const windowStateEnabled = this.windowStateEnabled;
+  const windowStateEnabled = this.windowStateEnabled ? true : false;
 
-  return class extends ComposedComponent {
+  //@Radium
+  class Compoment extends ComposedComponent {
     static propTypes = {
       children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
       style: PropTypes.object,
       visible: PropTypes.bool,
       display: PropTypes.bool,
+      requestedTheme: PropTypes.string,
       ...ComposedComponent.propTypes
     };
 
     static childContextTypes = {
       parent: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
-      theme: PropTypes.string,
+      requestedTheme: PropTypes.string,
       ...ComposedComponent.childContextTypes
     };
 
     static contextTypes = {
       parent: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
-      theme: PropTypes.string,
+      requestedTheme: PropTypes.string,
       ...ComposedComponent.contextTypes
     };
 
     constructor(props, context, updater) {
-      const { visible, display, ...properties } = props;
+      const { visible, display, requestedTheme, ...properties } = props;
       super(props, context, updater);
 
+      if (!this.context) {
+        this.context = {};
+      }
       if (!this.state) {
         this.state = {};
       }
       if (!this.state.visible) {
-        this.state.visible = visible ? true : false;
+        this.state.visible = visible !== false;
       }
       if (!this.state.display) {
-        this.state.display = display ? true : false;
+        this.state.display = display !== false;
+      }
+
+      if (!context || !context.requestedTheme) {
+        this.context.requestedTheme = requestedTheme ? requestedTheme : 'light ';
+      }
+      this.state.requestedTheme = this.context.requestedTheme;
+
+      if (windowStateEnabled) {
+        this.state.windowFocused = true;
       }
     }
 
     getChildContext() {
       const childContext = {
         parent: this,
-        theme: this.context.theme
+        requestedTheme: this.state.requestedTheme
       };
 
       if (ComposedComponent.prototype.getChildContext) {
@@ -84,11 +99,13 @@ function ExtendComposedComponent (ComposedComponent) {
     }
 
     windowBlur() {
-      if (this.refs.component && windowStateEnabled) {
-        this.refs.component.setState({windowFocused: false});
+      if (windowStateEnabled) {
+        this.setState({windowFocused: false});
       }
     }
-  };
+  }
+
+  return Compoment;
 }
 
 export default function DesktopComponent(...options) {

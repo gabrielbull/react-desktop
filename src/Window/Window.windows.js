@@ -1,6 +1,5 @@
 import React, { Component, PropTypes, Children } from 'react';
-import { mergeStyles } from '../Styling';
-import WindowState from '../WindowState';
+import DesktopComponent, { WindowState }  from '../DesktopComponent';
 import TitleBar from '../TitleBar';
 import TitleBarWindows from '../TitleBar/TitleBar.windows';
 
@@ -33,74 +32,54 @@ var styles = {
   }
 };
 
-@WindowState
+@DesktopComponent(WindowState)
 class WindowWindows extends Component {
   static propTypes = {
-    children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
-    style: PropTypes.object,
     chrome: PropTypes.bool,
-    border: PropTypes.string,
-    visible: PropTypes.bool,
-    display: PropTypes.bool,
-    darkTheme: PropTypes.bool
+    border: PropTypes.string
   };
 
-  static childContextTypes = {
-    theme: PropTypes.string
-  };
+  filterChildren() {
+    let titleBar = '';
+    let otherChildren = [];
+    Children.map(this.props.children, function (element) {
+      if (element.type === TitleBar || element.type === TitleBarWindows) {
+        titleBar = element;
+      } else {
+        otherChildren = [...otherChildren, element];
+      }
+    }.bind(this));
 
-  constructor(props) {
-    super();
-    this.state = {
-      windowFocused: true,
-      visible: props.visible !== false,
-      display: props.display !== false
-    };
-  }
-
-  getChildContext() {
-    return {
-      theme: this.props.darkTheme ? 'dark' : 'light'
-    };
+    return [titleBar, ...otherChildren];
   }
 
   render() {
-    let { style, darkTheme, border, chrome, children, visible, display, ...props } = this.props;
+    let { style, border, chrome, ...props } = this.props;
 
-    let componentStyle = mergeStyles(styles.window, style);
+    let componentStyle = {...styles.window, ...style};
     if (chrome) {
-      componentStyle = mergeStyles(componentStyle, styles.chrome);
+      componentStyle = {...componentStyle, ...styles.chrome};
 
       if (!this.state.windowFocused) {
-        componentStyle = mergeStyles(componentStyle, styles.unfocused);
+        componentStyle = {...componentStyle, ...styles.unfocused}
       }
     }
 
-    const titleBar = Children.map(children, function (element) {
-      if (element.type === TitleBar || element.type === TitleBarWindows) {
-        return element;
-      }
-    }.bind(this));
-
-    children = Children.map(children, function (element) {
-      if (element.type !== TitleBar && element.type !== TitleBarWindows) {
-        return element;
-      }
-    }.bind(this));
-
-    componentStyle = mergeStyles(componentStyle, {
+    componentStyle = {
+      ...componentStyle,
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'flex' : 'none'
-    });
+    };
 
     if (border) {
-      componentStyle = mergeStyles(componentStyle, { borderColor: border });
+      componentStyle = {...componentStyle, borderColor: border };
     }
 
-    if (darkTheme) {
-      componentStyle = mergeStyles(componentStyle, styles.windowDark);
+    if (this.state.requestedTheme === 'dark') {
+      componentStyle = {...componentStyle, ...styles.windowDark};
     }
 
+    const [titleBar, ...children] = this.filterChildren();
     return (
       <div
         style={componentStyle}

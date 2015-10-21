@@ -32,7 +32,7 @@ export class Window2 extends Component {
 
   render() {
     return (
-      <Window chrome darkTheme>
+      <Window chrome requestedTheme="dark">
         <TitleBar title="TitleBar" controls/>
 
         <SplitView>
