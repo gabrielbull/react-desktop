@@ -1,5 +1,6 @@
-import { PropTypes } from 'react';
-import Radium from 'radium';
+import React, { PropTypes } from 'react';
+import ReactDOM from 'react-dom';
+import Radium, { Style } from 'radium';
 
 export const WindowState = 'WindowState';
 
@@ -62,10 +63,10 @@ function ExtendComposedComponent (ComposedComponent) {
         requestedTheme: this.state.requestedTheme
       };
 
-      if (ComposedComponent.prototype.getChildContext) {
+      if (super.getChildContext) {
         return {
           ...childContext,
-          ...ComposedComponent.prototype.getChildContext.apply(this)
+          ...super.getChildContext()
         };
       }
 
@@ -77,7 +78,7 @@ function ExtendComposedComponent (ComposedComponent) {
         this._updateRequestedTheme = true;
         this.context.requestedTheme = state.requestedTheme;
       }
-      ComposedComponent.prototype.setState.apply(this, [state]);
+      super.setState(state);
     }
 
     componentDidMount() {
@@ -85,8 +86,13 @@ function ExtendComposedComponent (ComposedComponent) {
         window.addEventListener('focus', this.windowFocus.bind(this));
         window.addEventListener('blur', this.windowBlur.bind(this));
       }
-      if (ComposedComponent.prototype.componentDidMount) {
-        ComposedComponent.prototype.componentDidMount.apply(this);
+
+      if (ComposedComponent.placeHolderSyle) {
+        this.applyPlaceholderStyle();
+      }
+
+      if (super.componentDidMount) {
+        super.componentDidMount();
       }
     }
 
@@ -95,8 +101,8 @@ function ExtendComposedComponent (ComposedComponent) {
         window.removeEventListener('focus', this.windowFocus.bind(this));
         window.removeEventListener('blur', this.windowBlur.bind(this));
       }
-      if (ComposedComponent.prototype.componentWillUnmount) {
-        ComposedComponent.prototype.componentWillUnmount.apply(this);
+      if (super.componentWillUnmount) {
+        super.componentWillUnmount();
       }
     }
 
@@ -105,7 +111,43 @@ function ExtendComposedComponent (ComposedComponent) {
         this.state.requestedTheme = this.context.requestedTheme;
       }
       this._updateRequestedTheme = null;
-      return ComposedComponent.prototype.render.apply(this, params);
+
+      let rendered = super.render(params);
+
+      if (ComposedComponent.placeHolderSyle) {
+        rendered = <div ref="container">{rendered}</div>;
+      }
+
+      return rendered;
+    }
+
+    applyPlaceholderStyle() {
+      const container = ReactDOM.findDOMNode(this.refs.container);
+      const id = Compoment.generateUniqueId();
+      container.setAttribute('data-reactdesktopid', id);
+
+      const selector = `[data-reactdesktopid="${id}"]`;
+
+      let rules = {};
+      rules[`${selector} input::-webkit-input-placeholder`] = ComposedComponent.placeHolderSyle;
+      rules[`${selector} input::-moz-placeholder`] = ComposedComponent.placeHolderSyle;
+      rules[`${selector} input:-ms-input-placeholder`] = ComposedComponent.placeHolderSyle;
+      rules[`${selector} input:placeholder`] = ComposedComponent.placeHolderSyle;
+
+      const tmpContainer = document.createElement('div');
+      ReactDOM.render(<Style rules={rules}/>, tmpContainer);
+      container.appendChild(tmpContainer.firstChild);
+    }
+
+    static generateUniqueId() {
+      return Math.floor((Math.random() * 10000) + 1) + '-' +
+        + Math.floor((Math.random() * 10000) + 1) + '-' +
+        + Math.floor((Math.random() * 10000) + 1) + '-' +
+        + Math.floor((Math.random() * 10000) + 1) + '-' +
+        + Math.floor((Math.random() * 10000) + 1) + '-' +
+        + Math.floor((Math.random() * 10000) + 1) + '-' +
+        + Math.floor((Math.random() * 10000) + 1) + '-' +
+        Math.floor((Math.random() * 100000000000000));
     }
 
     windowFocus() {

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import Styling, { mergeStyles, applyStyle } from '../Styling';
 import TextBlockWindows from '../TextBlock/TextBlock.windows';
+import DesktopComponent from '../DesktopComponent';
 
 var styles = {
   textBox: {
@@ -25,40 +25,36 @@ var styles = {
       outline: 'none',
       borderColor: 'rgba(0, 120, 215, 1)',
       backgroundColor: 'rgba(255, 255, 255, 1)'
-    },
-
-    ':placeholder': {
-      color: '#636363'
     }
+  },
+
+  ':placeholder': {
+    color: '#636363'
   }
 };
 
-@Styling
+@DesktopComponent
 class TextBoxWindows extends Component {
   static propTypes = {
-    style: PropTypes.object,
-    form: PropTypes.any,
-    visible: PropTypes.bool,
-    display: PropTypes.bool,
     header: PropTypes.string
   };
 
-  constructor(props) {
-    super();
-    this.state = {visible: props.visible !== false, display: props.display !== false};
-  }
+  static placeHolderSyle = styles[':placeholder'];
 
   render() {
-    const { header, form, style, visible, display, ...props } = this.props;
-    const componentStyle = mergeStyles(style, {
+    const { header, style, visible, display, ...props } = this.props;
+    const componentStyle = {
+      ...styles.textBox,
+      ...style,
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
-    });
+    };
 
     const input = (
       <input
+        ref="input"
         type="text"
-        data-style={applyStyle(styles.textBox)}
+        placeholderStyle={styles[':placeholder']}
         style={componentStyle}
         {...props}
       />
