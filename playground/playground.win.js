@@ -33,35 +33,36 @@ export class Window2 extends Component {
         <TitleBar title="TitleBar" controls/>
 
         <SplitView>
-          <SplitView.View>
+          <SplitView.Pane isOpen openLenght={20}>
 
-          </SplitView.View>
+          </SplitView.Pane>
+          <SplitView.Content requestedTheme="light" background="#ffffff">
+            <Form>
+              <TextBlock color="red">
+                There was an error submitting this form.
+              </TextBlock>
+
+              <Form.Row>
+                <TextBox header="Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
+              </Form.Row>
+
+              <Form.Row>
+                <TextBox header="Longer Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
+              </Form.Row>
+
+              <Form.Row>
+                <Checkbox label="Default checked" defaultChecked/>
+              </Form.Row>
+
+              <Form.Row>
+                <Button onPress="submit" color push>Button With Color</Button>
+                <Button push>Button</Button>
+
+                <IndeterminateProgressRing size={32} color absolute/>
+              </Form.Row>
+            </Form>
+          </SplitView.Content>
         </SplitView>
-
-        <Form>
-          <TextBlock color="red">
-            There was an error submitting this form.
-          </TextBlock>
-
-          <Form.Row>
-            <TextBox header="Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
-          </Form.Row>
-
-          <Form.Row>
-            <TextBox header="Longer Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
-          </Form.Row>
-
-          <Form.Row>
-            <Checkbox label="Default checked" defaultChecked/>
-          </Form.Row>
-
-          <Form.Row>
-            <Button onPress="submit" color push>Button With Color</Button>
-            <Button push>Button</Button>
-
-            <IndeterminateProgressRing size={32} color absolute/>
-          </Form.Row>
-        </Form>
       </Window>
     );
   }

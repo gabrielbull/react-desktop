@@ -15,7 +15,7 @@ function ExtendComposedComponent (ComposedComponent) {
       style: PropTypes.object,
       visible: PropTypes.bool,
       display: PropTypes.bool,
-      color: PropTypes.string,
+      color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
       background: PropTypes.string,
       requestedTheme: PropTypes.string,
       ...ComposedComponent.propTypes
@@ -40,6 +40,9 @@ function ExtendComposedComponent (ComposedComponent) {
     constructor(props, context, updater) {
       const { visible, display, requestedTheme, color, background, ...properties } = props;
       super(props, context, updater);
+      this._requestedTheme = requestedTheme;
+      this._background = background;
+      this._color = color;
 
       if (!this.context) {
         this.context = {};
@@ -54,20 +57,20 @@ function ExtendComposedComponent (ComposedComponent) {
         this.state.display = display !== false;
       }
 
-      if (!context || !context.requestedTheme) {
+      if (!context.requestedTheme) {
         this.context.requestedTheme = requestedTheme ? requestedTheme : 'light';
       }
-      this.state.requestedTheme = this.context.requestedTheme;
+      this.state.requestedTheme = requestedTheme ? requestedTheme : this.context.requestedTheme;
 
-      if (!context || !context.color) {
-        this.context.color = color ? convertColor(color) : convertColor('blue');
+      if (!context.color) {
+        this.context.color = color && typeof color !== 'boolean' ? convertColor(color) : convertColor('blue');
       }
-      this.state.color = this.context.color;
+      this.state.color = color && typeof color !== 'boolean' ? convertColor(color) : this.context.color;
 
-      if (!context || !context.background) {
+      if (!context.background) {
         this.context.background = background ? convertColor(background) : null;
       }
-      this.state.background = this.context.background;
+      this.state.background = background ? convertColor(background) : this.context.background;
 
       if (windowStateEnabled) {
         this.state.windowFocused = true;
@@ -146,17 +149,17 @@ function ExtendComposedComponent (ComposedComponent) {
     }
 
     render(...params) {
-      if (!this._updateRequestedTheme) {
+      if (!this._updateRequestedTheme && !this._requestedTheme) {
         this.state.requestedTheme = this.context.requestedTheme;
       }
       this._updateRequestedTheme = null;
 
-      if (!this._updateColor) {
+      if (!this._updateColor && !this._color) {
         this.state.color = this.context.color;
       }
       this._updateColor = null;
 
-      if (!this._updateBackground) {
+      if (!this._updateBackground && !this._background) {
         this.state.background = this.context.background;
       }
       this._updateBackground = null;
