@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
-import Styling, { mergeStyles, applyStyle } from '../Styling';
-import WindowState from '../WindowState';
+import DesktopComponent from '../DesktopComponent';
 
 var styles = {
   button: {
@@ -29,9 +28,7 @@ var styles = {
     ':active': {
       color: '#000000',
       borderColor: '#999999',
-      backgroundColor: '#999999',
-      transform: 'scale(0.97)',
-      transition: 'transform .1s ease-in'
+      backgroundColor: '#999999'
     }
   },
 
@@ -50,27 +47,22 @@ var styles = {
       transform: 'none',
       transition: 'none'
     }
+  },
+
+  pushTransform: {
+    transform: 'scale(0.97)',
+    transition: 'transform .1s ease-in'
   }
 };
 
-@WindowState
-@Styling
+@DesktopComponent
 class Button extends Component {
   static propTypes = {
-    children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]).isRequired,
-    form: PropTypes.any,
-    color: PropTypes.string,
-    style: PropTypes.object,
+    color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+    push: PropTypes.bool,
     onClick: PropTypes.func,
-    onPress: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.func]),
-    visible: PropTypes.bool,
-    display: PropTypes.bool
+    onPress: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.func])
   };
-
-  constructor(props) {
-    super();
-    this.state = { windowFocused: true, visible: props.visible !== false, display: props.display !== false };
-  }
 
   componentDidMount() {
     if (findDOMNode(this).previousSibling) {
@@ -85,12 +77,16 @@ class Button extends Component {
   }
 
   render() {
-    let { style, children, color, onPress, form, display, visible, ...props } = this.props;
+    let { style, children, color, onPress, push, ...props } = this.props;
 
-    let componentStyle = style;
-    let cssStyle = styles.button;
-    if (color === 'blue') {
-      cssStyle = mergeStyles(cssStyle, styles.buttonBlue);
+    let componentStyle = {...styles.button, ...style};
+    switch (color) {
+    case true:
+      componentStyle = {...componentStyle, ...styles.buttonBlue};
+      break;
+    case 'blue':
+      componentStyle = {...componentStyle, ...styles.buttonBlue};
+      break;
     }
 
     let type = 'button';
@@ -101,17 +97,21 @@ class Button extends Component {
       onPress = this.props.onClick ? this.props.onClick : this.props.onPress;
     }
 
-    componentStyle = mergeStyles(componentStyle, {
+    componentStyle = {
+      ...componentStyle,
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
-    });
+    };
+
+    if (push) {
+      componentStyle[':active'] = {...componentStyle[':active'], ...styles.pushTransform};
+    }
 
     return (
       <button
         ref="element"
         type={type}
         onClick={onPress}
-        data-style={applyStyle(cssStyle)}
         style={componentStyle}
         {...props}
       >

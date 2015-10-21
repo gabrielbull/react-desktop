@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import Radium, { Style } from 'radium';
+import { convertColor } from './Color';
 
 export const WindowState = 'WindowState';
 
@@ -59,12 +60,12 @@ function ExtendComposedComponent (ComposedComponent) {
       this.state.requestedTheme = this.context.requestedTheme;
 
       if (!context || !context.color) {
-        this.context.color = color ? this.convertColor(color) : this.convertColor('blue');
+        this.context.color = color ? convertColor(color) : convertColor('blue');
       }
       this.state.color = this.context.color;
 
       if (!context || !context.background) {
-        this.context.background = background ? this.convertColor(background) : null;
+        this.context.background = background ? convertColor(background) : null;
       }
       this.state.background = this.context.background;
 
@@ -224,31 +225,6 @@ function ExtendComposedComponent (ComposedComponent) {
         + Math.floor((Math.random() * 10000) + 1) + '-' +
         + Math.floor((Math.random() * 10000) + 1) + '-' +
         Math.floor((Math.random() * 100000000000000));
-    }
-
-    convertColor(color) {
-      switch (color) {
-      case 'white':
-        return '#ffffff';
-      case 'blue':
-        return '#1883d7';
-      }
-      return color;
-    }
-
-    isDarkColor(color) {
-      var c = this.convertColor(color).substring(1);      // strip #
-      var rgb = parseInt(c, 16);   // convert rrggbb to decimal
-      var r = (rgb >> 16) & 0xff;  // extract red
-      var g = (rgb >>  8) & 0xff;  // extract green
-      var b = (rgb >>  0) & 0xff;  // extract blue
-
-      var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
-
-      if (luma < 40) {
-        return true;
-      }
-      return false;
     }
 
     windowFocus() {

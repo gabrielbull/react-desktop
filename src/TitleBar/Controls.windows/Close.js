@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getState } from 'radium';
 import DesktopComponent, { WindowState } from '../../DesktopComponent';
+import { isDarkColor } from '../../Color';
 
 const styles = {
   button: {
@@ -41,7 +42,7 @@ class Close extends Component {
     }
 
     let componentStyle = {...styles.button, ...style};
-    if (this.state.requestedTheme === 'dark' || this.isDarkColor(this.state.background)) {
+    if (this.state.requestedTheme === 'dark' || isDarkColor(this.state.background)) {
       svgFill = '#ffffff';
       componentStyle = {...componentStyle, ...styles.buttonColorBackground};
     }
