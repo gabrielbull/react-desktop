@@ -4,7 +4,9 @@ import Content from '../Content/Content.windows';
 
 const styles = {
   content: {
-    flex: '1'
+    flexGrow: '1',
+    flexShrink: '0',
+    display: 'flex'
   }
 };
 
@@ -26,16 +28,22 @@ class Item extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ selected: nextProps.selected });
+  }
+
   render() {
     const { children, style, ...props } = this.props;
 
+    let componentStyle = {...styles.content, ...style};
+
     if (!this.state.selected) {
-      return null;
+      componentStyle.display = 'none';
     }
 
     return (
       <div
-        style={{...styles.content, ...style}}
+        style={componentStyle}
       >
         <Content {...props}>{children}</Content>
       </div>

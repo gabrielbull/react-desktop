@@ -4,6 +4,10 @@ import Item from './Item/Item.window';
 
 const styles = {
   pane: {
+    display: 'flex',
+    flexGrow: '0',
+    flexShrink: '0',
+    flexDirection: 'column',
     width: '200px',
     marginTop: '48px'
   }

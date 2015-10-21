@@ -5,7 +5,8 @@ import Item from './Item/Item.windows';
 import Content from './Content/Content.windows';
 
 const styles = {
-  display: 'flex'
+  display: 'flex',
+  flexWrap: 'wrap'
 };
 
 @DesktopComponent

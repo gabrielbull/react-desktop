@@ -44,6 +44,20 @@ export class Window2 extends Component {
             icon={Icons.welcomeIcon}
             selected={this.state.selectedTab === 'welcome'}
             onPress={() => { this.setState({ selectedTab: 'welcome' }) }}
+            requestedTheme="light"
+            background="#ffffff"
+          >
+            <img
+              src="picture.jpg"
+              style={{width: '798px', height: 'auto', display: 'block'}}
+              onDragStart={(event) => event.preventDefault()}
+            />
+          </SplitView.Item>
+          <SplitView.Item
+            title="Forms"
+            icon={Icons.formIcon}
+            selected={this.state.selectedTab === 'form'}
+            onPress={() => { this.setState({ selectedTab: 'form' }) }}
             padding="40px 30px"
             requestedTheme="light"
             background="#ffffff"
@@ -73,15 +87,6 @@ export class Window2 extends Component {
               </Form.Row>
             </Form>
           </SplitView.Item>
-          <SplitView.Item
-            title="Form"
-            icon={Icons.formIcon}
-            selected={this.state.selectedTab === 'form'}
-            onPress={() => { this.setState({ selectedTab: 'form' }) }}
-            padding="40px 30px"
-            requestedTheme="light"
-            background="#ffffff"
-          />
         </SplitView>
       </Window>
     );

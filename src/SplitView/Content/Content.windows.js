@@ -4,6 +4,13 @@ import Title from '../Content/Title.windows';
 
 const styles = {
   content: {
+    display: 'flex',
+    flex: '1',
+    flexDirection: 'column'
+  },
+
+  component: {
+    flex: '1'
   }
 };
 
@@ -16,10 +23,10 @@ class Content extends Component {
   };
 
   render() {
-    const { children, style, title, ...props } = this.props;
+    const { children, style, title, icon, ...props } = this.props;
 
     let componentStyle = {
-      ...styles.content,
+      ...styles.component,
       margin: this.props.margin,
       padding: this.props.padding,
       ...style
@@ -30,7 +37,7 @@ class Content extends Component {
     }
 
     return (
-      <div {...props}>
+      <div style={styles.content} {...props}>
         <Title>
           {title}
         </Title>
