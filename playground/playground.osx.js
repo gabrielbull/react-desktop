@@ -26,7 +26,7 @@ export class Window1 extends Component {
           controls
           onClosePress={() => { alert('close'); }}
           onMinimizePress={() => { alert('minimize'); }}
-          onMaximizePress={() => { alert('mazimize'); }}
+          onResizePress={() => { alert('mazimize'); }}
         />
       </Window>
     );

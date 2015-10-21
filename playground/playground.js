@@ -24,12 +24,11 @@ document.body.style.flexDirection = 'column';
 document.body.style.alignItems = 'center';
 
 document.body.innerHTML = `
-  <div id="controls" style="position: absolute; top: 0; left: 0;"></div>
+  <div id="controls" style="position: absolute; height: 100%; top: 0; left: 0;"></div>
   <div id="window1" style="width: 600px;"></div>
   <div id="window2" style="width: 600px;"></div>
   <script src="/.js"></script>
 `;
-
 
 class Switch extends Component {
   constructor() {
@@ -54,8 +53,8 @@ class Switch extends Component {
 
   render() {
     return (
-      <div>
-        <select value={this.state.os} onChange={this.changeOs.bind(this)}>
+      <div style={{backgroundColor: 'rgba(0,0,0,.8)', 'height': '100%'}}>
+        <select value={this.state.os} onChange={this.changeOs.bind(this)} style={{margin: '10px'}}>
           <option value="osx">OS X</option>
           <option value="win">Windows</option>
         </select>

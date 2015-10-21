@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import Styling, { mergeStyles, applyStyle } from '../../Styling';
+import Radium from 'radium';
 import WindowState from '../../WindowState';
 
 var styles = {
   button: {
-    WebkitUserSelect: 'none',
+    userSelect: 'none',
     WebkitAppRegion: 'no-drag',
     cursor: 'default',
     width: '10px',
@@ -39,7 +39,7 @@ var styles = {
 };
 
 @WindowState
-@Styling
+@Radium
 class Resize extends Component {
   static propTypes = {
     style: PropTypes.object
@@ -52,17 +52,19 @@ class Resize extends Component {
 
   render() {
     const { style, ...props } = this.props;
-    const displayIcon = this.state.iconVisible ? { opacity: 1 } : { opacity: 0 };
-    const iconStyle = mergeStyles(styles.icon, displayIcon);
 
-    let componentStyle = style;
+    const iconStyle = {
+      ...styles.icon,
+      opacity: this.state.iconVisible ? 1 : 0
+    };
+
+    let componentStyle = {...styles.button, ...style};
     if (!this.state.windowFocused && !this.state.iconVisible) {
-      componentStyle = mergeStyles(componentStyle, styles.unfocused)
+      componentStyle = {...componentStyle, ...styles.unfocused};
     }
 
     return (
       <a
-        data-style={applyStyle(styles.button)}
         style={componentStyle}
         {...props}
       >
