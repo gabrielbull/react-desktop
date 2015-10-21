@@ -28,6 +28,11 @@ var styles = {
     }
   },
 
+  textBoxDarkTheme: {
+    borderColor: 'rgba(148, 148, 148, .2)',
+    backgroundColor: 'rgba(255, 255, 255, .1)'
+  },
+
   ':placeholder': {
     color: '#636363'
   }
@@ -42,13 +47,17 @@ class TextBoxWindows extends Component {
   static placeHolderSyle = styles[':placeholder'];
 
   render() {
-    const { header, style, visible, display, ...props } = this.props;
-    const componentStyle = {
+    const { header, style, ...props } = this.props;
+    let componentStyle = {
       ...styles.textBox,
       ...style,
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
     };
+
+    if (this.state.requestedTheme === 'dark') {
+      componentStyle = {...componentStyle, ...styles.textBoxDarkTheme};
+    }
 
     const input = (
       <input

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { mergeStyles } from '../Styling';
+import DesktopComponent from '../DesktopComponent';
 
 var styles = {
   textBlock: {
@@ -17,36 +17,21 @@ var styles = {
   }
 };
 
+@DesktopComponent
 class TextBlockWindows extends Component {
   static propTypes = {
-    children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
-    style: PropTypes.object,
     color: PropTypes.string,
-    row: PropTypes.any,
-    form: PropTypes.any,
-    align: PropTypes.string,
-    visible: PropTypes.bool,
-    display: PropTypes.bool
+    align: PropTypes.string
   };
 
-  constructor(props) {
-    super();
-    this.state = {visible: props.visible !== false, display: props.display !== false};
-  }
-
-  componentDidMount() {
-    if (this.props.row && this.props.form) {
-      this.props.form.registerLabel(this);
-    }
-  }
-
-  get styles() {
-    return mergeStyles(styles.textBlock, this.props.style);
-  }
-
   render() {
-    let { children, style, color, row, form, align, display, visible, ...props } = this.props;
-    let componentStyle = this.styles;
+    let { children, style, color, align, ...props } = this.props;
+    let componentStyle = {
+      ...styles.textBlock,
+      ...style,
+      visibility: this.state.visible ? 'visible' : 'hidden',
+      display: this.state.display ? 'block' : 'none'
+    };
 
     if (color) {
       switch (color) {
@@ -54,21 +39,14 @@ class TextBlockWindows extends Component {
         color = '#c50500';
         break;
       }
-      componentStyle = mergeStyles(componentStyle, {color: color});
-    }
-
-    if (row) {
-      componentStyle = mergeStyles(componentStyle, styles.rowLabel);
+      componentStyle = {...componentStyle, color: color};
+    } else if (this.state.requestedTheme === 'dark') {
+      componentStyle = {...componentStyle, color: '#ffffff'};
     }
 
     if (align) {
-      componentStyle = mergeStyles(componentStyle, {textAlign: align});
+      componentStyle = {...componentStyle, textAlign: align};
     }
-
-    componentStyle = mergeStyles(componentStyle, {
-      visibility: this.state.visible ? 'visible' : 'hidden',
-      display: this.state.display ? 'block' : 'none'
-    });
 
     return (
       <div
