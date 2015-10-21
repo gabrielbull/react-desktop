@@ -55,17 +55,17 @@ class WindowOSX extends Component {
       componentStyle = mergeStyles(componentStyle, styles.chrome);
     }
 
-    const titleBar = Children.map(children, function (element) {
+    const titleBar = Children.map(children, (element) => {
       if (element.type === TitleBar || element.type === TitleBarOSX) {
         return element;
       }
-    }.bind(this));
+    });
 
-    children = Children.map(children, function (element) {
+    children = Children.map(children, (element) => {
       if (element.type !== TitleBar && element.type !== TitleBarOSX) {
         return element;
       }
-    }.bind(this));
+    });
 
     componentStyle = mergeStyles(componentStyle, {
       visibility: this.state.visible ? 'visible' : 'hidden',
