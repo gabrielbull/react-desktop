@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
+import Styling, { applyStyle } from '../../Styling';
 import WindowState from '../../WindowState';
-import Radium from 'radium';
 
 const styles = {
   button: {
-    userSelect: 'none',
+    WebkitUserSelect: 'none',
     WebkitAppRegion: 'no-drag',
     cursor: 'default',
     width: '46px',
@@ -40,7 +40,7 @@ const styles = {
 };
 
 @WindowState
-@Radium
+@Styling
 class Close extends Component {
   static propTypes = {
     style: PropTypes.object
@@ -70,7 +70,8 @@ class Close extends Component {
 
     return (
       <a
-        style={{...styles.button, ...style}}
+        data-style={applyStyle(styles.button)}
+        style={style}
         {...props}
       >
         <svg x="0px" y="0px" viewBox="0 0 10.2 10.2" style={styles.icon}>
