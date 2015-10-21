@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
-import { mergeStyles } from '../../Styling';
+import DesktopComponent from '../../DesktopComponent';
 import { startAnimation } from './Animation';
 
 var styles = {
@@ -22,22 +22,13 @@ var styles = {
   }
 };
 
+@DesktopComponent
 class ProgressRingWindows extends Component {
   static propTypes = {
-    children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
-    form: PropTypes.any,
     absolute: PropTypes.bool,
-    style: PropTypes.object,
-    visible: PropTypes.bool,
-    display: PropTypes.bool,
-    color: PropTypes.string,
+    color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     size: PropTypes.number
   };
-
-  constructor(props) {
-    super();
-    this.state = {visible: props.visible !== false, display: props.display !== false};
-  }
 
   componentDidMount() {
     startAnimation(
@@ -65,21 +56,33 @@ class ProgressRingWindows extends Component {
   }
 
   render() {
-    const { size, color, style, absolute, visible, display, form, ...props } = this.props;
+    const { size, color, style, absolute, ...props } = this.props;
 
     let containerStyle = {...styles.container};
-    let componentStyle = mergeStyles(style, styles.progress, {
+    let componentStyle = {
+      ...styles.progress,
+      ...style,
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
-    });
+    };
 
     if (absolute) {
-      componentStyle = mergeStyles(componentStyle, styles.absolute);
+      componentStyle = {...componentStyle, ...styles.absolute};
     }
 
-    let componentColor = color;
-    if (!componentColor) {
+    let componentColor = '#1883d7';
+    switch (color) {
+    case true:
+      componentColor = this.state.color;
+      break;
+    case 'blue':
       componentColor = '#1883d7';
+      break;
+    default:
+      if (color) {
+        componentColor = color;
+      }
+      break;
     }
 
     if (size) {

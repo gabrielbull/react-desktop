@@ -11,7 +11,7 @@ var styles = {
     padding: '8px',
     color: '#fff',
     verticalAlign: 'bottom',
-    marginRight: '5px',
+    marginRight: '9px',
 
     ':focus': {
       outline: 'none',
@@ -25,6 +25,10 @@ var styles = {
     ':hover': {
       borderColor: 'rgba(100, 100, 100, 1)'
     }
+  },
+
+  checkboxDark: {
+    borderColor: 'rgba(255, 255, 255, 1)',
   },
 
   ':checked': {
@@ -80,11 +84,6 @@ class CheckboxWindows extends Component {
     let checkedStyle = {display: 'none'};
     let labelStyle = styles.label;
 
-    if (this.state.checked) {
-      checkedStyle = styles.svgChecked;
-      componentStyle = {...componentStyle, ...styles[':checked']};
-    }
-
     componentStyle = {
       ...componentStyle,
       visibility: this.state.visible ? 'visible' : 'hidden',
@@ -92,7 +91,15 @@ class CheckboxWindows extends Component {
     };
 
     if (this.state.requestedTheme === 'dark') {
+      componentStyle = {...componentStyle, ...styles.checkboxDark};
       labelStyle = {...labelStyle, ...styles.labelDark};
+    }
+
+
+    if (this.state.checked) {
+      checkedStyle = styles.svgChecked;
+      componentStyle = {...componentStyle, ...styles[':checked']};
+      console.log(componentStyle);
     }
 
     return (
