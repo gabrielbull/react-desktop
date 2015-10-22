@@ -1,5 +1,4 @@
-import React, { Component, cloneElement } from 'react';
-import { findDOMNode } from 'react-dom';
+import React, { Component } from 'react';
 import DesktopComponent  from '../../../DesktopComponent';
 import { getState } from 'radium';
 import { transparentize } from '../../../Color';

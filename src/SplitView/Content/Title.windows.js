@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { findDOMNode } from 'react-dom';
 import DesktopComponent  from '../../DesktopComponent';
 import { keyframes } from 'radium';
 

@@ -11,9 +11,6 @@ class RowWrapper extends Component {
     form: PropTypes.any
   };
 
-  set labels(value) {
-  }
-
   get labels() {
     let labels = [];
     if (this.props) {

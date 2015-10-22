@@ -1,4 +1,4 @@
-import React, { Component, cloneElement } from 'react';
+import { Component, cloneElement } from 'react';
 import { findDOMNode } from 'react-dom';
 import DesktopComponent  from '../../../DesktopComponent';
 

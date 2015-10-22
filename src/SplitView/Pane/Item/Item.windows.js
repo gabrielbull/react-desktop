@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, Children, cloneElement } from 'react';
+import React, { Component, PropTypes } from 'react';
 import DesktopComponent  from '../../../DesktopComponent';
 import Icon from './Icon.windows';
 import { transparentize } from '../../../Color';

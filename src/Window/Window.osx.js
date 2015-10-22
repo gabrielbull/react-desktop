@@ -43,10 +43,6 @@ class WindowOSX extends Component {
     this.state = { visible: props.visible !== false, display: props.display !== false };
   }
 
-  set styles(value) {
-
-  }
-
   get styles() {
     if (this.props) {
       return mergeStyles(styles.window, this.props.style);

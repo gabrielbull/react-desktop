@@ -35,7 +35,7 @@ export function darkenColor(color, percent) {
   return colorLuminance(color, -percent);
 }
 
-export function ligthenColor(color, percent) {
+export function ligthenColor(color) {
   return color;
 }
 
