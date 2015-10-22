@@ -34,7 +34,7 @@ export default class extends Component {
     let content;
     if (this.props.params.splat) {
       if (this.props.location.pathname.match(/\/$/)) {
-        content = require(`../../raw-docs/${this.props.params.splat}/index.html`);
+        content = require(`../../raw-docs/${this.props.params.splat}.html`);
       } else {
         content = require(`../../raw-docs/${this.props.params.splat}.html`);
       }
