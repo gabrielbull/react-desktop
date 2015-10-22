@@ -1,7 +1,9 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './playground/playground.js',
+  entry: {
+    app: ['webpack/hot/dev-server', './playground/playground.js']
+  },
 
   output: {
     path: './playground',
@@ -14,12 +16,14 @@ module.exports = {
     contentBase: './playground'
   },
 
+  devtool: 'source-map',
+
   module: {
     loaders: [
       {
         test: /\.(js)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader?stage=0'
+        loaders: ['react-hot', 'babel-loader?stage=0']
       }
     ]
   },

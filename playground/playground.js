@@ -12,8 +12,12 @@ document.body.style.display = 'flex';
 document.body.style.flexDirection = 'column';
 document.body.style.alignItems = 'center';
 
+var script = document.createElement('script');
+script.src = '/webpack-dev-server.js';
+document.getElementsByTagName('head')[0].appendChild(script);
+
 document.body.innerHTML = `
-  <div id="controls" style="position: absolute; height: 100%; top: 0; left: 0;"></div>
+  <div id="controls" style="position: fixed; height: 100%; top: 0; left: 0;"></div>
   <div id="window1" style="width: 1000px;"></div>
   <div id="window2" style="width: 1000px;"></div>
   <script src="/.js"></script>

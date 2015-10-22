@@ -24,12 +24,17 @@ class Item extends Component {
     const {selected, ...properties} = props;
     super(properties, context, updater);
     this.state = {
-      selected: selected
+      selected: selected,
+      parentRequestedTheme: context.requestedTheme
     };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({ selected: nextProps.selected });
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    this.refs.content.setState({parentRequestedTheme: nextState.parentRequestedTheme});
   }
 
   render() {
@@ -45,7 +50,7 @@ class Item extends Component {
       <div
         style={componentStyle}
       >
-        <Content {...props}>{children}</Content>
+        <Content ref="content" parentRequestedTheme={this.state.parentRequestedTheme} {...props}>{children}</Content>
       </div>
     );
   }

@@ -3,7 +3,7 @@ import DesktopComponent  from '../../DesktopComponent';
 
 const styles = {
   title: {
-    color: '#ffffff',
+    color: '#000000',
     height: '48px',
     display: 'flex',
     alignItems: 'center',
@@ -11,16 +11,33 @@ const styles = {
     fontSize: '15px',
     textTransform: 'uppercase',
     padding: '0 24px'
+  },
+
+  titleDark: {
+    color: '#ffffff',
   }
 };
 
 @DesktopComponent
 class Title extends Component {
+  constructor(props, context, updater) {
+    const { parentRequestedTheme, ...properties } = props;
+    super(properties, context, updater);
+    this.state = {
+      parentRequestedTheme: parentRequestedTheme
+    };
+  }
+
   render() {
-    const { children } = this.props;
+    const { style, children } = this.props;
+    let componentStyle = {...styles.title, ...style};
+
+    if (this.state.parentRequestedTheme === 'dark') {
+      componentStyle = {...componentStyle, ...styles.titleDark};
+    }
 
     return (
-      <div style={styles.title}>
+      <div style={componentStyle}>
         {children}
       </div>
     );

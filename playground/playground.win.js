@@ -28,11 +28,14 @@ export class Window1 extends Component {
 export class Window2 extends Component {
   constructor() {
     super();
-    this.state = {selectedTab: 'welcome'};
+    this.state = {
+      selectedTab: localStorage['windows.selectedTab'] ? localStorage['windows.selectedTab'] : 'welcome'
+    };
   }
 
   render() {
-    const background = this.props.theme === 'dark' ? '#1f1f1f' : 'white';
+    const background = this.props.theme === 'dark' ? null : '#eeeeee';
+    localStorage['windows.selectedTab'] = this.state.selectedTab;
 
     return (
       <Window ref="window" background={background} color="#cc7f29" chrome requestedTheme={this.props.theme}>

@@ -21,8 +21,15 @@ class Toolbar extends Component {
     this.state = { visible: props.visible !== false, display: props.display !== false };
   }
 
+  set styles(value) {
+
+  }
+
   get styles() {
-    return mergeStyles(styles.toolbar, this.props.style);
+    if (this.props) {
+      return mergeStyles(styles.toolbar, this.props.style);
+    }
+    return mergeStyles(styles.toolbar);
   }
 
   render() {

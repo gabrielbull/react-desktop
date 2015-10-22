@@ -11,17 +11,22 @@ class RowWrapper extends Component {
     form: PropTypes.any
   };
 
+  set labels(value) {
+  }
+
   get labels() {
     let labels = [];
-    Children.map(this.props.children, function (child) {
-      if (child.type === Row) {
-        Children.map(child.props.children, function (child) {
-          if (child.type === Label || child.type === LabelOSX || child.type === LabelWindows) {
-            labels = [...labels, child];
-          }
-        });
-      }
-    });
+    if (this.props) {
+      Children.map(this.props.children, function (child) {
+        if (child.type === Row) {
+          Children.map(child.props.children, function (child) {
+            if (child.type === Label || child.type === LabelOSX || child.type === LabelWindows) {
+              labels = [...labels, child];
+            }
+          });
+        }
+      });
+    }
     return labels;
   }
 

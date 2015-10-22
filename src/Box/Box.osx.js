@@ -38,10 +38,7 @@ class Box extends Component {
       visible: props.visible !== false,
       display: props.display !== false
     };
-  }
-
-  get styles() {
-    return mergeStyles(styles.box, this.props.style);
+    this.styles = mergeStyles(styles.box, this.props ? this.props.style : {});
   }
 
   render() {

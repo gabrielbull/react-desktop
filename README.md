@@ -54,6 +54,7 @@ Guides on installation, components and advanced usage are found in the [document
 - [x] Form
 - [ ] Indeterminate Progress Bar
 - [x] Indeterminate Progress Ring
+- [ ] Split View
 - [x] Text Block
 - [x] Text Box
 - [x] Title Bar

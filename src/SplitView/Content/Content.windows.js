@@ -18,12 +18,25 @@ const styles = {
 class Content extends Component {
   static propTypes = {
     title: PropTypes.string,
+    parentRequestedTheme: PropTypes.string,
     margin: PropTypes.string,
     padding: PropTypes.string
   };
 
+  constructor(props, context, updater) {
+    const { parentRequestedTheme, ...properties } = props;
+    super(properties, context, updater);
+    this.state = {
+      parentRequestedTheme: parentRequestedTheme
+    };
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    this.refs.title.setState({parentRequestedTheme: nextState.parentRequestedTheme});
+  }
+
   render() {
-    const { children, style, title, icon, ...props } = this.props;
+    const { children, parentRequestTheme, style, title, icon, ...props } = this.props;
 
     let componentStyle = {
       ...styles.component,
@@ -38,7 +51,7 @@ class Content extends Component {
 
     return (
       <div style={styles.content} {...props}>
-        <Title>
+        <Title ref="title" parentRequestedTheme={this.state.parentRequestedTheme}>
           {title}
         </Title>
         <div style={componentStyle}>
