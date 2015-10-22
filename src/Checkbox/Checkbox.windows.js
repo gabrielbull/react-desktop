@@ -90,7 +90,7 @@ class CheckboxWindows extends Component {
     };
   }
 
-  onChange(event) {
+  onChange = event => {
     this.setState({ checked: event.target.checked });
     if (this.props.onChange) {
       this.props.onChange(event);
@@ -161,7 +161,7 @@ class CheckboxWindows extends Component {
           type="checkbox"
           style={componentStyle}
           checked={this.state.checked}
-          onChange={this.onChange.bind(this)}
+          onChange={this.onChange}
           {...props}
         />
         <svg x="0px" y="0px" viewBox="0 0 6.4 6.4" style={checkedStyle}>
