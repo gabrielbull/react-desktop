@@ -4,6 +4,7 @@ import Content from '../Content/Content.windows';
 
 const styles = {
   content: {
+    position: 'relative',
     flexGrow: '1',
     flexShrink: '0',
     display: 'flex'
@@ -46,7 +47,7 @@ class Item extends Component {
     const { children, style, ...props } = this.props;
     this.splitView;
 
-    let componentStyle = {...styles.content, ...style};
+    let componentStyle = {...styles.content};
 
     if (!this.state.selected) {
       componentStyle.display = 'none';
@@ -60,6 +61,7 @@ class Item extends Component {
           ref="content"
           selected={this.state.selected}
           parentRequestedTheme={this.state.parentRequestedTheme}
+          style={style}
           {...props}
         >
           {children}

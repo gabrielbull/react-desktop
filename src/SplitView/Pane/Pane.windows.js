@@ -11,14 +11,18 @@ const styles = {
     flexShrink: '0',
     flexDirection: 'column',
     width: '200px',
-    marginTop: '48px'
+    overflow: 'hidden'
+  },
+
+  padding: {
+    height: '48px'
   },
 
   buttonStyle: {
     position: 'absolute',
     padding: '8px 10px',
-    top: '-41px',
-    left: '5px',
+    top: '7px',
+    left: '4px',
     width: '20px',
     height: '20px'
   }
@@ -32,7 +36,8 @@ class Pane extends Component {
     compactLength: PropTypes.number,
     openLength: PropTypes.number,
     placement: PropTypes.string,
-    isOpen: PropTypes.bool
+    isOpen: PropTypes.bool,
+    onPaneToggle: PropTypes.func
   };
 
   static contextTypes = {
@@ -41,6 +46,13 @@ class Pane extends Component {
     placement: PropTypes.string,
     isOpen: PropTypes.bool
   };
+
+  constructor(props, context, updater) {
+    super(props, context, updater);
+    this.state = {
+      isOpen: context.isOpen !== false
+    };
+  }
 
   filterChildren(children) {
     return Children.map(children, function (child) {
@@ -54,16 +66,33 @@ class Pane extends Component {
     });
   }
 
+  toggleOpen = () => {
+    this.setState({isOpen: !this.state.isOpen});
+    if (this.props.onPaneToggle) {
+      this.props.onPaneToggle(!this.state.isOpen);
+    }
+  };
+
   render() {
     let { children, style, ...props } = this.props;
     children = this.filterChildren(children);
 
+    let componentStyle = {...styles.pane, ...style};
+    if (this.context.openLength) {
+      componentStyle.width = this.context.openLength + 'px';
+    }
+
+    if (!this.state.isOpen) {
+      componentStyle.width = this.context.compactLength ? this.context.compactLength : '48px';
+    }
+
     return (
       <div
-        style={{...styles.pane, ...style}}
+        style={componentStyle}
         {...props}
       >
-        <Button style={styles.buttonStyle}/>
+        <div style={styles.padding}/>
+        <Button style={styles.buttonStyle} onClick={this.toggleOpen}/>
         {children}
       </div>
     );

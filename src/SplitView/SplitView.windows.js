@@ -6,7 +6,7 @@ import Content from './Content/Content.windows';
 
 const styles = {
   display: 'flex',
-  flexWrap: 'wrap',
+  flexWrap: 'nowrap',
   position: 'relative'
 };
 
@@ -15,6 +15,10 @@ class SplitView extends Component {
   static Pane = Pane;
   static Content = Content;
   static Item = Item;
+
+  static propTypes = {
+    onPaneToggle: PropTypes.func
+  };
 
   static childContextTypes = {
     compactLength: PropTypes.number,
@@ -62,7 +66,7 @@ class SplitView extends Component {
         style={{...styles, ...style}}
         {...props}
       >
-        <Pane>
+        <Pane onPaneToggle={this.props.onPaneToggle}>
           {children}
         </Pane>
         {content}

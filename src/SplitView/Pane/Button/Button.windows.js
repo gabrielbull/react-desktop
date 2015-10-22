@@ -14,7 +14,6 @@ const styles = {
 @DesktopComponent
 class Button extends Component {
   render() {
-
     let fill = this.state.requestedTheme === 'dark' ? '#ffffff' : '#000000';
 
     if (getState(this.state, null, ':active')) {
@@ -24,7 +23,11 @@ class Button extends Component {
     }
 
     return (
-      <svg x="0px" y="0px" viewBox="0 0 20 12.5" style={{...styles.svg, ...this.props.style}}>
+      <svg
+        x="0px" y="0px" viewBox="0 0 20 12.5"
+        onClick={this.props.onClick}
+        style={{...styles.svg, ...this.props.style}}
+      >
         <path
           fill={fill}
           fill-rule="evenodd"

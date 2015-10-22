@@ -30,19 +30,23 @@ export class Window2 extends Component {
     super(props);
     this.state = {
       color: props.color,
-      selectedTab: localStorage['windows.selectedTab'] ? localStorage['windows.selectedTab'] : 'welcome'
+      isOpen: localStorage['windows.isOpen'] != 'false',
+      selectedTab: localStorage['windows.selectedTab'] || 'welcome'
     };
   }
 
+  togglePane = (isOpen) => {
+    this.state.isOpen = localStorage['windows.isOpen'] = isOpen;
+  };
+
   render() {
-    const background = this.props.theme === 'dark' ? null : '#eeeeee';
     localStorage['windows.selectedTab'] = this.state.selectedTab;
 
     return (
       <Window ref="window" color={this.state.color} chrome requestedTheme={this.props.theme}>
         <TitleBar title="My Windows Application" controls/>
 
-        <SplitView isOpen openLenght={20} push>
+        <SplitView isOpen={this.state.isOpen} openLength={200} onPaneToggle={this.togglePane} push>
           <SplitView.Item
             title="Welcome"
             icon={Icons.welcomeIcon}
@@ -50,13 +54,12 @@ export class Window2 extends Component {
             onPress={() => { this.setState({ selectedTab: 'welcome' }) }}
             requestedTheme="light"
             background="#ffffff"
-            style={{position: 'relative'}}
+            style={{
+              height: '500px',
+              backgroundImage: 'url(picture.jpg)',
+              backgroundSize: 'cover'
+            }}
           >
-            <img
-              src="picture.jpg"
-              style={{width: '798px', height: 'auto', display: 'block'}}
-              onDragStart={(event) => event.preventDefault()}
-            />
             <h1
               style={{
                 position: 'absolute',
@@ -69,7 +72,8 @@ export class Window2 extends Component {
                 fontSize: '45px',
                 fontWeight: '100',
                 color: '#333'
-              }}>
+              }}
+            >
               Welcome to React Desktop
             </h1>
           </SplitView.Item>
