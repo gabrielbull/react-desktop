@@ -1,15 +1,26 @@
 import React, { Component, PropTypes, Children } from 'react';
 import DesktopComponent  from '../../DesktopComponent';
-import Item from './Item/Item.window';
+import Item from './Item/Item.windows';
+import Button from './Button/Button.windows';
 
 const styles = {
   pane: {
     display: 'flex',
+    position: 'relative',
     flexGrow: '0',
     flexShrink: '0',
     flexDirection: 'column',
     width: '200px',
     marginTop: '48px'
+  },
+
+  buttonStyle: {
+    position: 'absolute',
+    padding: '8px 10px',
+    top: '-41px',
+    left: '5px',
+    width: '20px',
+    height: '20px'
   }
 };
 
@@ -52,6 +63,7 @@ class Pane extends Component {
         style={{...styles.pane, ...style}}
         {...props}
       >
+        <Button style={styles.buttonStyle}/>
         {children}
       </div>
     );

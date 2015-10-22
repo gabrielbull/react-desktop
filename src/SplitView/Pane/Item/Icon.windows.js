@@ -13,9 +13,17 @@ const styles = {
 @DesktopComponent
 class Icon extends Component {
   componentDidMount() {
+    this.applyColor();
+  }
+
+  componentDidUpdate() {
+    this.applyColor();
+  }
+
+  applyColor() {
     let children = findDOMNode(this).children;
     for (var i = 0, len = children.length; i < len; ++i) {
-      children[i].style.fill = '#ffffff';
+      children[i].style.fill = this.state.requestedTheme === 'dark' ? '#ffffff' : '#000000';
     }
   }
 

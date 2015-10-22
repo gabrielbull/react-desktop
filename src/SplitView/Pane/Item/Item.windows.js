@@ -20,13 +20,17 @@ const styles = {
   span: {
     display: 'flex',
     alignItems: 'center',
-    color: '#ffffff',
+    color: '#000000',
     lineHeight: '44px',
     fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
     fontSize: '15px',
     letterSpacing: '0.4pt',
-    padding: '0 18px',
+    padding: '0 16px',
     transition: 'transform .1s ease-in'
+  },
+
+  spanDark: {
+    color: '#ffffff',
   },
 
   pushTransformHover: {
@@ -56,6 +60,10 @@ class Item extends Component {
     const ItemIcon = children.props.icon;
     let anchorStyle = {...styles.anchor, ...style};
     let spanStyle = {...styles.span, ...style};
+
+    if (this.state.requestedTheme === 'dark') {
+      spanStyle = {...spanStyle, ...styles.spanDark};
+    }
 
     if (selected) {
       anchorStyle = {
