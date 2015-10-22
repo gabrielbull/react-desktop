@@ -36,7 +36,7 @@ export default class extends Component {
             background="#ffffff"
             style={{
               height: '500px',
-              backgroundImage: 'url(/src/Demo/picture.jpg)',
+              backgroundImage: 'url(/react-desktop/src/Demo/picture.jpg)',
               backgroundSize: 'cover'
             }}
           >
