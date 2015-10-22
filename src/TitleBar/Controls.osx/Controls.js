@@ -19,7 +19,7 @@ class Controls extends Component {
     onResizePress: PropTypes.func
   };
 
-  mouseEnter() {
+  mouseEnter = () => {
     for (let prop in this.refs) {
       if(this.refs.hasOwnProperty(prop)) {
         this.refs[prop].setState({iconVisible: true});
@@ -27,7 +27,7 @@ class Controls extends Component {
     }
   }
 
-  mouseLeave() {
+  mouseLeave = () => {
     for (let prop in this.refs) {
       if(this.refs.hasOwnProperty(prop)) {
         this.refs[prop].setState({iconVisible: false});
@@ -37,7 +37,7 @@ class Controls extends Component {
 
   render() {
     return (
-      <div style={styles.controls} onMouseEnter={this.mouseEnter.bind(this)} onMouseLeave={this.mouseLeave.bind(this)}>
+      <div style={styles.controls} onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
         <Close onClick={this.props.onClosePress} ref="close"/>
         <Minimize onClick={this.props.onMinimizePress} ref="minimize"/>
         <Resize onClick={this.props.onResizePress} ref="resize"/>

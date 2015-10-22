@@ -123,7 +123,7 @@ class Form extends Component {
 
     return (
       <form
-        onSubmit={this.submit.bind(this)}
+        onSubmit={this.submit}
         style={componentStyle}
         {...props}
       >
