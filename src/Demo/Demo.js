@@ -9,7 +9,7 @@ export default class extends Component {
   constructor() {
     super();
     this.state = {
-      os: 'osx'
+      os: localStorage['demo.os'] == 'win' ? 'win' : 'osx'
     };
   }
 
@@ -22,6 +22,7 @@ export default class extends Component {
   }
 
   changeOs(os) {
+    localStorage['demo.os'] = os;
     this.setState({ os: os });
   }
 
@@ -35,7 +36,7 @@ export default class extends Component {
 
     return (
       <div className="demo">
-        <OsToggle onChange={this.changeOs.bind(this)}/>
+        <OsToggle defaultValue={this.state.os} onChange={this.changeOs.bind(this)}/>
         {window}
       </div>
     );

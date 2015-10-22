@@ -14,13 +14,15 @@ export default class extends Component {
   }
 
   render() {
+    const checked = this.props.defaultValue === 'win';
+
     return (
       <div className="toggle">
         <div className="option">
           <span dangerouslySetInnerHTML={{__html: AppleSVG}} />
         </div>
         <div className="switch">
-          <input ref="switch" id="toggle" type="checkbox" onChange={this.change.bind(this)}/>
+          <input ref="switch" id="toggle" type="checkbox" onChange={this.change.bind(this)} defaultChecked={checked}/>
           <label htmlFor="toggle"/>
         </div>
         <div className="option">
