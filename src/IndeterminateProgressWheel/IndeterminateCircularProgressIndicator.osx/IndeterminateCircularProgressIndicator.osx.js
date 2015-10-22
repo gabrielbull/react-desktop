@@ -61,10 +61,10 @@ class IndeterminateCircularProgressIndicatorOSX extends Component {
     this.steps = this.duration / this.framerate;
     this.increment = 1 / this.steps;
     this.animateStep();
-    this.interval = setInterval(this.animateStep.bind(this), 1000 / this.framerate);
+    this.interval = setInterval(this.animateStep, 1000 / this.framerate);
   }
 
-  animateStep() {
+  animateStep = () => {
     this.currentStep++;
     if (this.currentStep > this.steps) {
       this.currentStep = 1;

@@ -113,8 +113,8 @@ function ExtendComposedComponent (ComposedComponent) {
 
     componentDidMount() {
       if (window && windowStateEnabled) {
-        window.addEventListener('focus', this.windowFocus.bind(this));
-        window.addEventListener('blur', this.windowBlur.bind(this));
+        window.addEventListener('focus', this.windowFocus);
+        window.addEventListener('blur', this.windowBlur);
       }
 
       if (super.getPlaceholderStyle) {
@@ -140,8 +140,8 @@ function ExtendComposedComponent (ComposedComponent) {
 
     componentWillUnmount() {
       if (window && windowStateEnabled) {
-        window.removeEventListener('focus', this.windowFocus.bind(this));
-        window.removeEventListener('blur', this.windowBlur.bind(this));
+        window.removeEventListener('focus', this.windowFocus);
+        window.removeEventListener('blur', this.windowBlur);
       }
       if (super.componentWillUnmount) {
         super.componentWillUnmount();
@@ -230,13 +230,13 @@ function ExtendComposedComponent (ComposedComponent) {
         Math.floor((Math.random() * 100000000000000));
     }
 
-    windowFocus() {
+    windowFocus = () => {
       if (windowStateEnabled) {
         this.setState({windowFocused: true});
       }
     }
 
-    windowBlur() {
+    windowBlur = () => {
       if (windowStateEnabled) {
         this.setState({windowFocused: false});
       }

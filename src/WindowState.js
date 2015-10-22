@@ -4,15 +4,15 @@ export default function WindowState(ComposedComponent) {
   return class extends Component {
     componentDidMount() {
       if (window) {
-        window.addEventListener('focus', this.windowFocus.bind(this));
-        window.addEventListener('blur', this.windowBlur.bind(this));
+        window.addEventListener('focus', this.windowFocus);
+        window.addEventListener('blur', this.windowBlur);
       }
     }
 
     componentWillUnmount() {
       if (window) {
-        window.removeEventListener('focus', this.windowFocus.bind(this));
-        window.removeEventListener('blur', this.windowBlur.bind(this));
+        window.removeEventListener('focus', this.windowFocus);
+        window.removeEventListener('blur', this.windowBlur);
       }
     }
 
@@ -22,13 +22,13 @@ export default function WindowState(ComposedComponent) {
       }
     }
 
-    windowFocus() {
+    windowFocus = () => {
       if (this.refs.component) {
         this.refs.component.setState({ windowFocused: true });
       }
     }
 
-    windowBlur() {
+    windowBlur = () => {
       if (this.refs.component) {
         this.refs.component.setState({windowFocused: false});
       }
