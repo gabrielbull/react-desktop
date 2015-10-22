@@ -29,8 +29,13 @@ class Item extends Component {
     };
   }
 
+  get splitView() {
+    return this.context.parent;
+  }
+
   componentWillReceiveProps(nextProps) {
     this.setState({ selected: nextProps.selected });
+    this.refs.content.setState({selected: nextProps.selected});
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -39,6 +44,7 @@ class Item extends Component {
 
   render() {
     const { children, style, ...props } = this.props;
+    this.splitView;
 
     let componentStyle = {...styles.content, ...style};
 
@@ -50,7 +56,14 @@ class Item extends Component {
       <div
         style={componentStyle}
       >
-        <Content ref="content" parentRequestedTheme={this.state.parentRequestedTheme} {...props}>{children}</Content>
+        <Content
+          ref="content"
+          selected={this.state.selected}
+          parentRequestedTheme={this.state.parentRequestedTheme}
+          {...props}
+        >
+          {children}
+        </Content>
       </div>
     );
   }

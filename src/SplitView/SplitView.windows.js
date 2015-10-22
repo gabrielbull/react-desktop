@@ -6,7 +6,8 @@ import Content from './Content/Content.windows';
 
 const styles = {
   display: 'flex',
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
+  position: 'relative'
 };
 
 @DesktopComponent
@@ -22,6 +23,14 @@ class SplitView extends Component {
     isOpen: PropTypes.bool,
     push: PropTypes.bool
   };
+
+  set currentTitle(value) {
+    this._currentTitle = value;
+  }
+
+  get currentTitle() {
+    return this._currentTitle;
+  }
 
   getChildContext() {
     return {

@@ -24,15 +24,23 @@ class Content extends Component {
   };
 
   constructor(props, context, updater) {
-    const { parentRequestedTheme, ...properties } = props;
+    const { parentRequestedTheme, selected, ...properties } = props;
     super(properties, context, updater);
     this.state = {
+      selected: selected,
       parentRequestedTheme: parentRequestedTheme
     };
   }
 
+  get item() {
+    return this.context.parent;
+  }
+
   componentWillUpdate(nextProps, nextState) {
-    this.refs.title.setState({parentRequestedTheme: nextState.parentRequestedTheme});
+    this.refs.title.setState({
+      selected: nextState.selected,
+      parentRequestedTheme: nextState.parentRequestedTheme
+    });
   }
 
   render() {
@@ -51,7 +59,7 @@ class Content extends Component {
 
     return (
       <div style={styles.content} {...props}>
-        <Title ref="title" parentRequestedTheme={this.state.parentRequestedTheme}>
+        <Title ref="title" selected={this.state.selected} parentRequestedTheme={this.state.parentRequestedTheme}>
           {title}
         </Title>
         <div style={componentStyle}>
