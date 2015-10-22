@@ -26,9 +26,10 @@ export class Window1 extends Component {
 }
 
 export class Window2 extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      color: props.color,
       selectedTab: localStorage['windows.selectedTab'] ? localStorage['windows.selectedTab'] : 'welcome'
     };
   }
@@ -38,10 +39,10 @@ export class Window2 extends Component {
     localStorage['windows.selectedTab'] = this.state.selectedTab;
 
     return (
-      <Window ref="window" background={background} color="#cc7f29" chrome requestedTheme={this.props.theme}>
+      <Window ref="window" color={this.state.color} chrome requestedTheme={this.props.theme}>
         <TitleBar title="My Windows Application" controls/>
 
-        <SplitView isOpen openLenght={20}>
+        <SplitView isOpen openLenght={20} push>
           <SplitView.Item
             title="Welcome"
             icon={Icons.welcomeIcon}
@@ -49,12 +50,28 @@ export class Window2 extends Component {
             onPress={() => { this.setState({ selectedTab: 'welcome' }) }}
             requestedTheme="light"
             background="#ffffff"
+            style={{position: 'relative'}}
           >
             <img
               src="picture.jpg"
               style={{width: '798px', height: 'auto', display: 'block'}}
               onDragStart={(event) => event.preventDefault()}
             />
+            <h1
+              style={{
+                position: 'absolute',
+                top: '25%',
+                left: '0',
+                width: '100%',
+                textAlign: 'center',
+                lineHeight: '28px',
+                fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
+                fontSize: '45px',
+                fontWeight: '100',
+                color: '#333'
+              }}>
+              Welcome to React Desktop
+            </h1>
           </SplitView.Item>
           <SplitView.Item
             title="Forms"

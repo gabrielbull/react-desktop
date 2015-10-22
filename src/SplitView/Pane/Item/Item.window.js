@@ -4,15 +4,9 @@ import Icon from './Icon.windows';
 import { transparentize } from '../../../Color';
 
 const styles = {
-  item: {
+  anchor: {
     display: 'flex',
     alignItems: 'center',
-    color: '#ffffff',
-    lineHeight: '44px',
-    fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
-    fontSize: '15px',
-    letterSpacing: '0.4pt',
-    padding: '0 18px',
 
     ':hover': {
       backgroundColor: 'rgba(255, 255, 255, .1)',
@@ -21,6 +15,27 @@ const styles = {
     ':active': {
       backgroundColor: 'rgba(255, 255, 255, .2)',
     }
+  },
+
+  span: {
+    display: 'flex',
+    alignItems: 'center',
+    color: '#ffffff',
+    lineHeight: '44px',
+    fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
+    fontSize: '15px',
+    letterSpacing: '0.4pt',
+    padding: '0 18px',
+    transition: 'transform .1s ease-in'
+  },
+
+  pushTransformHover: {
+    transition: 'transform .1s ease-in'
+  },
+
+  pushTransformActive: {
+    transform: 'scale(0.97)',
+    transition: 'transform 0s ease-in'
   }
 };
 
@@ -30,36 +45,58 @@ class Item extends Component {
     onPress: PropTypes.func
   };
 
+  static contextTypes = {
+    push: PropTypes.bool
+  };
+
   render() {
     const { children, style, onPress, ...props } = this.props;
     const title = children.props.title;
     const selected = children.props.selected;
     const ItemIcon = children.props.icon;
-    let componentStyle = {...styles.item, ...style};
+    let anchorStyle = {...styles.anchor, ...style};
+    let spanStyle = {...styles.span, ...style};
 
     if (selected) {
-      componentStyle = {
-        ...componentStyle,
+      anchorStyle = {
+        ...anchorStyle,
         backgroundColor: transparentize(this.state.color, .4),
         ':hover': {
-          ...componentStyle[':hover'],
+          ...anchorStyle[':hover'],
           backgroundColor: transparentize(this.state.color, .2)
         },
         ':active': {
-          ...componentStyle[':active'],
+          ...anchorStyle[':active'],
           backgroundColor: transparentize(this.state.color, .1)
         }
       };
     }
 
+    if (this.context.push) {
+      spanStyle[':hover'] = {
+        ...spanStyle[':hover'],
+        ...styles.pushTransformHover
+      };
+      spanStyle[':active'] = {
+        ...spanStyle[':active'],
+        ...styles.pushTransformActive
+      };
+    }
+
     return (
       <a
+        ref="anchor"
         onClick={onPress}
-        style={componentStyle}
+        style={anchorStyle}
         {...props}
       >
-        <Icon icon={ItemIcon}/>
-        {title}
+        <span
+          ref="span"
+          style={spanStyle}
+        >
+          <Icon icon={ItemIcon}/>
+          {title}
+        </span>
       </a>
     );
   }

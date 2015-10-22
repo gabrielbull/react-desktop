@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {Window1 as Window1OSX, Window2 as Window2OSX} from './playground.osx';
 import {Window1 as Window1Win, Window2 as Window2Win} from './playground.win';
+import ColorPicker from 'react-color';
 
 document.title = 'React Desktop Playground';
 document.body.style.padding = '30px 40px';
@@ -12,9 +13,11 @@ document.body.style.display = 'flex';
 document.body.style.flexDirection = 'column';
 document.body.style.alignItems = 'center';
 
+/*
 var script = document.createElement('script');
 script.src = '/webpack-dev-server.js';
 document.getElementsByTagName('head')[0].appendChild(script);
+*/
 
 document.body.innerHTML = `
   <div id="controls" style="position: fixed; height: 100%; top: 0; left: 0;"></div>
@@ -27,6 +30,8 @@ class Switch extends Component {
   constructor() {
     super();
     this.state = {
+      color: localStorage['color'] ? localStorage['color'] : '#cc7f29',
+      displayColorPicker: false,
       os: localStorage['os'] ? localStorage['os'] : 'osx',
       theme: localStorage['theme'] ? localStorage['theme'] : 'light'
     };
@@ -49,8 +54,7 @@ class Switch extends Component {
     this.state.theme = this.state.theme === 'light' ? 'dark' : 'light';
     if (this.window2.refs.window) {
       this.window2.refs.window.setState({
-        requestedTheme: this.state.theme,
-        background: this.state.theme === 'dark' ? '#1f1f1f' : 'white'
+        requestedTheme: this.state.theme
       });
     }
     localStorage['theme'] = this.state.theme;
@@ -159,13 +163,51 @@ class Switch extends Component {
 
         <br/>
 
-        <label style={{margin: '10px', fontFamily: 'sans-serif', color: 'white', fontSize: '11px'}}>
+        <label style={{margin: '10px', fontFamily: 'sans-serif', color: 'white', fontSize: '11px', clear: 'both'}}>
           <input type="checkbox" onChange={this.toggleTheme.bind(this)} defaultChecked={isChecked}/>
           Dark Theme
         </label>
+
+        <div style={{margin: '10px'}}>
+          <a
+            style={{
+              height: '16px',
+              width: '16px',
+              display: 'block',
+              border: '2px solid rgba(255, 255, 255, 1)',
+              borderRadius: '3px',
+              backgroundColor: this.state.color,
+              float: 'left'
+            }}
+            onClick={this.handleClick}
+          />
+          <span style={{margin: '10px', fontFamily: 'sans-serif', color: 'white', fontSize: '11px'}}>
+            Color
+          </span>
+          <ColorPicker
+            display={this.state.displayColorPicker}
+            color={this.state.color}
+            onChangeComplete={this.changeColor}
+            type="sketch"
+          />
+        </div>
       </div>
     );
   }
+
+  handleClick = () => {
+    this.setState({ displayColorPicker: !this.state.displayColorPicker });
+  };
+
+  changeColor = (color) => {
+    this.setState({ color: `#${color.hex}`, displayColorPicker: false });
+    if (this.window2.refs.window) {
+      this.window2.refs.window.setState({
+        color: this.state.color
+      });
+    }
+    localStorage['color'] = this.state.color;
+  };
 
   renderWindows() {
     if (this.state.os === 'osx') {
@@ -173,7 +215,7 @@ class Switch extends Component {
       this.window2 = ReactDOM.render(<Window2OSX theme={this.state.theme}/>, document.getElementById('window2'));
     } else {
       ReactDOM.render(<Window1Win theme={this.state.theme}/>, document.getElementById('window1'));
-      this.window2 = ReactDOM.render(<Window2Win theme={this.state.theme}/>, document.getElementById('window2'));
+      this.window2 = ReactDOM.render(<Window2Win theme={this.state.theme} color={this.state.color}/>, document.getElementById('window2'));
     }
   }
 }

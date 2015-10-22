@@ -19,8 +19,19 @@ class SplitView extends Component {
     compactLength: PropTypes.number,
     openLength: PropTypes.number,
     placement: PropTypes.string,
-    isOpen: PropTypes.bool
+    isOpen: PropTypes.bool,
+    push: PropTypes.bool
   };
+
+  getChildContext() {
+    return {
+      compactLength: this.props.compactLength,
+      openLength: this.props.openLength,
+      placement: this.props.placement,
+      isOpen: this.props.isOpen,
+      push: this.props.push
+    };
+  }
 
   componentDidUpdate() {
     for(var prop in this.refs) {

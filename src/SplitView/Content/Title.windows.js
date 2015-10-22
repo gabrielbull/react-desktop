@@ -28,6 +28,11 @@ class Title extends Component {
     };
   }
 
+  omponentWillAppear() {
+    console.log(this.props);
+    console.log('mount me bitch');
+  }
+
   render() {
     const { style, children } = this.props;
     let componentStyle = {...styles.title, ...style};
