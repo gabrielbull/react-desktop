@@ -13,7 +13,7 @@ export default class Desktop {
     // explicitly set these to avoid issues
     const window = window || null;
     const navigator = navigator || null;
-    const process = process || window ? window.process : null || null;
+    const process = process || (window && window.process) || null;
 
     // via node
     if (process && process.platform) {
