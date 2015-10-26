@@ -25,6 +25,11 @@ var styles = {
 
   unfocused: {
     borderColor: '#aaaaaa'
+  },
+
+  content: {
+    flexGrow: '1',
+    display: 'flex'
   }
 };
 
@@ -37,12 +42,7 @@ class Window extends Component {
   filterChildren() {
     let titleBar = '';
     let otherChildren = [];
-    let hasGrid = false;
     Children.map(this.props.children, (element) => {
-      if (element.type === Grid || element.type === SplitView) {
-        hasGrid = true;
-      }
-
       if (element.type === TitleBar) {
         titleBar = element;
       } else {
@@ -50,7 +50,7 @@ class Window extends Component {
       }
     });
 
-    return [titleBar, hasGrid, ...otherChildren];
+    return [titleBar, ...otherChildren];
   }
 
   render() {
@@ -83,14 +83,9 @@ class Window extends Component {
       componentStyle = {...componentStyle, backgroundColor: this.state.background};
     }
 
-    const [titleBar, hasGrid, ...children] = this.filterChildren();
+    const [titleBar, ...children] = this.filterChildren();
 
-    let content;
-    if (hasGrid) {
-      content = children;
-    } else {
-      content = <Grid>{children}</Grid>;
-    }
+    let content = <Grid style={styles.content}>{children}</Grid>;
 
     return (
       <div

@@ -3,7 +3,9 @@ import DesktopComponent from '../DesktopComponent';
 
 var styles = {
   grid: {
-    userSelect: 'none'
+    userSelect: 'none',
+    flex: '1',
+    display: 'flex'
   }
 };
 

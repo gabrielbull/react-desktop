@@ -7,7 +7,8 @@ import Content from './Content/Content.windows';
 const styles = {
   display: 'flex',
   flexWrap: 'nowrap',
-  position: 'relative'
+  position: 'relative',
+  flex: '1'
 };
 
 @DesktopComponent
