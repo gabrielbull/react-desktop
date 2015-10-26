@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
-import DesktopComponent from '../../DesktopComponent';
+import DesktopComponent from '../DesktopComponent';
 import { startAnimation } from './Animation';
 
 var styles = {

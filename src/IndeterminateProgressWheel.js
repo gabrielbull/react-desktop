@@ -1,7 +1,7 @@
 import Desktop from './Desktop';
-import IndeterminateProgressRingWindows
-  from './IndeterminateProgressWheel/IndeterminateProgressRing.windows/IndeterminateProgressRing.windows';
+import ProgressRingWindows
+  from './ProgressRing/ProgressRing.windows';
 import IndeterminateCircularProgressIndicatorOSX from
-  './IndeterminateProgressWheel/IndeterminateCircularProgressIndicator.osx/IndeterminateCircularProgressIndicator.osx';
+  'IndeterminateCircularProgressIndicator/IndeterminateCircularProgressIndicator.osx';
 
-export default Desktop.os === 'win' ? IndeterminateProgressRingWindows : IndeterminateCircularProgressIndicatorOSX;
+export default Desktop.os === 'win' ? ProgressRingWindows : IndeterminateCircularProgressIndicatorOSX;

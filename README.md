@@ -8,6 +8,8 @@
 [![npm version](https://img.shields.io/npm/v/react-desktop.svg)](https://www.npmjs.org/package/react-desktop)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gabrielbull/react-desktop?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
+<span style="color: red;">This library is in early Alpha and is subject to breaking change in the coming weeks.</span>
+
 React UI Components for OS X El Capitan and Windows 10.
 
 > npm install react-desktop --save
@@ -52,9 +54,9 @@ Guides on installation, components and advanced usage are found in the [document
 - [x] Checkbox
 - [ ] Determinate Progress Bar
 - [x] Form
-- [ ] Indeterminate Progress Bar
-- [x] Indeterminate Progress Ring
-- [ ] Split View
+- [ ] Progress Bar
+- [x] Progress Ring
+- [x] Split View
 - [x] Text Block
 - [x] Text Box
 - [x] Title Bar
@@ -84,7 +86,7 @@ import {
   Toolbar, 
   Box, 
   SegmentedControl,
-  IndeterminateCircularProgressIndicator,
+  IndeterminateProgressWheel,
   Form,
   Label
 } from 'react-desktop';
@@ -127,7 +129,7 @@ class MyApp extends React.Component {
                   <PushButton onPress={() => { alert('cancel'); }}>Cancel</PushButton>
                   <PushButton onPress="submit" color="blue">Submit</PushButton>
                   
-                  <IndeterminateCircularProgressIndicator visible absolute/>
+                  <IndeterminateProgressWheel visible absolute/>
                 </Form.Row>
               </Form>              
             </SegmentedControl.Item>

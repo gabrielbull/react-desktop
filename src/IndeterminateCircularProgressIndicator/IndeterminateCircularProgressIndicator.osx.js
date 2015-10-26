@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
-import { mergeStyles } from '../../Styling';
+import { mergeStyles } from '../Styling';
 
 var styles = {
   progress: {

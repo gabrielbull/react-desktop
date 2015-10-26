@@ -5,7 +5,7 @@ import {
   Button,
   TextBox,
   TextBlock,
-  IndeterminateProgressRing,
+  ProgressRing,
   Form,
   Window,
   Checkbox,
@@ -107,7 +107,7 @@ export class Window2 extends Component {
                 <Button onPress="submit" color push>Button With Color</Button>
                 <Button push>Button</Button>
 
-                <IndeterminateProgressRing size={32} color absolute/>
+                <ProgressRing size={32} color absolute/>
               </Form.Row>
             </Form>
           </SplitView.Item>
