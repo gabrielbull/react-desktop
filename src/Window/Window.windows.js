@@ -11,6 +11,8 @@ var styles = {
     backgroundColor: '#ffffff',
     display: 'flex',
     flexDirection: 'column',
+    width: '100vw',
+    height: '100vh'
   },
 
   windowDark: {
