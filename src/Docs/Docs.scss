@@ -1,7 +1,6 @@
 @import "bourbon";
 
 .docs-container {
-  padding: 0 100px 0 0;
   box-sizing: border-box;
   @include flex-grow(1);
   width: 100vw;
@@ -141,4 +140,12 @@ table {
   white-space: pre-wrap;
   border-left: 4px solid #2083c6;
   padding: 30px 20px;
+}
+
+/* # Demo
+================================================== */
+.docs .doc-demo {
+  h2 + div {
+    border-left: 4px solid #2083c6;
+  }
 }

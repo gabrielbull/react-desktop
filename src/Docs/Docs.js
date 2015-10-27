@@ -8,12 +8,18 @@ import styles from './Docs.scss';
 
 @LinksDecorator
 export default class extends Component {
+  constructor(props, context, updater) {
+    super(props, context, updater);
+  }
+
   componentDidMount() {
     this.highlightCode();
+    this.moveContentBeforeDemo();
   }
 
   componentDidUpdate() {
     this.highlightCode();
+    this.moveContentBeforeDemo();
   }
 
   highlightCode() {
@@ -27,6 +33,44 @@ export default class extends Component {
     }
   }
 
+  moveContentBeforeDemo() {
+    if (this.refs.demo) {
+      let nodes = [];
+      const children = findDOMNode(this.refs.docs).childNodes;
+      for (let i = 0, len = children.length; i < len; ++i) {
+        if (children[i].tagName === 'P' && children[i].childNodes[0].tagName === 'A') {
+          const anchor = children[i].childNodes[0];
+          if (anchor.id.match(/^demo\-/)) {
+            break;
+          }
+        } else {
+          nodes = [...nodes, children[i]];
+          children[i].parentNode.removeChild(children[i]);
+        }
+      }
+
+      const top = findDOMNode(this.refs['before-demo']);
+      for (let i = 0, len = nodes.length; i < len; ++i) {
+        top.appendChild(nodes[i]);
+      }
+    }
+  }
+
+  getDemo(content) {
+    let demos = [];
+    const anchors = content.match(/<a.+<\/a>/g);
+    if (anchors) {
+      for (var i = 0, len = anchors.length; i < len; ++i) {
+        const id = anchors[i].match(/id=".+"/)[0].replace(/^id="/, '').replace(/"$/, '');
+        if (id) {
+          const demo = id.replace(/^demo\-/, '');
+          demos = [...demos, require(`../Examples/Windows/SplitView`)];
+        }
+      }
+    }
+    return demos;
+  }
+
   render() {
     let content;
     if (this.props.params.splat) {
@@ -35,10 +79,20 @@ export default class extends Component {
       content = require('../../raw-docs/index.html');
     }
 
+    let demos = this.getDemo(content);
+    const Demo = demos[0] ? demos[0] : null;
+    const demo = Demo ? <Demo ref="demo"/> : null;
+
     return (
       <div ref="element" className="docs-container">
         <Nav/>
-        <div className="docs" dangerouslySetInnerHTML={{__html: content}} />
+        <div className="docs">
+          <div ref="before-demo"/>
+          <div id="demos" className="doc-demo">
+            {demo}
+          </div>
+          <div id="docs" ref="docs" dangerouslySetInnerHTML={{__html: content}} />
+        </div>
       </div>
     );
   }
