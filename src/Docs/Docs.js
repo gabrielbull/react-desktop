@@ -65,7 +65,7 @@ export default class extends Component {
         if (matches && matches[0]) {
           const id = matches[0].replace(/^id="/, '').replace(/"$/, '');
           if (id) {
-            const demo = id.replace(/^demo\-/, '');
+            const demo = id.replace(/^demo\-/, '').replace(/\./g, '/');
             demos = [...demos, require(`../Examples/Windows/${demo}`)];
           }
         }
