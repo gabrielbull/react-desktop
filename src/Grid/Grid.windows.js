@@ -43,10 +43,10 @@ class Grid extends Component {
     case 'center':
       componentStyle.alignItems = 'center';
       break;
-    case 'left':
+    case 'top':
       componentStyle.alignItems = 'flex-start';
       break;
-    case 'right':
+    case 'bottom':
       componentStyle.alignItems = 'flex-end';
       break;
     }
