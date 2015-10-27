@@ -61,10 +61,13 @@ export default class extends Component {
     const anchors = content.match(/<a.+<\/a>/g);
     if (anchors) {
       for (var i = 0, len = anchors.length; i < len; ++i) {
-        const id = anchors[i].match(/id=".+"/)[0].replace(/^id="/, '').replace(/"$/, '');
-        if (id) {
-          const demo = id.replace(/^demo\-/, '');
-          demos = [...demos, require(`../Examples/Windows/SplitView`)];
+        const matches = anchors[i].match(/id=".+"/);
+        if (matches && matches[0]) {
+          const id = matches[0].replace(/^id="/, '').replace(/"$/, '');
+          if (id) {
+            const demo = id.replace(/^demo\-/, '');
+            demos = [...demos, require(`../Examples/Windows/${demo}`)];
+          }
         }
       }
     }
@@ -80,7 +83,7 @@ export default class extends Component {
     }
 
     let demos = this.getDemo(content);
-    const Demo = demos[0] ? demos[0] : null;
+    const Demo = demos && demos[0] ? demos[0] : null;
     const demo = Demo ? <Demo ref="demo"/> : null;
 
     return (
