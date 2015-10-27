@@ -1,3 +1,3 @@
-## Indeterminate Progress Ring
+# Installation
 
 Documentation is coming soon.

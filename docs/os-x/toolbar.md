@@ -1,3 +1,3 @@
-## Label
+# Toolbar
 
 Documentation is coming soon.

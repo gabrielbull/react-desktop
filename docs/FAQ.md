@@ -1,1 +1,3 @@
-## Frequently Asked Questions
+# Frequently Asked Questions
+
+Documentation is coming soon.

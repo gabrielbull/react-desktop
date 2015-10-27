@@ -1,3 +1,3 @@
-## Title Bar
+# Segmented Control
 
 Documentation is coming soon.

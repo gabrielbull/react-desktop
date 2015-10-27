@@ -1,3 +1,3 @@
-## Window
+# Label
 
 Documentation is coming soon.

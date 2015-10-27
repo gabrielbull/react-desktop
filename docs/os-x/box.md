@@ -1,3 +1,3 @@
-## Box
+# Box
 
 Documentation is coming soon.

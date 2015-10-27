@@ -1,3 +1,3 @@
-## Title Bar
+# Title Bar
 
 Documentation is coming soon.
