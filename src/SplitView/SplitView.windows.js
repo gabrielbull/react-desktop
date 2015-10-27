@@ -34,7 +34,7 @@ class SplitView extends Component {
   }
 
   get currentTitle() {
-    return this._currentTitle;
+    return this._currentTitle || '';
   }
 
   getChildContext() {

@@ -39,10 +39,12 @@ class Content extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    this.refs.title.setState({
-      selected: nextState.selected,
-      parentRequestedTheme: nextState.parentRequestedTheme
-    });
+    if (this.refs.title) {
+      this.refs.title.setState({
+        selected: nextState.selected,
+        parentRequestedTheme: nextState.parentRequestedTheme
+      });
+    }
   }
 
   render() {
@@ -59,16 +61,21 @@ class Content extends Component {
       componentStyle.backgroundColor = this.state.background;
     }
 
-    return (
+    return this.state.selected ? (
       <div style={styles.content} {...props}>
-        <Title ref="title" selected={this.state.selected} parentRequestedTheme={this.state.parentRequestedTheme}>
+        <Title
+          ref="title"
+          selected={this.state.selected}
+          parentRequestedTheme={this.state.parentRequestedTheme}
+          previousTitle={this.item.splitView.currentTitle}
+        >
           {title}
         </Title>
         <div style={componentStyle}>
           {children}
         </div>
       </div>
-    );
+    ) : null;
   }
 }
 

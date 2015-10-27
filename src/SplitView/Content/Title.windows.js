@@ -54,7 +54,7 @@ const styles = {
     animation: `${fadeOut} 100ms forwards`
   },
 
-  test: {
+  titleAnimation: {
     animation: `${appear} 300ms`,
   }
 };
@@ -64,9 +64,6 @@ class Title extends Component {
   constructor(props, context, updater) {
     const { parentRequestedTheme, selected, ...properties } = props;
     super(properties, context, updater);
-    if (selected) {
-      this.initialShow = true;
-    }
     this.state = {
       selected: selected,
       parentRequestedTheme: parentRequestedTheme
@@ -85,12 +82,12 @@ class Title extends Component {
       (nextState.display !== this.state.display);
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    this.state.animate = nextState.selected && !this.state.selected;
+  componentDidMount() {
+    this.content.item.splitView.currentTitle = this.props.children;
   }
 
   render() {
-    const { style, children } = this.props;
+    const { style, previousTitle, children } = this.props;
     let componentStyle = {...styles.title, ...style};
     let fadeSpanStyle = {...styles.title, ...style, ...styles.fadeSpanStyle};
     let spanStyle;
@@ -101,21 +98,14 @@ class Title extends Component {
     }
 
     let fadeSpan;
-    if (this.state.selected && !this.initialShow) {
-      if (this.content.item.splitView.currentTitle !== children) {
-        fadeSpan = (
-          <span style={fadeSpanStyle}>
-            {this.content.item.splitView.currentTitle}
-          </span>
-        );
-      }
-      spanStyle = styles.test;
+    if (previousTitle && previousTitle !== children) {
+      fadeSpan = (
+        <span style={fadeSpanStyle}>
+          {previousTitle}
+        </span>
+      );
+      spanStyle = styles.titleAnimation;
     }
-
-    if (this.state.selected) {
-      this.content.item.splitView.currentTitle = children;
-    }
-    this.initialShow = false;
 
     return (
       <div style={componentStyle}>
