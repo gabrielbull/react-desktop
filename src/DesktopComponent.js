@@ -26,6 +26,7 @@ function ExtendComposedComponent (ComposedComponent) {
       color: PropTypes.string,
       background: PropTypes.string,
       requestedTheme: PropTypes.string,
+      storage: PropTypes.object,
       ...ComposedComponent.childContextTypes
     };
 
@@ -34,11 +35,12 @@ function ExtendComposedComponent (ComposedComponent) {
       color: PropTypes.string,
       background: PropTypes.string,
       requestedTheme: PropTypes.string,
+      storage: PropTypes.object,
       ...ComposedComponent.contextTypes
     };
 
     constructor(props, context, updater) {
-      const { visible, display, requestedTheme, color, background, ...properties } = props;
+      const { visible, display, requestedTheme, storage, color, background, ...properties } = props;
       super(props, context, updater);
       this._requestedTheme = requestedTheme;
       this._background = background;
@@ -56,6 +58,11 @@ function ExtendComposedComponent (ComposedComponent) {
       if (!this.state.display) {
         this.state.display = display !== false;
       }
+
+      if (!context.storage) {
+        this.context.storage = storage ? storage : null;
+      }
+      this.storage = storage ? storage : this.context.storage;
 
       if (!context.requestedTheme) {
         this.context.requestedTheme = requestedTheme ? requestedTheme : 'light';
@@ -82,7 +89,8 @@ function ExtendComposedComponent (ComposedComponent) {
         parent: this,
         color: this.state.color,
         background: this.state.background,
-        requestedTheme: this.state.requestedTheme
+        requestedTheme: this.state.requestedTheme,
+        storage: this.storage
       };
 
       if (super.getChildContext) {

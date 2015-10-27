@@ -36,18 +36,21 @@ export class Window2 extends Component {
     };
   }
 
-  togglePane = (isOpen) => {
-    this.state.isOpen = localStorage['windows.isOpen'] = isOpen;
-  };
-
   render() {
     localStorage['windows.selectedTab'] = this.state.selectedTab;
 
     return (
-      <Window ref="window" color={this.state.color} chrome requestedTheme={this.props.theme} style={{height: '600px'}}>
+      <Window
+        ref="window"
+        color={this.state.color}
+        chrome
+        requestedTheme={this.props.theme}
+        storage={localStorage}
+        style={{width: '1000px', height: '600px'}}
+      >
         <TitleBar title="My Windows Application" controls/>
 
-        <SplitView isOpen={this.state.isOpen} openLength={200} onPaneToggle={this.togglePane} push>
+        <SplitView isOpen={this.state.isOpen} openLength={200} push>
           <SplitView.Item
             title="Welcome"
             icon={Icons.welcomeIcon}

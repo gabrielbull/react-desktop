@@ -42,7 +42,10 @@ export class Window2 extends Component {
 
   render() {
     return (
-      <Window chrome>
+      <Window
+        chrome
+        style={{width: '1000px', height: '600px'}}
+      >
         <TitleBar title="TitleBar with Toolbar" controls>
           <Toolbar/>
         </TitleBar>

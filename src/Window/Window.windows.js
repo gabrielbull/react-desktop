@@ -38,7 +38,8 @@ var styles = {
 @DesktopComponent(WindowState)
 class Window extends Component {
   static propTypes = {
-    chrome: PropTypes.bool
+    chrome: PropTypes.bool,
+    storage: PropTypes.object
   };
 
   filterChildren() {

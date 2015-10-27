@@ -14,8 +14,8 @@ class Grid extends Component {
   static propTypes = {
     margin: PropTypes.string,
     padding: PropTypes.string,
-    align: PropTypes.align,
-    verticalAlign: PropTypes.verticalAlign
+    align: PropTypes.string,
+    verticalAlign: PropTypes.string
   };
 
   render() {

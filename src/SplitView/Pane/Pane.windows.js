@@ -1,4 +1,5 @@
 import React, { Component, PropTypes, Children } from 'react';
+import { findDOMNode } from 'react-dom';
 import DesktopComponent  from '../../DesktopComponent';
 import Item from './Item/Item.windows';
 import Button from './Button/Button.windows';
@@ -54,6 +55,17 @@ class Pane extends Component {
     };
   }
 
+  componentDidMount() {
+    const reactId = findDOMNode(this).getAttribute('data-reactid');
+    const key = `${reactId}-SplitViewPane-isOpen`;
+    if (this.context.storage && typeof this.context.storage[key] !== 'undefined') {
+      const value = this.context.storage[key] === 'true';
+      if (value != this.state.isOpen) {
+        this.toggleOpen();
+      }
+    }
+  }
+
   filterChildren(children) {
     return Children.map(children, function (child) {
       const { onPress } = child.props;
@@ -68,6 +80,10 @@ class Pane extends Component {
 
   toggleOpen = () => {
     this.setState({isOpen: !this.state.isOpen});
+    if (this.context.storage) {
+      const reactId = findDOMNode(this).getAttribute('data-reactid');
+      this.context.storage[`${reactId}-SplitViewPane-isOpen`] = !this.state.isOpen;
+    }
     if (this.props.onPaneToggle) {
       this.props.onPaneToggle(!this.state.isOpen);
     }
