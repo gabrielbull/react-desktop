@@ -5,6 +5,7 @@ import Nav from './Nav/Nav';
 import hljs from 'highlight.js';
 import monokai from 'highlight.js/styles/monokai.css';
 import styles from './Docs.scss';
+import * as WindowsDemo from '../Examples/Windows';
 
 @LinksDecorator
 export default class extends Component {
@@ -65,8 +66,8 @@ export default class extends Component {
         if (matches && matches[0]) {
           const id = matches[0].replace(/^id="/, '').replace(/"$/, '');
           if (id) {
-            const demo = id.replace(/^demo\-/, '').replace(/\./g, '/');
-            demos = [...demos, require(`../Examples/Windows/${demo}`)];
+            const demo = id.replace(/^demo\-(Windows|Mac)\./, '');
+            demos = [...demos, WindowsDemo[demo]];
           }
         }
       }
