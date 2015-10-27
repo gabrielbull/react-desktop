@@ -1,0 +1,44 @@
+nav.nav {
+  background: #eeeeee;
+
+  ul, ol, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    font-weight: 600;
+    font-size: 15px;
+    a {
+      display: block;
+      color: #333;
+      text-decoration: none;
+      font-weight: 300;
+      line-height: 22px;
+      font-size: 14px;
+
+      &:hover {
+        color: #38c4e8;
+        text-decoration: underline;
+      }
+
+      &:active {
+        color: darken(#38c4e8, 20%);
+      }
+
+      &.selected {
+        color: darken(#38c4e8, 20%);
+      }
+    }
+
+    ul {
+      margin-top: 8px;
+      margin-bottom: 20px;
+    }
+
+    a + ul {
+      margin-top: 20px;
+    }
+  }
+}

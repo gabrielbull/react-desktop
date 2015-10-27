@@ -9,6 +9,7 @@ var markdown = require('gulp-markdown');
 var clean = require('gulp-clean');
 var replace = require('gulp-replace');
 var rename = require("gulp-rename");
+var cheerio = require('cheerio');
 
 var createPages = function () {
   return gulp.src('./index.html')
@@ -81,7 +82,7 @@ gulp.task('replace-path-docs', ['convert-docs'], function () {
   return replacePaths();
 });
 
-gulp.task('create-docs', ['replace-path-docs'], function () {
+gulp.task('extract-docs', ['replace-path-docs'], function () {
   var content = fs.readFileSync('./index.html');
 
   return gulp.src('./raw-docs/**\/*.html')
@@ -94,6 +95,16 @@ gulp.task('create-docs', ['replace-path-docs'], function () {
       }
     }))
     .pipe(gulp.dest('./docs'));
+});
+
+gulp.task('extract-nav', ['extract-docs'], function (cb) {
+  var content = fs.readFileSync('./raw-docs/index.html');
+  var $ = cheerio.load(content);
+  fs.writeFile('./raw-docs/nav.html', '<ol>' + $('ol').html() + '</ol>', cb);
+});
+
+
+gulp.task('create-docs', ['extract-nav'], function () {
 });
 
 gulp.task('compress', compress);

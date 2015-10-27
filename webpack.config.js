@@ -26,7 +26,10 @@ module.exports = {
         loaders: [
           'style',
           'css',
-          'sass'
+          (
+            'sass?' +
+            'includePaths[]=./node_modules/bourbon/app/assets/stylesheets'
+          )
         ]
       },
       {
