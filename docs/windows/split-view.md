@@ -2,7 +2,7 @@
 
 Documentation is coming soon.
 
-<a id="demo-splitview"></a>
+<a id="demo-Windows.SplitView"></a>
 
 ## Properties
 
@@ -21,47 +21,24 @@ Documentation is coming soon.
 ## Examples
 
 ```jsx
-<SplitView isOpen openLength={200} push persistIsOpen persistSelectedItem>
+<SplitView>
   <SplitView.Item
     title="Item 1"
     requestedTheme="light"
     background="#ffffff"
   >
     <Grid>
-      Welcome to React Desktop
+      This is an example of a Split View Item 1.
     </Grid>
   </SplitView.Item>
   <SplitView.Item
-    title="Forms"
-    icon={Icons.formIcon}
-    padding="40px 30px"
+    title="Item 2"
     requestedTheme="light"
     background="#ffffff"
   >
-    <Form>
-      <TextBlock color="red">
-        There was an error submitting this form.
-      </TextBlock>
-
-      <Form.Row>
-        <TextBox header="Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
-      </Form.Row>
-
-      <Form.Row>
-        <TextBox header="Longer Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
-      </Form.Row>
-
-      <Form.Row>
-        <Checkbox label="Default checked" defaultChecked/>
-      </Form.Row>
-
-      <Form.Row>
-        <Button onPress="submit" color push>Button With Color</Button>
-        <Button push>Button</Button>
-
-        <ProgressRing size={32} color absolute/>
-      </Form.Row>
-    </Form>
+    <Grid>
+      This is an example of a Split View Item 2.
+    </Grid>
   </SplitView.Item>
 </SplitView>
 ```

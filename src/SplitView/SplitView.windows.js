@@ -76,14 +76,16 @@ class SplitView extends Component {
   }
 
   selectItem(item) {
-    for (var prop in this.refs) {
-      if (this.refs.hasOwnProperty(prop)) {
-        if (this.refs[prop].props.storageKey === item.props.storageKey) {
-          this.context.storage[this.getItemStorageKey(this.refs[prop].props.storageKey)] = true;
-          this.refs[prop].setState({selected: true});
-        } else {
-          this.context.storage[this.getItemStorageKey(this.refs[prop].props.storageKey)] = false;
-          this.refs[prop].setState({selected: false});
+    if (this.refs && this.context.storage && this.props.persistSelectedItem) {
+      for (var prop in this.refs) {
+        if (this.refs.hasOwnProperty(prop)) {
+          if (this.refs[prop].props.storageKey === item.props.storageKey) {
+            this.context.storage[this.getItemStorageKey(this.refs[prop].props.storageKey)] = true;
+            this.refs[prop].setState({selected: true});
+          } else {
+            this.context.storage[this.getItemStorageKey(this.refs[prop].props.storageKey)] = false;
+            this.refs[prop].setState({selected: false});
+          }
         }
       }
     }
