@@ -8,7 +8,7 @@
 [![npm version](https://img.shields.io/npm/v/react-desktop.svg)](https://www.npmjs.org/package/react-desktop)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gabrielbull/react-desktop?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-<span style="color: red;">This library is in early Alpha and is subject to breaking change in the coming weeks.</span>
+![This library is in early Alpha and is subject to breaking change in the coming weeks.](https://rawgit.com/gabrielbull/react-desktop/master/docs/resources/alert.svg "This library is in early Alpha and is subject to breaking change in the coming weeks.")
 
 React UI Components for OS X El Capitan and Windows 10.
 
