@@ -13,18 +13,45 @@ var styles = {
 class Grid extends Component {
   static propTypes = {
     margin: PropTypes.string,
-    padding: PropTypes.string
+    padding: PropTypes.string,
+    align: PropTypes.align,
+    verticalAlign: PropTypes.verticalAlign
   };
 
   render() {
-    const { children, style, ...props } = this.props;
+    const { children, style, margin, padding, align, verticalAlign, ...props } = this.props;
 
     let componentStyle = {
       ...styles.grid,
-      margin: this.props.margin,
-      padding: this.props.padding,
-      ...style
+      margin: margin,
+      padding: padding
     };
+
+    switch (align) {
+    case 'center':
+      componentStyle.justifyContent = 'center';
+      break;
+    case 'left':
+      componentStyle.justifyContent = 'flex-start';
+      break;
+    case 'right':
+      componentStyle.justifyContent = 'flex-end';
+      break;
+    }
+
+    switch (verticalAlign) {
+    case 'center':
+      componentStyle.alignItems = 'center';
+      break;
+    case 'left':
+      componentStyle.alignItems = 'flex-start';
+      break;
+    case 'right':
+      componentStyle.alignItems = 'flex-end';
+      break;
+    }
+
+    componentStyle = {...componentStyle, ...style};
 
     return (
       <div

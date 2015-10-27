@@ -7,3 +7,4 @@ export { default as TitleBar } from './TitleBar/TitleBar.windows';
 export { default as Window } from './Window/Window.windows';
 export { default as Checkbox } from './Checkbox/Checkbox.windows';
 export { default as SplitView } from './SplitView/SplitView.windows';
+export { default as Grid } from './Grid/Grid.windows';

@@ -9,7 +9,8 @@ import {
   Form,
   Window,
   Checkbox,
-  SplitView
+  SplitView,
+  Grid
 } from '../src/Windows';
 import * as Icons from './Windows/Assets/Icons';
 
