@@ -53,10 +53,29 @@ class Item extends Component {
     push: PropTypes.bool
   };
 
+  constructor(props, context, updater) {
+    super(props, context, updater);
+    this.state = {
+      selected: this.props.children.props.selected
+    };
+  }
+
+  get pane() {
+    return this.context.parent;
+  }
+
+  onPress = () => {
+    this.pane.selectItem(this);
+    this.pane.splitView.selectItem(this.props.children);
+
+    if (this.props.onPress) {
+      this.props.onPress();
+    }
+  };
+
   render() {
     const { children, style, onPress, ...props } = this.props;
     const title = children.props.title;
-    const selected = children.props.selected;
     const ItemIcon = children.props.icon;
     let anchorStyle = {...styles.anchor, ...style};
     let spanStyle = {...styles.span, ...style};
@@ -65,7 +84,7 @@ class Item extends Component {
       spanStyle = {...spanStyle, ...styles.spanDark};
     }
 
-    if (selected) {
+    if (this.state.selected) {
       anchorStyle = {
         ...anchorStyle,
         backgroundColor: transparentize(this.state.color, .4),
@@ -94,7 +113,7 @@ class Item extends Component {
     return (
       <a
         ref="anchor"
-        onClick={onPress}
+        onClick={this.onPress}
         style={anchorStyle}
         {...props}
       >

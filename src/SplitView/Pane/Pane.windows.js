@@ -34,18 +34,16 @@ class Pane extends Component {
   static Item = Item;
 
   static propTypes = {
-    compactLength: PropTypes.number,
-    openLength: PropTypes.number,
-    placement: PropTypes.string,
-    isOpen: PropTypes.bool,
     onPaneToggle: PropTypes.func
   };
 
   static contextTypes = {
+    id: PropTypes.string,
+    storage: PropTypes.object,
     compactLength: PropTypes.number,
     openLength: PropTypes.number,
-    placement: PropTypes.string,
-    isOpen: PropTypes.bool
+    isOpen: PropTypes.bool,
+    persistIsOpen: PropTypes.bool
   };
 
   constructor(props, context, updater) {
@@ -55,11 +53,17 @@ class Pane extends Component {
     };
   }
 
+  get splitView() {
+    return this.context.parent;
+  }
+
+  get storageKey() {
+    return `.${this.context.id}.$/.isOpen`;
+  }
+
   componentDidMount() {
-    const reactId = findDOMNode(this).getAttribute('data-reactid');
-    const key = `${reactId}-SplitViewPane-isOpen`;
-    if (this.context.storage && typeof this.context.storage[key] !== 'undefined') {
-      const value = this.context.storage[key] === 'true';
+    if (this.context.storage && typeof this.context.storage[this.storageKey] !== 'undefined' && this.context.persistIsOpen) {
+      const value = this.context.storage[this.storageKey] === 'true';
       if (value != this.state.isOpen) {
         this.toggleOpen();
       }
@@ -67,11 +71,11 @@ class Pane extends Component {
   }
 
   filterChildren(children) {
-    return Children.map(children, function (child) {
+    return Children.map(children, function (child, key) {
       const { onPress } = child.props;
 
       return (
-        <Item onPress={onPress}>
+        <Item onPress={onPress} key={key} ref={key} identifierKey={key}>
           {child}
         </Item>
       );
@@ -80,14 +84,25 @@ class Pane extends Component {
 
   toggleOpen = () => {
     this.setState({isOpen: !this.state.isOpen});
-    if (this.context.storage) {
-      const reactId = findDOMNode(this).getAttribute('data-reactid');
-      this.context.storage[`${reactId}-SplitViewPane-isOpen`] = !this.state.isOpen;
+    if (this.context.storage && this.context.persistIsOpen) {
+      this.context.storage[this.storageKey] = !this.state.isOpen;
     }
     if (this.props.onPaneToggle) {
       this.props.onPaneToggle(!this.state.isOpen);
     }
   };
+
+  selectItem(item) {
+    for (var prop in this.refs) {
+      if (this.refs.hasOwnProperty(prop)) {
+        if (this.refs[prop].props.identifierKey === item.props.identifierKey) {
+          this.refs[prop].setState({selected: true});
+        } else {
+          this.refs[prop].setState({selected: false});
+        }
+      }
+    }
+  }
 
   render() {
     let { children, style, ...props } = this.props;

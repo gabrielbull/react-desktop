@@ -31,7 +31,6 @@ export class Window2 extends Component {
     super(props);
     this.state = {
       color: props.color,
-      isOpen: localStorage['windows.isOpen'] != 'false',
       selectedTab: localStorage['windows.selectedTab'] || 'welcome'
     };
   }
@@ -50,12 +49,10 @@ export class Window2 extends Component {
       >
         <TitleBar title="My Windows Application" controls/>
 
-        <SplitView isOpen={this.state.isOpen} openLength={200} push>
+        <SplitView isOpen openLength={200} push persistIsOpen persistSelectedItem>
           <SplitView.Item
             title="Welcome"
             icon={Icons.welcomeIcon}
-            selected={this.state.selectedTab === 'welcome'}
-            onPress={() => { this.setState({ selectedTab: 'welcome' }) }}
             requestedTheme="light"
             background="#ffffff"
             style={{
@@ -84,8 +81,6 @@ export class Window2 extends Component {
           <SplitView.Item
             title="Forms"
             icon={Icons.formIcon}
-            selected={this.state.selectedTab === 'form'}
-            onPress={() => { this.setState({ selectedTab: 'form' }) }}
             padding="40px 30px"
             requestedTheme="light"
             background="#ffffff"

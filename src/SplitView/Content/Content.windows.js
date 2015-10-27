@@ -61,7 +61,7 @@ class Content extends Component {
       componentStyle.backgroundColor = this.state.background;
     }
 
-    return this.state.selected ? (
+    return (
       <div style={styles.content} {...props}>
         <Title
           ref="title"
@@ -75,7 +75,7 @@ class Content extends Component {
           {children}
         </div>
       </div>
-    ) : null;
+    );
   }
 }
 

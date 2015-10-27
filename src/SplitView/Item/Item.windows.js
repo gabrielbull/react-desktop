@@ -18,7 +18,14 @@ class Item extends Component {
     onPress: PropTypes.func,
     margin: PropTypes.string,
     padding: PropTypes.string,
-    selected: PropTypes.bool
+    selected: PropTypes.bool,
+    storageKey: PropTypes.number
+  };
+
+  static contextTypes = {
+    id: PropTypes.string,
+    persistSelectedItem: PropTypes.bool,
+    storage: PropTypes.object
   };
 
   constructor(props, context, updater) {
@@ -35,12 +42,16 @@ class Item extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ selected: nextProps.selected });
-    this.refs.content.setState({selected: nextProps.selected});
+    this.setState({selected: nextProps.selected});
+    if (this.refs.content) {
+      this.refs.content.setState({selected: nextProps.selected});
+    }
   }
 
   componentWillUpdate(nextProps, nextState) {
-    this.refs.content.setState({parentRequestedTheme: nextState.parentRequestedTheme});
+    if (this.refs.content) {
+      this.refs.content.setState({parentRequestedTheme: nextState.parentRequestedTheme});
+    }
   }
 
   render() {
@@ -49,11 +60,7 @@ class Item extends Component {
 
     let componentStyle = {...styles.content};
 
-    if (!this.state.selected) {
-      componentStyle.display = 'none';
-    }
-
-    return (
+    return this.state.selected ? (
       <div
         style={componentStyle}
       >
@@ -67,7 +74,7 @@ class Item extends Component {
           {children}
         </Content>
       </div>
-    );
+    ) : null;
   }
 }
 
