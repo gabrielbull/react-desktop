@@ -2,7 +2,7 @@
 
 Documentation is coming soon.
 
-<a id="demo-splitview"/>
+<a id="demo-splitview"></a>
 
 ## Properties
 
