@@ -7,6 +7,7 @@ const styles = {
   anchor: {
     display: 'flex',
     alignItems: 'center',
+    height: '44px',
 
     ':hover': {
       backgroundColor: 'rgba(255, 255, 255, .1)',
@@ -21,7 +22,6 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     color: '#000000',
-    lineHeight: '44px',
     fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
     fontSize: '15px',
     letterSpacing: '0.4pt',
@@ -56,6 +56,7 @@ class Item extends Component {
   constructor(props, context, updater) {
     super(props, context, updater);
     this.state = {
+      isOpen: this.props.isOpen,
       selected: this.props.children.props.selected
     };
   }
@@ -74,8 +75,8 @@ class Item extends Component {
   };
 
   render() {
-    const { children, style, onPress, ...props } = this.props;
-    const title = children.props.title;
+    const { children, style, onPress, isOpen, ...props } = this.props;
+    const title = this.state.isOpen ? children.props.title : null;
     const ItemIcon = children.props.icon;
     let anchorStyle = {...styles.anchor, ...style};
     let spanStyle = {...styles.span, ...style};

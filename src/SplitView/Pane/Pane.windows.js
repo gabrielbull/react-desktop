@@ -71,11 +71,11 @@ class Pane extends Component {
   }
 
   filterChildren(children) {
-    return Children.map(children, function (child, key) {
+    return Children.map(children, (child, key) => {
       const { onPress } = child.props;
 
       return (
-        <Item onPress={onPress} key={key} ref={key} identifierKey={key}>
+        <Item onPress={onPress} key={key} ref={key} identifierKey={key} isOpen={this.state.isOpen}>
           {child}
         </Item>
       );
@@ -84,6 +84,13 @@ class Pane extends Component {
 
   toggleOpen = () => {
     this.setState({isOpen: !this.state.isOpen});
+    if (this.refs) {
+      for (var prop in this.refs) {
+        if (this.refs.hasOwnProperty(prop)) {
+          this.refs[prop].setState({isOpen: !this.state.isOpen});
+        }
+      }
+    }
     if (this.context.storage && this.context.persistIsOpen) {
       this.context.storage[this.storageKey] = !this.state.isOpen;
     }

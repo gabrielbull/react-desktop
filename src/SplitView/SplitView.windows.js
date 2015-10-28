@@ -44,6 +44,7 @@ class SplitView extends Component {
     let { id, ...properties } = props;
     super(properties, context, updater);
     this.id = id || 'splitview';
+    this.firstRender = true;
   }
 
   set currentTitle(value) {
@@ -76,14 +77,19 @@ class SplitView extends Component {
   }
 
   selectItem(item) {
-    if (this.refs && this.context.storage && this.props.persistSelectedItem) {
+    this.selectedItem = item.props.storageKey;
+    if (this.refs) {
       for (var prop in this.refs) {
         if (this.refs.hasOwnProperty(prop)) {
           if (this.refs[prop].props.storageKey === item.props.storageKey) {
-            this.context.storage[this.getItemStorageKey(this.refs[prop].props.storageKey)] = true;
+            if (this.context.storage && this.props.persistSelectedItem) {
+              this.context.storage[this.getItemStorageKey(this.refs[prop].props.storageKey)] = true;
+            }
             this.refs[prop].setState({selected: true});
           } else {
-            this.context.storage[this.getItemStorageKey(this.refs[prop].props.storageKey)] = false;
+            if (this.context.storage && this.props.persistSelectedItem) {
+              this.context.storage[this.getItemStorageKey(this.refs[prop].props.storageKey)] = false;
+            }
             this.refs[prop].setState({selected: false});
           }
         }
@@ -96,7 +102,11 @@ class SplitView extends Component {
   }
 
   getPersistedSelectedItem(key) {
-    if (typeof this.context.storage[this.getItemStorageKey(key)] !== 'undefined') {
+    if (
+      this.context.storage &&
+      this.props.persistSelectedItem &&
+      typeof this.context.storage[this.getItemStorageKey(key)] !== 'undefined'
+    ) {
       return this.context.storage[this.getItemStorageKey(key)] === 'true';
     }
     return null;
@@ -114,7 +124,9 @@ class SplitView extends Component {
 
     let content = Children.map(children, (child, key) => {
       let props = {ref: key, storageKey: key};
-      if (!hasSelectedItem && key === 0) {
+      if (!hasSelectedItem && key === 0 && this.firstRender) {
+        props.selected = true;
+      } else if (this.selectedItem === key) {
         props.selected = true;
       }
       if (this.props.persistSelectedItem && this.context.storage) {
@@ -124,6 +136,8 @@ class SplitView extends Component {
       }
       return cloneElement(child, props);
     });
+
+    this.firstRender = false;
 
     return (
       <div
