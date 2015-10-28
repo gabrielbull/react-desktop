@@ -1,7 +1,7 @@
 import BezierEasing from '../Animation/BezierEasing';
 
 let requestAnimationFrame;
-if (window) {
+if (typeof window !== 'undefined') {
   requestAnimationFrame = window.requestAnimationFrame ||
     window.mozRequestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
