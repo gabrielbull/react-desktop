@@ -1,3 +1,5 @@
+@import "bourbon";
+
 nav.nav {
   background: #eeeeee;
 
@@ -17,6 +19,8 @@ nav.nav {
       font-weight: 300;
       line-height: 22px;
       font-size: 14px;
+      @include transition(padding .1s);
+      position: relative;
 
       &:hover {
         color: #38c4e8;
@@ -27,9 +31,29 @@ nav.nav {
         color: darken(#38c4e8, 20%);
       }
 
-      &.selected {
-        color: darken(#38c4e8, 20%);
+      &:before {
+        content: " ";
+        position: absolute;
+        top: 6px;
+        left: 0;
+        height: 0;
+        width: 0;
+        border: 4px solid transparent;
+        @include transition(border .1s);
       }
+
+      &.selected {
+        color: #000;
+        padding-left: 10px;
+        font-weight: 400;
+        &:hover {
+          text-decoration: none;
+        }
+        &:before {
+          border-left-color: #38c4e8;
+        }
+      }
+
     }
 
     ul {
