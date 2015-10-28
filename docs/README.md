@@ -1,6 +1,9 @@
 # Documentation
 
-**react-desktop** is a JavaScript library built ontop of [Facebook's React](https://facebook.github.io/react/) library, which aims to bring a native desktop experience to the web, featuring many OS X El Capitan and Windows 10 components. **react-desktop** works perfectly with [node-webkit](http://nwjs.io) and [Electron.js](http://electron.atom.io), but can be used in any JavaScript powered project!
+**react-desktop** is a JavaScript library built ontop of [Facebook's React](https://facebook.github.io/react/) library, 
+which aims to bring a native desktop experience to the web, featuring many OS X El Capitan and Windows 10 components. 
+**react-desktop** works perfectly with [node-webkit](http://nwjs.io) and [Electron.js](http://electron.atom.io), but 
+can be used in any JavaScript powered project!
 
 ## Table of Contents
 
@@ -21,6 +24,7 @@
   * [Button](/docs/windows/button.md)
   * [Progress Ring](/docs/windows/progress-ring.md)
   * [Split View](/docs/windows/split-view.md)
+  * [Split View Item](/docs/windows/split-view-item.md)
   * [Text Block](/docs/windows/text-block.md)
   * [Text Box](/docs/windows/text-box.md)
   * [Title Bar](/docs/windows/title-bar.md)

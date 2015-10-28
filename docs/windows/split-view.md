@@ -1,7 +1,5 @@
 # Split View
 
-Documentation is coming soon.
-
 <a id="demo-Windows.SplitView"></a>
 
 ## Properties
@@ -21,25 +19,33 @@ Documentation is coming soon.
 ## Examples
 
 ```jsx
-<SplitView>
-  <SplitView.Item
-    title="Item 1"
-    requestedTheme="light"
-    background="#ffffff"
-  >
-    <Grid>
-      This is an example of a Split View Item 1.
-    </Grid>
-  </SplitView.Item>
-  <SplitView.Item
-    title="Item 2"
-    requestedTheme="light"
-    background="#ffffff"
-  >
-    <Grid>
-      This is an example of a Split View Item 2.
-    </Grid>
-  </SplitView.Item>
-</SplitView>
-```
+import React from 'react';
+import { SplitView } from 'react-desktop';
 
+class MySplitView extends React.Component {
+  render() {
+    return (
+      <SplitView>
+        <SplitView.Item
+          title="Item 1"
+          requestedTheme="light"
+          background="#ffffff"
+        >
+          <Grid>
+            This is an example of a Split View Item 1.
+          </Grid>
+        </SplitView.Item>
+        <SplitView.Item
+          title="Item 2"
+          requestedTheme="light"
+          background="#ffffff"
+        >
+          <Grid>
+            This is an example of a Split View Item 2.
+          </Grid>
+        </SplitView.Item>
+      </SplitView>
+    );
+  }
+}
+```
