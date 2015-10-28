@@ -2,7 +2,6 @@ import React, { Component, PropTypes, Children } from 'react';
 import DesktopComponent, { WindowState }  from '../DesktopComponent';
 import TitleBar from '../TitleBar/TitleBar.windows';
 import Grid from '../Grid/Grid.windows';
-import SplitView from '../SplitView/SplitView.windows';
 
 var styles = {
   window: {

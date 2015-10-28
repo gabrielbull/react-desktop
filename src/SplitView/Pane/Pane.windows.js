@@ -1,5 +1,4 @@
 import React, { Component, PropTypes, Children } from 'react';
-import { findDOMNode } from 'react-dom';
 import DesktopComponent  from '../../DesktopComponent';
 import Item from './Item/Item.windows';
 import Button from './Button/Button.windows';
