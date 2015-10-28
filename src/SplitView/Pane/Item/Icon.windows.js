@@ -1,4 +1,4 @@
-import { Component, cloneElement } from 'react';
+import { Component, cloneElement, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import DesktopComponent  from '../../../DesktopComponent';
 
@@ -12,6 +12,10 @@ const styles = {
 
 @DesktopComponent
 class Icon extends Component {
+  static propTypes = {
+    hasMargin: PropTypes.bool
+  };
+
   componentDidMount() {
     this.applyColor();
   }
@@ -28,10 +32,13 @@ class Icon extends Component {
   }
 
   render() {
+    let style = {...styles.svg};
+    if (!this.props.hasMargin) {
+      delete style.marginRight;
+    }
+
     return cloneElement(this.props.icon, {
-      style: {
-        ...styles.svg
-      }
+      style: style
     });
   }
 }

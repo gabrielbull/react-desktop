@@ -125,6 +125,7 @@ class SplitView extends Component {
     let content = Children.map(children, (child, key) => {
       let props = {ref: key, storageKey: key};
       if (!hasSelectedItem && key === 0 && this.firstRender) {
+        this.selectedItem = key;
         props.selected = true;
       } else if (this.selectedItem === key) {
         props.selected = true;
