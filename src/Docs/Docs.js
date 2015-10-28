@@ -3,6 +3,7 @@ import { findDOMNode } from 'react-dom';
 import LinksDecorator  from '../Shared/LinksDecorator/LinksDecorator';
 import Nav from './Nav/Nav';
 import hljs from 'highlight.js';
+import autoit from 'highlight.js/lib/languages/autoit';
 import monokai from 'highlight.js/styles/monokai.css';
 import styles from './Docs.scss';
 import * as WindowsDemo from '../Examples/Windows';
