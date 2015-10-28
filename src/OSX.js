@@ -1,5 +1,5 @@
 export { default as Box } from './Box/Box.osx';
-export {default as Form } from './Form/Form.common';
+export { default as Form } from './Form/Form.common';
 export { default as IndeterminateCircularProgressIndicator } from
   './IndeterminateCircularProgressIndicator/IndeterminateCircularProgressIndicator.osx';
 export { default as Label } from './Label/Label.osx';
