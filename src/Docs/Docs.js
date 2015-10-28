@@ -35,6 +35,11 @@ export default class extends Component {
   }
 
   moveContentBeforeDemo() {
+    const topNode = findDOMNode(this.refs['before-demo']);
+    while (topNode.hasChildNodes()) {
+      topNode.removeChild(topNode.lastChild);
+    }
+
     if (this.refs.demo) {
       let nodes = [];
       const children = findDOMNode(this.refs.docs).childNodes;
@@ -50,9 +55,8 @@ export default class extends Component {
         }
       }
 
-      const top = findDOMNode(this.refs['before-demo']);
       for (let i = 0, len = nodes.length; i < len; ++i) {
-        top.appendChild(nodes[i]);
+        topNode.appendChild(nodes[i]);
       }
     }
   }

@@ -19,11 +19,18 @@ function ExtendComposedComponent (ComposedComponent) {
     }
 
     bindLinkEvents() {
+      const demos = document.getElementById('demos');
       const links = findDOMNode(this).getElementsByTagName('a');
       for(var prop in links) {
         if(links.hasOwnProperty(prop)) {
-          links[prop].removeEventListener('click', this.handleLink);
-          links[prop].addEventListener('click', this.handleLink);
+          if (!demos || !this.isDescendant(links[prop], demos)) {
+            if (links[prop].removeEventListener) {
+              links[prop].removeEventListener('click', this.handleLink);
+            }
+            if (links[prop].addEventListener) {
+              links[prop].addEventListener('click', this.handleLink);
+            }
+          }
         }
       }
     }
@@ -39,6 +46,17 @@ function ExtendComposedComponent (ComposedComponent) {
           super.onLinkClick(event);
         }
       }
+    }
+
+    isDescendant(parent, child) {
+      var node = child.parentNode;
+      while (node != null) {
+        if (node == parent) {
+          return true;
+        }
+        node = node.parentNode;
+      }
+      return false;
     }
 
     render(...params) {
