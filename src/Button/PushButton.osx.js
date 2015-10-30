@@ -58,12 +58,12 @@ var styles = {
 @Styling
 class PushButton extends Component {
   static propTypes = {
-    children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]).isRequired,
+    children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]).isRequired,
     form: PropTypes.any,
     color: PropTypes.string,
     style: PropTypes.object,
     onClick: PropTypes.func,
-    onPress: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.func]),
+    onPress: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     visible: PropTypes.bool,
     display: PropTypes.bool
   };
