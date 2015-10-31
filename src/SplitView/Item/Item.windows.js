@@ -29,7 +29,7 @@ class Item extends Component {
   };
 
   constructor(props, context, updater) {
-    const {selected, ...properties} = props;
+    const { selected, ...properties } = props;
     super(properties, context, updater);
     this.state = {
       selected: selected,
@@ -42,15 +42,15 @@ class Item extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({selected: nextProps.selected});
+    this.setState({ selected: nextProps.selected });
     if (this.refs.content) {
-      this.refs.content.setState({selected: nextProps.selected});
+      this.refs.content.setState({ selected: nextProps.selected });
     }
   }
 
   componentWillUpdate(nextProps, nextState) {
     if (this.refs.content) {
-      this.refs.content.setState({parentRequestedTheme: nextState.parentRequestedTheme});
+      this.refs.content.setState({ parentRequestedTheme: nextState.parentRequestedTheme });
     }
   }
 
@@ -58,7 +58,7 @@ class Item extends Component {
     const { children, style, ...props } = this.props;
     this.splitView;
 
-    let componentStyle = {...styles.content};
+    let componentStyle = { ...styles.content };
 
     return this.state.selected ? (
       <div

@@ -51,7 +51,7 @@ class Grid extends Component {
       break;
     }
 
-    componentStyle = {...componentStyle, ...style};
+    componentStyle = { ...componentStyle, ...style };
 
     return (
       <div

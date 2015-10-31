@@ -25,6 +25,7 @@
     "quotes": [2, "single"],
     "no-unused-vars": 1,
     "no-undef": 1,
+    "object-curly-spacing": [2, "always"],
 
     // JSX
     "jsx-quotes": 1,

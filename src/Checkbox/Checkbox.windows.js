@@ -99,8 +99,8 @@ class CheckboxWindows extends Component {
 
   render() {
     let { style, label, color, ...props } = this.props;
-    let componentStyle = {...styles.checkbox, ...style};
-    let checkedStyle = {display: 'none'};
+    let componentStyle = { ...styles.checkbox, ...style };
+    let checkedStyle = { display: 'none' };
     let labelStyle = styles.label;
 
     componentStyle = {
@@ -110,8 +110,8 @@ class CheckboxWindows extends Component {
     };
 
     if (this.state.requestedTheme === 'dark') {
-      componentStyle = {...componentStyle, ...styles.checkboxDark};
-      labelStyle = {...labelStyle, ...styles.labelDark};
+      componentStyle = { ...componentStyle, ...styles.checkboxDark };
+      labelStyle = { ...labelStyle, ...styles.labelDark };
     }
 
     if (this.state.checked) {

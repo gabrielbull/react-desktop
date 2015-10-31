@@ -192,22 +192,22 @@ function ExtendComposedComponent (ComposedComponent) {
 
       const selector = `[data-reactdesktopid="${id}"]`;
 
-      this._currentPlaceholderStyle = {...super.getPlaceholderStyle()};
-      let style = {...super.getPlaceholderStyle()};
+      this._currentPlaceholderStyle = { ...super.getPlaceholderStyle() };
+      let style = { ...super.getPlaceholderStyle() };
 
-      let styles = {0: style};
+      let styles = { 0: style };
       if (style[':hover']) {
-        styles = {...styles, ':hover': style[':hover']};
+        styles = { ...styles, ':hover': style[':hover'] };
         delete styles[0][':hover'];
       }
 
       if (style[':active']) {
-        styles = {...styles, ':active': style[':active']};
+        styles = { ...styles, ':active': style[':active'] };
         delete styles[0][':active'];
       }
 
       if (style[':focus']) {
-        styles = {...styles, ':focus': style[':focus']};
+        styles = { ...styles, ':focus': style[':focus'] };
         delete styles[0][':focus'];
       }
 
@@ -240,13 +240,13 @@ function ExtendComposedComponent (ComposedComponent) {
 
     windowFocus = () => {
       if (windowStateEnabled) {
-        this.setState({windowFocused: true});
+        this.setState({ windowFocused: true });
       }
     }
 
     windowBlur = () => {
       if (windowStateEnabled) {
-        this.setState({windowFocused: false});
+        this.setState({ windowFocused: false });
       }
     }
   }

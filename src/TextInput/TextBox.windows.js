@@ -79,10 +79,10 @@ class TextBoxWindows extends Component {
     };
 
     if (this.state.requestedTheme === 'dark') {
-      componentStyle = {...componentStyle, ...styles.textBoxDarkTheme};
+      componentStyle = { ...componentStyle, ...styles.textBoxDarkTheme };
     }
 
-    componentStyle[':focus'] = {...componentStyle[':focus'], borderColor: this.state.color};
+    componentStyle[':focus'] = { ...componentStyle[':focus'], borderColor: this.state.color };
 
     const input = (
       <input
@@ -96,7 +96,7 @@ class TextBoxWindows extends Component {
     if (header) {
       return (
         <div>
-          <TextBlockWindows style={{marginBottom: '5px'}}>
+          <TextBlockWindows style={{ marginBottom: '5px' }}>
             {header}
           </TextBlockWindows>
           {input}

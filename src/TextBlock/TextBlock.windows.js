@@ -39,13 +39,13 @@ class TextBlockWindows extends Component {
         color = this.state.requestedTheme === 'dark' ? '#c92e00' : '#c50500';
         break;
       }
-      componentStyle = {...componentStyle, color: color};
+      componentStyle = { ...componentStyle, color: color };
     } else if (this.state.requestedTheme === 'dark') {
-      componentStyle = {...componentStyle, color: '#ffffff'};
+      componentStyle = { ...componentStyle, color: '#ffffff' };
     }
 
     if (align) {
-      componentStyle = {...componentStyle, textAlign: align};
+      componentStyle = { ...componentStyle, textAlign: align };
     }
 
     return (

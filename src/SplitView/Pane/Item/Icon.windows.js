@@ -32,7 +32,7 @@ class Icon extends Component {
   }
 
   render() {
-    let style = {...styles.svg};
+    let style = { ...styles.svg };
     if (!this.props.hasMargin) {
       delete style.marginRight;
     }

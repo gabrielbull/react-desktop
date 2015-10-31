@@ -88,7 +88,7 @@ class TitleBarOSX extends Component {
 
     let titleStyle = styles.title;
     if (this.props.controls) {
-      titleStyle = Object.assign(titleStyle, {paddingRight: '60px'});
+      titleStyle = Object.assign(titleStyle, { paddingRight: '60px' });
     }
 
     if (!this.state.windowFocused) {
