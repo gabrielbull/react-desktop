@@ -6,7 +6,7 @@ import LabelWindows from '../../TextBlock/TextBlock.windows';
 
 class RowWrapper extends Component {
   static propTypes = {
-    children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
+    children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
     style: PropTypes.object,
     form: PropTypes.any
   };

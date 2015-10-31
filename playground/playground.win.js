@@ -128,6 +128,11 @@ export class Window2 extends Component {
                 Hello
               </ListView.Item>
             </ListView>
+            <ListView>
+              <ListView.Item>
+                Hello
+              </ListView.Item>
+            </ListView>
           </SplitView.Item>
         </SplitView>
       </Window>

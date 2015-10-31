@@ -60,7 +60,7 @@ class Button extends Component {
     color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     push: PropTypes.bool,
     onClick: PropTypes.func,
-    onPress: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.func])
+    onPress: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
   };
 
   componentDidMount() {

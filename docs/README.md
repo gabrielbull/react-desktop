@@ -1,6 +1,6 @@
 # Documentation
 
-**react-desktop** is a JavaScript library built ontop of [Facebook's React](https://facebook.github.io/react/) library, 
+**react-desktop** is a JavaScript library built on top of [Facebook's React](https://facebook.github.io/react/) library, 
 which aims to bring a native desktop experience to the web, featuring many OS X El Capitan and Windows 10 components. 
 **react-desktop** works perfectly with [node-webkit](http://nwjs.io) and [Electron.js](http://electron.atom.io), but 
 can be used in any JavaScript powered project!

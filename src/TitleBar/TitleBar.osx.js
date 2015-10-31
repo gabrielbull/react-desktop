@@ -54,7 +54,7 @@ var styles = {
 @WindowState
 class TitleBarOSX extends Component {
   static propTypes = {
-    children: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.element, React.PropTypes.array]),
+    children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
     style: PropTypes.object,
     title: PropTypes.string,
     controls: PropTypes.bool,
