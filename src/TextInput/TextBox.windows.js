@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import TextBlockWindows from '../TextBlock/TextBlock.windows';
-import DesktopComponent from '../DesktopComponent';
+import DesktopComponent, { PlaceholderStyle } from '../DesktopComponent';
 
 var styles = {
   textBox: {
@@ -59,7 +59,7 @@ var styles = {
   }
 };
 
-@DesktopComponent
+@DesktopComponent(PlaceholderStyle)
 class TextBoxWindows extends Component {
   static propTypes = {
     header: PropTypes.string

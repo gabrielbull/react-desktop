@@ -1,5 +1,5 @@
 import React, { Component, PropTypes, Children } from 'react';
-import DesktopComponent, { WindowState }  from '../DesktopComponent';
+import DesktopComponent, { WindowFocus }  from '../DesktopComponent';
 import TitleBar from '../TitleBar/TitleBar.windows';
 import Grid from '../Grid/Grid.windows';
 
@@ -34,7 +34,7 @@ var styles = {
   }
 };
 
-@DesktopComponent(WindowState)
+@DesktopComponent(WindowFocus)
 class Window extends Component {
   static propTypes = {
     chrome: PropTypes.bool,

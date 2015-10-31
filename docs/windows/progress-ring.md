@@ -1,3 +1,3 @@
-# Indeterminate Progress Ring
+# Progress Ring
 
 Documentation is coming soon.

@@ -10,7 +10,8 @@ import {
   Window,
   Checkbox,
   SplitView,
-  Grid
+  View,
+  ListView
 } from '../src/Windows';
 import * as Icons from './Windows/Assets/Icons';
 
@@ -31,13 +32,10 @@ export class Window2 extends Component {
     super(props);
     this.state = {
       color: props.color,
-      selectedTab: localStorage['windows.selectedTab'] || 'welcome'
     };
   }
 
   render() {
-    localStorage['windows.selectedTab'] = this.state.selectedTab;
-
     return (
       <Window
         ref="window"
@@ -52,7 +50,7 @@ export class Window2 extends Component {
         <SplitView isOpen openLength={200} push persistIsOpen persistSelectedItem>
           <SplitView.Item
             title="Welcome"
-            icon={Icons.welcomeIcon}
+            icon={Icons.home}
             requestedTheme="light"
             background="#ffffff"
             style={{
@@ -80,7 +78,7 @@ export class Window2 extends Component {
           </SplitView.Item>
           <SplitView.Item
             title="Forms"
-            icon={Icons.formIcon}
+            icon={Icons.form}
             padding="40px 30px"
             requestedTheme="light"
             background="#ffffff"
@@ -105,10 +103,31 @@ export class Window2 extends Component {
               <Form.Row>
                 <Button onPress="submit" color push>Button With Color</Button>
                 <Button push>Button</Button>
-
-                <ProgressRing size={32} color absolute/>
               </Form.Row>
             </Form>
+          </SplitView.Item>
+          <SplitView.Item
+            title="Progress"
+            icon={Icons.progress}
+            padding="40px 30px"
+            requestedTheme="light"
+            background="#ffffff"
+          >
+            <View horizontalAlignment="center" verticalAlignment="center">
+              <ProgressRing size={60} color/>
+            </View>
+          </SplitView.Item>
+          <SplitView.Item
+            title="List View"
+            icon={Icons.listView}
+            requestedTheme="light"
+            background="#ffffff"
+          >
+            <ListView>
+              <ListView.Item>
+                Hello
+              </ListView.Item>
+            </ListView>
           </SplitView.Item>
         </SplitView>
       </Window>

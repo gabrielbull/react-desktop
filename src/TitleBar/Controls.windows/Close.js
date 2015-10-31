@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getState } from 'radium';
-import DesktopComponent, { WindowState } from '../../DesktopComponent';
+import DesktopComponent, { WindowFocus } from '../../DesktopComponent';
 import { isDarkColor } from '../../Color';
 
 const styles = {
@@ -31,7 +31,7 @@ const styles = {
   }
 };
 
-@DesktopComponent(WindowState)
+@DesktopComponent(WindowFocus)
 class Close extends Component {
   render() {
     const { style, ...props } = this.props;

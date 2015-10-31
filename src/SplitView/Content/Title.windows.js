@@ -74,14 +74,6 @@ class Title extends Component {
     return this.context.parent;
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return (nextState.selected !== this.state.selected) ||
-      (nextState.parentRequestedTheme !== this.state.parentRequestedTheme) ||
-      (nextState.requestedTheme !== this.state.requestedTheme) ||
-      (nextState.visible !== this.state.visible) ||
-      (nextState.display !== this.state.display);
-  }
-
   componentDidMount() {
     this.content.item.splitView.currentTitle = this.props.children;
   }

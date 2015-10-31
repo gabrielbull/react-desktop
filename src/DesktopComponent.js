@@ -1,15 +1,23 @@
 import React, { PropTypes } from 'react';
-import ReactDOM from 'react-dom';
-import Radium, { Style } from 'radium';
+import Radium  from 'radium';
 import { convertColor } from './Color';
+import WindowFocusComponent from './DesktopComponent/WindowFocusComponent';
+import PlaceholderStyleComponent from './DesktopComponent/PlaceholderStyleComponent';
+import CommonStylingComponent from './DesktopComponent/CommonStylingComponent';
 
-export const WindowState = 'WindowState';
+export const WindowFocus = 'WindowFocus';
+export const PlaceholderStyle = 'PlaceholderStyle';
+export const Dimension = 'Dimension';
+export const Margin = 'Margin';
+export const Padding = 'Padding';
+export const HorizontalAlignment = 'HorizontalAlignment';
+export const VerticalAlignment = 'VerticalAlignment';
+export const Alignment = 'Alignment';
+export const Hidden = 'Hidden';
 
-function ExtendComposedComponent (ComposedComponent) {
-  const windowStateEnabled = this.windowStateEnabled ? true : false;
-
+function ExtendComposedComponent(options, ComposedComponent) {
   @Radium
-  class Compoment extends ComposedComponent {
+  class Component extends ComposedComponent {
     static propTypes = {
       children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
       style: PropTypes.object,
@@ -38,6 +46,8 @@ function ExtendComposedComponent (ComposedComponent) {
       storage: PropTypes.object,
       ...ComposedComponent.contextTypes
     };
+
+    _components = [];
 
     constructor(props, context, updater) {
       const { visible, display, requestedTheme, storage, color, background, ...properties } = props;
@@ -79,8 +89,36 @@ function ExtendComposedComponent (ComposedComponent) {
       }
       this.state.background = background ? convertColor(background) : this.context.background;
 
-      if (windowStateEnabled) {
-        this.state.windowFocused = true;
+      this.init();
+    }
+
+    init() {
+      if (options.indexOf(WindowFocus) !== -1) {
+        this._components = [...this._components, new WindowFocusComponent(this)];
+      }
+      if (options.indexOf(PlaceholderStyle) !== -1) {
+        this._components = [...this._components, new PlaceholderStyleComponent(this)];
+      }
+      if (
+        options.indexOf(Dimension) !== -1 ||
+        options.indexOf(Margin) !== -1 ||
+        options.indexOf(Padding) !== -1 ||
+        options.indexOf(HorizontalAlignment) !== -1 ||
+        options.indexOf(VerticalAlignment) !== -1 ||
+        options.indexOf(Alignment) !== -1 ||
+        options.indexOf(Hidden) !== -1
+      ) {
+        let componentOptions = {
+          dimension: options.indexOf(Dimension) !== -1,
+          margin: options.indexOf(Margin) !== -1,
+          padding: options.indexOf(Padding) !== -1,
+          horizontalAlignment: options.indexOf(HorizontalAlignment) !== -1,
+          verticalAlignment: options.indexOf(VerticalAlignment) !== -1,
+          alignment: options.indexOf(Alignment) !== -1,
+          hidden: options.indexOf(Hidden) !== -1
+        };
+        Component.propTypes = {...Component.propTypes, ...CommonStylingComponent.propTypes(componentOptions)};
+        this._components = [...this._components, new CommonStylingComponent(this, componentOptions)];
       }
     }
 
@@ -120,40 +158,55 @@ function ExtendComposedComponent (ComposedComponent) {
     }
 
     componentDidMount() {
-      if (window && windowStateEnabled) {
-        window.addEventListener('focus', this.windowFocus);
-        window.addEventListener('blur', this.windowBlur);
-      }
-
-      if (super.getPlaceholderStyle) {
-        this.applyPlaceholderStyle();
-      }
-
       if (super.componentDidMount) {
         super.componentDidMount();
+      }
+
+      for (const component of this._components) {
+        if (component.componentDidMount) {
+          component.componentDidMount();
+        }
       }
     }
 
     componentDidUpdate() {
-      if (super.getPlaceholderStyle) {
-        if (JSON.stringify(this._currentPlaceholderStyle) != JSON.stringify(super.getPlaceholderStyle())) {
-          this.applyPlaceholderStyle();
-        }
-      }
-
       if (super.componentDidUpdate) {
         super.componentDidUpdate();
+      }
+
+      for (const component of this._components) {
+        if (component.componentDidUpdate) {
+          component.componentDidUpdate();
+        }
       }
     }
 
     componentWillUnmount() {
-      if (window && windowStateEnabled) {
-        window.removeEventListener('focus', this.windowFocus);
-        window.removeEventListener('blur', this.windowBlur);
-      }
       if (super.componentWillUnmount) {
         super.componentWillUnmount();
       }
+
+      for (const component of this._components) {
+        if (component.componentWillUnmount) {
+          component.componentWillUnmount();
+        }
+      }
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+      if (super.shouldComponentUpdate) {
+        return super.shouldComponentUpdate();
+      }
+
+      for (var prop in nextState) {
+        if (nextState.hasOwnProperty(prop)) {
+          if (typeof this.state[prop] === 'undefined' || nextState[prop] !== this.state[prop]) {
+            return true;
+          }
+        }
+      }
+
+      return false;
     }
 
     render(...params) {
@@ -178,88 +231,23 @@ function ExtendComposedComponent (ComposedComponent) {
         rendered = <div ref="container">{rendered}</div>;
       }
 
-      return rendered;
-    }
-
-    applyPlaceholderStyle() {
-      if (this._currentPlaceholderStyleElement) {
-        this._currentPlaceholderStyleElement.parentNode.removeChild(this._currentPlaceholderStyleElement);
-      }
-
-      const container = ReactDOM.findDOMNode(this.refs.container);
-      const id = Compoment.generateUniqueId();
-      container.setAttribute('data-reactdesktopid', id);
-
-      const selector = `[data-reactdesktopid="${id}"]`;
-
-      this._currentPlaceholderStyle = {...super.getPlaceholderStyle()};
-      let style = {...super.getPlaceholderStyle()};
-
-      let styles = {0: style};
-      if (style[':hover']) {
-        styles = {...styles, ':hover': style[':hover']};
-        delete styles[0][':hover'];
-      }
-
-      if (style[':active']) {
-        styles = {...styles, ':active': style[':active']};
-        delete styles[0][':active'];
-      }
-
-      if (style[':focus']) {
-        styles = {...styles, ':focus': style[':focus']};
-        delete styles[0][':focus'];
-      }
-
-      let rules = {};
-
-      for(var prop in styles) {
-        if (styles.hasOwnProperty(prop)) {
-          rules[`${selector} input${prop !== '0' ? prop : ''}::-webkit-input-placeholder`] = styles[prop];
-          rules[`${selector} input${prop !== '0' ? prop : ''}::-moz-placeholder`] = styles[prop];
-          rules[`${selector} input${prop !== '0' ? prop : ''}:-ms-input-placeholder`] = styles[prop];
-          rules[`${selector} input${prop !== '0' ? prop : ''}:placeholder`] = styles[prop];
+      for (const component of this._components) {
+        if (component.render) {
+          rendered = component.render(rendered);
         }
       }
 
-      const tmpContainer = document.createElement('div');
-      ReactDOM.render(<Style rules={rules}/>, tmpContainer);
-      container.appendChild(this._currentPlaceholderStyleElement = tmpContainer.firstChild);
-    }
-
-    static generateUniqueId() {
-      return Math.floor((Math.random() * 10000) + 1) + '-' +
-        + Math.floor((Math.random() * 10000) + 1) + '-' +
-        + Math.floor((Math.random() * 10000) + 1) + '-' +
-        + Math.floor((Math.random() * 10000) + 1) + '-' +
-        + Math.floor((Math.random() * 10000) + 1) + '-' +
-        + Math.floor((Math.random() * 10000) + 1) + '-' +
-        + Math.floor((Math.random() * 10000) + 1) + '-' +
-        Math.floor((Math.random() * 100000000000000));
-    }
-
-    windowFocus = () => {
-      if (windowStateEnabled) {
-        this.setState({windowFocused: true});
-      }
-    }
-
-    windowBlur = () => {
-      if (windowStateEnabled) {
-        this.setState({windowFocused: false});
-      }
+      return rendered;
     }
   }
 
-  return Compoment;
+  return Component;
 }
 
 export default function DesktopComponent(...options) {
   if (options.length === 1 && typeof options[0] === 'function') {
-    return ExtendComposedComponent.apply({}, [...options]);
+    return ExtendComposedComponent.apply(null, [[], options[0]]);
   }
 
-  return ExtendComposedComponent.bind({
-    windowStateEnabled:  options.indexOf(WindowState) !== -1
-  });
+  return ExtendComposedComponent.bind(null, options);
 }

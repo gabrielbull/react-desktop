@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { WindowState }  from '../DesktopComponent';
+import DesktopComponent, { WindowFocus }  from '../DesktopComponent';
 import Controls from './Controls.windows/Controls';
 
 var styles = {
@@ -36,7 +36,7 @@ var styles = {
   }
 };
 
-@DesktopComponent(WindowState)
+@DesktopComponent(WindowFocus)
 class TitleBar extends Component {
   static propTypes = {
     title: PropTypes.string,

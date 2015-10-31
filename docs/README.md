@@ -28,6 +28,7 @@ can be used in any JavaScript powered project!
   * [Text Block](/docs/windows/text-block.md)
   * [Text Box](/docs/windows/text-box.md)
   * [Title Bar](/docs/windows/title-bar.md)
+  * [View](/docs/windows/view.md)
   * [Window](/docs/windows/window.md)
 4. Advanced Usage
  * [Electron.js](/docs/advanced-usage/electron-js.md)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {Window1 as Window1OSX, Window2 as Window2OSX} from './playground.osx';
+//import {Window1 as Window1OSX, Window2 as Window2OSX} from './playground.osx';
 import {Window1 as Window1Win, Window2 as Window2Win} from './playground.win';
 import ColorPicker from 'react-color';
 

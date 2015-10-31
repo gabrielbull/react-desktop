@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DesktopComponent, { WindowState } from '../../DesktopComponent';
+import DesktopComponent, { WindowFocus } from '../../DesktopComponent';
 import { isDarkColor } from '../../Color';
 
 var styles = {
@@ -41,7 +41,7 @@ var styles = {
   }
 };
 
-@DesktopComponent(WindowState)
+@DesktopComponent(WindowFocus)
 class Maximize extends Component {
   render() {
     const { style, ...props } = this.props;

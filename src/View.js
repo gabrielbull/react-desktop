@@ -1,4 +1,4 @@
 import Desktop from './Desktop';
-import GridWindows from './Grid/Grid.windows';
+import ViewWindows from './View/View.windows';
 
-export default Desktop.os === 'win' ? GridWindows : GridWindows;
+export default Desktop.os === 'win' ? ViewWindows : ViewWindows;
