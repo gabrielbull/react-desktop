@@ -71,7 +71,7 @@ class SplitView extends Component {
   componentDidUpdate() {
     for (var prop in this.refs) {
       if (this.refs.hasOwnProperty(prop)) {
-        this.refs[prop].setState({parentRequestedTheme: this.state.requestedTheme});
+        this.refs[prop].setState({ parentRequestedTheme: this.state.requestedTheme });
       }
     }
   }
@@ -85,12 +85,12 @@ class SplitView extends Component {
             if (this.context.storage && this.props.persistSelectedItem) {
               this.context.storage[this.getItemStorageKey(this.refs[prop].props.storageKey)] = true;
             }
-            this.refs[prop].setState({selected: true});
+            this.refs[prop].setState({ selected: true });
           } else {
             if (this.context.storage && this.props.persistSelectedItem) {
               this.context.storage[this.getItemStorageKey(this.refs[prop].props.storageKey)] = false;
             }
-            this.refs[prop].setState({selected: false});
+            this.refs[prop].setState({ selected: false });
           }
         }
       }
@@ -123,7 +123,7 @@ class SplitView extends Component {
     });
 
     let content = Children.map(children, (child, key) => {
-      let props = {ref: key, storageKey: key};
+      let props = { ref: key, storageKey: key };
       if (!hasSelectedItem && key === 0 && this.firstRender) {
         this.selectedItem = key;
         props.selected = true;
@@ -142,7 +142,7 @@ class SplitView extends Component {
 
     return (
       <div
-        style={{...styles, ...style}}
+        style={{ ...styles, ...style }}
         {...props}
       >
         <Pane onPaneToggle={this.props.onPaneToggle}>

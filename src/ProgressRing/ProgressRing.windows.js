@@ -58,7 +58,7 @@ class ProgressRingWindows extends Component {
   render() {
     const { size, color, style, absolute, ...props } = this.props;
 
-    let containerStyle = {...styles.container};
+    let containerStyle = { ...styles.container };
     let componentStyle = {
       ...styles.progress,
       ...style,
@@ -67,7 +67,7 @@ class ProgressRingWindows extends Component {
     };
 
     if (absolute) {
-      componentStyle = {...componentStyle, ...styles.absolute};
+      componentStyle = { ...componentStyle, ...styles.absolute };
     }
 
     let componentColor = '#1883d7';

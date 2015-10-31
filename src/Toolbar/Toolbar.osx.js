@@ -29,7 +29,7 @@ class Toolbar extends Component {
   }
 
   render() {
-    const {style, visible, display, ...props } = this.props;
+    const { style, visible, display, ...props } = this.props;
     const styles = mergeStyles(this.styles, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'

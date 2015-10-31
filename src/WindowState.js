@@ -30,7 +30,7 @@ export default function WindowState(ComposedComponent) {
 
     windowBlur = () => {
       if (this.refs.component) {
-        this.refs.component.setState({windowFocused: false});
+        this.refs.component.setState({ windowFocused: false });
       }
     }
 

@@ -86,7 +86,7 @@ class IndeterminateCircularProgressIndicatorOSX extends Component {
   render() {
     const { color, size, style, absolute, visible, display, form, ...props } = this.props;
 
-    let containerStyle = {...styles.container};
+    let containerStyle = { ...styles.container };
     let componentStyle = mergeStyles(style, styles.progress, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'

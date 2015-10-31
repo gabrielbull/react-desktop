@@ -58,9 +58,9 @@ class Minimize extends Component {
       opacity: this.state.iconVisible ? 1 : 0
     };
 
-    let componentStyle = {...styles.button, ...style};
+    let componentStyle = { ...styles.button, ...style };
     if (!this.state.windowFocused && !this.state.iconVisible) {
-      componentStyle = {...componentStyle, ...styles.unfocused};
+      componentStyle = { ...componentStyle, ...styles.unfocused };
     }
 
     return (

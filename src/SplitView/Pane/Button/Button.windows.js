@@ -25,7 +25,7 @@ class Button extends Component {
       <svg
         x="0px" y="0px" viewBox="0 0 20 12.5"
         onClick={this.props.onClick}
-        style={{...styles.svg, ...this.props.style}}
+        style={{ ...styles.svg, ...this.props.style }}
       >
         <path
           fill={fill}

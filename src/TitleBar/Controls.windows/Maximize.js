@@ -51,10 +51,10 @@ class Maximize extends Component {
       svgFill = 'rgba(0, 0, 0, .4)';
     }
 
-    let componentStyle = {...styles.button, ...style};
+    let componentStyle = { ...styles.button, ...style };
     if (this.state.requestedTheme === 'dark' || this.state.background && isDarkColor(this.state.background)) {
       svgFill = '#ffffff';
-      componentStyle = {...componentStyle, ...styles.buttonColorBackground};
+      componentStyle = { ...componentStyle, ...styles.buttonColorBackground };
     }
 
     return (

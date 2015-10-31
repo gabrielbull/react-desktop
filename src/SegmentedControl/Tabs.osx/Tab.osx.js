@@ -126,19 +126,19 @@ class Tab extends Component {
     if (this.state.selected && this.state.windowFocused) {
       componentStyle = mergeStyles(componentStyle, styles.selected);
       if (this.props.firstChild) {
-        componentStyle = mergeStyles(componentStyle, {paddingLeft: '11px'});
+        componentStyle = mergeStyles(componentStyle, { paddingLeft: '11px' });
       }
       if (this.props.lastChild) {
-        componentStyle = mergeStyles(componentStyle, {borderRightWidth: '1px', paddingRight: '11px'});
+        componentStyle = mergeStyles(componentStyle, { borderRightWidth: '1px', paddingRight: '11px' });
       }
-      cssStyle = mergeStyles(cssStyle, {':active': styles.selectedActive});
+      cssStyle = mergeStyles(cssStyle, { ':active': styles.selectedActive });
     } else if (this.state.selected) {
       componentStyle = mergeStyles(componentStyle, styles.selectedUnfocused);
       if (this.props.firstChild) {
-        componentStyle = mergeStyles(componentStyle, {paddingLeft: '11px'});
+        componentStyle = mergeStyles(componentStyle, { paddingLeft: '11px' });
       }
       if (this.props.lastChild) {
-        componentStyle = mergeStyles(componentStyle, {borderRightWidth: '1px', paddingRight: '11px'});
+        componentStyle = mergeStyles(componentStyle, { borderRightWidth: '1px', paddingRight: '11px' });
       }
     }
 
