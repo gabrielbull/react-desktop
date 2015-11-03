@@ -82,11 +82,11 @@ class Pane extends Component {
   }
 
   toggleOpen = () => {
-    this.setState({isOpen: !this.state.isOpen});
+    this.setState({ isOpen: !this.state.isOpen });
     if (this.refs) {
       for (var prop in this.refs) {
         if (this.refs.hasOwnProperty(prop)) {
-          this.refs[prop].setState({isOpen: !this.state.isOpen});
+          this.refs[prop].setState({ isOpen: !this.state.isOpen });
         }
       }
     }
@@ -102,9 +102,9 @@ class Pane extends Component {
     for (var prop in this.refs) {
       if (this.refs.hasOwnProperty(prop)) {
         if (this.refs[prop].props.identifierKey === item.props.identifierKey) {
-          this.refs[prop].setState({selected: true});
+          this.refs[prop].setState({ selected: true });
         } else {
-          this.refs[prop].setState({selected: false});
+          this.refs[prop].setState({ selected: false });
         }
       }
     }
@@ -114,7 +114,7 @@ class Pane extends Component {
     let { children, style, ...props } = this.props;
     children = this.filterChildren(children);
 
-    let componentStyle = {...styles.pane, ...style};
+    let componentStyle = { ...styles.pane, ...style };
     if (this.context.openLength) {
       componentStyle.width = this.context.openLength + 'px';
     }

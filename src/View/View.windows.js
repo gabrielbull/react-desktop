@@ -20,8 +20,8 @@ class View extends Component {
 
     return (
       <div
-        style={{...styles, ...style}}
-        {...props}
+        style={{ ...styles, ...style }}
+        { ...props }
       >
         {children}
       </div>

@@ -22,7 +22,7 @@ class Controls extends Component {
   mouseEnter = () => {
     for (let prop in this.refs) {
       if(this.refs.hasOwnProperty(prop)) {
-        this.refs[prop].setState({iconVisible: true});
+        this.refs[prop].setState({ iconVisible: true });
       }
     }
   }
@@ -30,7 +30,7 @@ class Controls extends Component {
   mouseLeave = () => {
     for (let prop in this.refs) {
       if(this.refs.hasOwnProperty(prop)) {
-        this.refs[prop].setState({iconVisible: false});
+        this.refs[prop].setState({ iconVisible: false });
       }
     }
   }

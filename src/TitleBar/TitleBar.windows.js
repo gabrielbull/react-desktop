@@ -50,15 +50,15 @@ class TitleBar extends Component {
   render() {
     const { children, style, background, controls, title, ...props } = this.props;
 
-    let componentStyle = {...styles.titleBar, ...style};
+    let componentStyle = { ...styles.titleBar, ...style };
     let titleStyle = styles.title;
 
     if (!this.state.windowFocused && this.state.requestedTheme !== 'dark') {
-      titleStyle = {...titleStyle, ...styles.unfocusedTitle};
+      titleStyle = { ...titleStyle, ...styles.unfocusedTitle };
     }
 
     if (this.state.requestedTheme === 'dark') {
-      titleStyle = {...titleStyle, ...styles.titleDark};
+      titleStyle = { ...titleStyle, ...styles.titleDark };
     }
 
     componentStyle = {
@@ -68,13 +68,13 @@ class TitleBar extends Component {
     };
 
     if (this.context.requestedTheme === 'dark') {
-      componentStyle = {...componentStyle, ...styles.titleBarDark};
+      componentStyle = { ...componentStyle, ...styles.titleBarDark };
     }
 
     if (background) {
-      componentStyle = {...componentStyle, backgroundColor: background};
+      componentStyle = { ...componentStyle, backgroundColor: background };
     } else if (this.state.background) {
-      componentStyle = {...componentStyle, backgroundColor: this.state.background};
+      componentStyle = { ...componentStyle, backgroundColor: this.state.background };
     }
 
     const controlsComponent = !controls || <Controls {...this.props}/>;

@@ -93,13 +93,13 @@ class Form extends Component {
 
   render() {
     let { onSubmit, children, style, ...props } = this.props;
-    let componentStyle = {...styles.table, ...style};
+    let componentStyle = { ...styles.table, ...style };
 
     children = Children.map(children, (element, index) => {
       const isLast = index + 1 === Children.count(children);
       if (isLast) {
         element = cloneElement(element, {
-          style: {...element.props.style, marginBottom: '0'}
+          style: { ...element.props.style, marginBottom: '0' }
         });
       }
 
@@ -107,14 +107,14 @@ class Form extends Component {
         const ref = `row-${index}`;
         return (
           <RowWrapper ref={ref} style={style}>
-            {cloneElement(element, {form: this})}
+            {cloneElement(element, { form: this })}
           </RowWrapper>
         );
       } else if (element.type === Label || element.type === LabelOSX || element.type === LabelWindows) {
         const ref = `label-${index}`;
         return (
           <RowWrapper ref={ref} style={Desktop.os === 'win' ? styles.labelRowWin : styles.labelRowOsx}>
-            {cloneElement(element, {form: this})}
+            {cloneElement(element, { form: this })}
           </RowWrapper>
         );
       }

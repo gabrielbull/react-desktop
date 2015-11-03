@@ -117,7 +117,7 @@ function ExtendComposedComponent(options, ComposedComponent) {
           alignment: options.indexOf(Alignment) !== -1,
           hidden: options.indexOf(Hidden) !== -1
         };
-        Component.propTypes = {...Component.propTypes, ...CommonStylingComponent.propTypes(componentOptions)};
+        Component.propTypes = { ...Component.propTypes, ...CommonStylingComponent.propTypes(componentOptions) };
         this._components = [...this._components, new CommonStylingComponent(this, componentOptions)];
       }
     }

@@ -80,13 +80,13 @@ class Title extends Component {
 
   render() {
     const { style, previousTitle, children } = this.props;
-    let componentStyle = {...styles.title, ...style};
-    let fadeSpanStyle = {...styles.title, ...style, ...styles.fadeSpanStyle};
+    let componentStyle = { ...styles.title, ...style };
+    let fadeSpanStyle = { ...styles.title, ...style, ...styles.fadeSpanStyle };
     let spanStyle;
 
     if (this.state.parentRequestedTheme === 'dark') {
-      componentStyle = {...componentStyle, ...styles.titleDark};
-      fadeSpanStyle = {...fadeSpanStyle, ...styles.titleDark};
+      componentStyle = { ...componentStyle, ...styles.titleDark };
+      fadeSpanStyle = { ...fadeSpanStyle, ...styles.titleDark };
     }
 
     let fadeSpan;

@@ -78,7 +78,7 @@ class Button extends Component {
   render() {
     let { style, children, color, onPress, push, ...props } = this.props;
 
-    let componentStyle = {...styles.button, ...style};
+    let componentStyle = { ...styles.button, ...style };
     switch (color) {
     case true:
       styles.colorButton = {
@@ -97,10 +97,10 @@ class Button extends Component {
         }
       };
 
-      componentStyle = {...componentStyle, ...styles.colorButton};
+      componentStyle = { ...componentStyle, ...styles.colorButton };
       break;
     case 'blue':
-      componentStyle = {...componentStyle, ...styles.colorButton};
+      componentStyle = { ...componentStyle, ...styles.colorButton };
       break;
     }
 
@@ -119,7 +119,7 @@ class Button extends Component {
     };
 
     if (push) {
-      componentStyle[':active'] = {...componentStyle[':active'], ...styles.pushTransform};
+      componentStyle[':active'] = { ...componentStyle[':active'], ...styles.pushTransform };
     }
 
     return (

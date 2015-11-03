@@ -51,6 +51,6 @@ function rotateCircle(circles) {
 
 export function startAnimation(...elements) {
   if (requestAnimationFrame) {
-    rotateCircle.apply({iteration: 0, currentIteration: 0}, [elements]);
+    rotateCircle.apply({ iteration: 0, currentIteration: 0 }, [elements]);
   }
 }

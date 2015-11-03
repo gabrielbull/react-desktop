@@ -78,11 +78,11 @@ class Item extends Component {
     const { children, style, onPress, isOpen, ...props } = this.props;
     const title = this.state.isOpen ? children.props.title : null;
     const ItemIcon = children.props.icon;
-    let anchorStyle = {...styles.anchor, ...style};
-    let spanStyle = {...styles.span, ...style};
+    let anchorStyle = { ...styles.anchor, ...style };
+    let spanStyle = { ...styles.span, ...style };
 
     if (this.state.requestedTheme === 'dark') {
-      spanStyle = {...spanStyle, ...styles.spanDark};
+      spanStyle = { ...spanStyle, ...styles.spanDark };
     }
 
     if (this.state.selected) {
