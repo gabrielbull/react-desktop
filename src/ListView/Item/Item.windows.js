@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import DesktopComponent from '../../DesktopComponent';
 
 const styles = {
@@ -15,7 +15,7 @@ class Item extends Component {
 
     return (
       <div
-        style={{...styles, ...style}}
+        style={{ ...styles, ...style }}
         {...props}
       >
         {children}

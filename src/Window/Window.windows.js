@@ -1,7 +1,7 @@
 import React, { Component, PropTypes, Children } from 'react';
 import DesktopComponent, { WindowFocus }  from '../DesktopComponent';
 import TitleBar from '../TitleBar/TitleBar.windows';
-import Grid from '../Grid/Grid.windows';
+import View from '../View/View.windows';
 
 var styles = {
   window: {
@@ -87,7 +87,7 @@ class Window extends Component {
 
     const [titleBar, ...children] = this.filterChildren();
 
-    let content = <Grid style={styles.content}>{children}</Grid>;
+    let content = <View style={styles.content}>{children}</View>;
 
     return (
       <div

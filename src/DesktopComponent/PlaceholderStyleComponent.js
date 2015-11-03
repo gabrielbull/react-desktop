@@ -32,28 +32,28 @@ class PlaceholderStyleComponent {
 
     const selector = `[data-reactdesktopid="${id}"]`;
 
-    this._currentPlaceholderStyle = {...this.root.getPlaceholderStyle()};
-    let style = {...this.root.getPlaceholderStyle()};
+    this._currentPlaceholderStyle = { ...this.root.getPlaceholderStyle() };
+    let style = { ...this.root.getPlaceholderStyle() };
 
-    let styles = {0: style};
+    let styles = { 0: style };
     if (style[':hover']) {
-      styles = {...styles, ':hover': style[':hover']};
+      styles = { ...styles, ':hover': style[':hover'] };
       delete styles[0][':hover'];
     }
 
     if (style[':active']) {
-      styles = {...styles, ':active': style[':active']};
+      styles = { ...styles, ':active': style[':active'] };
       delete styles[0][':active'];
     }
 
     if (style[':focus']) {
-      styles = {...styles, ':focus': style[':focus']};
+      styles = { ...styles, ':focus': style[':focus'] };
       delete styles[0][':focus'];
     }
 
     let rules = {};
 
-    for(var prop in styles) {
+    for (var prop in styles) {
       if (styles.hasOwnProperty(prop)) {
         rules[`${selector} input${prop !== '0' ? prop : ''}::-webkit-input-placeholder`] = styles[prop];
         rules[`${selector} input${prop !== '0' ? prop : ''}::-moz-placeholder`] = styles[prop];
@@ -69,13 +69,7 @@ class PlaceholderStyleComponent {
 
 
   static generateUniqueId() {
-    return Math.floor((Math.random() * 10000) + 1) + '-' +
-      + Math.floor((Math.random() * 10000) + 1) + '-' +
-      + Math.floor((Math.random() * 10000) + 1) + '-' +
-      + Math.floor((Math.random() * 10000) + 1) + '-' +
-      + Math.floor((Math.random() * 10000) + 1) + '-' +
-      + Math.floor((Math.random() * 10000) + 1) + '-' +
-      + Math.floor((Math.random() * 10000) + 1) + '-' +
+    return Math.floor((Math.random() * 10000) + 1) + '-' + +Math.floor((Math.random() * 10000) + 1) + '-' + +Math.floor((Math.random() * 10000) + 1) + '-' + +Math.floor((Math.random() * 10000) + 1) + '-' + +Math.floor((Math.random() * 10000) + 1) + '-' + +Math.floor((Math.random() * 10000) + 1) + '-' + +Math.floor((Math.random() * 10000) + 1) + '-' +
       Math.floor((Math.random() * 100000000000000));
   }
 }

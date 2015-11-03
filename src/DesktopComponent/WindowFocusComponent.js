@@ -19,11 +19,11 @@ class WindowFocusComponent {
   }
 
   windowFocus = () => {
-    this.root.setState({windowFocused: true});
+    this.root.setState({ windowFocused: true });
   };
 
   windowBlur = () => {
-    this.root.setState({windowFocused: false});
+    this.root.setState({ windowFocused: false });
   };
 }
 

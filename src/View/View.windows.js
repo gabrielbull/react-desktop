@@ -21,7 +21,7 @@ class View extends Component {
     return (
       <div
         style={{ ...styles, ...style }}
-        { ...props }
+        {...props}
       >
         {children}
       </div>

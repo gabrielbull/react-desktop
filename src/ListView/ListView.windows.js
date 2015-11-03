@@ -34,7 +34,7 @@ class ListView extends Component {
 
     return (
       <div
-        style={{...styles, ...style}}
+        style={{ ...styles, ...style }}
         {...props}
       >
         {children}

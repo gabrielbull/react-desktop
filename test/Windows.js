@@ -9,7 +9,7 @@ import {
   Window,
   Checkbox,
   SplitView,
-  Grid
+  View
 } from '../src/Windows';
 
 describe('Windows', () => {
@@ -23,6 +23,6 @@ describe('Windows', () => {
     expect(Window).to.exist;
     expect(Checkbox).to.exist;
     expect(SplitView).to.exist;
-    expect(Grid).to.exist;
+    expect(View).to.exist;
   });
 });

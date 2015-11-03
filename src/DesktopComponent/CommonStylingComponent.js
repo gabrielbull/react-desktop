@@ -104,11 +104,13 @@ class CommonStylingComponent {
       newProps.hidden = null;
     }
 
-    return cloneElement(component, {...newProps, style: {
-      ...newStyles,
-      ...component.props.style,
-      ...(newStyles.display === 'none' ? {display: 'none'} : null)
-    }});
+    return cloneElement(component, {
+      ...newProps, style: {
+        ...newStyles,
+        ...component.props.style,
+        ...(newStyles.display === 'none' ? { display: 'none' } : null)
+      }
+    });
   }
 }
 
