@@ -56,18 +56,11 @@ function ExtendComposedComponent(options, ComposedComponent) {
       this._background = background;
       this._color = color;
 
-      if (!this.context) {
-        this.context = {};
-      }
-      if (!this.state) {
-        this.state = {};
-      }
-      if (!this.state.visible) {
-        this.state.visible = visible !== false;
-      }
-      if (!this.state.display) {
-        this.state.display = display !== false;
-      }
+      this.context = this.context || {};
+      this.state = this.state || {};
+    
+      this.state.visible = this.state.visible || visible !== false;
+      this.state.display = this.state.display || display !== false;
 
       if (!context.storage) {
         this.context.storage = storage ? storage : null;
