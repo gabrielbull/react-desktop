@@ -44,7 +44,7 @@ class WindowOSX extends Component {
   }
 
   get styles() {
-    if (this.props) {
+    if (this.props.style) {
       return mergeStyles(styles.window, this.props.style);
     }
     return mergeStyles(styles.window, this.props);
