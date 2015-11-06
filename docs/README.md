@@ -22,9 +22,11 @@ can be used in any JavaScript powered project!
   * [Window](/docs/os-x/window.md)
 3. Windows 10
   * [Button](/docs/windows/button.md)
+  * [List View](/docs/windows/list-view.md)
+    * [Master/Details](/docs/windows/list-view/master-details.md)
   * [Progress Ring](/docs/windows/progress-ring.md)
   * [Split View](/docs/windows/split-view.md)
-  * [Split View Item](/docs/windows/split-view-item.md)
+    * [Split View Item](/docs/windows/split-view/split-view-item.md)
   * [Text Block](/docs/windows/text-block.md)
   * [Text Box](/docs/windows/text-box.md)
   * [Title Bar](/docs/windows/title-bar.md)

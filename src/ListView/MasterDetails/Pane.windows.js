@@ -1,20 +1,16 @@
 import React, { Component, Children } from 'react';
 import DesktopComponent from '../../DesktopComponent';
-import Master from '../MasterDetails/Master/Master.windows';
-import Details from '../MasterDetails/Details/Details.windows';
 
 const styles = {
   display: 'flex',
+  flexDirection: 'column',
   flexWrap: 'nowrap',
   position: 'relative',
   flex: '1'
 };
 
 @DesktopComponent
-class Item extends Component {
-  static Master = Master;
-  static Details = Details;
-
+class Pane extends Component {
   render() {
     const { children, style, ...props } = this.props;
 
@@ -29,4 +25,4 @@ class Item extends Component {
   }
 }
 
-export default Item;
+export default Pane;

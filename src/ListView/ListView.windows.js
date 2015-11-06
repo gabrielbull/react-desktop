@@ -1,7 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes, Children } from 'react';
 import DesktopComponent from '../DesktopComponent';
 import Item from './Item/Item.windows';
-import Content from './Content/Content.windows';
+import Master from './MasterDetails/Master/Master.windows';
+import MasterDetailsItem from './MasterDetails/MasterDetailsItem.windows';
 
 const styles = {
   display: 'flex',
@@ -13,15 +14,35 @@ const styles = {
 @DesktopComponent
 class ListView extends Component {
   static Item = Item;
-  static Content = Content;
 
   static propTypes = {
-    id: PropTypes.string
+    id: PropTypes.string,
+    masterWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    detailsWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    push: PropTypes.bool
   };
 
   static childContextTypes = {
-    id: PropTypes.string
+    id: PropTypes.string,
+    masterWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    detailsWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    push: PropTypes.bool
   };
+
+  getChildContext() {
+    return {
+      id: this.id,
+      masterWidth: this.props.masterWidth,
+      detailsWidth: this.props.detailsWidth,
+      push: typeof this.props.push === 'undefined' ? this.getDefaultProps().push : this.props.push
+    };
+  }
+
+  getDefaultProps() {
+    return {
+      push: true
+    };
+  }
 
   constructor(props, context, updater) {
     let { id, ...properties } = props;
@@ -29,9 +50,24 @@ class ListView extends Component {
     this.id = id || 'listview';
   }
 
+  isMasterDetails() {
+    let isMasterDetails = false;
+    Children.map(this.props.children, (child) => {
+      Children.map(child.props.children, (child) => {
+        isMasterDetails = isMasterDetails || child.type === Master;
+      });
+    });
+    return isMasterDetails;
+  }
+
   render() {
     const { children, style, ...props } = this.props;
 
+    if (this._masterChildrenItem || this.isMasterDetails()) {
+      return this._masterChildrenItem = this._masterChildrenItem || <MasterDetailsItem {...this.props}/>;
+    }
+
+    // todo standard list view
     return (
       <div
         style={{ ...styles, ...style }}

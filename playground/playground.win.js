@@ -123,14 +123,22 @@ export class Window2 extends Component {
             requestedTheme="light"
             background="#ffffff"
           >
-            <ListView>
+            <ListView detailsWidth="200">
               <ListView.Item>
-                Hello
+                <ListView.Item.Master>
+                  Erv
+                </ListView.Item.Master>
+                <ListView.Item.Details>
+                  Hello
+                </ListView.Item.Details>
               </ListView.Item>
-            </ListView>
-            <ListView>
               <ListView.Item>
-                Hello
+                <ListView.Item.Master>
+                  Hello2
+                </ListView.Item.Master>
+                <ListView.Item.Details>
+                  Hello2
+                </ListView.Item.Details>
               </ListView.Item>
             </ListView>
           </SplitView.Item>

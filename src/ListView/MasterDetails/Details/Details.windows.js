@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DesktopComponent from '../../DesktopComponent';
+import DesktopComponent from '../../../DesktopComponent';
 
 const styles = {
   display: 'flex',
