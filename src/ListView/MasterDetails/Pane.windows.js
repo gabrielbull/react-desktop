@@ -18,7 +18,7 @@ class Pane extends Component {
   };
 
   render() {
-    const { children, style, ...props } = this.props;
+    const { children, style, selected, ...props } = this.props;
 
     let componentStyle = { ...styles, ...style };
 
@@ -27,17 +27,12 @@ class Pane extends Component {
       componentStyle.flex = '0 0 ' + parseDimension(this.context.masterWidth);
     }
 
-    let componentChildren = [];
-    children.forEach((child, key) => {
-      componentChildren = [...componentChildren, <div key={key}>{child}</div>]
-    });
-
     return (
       <div
         style={componentStyle}
         {...props}
       >
-        {componentChildren}
+        {children}
       </div>
     );
   }

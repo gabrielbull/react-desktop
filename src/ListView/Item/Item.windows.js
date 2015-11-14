@@ -1,4 +1,4 @@
-import React, { Component, Children } from 'react';
+import React, { Component, PropTypes } from 'react';
 import DesktopComponent from '../../DesktopComponent';
 import Master from '../MasterDetails/Master/Master.windows';
 import Details from '../MasterDetails/Details/Details.windows';
@@ -14,6 +14,10 @@ const styles = {
 class Item extends Component {
   static Master = Master;
   static Details = Details;
+
+  static propTypes = {
+    selected: PropTypes.bool
+  };
 
   render() {
     const { children, style, ...props } = this.props;

@@ -42,6 +42,10 @@ const styles = {
 
 @DesktopComponent
 class Content extends Component {
+  static propTypes = {
+    selected: PropTypes.bool
+  };
+
   static contextTypes = {
     id: PropTypes.string,
     masterWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -49,7 +53,7 @@ class Content extends Component {
   };
 
   render() {
-    const { children, style, ...props } = this.props;
+    const { children, style, selected, ...props } = this.props;
     let componentStyle = { ...styles.master, ...style };
     let spanStyle = { ...styles.masterSpan };
 
@@ -63,6 +67,10 @@ class Content extends Component {
         ...spanStyle[':active'],
         ...styles.masterSpanWithPush[':active']
       }
+    }
+
+    if (selected) {
+      componentStyle.backgroundColor = 'blue';
     }
 
     return (

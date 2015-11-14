@@ -13,45 +13,28 @@ const styles = {
 
 @DesktopComponent
 class MasterDetailsItem extends Component {
+  selectedDetails;
+
   getMasters() {
+    let selected = null;
     let masters = [];
-    Children.map(this.props.children, (item) => {
-      Children.map(item.props.children, (child) => {
-        masters = [
-          ...masters,
-          ...(child.type === Master ? [child] : [])
-        ]
-      });
-    } );
-    return masters;
-  }
-
-  getSelectedMaster() {
-    let selected;
-    for (let master of this.getMasters()) {
-      selected = selected || master;
-      if (master.props.selected) {
-        selected = master;
-      }
-    }
-    return selected;
-  }
-
-  getSelectedDetails() {
-    let selected = this.getSelectedMaster();
-    let selectedDetails;
-    Children.map(this.props.children, (item) => {
+    Children.map(this.props.children, (item, index) => {
       let isSelected = false;
-      Children.map(item.props.children, (child) => {
+      Children.map(item.props.children, (child, key) => {
         if (child.type === Master) {
-          isSelected = child === selected;
-        }
-        if (isSelected && child.type === Details) {
-          selectedDetails = child;
+          selected = selected === null || item.props.selected ? index : selected;
+          isSelected = selected === index;
+          masters = [
+            ...masters,
+            ...(child.type === Master ? [cloneElement(child, { key: index })] : [])
+          ]
+        } else if (isSelected && child.type === Details) {
+          this.selectedDetails = child;
         }
       });
     } );
-    return selectedDetails;
+    masters[selected] = cloneElement(masters[selected], { selected: true });
+    return masters;
   }
 
   render() {
@@ -65,7 +48,7 @@ class MasterDetailsItem extends Component {
         <Pane>
           {this.getMasters()}
         </Pane>
-        {this.getSelectedDetails()}
+        {this.selectedDetails}
       </div>
     );
   }
