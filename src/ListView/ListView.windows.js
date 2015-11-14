@@ -22,6 +22,10 @@ class ListView extends Component {
     push: PropTypes.bool
   };
 
+  static defaultProps = {
+    push: true
+  };
+
   static childContextTypes = {
     id: PropTypes.string,
     masterWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -34,13 +38,7 @@ class ListView extends Component {
       id: this.id,
       masterWidth: this.props.masterWidth,
       detailsWidth: this.props.detailsWidth,
-      push: typeof this.props.push === 'undefined' ? this.getDefaultProps().push : this.props.push
-    };
-  }
-
-  getDefaultProps() {
-    return {
-      push: true
+      push: typeof this.props.push === 'undefined' ? this.defaultProps.push : this.props.push
     };
   }
 

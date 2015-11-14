@@ -32,6 +32,7 @@ class MasterDetailsItem extends Component {
         <Pane>
           {masters}
         </Pane>
+        <Details/>
       </div>
     );
   }
