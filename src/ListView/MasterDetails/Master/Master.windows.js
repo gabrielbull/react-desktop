@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import DesktopComponent from '../../../DesktopComponent';
 import { parseDimension } from '../../../Dimension';
+import { convertColor, hexToRgb } from '../../../Color';
 
 const styles = {
   master: {
@@ -70,7 +71,15 @@ class Content extends Component {
     }
 
     if (selected) {
-      componentStyle.backgroundColor = 'blue';
+      const c = hexToRgb(convertColor(this.context.color));
+      componentStyle = {
+        ...componentStyle,
+        backgroundColor: `rgba(${c.r}, ${c.g}, ${c.b}, .5)`
+      };
+      spanStyle = {
+        ...spanStyle,
+        color: 'white'
+      }
     }
 
     return (

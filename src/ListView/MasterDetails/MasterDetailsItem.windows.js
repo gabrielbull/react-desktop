@@ -13,32 +13,32 @@ const styles = {
 
 @DesktopComponent
 class MasterDetailsItem extends Component {
-  selectedDetails;
-
-  getMasters() {
+  filterChildren(children) {
     let selected = null;
     let masters = [];
-    Children.map(this.props.children, (item, index) => {
+    let details;
+    Children.map(children, (item, key) => {
       let isSelected = false;
-      Children.map(item.props.children, (child, key) => {
+      Children.map(item.props.children, (child) => {
         if (child.type === Master) {
-          selected = selected === null || item.props.selected ? index : selected;
-          isSelected = selected === index;
+          selected = selected === null || item.props.selected ? key : selected;
+          isSelected = selected === key;
           masters = [
             ...masters,
-            ...(child.type === Master ? [cloneElement(child, { key: index })] : [])
+            ...(child.type === Master ? [cloneElement(child, { key: key })] : [])
           ]
         } else if (isSelected && child.type === Details) {
-          this.selectedDetails = child;
+          details = child;
         }
       });
     } );
     masters[selected] = cloneElement(masters[selected], { selected: true });
-    return masters;
+    return { masters: masters, details: details };
   }
 
   render() {
     const { children, style, ...props } = this.props;
+    const { masters, details } = this.filterChildren(children);
 
     return (
       <div
@@ -46,9 +46,9 @@ class MasterDetailsItem extends Component {
         {...props}
       >
         <Pane>
-          {this.getMasters()}
+          {masters}
         </Pane>
-        {this.selectedDetails}
+        {details}
       </div>
     );
   }
