@@ -128,22 +128,28 @@ export class Window2 extends Component {
                 <ListView.Item.Master>
                   Erv
                 </ListView.Item.Master>
-                <ListView.Item.Details>
-                  Hello
-                </ListView.Item.Details>
+                {this.renderDetails('Hi')}
               </ListView.Item>
               <ListView.Item>
                 <ListView.Item.Master>
                   Hello2
                 </ListView.Item.Master>
-                <ListView.Item.Details>
-                  Hello2
-                </ListView.Item.Details>
+                {this.renderDetails('Hello')}
               </ListView.Item>
             </ListView>
           </SplitView.Item>
         </SplitView>
       </Window>
+    );
+  }
+
+  renderDetails(text) {
+    return (
+      <ListView.Item.Details background>
+        <View padding="20px 30px">
+          <TextBlock color="white">{text}</TextBlock>
+        </View>
+      </ListView.Item.Details>
     );
   }
 }

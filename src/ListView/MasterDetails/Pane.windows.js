@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, Children, PropTypes } from 'react';
 import DesktopComponent from '../../DesktopComponent';
 import { parseDimension } from '../../Dimension';
 
@@ -27,12 +27,17 @@ class Pane extends Component {
       componentStyle.flex = '0 0 ' + parseDimension(this.context.masterWidth);
     }
 
+    let componentChildren = [];
+    children.forEach((child, key) => {
+      componentChildren = [...componentChildren, <div key={key}>{child}</div>]
+    });
+
     return (
       <div
         style={componentStyle}
         {...props}
       >
-        {children}
+        {componentChildren}
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import React, { Component, Children } from 'react';
+import React, { Component, Children, cloneElement } from 'react';
 import DesktopComponent from '../../DesktopComponent';
 import Master from './Master/Master.windows';
 import Details from './Details/Details.windows';
@@ -13,16 +13,49 @@ const styles = {
 
 @DesktopComponent
 class MasterDetailsItem extends Component {
+  getMasters() {
+    let masters = [];
+    Children.map(this.props.children, (item) => {
+      Children.map(item.props.children, (child) => {
+        masters = [
+          ...masters,
+          ...(child.type === Master ? [child] : [])
+        ]
+      });
+    } );
+    return masters;
+  }
+
+  getSelectedMaster() {
+    let selected;
+    for (let master of this.getMasters()) {
+      selected = selected || master;
+      if (master.props.selected) {
+        selected = master;
+      }
+    }
+    return selected;
+  }
+
+  getSelectedDetails() {
+    let selected = this.getSelectedMaster();
+    let selectedDetails;
+    Children.map(this.props.children, (item) => {
+      let isSelected = false;
+      Children.map(item.props.children, (child) => {
+        if (child.type === Master) {
+          isSelected = child === selected;
+        }
+        if (isSelected && child.type === Details) {
+          selectedDetails = child;
+        }
+      });
+    } );
+    return selectedDetails;
+  }
+
   render() {
     const { children, style, ...props } = this.props;
-
-    const masters = Children.map(children, (item) => {
-      return Children.map(item.props.children, (child) => child.type === Master ? child : null);
-    } );
-
-    const details = Children.map(children, (item) => {
-      return Children.map(item.props.children, (child) => child.type === Details ? child : null);
-    } );
 
     return (
       <div
@@ -30,9 +63,9 @@ class MasterDetailsItem extends Component {
         {...props}
       >
         <Pane>
-          {masters}
+          {this.getMasters()}
         </Pane>
-        <Details/>
+        {this.getSelectedDetails()}
       </div>
     );
   }
