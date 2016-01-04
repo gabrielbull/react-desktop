@@ -13,7 +13,7 @@ const styles = {
 @DesktopComponent
 class Button extends Component {
   render() {
-    let fill = this.state.requestedTheme === 'dark' ? '#ffffff' : '#000000';
+    let fill = this.state.theme === 'dark' ? '#ffffff' : '#000000';
 
     if (getState(this.state, null, ':active')) {
       fill = transparentize(this.state.color, .1);

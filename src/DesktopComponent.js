@@ -25,7 +25,7 @@ function ExtendComposedComponent(options, ComposedComponent) {
       display: PropTypes.bool,
       color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
       background: PropTypes.string,
-      requestedTheme: PropTypes.string,
+      theme: PropTypes.string,
       ...ComposedComponent.propTypes
     };
 
@@ -33,7 +33,7 @@ function ExtendComposedComponent(options, ComposedComponent) {
       parent: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
       color: PropTypes.string,
       background: PropTypes.string,
-      requestedTheme: PropTypes.string,
+      theme: PropTypes.string,
       storage: PropTypes.object,
       ...ComposedComponent.childContextTypes
     };
@@ -42,7 +42,7 @@ function ExtendComposedComponent(options, ComposedComponent) {
       parent: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
       color: PropTypes.string,
       background: PropTypes.string,
-      requestedTheme: PropTypes.string,
+      theme: PropTypes.string,
       storage: PropTypes.object,
       ...ComposedComponent.contextTypes
     };
@@ -50,9 +50,9 @@ function ExtendComposedComponent(options, ComposedComponent) {
     _components = [];
 
     constructor(props, context, updater) {
-      const { visible, display, requestedTheme, storage, color, background, ...properties } = props;
+      const { visible, display, theme, storage, color, background, ...properties } = props;
       super(props, context, updater);
-      this._requestedTheme = requestedTheme;
+      this._theme = theme;
       this._background = background;
       this._color = color;
 
@@ -67,10 +67,10 @@ function ExtendComposedComponent(options, ComposedComponent) {
       }
       this.storage = storage ? storage : this.context.storage;
 
-      if (!context.requestedTheme) {
-        this.context.requestedTheme = requestedTheme ? requestedTheme : 'light';
+      if (!context.theme) {
+        this.context.theme = theme ? theme : 'light';
       }
-      this.state.requestedTheme = requestedTheme ? requestedTheme : this.context.requestedTheme;
+      this.state.theme = theme ? theme : this.context.theme;
 
       if (!context.color) {
         this.context.color = color && typeof color !== 'boolean' ? convertColor(color) : convertColor('blue');
@@ -120,7 +120,7 @@ function ExtendComposedComponent(options, ComposedComponent) {
         parent: this,
         color: this.state.color,
         background: this.state.background,
-        requestedTheme: this.state.requestedTheme,
+        theme: this.state.theme,
         storage: this.storage
       };
 
@@ -135,9 +135,9 @@ function ExtendComposedComponent(options, ComposedComponent) {
     }
 
     setState(state) {
-      if (state.requestedTheme) {
-        this._updateRequestedTheme = true;
-        this.context.requestedTheme = state.requestedTheme;
+      if (state.theme) {
+        this._updateTheme = true;
+        this.context.theme = state.theme;
       }
       if (state.color) {
         this._updateColor = true;
@@ -203,10 +203,10 @@ function ExtendComposedComponent(options, ComposedComponent) {
     }
 
     render(...params) {
-      if (!this._updateRequestedTheme && !this._requestedTheme) {
-        this.state.requestedTheme = this.context.requestedTheme;
+      if (!this._updateTheme && !this._theme) {
+        this.state.theme = this.context.theme;
       }
-      this._updateRequestedTheme = null;
+      this._updateTheme = null;
 
       if (!this._updateColor && !this._color) {
         this.state.color = this.context.color;

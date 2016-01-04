@@ -20,17 +20,17 @@ const styles = {
 class Content extends Component {
   static propTypes = {
     title: PropTypes.string,
-    parentRequestedTheme: PropTypes.string,
+    parentTheme: PropTypes.string,
     margin: PropTypes.string,
     padding: PropTypes.string
   };
 
   constructor(props, context, updater) {
-    const { parentRequestedTheme, selected, ...properties } = props;
+    const { parentTheme, selected, ...properties } = props;
     super(properties, context, updater);
     this.state = {
       selected: selected,
-      parentRequestedTheme: parentRequestedTheme
+      parentTheme: parentTheme
     };
   }
 
@@ -42,7 +42,7 @@ class Content extends Component {
     if (this.refs.title) {
       this.refs.title.setState({
         selected: nextState.selected,
-        parentRequestedTheme: nextState.parentRequestedTheme
+        parentTheme: nextState.parentTheme
       });
     }
   }
@@ -66,7 +66,7 @@ class Content extends Component {
         <Title
           ref="title"
           selected={this.state.selected}
-          parentRequestedTheme={this.state.parentRequestedTheme}
+          parentTheme={this.state.parentTheme}
           previousTitle={this.item.splitView.currentTitle}
         >
           {title}

@@ -41,7 +41,7 @@ export class Window2 extends Component {
         ref="window"
         color={this.state.color}
         chrome
-        requestedTheme={this.props.theme}
+        theme={this.props.theme}
         storage={localStorage}
         style={{ width: '1000px', height: '600px' }}
       >
@@ -51,7 +51,7 @@ export class Window2 extends Component {
           <SplitView.Item
             title="Welcome"
             icon={Icons.home}
-            requestedTheme="light"
+            theme="light"
             background="#ffffff"
             style={{
               backgroundImage: 'url(picture.jpg)',
@@ -80,7 +80,7 @@ export class Window2 extends Component {
             title="Forms"
             icon={Icons.form}
             padding="40px 30px"
-            requestedTheme="light"
+            theme="light"
             background="#ffffff"
           >
             <Form>
@@ -110,7 +110,7 @@ export class Window2 extends Component {
             title="Progress"
             icon={Icons.progress}
             padding="40px 30px"
-            requestedTheme="light"
+            theme="light"
             background="#ffffff"
           >
             <View horizontalAlignment="center" verticalAlignment="center">
@@ -120,10 +120,10 @@ export class Window2 extends Component {
           <SplitView.Item
             title="List View"
             icon={Icons.listView}
-            requestedTheme="light"
+            theme="light"
             background="#ffffff"
           >
-            <ListView detailsWidth="200" push>
+            <ListView detailsWidth="200" push theme={this.props.theme === 'dark' ? 'light' : 'dark'}>
               <ListView.Item>
                 <ListView.Item.Master>
                   Erv

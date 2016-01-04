@@ -33,7 +33,7 @@ class Item extends Component {
     super(properties, context, updater);
     this.state = {
       selected: selected,
-      parentRequestedTheme: context.requestedTheme
+      parentTheme: context.theme
     };
   }
 
@@ -50,7 +50,7 @@ class Item extends Component {
 
   componentWillUpdate(nextProps, nextState) {
     if (this.refs.content) {
-      this.refs.content.setState({ parentRequestedTheme: nextState.parentRequestedTheme });
+      this.refs.content.setState({ parentTheme: nextState.parentTheme });
     }
   }
 
@@ -67,7 +67,7 @@ class Item extends Component {
         <Content
           ref="content"
           selected={this.state.selected}
-          parentRequestedTheme={this.state.parentRequestedTheme}
+          parentTheme={this.state.parentTheme}
           style={style}
           {...props}
         >

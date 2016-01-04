@@ -66,7 +66,7 @@ class TextBoxWindows extends Component {
   };
 
   getPlaceholderStyle() {
-    return this.state.requestedTheme === 'dark' ? styles[':placeholderDarkTheme'] : styles[':placeholder'];
+    return this.state.theme === 'dark' ? styles[':placeholderDarkTheme'] : styles[':placeholder'];
   }
 
   render() {
@@ -78,7 +78,7 @@ class TextBoxWindows extends Component {
       display: this.state.display ? 'block' : 'none'
     };
 
-    if (this.state.requestedTheme === 'dark') {
+    if (this.state.theme === 'dark') {
       componentStyle = { ...componentStyle, ...styles.textBoxDarkTheme };
     }
 

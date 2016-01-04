@@ -62,11 +62,11 @@ const styles = {
 @DesktopComponent
 class Title extends Component {
   constructor(props, context, updater) {
-    const { parentRequestedTheme, selected, ...properties } = props;
+    const { parentTheme, selected, ...properties } = props;
     super(properties, context, updater);
     this.state = {
       selected: selected,
-      parentRequestedTheme: parentRequestedTheme
+      parentTheme: parentTheme
     };
   }
 
@@ -84,7 +84,7 @@ class Title extends Component {
     let fadeSpanStyle = { ...styles.title, ...style, ...styles.fadeSpanStyle };
     let spanStyle;
 
-    if (this.state.parentRequestedTheme === 'dark') {
+    if (this.state.parentTheme === 'dark') {
       componentStyle = { ...componentStyle, ...styles.titleDark };
       fadeSpanStyle = { ...fadeSpanStyle, ...styles.titleDark };
     }

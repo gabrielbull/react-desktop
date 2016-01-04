@@ -109,7 +109,7 @@ class CheckboxWindows extends Component {
       display: this.state.display ? 'inline-block' : 'none'
     };
 
-    if (this.state.requestedTheme === 'dark') {
+    if (this.state.theme === 'dark') {
       componentStyle = { ...componentStyle, ...styles.checkboxDark };
       labelStyle = { ...labelStyle, ...styles.labelDark };
     }
@@ -118,7 +118,7 @@ class CheckboxWindows extends Component {
       checkedStyle = styles.svg;
       componentStyle = {
         ...componentStyle,
-        ...(this.state.requestedTheme === 'dark' ? styles['checkboxDark:checked'] : styles['checkbox:checked'])
+        ...(this.state.theme === 'dark' ? styles['checkboxDark:checked'] : styles['checkbox:checked'])
       };
 
       switch (color) {
@@ -145,12 +145,12 @@ class CheckboxWindows extends Component {
     if (getState(this.state, null, ':active')) {
       componentStyle = {
         ...componentStyle,
-        ...(this.state.requestedTheme === 'dark' ? styles['checkboxDark:active'] : styles['checkbox:active'])
+        ...(this.state.theme === 'dark' ? styles['checkboxDark:active'] : styles['checkbox:active'])
       };
     } else if (getState(this.state, null, ':hover')) {
       componentStyle = {
         ...componentStyle,
-        ...(this.state.requestedTheme === 'dark' ? styles['checkboxDark:hover'] : styles['checkbox:hover'])
+        ...(this.state.theme === 'dark' ? styles['checkboxDark:hover'] : styles['checkbox:hover'])
       };
     }
 

@@ -71,7 +71,7 @@ class SplitView extends Component {
   componentDidUpdate() {
     for (var prop in this.refs) {
       if (this.refs.hasOwnProperty(prop)) {
-        this.refs[prop].setState({ parentRequestedTheme: this.state.requestedTheme });
+        this.refs[prop].setState({ parentTheme: this.state.theme });
       }
     }
   }

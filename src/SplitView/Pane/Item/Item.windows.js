@@ -89,7 +89,7 @@ class Item extends Component {
     let anchorStyle = { ...styles.anchor, ...style };
     let spanStyle = { ...styles.span, ...style };
 
-    if (this.state.requestedTheme === 'dark') {
+    if (this.state.theme === 'dark') {
       spanStyle = { ...spanStyle, ...styles.spanDark };
     }
 

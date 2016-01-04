@@ -53,11 +53,11 @@ class TitleBar extends Component {
     let componentStyle = { ...styles.titleBar, ...style };
     let titleStyle = styles.title;
 
-    if (!this.state.windowFocused && this.state.requestedTheme !== 'dark') {
+    if (!this.state.windowFocused && this.state.theme !== 'dark') {
       titleStyle = { ...titleStyle, ...styles.unfocusedTitle };
     }
 
-    if (this.state.requestedTheme === 'dark') {
+    if (this.state.theme === 'dark') {
       titleStyle = { ...titleStyle, ...styles.titleDark };
     }
 
@@ -67,7 +67,7 @@ class TitleBar extends Component {
       display: this.state.display ? 'flex' : 'none'
     };
 
-    if (this.context.requestedTheme === 'dark') {
+    if (this.context.theme === 'dark') {
       componentStyle = { ...componentStyle, ...styles.titleBarDark };
     }
 

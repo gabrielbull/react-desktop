@@ -77,7 +77,7 @@ class Window extends Component {
       display: this.state.display ? 'flex' : 'none'
     };
 
-    if (this.state.requestedTheme === 'dark') {
+    if (this.state.theme === 'dark') {
       componentStyle = { ...componentStyle, ...styles.windowDark };
     }
 
