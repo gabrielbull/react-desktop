@@ -17,15 +17,10 @@ class MasterDetails extends Component {
   details = [];
 
   static childContextTypes = {
-    id: PropTypes.string,
-    masterWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    detailsWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    push: PropTypes.bool,
     masterDetails: PropTypes.object
   };
 
   constructor(props, context, updater) {
-    console.log(context);
     super(props, context, updater);
     this.state = {
       selected: 0
@@ -35,16 +30,11 @@ class MasterDetails extends Component {
 
   getChildContext() {
     return {
-      id: this.context.id,
-      masterWidth: this.context.masterWidth,
-      detailsWidth: this.context.detailsWidth,
-      push: this.context.push,
       masterDetails: this
     };
   }
 
   select(index) {
-    console.log(index);
     this.setState({ selected: index });
     for (var prop in this.refs) {
       if (this.refs.hasOwnProperty(prop) && prop.indexOf('master') === 0) {

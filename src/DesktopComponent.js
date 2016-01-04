@@ -58,7 +58,7 @@ function ExtendComposedComponent(options, ComposedComponent) {
 
       this.context = this.context || {};
       this.state = this.state || {};
-    
+
       this.state.visible = this.state.visible || visible !== false;
       this.state.display = this.state.display || display !== false;
 
