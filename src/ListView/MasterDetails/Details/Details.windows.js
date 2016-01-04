@@ -10,7 +10,7 @@ const styles = {
 };
 
 @DesktopComponent
-class Content extends Component {
+class Details extends Component {
   static propTypes = {
     background: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
   };
@@ -42,4 +42,4 @@ class Content extends Component {
   }
 }
 
-export default Content;
+export default Details;

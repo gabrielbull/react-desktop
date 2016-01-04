@@ -42,7 +42,7 @@ const styles = {
 };
 
 @DesktopComponent
-class Content extends Component {
+class Master extends Component {
   static propTypes = {
     selected: PropTypes.bool
   };
@@ -50,11 +50,23 @@ class Content extends Component {
   static contextTypes = {
     id: PropTypes.string,
     masterWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    push: PropTypes.bool
+    push: PropTypes.bool,
+    masterDetails: PropTypes.object
+  };
+
+  constructor(props, context, updater) {
+    super(props, context, updater);
+    this.state = {
+      selected: props.selected || false
+    };
+  };
+
+  select = () => {
+    this.context.masterDetails.select(this.props.index);
   };
 
   render() {
-    const { children, style, selected, ...props } = this.props;
+    const { children, style, selected, item, ...props } = this.props;
     let componentStyle = { ...styles.master, ...style };
     let spanStyle = { ...styles.masterSpan };
 
@@ -70,21 +82,26 @@ class Content extends Component {
       }
     }
 
-    if (selected) {
+    if (this.state.selected) {
       const c = hexToRgb(convertColor(this.context.color));
       componentStyle = {
         ...componentStyle,
-        backgroundColor: `rgba(${c.r}, ${c.g}, ${c.b}, .5)`
+        backgroundColor: `rgba(${c.r}, ${c.g}, ${c.b}, .4)`,
+        ':hover': {
+          ...componentStyle[':hover'],
+          backgroundColor: `rgba(${c.r}, ${c.g}, ${c.b}, .6)`
+        },
+        ':active': {
+          ...componentStyle[':active'],
+          backgroundColor: `rgba(${c.r}, ${c.g}, ${c.b}, .7)`
+        }
       };
-      spanStyle = {
-        ...spanStyle,
-        color: 'white'
-      }
     }
 
     return (
       <div
         style={componentStyle}
+        onClick={this.select}
         {...props}
       >
         <span key="span" style={spanStyle}>
@@ -95,4 +112,4 @@ class Content extends Component {
   }
 }
 
-export default Content;
+export default Master;

@@ -2,7 +2,7 @@ import React, { Component, PropTypes, Children } from 'react';
 import DesktopComponent from '../DesktopComponent';
 import Item from './Item/Item.windows';
 import Master from './MasterDetails/Master/Master.windows';
-import MasterDetailsItem from './MasterDetails/MasterDetailsItem.windows';
+import MasterDetails from './MasterDetails/MasterDetails.windows';
 
 const styles = {
   display: 'flex',
@@ -62,7 +62,7 @@ class ListView extends Component {
     const { children, style, ...props } = this.props;
 
     if (this._masterChildrenItem || this.isMasterDetails()) {
-      return this._masterChildrenItem = this._masterChildrenItem || <MasterDetailsItem {...this.props}/>;
+      return this._masterChildrenItem = this._masterChildrenItem || <MasterDetails {...this.props}/>;
     }
 
     // todo standard list view

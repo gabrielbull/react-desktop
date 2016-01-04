@@ -43,7 +43,7 @@ export class Window2 extends Component {
         chrome
         requestedTheme={this.props.theme}
         storage={localStorage}
-        style={{width: '1000px', height: '600px'}}
+        style={{ width: '1000px', height: '600px' }}
       >
         <TitleBar title="My Windows Application" controls/>
 
@@ -89,11 +89,11 @@ export class Window2 extends Component {
               </TextBlock>
 
               <Form.Row>
-                <TextBox header="Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
+                <TextBox header="Label" defaultValue="" placeholder="TextField" style={{ width: '400px' }}/>
               </Form.Row>
 
               <Form.Row>
-                <TextBox header="Longer Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
+                <TextBox header="Longer Label" defaultValue="" placeholder="TextField" style={{ width: '400px' }}/>
               </Form.Row>
 
               <Form.Row>
@@ -123,7 +123,7 @@ export class Window2 extends Component {
             requestedTheme="light"
             background="#ffffff"
           >
-            <ListView detailsWidth="200">
+            <ListView detailsWidth="200" push>
               <ListView.Item>
                 <ListView.Item.Master>
                   Erv
@@ -135,6 +135,12 @@ export class Window2 extends Component {
                   Hello2
                 </ListView.Item.Master>
                 {this.renderDetails('Hello')}
+              </ListView.Item>
+              <ListView.Item>
+                <ListView.Item.Master>
+                  Hello3
+                </ListView.Item.Master>
+                {this.renderDetails('Hello2')}
               </ListView.Item>
             </ListView>
           </SplitView.Item>

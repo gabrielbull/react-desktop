@@ -19,6 +19,13 @@ class Item extends Component {
     selected: PropTypes.bool
   };
 
+  constructor(props, context, updater) {
+    super(props, context, updater);
+    this.state = {
+      selected: props.selected ? props.selected : false
+    };
+  }
+
   render() {
     const { children, style, ...props } = this.props;
 

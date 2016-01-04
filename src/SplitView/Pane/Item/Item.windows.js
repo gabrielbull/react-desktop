@@ -10,9 +10,17 @@ const styles = {
     height: '44px',
 
     ':hover': {
+      backgroundColor: 'rgba(0, 0, 0, .1)',
+    },
+    ':active': {
+      backgroundColor: 'rgba(0, 0, 0, .2)',
+    }
+  },
+
+  anchorDark: {
+    ':hover': {
       backgroundColor: 'rgba(255, 255, 255, .1)',
     },
-
     ':active': {
       backgroundColor: 'rgba(255, 255, 255, .2)',
     }
