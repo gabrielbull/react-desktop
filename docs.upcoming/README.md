@@ -9,23 +9,29 @@ can be used in any JavaScript powered project!
 
 1. Getting Started
   * [Installation](/docs/getting-started/installation.md)
-2. Windows 10
+2. OS X El Capitan
+  * [Box](/docs/os-x/box.md) 
+  * [Form](/docs/os-x/form.md)
+  * [Indeterminate Circular Progress Indicator](/docs/os-x/indeterminate-circular-progress-indicator.md)
+  * [Label](/docs/os-x/label.md)
+  * [Push Button](/docs/os-x/push-button.md)
+  * [Segmented Control](/docs/os-x/segmented-control.md)
+  * [Text Field](/docs/os-x/text-field.md)
+  * [Title Bar](/docs/os-x/title-bar.md)
+  * [Toolbar](/docs/os-x/toolbar.md)
+  * [Window](/docs/os-x/window.md)
+3. Windows 10
   * [Button](/docs/windows/button.md)
-  * [Checkbox](/docs/windows/checkbox.md)
-  * [Master/Details View](/docs/windows/master-details-view.md)
-    * [Item](/docs/windows/master-details-view/item.md)
-    * [Master](/docs/windows/master-details-view/master.md)
-    * [Details](/docs/windows/master-details-view/details.md)
-  * [Progress Circle](/docs/windows/progress-circle.md)
+  * [List View](/docs/windows/list-view.md)
+    * [Master/Details](/docs/windows/list-view/master-details.md)
+  * [Progress Ring](/docs/windows/progress-ring.md)
   * [Split View](/docs/windows/split-view.md)
-    * [Split View Item](/docs/windows/split-view/item.md)
-  * [Text](/docs/windows/text.md)
-  * [Text Input](/docs/windows/text-input.md)
+    * [Split View Item](/docs/windows/split-view/split-view-item.md)
+  * [Text Block](/docs/windows/text-block.md)
+  * [Text Box](/docs/windows/text-box.md)
   * [Title Bar](/docs/windows/title-bar.md)
   * [View](/docs/windows/view.md)
   * [Window](/docs/windows/window.md)
-3. Forms
-  * [Forms](/docs/forms/forms.md)
 4. Advanced Usage
  * [Electron.js](/docs/advanced-usage/electron-js.md)
  * [node-webkit](/docs/advanced-usage/node-webkit.md)
