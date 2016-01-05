@@ -3,16 +3,26 @@ import DesktopComponent from '../../desktop-component';
 import Master from './master/master';
 import Details from './details/details';
 import Pane from './pane';
+import Item from './item/item';
 
 const styles = {
-  display: 'flex',
-  flexWrap: 'nowrap',
-  position: 'relative',
-  flex: '1'
+  container: {
+    display: 'flex',
+    flexWrap: 'nowrap',
+    position: 'relative',
+    flex: '1',
+    background: 'white'
+  },
+
+  containerDark: {
+    background: 'black'
+  }
 };
 
 @DesktopComponent
 class MasterDetails extends Component {
+  static Item = Item;
+
   masters = [];
   details = [];
 
@@ -63,10 +73,15 @@ class MasterDetails extends Component {
 
   render() {
     const { children, style, ...props } = this.props;
+    let componentStyle = { ...styles.container, ...style };
+
+    if (this.state.theme === 'dark') {
+      componentStyle = { ...componentStyle, ...styles.containerDark, ...style }
+    }
 
     return (
       <div
-        style={{ ...styles, ...style }}
+        style={componentStyle}
         {...props}
       >
         <Pane>

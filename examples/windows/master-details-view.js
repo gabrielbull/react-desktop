@@ -1,44 +1,27 @@
 import React, { Component, PropTypes } from 'react';
-/*import {
-  TitleBar,
-  Button,
-  TextBox,
-  TextBlock,
-  ProgressRing,
-  Form,
-  Window,
-  Checkbox,
-  SplitView,
-  View,
-  ListView
-} from '../../windows';*/
+import { MasterDetailsView, Text } from 'react-desktop/windows';
 
-class MasterDetailsView extends Component {
+export default class extends Component {
   render() {
-    /*return (
-      <MasterDetails detailsWidth="200" push theme={this.props.theme === 'dark' ? 'light' : 'dark'}>
-        <MasterDetails.Item>
-          <MasterDetails.Item.Master>
-            Erv
-          </MasterDetails.Item.Master>
-          {this.renderDetails('Hi')}
-        </MasterDetails.Item>
-        <MasterDetails.Item>
-          <MasterDetails.Item.Master>
-            Hello2
-          </MasterDetails.Item.Master>
-          {this.renderDetails('Hello')}
-        </MasterDetails.Item>
-        <MasterDetails.Item>
-          <MasterDetails.Item.Master>
-            Hello3
-          </MasterDetails.Item.Master>
-          {this.renderDetails('Hello2')}
-        </MasterDetails.Item>
-      </MasterDetails>
-    );*/
-    return <div>hi</div>
+    return (
+      <MasterDetailsView theme="light">
+        {this.renderItem('Item 1', 'Content 1')}
+        {this.renderItem('Item 2', 'Content 2')}
+        {this.renderItem('Item 3', 'Content 3')}
+      </MasterDetailsView>
+    );
+  }
+
+  renderItem(master, details) {
+    return (
+      <MasterDetailsView.Item>
+        <MasterDetailsView.Item.Master width="600" push>
+          {master}
+        </MasterDetailsView.Item.Master>
+        <MasterDetailsView.Item.Details background>
+          <Text padding="20" color="white">{details}</Text>
+        </MasterDetailsView.Item.Details>
+      </MasterDetailsView.Item>
+    );
   }
 }
-
-export default MasterDetailsView;

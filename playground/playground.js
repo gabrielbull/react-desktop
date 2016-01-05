@@ -12,10 +12,11 @@ const styles = {
     width: '200px'
   },
   example: {
-    flex: '1',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    width: '1000px',
+    margin: '0 auto'
   }
 };
 

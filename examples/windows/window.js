@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Window } from 'react-desktop/windows';
+import { Window, TitleBar } from 'react-desktop/windows';
 
 export default class extends Component {
   render() {
@@ -9,7 +9,9 @@ export default class extends Component {
         theme="dark"
         chrome
         style={{ width: '1000px', height: '600px' }}
-      />
+      >
+        <TitleBar title="My Windows Application" controls/>
+      </Window>
     );
   }
 }

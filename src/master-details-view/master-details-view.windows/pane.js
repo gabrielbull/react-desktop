@@ -26,7 +26,7 @@ class Pane extends Component {
   render() {
     const { children, style, selected, ...props } = this.props;
 
-    let componentStyle = { ...styles, ...style };
+    let componentStyle = { ...styles.pane, ...style };
 
     if (this.context.masterWidth) {
       componentStyle.width = parseDimension(this.context.masterWidth);

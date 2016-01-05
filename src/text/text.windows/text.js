@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent from '../../desktop-component';
+import DesktopComponent, { Margin, Padding, HorizontalAlignment, VerticalAlignment, Alignment, Hidden } from '../../desktop-component';
 
 var styles = {
   textBlock: {
@@ -17,7 +17,7 @@ var styles = {
   }
 };
 
-@DesktopComponent
+@DesktopComponent(Margin, Padding, HorizontalAlignment, VerticalAlignment, Alignment, Hidden)
 class TextBlockWindows extends Component {
   static propTypes = {
     color: PropTypes.string,

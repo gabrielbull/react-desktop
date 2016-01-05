@@ -3,10 +3,12 @@ import DesktopComponent from '../../../desktop-component';
 import { convertColor } from '../../../color';
 
 const styles = {
-  display: 'flex',
-  flexWrap: 'nowrap',
-  position: 'relative',
-  flex: '1'
+  details: {
+    display: 'flex',
+    flexWrap: 'nowrap',
+    position: 'relative',
+    flex: '1'
+  }
 };
 
 @DesktopComponent
@@ -23,7 +25,7 @@ class Details extends Component {
 
   render() {
     const { children, style, background, ...props } = this.props;
-    let componentStyle = { ...styles, ...style };
+    let componentStyle = { ...styles.details, ...style };
 
     if (background === true) {
       componentStyle.backgroundColor = convertColor(this.context.color);
