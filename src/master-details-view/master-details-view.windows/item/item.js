@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent from '../../DesktopComponent';
-import Master from '../MasterDetails/Master/Master.windows';
-import Details from '../MasterDetails/Details/Details.windows';
+import DesktopComponent from '../../../desktop-component';
+import Master from '../master/master';
+import Details from '../details/details';
 
 const styles = {
   display: 'flex',

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent  from '../../../DesktopComponent';
-import Icon from './Icon.windows';
-import { transparentize } from '../../../Color';
+import DesktopComponent from '../../../../desktop-component';
+import Icon from './icon';
+import { transparentize } from '../../../../color';
 
 const styles = {
   anchor: {

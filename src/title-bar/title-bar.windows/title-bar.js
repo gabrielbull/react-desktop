@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { WindowFocus }  from '../DesktopComponent';
-import Controls from './Controls.windows/Controls';
+import DesktopComponent, { WindowFocus } from '../../desktop-component';
+import Controls from './controls/controls';
 
 var styles = {
   titleBar: {

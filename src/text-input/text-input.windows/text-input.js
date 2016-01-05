@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import TextBlockWindows from '../TextBlock/TextBlock.windows';
-import DesktopComponent, { PlaceholderStyle } from '../DesktopComponent';
+import Text from '../../text/text.windows/text';
+import DesktopComponent, { PlaceholderStyle } from '../../desktop-component';
 
 var styles = {
   textBox: {
@@ -96,9 +96,9 @@ class TextBoxWindows extends Component {
     if (header) {
       return (
         <div>
-          <TextBlockWindows style={{ marginBottom: '5px' }}>
+          <Text style={{ marginBottom: '5px' }}>
             {header}
-          </TextBlockWindows>
+          </Text>
           {input}
         </div>
       );

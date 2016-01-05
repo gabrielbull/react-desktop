@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent from '../../../DesktopComponent';
-import { parseDimension } from '../../../Dimension';
-import { convertColor, hexToRgb } from '../../../Color';
+import DesktopComponent from '../../../desktop-component';
+import { parseDimension } from '../../../dimension';
+import { convertColor, hexToRgb } from '../../../color';
 
 const styles = {
   master: {

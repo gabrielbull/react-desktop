@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import DesktopComponent  from '../../../DesktopComponent';
+import DesktopComponent from '../../../../desktop-component';
 import { getState } from 'radium';
-import { transparentize } from '../../../Color';
+import { transparentize } from '../../../../color';
 
 const styles = {
   svg: {

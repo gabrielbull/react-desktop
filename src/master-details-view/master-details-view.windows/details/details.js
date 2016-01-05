@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent from '../../../DesktopComponent';
-import { convertColor } from '../../../Color';
+import DesktopComponent from '../../../desktop-component';
+import { convertColor } from '../../../color';
 
 const styles = {
   display: 'flex',

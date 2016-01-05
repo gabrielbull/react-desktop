@@ -1,6 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import WindowState from '../WindowState';
-import { mergeStyles } from '../Styling';
 import Controls from './Controls.osx/Controls';
 
 var styles = {
@@ -51,7 +49,6 @@ var styles = {
   }
 };
 
-@WindowState
 class TitleBarOSX extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),

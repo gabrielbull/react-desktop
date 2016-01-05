@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
-import DesktopComponent from '../DesktopComponent';
-import { startAnimation } from './Animation';
+import DesktopComponent from '../../desktop-component';
+import { startAnimation } from './progress-circle-animation';
 
 var styles = {
   progress: {

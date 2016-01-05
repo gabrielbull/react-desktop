@@ -1,5 +1,4 @@
 import React, { Component, PropTypes, Children } from 'react';
-import { mergeStyles } from '../Styling';
 import TitleBar from '../TitleBar';
 import TitleBarOSX from '../TitleBar/TitleBar.osx';
 

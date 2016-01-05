@@ -1,5 +1,5 @@
 import React, { Component, PropTypes, Children } from 'react';
-import DesktopComponent from '../DesktopComponent';
+import DesktopComponent from '../../desktop-component';
 import Item from './Item/Item.windows';
 import Master from './MasterDetails/Master/Master.windows';
 import MasterDetails from './MasterDetails/MasterDetails.windows';

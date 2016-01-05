@@ -1,5 +1,4 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
-import { mergeStyles } from '../Styling';
 import Item from './Item.osx/Item.osx';
 import Tabs from './Tabs.osx/Tabs.osx';
 

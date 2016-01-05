@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { mergeStyles } from '../Styling';
 import SegmentedControl from '../SegmentedControl';
 
 var styles = {

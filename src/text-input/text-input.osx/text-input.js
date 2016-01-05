@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import Styling, { mergeStyles, applyStyle } from '../Styling';
 
 var styles = {
   textField: {
@@ -29,7 +28,6 @@ var styles = {
   }
 };
 
-@Styling
 class TextFieldOSX extends Component {
   static propTypes = {
     style: PropTypes.object,

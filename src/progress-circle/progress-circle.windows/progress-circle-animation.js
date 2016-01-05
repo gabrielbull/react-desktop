@@ -1,4 +1,4 @@
-import BezierEasing from '../Animation/BezierEasing';
+import BezierEasing from '../../animation/bezier-easing';
 
 let requestAnimationFrame;
 if (typeof window !== 'undefined') {

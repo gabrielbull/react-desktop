@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import DesktopComponent, { WindowFocus } from '../../DesktopComponent';
-import { isDarkColor } from '../../Color';
+import DesktopComponent, { WindowFocus } from '../../../desktop-component';
+import { isDarkColor } from '../../../color';
 
 var styles = {
   button: {

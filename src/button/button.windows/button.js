@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
-import DesktopComponent from '../DesktopComponent';
-import { darkenColor } from '../Color';
+import DesktopComponent from '../../desktop-component';
+import { darkenColor } from '../../color';
 
 var styles = {
   button: {

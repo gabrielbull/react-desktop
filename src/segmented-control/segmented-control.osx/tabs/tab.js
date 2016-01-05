@@ -1,6 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import Styling, { mergeStyles, applyStyle } from '../../Styling';
-import WindowState from '../../WindowState';
 
 var styles = {
   tab: {
@@ -82,8 +80,6 @@ var styles = {
   }
 };
 
-@WindowState
-@Styling
 class Tab extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,

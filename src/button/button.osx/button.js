@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
-import Styling, { mergeStyles, applyStyle } from '../Styling';
-import WindowState from '../WindowState';
 
 var styles = {
   button: {
@@ -54,8 +52,6 @@ var styles = {
   }
 };
 
-@WindowState
-@Styling
 class PushButton extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]).isRequired,

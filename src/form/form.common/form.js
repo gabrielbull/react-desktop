@@ -1,12 +1,11 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import { findDOMNode } from 'react-dom';
-import DesktopComponent from '../DesktopComponent';
-import Desktop from '../Desktop';
-import Row from './Row.common/Row.common';
-import RowWrapper from './Row.common/RowWrapper.common';
-import Label from '../Label';
-import LabelOSX from '../Label/Label.osx';
-import LabelWindows from '../TextBlock/TextBlock.windows';
+import DesktopComponent from '../../desktop-component';
+import { get as getOs } from '../../os';
+import Row from './row/row';
+import RowWrapper from './row/row-wrapper';
+import LabelOSX from '../../label/label.osx/label';
+import LabelWindows from '../../label/label.windows/label';
 
 var styles = {
   table: {
@@ -39,14 +38,14 @@ class Form extends Component {
 
   registerRow(row) {
     this.rows = [...this.rows, row];
-    if (Desktop.os === 'win') {
+    if (getOs() === 'win') {
       this.applyWithToRows();
     }
   }
 
   registerLabel(label) {
     this.labels = [...this.labels, label];
-    if (Desktop.os === 'osx') {
+    if (getOs() === 'osx') {
       this.applyWithToLabels();
       this.applyWithToRows();
     }
@@ -113,7 +112,7 @@ class Form extends Component {
       } else if (element.type === Label || element.type === LabelOSX || element.type === LabelWindows) {
         const ref = `label-${index}`;
         return (
-          <RowWrapper ref={ref} style={Desktop.os === 'win' ? styles.labelRowWin : styles.labelRowOsx}>
+          <RowWrapper ref={ref} style={getOs() === 'win' ? styles.labelRowWin : styles.labelRowOsx}>
             {cloneElement(element, { form: this })}
           </RowWrapper>
         );

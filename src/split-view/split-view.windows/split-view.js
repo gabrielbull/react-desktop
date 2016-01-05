@@ -1,8 +1,8 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
-import DesktopComponent  from '../DesktopComponent';
-import Pane from './Pane/Pane.windows';
-import Item from './Item/Item.windows';
-import Content from './Content/Content.windows';
+import DesktopComponent from '../../desktop-component';
+import Pane from './pane/pane';
+import Item from './item/item';
+import Content from './content/content';
 
 const styles = {
   display: 'flex',

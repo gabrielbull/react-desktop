@@ -5,7 +5,7 @@ import DesktopComponent, {
   Padding,
   Alignment,
   Hidden
-} from '../DesktopComponent';
+} from '../../desktop-component';
 
 var styles = {
   userSelect: 'none',

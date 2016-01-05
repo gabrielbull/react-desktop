@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent from '../DesktopComponent';
+import DesktopComponent from '../../desktop-component';
 
 var styles = {
   textBlock: {

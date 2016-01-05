@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent   from '../../DesktopComponent';
-import Close from './Close';
-import Minimize from './Minimize';
-import Maximize from './Maximize';
+import DesktopComponent  from '../../../desktop-component';
+import Close from './close';
+import Minimize from './minimize';
+import Maximize from './maximize';
 
 var styles = {
   controls: {

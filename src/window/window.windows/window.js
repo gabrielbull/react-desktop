@@ -1,7 +1,7 @@
 import React, { Component, PropTypes, Children } from 'react';
-import DesktopComponent, { WindowFocus }  from '../DesktopComponent';
-import TitleBar from '../TitleBar/TitleBar.windows';
-import View from '../View/View.windows';
+import DesktopComponent, { WindowFocus } from '../../desktop-component';
+import TitleBar from '../../title-bar/title-bar.windows/title-bar';
+import View from '../../view/view.windows/view';
 
 var styles = {
   window: {

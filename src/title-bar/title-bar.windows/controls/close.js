@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getState } from 'radium';
-import DesktopComponent, { WindowFocus } from '../../DesktopComponent';
-import { isDarkColor } from '../../Color';
+import DesktopComponent, { WindowFocus } from '../../../desktop-component';
+import { isDarkColor } from '../../../color';
 
 const styles = {
   button: {

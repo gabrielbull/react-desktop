@@ -1,7 +1,7 @@
 import React, { Component, PropTypes, Children } from 'react';
-import DesktopComponent  from '../../DesktopComponent';
-import Item from './Item/Item.windows';
-import Button from './Button/Button.windows';
+import DesktopComponent from '../../../desktop-component';
+import Item from './item/item';
+import Button from './button/button';
 
 const styles = {
   pane: {

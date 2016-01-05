@@ -1,6 +1,6 @@
 import { Component, cloneElement, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
-import DesktopComponent  from '../../../DesktopComponent';
+import DesktopComponent from '../../../../desktop-component';
 
 const styles = {
   svg: {
