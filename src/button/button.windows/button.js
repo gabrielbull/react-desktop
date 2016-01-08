@@ -20,6 +20,7 @@ var styles = {
     fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
     fontSize: '15px',
     color: '#000000',
+    alignSelf: 'flex-start',
 
     ':hover': {
       color: '#000000',
@@ -56,6 +57,8 @@ var styles = {
 
 @DesktopComponent
 class Button extends Component {
+  isbutton = true;
+
   static propTypes = {
     color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     push: PropTypes.bool,

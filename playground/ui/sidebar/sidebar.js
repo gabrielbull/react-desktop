@@ -16,30 +16,19 @@ class Sidebar extends Component {
     super(...args);
     this.state = {
       example: null,
-      color: localStorage['color'] ? localStorage['color'] : '#cc7f29',
+      color: this.props.color,
       displayColorPicker: false,
-      os: localStorage['os'] ? localStorage['os'] : 'osx',
       theme: localStorage['theme'] ? localStorage['theme'] : 'light'
     };
   }
 
   handleClick = () => {
-    this.setState({ displayColorPicker: !this.state.displayColorPicker });
+    this.setState({ displayColorPicker: true });
   };
 
   changeColor = (color) => {
-    this.setState({ color: `#${color.hex}`, displayColorPicker: false });
-    if (this.window2.refs.window) {
-      this.window2.refs.window.setState({
-        color: this.state.color
-      });
-    }
-    localStorage['color'] = this.state.color;
-  };
-
-  changeOs = (event) => {
-    this.setState({ os: event.target.value });
-    localStorage['os'] = event.target.value;
+    this.setState({ color: `#${color.hex}` });
+    this.props.onColorChange(`#${color.hex}`);
   };
 
   toggleTheme = () => {
@@ -74,11 +63,6 @@ class Sidebar extends Component {
           Playground
         </h1>
 
-        <select value={this.state.os} onChange={this.changeOs.bind(this)} style={{ margin: '10px' }}>
-          <option value="osx">OS X</option>
-          <option value="win">Windows</option>
-        </select>
-
         <br/>
 
         <label style={{ margin: '10px', fontFamily: 'sans-serif', color: 'white', fontSize: '11px', clear: 'both' }}>
@@ -103,6 +87,7 @@ class Sidebar extends Component {
             Color
           </span>
           <ColorPicker
+            positionCSS={{ position: 'absolute',top: '100px', left: '20px' }}
             display={this.state.displayColorPicker}
             color={this.state.color}
             onChangeComplete={this.changeColor}

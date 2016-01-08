@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Window, TitleBar } from 'react-desktop/windows';
+import { Window, TitleBar, View, Button } from 'react-desktop/windows';
 
 export default class extends Component {
   render() {
     return (
       <Window
-        color="#cc7f29"
-        theme="dark"
+        color={this.props.color}
+        theme={this.props.theme}
         chrome
         style={{ width: '1000px', height: '600px' }}
       >

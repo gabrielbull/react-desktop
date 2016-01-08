@@ -52,9 +52,6 @@ function ExtendComposedComponent(options, ComposedComponent) {
     constructor(props, context, updater) {
       const { visible, display, theme, storage, color, background, ...properties } = props;
       super(props, context, updater);
-      this._theme = theme;
-      this._background = background;
-      this._color = color;
 
       this.context = this.context || {};
       this.state = this.state || {};
@@ -134,22 +131,6 @@ function ExtendComposedComponent(options, ComposedComponent) {
       return childContext;
     }
 
-    setState(state) {
-      if (state.theme) {
-        this._updateTheme = true;
-        this.context.theme = state.theme;
-      }
-      if (state.color) {
-        this._updateColor = true;
-        this.context.color = state.color;
-      }
-      if (state.background) {
-        this._updateBackground = true;
-        this.context.background = state.background;
-      }
-      super.setState(state);
-    }
-
     componentDidMount() {
       if (super.componentDidMount) {
         super.componentDidMount();
@@ -162,9 +143,9 @@ function ExtendComposedComponent(options, ComposedComponent) {
       }
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps, prevState, prevContext) {
       if (super.componentDidUpdate) {
-        super.componentDidUpdate();
+        super.componentDidUpdate(prevProps, prevState, prevContext);
       }
 
       for (const component of this._components) {
@@ -186,12 +167,28 @@ function ExtendComposedComponent(options, ComposedComponent) {
       }
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
       if (super.shouldComponentUpdate) {
-        return super.shouldComponentUpdate();
+        return super.shouldComponentUpdate(nextProps, nextState, nextContext);
       }
 
-      for (var prop in nextState) {
+      for (let prop in nextContext) {
+        if (nextContext.hasOwnProperty(prop)) {
+          if (typeof this.context[prop] === 'undefined' || nextContext[prop] !== this.context[prop]) {
+            return true;
+          }
+        }
+      }
+
+      for (let prop in nextProps) {
+        if (nextProps.hasOwnProperty(prop)) {
+          if (typeof this.props[prop] === 'undefined' || nextProps[prop] !== this.props[prop]) {
+            return true;
+          }
+        }
+      }
+
+      for (let prop in nextState) {
         if (nextState.hasOwnProperty(prop)) {
           if (typeof this.state[prop] === 'undefined' || nextState[prop] !== this.state[prop]) {
             return true;
@@ -202,22 +199,44 @@ function ExtendComposedComponent(options, ComposedComponent) {
       return false;
     }
 
+    componentWillReceiveProps(nextProps, nextContext) {
+      if (super.componentWillReceiveProps) {
+        return super.componentWillReceiveProps(nextProps, nextContext);
+      }
+
+      const stateProps = ['visible', 'display', 'theme', 'color', 'background'];
+      const stateContext = ['theme', 'color', 'background'];
+
+      let changeState = false;
+      let state = {};
+      for (let prop in nextProps) {
+        if (nextProps.hasOwnProperty(prop) && stateProps.indexOf(prop) !== -1) {
+          let value = nextProps[prop];
+          if (prop === 'color' && typeof value === 'boolean') {
+            continue;
+          }
+          if (nextProps[prop] !== undefined && value !== this.state[prop]) {
+            state[prop] = value;
+            changeState = true;
+          }
+        }
+      }
+
+      for (let prop in nextContext) {
+        if (nextContext.hasOwnProperty(prop) && stateContext.indexOf(prop) !== -1) {
+          if (nextContext[prop] !== undefined && nextContext[prop] !== this.state[prop]) {
+            state[prop] = nextContext[prop];
+            changeState = true;
+          }
+        }
+      }
+
+      if (changeState) {
+        this.setState(state);
+      }
+    }
+
     render(...params) {
-      if (!this._updateTheme && !this._theme) {
-        this.state.theme = this.context.theme;
-      }
-      this._updateTheme = null;
-
-      if (!this._updateColor && !this._color) {
-        this.state.color = this.context.color;
-      }
-      this._updateColor = null;
-
-      if (!this._updateBackground && !this._background) {
-        this.state.background = this.context.background;
-      }
-      this._updateBackground = null;
-
       let rendered = super.render(params);
 
       if (super.getPlaceholderStyle) {

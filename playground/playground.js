@@ -28,6 +28,7 @@ class Playground extends Component {
   constructor() {
     super();
     this.state = {
+      color: '#cc7f29',
       example: null
     };
     this.loadState(false);
@@ -37,7 +38,7 @@ class Playground extends Component {
     try {
       const state = JSON.parse(localStorage['playground']);
       if (mounted) this.setState(state);
-      else this.state = state;
+      else this.state = { ...this.state, ...state };
     } catch (err) {}
   }
 
@@ -59,16 +60,21 @@ class Playground extends Component {
     this.setState({ example: example });
   };
 
+  changeColor = (color) => {
+    this.setState({ color: color });
+    this.persistState();
+  };
+
   render() {
     let example;
     if (this.state.example) {
       const Example = examples['/examples/' + this.state.example];
-      example = <Example/>;
+      example = <Example color={this.state.color}/>;
     }
 
     return (
       <div style={styles.container}>
-        <Sidebar style={styles.sidebar}/>
+        <Sidebar onColorChange={this.changeColor} color={this.state.color} style={styles.sidebar}/>
         <div style={styles.example}>
           {example}
         </div>
