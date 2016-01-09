@@ -1,10 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { MasterDetailsView, Text } from 'react-desktop/windows';
 
 export default class extends Component {
   render() {
     return (
-      <MasterDetailsView theme="light">
+      <MasterDetailsView color={this.props.color} theme={this.props.theme}>
         {this.renderItem('Item 1', 'Content 1')}
         {this.renderItem('Item 2', 'Content 2')}
         {this.renderItem('Item 3', 'Content 3')}
@@ -15,7 +15,7 @@ export default class extends Component {
   renderItem(master, details) {
     return (
       <MasterDetailsView.Item>
-        <MasterDetailsView.Item.Master width="600" push>
+        <MasterDetailsView.Item.Master push>
           {master}
         </MasterDetailsView.Item.Master>
         <MasterDetailsView.Item.Details background>

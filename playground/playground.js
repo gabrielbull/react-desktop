@@ -29,6 +29,7 @@ class Playground extends Component {
     super();
     this.state = {
       color: '#cc7f29',
+      theme: 'light',
       example: null
     };
     this.loadState(false);
@@ -65,16 +66,27 @@ class Playground extends Component {
     this.persistState();
   };
 
+  changeTheme = (theme) => {
+    this.setState({ theme: theme });
+    this.persistState();
+  };
+
   render() {
     let example;
     if (this.state.example) {
       const Example = examples['/examples/' + this.state.example];
-      example = <Example color={this.state.color}/>;
+      example = <Example color={this.state.color} theme={this.state.theme}/>;
     }
 
     return (
       <div style={styles.container}>
-        <Sidebar onColorChange={this.changeColor} color={this.state.color} style={styles.sidebar}/>
+        <Sidebar
+          onColorChange={this.changeColor}
+          color={this.state.color}
+          theme={this.state.theme}
+          onThemeChange={this.changeTheme}
+          style={styles.sidebar}
+        />
         <div style={styles.example}>
           {example}
         </div>

@@ -18,6 +18,15 @@ const styles = {
     }
   },
 
+  masterDark: {
+    ':hover': {
+      backgroundColor: 'rgba(255, 255, 255, .1)'
+    },
+    ':active': {
+      backgroundColor: 'rgba(255, 255, 255, .2)'
+    }
+  },
+
   masterSpan: {
     padding: '0 12px',
     lineHeight: '50px',
@@ -33,6 +42,10 @@ const styles = {
     }
   },
 
+  masterSpanDark: {
+    color: 'white'
+  },
+
   masterSpanWithPush: {
     ':active': {
       transform: 'scale(0.97)',
@@ -44,12 +57,14 @@ const styles = {
 @DesktopComponent
 class Master extends Component {
   static propTypes = {
-    selected: PropTypes.bool
+    selected: PropTypes.bool,
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    push: PropTypes.bool
   };
 
   static contextTypes = {
     id: PropTypes.string,
-    masterWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     push: PropTypes.bool,
     masterDetails: PropTypes.object
   };
@@ -70,12 +85,18 @@ class Master extends Component {
     let componentStyle = { ...styles.master, ...style };
     let spanStyle = { ...styles.masterSpan };
 
-    if (this.context.masterWidth) {
-      componentStyle.width = parseDimension(this.context.masterWidth);
-      spanStyle.width = parseDimension(this.context.masterWidth);
+    if (this.state.theme === 'dark') {
+      componentStyle = { ...componentStyle, ...styles.masterDark };
+      spanStyle = { ...spanStyle, ...styles.masterSpanDark };
     }
 
-    if (this.context.push) {
+    if (this.props.width) {
+      componentStyle.width = parseDimension(this.props.width);
+      spanStyle.width = parseDimension(this.props.width);
+      console.log(componentStyle);
+    }
+
+    if (this.props.push) {
       spanStyle[':active'] = {
         ...spanStyle[':active'],
         ...styles.masterSpanWithPush[':active']

@@ -7,7 +7,9 @@ import CommonStylingComponent from 'desktop-component/common-styling';
 
 export const WindowFocus = 'WindowFocus';
 export const PlaceholderStyle = 'PlaceholderStyle';
-export const Dimension = 'Dimension';
+export const Dimension = function (defaultWidth, defaultHeight) {
+  return ['Dimension', { defaultWidth: defaultWidth, defaultHeight: defaultHeight }];
+};
 export const Margin = 'Margin';
 export const Padding = 'Padding';
 export const HorizontalAlignment = 'HorizontalAlignment';
@@ -48,6 +50,7 @@ function ExtendComposedComponent(options, ComposedComponent) {
     };
 
     _components = [];
+    _params = {};
 
     constructor(props, context, updater) {
       const { visible, display, theme, storage, color, background, ...properties } = props;
@@ -79,36 +82,50 @@ function ExtendComposedComponent(options, ComposedComponent) {
       }
       this.state.background = background ? convertColor(background) : this.context.background;
 
+      this.initOptions();
       this.init();
     }
 
+    initOptions() {
+      options.forEach((item, key) => {
+        if (typeof item === 'object' && Object.prototype.toString.call(item) === '[object Array]') {
+          options[key] = item[0];
+          this._params[item[0]] = item[1];
+        } else if (typeof item === 'function') {
+          const option = item();
+          options[key] = option[0];
+          this._params[option[0]] = option[1];
+        }
+      });
+    }
+
     init() {
-      if (options.indexOf(WindowFocus) !== -1) {
+      if (options.indexOf('WindowFocus') !== -1) {
         this._components = [...this._components, new WindowFocusComponent(this)];
       }
-      if (options.indexOf(PlaceholderStyle) !== -1) {
+      if (options.indexOf('PlaceholderStyle') !== -1) {
         this._components = [...this._components, new PlaceholderStyleComponent(this)];
       }
       if (
-        options.indexOf(Dimension) !== -1 ||
-        options.indexOf(Margin) !== -1 ||
-        options.indexOf(Padding) !== -1 ||
-        options.indexOf(HorizontalAlignment) !== -1 ||
-        options.indexOf(VerticalAlignment) !== -1 ||
-        options.indexOf(Alignment) !== -1 ||
-        options.indexOf(Hidden) !== -1
+        options.indexOf('Dimension') !== -1 ||
+        options.indexOf('Margin') !== -1 ||
+        options.indexOf('Padding') !== -1 ||
+        options.indexOf('HorizontalAlignment') !== -1 ||
+        options.indexOf('VerticalAlignment') !== -1 ||
+        options.indexOf('Alignment') !== -1 ||
+        options.indexOf('Hidden') !== -1
       ) {
         let componentOptions = {
-          dimension: options.indexOf(Dimension) !== -1,
-          margin: options.indexOf(Margin) !== -1,
-          padding: options.indexOf(Padding) !== -1,
-          horizontalAlignment: options.indexOf(HorizontalAlignment) !== -1,
-          verticalAlignment: options.indexOf(VerticalAlignment) !== -1,
-          alignment: options.indexOf(Alignment) !== -1,
-          hidden: options.indexOf(Hidden) !== -1
+          dimension: options.indexOf('Dimension') !== -1,
+          margin: options.indexOf('Margin') !== -1,
+          padding: options.indexOf('Padding') !== -1,
+          horizontalAlignment: options.indexOf('HorizontalAlignment') !== -1,
+          verticalAlignment: options.indexOf('VerticalAlignment') !== -1,
+          alignment: options.indexOf('Alignment') !== -1,
+          hidden: options.indexOf('Hidden') !== -1
         };
         Component.propTypes = { ...Component.propTypes, ...CommonStylingComponent.propTypes(componentOptions) };
-        this._components = [...this._components, new CommonStylingComponent(this, componentOptions)];
+        this._components = [...this._components, new CommonStylingComponent(this, componentOptions, this._params)];
       }
     }
 

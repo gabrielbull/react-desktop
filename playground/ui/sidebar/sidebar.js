@@ -18,7 +18,7 @@ class Sidebar extends Component {
       example: null,
       color: this.props.color,
       displayColorPicker: false,
-      theme: localStorage['theme'] ? localStorage['theme'] : 'light'
+      theme: this.props.theme
     };
   }
 
@@ -31,14 +31,9 @@ class Sidebar extends Component {
     this.props.onColorChange(`#${color.hex}`);
   };
 
-  toggleTheme = () => {
+  changeTheme = () => {
     this.state.theme = this.state.theme === 'light' ? 'dark' : 'light';
-    if (this.window2.refs.window) {
-      this.window2.refs.window.setState({
-        requestedTheme: this.state.theme
-      });
-    }
-    localStorage['theme'] = this.state.theme;
+    this.props.onThemeChange(this.state.theme);
   };
 
   render() {
@@ -66,7 +61,7 @@ class Sidebar extends Component {
         <br/>
 
         <label style={{ margin: '10px', fontFamily: 'sans-serif', color: 'white', fontSize: '11px', clear: 'both' }}>
-          <input type="checkbox" onChange={this.toggleTheme.bind(this)} defaultChecked={isChecked}/>
+          <input type="checkbox" onChange={this.changeTheme.bind(this)} defaultChecked={isChecked}/>
           Dark Theme
         </label>
 

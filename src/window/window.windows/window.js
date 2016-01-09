@@ -1,5 +1,5 @@
 import React, { Component, PropTypes, Children } from 'react';
-import DesktopComponent, { WindowFocus } from '../../desktop-component';
+import DesktopComponent, { WindowFocus, Dimension, Alignment, Padding, Hidden } from '../../desktop-component';
 import TitleBar from '../../title-bar/title-bar.windows/title-bar';
 import View from '../../view/view.windows/view';
 
@@ -10,8 +10,7 @@ var styles = {
     backgroundColor: '#ffffff',
     display: 'flex',
     flexDirection: 'column',
-    width: '100vw',
-    height: '100vh'
+    padding: '0'
   },
 
   windowDark: {
@@ -34,12 +33,21 @@ var styles = {
   }
 };
 
-@DesktopComponent(WindowFocus)
+@DesktopComponent(WindowFocus, Dimension('100vw', '100vh'), Alignment, Padding, Hidden)
 class Window extends Component {
   static propTypes = {
     chrome: PropTypes.bool,
     storage: PropTypes.object
   };
+
+  padding;
+
+  constructor(props, context, updater) {
+    super(props, context, updater);
+    if (props.padding) {
+      this.padding = props.padding;
+    }
+  }
 
   filterChildren() {
     let titleBar = '';
@@ -71,12 +79,6 @@ class Window extends Component {
       }
     }
 
-    componentStyle = {
-      ...componentStyle,
-      visibility: this.state.visible ? 'visible' : 'hidden',
-      display: this.state.display ? 'flex' : 'none'
-    };
-
     if (this.state.theme === 'dark') {
       componentStyle = { ...componentStyle, ...styles.windowDark };
     }
@@ -85,9 +87,14 @@ class Window extends Component {
       componentStyle = { ...componentStyle, backgroundColor: this.state.background };
     }
 
+    let contentStyle = { ...styles.content };
+    if (this.padding) {
+      contentStyle['padding'] = this.padding;
+    }
+
     const [titleBar, ...children] = this.filterChildren();
 
-    let content = <View style={styles.content}>{children}</View>;
+    let content = <View style={contentStyle}>{children}</View>;
 
     return (
       <div

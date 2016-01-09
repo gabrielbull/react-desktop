@@ -15,7 +15,7 @@ const styles = {
   },
 
   containerDark: {
-    background: 'black'
+    background: '#171717'
   }
 };
 
@@ -25,6 +25,8 @@ class MasterDetails extends Component {
 
   masters = [];
   details = [];
+
+  maxWidth;
 
   static childContextTypes = {
     masterDetails: PropTypes.object
@@ -54,9 +56,13 @@ class MasterDetails extends Component {
   }
 
   filterChildren(children) {
+    this.maxWidth = null;
     Children.map(children, (item, key) => {
       Children.map(item.props.children, (child) => {
         if (child.type === Master) {
+          if (child.props.width !== undefined && child.props.width > this.maxWidth) {
+            this.maxWidth = child.props.width;
+          }
           this.masters = [
             ...this.masters,
             cloneElement(child, { key: key, ref: 'master' + key, index: key })
@@ -84,7 +90,7 @@ class MasterDetails extends Component {
         style={componentStyle}
         {...props}
       >
-        <Pane>
+        <Pane width={this.maxWidth}>
           {this.renderMasters()}
         </Pane>
         {this.renderDetail()}

@@ -32,9 +32,10 @@ class CommonStylingComponent {
     return propTypes;
   }
 
-  constructor(root, options) {
+  constructor(root, options, params) {
     this.root = root;
     this.options = options;
+    this.params = params;
   }
 
   render(component) {
@@ -48,6 +49,8 @@ class CommonStylingComponent {
         newStyles.width = component.props.width;
       }
       newProps.width = null;
+    } else if (this.options.dimension && this.params['Dimension'] && this.params['Dimension']['defaultWidth']) {
+      newStyles.width = this.params['Dimension']['defaultWidth'];
     }
 
     if (component.props.height && this.options.dimension) {
@@ -57,6 +60,8 @@ class CommonStylingComponent {
         newStyles.height = component.props.height;
       }
       newProps.height = null;
+    } else if (this.options.dimension && this.params['Dimension'] && this.params['Dimension']['defaultHeight']) {
+      newStyles.height = this.params['Dimension']['defaultHeight'];
     }
 
     if (component.props.margin && this.options.margin) {

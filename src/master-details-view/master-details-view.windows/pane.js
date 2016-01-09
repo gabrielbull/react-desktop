@@ -13,24 +13,19 @@ const styles = {
   },
 
   paneDark: {
-    background: 'black'
   }
 };
 
 @DesktopComponent
 class Pane extends Component {
-  static contextTypes = {
-    masterWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-  };
-
   render() {
     const { children, style, selected, ...props } = this.props;
 
     let componentStyle = { ...styles.pane, ...style };
 
-    if (this.context.masterWidth) {
-      componentStyle.width = parseDimension(this.context.masterWidth);
-      componentStyle.flex = '0 0 ' + parseDimension(this.context.masterWidth);
+    if (this.props.width) {
+      componentStyle.width = parseDimension(this.props.width);
+      componentStyle.flex = '0 0 ' + parseDimension(this.props.width);
     }
 
     if (this.context.theme === 'dark') {
