@@ -8,7 +8,7 @@ Property            | Type   | Description
 :------------------ | :-----:| :----------
 background          | string | Sets the background color of a component.
 chrome              | bool   | Sets the chrome of the window.
-color               | string | Sets the color of the window and components.
+color               | string | Sets the main color of a component.
 height              | number | Sets the height of a component.
 hidden              | bool   | Sets the visibility of a component.
 horizontalAlignment | string | Sets the horizontal alignment of the component's content<br/>__Property value__ _"left"_, _"center"_, _"right"_
@@ -25,12 +25,10 @@ import React, { Component } from 'react';
 import { Window, TitleBar, Text } from 'react-desktop/windows';
 
 export default class extends Component {
-  getDefaultProps() {
-    return {
-      color: '#cc7f29',
-      theme: 'dark'
-    };
-  }
+  static defaultProps = {
+    color: '#cc7f29',
+    theme: 'dark'
+  };
 
   render() {
     return (

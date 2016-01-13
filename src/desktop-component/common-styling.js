@@ -1,4 +1,5 @@
 import { PropTypes, cloneElement } from 'react';
+import { convertColor } from '../color';
 
 class CommonStylingComponent {
   static propTypes(options) {
@@ -29,6 +30,10 @@ class CommonStylingComponent {
       propTypes.hidden = PropTypes.bool;
     }
 
+    if (options.background) {
+      propTypes.background = PropTypes.oneOfType([PropTypes.bool, PropTypes.string]);
+    }
+
     return propTypes;
   }
 
@@ -41,6 +46,7 @@ class CommonStylingComponent {
   render(component) {
     let newProps = {};
     let newStyles = {};
+    let overrideStyles = {};
 
     if (component.props.width && this.options.dimension) {
       if (component.props.width.match(/^[0-9]+$/)) {
@@ -48,6 +54,8 @@ class CommonStylingComponent {
       } else {
         newStyles.width = component.props.width;
       }
+      overrideStyles.flexBasis = newStyles.width;
+      overrideStyles.flexGrow = 0;
       newProps.width = null;
     } else if (this.options.dimension && this.params['Dimension'] && this.params['Dimension']['defaultWidth']) {
       newStyles.width = this.params['Dimension']['defaultWidth'];
@@ -72,6 +80,15 @@ class CommonStylingComponent {
     if (component.props.padding && this.options.padding) {
       newStyles.padding = component.props.padding;
       newProps.padding = null;
+    }
+
+    if (component.props.background && this.options.background) {
+      if (typeof component.props.background === 'boolean') {
+        newStyles.background = convertColor(component.props.color);
+      } else {
+        newStyles.background = convertColor(component.props.background);
+      }
+      newProps.background = null;
     }
 
     if (component.props.horizontalAlignment && this.options.horizontalAlignment || this.options.alignment) {
@@ -111,8 +128,12 @@ class CommonStylingComponent {
 
     return cloneElement(component, {
       ...newProps, style: {
+        userSelect: 'none',
+        cursor: 'default',
+        boxSizing: 'border-box',
         ...newStyles,
         ...component.props.style,
+        ...overrideStyles,
         ...(newStyles.display === 'none' ? { display: 'none' } : null)
       }
     });

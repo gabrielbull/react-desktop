@@ -4,16 +4,16 @@ import DesktopComponent, {
   Margin,
   Padding,
   Alignment,
-  Hidden
+  Hidden,
+  Background
 } from '../../desktop-component';
 
 var styles = {
-  userSelect: 'none',
-  flex: '1',
+  flexGrow: '1',
   display: 'flex'
 };
 
-@DesktopComponent(Dimension, Margin, Padding, Alignment, Hidden)
+@DesktopComponent(Dimension, Margin, Padding, Alignment, Hidden, Background)
 class View extends Component {
   render() {
     const { children, style, ...props } = this.props;

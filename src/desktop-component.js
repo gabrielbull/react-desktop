@@ -16,6 +16,7 @@ export const HorizontalAlignment = 'HorizontalAlignment';
 export const VerticalAlignment = 'VerticalAlignment';
 export const Alignment = 'Alignment';
 export const Hidden = 'Hidden';
+export const Background = 'Background';
 
 function ExtendComposedComponent(options, ComposedComponent) {
   @Radium
@@ -26,7 +27,6 @@ function ExtendComposedComponent(options, ComposedComponent) {
       visible: PropTypes.bool,
       display: PropTypes.bool,
       color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-      background: PropTypes.string,
       theme: PropTypes.string,
       ...ComposedComponent.propTypes
     };
@@ -113,7 +113,8 @@ function ExtendComposedComponent(options, ComposedComponent) {
         options.indexOf('HorizontalAlignment') !== -1 ||
         options.indexOf('VerticalAlignment') !== -1 ||
         options.indexOf('Alignment') !== -1 ||
-        options.indexOf('Hidden') !== -1
+        options.indexOf('Hidden') !== -1 ||
+        options.indexOf('Background') !== -1
       ) {
         let componentOptions = {
           dimension: options.indexOf('Dimension') !== -1,
@@ -122,7 +123,8 @@ function ExtendComposedComponent(options, ComposedComponent) {
           horizontalAlignment: options.indexOf('HorizontalAlignment') !== -1,
           verticalAlignment: options.indexOf('VerticalAlignment') !== -1,
           alignment: options.indexOf('Alignment') !== -1,
-          hidden: options.indexOf('Hidden') !== -1
+          hidden: options.indexOf('Hidden') !== -1,
+          background: options.indexOf('Background') !== -1
         };
         Component.propTypes = { ...Component.propTypes, ...CommonStylingComponent.propTypes(componentOptions) };
         this._components = [...this._components, new CommonStylingComponent(this, componentOptions, this._params)];
@@ -133,7 +135,7 @@ function ExtendComposedComponent(options, ComposedComponent) {
       const childContext = {
         parent: this,
         color: this.state.color,
-        background: this.state.background,
+        background: typeof this.state.background === 'boolean' ? this.state.color : this.state.background,
         theme: this.state.theme,
         storage: this.storage
       };
