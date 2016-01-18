@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-var styles = {
+/*var styles = {
   textField: {
     WebkitUserSelect: 'none',
     borderWidth: '1px',
@@ -26,7 +26,7 @@ var styles = {
       color: '#c0c0c0'
     }
   }
-};
+};*/
 
 class TextFieldOSX extends Component {
   static propTypes = {
@@ -43,17 +43,17 @@ class TextFieldOSX extends Component {
 
   render() {
     const { form, style, visible, display, ...props } = this.props;
-    const componentStyle = mergeStyles(this.styles, {
+    /*const componentStyle = mergeStyles(this.styles, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
-    });
+    });*/
 
     return (
       <input
         ref="element"
         type="text"
-        data-style={applyStyle(styles.textField)}
-        style={componentStyle}
+        //data-style={applyStyle(styles.textField)}
+        //style={componentStyle}
         {...props}
       />
     );

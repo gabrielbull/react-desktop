@@ -1,5 +1,4 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
-import { get as getOs } from '../../../os';
 import LabelOSX from '../../../label/label.osx/label';
 import LabelWindows from '../../../label/label.windows/label';
 import TextInputOSX from '../../../text-input/text-input.osx/text-input';
@@ -7,7 +6,7 @@ import TextInputWindows from '../../../text-input/text-input.windows/text-input'
 import ButtonOSX from '../../../button/button.osx/button';
 import ButtonWindows from '../../../button/button.windows/button';
 
-var styles = {
+/*var styles = {
   row: {
     WebkitUserSelect: 'none',
     cursor: 'default',
@@ -31,7 +30,7 @@ var styles = {
   buttonRowWin: {
     marginTop: '30px'
   }
-};
+};*/
 
 class Row extends Component {
   static propTypes = {
@@ -56,7 +55,7 @@ class Row extends Component {
   render() {
     let { children, style, form, display, visible, ...props } = this.props;
     let isButtonsRow = null;
-    let componentStyle = mergeStyles(style, styles.row, getOs() === 'win' ? styles.rowWin : styles.rowOsx);
+    //let componentStyle = mergeStyles(style, styles.row, getOs() === 'win' ? styles.rowWin : styles.rowOsx);
 
     children = Children.map(children, (element) => {
       if (element.type === LabelOSX || element.type === LabelWindows) {
@@ -73,16 +72,16 @@ class Row extends Component {
     });
 
     if (isButtonsRow) {
-      componentStyle = mergeStyles(componentStyle, getOs() === 'win' ? styles.buttonRowWin : styles.buttonRowOsx);
+      //componentStyle = mergeStyles(componentStyle, getOs() === 'win' ? styles.buttonRowWin : styles.buttonRowOsx);
     }
 
-    componentStyle = mergeStyles(componentStyle, styles.row, {
+    /*componentStyle = mergeStyles(componentStyle, styles.row, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'flex' : 'none'
-    });
+    });*/
 
     return (
-      <div style={componentStyle} {...props}>
+      <div /*style={componentStyle}*/ {...props}>
         {children}
       </div>
     );

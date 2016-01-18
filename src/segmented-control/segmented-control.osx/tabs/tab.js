@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-var styles = {
+/*var styles = {
   tab: {
     WebkitUserSelect: 'none',
     cursor: 'default',
@@ -78,7 +78,7 @@ var styles = {
     paddingLeft: '12px',
     color: '#000000'
   }
-};
+};*/
 
 class Tab extends Component {
   static propTypes = {
@@ -104,7 +104,7 @@ class Tab extends Component {
   render() {
     let { style, nextSelected, ...props } = this.props;
 
-    let cssStyle = styles.tab;
+    /*let cssStyle = styles.tab;
     let componentStyle = style;
 
     if (this.props.firstChild) {
@@ -136,14 +136,14 @@ class Tab extends Component {
       if (this.props.lastChild) {
         componentStyle = mergeStyles(componentStyle, { borderRightWidth: '1px', paddingRight: '11px' });
       }
-    }
+    }*/
 
     return (
       <div
         ref="element"
         onClick={this.props.onPress}
-        data-style={applyStyle(cssStyle)}
-        style={componentStyle}
+        //data-style={applyStyle(cssStyle)}
+        //style={componentStyle}
       >
         {this.props.title}
       </div>

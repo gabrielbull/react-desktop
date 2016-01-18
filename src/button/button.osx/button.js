@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 
-var styles = {
+/*var styles = {
   button: {
     WebkitUserSelect: 'none',
     cursor: 'default',
@@ -50,7 +50,7 @@ var styles = {
       color: 'rgba(255, 255, 255, .9  )'
     }
   }
-};
+};*/
 
 class PushButton extends Component {
   static propTypes = {
@@ -81,18 +81,14 @@ class PushButton extends Component {
     }
   }
 
-  get styles() {
-    return mergeStyles(styles.osx_10_11, this.props.style);
-  }
-
   render() {
     let { style, children, color, onPress, form, display, visible, ...props } = this.props;
 
     let componentStyle = style;
-    let cssStyle = styles.button;
-    if (color === 'blue' && this.state.windowFocused) {
+    //let cssStyle = styles.button;
+    /*if (color === 'blue' && this.state.windowFocused) {
       cssStyle = mergeStyles(cssStyle, styles.blue);
-    }
+    }*/
 
     let type = 'button';
     if (this.props.onPress === 'submit') {
@@ -102,17 +98,17 @@ class PushButton extends Component {
       onPress = this.props.onClick ? this.props.onClick : this.props.onPress;
     }
 
-    componentStyle = mergeStyles(componentStyle, {
+    /*componentStyle = mergeStyles(componentStyle, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
-    });
+    });*/
 
     return (
       <button
         ref="element"
         type={type}
         onClick={onPress}
-        data-style={applyStyle(cssStyle)}
+        //data-style={applyStyle(cssStyle)}
         style={componentStyle}
         {...props}
       >

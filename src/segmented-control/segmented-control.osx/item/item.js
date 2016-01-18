@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 
-var styles = {
+/*var styles = {
   item: {
     WebkitUserSelect: 'none',
     cursor: 'default',
   }
-};
+};*/
 
 class Item extends Component {
   static propTypes = {
@@ -37,14 +37,14 @@ class Item extends Component {
     const { control, style, title, children, selected, visible, display, ...props } = this.props;
     const content = this.state.selected ? children : '';
 
-    let componentStyle = mergeStyles(style, styles.item, {
+    /*let componentStyle = mergeStyles(style, styles.item, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
-    });
+    });*/
 
     return (
       <div
-        style={componentStyle}
+        //style={componentStyle}
         {...props}
       >
         {content}

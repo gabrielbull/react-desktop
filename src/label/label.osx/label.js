@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-var styles = {
+/*var styles = {
   label: {
     WebkitUserSelect: 'none',
     cursor: 'default',
@@ -13,7 +13,7 @@ var styles = {
     textAlign: 'right',
     marginRight: '12px'
   }
-};
+};*/
 
 class LabelOSX extends Component {
   static propTypes = {
@@ -41,7 +41,7 @@ class LabelOSX extends Component {
   render() {
     const { children, style, color, row, form, align, display, visible, ...props } = this.props;
 
-    let componentStyle = mergeStyles(styles.label, style);
+    /*let componentStyle = mergeStyles(styles.label, style);
     let componentColor = color;
     if (componentColor) {
       switch (componentColor) {
@@ -61,12 +61,12 @@ class LabelOSX extends Component {
     componentStyle = mergeStyles(componentStyle, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
-    });
+    });*/
 
     return (
       <div
         ref="label"
-        style={componentStyle}
+        //style={componentStyle}
         {...props}
       >
         {children}

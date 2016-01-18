@@ -1,4 +1,4 @@
-import React, { Component, Children, PropTypes } from 'react';
+import React, { Component } from 'react';
 import DesktopComponent from '../../desktop-component';
 import { parseDimension } from '../../dimension';
 

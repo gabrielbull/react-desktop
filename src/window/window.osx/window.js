@@ -42,20 +42,13 @@ class WindowOSX extends Component {
     this.state = { visible: props.visible !== false, display: props.display !== false };
   }
 
-  get styles() {
-    if (this.props.style) {
-      return mergeStyles(styles.window, this.props.style);
-    }
-    return mergeStyles(styles.window, this.props);
-  }
-
   render() {
     let { style, chrome, children, visible, display, ...props } = this.props;
 
     let componentStyle = this.styles;
-    if (chrome) {
-      componentStyle = mergeStyles(componentStyle, styles.chrome);
-    }
+    //if (chrome) {
+      //componentStyle = mergeStyles(componentStyle, styles.chrome);
+    //}
 
     const titleBar = Children.map(children, (element) => {
       if (element.type === TitleBar || element.type === TitleBarOSX) {
@@ -69,10 +62,10 @@ class WindowOSX extends Component {
       }
     });
 
-    componentStyle = mergeStyles(componentStyle, {
+    /*componentStyle = mergeStyles(componentStyle, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'flex' : 'none'
-    });
+    });*/
 
     return (
       <div style={componentStyle} {...props}>

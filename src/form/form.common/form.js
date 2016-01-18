@@ -109,7 +109,7 @@ class Form extends Component {
             {cloneElement(element, { form: this })}
           </RowWrapper>
         );
-      } else if (element.type === Label || element.type === LabelOSX || element.type === LabelWindows) {
+      } else if (element.type === LabelOSX || element.type === LabelWindows) {
         const ref = `label-${index}`;
         return (
           <RowWrapper ref={ref} style={getOs() === 'win' ? styles.labelRowWin : styles.labelRowOsx}>

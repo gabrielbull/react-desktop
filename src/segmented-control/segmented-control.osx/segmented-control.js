@@ -2,12 +2,12 @@ import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import Item from './Item.osx/Item.osx';
 import Tabs from './Tabs.osx/Tabs.osx';
 
-var styles = {
+/*var styles = {
   segmentedControl: {
     WebkitUserSelect: 'none',
     cursor: 'default'
   }
-};
+};*/
 
 class SegmentedControl extends Component {
   static Item = Item;
@@ -41,10 +41,10 @@ class SegmentedControl extends Component {
 
     const tabs = <Tabs ref="tabs" tabs={children}/>;
 
-    style = mergeStyles(styles.segmentedControl, style, {
+    /*style = mergeStyles(styles.segmentedControl, style, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
-    });
+    });*/
 
     return (
       <div

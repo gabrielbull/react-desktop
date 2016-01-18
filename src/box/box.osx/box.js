@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import SegmentedControl from '../SegmentedControl';
 
-var styles = {
+/*var styles = {
   box: {
     WebkitUserSelect: 'none',
     cursor: 'default',
@@ -21,7 +20,7 @@ var styles = {
     marginTop: '10px',
     paddingTop: '33px'
   }
-};
+};*/
 
 class Box extends Component {
   static propTypes = {
@@ -37,14 +36,14 @@ class Box extends Component {
       visible: props.visible !== false,
       display: props.display !== false
     };
-    this.styles = mergeStyles(styles.box, this.props ? this.props.style : {});
+    //this.styles = mergeStyles(styles.box, this.props ? this.props.style : {});
   }
 
   render() {
     const { children, style, visible, display, ...props } = this.props;
-    const hasSegmentedControls = typeof children === 'object' && children.type === SegmentedControl;
+    //const hasSegmentedControls = typeof children === 'object' && children.type === SegmentedControl;
 
-    let componentStyle = this.styles;
+    /*let componentStyle = this.styles;
     if (hasSegmentedControls) {
       componentStyle = mergeStyles(componentStyle, styles.segmentedControls);
     }
@@ -52,11 +51,11 @@ class Box extends Component {
     componentStyle = mergeStyles(componentStyle, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
-    });
+    });*/
 
     return (
       <div
-        style={componentStyle}
+        //style={componentStyle}
         {...props}
       >
         {this.props.children}

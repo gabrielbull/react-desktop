@@ -20,19 +20,12 @@ class Toolbar extends Component {
     this.state = { visible: props.visible !== false, display: props.display !== false };
   }
 
-  get styles() {
-    if (this.props) {
-      return mergeStyles(styles.toolbar, this.props.style);
-    }
-    return mergeStyles(styles.toolbar);
-  }
-
   render() {
     const { style, visible, display, ...props } = this.props;
-    const styles = mergeStyles(this.styles, {
+    /*const styles = mergeStyles(this.styles, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'block' : 'none'
-    });
+    });*/
 
     return (
       <div style={styles} {...props}>

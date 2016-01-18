@@ -71,27 +71,23 @@ class TitleBarOSX extends Component {
     };
   }
 
-  get styles() {
-    return mergeStyles(styles.titleBar, this.props.style);
-  }
-
   render() {
     let { children, controls, title, visible, display, ...props } = this.props;
 
     let componentStyle = this.styles;
-    if (children) {
+    /*if (children) {
       componentStyle = mergeStyles(componentStyle, styles.toolbar);
-    }
+    }*/
 
     let titleStyle = styles.title;
     if (this.props.controls) {
       titleStyle = Object.assign(titleStyle, { paddingRight: '60px' });
     }
 
-    if (!this.state.windowFocused) {
+    /*if (!this.state.windowFocused) {
       componentStyle = mergeStyles(componentStyle, styles.unfocusedTitleBar);
       titleStyle = mergeStyles(titleStyle, styles.unfocusedTitle);
-    }
+    }*/
 
     controls = !controls || <Controls {...this.props}/>;
     title = !title || (
@@ -100,10 +96,10 @@ class TitleBarOSX extends Component {
         </div>
       );
 
-    componentStyle = mergeStyles(componentStyle, {
+    /*componentStyle = mergeStyles(componentStyle, {
       visibility: this.state.visible ? 'visible' : 'hidden',
       display: this.state.display ? 'flex' : 'none'
-    });
+    });*/
 
     return (
       <div
