@@ -18,6 +18,7 @@ class Controls extends Component {
   static propTypes = {
     onClosePress: PropTypes.func,
     onMinimizePress: PropTypes.func,
+    onRestoreDownPress: PropTypes.func,
     onMaximizePress: PropTypes.func
   };
 
@@ -25,7 +26,7 @@ class Controls extends Component {
     return (
       <div style={styles.controls}>
         <Minimize onClick={this.props.onMinimizePress} ref="minimize"/>
-        <Maximize onClick={this.props.onMaximizePress} ref="maximize"/>
+        <Maximize onMaximizePress={this.props.onMaximizePress} onRestoreDownPress={this.props.onRestoreDownPress} ref="maximize"/>
         <Close onClick={this.props.onClosePress} ref="close"/>
       </div>
     );

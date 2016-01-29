@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import DesktopComponent, { WindowFocus } from '../../../desktop-component';
 import { isDarkColor } from '../../../color';
 
@@ -43,6 +43,10 @@ var styles = {
 
 @DesktopComponent(WindowFocus)
 class Maximize extends Component {
+  static contextTypes = {
+    isMaximized: PropTypes.bool
+  };
+
   render() {
     const { style, ...props } = this.props;
 
@@ -57,17 +61,37 @@ class Maximize extends Component {
       componentStyle = { ...componentStyle, ...styles.buttonColorBackground };
     }
 
-    return (
-      <a
-        style={componentStyle}
-        {...props}
-      >
+    let title = 'Maximize';
+    let icon = (
+      <svg x="0px" y="0px" viewBox="0 0 10.2 10.1" style={styles.icon}>
+        <path
+          fill={svgFill}
+          d="M0,0v10.1h10.2V0H0z M9.2,9.2H1.1V1h8.1V9.2z"
+        />
+      </svg>
+    );
+    let onClick = this.props.onMaximizePress;
+    if (this.context.isMaximized) {
+      title = 'Restore Down';
+      icon = (
         <svg x="0px" y="0px" viewBox="0 0 10.2 10.2" style={styles.icon}>
           <path
             fill={svgFill}
             d="M2.1,0v2H0v8.1h8.2v-2h2V0H2.1z M7.2,9.2H1.1V3h6.1V9.2z M9.2,7.1h-1V2H3.1V1h6.1V7.1z"
           />
         </svg>
+      );
+      onClick = this.props.onRestoreDownPress;
+    }
+
+    return (
+      <a
+        title={title}
+        style={componentStyle}
+        onClick={onClick}
+        {...props}
+      >
+        {icon}
       </a>
     );
   }

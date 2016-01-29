@@ -1,54 +1,32 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { WindowFocus } from '../../desktop-component';
+import DesktopComponent, { WindowFocus, Background } from '../../desktop-component';
 import Controls from './controls/controls';
+import styles from './styles/windows.10';
 
-var styles = {
-  titleBar: {
-    userSelect: 'none',
-    WebkitAppRegion: 'drag',
-    cursor: 'default',
-    display: 'flex',
-    alignItems: 'center',
-    height: '31px',
-    backgroundColor: '#ffffff'
-  },
-
-  titleBarDark: {
-    backgroundColor: '#171717'
-  },
-
-  title: {
-    WebkitUserSelect: 'none',
-    cursor: 'default',
-    paddingLeft: '12px',
-    fontFamily: '"Segoe UI", "Arial"',
-    fontSize: '12px',
-    color: '#000000',
-    flex: 1
-  },
-
-  titleDark: {
-    color: '#ffffff'
-  },
-
-  unfocusedTitle: {
-    color: '#a9a9a9'
-  }
-};
-
-@DesktopComponent(WindowFocus)
+@DesktopComponent(WindowFocus, Background)
 class TitleBar extends Component {
   static propTypes = {
     title: PropTypes.string,
     controls: PropTypes.bool,
+    isMaximized: PropTypes.bool,
     onClosePress: PropTypes.func,
     onMinimizePress: PropTypes.func,
     onMaximizePress: PropTypes.func,
-    background: PropTypes.string
+    onRestoreDownPress: PropTypes.func
   };
 
+  static childContextTypes = {
+    isMaximized: PropTypes.bool
+  };
+
+  getChildContext() {
+    return {
+      isMaximized: this.props.isMaximized
+    };
+  }
+
   render() {
-    const { children, style, background, controls, title, ...props } = this.props;
+    const { children, style, controls, title, ...props } = this.props;
 
     let componentStyle = { ...styles.titleBar, ...style };
     let titleStyle = styles.title;
@@ -67,14 +45,8 @@ class TitleBar extends Component {
       display: this.state.display ? 'flex' : 'none'
     };
 
-    if (this.context.theme === 'dark') {
+    if (this.state.theme === 'dark') {
       componentStyle = { ...componentStyle, ...styles.titleBarDark };
-    }
-
-    if (background) {
-      componentStyle = { ...componentStyle, backgroundColor: background };
-    } else if (this.state.background) {
-      componentStyle = { ...componentStyle, backgroundColor: this.state.background };
     }
 
     const controlsComponent = !controls || <Controls {...this.props}/>;
@@ -82,6 +54,8 @@ class TitleBar extends Component {
       <div style={titleStyle}>
         {this.props.title}
       </div>;
+
+    if (this.props.background) delete componentStyle.backgroundColor;
 
     return (
       <div

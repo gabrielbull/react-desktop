@@ -59,6 +59,7 @@ class Minimize extends Component {
 
     return (
       <a
+        title="Minimize"
         style={componentStyle}
         {...props}
       >
