@@ -1,4 +1,4 @@
-# View class
+# View Component
 
 ## Class _View_
 

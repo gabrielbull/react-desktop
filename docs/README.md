@@ -15,7 +15,6 @@ can be used in any JavaScript powered project!
   * [Master/Details View](/docs/windows/master-details-view.md)
   * [Progress Circle](/docs/windows/progress-circle.md)
   * [Split View](/docs/windows/split-view.md)
-    * [Split View Item](/docs/windows/split-view/item.md)
   * [Text](/docs/windows/text.md)
   * [Text Input](/docs/windows/text-input.md)
   * [Title Bar](/docs/windows/title-bar.md)

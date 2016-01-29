@@ -1,3 +1,3 @@
-# Text Box
+# Text Box Component
 
 Documentation is coming soon.

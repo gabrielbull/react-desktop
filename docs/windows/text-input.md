@@ -1,3 +1,3 @@
-# Text Block
+# Text Block Component
 
 Documentation is coming soon.
