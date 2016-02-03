@@ -1,6 +1,4 @@
-# Title Bar Component
-
-## Class _TitleBar_
+# TitleBar
 
 ### Properties
 

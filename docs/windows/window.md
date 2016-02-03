@@ -1,6 +1,4 @@
-# Window Component
-
-## Class _Window_
+# Window
 
 ### Properties
 

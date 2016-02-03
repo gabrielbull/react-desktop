@@ -1,6 +1,4 @@
-# View Component
-
-## Class _View_
+# View
 
 ### Properties
 

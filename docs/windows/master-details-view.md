@@ -1,6 +1,6 @@
 # Master/Details Component
 
-## Class _MasterDetailsView_
+## MasterDetailsView
 
 ### Properties
 
@@ -9,7 +9,7 @@ Property            | Type   | Description
 color               | string | Sets the main color of a component.
 theme               | string | Sets the UI theme that is used by this component and its children elements.<br/>__Property value__ _"light"_, _"dark"_
 
-## Class _MasterDetailsView.Item_
+## MasterDetailsView.Item
 
 ### Properties
 
@@ -18,7 +18,7 @@ Property            | Type   | Description
 color               | string | Sets the main color of a component.
 theme               | string | Sets the UI theme that is used by this component and its children elements.<br/>__Property value__ _"light"_, _"dark"_
 
-## Class _MasterDetailsView.Item.Master_
+## MasterDetailsView.Item.Master
 
 ### Properties
 
@@ -30,7 +30,7 @@ selected            | bool   | Master is selected.
 theme               | string | Sets the UI theme that is used by this component and its children elements.<br/>__Property value__ _"light"_, _"dark"_
 width               | number | Sets the width of a component.
 
-## Class _MasterDetailsView.Item.Details_
+## MasterDetailsView.Item.Details
 
 ### Properties
 

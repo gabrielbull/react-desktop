@@ -127,7 +127,10 @@ function ExtendComposedComponent(options, ComposedComponent) {
           background: options.indexOf('Background') !== -1
         };
         Component.propTypes = { ...Component.propTypes, ...CommonStylingComponent.propTypes(componentOptions) };
-        this._components = [...this._components, new CommonStylingComponent(this, componentOptions, this._params)];
+        this._components = [
+          ...this._components,
+          new CommonStylingComponent(this, componentOptions, this._params, ComposedComponent.styleRefs)
+        ];
       }
     }
 
@@ -258,14 +261,14 @@ function ExtendComposedComponent(options, ComposedComponent) {
     render(...params) {
       let rendered = super.render(params);
 
-      if (super.getPlaceholderStyle) {
-        rendered = <div ref="container">{rendered}</div>;
-      }
-
       for (const component of this._components) {
         if (component.render) {
           rendered = component.render(rendered);
         }
+      }
+
+      if (super.getPlaceholderStyle) {
+        rendered = <div ref="container">{rendered}</div>;
       }
 
       return rendered;

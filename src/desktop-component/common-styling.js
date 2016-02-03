@@ -37,106 +37,214 @@ class CommonStylingComponent {
     return propTypes;
   }
 
-  constructor(root, options, params) {
+  constructor(root, options, params, refs) {
     this.root = root;
     this.options = options;
     this.params = params;
+    this.refs = refs;
+  }
+
+  findRef(ref, component) {
+    if (component.ref === ref) {
+      return component;
+    }
+    if (component.props.children) {
+      if (Object.prototype.toString.call(component.props.children) === '[object Array]') {
+        for (let i = 0, len = component.props.children.length; i < len; ++i) {
+          let result = this.findRef(ref, component.props.children[i]);
+          if (result) {
+            return result;
+          }
+        }
+      } else {
+        if (component.props.children.ref === ref) {
+          return component.props.children;
+        } else if (component.props.children.props && component.props.children.props.children) {
+          return this.findRef(ref, component.props.children);
+        }
+      }
+    }
+    return null;
+  }
+
+  replaceRef(ref, component, replacement) {
+    if (component.props.children) {
+      if (Object.prototype.toString.call(component.props.children) === '[object Array]') {
+        for (let i = 0, len = component.props.children.length; i < len; ++i) {
+          if (component.props.children[i].ref === ref) {
+            return component.props.children[i] = replacement;
+          } else if (component.props.children[i].props && component.props.children[i].props.children) {
+            let result = this.replaceRef(ref, component.props.children[i], replacement);
+            if (result) return result;
+          }
+        }
+      } else {
+        if (component.props.children.ref === ref) {
+          return component.props.children = replacement;
+        } else if (component.props.children.props && component.props.children.props.children) {
+          return this.replaceRef(ref, component.props.children, replacement);
+        }
+      }
+    }
+    return null;
   }
 
   render(component) {
-    let newProps = {};
+    let props = { ...component.props };
+    let style;
+
+    let styling = ['background', 'hidden', 'verticalAlignment', 'horizontalAlignment', 'padding', 'margin', 'dimension'];
+    let components = {};
+    for (let prop in this.refs) {
+      if (this.refs.hasOwnProperty(prop)) {
+        if (components[this.refs[prop]] === undefined) components[this.refs[prop]] = [];
+        components[this.refs[prop]].push(...styling.splice(styling.indexOf(prop), 1));
+      }
+    }
+
+    for (let ref in components) {
+      if (components.hasOwnProperty(ref)) {
+        let el = this.findRef(ref, component);
+        style = el.props.style || {};
+        for (let i = 0, len = components[ref].length; i < len; ++i) {
+          ({ props, style } = this[components[ref][i]](props, style));
+        }
+        this.replaceRef(ref, component, cloneElement(el, { style: style }));
+      }
+    }
+
+    style = component.props.style || {};
+    for (let i = 0, len = styling.length; i < len; ++i) {
+      ({ props, style } = this[styling[i]](props, style));
+    }
+
+    return cloneElement(component, {
+      ...props,
+      style: {
+        userSelect: 'none',
+        cursor: 'default',
+        boxSizing: 'border-box',
+        ...style,
+        ...(style.display === 'none' ? { display: 'none' } : null)
+      }
+    });
+  }
+
+  dimension(props, style) {
+    props = { ...props };
     let newStyles = {};
     let overrideStyles = {};
 
-    if (component.props.width && this.options.dimension) {
-      if (component.props.width.match(/^[0-9]+$/)) {
-        newStyles.width = component.props.width + 'px';
+    if (props.width && this.options.dimension) {
+      if (props.width.match(/^[0-9]+$/)) {
+        newStyles.width = props.width + 'px';
       } else {
-        newStyles.width = component.props.width;
+        newStyles.width = props.width;
       }
       overrideStyles.flexBasis = newStyles.width;
       overrideStyles.flexGrow = 0;
-      newProps.width = null;
+      props.width = null;
     } else if (this.options.dimension && this.params['Dimension'] && this.params['Dimension']['defaultWidth']) {
       newStyles.width = this.params['Dimension']['defaultWidth'];
     }
 
-    if (component.props.height && this.options.dimension) {
-      if (component.props.height.match(/^[0-9]+$/)) {
-        newStyles.height = component.props.height + 'px';
+    if (props.height && this.options.dimension) {
+      if (props.height.match(/^[0-9]+$/)) {
+        newStyles.height = props.height + 'px';
       } else {
-        newStyles.height = component.props.height;
+        newStyles.height = props.height;
       }
-      newProps.height = null;
+      props.height = null;
     } else if (this.options.dimension && this.params['Dimension'] && this.params['Dimension']['defaultHeight']) {
       newStyles.height = this.params['Dimension']['defaultHeight'];
     }
 
-    if (component.props.margin && this.options.margin) {
-      newStyles.margin = component.props.margin;
-      newProps.margin = null;
-    }
-
-    if (component.props.padding && this.options.padding) {
-      newStyles.padding = component.props.padding;
-      newProps.padding = null;
-    }
-
-    if (component.props.background && this.options.background) {
-      if (typeof component.props.background === 'boolean') {
-        newStyles.background = convertColor(component.props.color);
-      } else {
-        newStyles.background = convertColor(component.props.background);
+    return {
+      props: props,
+      style: {
+        ...newStyles,
+        ...style,
+        ...overrideStyles
       }
-      newProps.background = null;
+    };
+  }
+
+  margin(props, style) {
+    if (props.margin && this.options.margin) {
+      style.margin = props.margin;
+      props.margin = null;
     }
 
-    if (component.props.horizontalAlignment && this.options.horizontalAlignment || this.options.alignment) {
-      switch (component.props.horizontalAlignment) {
+    return { props: props, style: style };
+  }
+
+  padding(props, style) {
+    if (props.padding && this.options.padding) {
+      style.padding = props.padding;
+      props.padding = null;
+    }
+
+    return { props: props, style: style };
+  }
+
+  background(props, style) {
+    if (props.background && this.options.background) {
+      if (typeof props.background === 'boolean') {
+        style.backgroundColor = convertColor(props.color);
+      } else {
+        style.backgroundColor = convertColor(props.background);
+      }
+      props.background = null;
+    }
+
+    return { props: props, style: style };
+  }
+
+  horizontalAlignment(props, style) {
+    if (props.horizontalAlignment && this.options.horizontalAlignment || this.options.alignment) {
+      switch (props.horizontalAlignment) {
       case 'center':
-        newStyles.justifyContent = 'center';
+        style.justifyContent = 'center';
         break;
       case 'left':
-        newStyles.justifyContent = 'flex-start';
+        style.justifyContent = 'flex-start';
         break;
       case 'right':
-        newStyles.justifyContent = 'flex-end';
+        style.justifyContent = 'flex-end';
         break;
       }
-      newProps.horizontalAlignment = null;
+      props.horizontalAlignment = null;
     }
 
-    if (component.props.verticalAlignment && this.options.verticalAlignment || this.options.alignment) {
-      switch (component.props.verticalAlignment) {
+    return { props: props, style: style };
+  }
+
+  verticalAlignment(props, style) {
+    if (props.verticalAlignment && this.options.verticalAlignment || this.options.alignment) {
+      switch (props.verticalAlignment) {
       case 'center':
-        newStyles.alignItems = 'center';
+        style.alignItems = 'center';
         break;
       case 'top':
-        newStyles.alignItems = 'flex-start';
+        style.alignItems = 'flex-start';
         break;
       case 'bottom':
-        newStyles.alignItems = 'flex-end';
+        style.alignItems = 'flex-end';
         break;
       }
-      newProps.verticalAlignment = null;
+      props.verticalAlignment = null;
     }
 
-    if (component.props.hidden !== null && this.options.hidden) {
-      newStyles.display = component.props.hidden === true ? 'none' : 'block';
-      newProps.hidden = null;
+    return { props: props, style: style };
+  }
+
+  hidden(props, style) {
+    if (props.hidden !== null && this.options.hidden) {
+      style.display = props.hidden === true ? 'none' : 'block';
+      props.hidden = null;
     }
 
-    return cloneElement(component, {
-      ...newProps, style: {
-        userSelect: 'none',
-        cursor: 'default',
-        boxSizing: 'border-box',
-        ...newStyles,
-        ...component.props.style,
-        ...overrideStyles,
-        ...(newStyles.display === 'none' ? { display: 'none' } : null)
-      }
-    });
+    return { props: props, style: style };
   }
 }
 
