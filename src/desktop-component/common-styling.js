@@ -240,7 +240,9 @@ class CommonStylingComponent {
 
   hidden(props, style) {
     if (props.hidden !== null && this.options.hidden) {
-      style.display = props.hidden === true ? 'none' : 'block';
+      if (!this._originalDisplay && style.display) this._originalDisplay  = style.display;
+
+      style.display = props.hidden === true ? 'none' : this._originalDisplay;
       props.hidden = null;
     }
 

@@ -1,37 +1,16 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { Margin, Padding, HorizontalAlignment, VerticalAlignment, Alignment, Hidden } from '../../desktop-component';
+import DesktopComponent, { Margin, Padding, Alignment, Hidden, Background, Dimension } from '../../desktop-component';
+import styles from './styles/windows.10';
 
-var styles = {
-  textBlock: {
-    WebkitUserSelect: 'none',
-    cursor: 'default',
-    lineHeight: '25.96px',
-    fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
-    fontSize: '14px',
-    whiteSpace: 'nowrap'
-  },
-
-  rowLabel: {
-    textAlign: 'right',
-    marginRight: '12px'
-  }
-};
-
-@DesktopComponent(Margin, Padding, HorizontalAlignment, VerticalAlignment, Alignment, Hidden)
-class TextBlockWindows extends Component {
+@DesktopComponent(Margin, Padding, Alignment, Hidden, Background, Dimension)
+class Text extends Component {
   static propTypes = {
-    color: PropTypes.string,
-    align: PropTypes.string
+    color: PropTypes.string
   };
 
   render() {
-    let { children, style, color, align, ...props } = this.props;
-    let componentStyle = {
-      ...styles.textBlock,
-      ...style,
-      visibility: this.state.visible ? 'visible' : 'hidden',
-      display: this.state.display ? 'block' : 'none'
-    };
+    let { children, style, color, ...props } = this.props;
+    let componentStyle = { ...styles.textBlock, ...style };
 
     if (color) {
       switch (color) {
@@ -44,8 +23,8 @@ class TextBlockWindows extends Component {
       componentStyle = { ...componentStyle, color: '#ffffff' };
     }
 
-    if (align) {
-      componentStyle = { ...componentStyle, textAlign: align };
+    if (props.horizontalAlignment) {
+      componentStyle.textAlign = props.horizontalAlignment;
     }
 
     return (
@@ -60,4 +39,4 @@ class TextBlockWindows extends Component {
   }
 }
 
-export default TextBlockWindows;
+export default Text;
