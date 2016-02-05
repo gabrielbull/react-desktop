@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import Text from '../../text/text.windows/text';
 import DesktopComponent, { PlaceholderStyle, Hidden, Background } from '../../desktop-component';
 import styles from './styles/windows.10';
-import { convertColor } from '../../color';
 
 @DesktopComponent(PlaceholderStyle, Hidden, Background)
 class TextInput extends Component {
