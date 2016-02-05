@@ -4,7 +4,6 @@
 
 Property            | Type         | Description
 :------------------ | :-----------:| :----------
-background          | string, bool | Sets the background color of a component, if bool, the color will be used as the background color.
 color               | string       | Sets the color of the text.
 hidden              | bool         | Sets the visibility of a component.
 onPress             | function     | Callback function when the button is pressed.

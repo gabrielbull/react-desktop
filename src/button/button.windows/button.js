@@ -36,17 +36,17 @@ class Button extends Component {
       color = color === true ? this.state.color : color;
       styles.colorButton = {
         ...styles.colorButton,
-        borderColor: this.state.color,
-        backgroundColor: this.state.color,
+        borderColor: color,
+        backgroundColor: color,
         ':hover': {
           ...styles.colorButton[':hover'],
-          borderColor: darkenColor(this.state.color, .35)
+          borderColor: darkenColor(color, .35)
         },
 
         ':active': {
           ...styles.colorButton[':active'],
-          borderColor: darkenColor(this.state.color, .35),
-          backgroundColor: darkenColor(this.state.color, .35)
+          borderColor: darkenColor(color, .35),
+          backgroundColor: darkenColor(color, .35)
         }
       };
       componentStyle = { ...componentStyle, ...styles.colorButton };

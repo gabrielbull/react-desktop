@@ -1,0 +1,72 @@
+export default {
+  checkbox: {
+    WebkitUserSelect: 'none',
+    WebkitAppearance: 'none',
+    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderColor: 'rgba(0, 0, 0, .8)',
+    padding: '8px',
+    color: '#fff',
+    verticalAlign: 'bottom',
+    marginRight: '9px',
+
+    ':focus': {
+      outline: 'none'
+    }
+  },
+
+  checkboxDark: {
+    borderColor: 'rgba(255, 255, 255, .82)',
+  },
+
+  'checkbox:active': {
+    borderColor: 'rgba(0, 0, 0, 0)',
+    backgroundColor: 'rgba(0, 0, 0, .57)'
+  },
+
+  'checkbox:hover': {
+    borderColor: 'rgba(0, 0, 0, 1)'
+  },
+
+  'checkbox:checked': {
+    backgroundColor: '#007CD1',
+    borderColor: '#007CD1'
+  },
+
+  'checkboxDark:active': {
+    borderColor: 'rgba(255, 255, 255, 0)',
+    backgroundColor: 'rgba(255, 255, 255, .63)'
+  },
+
+  'checkboxDark:hover': {
+    borderColor: 'rgba(255, 255, 255, 1)'
+  },
+
+  'checkboxDark:checked': {
+    backgroundColor: '#007CD1',
+    borderColor: '#007CD1'
+  },
+
+  label: {
+    fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
+    fontSize: '14px',
+    lineHeight: '27px',
+    position: 'relative',
+    color: '#000000',
+
+    ':hover': {},
+    ':active': {}
+  },
+
+  labelDark: {
+    color: '#ffffff'
+  },
+
+  svg: {
+    position: 'absolute',
+    top: '6px',
+    left: '5px',
+    color: '#fff',
+    height: '16px'
+  }
+};
