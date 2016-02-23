@@ -10,7 +10,7 @@ class TextInput extends Component {
   };
 
   static propTypes = {
-    header: PropTypes.string
+    label: PropTypes.string
   };
 
   getPlaceholderStyle() {
@@ -22,7 +22,7 @@ class TextInput extends Component {
   }
 
   render() {
-    const { header, style, ...props } = this.props;
+    const { label, style, ...props } = this.props;
     let componentStyle = { ...styles.textBox, ...style };
 
     if (this.state.theme === 'dark') {
@@ -40,11 +40,11 @@ class TextInput extends Component {
       />
     );
 
-    if (header) {
+    if (label) {
       return (
         <div {...this.props}>
           <Text style={{ marginBottom: '5px' }}>
-            {header}
+            {label}
           </Text>
           {input}
         </div>

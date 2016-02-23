@@ -16,7 +16,7 @@ export default class extends Component {
         theme={this.props.theme}
         color={this.props.color}
         background
-        header="My Input"
+        label="My Input"
         placeholder="My Input"
         defaultValue="Hello!"
         onChange={this.change}
