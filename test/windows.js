@@ -1,28 +1,30 @@
 import { expect } from 'chai';
 import {
   Button,
-  Form,
-  ProgressRing,
-  TextBlock,
-  TextBox,
-  TitleBar,
-  Window,
   Checkbox,
+  Label,
+  MasterDetailsView,
+  ProgressCircle,
   SplitView,
-  View
-} from '../src/Windows';
+  Text,
+  TextInput,
+  TitleBar,
+  View,
+  Window
+} from '../src/windows';
 
 describe('Windows', () => {
   it('should be exported', () => {
     expect(Button).to.exist;
-    expect(Form).to.exist;
-    expect(ProgressRing).to.exist;
-    expect(TextBlock).to.exist;
-    expect(TextBox).to.exist;
-    expect(TitleBar).to.exist;
-    expect(Window).to.exist;
     expect(Checkbox).to.exist;
+    expect(Label).to.exist;
+    expect(MasterDetailsView).to.exist;
+    expect(ProgressCircle).to.exist;
     expect(SplitView).to.exist;
+    expect(Text).to.exist;
+    expect(TextInput).to.exist;
+    expect(TitleBar).to.exist;
     expect(View).to.exist;
+    expect(Window).to.exist;
   });
 });

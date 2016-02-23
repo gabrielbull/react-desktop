@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
 import { convertColor } from './color';
-import WindowFocusComponent from 'desktop-component/window-focus';
-import PlaceholderStyleComponent from 'desktop-component/placeholder-style';
-import CommonStylingComponent from 'desktop-component/common-styling';
+import WindowFocusComponent from './desktop-component/window-focus';
+import PlaceholderStyleComponent from './desktop-component/placeholder-style';
+import CommonStylingComponent from './desktop-component/common-styling';
 
 export const WindowFocus = 'WindowFocus';
 export const PlaceholderStyle = 'PlaceholderStyle';

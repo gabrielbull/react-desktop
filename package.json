@@ -31,7 +31,7 @@
     "react-dom": "~0.14"
   },
   "devDependencies": {
-    "babel": "^6.5.2",
+    "babel-cli": "^6.5.1",
     "babel-core": "^6.5.2",
     "babel-eslint": "^5.0.0",
     "babel-loader": "^6.2.3",
@@ -56,11 +56,11 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel/register --recursive --require ./test/setup.js",
+    "test": "./node_modules/.bin/mocha test --compilers js:babel-core/register --recursive --require ./test/setup.js",
     "lint": "./node_modules/.bin/eslint ./src ./test",
     "prebuild": "rm -rf lib",
-    "build": "npm run lint && babel --stage 0 ./src --out-dir ./lib",
+    "build": "npm run lint && ./node_modules/.bin/babel ./src --out-dir ./lib",
     "prepublish": "npm run build",
-    "playground": "webpack-dev-server --config ./playground/webpack.config.js --colors --inline --port 3000"
+    "playground": "./node_modules/.bin/webpack-dev-server --config ./playground/webpack.config.js --colors --inline --port 3000"
   }
 }
