@@ -130,7 +130,7 @@ class Item extends Component {
           ref="span"
           style={spanStyle}
         >
-          <Icon hasMargin={this.state.isOpen} icon={ItemIcon}/>
+          {ItemIcon ? <Icon hasMargin={this.state.isOpen} icon={ItemIcon}/> : null}
           {title}
         </span>
       </a>

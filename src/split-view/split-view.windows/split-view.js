@@ -1,7 +1,7 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import DesktopComponent from '../../desktop-component';
 import Pane from './pane/pane';
-import Item from './item/item';
+import Item from './split-view-item';
 import Content from './content/content';
 
 const styles = {

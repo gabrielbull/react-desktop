@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent from '../../../desktop-component';
-import Content from '../content/content';
+import DesktopComponent from '../../desktop-component';
+import Content from './content/content';
 
 const styles = {
   content: {
