@@ -1,28 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
-import DesktopComponent from '../../desktop-component';
+import DesktopComponent, { Hidden } from '../../desktop-component';
 import { startAnimation } from './progress-circle-animation';
+import styles from './styles/windows.10';
 
-var styles = {
-  progress: {
-    width: '20px',
-    height: '20px',
-    position: 'relative'
-  },
-
-  container: {
-    position: 'relative',
-    height: '20px'
-  },
-
-  absolute: {
-    position: 'absolute',
-    top: 0,
-    left: 0
-  }
-};
-
-@DesktopComponent
+@DesktopComponent(Hidden)
 class ProgressRingWindows extends Component {
   static propTypes = {
     absolute: PropTypes.bool,
