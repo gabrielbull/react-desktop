@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import * as Color from '../src/Color';
+import * as Color from '../src/color';
 
 describe('Color', () => {
   describe('#colorLuminance', () => {
