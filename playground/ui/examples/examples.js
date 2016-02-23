@@ -32,39 +32,38 @@ class Examples extends Component {
     list: PropTypes.object
   };
 
-  click = (key) => {
-    key = (this.props.path + '/' + key).replace(/^\//, '');
+  click = (category, key) => {
+    key = (category + '/' + key).replace(/^\//, '');
     this.context.playground.showExample(key);
   };
 
   render() {
-    let name = this.props.name ? <h1 style={styles.title}>{this.props.name}</h1> : null;
-
     return (
       <div>
-        {name}
-        {this.renderItems()}
+        {this.renderCategories(this.props.list)}
       </div>
     );
   }
 
-  renderItems() {
+  renderCategories(categories) {
     let children = [];
-    for (let prop in this.props.list) {
-      if (this.props.list.hasOwnProperty(prop)) {
-        let item = this.props.list[prop];
-        if (typeof item === 'function') {
-          children.push(this.renderItem(item, prop));
-        } else {
-          children.push(<Examples key={prop} name={prop} list={item} path={(this.props.path || '') + '/' + prop}/>);
-        }
+    for (let prop in categories) {
+      if (categories.hasOwnProperty(prop)) {
+        children.push(<h1 key={prop} style={styles.title}>{prop}</h1>);
+        children.push(...this.renderItems(prop, categories[prop]));
       }
     }
     return children;
   }
 
-  renderItem(item, key) {
-    return <a key={key} style={styles.item} onClick={() => this.click(key)}>{key}</a>
+  renderItems(category, items) {
+    let children = [];
+    for (let prop in items) {
+      if (items.hasOwnProperty(prop)) {
+        children.push(<a key={category + '/' + prop} style={styles.item} onClick={() => this.click(category, prop)}>{prop}</a>);
+      }
+    }
+    return children;
   }
 }
 

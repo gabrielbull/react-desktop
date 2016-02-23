@@ -9,7 +9,7 @@ class ProgressRingWindows extends Component {
   static propTypes = {
     absolute: PropTypes.bool,
     color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-    size: PropTypes.number
+    size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   };
 
   componentDidMount() {

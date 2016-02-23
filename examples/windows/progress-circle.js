@@ -10,7 +10,7 @@ export default class extends Component {
     return (
       <ProgressCircle
         color={this.props.color}
-        size="100"
+        size={100}
       />
     );
   }

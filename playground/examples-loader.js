@@ -27,16 +27,17 @@ module.exports = function(source) {
   var dirname = path.join(__dirname, '..');
   var files = scanDir(path.join(dirname, 'examples'));
   var file;
-  var data;
 
-  source = 'var data = {};\n';
+  source = 'let data = {};\n';
   for (var i = 0, len = files.length; i < len; ++i) {
     file = files[i];
     var filename = file.file.replace(dirname, '').replace(/\.js$/, '');
-    data = 'data[\'' + filename + '\'] = require(\'..' + filename + '\');\n';
-    source = source + data;
+    var key = filename.replace(/[\/\-]/g, '_');
+    source += 'import ' + key + ' from \'..' + filename + '\';\n';
+    source += 'data[\'' + filename + '\'] = ' + key + ';\n';
   }
-  source = source + '\nmodule.exports = data;\n';
+
+  source += 'export default data;';
 
   return source;
 };

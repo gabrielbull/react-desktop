@@ -51,12 +51,12 @@ module.exports = {
     loaders: [
       {
         test: /\?examples/,
-        loaders: ['babel-loader?stage=0', 'examples-loader']
+        loaders: ['babel', 'examples-loader']
       },
       {
         test: /\.(js)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader?stage=0'
+        loader: 'babel'
       }
     ]
   },
