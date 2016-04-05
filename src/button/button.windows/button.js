@@ -9,26 +9,14 @@ class Button extends Component {
   isbutton = true;
 
   static propTypes = {
+    type: PropTypes.string,
     color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     push: PropTypes.bool,
-    onClick: PropTypes.func,
-    onPress: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
+    onClick: PropTypes.func
   };
 
-  componentDidMount() {
-    if (findDOMNode(this).previousSibling) {
-      this.applySiblingStyle();
-    }
-  }
-
-  applySiblingStyle() {
-    if (!this.refs.element.style.marginLeft) {
-      this.refs.element.style.marginLeft = '12px';
-    }
-  }
-
   render() {
-    let { style, children, color, onPress, push, ...props } = this.props;
+    let { style, type, children, color, push, onClick, ...props } = this.props;
 
     let componentStyle = { ...styles.button, ...style };
 
@@ -52,14 +40,6 @@ class Button extends Component {
       componentStyle = { ...componentStyle, ...styles.colorButton };
     }
 
-    let type = 'button';
-    if (this.props.onPress === 'submit') {
-      type = 'submit';
-      onPress = null;
-    } else {
-      onPress = this.props.onClick ? this.props.onClick : this.props.onPress;
-    }
-
     if (push) {
       componentStyle[':active'] = { ...componentStyle[':active'], ...styles.pushTransform };
     }
@@ -67,8 +47,8 @@ class Button extends Component {
     return (
       <button
         ref="element"
-        type={type}
-        onClick={onPress}
+        type={type || 'button'}
+        onClick={onClick}
         style={componentStyle}
         {...props}
       >

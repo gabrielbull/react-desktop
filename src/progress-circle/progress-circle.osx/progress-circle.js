@@ -40,19 +40,10 @@ class IndeterminateCircularProgressIndicatorOSX extends Component {
 
   componentDidMount() {
     this.animate();
-    if (findDOMNode(this).previousSibling) {
-      this.applySiblingStyle();
-    }
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
-  }
-
-  applySiblingStyle() {
-    if (!this.refs.element.style.marginLeft) {
-      this.refs.element.style.marginLeft = '12px';
-    }
   }
 
   animate() {

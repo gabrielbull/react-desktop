@@ -6,7 +6,7 @@ Property            | Type         | Description
 :------------------ | :-----------:| :----------
 color               | string       | Sets the color of the text.
 hidden              | bool         | Sets the visibility of a component.
-onPress             | function     | Callback function when the button is pressed.
+onClick             | function     | Callback function when the button is pressed.
 push                | bool         | Display push animation when pressing the button.
 theme               | string       | Sets the UI theme that is used by this component and its children elements.<br/>__Property value__ _"light"_, _"dark"_
 
@@ -23,7 +23,7 @@ export default class extends Component {
 
   render() {
     return (
-      <Button push color={this.props.color} onPress={() => console.log('Pressed!')}>
+      <Button push color={this.props.color} onClick={() => console.log('Clicked!')}>
         Press me!
       </Button>
     );

@@ -8,7 +8,7 @@ export default class extends Component {
 
   render() {
     return (
-      <Button push color={this.props.color} onPress={() => console.log('Pressed!')}>
+      <Button push color={this.props.color} onClick={() => console.log('Clicked!')}>
         Press me!
       </Button>
     );
