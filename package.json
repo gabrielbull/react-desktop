@@ -56,10 +56,10 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha test --compilers js:babel-core/register --recursive --require ./test/setup.js",
-    "lint": "./node_modules/.bin/eslint ./src ./test",
-    "prebuild": "rm -rf lib",
-    "build": "npm run lint && ./node_modules/.bin/babel ./src --out-dir ./lib",
+    "test": "./node_modules/.bin/mocha test",
+    "eslint": "./node_modules/.bin/eslint ./src ./test",
+    "prebuild": "rm -rf lib && npm run eslint && npm run test",
+    "build": "./node_modules/.bin/babel ./src --out-dir ./lib",
     "prepublish": "npm run build",
     "playground": "./node_modules/.bin/webpack-dev-server --config ./playground/webpack.config.js --colors --inline --port 3000"
   }

@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import TextField from '../src/text-input/text-input.windows/text-input';
+import TextField from '../../src/text-input/text-input.windows/text-input';
 
 describe('TextInput', () => {
   it('create text input component with a placeholder', () => {
