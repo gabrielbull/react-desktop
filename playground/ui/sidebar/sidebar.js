@@ -7,7 +7,10 @@ import Logo from './logo';
 const styles = {
   sidebar: {
     backgroundColor: 'rgba(0,0,0,.8)',
-    height: '100%'
+    height: '100%',
+    userSelect: 'none',
+    WebkitUserSelect: 'none',
+    cursor: 'default'
   }
 };
 
@@ -116,7 +119,7 @@ class Sidebar extends Component {
       }
     }
 
-    return <Examples list={list}/>;
+    return <Examples defaultExample={this.props.defaultExample} list={list}/>;
   }
 }
 

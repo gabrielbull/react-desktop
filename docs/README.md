@@ -9,6 +9,8 @@ can be used in any JavaScript powered project!
 
 1. Getting Started
   * [Installation](/docs/getting-started/installation.md)
+2. OS X
+  * [Button](/docs/osx/button.md)
 2. Windows 10
   * [Button](/docs/windows/button.md)
   * [Checkbox](/docs/windows/checkbox.md)

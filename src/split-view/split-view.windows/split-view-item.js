@@ -15,7 +15,7 @@ const styles = {
 class Item extends Component {
   static propTypes = {
     title: PropTypes.string,
-    onPress: PropTypes.func,
+    onClick: PropTypes.func,
     margin: PropTypes.string,
     padding: PropTypes.string,
     selected: PropTypes.bool

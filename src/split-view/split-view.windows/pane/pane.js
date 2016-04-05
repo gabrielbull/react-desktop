@@ -56,10 +56,10 @@ class Pane extends Component {
 
   filterChildren(children) {
     return Children.map(children, (child, key) => {
-      const { onPress } = child.props;
+      const { onClick } = child.props;
 
       return (
-        <Item onPress={onPress} key={key} ref={key} identifierKey={key} isOpen={this.state.isOpen}>
+        <Item onClick={onClick} key={key} ref={key} identifierKey={key} isOpen={this.state.isOpen}>
           {child}
         </Item>
       );

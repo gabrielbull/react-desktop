@@ -89,7 +89,7 @@ class Tab extends Component {
     firstChild: PropTypes.bool,
     lastChild: PropTypes.bool,
     nextSelected: PropTypes.bool,
-    onPress: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired
   };
 
   constructor(props) {
@@ -141,7 +141,7 @@ class Tab extends Component {
     return (
       <div
         ref="element"
-        onClick={this.props.onPress}
+        onClick={this.props.onClick}
         //data-style={applyStyle(cssStyle)}
         //style={componentStyle}
       >

@@ -54,7 +54,7 @@ const styles = {
 @DesktopComponent
 class Item extends Component {
   static propTypes = {
-    onPress: PropTypes.func
+    onClick: PropTypes.func
   };
 
   static contextTypes = {
@@ -73,17 +73,17 @@ class Item extends Component {
     return this.context.parent;
   }
 
-  onPress = () => {
+  onClick = () => {
     this.pane.selectItem(this);
     this.pane.splitView.selectItem(this.props.children);
 
-    if (this.props.onPress) {
-      this.props.onPress();
+    if (this.props.onClick) {
+      this.props.onClick();
     }
   };
 
   render() {
-    const { children, style, onPress, isOpen, ...props } = this.props;
+    const { children, style, onClick, isOpen, ...props } = this.props;
     const title = this.state.isOpen ? children.props.title : null;
     const ItemIcon = children.props.icon;
     let anchorStyle = { ...styles.anchor, ...style };
@@ -122,7 +122,7 @@ class Item extends Component {
     return (
       <a
         ref="anchor"
-        onClick={this.onPress}
+        onClick={this.onClick}
         style={anchorStyle}
         {...props}
       >

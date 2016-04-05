@@ -4,11 +4,12 @@ const styles = {
   title: {
     color: 'white',
     fontFamily: 'sans-serif',
-    fontSize: '16px',
-    lineHeight: '1.2em',
-    fontWeight: 'bold',
-    margin: 0,
-    padding: '10px'
+    fontSize: '18px',
+    lineHeight: '1.4em',
+    fontWeight: 'normal',
+    margin: '20px 10px 10px',
+    padding: '0 0 10px',
+    borderBottom: '1px solid rgba(255, 255, 255, .2)'
   },
   item: {
     display: 'block',
@@ -20,6 +21,10 @@ const styles = {
     margin: 0,
     padding: '2px 10px',
     cursor: 'pointer'
+  },
+  itemSelect: {
+    color: '#6FFFFD',
+    fontWeight: 'bold'
   }
 };
 
@@ -29,12 +34,22 @@ class Examples extends Component {
   };
 
   static propTypes = {
+    defaultExample: PropTypes.string,
     list: PropTypes.object
   };
+
+  constructor(props, ...args) {
+    super(props, ...args);
+    this.state = {
+      selected: props.defaultExample
+    }
+  };
+
 
   click = (category, key) => {
     key = (category + '/' + key).replace(/^\//, '');
     this.context.playground.showExample(key);
+    this.setState({ selected: key });
   };
 
   render() {
@@ -60,7 +75,16 @@ class Examples extends Component {
     let children = [];
     for (let prop in items) {
       if (items.hasOwnProperty(prop)) {
-        children.push(<a key={category + '/' + prop} style={styles.item} onClick={() => this.click(category, prop)}>{prop}</a>);
+        const selected = category + '/' + prop === this.state.selected;
+        children.push(
+          <a
+            key={category + '/' + prop}
+            style={{ ...styles.item, ...(selected ? styles.itemSelect : {}) }}
+            onClick={() => this.click(category, prop)}
+          >
+            {prop}
+          </a>
+        );
       }
     }
     return children;

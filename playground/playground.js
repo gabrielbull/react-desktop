@@ -87,6 +87,7 @@ class Playground extends Component {
           theme={this.state.theme}
           onThemeChange={this.changeTheme}
           style={styles.sidebar}
+          defaultExample={this.state.example}
         />
         <div style={styles.example}>
           {example}
