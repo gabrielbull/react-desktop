@@ -18,14 +18,11 @@ class Item extends Component {
     onPress: PropTypes.func,
     margin: PropTypes.string,
     padding: PropTypes.string,
-    selected: PropTypes.bool,
-    storageKey: PropTypes.number
+    selected: PropTypes.bool
   };
 
   static contextTypes = {
-    id: PropTypes.string,
-    persistSelectedItem: PropTypes.bool,
-    storage: PropTypes.object
+    id: PropTypes.string
   };
 
   constructor(props, context, updater) {

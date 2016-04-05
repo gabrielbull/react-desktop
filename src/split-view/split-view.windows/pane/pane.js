@@ -38,11 +38,9 @@ class Pane extends Component {
 
   static contextTypes = {
     id: PropTypes.string,
-    storage: PropTypes.object,
     compactLength: PropTypes.number,
     openLength: PropTypes.number,
-    isOpen: PropTypes.bool,
-    persistIsOpen: PropTypes.bool
+    isOpen: PropTypes.bool
   };
 
   constructor(props, context, updater) {
@@ -54,19 +52,6 @@ class Pane extends Component {
 
   get splitView() {
     return this.context.parent;
-  }
-
-  get storageKey() {
-    return `.${this.context.id}.$/.isOpen`;
-  }
-
-  componentDidMount() {
-    if (this.context.storage && typeof this.context.storage[this.storageKey] !== 'undefined' && this.context.persistIsOpen) {
-      const value = this.context.storage[this.storageKey] === 'true';
-      if (value != this.state.isOpen) {
-        this.toggleOpen();
-      }
-    }
   }
 
   filterChildren(children) {
@@ -89,9 +74,6 @@ class Pane extends Component {
           this.refs[prop].setState({ isOpen: !this.state.isOpen });
         }
       }
-    }
-    if (this.context.storage && this.context.persistIsOpen) {
-      this.context.storage[this.storageKey] = !this.state.isOpen;
     }
     if (this.props.onPaneToggle) {
       this.props.onPaneToggle(!this.state.isOpen);

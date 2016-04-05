@@ -23,8 +23,6 @@ class SplitView extends Component {
     openLength: PropTypes.number,
     placement: PropTypes.string,
     isOpen: PropTypes.bool,
-    persistIsOpen: PropTypes.bool,
-    persistSelectedItem: PropTypes.bool,
     push: PropTypes.bool,
     onPaneToggle: PropTypes.func
   };
@@ -35,8 +33,6 @@ class SplitView extends Component {
     openLength: PropTypes.number,
     placement: PropTypes.string,
     isOpen: PropTypes.bool,
-    persistIsOpen: PropTypes.bool,
-    persistSelectedItem: PropTypes.bool,
     push: PropTypes.bool
   };
 
@@ -62,8 +58,6 @@ class SplitView extends Component {
       openLength: this.props.openLength,
       placement: this.props.placement,
       isOpen: this.props.isOpen,
-      persistIsOpen: this.props.persistIsOpen,
-      persistSelectedItem: this.props.persistSelectedItem,
       push: this.props.push
     };
   }
@@ -76,40 +70,8 @@ class SplitView extends Component {
     }
   }
 
-  selectItem(item) {
-    this.selectedItem = item.props.storageKey;
-    if (this.refs) {
-      for (var prop in this.refs) {
-        if (this.refs.hasOwnProperty(prop)) {
-          if (this.refs[prop].props.storageKey === item.props.storageKey) {
-            if (this.context.storage && this.props.persistSelectedItem) {
-              this.context.storage[this.getItemStorageKey(this.refs[prop].props.storageKey)] = true;
-            }
-            this.refs[prop].setState({ selected: true });
-          } else {
-            if (this.context.storage && this.props.persistSelectedItem) {
-              this.context.storage[this.getItemStorageKey(this.refs[prop].props.storageKey)] = false;
-            }
-            this.refs[prop].setState({ selected: false });
-          }
-        }
-      }
-    }
-  }
-
   getItemStorageKey(key) {
     return `.${this.id}.$/.${key}`;
-  }
-
-  getPersistedSelectedItem(key) {
-    if (
-      this.context.storage &&
-      this.props.persistSelectedItem &&
-      typeof this.context.storage[this.getItemStorageKey(key)] !== 'undefined'
-    ) {
-      return this.context.storage[this.getItemStorageKey(key)] === 'true';
-    }
-    return null;
   }
 
   render() {
@@ -123,17 +85,12 @@ class SplitView extends Component {
     });
 
     let content = Children.map(children, (child, key) => {
-      let props = { ref: key, storageKey: key };
+      let props = { ref: key };
       if (!hasSelectedItem && key === 0 && this.firstRender) {
         this.selectedItem = key;
         props.selected = true;
       } else if (this.selectedItem === key) {
         props.selected = true;
-      }
-      if (this.props.persistSelectedItem && this.context.storage) {
-        if (this.getPersistedSelectedItem(key) !== null) {
-          props.selected = this.getPersistedSelectedItem(key);
-        }
       }
       return cloneElement(child, props);
     });

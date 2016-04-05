@@ -36,7 +36,6 @@ function ExtendComposedComponent(options, ComposedComponent) {
       color: PropTypes.string,
       background: PropTypes.string,
       theme: PropTypes.string,
-      storage: PropTypes.object,
       ...ComposedComponent.childContextTypes
     };
 
@@ -45,7 +44,6 @@ function ExtendComposedComponent(options, ComposedComponent) {
       color: PropTypes.string,
       background: PropTypes.string,
       theme: PropTypes.string,
-      storage: PropTypes.object,
       ...ComposedComponent.contextTypes
     };
 
@@ -53,7 +51,7 @@ function ExtendComposedComponent(options, ComposedComponent) {
     _params = {};
 
     constructor(props, context, updater) {
-      const { visible, display, theme, storage, color, background, ...properties } = props;
+      const { visible, display, theme, color, background, ...properties } = props;
       super(props, context, updater);
 
       this.context = this.context || {};
@@ -61,11 +59,6 @@ function ExtendComposedComponent(options, ComposedComponent) {
 
       this.state.visible = this.state.visible || visible !== false;
       this.state.display = this.state.display || display !== false;
-
-      if (!context.storage) {
-        this.context.storage = storage ? storage : null;
-      }
-      this.storage = storage ? storage : this.context.storage;
 
       if (!context.theme) {
         this.context.theme = theme ? theme : 'light';
@@ -139,8 +132,7 @@ function ExtendComposedComponent(options, ComposedComponent) {
         parent: this,
         color: this.state.color,
         background: typeof this.state.background === 'boolean' ? this.state.color : this.state.background,
-        theme: this.state.theme,
-        storage: this.storage
+        theme: this.state.theme
       };
 
       if (super.getChildContext) {

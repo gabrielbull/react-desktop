@@ -7,8 +7,7 @@ import styles from './styles/windows.10';
 @DesktopComponent(WindowFocus, Dimension('100vw', '100vh'), Alignment, Padding, Hidden)
 class Window extends Component {
   static propTypes = {
-    chrome: PropTypes.bool,
-    storage: PropTypes.object
+    chrome: PropTypes.bool
   };
 
   static styleRefs = {
