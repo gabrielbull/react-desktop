@@ -11,7 +11,9 @@ const styles = {
     flexWrap: 'nowrap',
     position: 'relative',
     flex: '1',
-    background: 'white'
+    background: 'white',
+    userSelect: 'none',
+    cursor: 'default'
   },
 
   containerDark: {

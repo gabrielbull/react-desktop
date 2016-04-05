@@ -23,7 +23,7 @@ class Sidebar extends Component {
   }
 
   handleClick = () => {
-    this.setState({ displayColorPicker: true });
+    this.setState({ displayColorPicker: !this.state.displayColorPicker });
   };
 
   changeColor = (color) => {
@@ -38,6 +38,19 @@ class Sidebar extends Component {
 
   render() {
     const isChecked = this.state.theme === 'dark';
+
+    let colorPicker;
+    if (this.state.displayColorPicker) {
+      colorPicker = (
+        <div style={{ position: 'absolute', top: '140px', left: '10px' }}>
+          <ColorPicker
+            onChangeComplete={this.changeColor}
+            color={this.state.color}
+            type="sketch"
+          />
+        </div>
+      )
+    }
 
     return (
       <div style={{ ...styles.sidebar, ...this.props.style }}>
@@ -81,13 +94,7 @@ class Sidebar extends Component {
           <span style={{ margin: '10px', fontFamily: 'sans-serif', color: 'white', fontSize: '11px' }}>
             Color
           </span>
-          <ColorPicker
-            positionCSS={{ position: 'absolute',top: '100px', left: '20px' }}
-            display={this.state.displayColorPicker}
-            color={this.state.color}
-            onChangeComplete={this.changeColor}
-            type="sketch"
-          />
+          {colorPicker}
         </div>
 
         {this.renderExamples()}
