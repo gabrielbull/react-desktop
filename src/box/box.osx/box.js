@@ -46,7 +46,7 @@ class Box extends Component {
     if (label) {
       return (
         <div {...props}>
-          <Text margin="0 0 1px 7px" size="11">{label}</Text>
+          <Text margin="0 0 1px 7px" size={11}>{label}</Text>
           <div
             ref="box"
             style={componentStyle}

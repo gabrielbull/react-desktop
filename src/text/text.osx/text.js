@@ -6,7 +6,7 @@ import styles from './styles/osx.10.11';
 class Text extends Component {
   static propTypes = {
     color: PropTypes.string,
-    size: PropTypes.string
+    size: PropTypes.number
   };
 
   render() {
@@ -19,10 +19,7 @@ class Text extends Component {
       componentStyle.textAlign = props.horizontalAlignment;
     }
 
-    if (size) {
-      if (size.match(/[^\d]/)) componentStyle.fontSize = size;
-      else componentStyle.fontSize = size + 'px';
-    }
+    if (size) componentStyle.fontSize = size + 'px';
 
     return (
       <div

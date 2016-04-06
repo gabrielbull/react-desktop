@@ -93,7 +93,6 @@ class Master extends Component {
     if (this.props.width) {
       componentStyle.width = parseDimension(this.props.width);
       spanStyle.width = parseDimension(this.props.width);
-      console.log(componentStyle);
     }
 
     if (this.props.push) {

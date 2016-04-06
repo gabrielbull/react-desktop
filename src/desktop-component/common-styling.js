@@ -108,10 +108,8 @@ class CommonStylingComponent {
         if (el) {
           style = el.props.style || {};
           for (let i = 0, len = components[ref].length; i < len; ++i) {
-            console.log(components[ref][i], this[components[ref][i]](props, style));
             ({ props, style } = this[components[ref][i]](props, style));
           }
-          console.log(ref, style);
           this.replaceRef(ref, component, cloneElement(el, { style: style }));
         }
       }

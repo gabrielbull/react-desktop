@@ -11,8 +11,8 @@ describe('Color', () => {
       expect(Color.hexToRgb('#000000')).to.deep.equal({ r: 0, g: 0, b: 0 });
       expect(Color.hexToRgb('#1883d7')).to.deep.equal({ r: 24, g: 131, b: 215 });
       expect(Color.hexToRgb('#ffffff')).to.deep.equal({ r: 255, g: 255, b: 255 });
-      // expect(Color.hexToRgb('#000')).to.deep.equal({ r: 0, g: 0, b: 0 });
-      // expect(Color.hexToRgb('#fff')).to.deep.equal({ r: 255, g: 255, b: 255 });
+      expect(Color.hexToRgb('#000')).to.deep.equal({ r: 0, g: 0, b: 0 });
+      expect(Color.hexToRgb('#fff')).to.deep.equal({ r: 255, g: 255, b: 255 });
     });
   });
 
@@ -20,7 +20,7 @@ describe('Color', () => {
     it('works', () => {
       expect(Color.transparentize('#000000', 0)).to.deep.equal('rgba(0, 0, 0, 1)');
       expect(Color.transparentize('#000000', 0.4)).to.deep.equal('rgba(0, 0, 0, 0.6)');
-      expect(Color.transparentize('#000000', 0.7)).to.deep.equal('rgba(0, 0, 0, 0.30000000000000004)');
+      expect(Color.transparentize('#000000', 0.7)).to.deep.equal('rgba(0, 0, 0, 0.3)');
       expect(Color.transparentize('#000000', 1)).to.deep.equal('rgba(0, 0, 0, 0)');
     });
   });
@@ -36,8 +36,8 @@ describe('Color', () => {
   describe('#convertColor', () => {
     it('works', () => {
       expect(Color.convertColor('white')).to.equal('#ffffff');
-      expect(Color.convertColor('blue')).to.equal('#1883d7');
-      // expect(Color.convertColor('black')).to.equal('#000000');
+      expect(Color.convertColor('blue')).to.equal('#0000ff');
+      expect(Color.convertColor('black')).to.equal('#000000');
     });
   });
 
