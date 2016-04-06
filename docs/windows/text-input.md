@@ -10,7 +10,7 @@ defaultValue        | string       | Sets the default value of the input.
 height              | number       | Sets the height of a component.
 hidden              | bool         | Sets the visibility of a component.
 horizontalAlignment | string       | Sets the horizontal alignment of the component's content<br/>__Property value__ _"left"_, _"center"_, _"right"_
-label               | string       | Adds an label to the input.
+label               | string       | Adds a label to the input.
 onChange            | function     | Callback function when the input changes.
 placeholder         | function     | Adds a placeholder to the input.
 theme               | string       | Sets the UI theme that is used by this component and its children elements.<br/>__Property value__ _"light"_, _"dark"_

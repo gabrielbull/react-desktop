@@ -105,11 +105,15 @@ class CommonStylingComponent {
     for (let ref in components) {
       if (components.hasOwnProperty(ref)) {
         let el = this.findRef(ref, component);
-        style = el.props.style || {};
-        for (let i = 0, len = components[ref].length; i < len; ++i) {
-          ({ props, style } = this[components[ref][i]](props, style));
+        if (el) {
+          style = el.props.style || {};
+          for (let i = 0, len = components[ref].length; i < len; ++i) {
+            console.log(components[ref][i], this[components[ref][i]](props, style));
+            ({ props, style } = this[components[ref][i]](props, style));
+          }
+          console.log(ref, style);
+          this.replaceRef(ref, component, cloneElement(el, { style: style }));
         }
-        this.replaceRef(ref, component, cloneElement(el, { style: style }));
       }
     }
 

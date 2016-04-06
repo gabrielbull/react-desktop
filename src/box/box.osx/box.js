@@ -1,65 +1,70 @@
 import React, { Component, PropTypes } from 'react';
+import styles from './styles/osx.10.11';
+import DesktopComponent, {
+  Dimension,
+  Margin,
+  Padding,
+  Alignment,
+  Hidden,
+  Background
+} from '../../desktop-component';
+import { convertColor, darkenColor } from '../../color';
+import Text from '../../text/text.osx/text';
 
-/*var styles = {
-  box: {
-    WebkitUserSelect: 'none',
-    cursor: 'default',
-    backgroundColor: 'rgba(0, 0, 0, .04)',
-    borderWidth: '1px',
-    borderStyle: 'solid',
-    borderTopColor: 'rgba(0, 0, 0, .07)',
-    borderLeftColor: 'rgba(0, 0, 0, .037)',
-    borderRightColor: 'rgba(0, 0, 0, .037)',
-    borderBottomColor: 'rgba(0, 0, 0, .026)',
-    borderRadius: '4px',
-    position: 'relative',
-    padding: '23px 18px 22px 18px'
-  },
-
-  segmentedControls: {
-    marginTop: '10px',
-    paddingTop: '33px'
-  }
-};*/
-
+@DesktopComponent(Dimension, Margin, Padding, Alignment, Hidden, Background)
 class Box extends Component {
   static propTypes = {
-    children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
-    style: PropTypes.object,
-    visible: PropTypes.bool,
-    display: PropTypes.bool
+    label: PropTypes.string
   };
 
-  constructor(props) {
-    super();
-    this.state = {
-      visible: props.visible !== false,
-      display: props.display !== false
-    };
-    //this.styles = mergeStyles(styles.box, this.props ? this.props.style : {});
-  }
+  static styleRefs = {
+    padding: 'box',
+    dimension: 'box'
+  };
 
   render() {
-    const { children, style, visible, display, ...props } = this.props;
-    //const hasSegmentedControls = typeof children === 'object' && children.type === SegmentedControl;
+    let { children, style, background, label, ...props } = this.props;
+    const hasSegmentedControls = false;
 
-    /*let componentStyle = this.styles;
+    let componentStyle = { ...styles.box ,...style };
     if (hasSegmentedControls) {
-      componentStyle = mergeStyles(componentStyle, styles.segmentedControls);
+      componentStyle = { ...styles.segmentedControls };
     }
 
-    componentStyle = mergeStyles(componentStyle, {
-      visibility: this.state.visible ? 'visible' : 'hidden',
-      display: this.state.display ? 'block' : 'none'
-    });*/
+    if (background) {
+      background = convertColor(background);
+      componentStyle = {
+        ...componentStyle,
+        backgroundColor: background,
+        borderTopColor: darkenColor(background, .3),
+        borderLeftColor: darkenColor(background, .24),
+        borderRightColor: darkenColor(background, .24),
+        borderBottomColor: darkenColor(background, .19)
+      };
+    }
 
+    if (label) {
+      return (
+        <div {...props}>
+          <Text margin="0 0 1px 7px" size="11">{label}</Text>
+          <div
+            ref="box"
+            style={componentStyle}
+          >
+            {children}
+          </div>
+        </div>
+      );
+    }
     return (
       <div
-        //style={componentStyle}
+        ref="box"
+        style={componentStyle}
         {...props}
       >
-        {this.props.children}
+        {children}
       </div>
+
     );
   }
 }
