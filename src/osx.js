@@ -1,6 +1,9 @@
 export { default as Button } from './button/button.osx/button';
 
 
+export { default as ProgressCircle } from './progress-circle/progress-circle.osx/progress-circle';
+
+
 /*export { default as Box } from './Box/Box.osx';
 export { default as Form } from './Form/Form.common';
 export { default as IndeterminateCircularProgressIndicator } from

@@ -4,11 +4,12 @@
 
 Property            | Type         | Description
 :------------------ | :-----------:| :----------
-color               | string       | Sets the color of the text.
+color               | string       | Sets the color of the button.
 hidden              | bool         | Sets the visibility of a component.
 onClick             | function     | Callback function when the button is pressed.
 push                | bool         | Display push animation when pressing the button.
 theme               | string       | Sets the UI theme that is used by this component and its children elements.<br/>__Property value__ _"light"_, _"dark"_
+type                | string       | Sets the type of the button<br/>__Property value__ _"button"_ _"submit"_. Default value _"button"_.
 
 ### Examples
 

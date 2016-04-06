@@ -1,11 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import { findDOMNode } from 'react-dom';
 import DesktopComponent, { Hidden } from '../../desktop-component';
-import { startAnimation } from './progress-circle-animation';
+import { startAnimation, stopAnimation } from './progress-circle-animation';
 import styles from './styles/windows.10';
 
 @DesktopComponent(Hidden)
-class ProgressRingWindows extends Component {
+class ProgressCircle extends Component {
   static propTypes = {
     absolute: PropTypes.bool,
     color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
@@ -13,7 +12,7 @@ class ProgressRingWindows extends Component {
   };
 
   componentDidMount() {
-    startAnimation(
+    this.animation = startAnimation(
       this.refs[0],
       this.refs[1],
       this.refs[2],
@@ -24,7 +23,7 @@ class ProgressRingWindows extends Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval);
+    stopAnimation(this.animation);
   }
 
   render() {
@@ -101,4 +100,4 @@ class ProgressRingWindows extends Component {
   }
 }
 
-export default ProgressRingWindows;
+export default ProgressCircle;

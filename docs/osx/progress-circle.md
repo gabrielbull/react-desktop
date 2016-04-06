@@ -12,20 +12,14 @@ size                | number       | Sets the size of the progress circle.
 
 ```jsx
 import React, { Component } from 'react';
-import { ProgressCircle } from 'react-desktop/windows';
+import { ProgressCircle } from 'react-desktop/osx';
 
 export default class extends Component {
-  static defaultProps = {
-    color: '#cc7f29'
-  };
-
   render() {
     return (
-      <ProgressCircle
-        color={this.props.color}
-        size={100}
-      />
+      <ProgressCircle size={50}/>
     );
   }
 }
+
 ```

@@ -15,6 +15,9 @@ const stopRotationAt = totalIterations * 2 / 1.02;
 const easing = BezierEasing(0, 0.47, 0.9, .25);
 const bounding = 68;
 
+let ids = [];
+let animations = {};
+
 function rotateCircle(circles) {
   let lastFrame = false;
   for (var i = 0, len = circles.length; i < len; ++i) {
@@ -43,14 +46,26 @@ function rotateCircle(circles) {
 
   this.iteration++;
   if (!lastFrame) {
-    requestAnimationFrame(rotateCircle.bind(this, circles));
+    animations[this.id] = ['animationFrame', requestAnimationFrame(rotateCircle.bind(this, circles))];
   } else {
-    setTimeout(startAnimation.bind(null, ...circles), restartInterval);
+    animations[this.id] = ['timeout', window.setTimeout(startAnimation.bind(null, ...circles), restartInterval)];
   }
 }
 
 export function startAnimation(...elements) {
+  let id = 0;
+  if (ids.length) id = ids[ids.length - 1] + 1;
+  ids.push(id);
   if (requestAnimationFrame) {
-    rotateCircle.apply({ iteration: 0, currentIteration: 0 }, [elements]);
+    rotateCircle.apply({ iteration: 0, currentIteration: 0, id }, [elements]);
+  }
+  return id;
+}
+
+export function stopAnimation(animation) {
+  if (animations[animation][0] === 'timeout') {
+    window.clearTimeout(animations[animation][1]);
+  } else {
+    window.cancelAnimationFrame(animations[animation][1]);
   }
 }
