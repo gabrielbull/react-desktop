@@ -4,6 +4,6 @@ export default {
     cursor: 'default',
     fontFamily: '"San Francisco", "Helvetica Neue", "Lucida Grande", Arial, sans-serif',
     fontSize: '13px',
-    whiteSpace: 'nowrap'
+    display: 'flex'
   }
 };

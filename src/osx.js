@@ -1,5 +1,6 @@
-export { default as Button } from './button/button.osx/button';
 export { default as Box } from './box/box.osx/box';
+export { default as Button } from './button/button.osx/button';
+export { default as Checkbox } from './checkbox/checkbox.osx/checkbox';
 
 export { default as ProgressCircle } from './progress-circle/progress-circle.osx/progress-circle';
 
