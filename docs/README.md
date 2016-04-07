@@ -10,8 +10,14 @@ can be used in any JavaScript powered project!
 1. Getting Started
   * [Installation](/docs/getting-started/installation.md)
 2. OS X
+  * [Box](/docs/osx/box.md)
   * [Button](/docs/osx/button.md)
-2. Windows 10
+  * [Checkbox](/docs/osx/checkbox.md)
+  * [Label](/docs/osx/label.md)
+  * [Progress Circle](/docs/osx/progress-circle.md)
+  * [Text](/docs/osx/text.md)
+  * [Text Input](/docs/osx/text-input.md)
+3. Windows 10
   * [Button](/docs/windows/button.md)
   * [Checkbox](/docs/windows/checkbox.md)
   * [Master/Details View](/docs/windows/master-details-view.md)
@@ -22,8 +28,6 @@ can be used in any JavaScript powered project!
   * [Title Bar](/docs/windows/title-bar.md)
   * [View](/docs/windows/view.md)
   * [Window](/docs/windows/window.md)
-3. Forms
-  * [Forms](/docs/forms/forms.md)
 4. Advanced Usage
  * [Electron.js](/docs/advanced-usage/electron-js.md)
  * [node-webkit](/docs/advanced-usage/node-webkit.md)
