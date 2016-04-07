@@ -1,7 +1,7 @@
 import React, { Component, PropTypes, Children } from 'react';
 import DesktopComponent, { WindowFocus, Dimension, Alignment, Padding, Hidden } from '../../desktop-component';
 import TitleBar from '../../title-bar/title-bar.windows/title-bar';
-import View from '../../view/view.windows/view';
+import View from '../../view/view';
 import styles from './styles/windows.10';
 
 @DesktopComponent(WindowFocus, Dimension('100vw', '100vh'), Alignment, Padding, Hidden)

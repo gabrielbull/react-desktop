@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Controls from './Controls.osx/Controls';
+import Controls from './controls/controls';
 
 var styles = {
   titleBar: {

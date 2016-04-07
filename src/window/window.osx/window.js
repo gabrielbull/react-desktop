@@ -1,81 +1,62 @@
 import React, { Component, PropTypes, Children } from 'react';
-import TitleBar from '../TitleBar';
-import TitleBarOSX from '../TitleBar/TitleBar.osx';
+import DesktopComponent, { WindowFocus, Dimension, Alignment, Padding, Hidden } from '../../desktop-component';
+import TitleBar from '../../title-bar/title-bar.osx/title-bar';
+import View from '../../view/view';
+import styles from './styles/osx.10.11';
 
-var styles = {
-  window: {
-    WebkitUserSelect: 'none',
-    cursor: 'default',
-    backgroundColor: '#ececec',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-
-  chrome: {
-    borderTopLeftRadius: '4px',
-    borderTopRightRadius: '4px',
-    borderBottomLeftRadius: '4px',
-    borderBottomRightRadius: '4px',
-    boxShadow:
-    '0 0 1px rgba(0, 0, 0, .5), ' + // Border
-    '0 15px 25px rgba(0, 0, 0, .1), ' +
-    '0 0 30px rgba(0, 0, 0, .06), ' +
-    '0 0 60px rgba(0, 0, 0, .06)'
-  },
-
-  content: {
-    margin: '24px 20px 20px 20px'
-  }
-};
-
-class WindowOSX extends Component {
+@DesktopComponent(WindowFocus, Dimension('100vw', '100vh'), Alignment, Padding, Hidden)
+class Window extends Component {
   static propTypes = {
-    children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
-    style: PropTypes.object,
-    chrome: PropTypes.bool,
-    visible: PropTypes.bool,
-    display: PropTypes.bool
+    chrome: PropTypes.bool
   };
 
-  constructor(props) {
-    super();
-    this.state = { visible: props.visible !== false, display: props.display !== false };
+  static styleRefs = {
+    padding: 'content'
+  };
+
+  filterChildren() {
+    let titleBar = '';
+    let otherChildren = [];
+    Children.map(this.props.children, (element) => {
+      if (element.type === TitleBar) {
+        titleBar = element;
+      } else {
+        otherChildren = [...otherChildren, element];
+      }
+    });
+
+    return [titleBar, ...otherChildren];
   }
 
   render() {
-    let { style, chrome, children, visible, display, ...props } = this.props;
+    let { style, chrome, ...props } = this.props;
 
-    let componentStyle = this.styles;
-    //if (chrome) {
-      //componentStyle = mergeStyles(componentStyle, styles.chrome);
-    //}
+    let componentStyle = { ...styles.window, ...style };
+    if (chrome) {
+      componentStyle = {
+        ...componentStyle,
+        ...styles.chrome
+      };
 
-    const titleBar = Children.map(children, (element) => {
-      if (element.type === TitleBar || element.type === TitleBarOSX) {
-        return element;
+      if (!this.state.windowFocused) {
+        componentStyle = { ...componentStyle, ...styles.unfocused }
       }
-    });
+    }
 
-    children = Children.map(children, (element) => {
-      if (element.type !== TitleBar && element.type !== TitleBarOSX) {
-        return element;
-      }
-    });
+    const [titleBar, ...children] = this.filterChildren();
 
-    /*componentStyle = mergeStyles(componentStyle, {
-      visibility: this.state.visible ? 'visible' : 'hidden',
-      display: this.state.display ? 'flex' : 'none'
-    });*/
+    let content = <View ref="content" style={styles.content}>{children}</View>;
 
     return (
-      <div style={componentStyle} {...props}>
+      <div
+        style={componentStyle}
+        {...props}
+      >
         {titleBar}
-        <div style={styles.content}>
-          {children}
-        </div>
+        {content}
       </div>
     );
   }
 }
 
-export default WindowOSX;
+export default Window;

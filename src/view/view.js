@@ -6,7 +6,7 @@ import DesktopComponent, {
   Alignment,
   Hidden,
   Background
-} from '../../desktop-component';
+} from '../desktop-component';
 
 var styles = {
   flexGrow: '1',

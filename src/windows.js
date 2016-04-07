@@ -7,5 +7,5 @@ export { default as SplitView } from './split-view/split-view.windows/split-view
 export { default as Text } from './text/text.windows/text';
 export { default as TextInput } from './text-input/text-input.windows/text-input';
 export { default as TitleBar } from './title-bar/title-bar.windows/title-bar';
-export { default as View } from './view/view.windows/view';
+export { default as View } from './view/view';
 export { default as Window } from './window/window.windows/window';

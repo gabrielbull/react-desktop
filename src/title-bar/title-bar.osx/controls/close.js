@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import WindowState from '../../WindowState';
 import Radium from 'radium';
 
 const styles = {
@@ -38,8 +37,8 @@ const styles = {
   }
 };
 
-@WindowState
-@Radium
+//@WindowState
+//@Radium
 class Close extends Component {
   static propTypes = {
     style: PropTypes.object

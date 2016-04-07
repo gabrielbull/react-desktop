@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import Close from './Close';
-import Minimize from './Minimize';
-import Resize from './Resize';
+import Close from './close';
+import Minimize from './minimize';
+import Resize from './resize';
 
 var styles = {
   controls: {
@@ -25,7 +25,7 @@ class Controls extends Component {
         this.refs[prop].setState({ iconVisible: true });
       }
     }
-  }
+  };
 
   mouseLeave = () => {
     for (let prop in this.refs) {
@@ -33,7 +33,7 @@ class Controls extends Component {
         this.refs[prop].setState({ iconVisible: false });
       }
     }
-  }
+  };
 
   render() {
     return (

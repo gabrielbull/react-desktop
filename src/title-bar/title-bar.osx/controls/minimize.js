@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import Radium from 'radium';
-import WindowState from '../../WindowState';
 
 var styles = {
   button: {
@@ -38,8 +37,8 @@ var styles = {
   }
 };
 
-@WindowState
-@Radium
+//@WindowState
+//@Radium
 class Minimize extends Component {
   static propTypes = {
     style: PropTypes.object

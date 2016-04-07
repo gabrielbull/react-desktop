@@ -45,7 +45,8 @@ class CommonStylingComponent {
   }
 
   findRef(ref, component) {
-    if (component.ref === ref) {
+    if (!component) return null;
+    else if (component.ref === ref) {
       return component;
     }
     if (component.props.children) {
