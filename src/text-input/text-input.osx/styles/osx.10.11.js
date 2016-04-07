@@ -25,7 +25,6 @@ export default {
       outline: 'none',
       borderColor: '#64abda',
       transition: 'border-color .22s ease-out'
-      //boxShadow: '0 0 0 3.5px #93c2f3'
     },
 
     ':placeholder': {

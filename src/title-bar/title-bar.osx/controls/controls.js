@@ -14,9 +14,11 @@ var styles = {
 
 class Controls extends Component {
   static propTypes = {
-    onClosePress: PropTypes.func,
-    onMinimizePress: PropTypes.func,
-    onResizePress: PropTypes.func
+    isFullscreen: PropTypes.bool,
+    onCloseClick: PropTypes.func,
+    onMinimizeClick: PropTypes.func,
+    onMaximizeClick: PropTypes.func,
+    onResizeClick: PropTypes.func
   };
 
   mouseEnter = () => {
@@ -38,9 +40,14 @@ class Controls extends Component {
   render() {
     return (
       <div style={styles.controls} onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
-        <Close onClick={this.props.onClosePress} ref="close"/>
-        <Minimize onClick={this.props.onMinimizePress} ref="minimize"/>
-        <Resize onClick={this.props.onResizePress} ref="resize"/>
+        <Close onClick={this.props.onCloseClick} ref="close"/>
+        <Minimize onClick={this.props.onMinimizeClick} ref="minimize"/>
+        <Resize
+          isFullscreen={this.props.isFullscreen}
+          onClick={this.props.onResizeClick}
+          onMaximizeClick={this.props.onMaximizeClick}
+          ref="resize"
+        />
       </div>
     );
   }

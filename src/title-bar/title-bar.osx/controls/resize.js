@@ -1,76 +1,100 @@
 import React, { Component, PropTypes } from 'react';
-import Radium from 'radium';
+import DesktopComponent, { WindowFocus } from '../../../desktop-component';
+import styles from './styles/osx.10.11';
 
-var styles = {
-  button: {
-    userSelect: 'none',
-    WebkitAppRegion: 'no-drag',
-    cursor: 'default',
-    width: '10px',
-    height: '10px',
-    borderWidth: '1px',
-    borderStyle: 'solid',
-    borderRadius: '50%',
-    marginBottom: '.5px',
-    marginLeft: '4px',
-    marginRight: '4px',
-    lineHeight: 0,
-    backgroundColor: '#28c940',
-    borderColor: '#12ac28',
-
-    ':active': {
-      backgroundColor: '#1f9a31',
-      borderColor: '#128622'
-    }
-  },
-
-  unfocused: {
-    backgroundColor: '#dddddd',
-    borderColor: '#d0d0d0'
-  },
-
-  icon: {
-    width: '6px',
-    height: '6px',
-    marginTop: '2px',
-    marginLeft: '2px'
-  }
-};
-
-//@WindowState
-//@Radium
+@DesktopComponent(WindowFocus)
 class Resize extends Component {
   static propTypes = {
-    style: PropTypes.object
+    isFullscreen: PropTypes.bool
   };
 
   constructor() {
     super();
-    this.state = { iconVisible: false, windowFocused: true };
+    this.state = { iconVisible: false };
   }
 
-  render() {
-    const { style, ...props } = this.props;
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeydown);
+    document.addEventListener('keyup', this.handleKeyup);
+  }
 
-    const iconStyle = {
-      ...styles.icon,
+  handleKeydown = e => {
+    if (e.altKey) this.setState({ altKey: true });
+  };
+
+  handleKeyup = () => {
+    if (this.state.altKey) this.setState({ altKey: false });
+  };
+
+  render() {
+    let { style, onClick, onMaximizeClick, ...props } = this.props;
+
+    let iconStyle = {
+      ...styles.resize.icon,
       opacity: this.state.iconVisible ? 1 : 0
     };
 
-    let componentStyle = { ...styles.button, ...style };
+    let componentStyle = { ...styles.resize.button, ...style };
     if (!this.state.windowFocused && !this.state.iconVisible) {
-      componentStyle = { ...componentStyle, ...styles.unfocused };
+      componentStyle = { ...componentStyle, ...styles.resize.unfocused };
+    }
+
+    let icon;
+    if (this.props.isFullscreen) {
+      iconStyle = {
+        ...iconStyle,
+        width: '8px',
+        height: '7.9px',
+        marginTop: '1px',
+        marginLeft: '1px'
+      };
+
+      icon = (
+        <svg x="0px" y="0px" width="8px" height="7.9px" viewBox="0 0 8 7.9">
+          <path fill="#006400" d="M4.5,3.9H8L4,0v3.4C4.3,3.4,4.6,3.7,4.5,3.9z"/>
+          <path fill="#006400" d="M3.5,4H0l4,3.9V4.5C3.7,4.5,3.5,4.3,3.5,4z"/>
+        </svg>
+      );
+    } else if (this.state.altKey) {
+      iconStyle = {
+        ...iconStyle,
+        width: '8px',
+        height: '8px',
+        marginTop: '1px',
+        marginLeft: '1px'
+      };
+
+      onClick = onMaximizeClick;
+      icon = (
+        <svg x="0px" y="0px" width="8px" height="8px" viewBox="0 0 8 8" style={iconStyle}>
+          <polygon
+            fill="#006400"
+            points="8,3.5 4.5,3.5 4.5,0 3.5,0 3.5,3.5 0,3.5 0,4.5 3.5,4.5 3.5,8 4.5,8 4.5,4.5 8,4.5 "
+          />
+        </svg>
+      );
+    } else {
+      iconStyle = {
+        ...iconStyle,
+        width: '6px',
+        height: '5.9px'
+      };
+
+      icon = (
+        <svg x="0px" y="0px" width="6px" height="5.9px" viewBox="0 0 6 5.9" style={iconStyle}>
+          <path fill="#006400" d="M5.4,0h-4L6,4.5V0.6C5.7,0.6,5.3,0.3,5.4,0z"/>
+          <path fill="#006400" d="M0.6,5.9h4L0,1.4l0,3.9C0.3,5.3,0.6,5.6,0.6,5.9z"/>
+        </svg>
+      );
     }
 
     return (
       <a
         style={componentStyle}
+        onClick={onClick}
         {...props}
       >
-        <svg x="0px" y="0px" viewBox="0 0 6 5.9" style={iconStyle}>
-          <path fill="#006400" d="M5.4,0h-4L6,4.5V0.6C5.7,0.6,5.3,0.3,5.4,0z"/>
-          <path fill="#006400" d="M0.6,5.9h4L0,1.4l0,3.9C0.3,5.3,0.6,5.6,0.6,5.9z"/>
-        </svg>
+        {icon}
       </a>
     );
   }

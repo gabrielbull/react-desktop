@@ -27,6 +27,6 @@ export default {
   },
 
   content: {
-    margin: '24px 20px 20px 20px'
+    padding: '24px 20px 20px 20px'
   }
 };
