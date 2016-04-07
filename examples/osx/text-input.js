@@ -6,15 +6,13 @@ export default class extends Component {
 
   render() {
     return (
-      <div style={{ background: 'white', padding: '20px' }}>
-        <TextInput
-          ref="input"
-          label="My Input"
-          placeholder="My Input"
-          defaultValue="Hello!"
-          onChange={this.change}
-        />
-      </div>
+      <TextInput
+        ref="input"
+        label="My Input"
+        placeholder="My Input"
+        defaultValue=""
+        onChange={this.change}
+      />
     );
   }
 }
