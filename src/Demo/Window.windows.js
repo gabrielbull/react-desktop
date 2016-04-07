@@ -18,7 +18,7 @@ export default class extends Component {
     super();
     this.state = {
       selectedTab: 'welcome'
-    };
+    };''
   }
 
   render() {
