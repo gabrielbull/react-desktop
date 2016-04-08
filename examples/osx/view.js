@@ -1,24 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-desktop/windows';
+import { View, Text } from 'react-desktop/osx';
 
 export default class extends Component {
-  static defaultProps = {
-    color: '#cc7f29',
-    theme: 'dark'
-  };
-
   render() {
     return (
       <View
-        color={this.props.color}
-        background
+        background="black"
         padding="20px"
         horizontalAlignment="center"
         verticalAlignment="center"
         width="200px"
         height="200px"
       >
-        <Text color={this.props.theme === 'dark' ? 'white' : '#333'}>Hello World</Text>
+        <Text color="white">Hello World</Text>
       </View>
     );
   }
