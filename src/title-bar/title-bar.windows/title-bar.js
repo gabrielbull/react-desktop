@@ -9,10 +9,10 @@ class TitleBar extends Component {
     title: PropTypes.string,
     controls: PropTypes.bool,
     isMaximized: PropTypes.bool,
-    onClosePress: PropTypes.func,
-    onMinimizePress: PropTypes.func,
-    onMaximizePress: PropTypes.func,
-    onRestoreDownPress: PropTypes.func
+    onCloseClick: PropTypes.func,
+    onMinimizeClick: PropTypes.func,
+    onMaximizeClick: PropTypes.func,
+    onRestoreDownClick: PropTypes.func
   };
 
   static childContextTypes = {

@@ -8,10 +8,10 @@ background          | string, bool | Sets the background color of a component, i
 controls            | bool         | Sets the visibility of the controls of the title bar.
 color               | string       | Sets the main color of a component and it's children.
 isMaximized         | bool         | Sets the title bar state to maximized.
-onClosePress        | function     | Callback function of the close button.
-onMaximizePress     | function     | Callback function of the maximize button
-onMinimizePress     | function     | Callback function of the minimize button
-onRestoreDownPress  | function     | Callback function of the restore down button
+onCloseClick        | function     | Callback function of the close button.
+onMaximizeClick     | function     | Callback function of the maximize button
+onMinimizeClick     | function     | Callback function of the minimize button
+onRestoreDownClick  | function     | Callback function of the restore down button
 title               | string       | Sets the title of the title bar.
 theme               | string       | Sets the UI theme that is used by this component and its children elements.<br/>__Property value__ _"light"_, _"dark"_
 

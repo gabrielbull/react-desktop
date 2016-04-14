@@ -50,7 +50,7 @@ class Resize extends Component {
       };
 
       icon = (
-        <svg x="0px" y="0px" width="8px" height="7.9px" viewBox="0 0 8 7.9">
+        <svg x="0px" y="0px" width="8px" height="7.9px" viewBox="0 0 8 7.9" style={iconStyle}>
           <path fill="#006400" d="M4.5,3.9H8L4,0v3.4C4.3,3.4,4.6,3.7,4.5,3.9z"/>
           <path fill="#006400" d="M3.5,4H0l4,3.9V4.5C3.7,4.5,3.5,4.3,3.5,4z"/>
         </svg>

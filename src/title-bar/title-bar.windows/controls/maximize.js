@@ -70,7 +70,7 @@ class Maximize extends Component {
         />
       </svg>
     );
-    let onClick = this.props.onMaximizePress;
+    let onClick = this.props.onMaximizeClick;
     if (this.context.isMaximized) {
       title = 'Restore Down';
       icon = (
@@ -81,7 +81,7 @@ class Maximize extends Component {
           />
         </svg>
       );
-      onClick = this.props.onRestoreDownPress;
+      onClick = this.props.onRestoreDownClick;
     }
 
     return (

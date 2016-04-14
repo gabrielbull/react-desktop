@@ -3,6 +3,8 @@ export default {
     WebkitUserSelect: 'none',
     WebkitAppRegion: 'drag',
     cursor: 'default',
+    width: '100%',
+    boxSizing: 'border-box',
     display: 'flex',
     alignItems: 'center',
     height: '20px',
@@ -16,7 +18,8 @@ export default {
     borderTopLeftRadius: '5px',
     borderTopRightRadius: '5px',
     paddingLeft: '3px',
-    paddingRight: '3px'
+    paddingRight: '3px',
+    overflow: 'hidden'
   },
 
   unfocusedTitleBar: {
@@ -38,9 +41,12 @@ export default {
     fontWeight: '300',
     letterSpacing: '0.5px',
     color: '#4d4d4d',
-    flex: 1,
+    flexGrow: '1',
+    flexShrink: '1',
     textAlign: 'center',
-    lineHeight: '22px'
+    lineHeight: '22px',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis'
   },
 
   unfocusedTitle: {

@@ -9,10 +9,41 @@ class TitleBar extends Component {
     title: PropTypes.string,
     controls: PropTypes.bool,
     isFullscreen: PropTypes.bool,
-    onClosePress: PropTypes.func,
-    onMinimizePress: PropTypes.func,
-    onMaximizePress: PropTypes.func,
-    onResizePress: PropTypes.func
+    onCloseClick: PropTypes.func,
+    onMinimizeClick: PropTypes.func,
+    onMaximizeClick: PropTypes.func,
+    onResizeClick: PropTypes.func
+  };
+
+  componentDidMount() {
+    window.addEventListener('resize', this.resize);
+    this.resize();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.resize)
+  }
+
+  componentDidUpdate() {
+    this.resize();
+  }
+
+  resize = () => {
+    const barRect = this.refs.element.getBoundingClientRect();
+    this.refs.title.style.overflow = 'visible';
+    this.refs.title.style.paddingRight = 0;
+    this.refs.title.style.flexGrow = 0;
+    const titleRect = this.refs.title.getBoundingClientRect();
+    this.refs.title.style.overflow = 'hidden';
+    this.refs.title.style.flexGrow = 1;
+
+    const barWidth = barRect.width - 6;
+    const contentWidth = titleRect.width + (this.props.controls ? 60 : 0);
+
+    let padding = barWidth - contentWidth;
+    if (padding > 60) padding = 60;
+
+    this.refs.title.style.paddingRight = (padding) + 'px';
   };
 
   render() {
@@ -24,18 +55,15 @@ class TitleBar extends Component {
     }
 
     let titleStyle = styles.title;
-    if (this.props.controls) {
-      titleStyle = Object.assign(titleStyle, { paddingRight: '60px' });
-    }
 
     if (!this.state.windowFocused) {
       componentStyle = { ...componentStyle, ...styles.unfocusedTitleBar };
       titleStyle = { ...titleStyle, ...styles.unfocusedTitle }
     }
 
-    controls = !controls || <Controls {...this.props}/>;
+    controls = !controls || <Controls ref="controls" {...this.props}/>;
     title = !title || (
-        <div style={titleStyle}>
+        <div ref="title" style={titleStyle}>
           {this.props.title}
         </div>
       );

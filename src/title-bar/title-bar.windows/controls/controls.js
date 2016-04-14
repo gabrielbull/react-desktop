@@ -16,18 +16,18 @@ var styles = {
 @DesktopComponent
 class Controls extends Component {
   static propTypes = {
-    onClosePress: PropTypes.func,
-    onMinimizePress: PropTypes.func,
-    onRestoreDownPress: PropTypes.func,
-    onMaximizePress: PropTypes.func
+    onCloseClick: PropTypes.func,
+    onMinimizeClick: PropTypes.func,
+    onRestoreDownClick: PropTypes.func,
+    onMaximizeClick: PropTypes.func
   };
 
   render() {
     return (
       <div style={styles.controls}>
-        <Minimize onClick={this.props.onMinimizePress} ref="minimize"/>
-        <Maximize onMaximizePress={this.props.onMaximizePress} onRestoreDownPress={this.props.onRestoreDownPress} ref="maximize"/>
-        <Close onClick={this.props.onClosePress} ref="close"/>
+        <Minimize onClick={this.props.onMinimizeClick} ref="minimize"/>
+        <Maximize onMaximizeClick={this.props.onMaximizeClick} onRestoreDownClick={this.props.onRestoreDownClick} ref="maximize"/>
+        <Close onClick={this.props.onCloseClick} ref="close"/>
       </div>
     );
   }
