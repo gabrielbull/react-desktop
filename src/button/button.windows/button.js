@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { findDOMNode } from 'react-dom';
 import DesktopComponent, { Hidden } from '../../desktop-component';
 import { darkenColor } from '../../color';
 import styles from './styles/windows.10';

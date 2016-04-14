@@ -19,7 +19,7 @@ const styles = {
 @DesktopComponent
 class Pane extends Component {
   render() {
-    const { children, style, selected, ...props } = this.props;
+    const { children, style, ...props } = this.props;
 
     let componentStyle = { ...styles.pane, ...style };
 

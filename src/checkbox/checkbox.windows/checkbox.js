@@ -77,7 +77,6 @@ class Checkbox extends Component {
           type="checkbox"
           {...props}
           style={componentStyle}
-          checked={this.state.checked}
           onChange={this.onChange}
         />
         <svg x="0px" y="0px" viewBox="0 0 6.4 6.4" style={checkedStyle}>

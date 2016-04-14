@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import DesktopComponent, { PlaceholderStyle, Hidden, Background } from '../../desktop-component';
 import { StyleRoot, keyframes, getState } from 'radium';
 import styles from './styles/osx.10.11';

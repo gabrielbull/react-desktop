@@ -19,7 +19,7 @@ export default class extends Component {
           {master}
         </MasterDetailsView.Item.Master>
         <MasterDetailsView.Item.Details background>
-          <Text padding="20" color="white">{details}</Text>
+          <Text padding="20px" color="white">{details}</Text>
         </MasterDetailsView.Item.Details>
       </MasterDetailsView.Item>
     );

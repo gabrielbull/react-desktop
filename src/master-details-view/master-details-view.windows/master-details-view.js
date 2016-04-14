@@ -80,7 +80,7 @@ class MasterDetails extends Component {
   }
 
   render() {
-    const { children, style, ...props } = this.props;
+    const { style, ...props } = this.props;
     let componentStyle = { ...styles.container, ...style };
 
     if (this.state.theme === 'dark') {

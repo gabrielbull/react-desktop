@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { findDOMNode } from 'react-dom';
 import DesktopComponent, { WindowFocus, Hidden } from '../../desktop-component';
 import styles from './styles/osx.10.11';
 

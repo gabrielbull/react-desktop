@@ -81,7 +81,7 @@ class Master extends Component {
   };
 
   render() {
-    const { children, style, selected, item, ...props } = this.props;
+    const { children, style, ...props } = this.props;
     let componentStyle = { ...styles.master, ...style };
     let spanStyle = { ...styles.masterSpan };
 

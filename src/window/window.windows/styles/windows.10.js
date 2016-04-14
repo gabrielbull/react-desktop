@@ -5,7 +5,7 @@ export default {
     backgroundColor: '#ffffff',
     display: 'flex',
     flexDirection: 'column',
-    padding: '0'
+    padding: 'none'
   },
 
   windowDark: {

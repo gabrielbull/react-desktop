@@ -51,7 +51,7 @@ function ExtendComposedComponent(options, ComposedComponent) {
     _params = {};
 
     constructor(props, context, updater) {
-      const { visible, display, theme, color, background, ...properties } = props;
+      const { visible, display, theme, color, background } = props;
       super(props, context, updater);
 
       this.context = this.context || {};
