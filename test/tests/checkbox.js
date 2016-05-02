@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import CheckboxOSX from '../../src/checkbox/checkbox.osx/checkbox';
-import CheckboxWindows from '../../src/checkbox/checkbox.windows/checkbox';
+import CheckboxOSX from '../../src/checkbox/osx/checkbox';
+import CheckboxWindows from '../../src/checkbox/windows/checkbox';
 
 describe('Checkbox', () => {
   it('create osx checkbox', () => {

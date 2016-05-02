@@ -36,7 +36,7 @@ module.exports = {
 
   resolveLoader: {
     alias: {
-      'examples-loader': path.join(__dirname, 'examples-loader')
+      'examples-loader': path.join(__dirname, 'examplesLoader')
     }
   },
 
