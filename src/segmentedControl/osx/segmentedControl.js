@@ -1,28 +1,17 @@
-import React, { Component, PropTypes, Children, cloneElement } from 'react';
+import React, { Component, PropTypes } from 'react';
+import DesktopComponent from '../../desktopComponent';
 import Item from './item/item';
 import Tabs from './tabs/tabs';
+import styles from './style/style10_11';
+import Box from '../../box/osx/box';
 
-/*var styles = {
-  segmentedControl: {
-    WebkitUserSelect: 'none',
-    cursor: 'default'
-  }
-};*/
-
+@DesktopComponent
 class SegmentedControl extends Component {
   static Item = Item;
 
   static propTypes = {
-    children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
-    style: PropTypes.object,
-    visible: PropTypes.bool,
-    display: PropTypes.bool
+    box: PropTypes.bool
   };
-
-  constructor(props) {
-    super();
-    this.state = { visible: props.visible !== false, display: props.display !== false };
-  }
 
   select(item) {
     this.refs.tabs.select(item);
@@ -33,29 +22,40 @@ class SegmentedControl extends Component {
   }
 
   render() {
-    let { children, style, visible, display, ...props } = this.props;
+    let { children, box, ...props } = this.props;
 
-    children = Children.map(children, (child, index) => {
-      return cloneElement(child, { control: this, tabId: index });
-    });
-
-    const tabs = <Tabs ref="tabs" tabs={children}/>;
-
-    /*style = mergeStyles(styles.segmentedControl, style, {
-      visibility: this.state.visible ? 'visible' : 'hidden',
-      display: this.state.display ? 'block' : 'none'
-    });*/
+    let content;
+    if (box) {
+      content = (
+        <Box style={{ marginTop: '-11px', zIndex: 0 }}>
+          {this.renderItem()}
+        </Box>
+      );
+    } else {
+      content = (
+        <div>
+          {this.renderItem()}
+        </div>
+      );
+    }
 
     return (
       <div
-        ref="element"
-        style={style}
+        style={styles.sergmentedControl}
         {...props}
       >
-        {tabs}
-        {children}
+        <Tabs style={{ position: 'relative', zIndex: 1 }}>{children}</Tabs>
+        {content}
       </div>
     );
+  }
+
+  renderItem() {
+    let child = null;
+    for (let i = 0, len = this.props.children.length; i < len; ++i) {
+      if (this.props.children[i].props.selected) child = this.props.children[i];
+    }
+    return child;
   }
 }
 
