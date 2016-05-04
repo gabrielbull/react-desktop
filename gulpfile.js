@@ -13,6 +13,8 @@ var cheerio = require('cheerio');
 
 var createPages = function () {
   return gulp.src('./index.html')
+    .pipe(replace('UA-00000000-1', 'UA-68950619-1'))
+    .pipe(replace('/react-desktop/build/bundle.js', 'http://reactdesktop.js.org/build/bundle.js'))
     .pipe(gulp.dest('./demo/'))
     .pipe(gulp.dest('./docs/'))
 };
@@ -86,6 +88,8 @@ gulp.task('extract-docs', ['replace-path-docs'], function () {
   var content = fs.readFileSync('./index.html');
 
   return gulp.src('./raw-docs/**\/*.html')
+    .pipe(replace('UA-00000000-1', 'UA-68950619-1'))
+    .pipe(replace('/react-desktop/build/bundle.js', 'http://reactdesktop.js.org/build/bundle.js'))
     .pipe(replace(/^[\s\S.]*$/g, content))
     .pipe(rename(function (path) {
       if (path.basename !== 'index') {

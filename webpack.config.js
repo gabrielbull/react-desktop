@@ -6,7 +6,6 @@ module.exports = {
   output: {
     path: '.',
     filename: './build/bundle.js',
-    publicPath: '/react-desktop/',
     libraryTarget: "var"
   },
 
@@ -19,7 +18,7 @@ module.exports = {
       {
         test: /\.js/,
         exclude: /node_modules/,
-        loader: 'babel-loader?stage=0'
+        loader: 'babel'
       },
       {
         test: /\.scss|\.css$/,

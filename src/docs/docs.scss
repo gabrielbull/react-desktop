@@ -1,0 +1,151 @@
+@import "bourbon";
+
+.docs-container {
+  box-sizing: border-box;
+  @include flex-grow(1);
+  width: 100vw;
+
+  @include display(flex);
+  @include align-items(stretch);
+
+  nav {
+    @include flex(0 0 300px);
+    padding-left: 100px;
+    flex-shrink: 0;
+    ul, ol, li {
+      margin: 0;
+    }
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .docs {
+    @include flex(2);
+    padding: 40px 100px 40px 100px;
+
+    li a {
+      color: #2083c6;
+
+      &:visited {
+        color: #2083c6;
+      }
+
+      &:hover {
+        color: lighten(#2083c6, 20%);
+      }
+
+      &:active {
+        color: darken(#2083c6, 20%);
+      }
+    }
+  }
+}
+
+/* # Content
+================================================== */
+.docs {
+  >*:first-child {
+    margin-top: 0 !important;
+  }
+
+  font-size: 16px;
+  line-height: 1.6;
+
+  h1 {
+    margin-bottom: 16px;
+    font-weight: bold;
+    padding-bottom: 0.3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+  }
+
+  h2 {
+    padding-bottom: 0.3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+    margin-top: 1em;
+    margin-bottom: 16px;
+    font-weight: bold;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+}
+
+/* # Table
+================================================== */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+
+  th {
+    display: none
+  }
+
+  tbody {
+    tr {
+      @include display(flex);
+      @include flex-wrap(wrap);
+
+      &:nth-child(2n) {
+        background: rgba(#2083c6, .03);
+
+        &:hover {
+          background: rgba(#2083c6, .1);
+        }
+      }
+      &:nth-child(2n-1) {
+        background: rgba(#2083c6, .07);
+
+        &:hover {
+          background: rgba(#2083c6, .1);
+        }
+      }
+
+      td:first-child {
+        margin-top: 10px;
+        margin-left: 10px;
+        font-weight: bold;
+        line-height: 20px;
+      }
+      td:nth-child(2n) {
+        margin-top: 10px;
+        color: #2083c6;
+        line-height: 20px;
+        margin-left: 12px;
+        font-style: italic;
+      }
+      td:last-child {
+        @include flex(1 0 100%);
+        width: 100%;
+        margin-top: 4px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        color: #444;
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+/* # Code
+================================================== */
+.docs pre code {
+  font-size: 12px;
+  white-space: pre-wrap;
+  border-left: 4px solid #2083c6;
+  padding: 30px 20px;
+}
+
+/* # Demo
+================================================== */
+.docs .doc-demo {
+  h2 + div {
+    border-left: 4px solid #2083c6;
+  }
+}
