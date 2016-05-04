@@ -14,7 +14,7 @@ class Tab extends Component {
   };
 
   render() {
-    let { children, style, onSelect, afterSelected, prevSelected, lastChild, firstChild, ...props } = this.props;
+    let { children, style, onSelect, afterSelected, prevSelected, lastChild, firstChild } = this.props;
 
     let componentStyle = { ...styles.tab, ...style };
 
@@ -29,7 +29,7 @@ class Tab extends Component {
       if (!this.state.windowFocused) componentStyle = { ...componentStyle, ...styles.selectedUnfocused };
       if (firstChild) componentStyle = { ...componentStyle, ...styles.firstChildSelected };
     }
-    
+
     return (
       <div
         onClick={onSelect}

@@ -8,7 +8,7 @@ class Item extends Component {
   };
 
   render() {
-    const { title, children, selected, ...props } = this.props;
+    const { children, ...props } = this.props;
 
     return (
       <div
