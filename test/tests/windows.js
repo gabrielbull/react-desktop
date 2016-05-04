@@ -11,7 +11,7 @@ import {
   TitleBar,
   View,
   Window
-} from '../../src/windows';
+} from '../../windows';
 
 describe('Windows', () => {
   it('should be exported', () => {

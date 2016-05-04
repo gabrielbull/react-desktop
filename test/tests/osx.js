@@ -12,7 +12,7 @@ import {
   Toolbar,
   View,
   Window
-} from '../../src/osx';
+} from '../../osx';
 
 describe('OSX', () => {
   it('should be exported', () => {

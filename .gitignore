@@ -15,6 +15,7 @@ Thumbs.db
 ########
 
 /lib
+/build
 
 # Logs
 logs

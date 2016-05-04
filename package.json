@@ -1,9 +1,9 @@
 {
   "name": "react-desktop",
   "author": "Gabriel Bull",
-  "version": "0.1.54",
+  "version": "0.1.56",
   "description": "React UI Components for OS X El Capitan and Windows 10",
-  "main": "./src/index.js",
+  "main": "./index.js",
   "keywords": [
     "react",
     "react-component",
@@ -31,8 +31,8 @@
     "react-dom": "~15.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.7.7",
-    "babel-core": "^6.7.7",
+    "babel-cli": "^6.8.0",
+    "babel-core": "^6.8.0",
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
@@ -56,9 +56,9 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha test",
     "eslint": "./node_modules/.bin/eslint ./src ./test",
-    "prebuild": "rm -rf lib && npm run eslint && npm run test",
-    "build": "./node_modules/.bin/babel ./src --out-dir ./lib",
-    "prepublish": "npm run build",
+    "prebuild": "rsync -av -delete . build --exclude build --exclude .git --exclude .idea && npm run eslint && npm run test",
+    "build": "./node_modules/.bin/babel ./build/src --out-dir ./build/src && ./node_modules/.bin/babel ./build/index.js --out-file ./build/index.js && ./node_modules/.bin/babel ./build/osx.js --out-file ./build/osx.js && ./node_modules/.bin/babel ./build/windows.js --out-file ./build/windows.js",
+    "publish": "npm publish build",
     "playground": "./node_modules/.bin/webpack-dev-server --config ./playground/webpack.config.js --colors --inline --port 3000"
   }
 }

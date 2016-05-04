@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { os } from '../../src/index';
+import { os } from '../../index';
 
 describe('index', () => {
   it('detect os', () => {
