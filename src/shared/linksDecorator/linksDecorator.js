@@ -1,6 +1,6 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
-import { history } from '../../router';
+import { browserHistory } from 'react-router'
 
 function ExtendComposedComponent (ComposedComponent) {
   class Compoment extends ComposedComponent {
@@ -39,7 +39,7 @@ function ExtendComposedComponent (ComposedComponent) {
       const link = event.currentTarget.getAttribute('href');
       if (link && !link.match(/^http/)) {
         event.preventDefault();
-        history.pushState(null, event.currentTarget.getAttribute('href'));
+        browserHistory.push(event.currentTarget.getAttribute('href'));
         window.scrollTo(0, 0);
 
         if (super.onLinkClick) {

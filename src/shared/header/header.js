@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Logo from './Logo';
-import style from './header.scss';
-import { history } from '../../router';
+import './header.scss';
+import { browserHistory } from 'react-router';
 import GithubSVG from './github.svg';
 
 export default class extends Component {
   click(event) {
     event.preventDefault();
-    history.pushState(null, event.currentTarget.getAttribute('href'));
+    browserHistory.push(event.currentTarget.getAttribute('href'));
   }
 
   render() {

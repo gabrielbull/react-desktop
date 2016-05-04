@@ -1,6 +1,7 @@
 @import "bourbon";
 
 .docs-container {
+  width: 100%;
   box-sizing: border-box;
   @include flex-grow(1);
 

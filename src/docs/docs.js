@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
-import LinksDecorator  from '../shared/linksDecorator/linksDecorator';
 import Nav from './nav/nav';
 import hljs from 'highlight.js';
-import autoit from 'highlight.js/lib/languages/autoit';
-import 'highlight.js/styles/monokai.css';
+import 'highlight.js/styles/paraiso-dark.css';
 import './docs.scss';
 
-@LinksDecorator
 export default class extends Component {
   constructor(props, context, updater) {
     super(props, context, updater);
@@ -29,7 +26,7 @@ export default class extends Component {
     hljs.configure({});
 
     for (var i = 0, len = codes.length; i < len; ++i) {
-      codes[i].className = 'html';
+      codes[i].className = 'jsx';
       hljs.highlightBlock(codes[i]);
     }
   }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { findDOMNode } from 'react-dom';
+import './nav.scss';
 import LinksDecorator  from '../../shared/linksDecorator/linksDecorator';
-import styles from './nav.scss';
 
 @LinksDecorator
 export default class extends Component {
@@ -18,7 +17,7 @@ export default class extends Component {
     content = require('../../../raw-docs/nav.html');
 
     return (
-      <nav className="nav" dangerouslySetInnerHTML={{__html: content}} />
+      <nav ref="element" className="nav" dangerouslySetInnerHTML={{__html: content}} />
     );
   }
 }

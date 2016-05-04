@@ -23,6 +23,7 @@ body {
 }
 
 #main {
+  width: 100%;
   @include flex(1);
   @include display(flex);
 }

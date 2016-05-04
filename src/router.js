@@ -1,14 +1,10 @@
 import React from 'react';
-import Router, { Route, IndexRoute, Redirect } from 'react-router';
-import { createHistory, useBasename } from 'history'
-import Demo from './Demo/Demo';
-import Docs from './Docs/Docs';
-
-export const history = createHistory();
+import { Router, Route, browserHistory } from 'react-router';
+import Demo from './demo/demo';
+import Docs from './docs/docs';
 
 export default (
-  <Router history={history}>
-    <Redirect from="/" to="/" />
+  <Router history={browserHistory}>
     <Route path="/" component={Docs}/>
     <Route path="/docs/" component={Docs}/>
     <Route path="/docs/*" component={Docs}/>
