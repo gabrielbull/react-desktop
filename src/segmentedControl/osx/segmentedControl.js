@@ -1,11 +1,15 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent from '../../desktopComponent';
+import DesktopComponent, {
+  Dimension,
+  Margin,
+  Hidden
+} from '../../desktopComponent';
 import Item from './item/item';
 import Tabs from './tabs/tabs';
 import styles from './style/style10_11';
 import Box from '../../box/osx/box';
 
-@DesktopComponent
+@DesktopComponent(Dimension, Margin, Hidden)
 class SegmentedControl extends Component {
   static Item = Item;
 

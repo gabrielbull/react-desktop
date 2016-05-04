@@ -1,16 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 
-/*var styles = {
-  item: {
-    WebkitUserSelect: 'none',
-    cursor: 'default',
-  }
-};*/
-
 class Item extends Component {
   static propTypes = {
     title: PropTypes.string,
-    selected: PropTypes.bool
+    selected: PropTypes.bool,
+    onSelect: PropTypes.func
   };
 
   render() {
@@ -18,7 +12,6 @@ class Item extends Component {
 
     return (
       <div
-        //style={componentStyle}
         {...props}
       >
         {children}

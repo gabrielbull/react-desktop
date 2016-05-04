@@ -9,11 +9,9 @@ export default class extends Component {
 
   render() {
     return (
-      <div style={{ width: '600px', padding: '20px', background: '#e3e3e3' }}>
-        <SegmentedControl box>
-          {this.renderItems()}
-        </SegmentedControl>
-      </div>
+      <SegmentedControl box width="600">
+        {this.renderItems()}
+      </SegmentedControl>
     );
   }
 
