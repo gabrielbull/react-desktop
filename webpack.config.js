@@ -1,17 +1,15 @@
 var webpack = require("webpack");
 
 module.exports = {
-  entry: './src/App.js',
+  entry: './src/app.js',
 
   output: {
     path: '.',
-    filename: './build/bundle.js',
+    filename: './bundle.js',
     libraryTarget: "var"
   },
 
-  devServer: {
-    contentBase: './'
-  },
+  devtool: 'source-map',
 
   module: {
     loaders: [

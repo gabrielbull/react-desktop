@@ -4,9 +4,8 @@ import LinksDecorator  from '../shared/linksDecorator/linksDecorator';
 import Nav from './nav/nav';
 import hljs from 'highlight.js';
 import autoit from 'highlight.js/lib/languages/autoit';
-import monokai from 'highlight.js/styles/monokai.css';
-import styles from './docs.scss';
-import * as WindowsDemo from '../examples/windows';
+import 'highlight.js/styles/monokai.css';
+import './docs.scss';
 
 @LinksDecorator
 export default class extends Component {
@@ -64,7 +63,7 @@ export default class extends Component {
 
   getDemo(content) {
     let demos = [];
-    const anchors = content.match(/<a.+<\/a>/g);
+    /*const anchors = content.match(/<a.+<\/a>/g);
     if (anchors) {
       for (var i = 0, len = anchors.length; i < len; ++i) {
         const matches = anchors[i].match(/id=".+"/);
@@ -76,7 +75,7 @@ export default class extends Component {
           }
         }
       }
-    }
+    }*/
     return demos;
   }
 
@@ -100,7 +99,7 @@ export default class extends Component {
           <div id="demos" className="doc-demo">
             {demo}
           </div>
-          <div id="docs" ref="docs" dangerouslySetInnerHTML={{__html: content}} />
+          <div className="docs-content" ref="docs" dangerouslySetInnerHTML={{__html: content}} />
         </div>
       </div>
     );

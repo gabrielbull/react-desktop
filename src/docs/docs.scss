@@ -3,7 +3,6 @@
 .docs-container {
   box-sizing: border-box;
   @include flex-grow(1);
-  width: 100vw;
 
   @include display(flex);
   @include align-items(stretch);
@@ -43,8 +42,8 @@
 
 /* # Content
 ================================================== */
-.docs {
-  >*:first-child {
+.docs-content {
+  &>*:first-child {
     margin-top: 0 !important;
   }
 
@@ -73,6 +72,22 @@
   p {
     margin-top: 0;
     margin-bottom: 16px;
+  }
+
+  a {
+    color: #2083c6;
+
+    &:visited {
+      color: #2083c6;
+    }
+
+    &:hover {
+      color: lighten(#2083c6, 20%);
+    }
+
+    &:active {
+      color: darken(#2083c6, 20%);
+    }
   }
 }
 

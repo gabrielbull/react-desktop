@@ -7,8 +7,9 @@ html {
 
 body {
   width: 100vw;
+  max-width: 1200px;
   min-height: 100vh;
-  margin: 0;
+  margin: 0 auto;
   font: 13px/1.4 "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
   color: #333;
   @include display(flex);
