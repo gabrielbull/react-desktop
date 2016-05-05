@@ -1,4 +1,4 @@
-# <a href="http://gabrielbull.github.io/react-desktop/" target="_blank">![React Desktop](https://rawgit.com/gabrielbull/react-desktop/master/docs/resources/react-desktop.svg "React Desktop")</a>
+# <a href="http://reactdesktop.js.org/" target="_blank">![React Desktop](https://rawgit.com/gabrielbull/react-desktop/master/docs/resources/react-desktop.svg "React Desktop")</a>
 
 [![Build Status](https://travis-ci.org/gabrielbull/react-desktop.svg?branch=master)](https://travis-ci.org/gabrielbull/react-desktop)
 [![Code Climate](https://codeclimate.com/github/gabrielbull/react-desktop/badges/gpa.svg)](https://codeclimate.com/github/gabrielbull/react-desktop)
@@ -8,13 +8,13 @@
 [![npm version](https://img.shields.io/npm/v/react-desktop.svg)](https://www.npmjs.org/package/react-desktop)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gabrielbull/react-desktop?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-![This library is in early Alpha and is subject to breaking change in the coming weeks.](https://rawgit.com/gabrielbull/react-desktop/master/docs/resources/alert.svg "This library is in early Alpha and is subject to breaking change in the coming weeks.")
+![This library is in Beta. Thank you for reporting any issue in the Issues page.](https://rawgit.com/gabrielbull/react-desktop/master/docs/resources/alert.svg "This library is in early Alpha and is subject to breaking change in the coming weeks.")
 
-React UI Components for Windows 10 and OS X El Capitan _(coming soon)_.
+React UI Components for OS X El Capitan and Windows 10.
 
 > npm install react-desktop --save
 
-<a href="http://gabrielbull.github.io/react-desktop/demo/" target="_blank">![Demo](https://rawgit.com/gabrielbull/react-desktop/master/docs/resources/demo.svg "Demo")</a>
+<a href="http://reactdesktop.js.org/demo/" target="_blank">![Demo](https://rawgit.com/gabrielbull/react-desktop/master/docs/resources/demo.svg "Demo")</a>
 
 ## Contributing
 
