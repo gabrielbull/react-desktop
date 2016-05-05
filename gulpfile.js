@@ -12,6 +12,6 @@ gulp.task('bundle', function (cb) {
     'create-docs',
     'create-pages',
     'compress',
-    callback
+    cb
   );
 });

@@ -41,6 +41,6 @@
   },
   "scripts": {
     "start": "gulp create-docs && webpack-dev-server --colors --inline --port 3001 --hot --history-api-fallback",
-    "bundle": "gulp create-docs && PROD_DEV=1 webpack && gulp bundle"
+    "build": "gulp create-docs && PROD_DEV=1 webpack && gulp bundle"
   }
 }
