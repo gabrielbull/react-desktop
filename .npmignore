@@ -12,7 +12,5 @@
 /.eslintrc
 /.npmignore
 /.travis.yml
-/CHANGELOG.md
 /CONTRIBUTING.md
 /npm-debug.log
-/README.md

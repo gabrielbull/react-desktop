@@ -38,7 +38,6 @@ export default {
     cursor: 'default',
     fontFamily: '-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
     fontSize: '13px',
-    fontWeight: '300',
     letterSpacing: '0.5px',
     color: '#4d4d4d',
     flexGrow: '1',

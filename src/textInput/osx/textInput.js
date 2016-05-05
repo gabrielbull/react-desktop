@@ -1,48 +1,73 @@
-import React, { Component } from 'react';
-import DesktopComponent, { PlaceholderStyle, Hidden, Background } from '../../desktopComponent';
+import React, { Component, PropTypes } from 'react';
+import DesktopComponent, { PlaceholderStyle, Dimension, Hidden } from '../../desktopComponent';
 import { StyleRoot, keyframes, getState } from 'radium';
 import styles from './styles/osx10_11';
+import Label from '../../label/osx/label';
 
 const animation = keyframes(
   {
     '0%': {
       opacity: '0',
-      transform: 'scale(1.4, 3)'
+      borderWidth: '34px',
+      top: '-34px',
+      left: '-34px'
     },
     '32%': {
       opacity: '0',
       borderRadius: '10px',
-      transform: 'scale(1.35, 2.8)'
+      borderWidth: '30px',
+      top: '-30px',
+      left: '-30px'
     },
     '50%': {
       opacity: '.2',
-      transform: 'scale(1.15, 1.6)'
+      borderWidth: '15px',
+      top: '-15px',
+      left: '-15px'
     },
     '80%': {
       opacity: '.4',
-      transform: 'scale(1.08, 1.2)'
+      borderWidth: '9px',
+      top: '-9px',
+      left: '-9px'
     },
     '90%': {
       opacity: '.9',
-      transform: 'scale(1.04, 1.1)'
+      borderWidth: '6px',
+      top: '-6px',
+      left: '-6px'
     },
     '100%': {
       opacity: '1',
+      top: '-3px',
+      left: '-3px',
       borderRadius: '4px',
-      transform: 'scale(1, 1)'
+      borderWidth: '3px'
     }
   },
   'text-input-focus'
 );
 
-@DesktopComponent(PlaceholderStyle, Hidden, Background)
+@DesktopComponent(PlaceholderStyle, Hidden, Dimension)
 class TextFieldOSX extends Component {
+  static propTypes = {
+    label: PropTypes.string
+  };
+
   getPlaceholderStyle() {
     return styles.textField[':placeholder'];
   }
 
+  get value() {
+    return this.refs.element.value;
+  }
+
+  set value(value) {
+    this.refs.element.value = value;
+  }
+
   render() {
-    const { style, ...props } = this.props;
+    const { style, width, label, ...props } = this.props;
 
     let componentStyle = { ...style, ...styles.textField };
 
@@ -58,18 +83,23 @@ class TextFieldOSX extends Component {
       );
     }
 
+    let labelComponent = label ? <Label margin="0 0 3px 0">{label}</Label> : null;
+
     return (
-      <div style={styles.container}>
-        <StyleRoot>
-          {focusElement}
-        </StyleRoot>
-        <input
-          key="element"
-          ref="element"
-          type="text"
-          style={componentStyle}
-          {...props}
-        />
+      <div style={styles.container} {...{ width }}>
+        {labelComponent}
+        <div style={styles.wrapper}>
+          <StyleRoot>
+            {focusElement}
+          </StyleRoot>
+          <input
+            key="element"
+            ref="element"
+            type="text"
+            style={componentStyle}
+            {...props}
+          />
+        </div>
       </div>
     );
   }

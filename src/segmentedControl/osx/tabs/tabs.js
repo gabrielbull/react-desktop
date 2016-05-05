@@ -51,7 +51,6 @@ class Tabs extends Component {
     }
     if (prevSelectedIndex >= 0 && tabs[prevSelectedIndex]) tabs[prevSelectedIndex] = { ...tabs[prevSelectedIndex], prevSelected: true };
 
-    console.log(tabs);
     return (
       <div style={{ ...styles.tabs, ...style }}>
         {this.renderTabs(tabs)}

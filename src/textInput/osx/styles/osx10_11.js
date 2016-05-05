@@ -3,6 +3,10 @@ export default {
     position: 'relative'
   },
 
+  wrapper: {
+    position: 'relative'
+  },
+
   textField: {
     position: 'relative',
     zIndex: '2',
@@ -18,8 +22,10 @@ export default {
     lineHeight: '15px',
     fontFamily: '-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
     fontSize: '13px',
-    fontWeight: '300',
     letterSpacing: '0.4px',
+    width: '100%',
+    height: '100%',
+    boxSizing: 'border-box',
 
     ':focus': {
       outline: 'none',
@@ -42,7 +48,6 @@ export default {
     background: '#7dc3f2',
     border: '3px solid #7dc3f2',
     opacity: '0',
-    borderRadius: '4px',
-    transform: 'scale(1, 1)'
+    borderRadius: '4px'
   }
 };
