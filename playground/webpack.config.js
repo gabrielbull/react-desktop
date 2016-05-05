@@ -41,9 +41,9 @@ module.exports = {
   },
 
   resolve: {
-    root: path.join(__dirname, '..', 'src'),
+    root: path.join(__dirname, '..'),
     alias: {
-      'react-desktop': path.join(__dirname, '..', 'src')
+      'react-desktop': path.join(__dirname, '..')
     }
   },
 

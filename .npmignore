@@ -10,6 +10,7 @@
 /.codeclimate.yml
 /.editorconfig
 /.eslintrc
+/.npmignore
 /.travis.yml
 /CHANGELOG.md
 /CONTRIBUTING.md

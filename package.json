@@ -1,7 +1,7 @@
 {
   "name": "react-desktop",
   "author": "Gabriel Bull",
-  "version": "0.1.56",
+  "version": "0.1.61",
   "description": "React UI Components for OS X El Capitan and Windows 10",
   "main": "./index.js",
   "keywords": [
@@ -58,7 +58,7 @@
     "eslint": "./node_modules/.bin/eslint ./src ./test",
     "prebuild": "rsync -av -delete . build --exclude build --exclude .git --exclude .idea && npm run eslint && npm run test",
     "build": "./node_modules/.bin/babel ./build/src --out-dir ./build/src && ./node_modules/.bin/babel ./build/index.js --out-file ./build/index.js && ./node_modules/.bin/babel ./build/osx.js --out-file ./build/osx.js && ./node_modules/.bin/babel ./build/windows.js --out-file ./build/windows.js",
-    "publish": "npm publish build",
-    "playground": "./node_modules/.bin/webpack-dev-server --config ./playground/webpack.config.js --colors --inline --port 3000"
+    "playground": "./node_modules/.bin/webpack-dev-server --config ./playground/webpack.config.js --colors --inline --port 3000",
+    "build-publish": "npm run build && npm publish ./build"
   }
 }

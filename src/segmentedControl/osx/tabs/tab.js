@@ -10,7 +10,7 @@ class Tab extends Component {
     afterSelected: PropTypes.bool,
     firstChild: PropTypes.bool,
     lastChild: PropTypes.bool,
-    onSelect: PropTypes.func.isRequired
+    onSelect: PropTypes.func
   };
 
   render() {

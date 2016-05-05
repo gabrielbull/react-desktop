@@ -56,8 +56,15 @@ class SegmentedControl extends Component {
 
   renderItem() {
     let child = null;
-    for (let i = 0, len = this.props.children.length; i < len; ++i) {
-      if (this.props.children[i].props.selected) child = this.props.children[i];
+    let children;
+    if (Object.prototype.toString.call(children) !== '[object Array]') {
+      children = [this.props.children];
+    } else {
+      children = [...this.props.children];
+    }
+
+    for (let i = 0, len = children.length; i < len; ++i) {
+      if (children[i].props.selected) child = children[i];
     }
     return child;
   }

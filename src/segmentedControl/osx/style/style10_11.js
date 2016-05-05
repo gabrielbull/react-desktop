@@ -1,7 +1,8 @@
 export default {
   sergmentedControl: {
     WebkitUserSelect: 'none',
-    cursor: 'default'
+    cursor: 'default',
+    flex: '1'
   },
 
   tabs: {
