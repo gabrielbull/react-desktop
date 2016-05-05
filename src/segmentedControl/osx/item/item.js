@@ -8,7 +8,11 @@ class Item extends Component {
   };
 
   render() {
-    const { children, ...props } = this.props;
+    let { children, ...props } = this.props;
+
+    delete props.title;
+    delete props.selected;
+    delete props.onSelect;
 
     return (
       <div
