@@ -144,8 +144,6 @@ class CommonStylingComponent {
       } else {
         newStyles.width = props.width;
       }
-      overrideStyles.flexBasis = newStyles.width;
-      overrideStyles.flexGrow = 0;
       props.width = null;
     } else if (this.options.dimension && this.params['Dimension'] && this.params['Dimension']['defaultWidth']) {
       newStyles.width = this.params['Dimension']['defaultWidth'];
