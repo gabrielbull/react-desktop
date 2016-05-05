@@ -19,8 +19,8 @@ class View extends Component {
     direction: PropTypes.string
   };
 
-  static getDefaultProps = {
-    direction: 'row'
+  static defaultProps = {
+    direction: 'column'
   };
 
   render() {
