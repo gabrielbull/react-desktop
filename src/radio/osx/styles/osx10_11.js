@@ -1,4 +1,20 @@
 export default {
+  label: {
+    display: 'flex',
+    height: '20px',
+    lineHeight: '20px',
+    position: 'relative',
+
+    ':hover': {},
+    ':active': {}
+  },
+
+  inputWrapper: {
+    position: 'relative',
+    marginRight: '3px',
+    paddingTop: '2px'
+  },
+
   radio: {
     userSelect: 'none',
     WebkitAppearance: 'none',
@@ -8,8 +24,7 @@ export default {
     borderRadius: '50%',
     backgroundColor: '#ffffff',
     padding: '7px',
-    verticalAlign: 'bottom',
-    marginRight: '3px',
+    margin: '0',
     boxShadow: 'inset 0 1px 0 0 rgba(224, 224, 224, .4)',
     transition: 'all 0.4s',
 
@@ -39,20 +54,10 @@ export default {
     transition: 'all 0.4s'
   },
 
-  label: {
-    display: 'block',
-    height: '20px',
-    lineHeight: '22px',
-    position: 'relative',
-
-    ':hover': {},
-    ':active': {}
-  },
-
   checkmark: {
     position: 'absolute',
-    top: '8px',
-    left: '8px',
+    top: '7px',
+    left: '5px',
     width: '6px',
     height: '6px'
   },
