@@ -9,8 +9,7 @@ export default {
     backgroundColor: '#ffffff',
     padding: '7px',
     verticalAlign: 'bottom',
-    marginBottom: '6px',
-    marginRight: '4px',
+    marginRight: '3px',
     boxShadow: 'inset 0 1px 0 0 rgba(224, 224, 224, .4)',
     transition: 'all 0.4s',
 
@@ -42,8 +41,8 @@ export default {
 
   label: {
     display: 'block',
-    height: '27px',
-    lineHeight: '27px',
+    height: '20px',
+    lineHeight: '22px',
     position: 'relative',
 
     ':hover': {},
@@ -52,7 +51,7 @@ export default {
 
   checkmark: {
     position: 'absolute',
-    top: '10px',
+    top: '8px',
     left: '8px',
     width: '6px',
     height: '6px'
