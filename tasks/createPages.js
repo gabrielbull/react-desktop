@@ -8,12 +8,11 @@ var Promise = require('bluebird');
 
 var extractDocs = function () {
   return new Promise((resolve) => {
-    var content = fs.readFileSync('./index.html');
+    var content = fs.readFileSync('./assets/index.html');
 
     gulp.src('./raw-docs/**\/*.html')
       .pipe(replace(/^[\s\S.]*$/g, content))
       .pipe(replace('UA-00000000-1', 'UA-68950619-1'))
-      .pipe(replace('/react-desktop/build/bundle.js', 'http://reactdesktop.js.org/build/bundle.js'))
       .pipe(rename(function (path) {
         if (path.basename !== 'index') {
           path.dirname += '/' + path.basename;
@@ -28,11 +27,11 @@ var extractDocs = function () {
 
 var createPages = function () {
   return new Promise((resolve) => {
-    gulp.src('./index.html')
+    gulp.src('./assets/index.html')
       .pipe(replace('UA-00000000-1', 'UA-68950619-1'))
-      .pipe(replace('/react-desktop/build/bundle.js', 'http://reactdesktop.js.org/build/bundle.js'))
       .pipe(gulp.dest('./demo/'))
       .pipe(gulp.dest('./docs/'))
+      .pipe(gulp.dest('.'))
       .on('end', resolve)
   });
 };

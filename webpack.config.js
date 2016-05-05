@@ -11,6 +11,10 @@ module.exports = {
     libraryTarget: "var"
   },
 
+  devServer: {
+    contentBase: './assets'
+  },
+
   devtool: PROD ? null : 'source-map',
 
   module: {
