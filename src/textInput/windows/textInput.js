@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import Text from '../../text/windows/text';
-import DesktopComponent, { PlaceholderStyle, Hidden, Background } from '../../desktopComponent';
+import DesktopComponent, { PlaceholderStyle, Hidden, Background, Dimension, Margin } from '../../desktopComponent';
 import styles from './styles/windows10';
 
-@DesktopComponent(PlaceholderStyle, Hidden, Background)
+@DesktopComponent(PlaceholderStyle, Hidden, Background, Dimension, Margin)
 class TextInput extends Component {
   static styleRefs = {
     background: 'input'

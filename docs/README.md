@@ -15,6 +15,7 @@ can be used in any JavaScript powered project!
   * [Checkbox](/docs/osx/checkbox.md)
   * [Label](/docs/osx/label.md)
   * [Progress Circle](/docs/osx/progress-circle.md)
+  * [Radio](/docs/osx/radio.md)
   * [Segmented Control](/docs/osx/segmented-control.md)
   * [Text](/docs/osx/text.md)
   * [Text Input](/docs/osx/text-input.md)

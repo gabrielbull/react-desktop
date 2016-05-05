@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { PlaceholderStyle, Dimension, Hidden } from '../../desktopComponent';
+import DesktopComponent, { PlaceholderStyle, Dimension, Hidden, Margin } from '../../desktopComponent';
 import { StyleRoot, keyframes, getState } from 'radium';
 import styles from './styles/osx10_11';
 import Label from '../../label/osx/label';
@@ -48,7 +48,7 @@ const animation = keyframes(
   'text-input-focus'
 );
 
-@DesktopComponent(PlaceholderStyle, Hidden, Dimension)
+@DesktopComponent(PlaceholderStyle, Hidden, Dimension, Margin)
 class TextFieldOSX extends Component {
   static propTypes = {
     label: PropTypes.string
@@ -67,7 +67,7 @@ class TextFieldOSX extends Component {
   }
 
   render() {
-    const { style, width, label, ...props } = this.props;
+    const { style, width, label, margin, ...props } = this.props;
 
     let componentStyle = { ...style, ...styles.textField };
 
@@ -86,7 +86,7 @@ class TextFieldOSX extends Component {
     let labelComponent = label ? <Label margin="0 0 3px 0">{label}</Label> : null;
 
     return (
-      <div style={styles.container} {...{ width }}>
+      <div style={styles.container} {...{ width, margin }}>
         {labelComponent}
         <div style={styles.wrapper}>
           <StyleRoot>
