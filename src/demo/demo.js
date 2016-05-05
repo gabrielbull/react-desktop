@@ -37,7 +37,9 @@ export default class extends Component {
     return (
       <div className="demo">
         <OsToggle defaultValue={this.state.os} onChange={this.changeOs.bind(this)}/>
-        {window}
+        <div className="demo-window">
+          {window}
+        </div>
       </div>
     );
   }
