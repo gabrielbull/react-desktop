@@ -1,5 +1,7 @@
 var webpack = require("webpack");
 
+const PROD = process.env.PROD_DEV ? true : false;
+
 module.exports = {
   entry: './src/app.js',
 
@@ -9,7 +11,7 @@ module.exports = {
     libraryTarget: "var"
   },
 
-  devtool: 'source-map',
+  devtool: PROD ? null : 'source-map',
 
   module: {
     loaders: [

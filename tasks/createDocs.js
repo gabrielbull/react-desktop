@@ -76,24 +76,6 @@ var replacePaths = function () {
   });
 };
 
-/*var extractDocs = function () {
-  return new Promise((resolve) => {
-    var content = fs.readFileSync('./index.html');
-
-    gulp.src('./raw-docs/**\/*.html')
-      .pipe(replace(/^[\s\S.]*$/g, content))
-      .pipe(rename(function (path) {
-        if (path.basename !== 'index') {
-          path.dirname += '/' + path.basename;
-          path.basename = 'index';
-          path.extname = '.html';
-        }
-      }))
-      .pipe(gulp.dest('./docs'))
-      .on('end', resolve)
-  });
-};*/
-
 var extractNav = function () {
   return new Promise((resolve) => {
     var content = fs.readFileSync('./raw-docs/index.html');
@@ -110,7 +92,6 @@ gulp.task('create-docs', function (cb) {
     .then(removeReactDesktop)
     .then(removeMarkdownFiles)
     .then(replacePaths)
-    //.then(extractDocs)
     .then(extractNav)
     .then(cb);
 });
