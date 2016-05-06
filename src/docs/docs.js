@@ -4,6 +4,7 @@ import Nav from './nav/nav';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/paraiso-dark.css';
 import './docs.scss';
+import Example from './example/example';
 
 export default class extends Component {
   constructor(props, context, updater) {
@@ -17,7 +18,7 @@ export default class extends Component {
 
   componentDidUpdate() {
     this.highlightCode();
-    this.moveContentBeforeDemo();
+    //this.moveContentBeforeDemo();
   }
 
   highlightCode() {
@@ -41,12 +42,13 @@ export default class extends Component {
       let nodes = [];
       const children = findDOMNode(this.refs.docs).childNodes;
       for (let i = 0, len = children.length; i < len; ++i) {
-        if (children[i].tagName === 'P' && children[i].childNodes[0].tagName === 'A') {
+        console.log(children[i]);
+        if (children[i] && children[i].tagName === 'P' && children[i].childNodes[0].tagName === 'A') {
           const anchor = children[i].childNodes[0];
           if (anchor.id.match(/^demo\-/)) {
             break;
           }
-        } else {
+        } else if (children[i] && children[i].tagName === 'H1') {
           nodes = [...nodes, children[i]];
           children[i].parentNode.removeChild(children[i]);
         }
@@ -58,35 +60,22 @@ export default class extends Component {
     }
   }
 
-  getDemo(content) {
-    let demos = [];
-    /*const anchors = content.match(/<a.+<\/a>/g);
-    if (anchors) {
-      for (var i = 0, len = anchors.length; i < len; ++i) {
-        const matches = anchors[i].match(/id=".+"/);
-        if (matches && matches[0]) {
-          const id = matches[0].replace(/^id="/, '').replace(/"$/, '');
-          if (id) {
-            const demo = id.replace(/^demo\-(Windows|Mac)\./, '');
-            demos = [...demos, WindowsDemo[demo]];
-          }
-        }
-      }
-    }*/
-    return demos;
-  }
-
   render() {
     let content;
+
+    let ExampleContent;
+    try {
+      let name = this.props.params.splat.replace(/-./, match => match.substr(1).toUpperCase());
+      ExampleContent = require('../../examples/' + name);
+      ExampleContent = ExampleContent.default;
+    } catch (err) {
+    }
+
     if (this.props.params.splat) {
       content = require(`../../raw-docs/${this.props.params.splat}.html`);
     } else {
       content = require('../../raw-docs/index.html');
     }
-
-    let demos = this.getDemo(content);
-    const Demo = demos && demos[0] ? demos[0] : null;
-    const demo = Demo ? <Demo ref="demo"/> : null;
 
     return (
       <div ref="element" className="docs-container">
@@ -94,7 +83,7 @@ export default class extends Component {
         <div className="docs">
           <div ref="before-demo"/>
           <div id="demos" className="doc-demo">
-            {demo}
+            {ExampleContent ? <Example ref="demo"><ExampleContent/></Example> : null}
           </div>
           <div className="docs-content" ref="docs" dangerouslySetInnerHTML={{__html: content}} />
         </div>

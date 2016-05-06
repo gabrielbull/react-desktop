@@ -23,6 +23,7 @@
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.5",
     "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
     "gulp-clean": "^0.3.2",
     "gulp-git": "^1.7.1",
     "gulp-markdown": "^1.2.0",
@@ -40,7 +41,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "start": "gulp create-docs && webpack-dev-server --colors --inline --port 3001 --hot --history-api-fallback",
-    "build": "gulp create-docs && PROD_DEV=1 webpack && gulp bundle"
+    "start": "gulp create-docs && gulp create-examples && webpack-dev-server --colors --inline --port 3001 --hot --history-api-fallback",
+    "build": "gulp create-docs && gulp create-examples && PROD_DEV=1 webpack && gulp bundle"
   }
 }

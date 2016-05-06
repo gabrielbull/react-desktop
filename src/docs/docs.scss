@@ -105,9 +105,6 @@ table {
 
   tbody {
     tr {
-      @include display(flex);
-      @include flex-wrap(wrap);
-
       &:nth-child(2n) {
         background: rgba(#2083c6, .03);
 
@@ -123,25 +120,26 @@ table {
         }
       }
 
+      td {
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+
       td:first-child {
-        margin-top: 10px;
-        margin-left: 10px;
         font-weight: bold;
         line-height: 20px;
+        font-size: 12px;
       }
       td:nth-child(2n) {
-        margin-top: 10px;
         color: #2083c6;
         line-height: 20px;
-        margin-left: 12px;
+        padding-left: 20px;
         font-style: italic;
+        font-size: 12px;
       }
       td:last-child {
-        @include flex(1 0 100%);
         width: 100%;
-        margin-top: 4px;
-        margin-bottom: 10px;
-        margin-left: 10px;
+        padding-left: 20px;
         color: #444;
         font-size: 13px;
       }
@@ -158,10 +156,28 @@ table {
   padding: 30px 20px;
 }
 
-/* # Demo
+/* # Example
 ================================================== */
 .docs .doc-demo {
-  h2 + div {
-    border-left: 4px solid #2083c6;
+  margin-bottom: 20px;
+
+  .example {
+    background: #f3f3f3;
+    max-width: 600px;
+    overflow: scroll;
+    border: 1px solid #333;
+
+    h4 {
+      text-align: center;
+      background: #333;
+      padding: 4px 0;
+      color: white;
+      font-weight: normal;
+      margin: 0;
+    }
+
+    .container {
+      padding: 20px;
+    }
   }
 }

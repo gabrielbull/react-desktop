@@ -1,4 +1,5 @@
 var webpack = require("webpack");
+var path = require('path');
 
 const PROD = process.env.PROD_DEV ? true : false;
 
@@ -17,13 +18,23 @@ module.exports = {
 
   devtool: PROD ? null : 'source-map',
 
+  resolveLoader: {
+    alias: {
+      'example-loader': path.join(__dirname, 'src', 'exampleLoader')
+    }
+  },
+
   module: {
     loaders: [
       {
         test: /\.js/,
-        exclude: /node_modules/,
+        exclude: /node_modules|examples/,
         loader: 'babel'
       },
+      /*{
+        test: /examples\/.*\.js/,
+        loader: 'example-loader'
+      },*/
       {
         test: /\.scss|\.css$/,
         loaders: [
