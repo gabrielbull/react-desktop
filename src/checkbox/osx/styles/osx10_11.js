@@ -1,4 +1,23 @@
 export default {
+  container: {
+    display: 'flex'
+  },
+
+  label: {
+    display: 'flex',
+    height: '20px',
+    position: 'relative',
+
+    ':hover': {},
+    ':active': {}
+  },
+
+  inputWrapper: {
+    position: 'relative',
+    marginRight: '3px',
+    paddingTop: '1px'
+  },
+
   checkbox: {
     userSelect: 'none',
     WebkitAppearance: 'none',
@@ -8,9 +27,7 @@ export default {
     borderRadius: '3px',
     backgroundColor: '#ffffff',
     padding: '6px',
-    verticalAlign: 'bottom',
-    marginBottom: '7px',
-    marginRight: '5px',
+    margin: '0 1px',
     boxShadow: 'inset 0 1px 0 0 rgba(224, 224, 224, .4)',
     transition: 'all 0.4s',
 
@@ -40,20 +57,10 @@ export default {
     transition: 'all 0.4s'
   },
 
-  label: {
-    display: 'block',
-    height: '27px',
-    lineHeight: '27px',
-    position: 'relative',
-    
-    ':hover': {},
-    ':active': {}
-  },
-
   checkmark: {
     position: 'absolute',
-    top: '9px',
-    left: '6px',
+    top: '4px',
+    left: '4px',
     width: '8px',
     height: '8px'
   },

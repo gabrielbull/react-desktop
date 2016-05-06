@@ -59,6 +59,7 @@ export default {
     borderTopColor: '#30a0f5',
     borderBottomColor: '#0060fa',
     borderLeftColor: '#0080f7',
+    borderRightColor: '#0080f7',
     color: 'white',
     borderRightWidth: '0px',
     paddingRight: '13px',
@@ -69,12 +70,17 @@ export default {
       borderTopColor: '#007ff9',
       borderBottomColor: '#0040d8',
       borderLeftColor: '#0061e9',
+      borderRightColor: '#0061e9',
       color: 'white'
     }
   },
 
   firstChildSelected: {
     paddingLeft: '12px'
+  },
+
+  lastChildSelected: {
+    borderRightWidth: '1px'
   },
 
   prevSelected: {
@@ -90,7 +96,7 @@ export default {
     borderTopColor: '#c7c7c7',
     borderBottomColor: '#a6a6a6',
     borderLeftColor: '#b7b7b7',
-    borderRightWidth: '0px',
+    borderRightColor: '#b7b7b7',
     color: '#000000'
   }
 };

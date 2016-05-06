@@ -28,6 +28,7 @@ class Tab extends Component {
       componentStyle = { ...componentStyle, ...styles.selected };
       if (!this.state.windowFocused) componentStyle = { ...componentStyle, ...styles.selectedUnfocused };
       if (firstChild) componentStyle = { ...componentStyle, ...styles.firstChildSelected };
+      if (lastChild) componentStyle = { ...componentStyle, ...styles.lastChildSelected };
     }
 
     return (

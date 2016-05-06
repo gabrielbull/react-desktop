@@ -55,19 +55,23 @@ class Checkbox extends Component {
     }
 
     return (
-      <label style={labelStyle}>
-        <input
-          ref="element"
-          type="checkbox"
-          {...props}
-          style={componentStyle}
-          onChange={this.onChange}
-        />
-        <Checkmark show={this.state.checked} shadowColor={shadowColor}/>
-        <Text style={{ display: 'inline' }}>
-          {label}
-        </Text>
-      </label>
+      <div style={styles.container}>
+        <label style={labelStyle}>
+          <div style={styles.inputWrapper}>
+            <input
+              ref="element"
+              type="checkbox"
+              {...props}
+              style={componentStyle}
+              onChange={this.onChange}
+            />
+            <Checkmark show={this.state.checked} shadowColor={shadowColor}/>
+          </div>
+          <Text style={{ display: 'inline' }}>
+            {label}
+          </Text>
+        </label>
+      </div>
     );
   }
 }

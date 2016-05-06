@@ -1,8 +1,11 @@
 export default {
+  container: {
+    display: 'flex'
+  },
+
   label: {
     display: 'flex',
     height: '20px',
-    lineHeight: '20px',
     position: 'relative',
 
     ':hover': {},
@@ -24,7 +27,7 @@ export default {
     borderRadius: '50%',
     backgroundColor: '#ffffff',
     padding: '7px',
-    margin: '0',
+    margin: '0px',
     boxShadow: 'inset 0 1px 0 0 rgba(224, 224, 224, .4)',
     transition: 'all 0.4s',
 

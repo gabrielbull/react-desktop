@@ -69,21 +69,23 @@ class Radio extends Component {
     }
 
     return (
-      <label style={labelStyle}>
-        <div style={styles.inputWrapper}>
-          <input
-            ref="element"
-            type="radio"
-            {...props}
-            style={componentStyle}
-            onChange={this.onChange}
-          />
-          <Circle show={this.state.checked} shadowColor={shadowColor}/>
-        </div>
-        <Text style={{ display: 'inline' }}>
-          {label}
-        </Text>
-      </label>
+      <div style={styles.container}>
+        <label style={labelStyle}>
+          <div style={styles.inputWrapper}>
+            <input
+              ref="element"
+              type="radio"
+              {...props}
+              style={componentStyle}
+              onChange={this.onChange}
+            />
+            <Circle show={this.state.checked} shadowColor={shadowColor}/>
+          </div>
+          <Text style={{ display: 'inline' }}>
+            {label}
+          </Text>
+        </label>
+      </div>
     );
   }
 }

@@ -15,7 +15,9 @@ class Tabs extends Component {
     const { style } = this.props;
 
     let children;
-    if (Object.prototype.toString.call(children) !== '[object Array]') {
+    if (!this.props.children) {
+      return null;
+    } else if (Object.prototype.toString.call(this.props.children) !== '[object Array]') {
       children = [this.props.children];
     } else {
       children = [...this.props.children];

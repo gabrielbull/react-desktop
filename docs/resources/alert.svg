@@ -8,7 +8,7 @@
 	.st1{font-family:Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';}
 	.st2{font-size:13px;}
 </style>
-<text transform="matrix(1 0 0 1 45.724 404.1924)" class="st0 st1 st2">This library is in Beta. Thank you for reporting any issue in the Issues page.</text>
+<text transform="matrix(1 0 0 1 45.724 404.1924)" class="st0 st1 st2">This library is in beta. Please report any issues or feature request to the issues page.</text>
 <path class="st0" d="M27.3,404v-2.5c0-0.1,0-0.2-0.1-0.2c-0.1-0.1-0.2-0.1-0.4-0.1h-2.5c-0.1,0-0.2,0-0.2,0.1
 	c-0.1,0.1-0.1,0.1-0.1,0.2v2.5c0,0.1,0,0.2,0.1,0.2c0.1,0.1,0.1,0.1,0.2,0.1h2.5c0.1,0,0.2,0,0.2-0.1
 	C27.2,404.3,27.3,404.2,27.3,404z M27.2,399.2l0.2-6c0-0.1,0-0.1-0.1-0.2s-0.2-0.1-0.2-0.1h-2.9c-0.1,0-0.2,0-0.2,0.1
