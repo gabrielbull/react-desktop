@@ -16,9 +16,14 @@ export default class extends Component {
     this.moveContentBeforeDemo();
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.params.splat !== this.props.params.splat) return true;
+    return false;
+  }
+
   componentDidUpdate() {
     this.highlightCode();
-    //this.moveContentBeforeDemo();
+    this.moveContentBeforeDemo();
   }
 
   highlightCode() {
@@ -42,7 +47,6 @@ export default class extends Component {
       let nodes = [];
       const children = findDOMNode(this.refs.docs).childNodes;
       for (let i = 0, len = children.length; i < len; ++i) {
-        console.log(children[i]);
         if (children[i] && children[i].tagName === 'P' && children[i].childNodes[0].tagName === 'A') {
           const anchor = children[i].childNodes[0];
           if (anchor.id.match(/^demo\-/)) {
@@ -81,7 +85,7 @@ export default class extends Component {
       <div ref="element" className="docs-container">
         <Nav/>
         <div className="docs">
-          <div ref="before-demo"/>
+          <div ref="before-demo" className="docs-content"/>
           <div id="demos" className="doc-demo">
             {ExampleContent ? <Example ref="demo"><ExampleContent/></Example> : null}
           </div>
