@@ -12,18 +12,19 @@ body {
   margin: 0 auto;
   font: 13px/1.4 "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
   color: #333;
-  @include display(flex);
-  @include flex-direction(column);
-  @include align-items(center);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #header {
   width: 100%;
-  @include flex(0);
+  flex: 0;
 }
 
 #main {
   width: 100%;
-  @include flex(1);
-  @include display(flex);
+  flex: 1;
+  display: flex;
 }

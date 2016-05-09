@@ -3,13 +3,13 @@
 .docs-container {
   width: 100%;
   box-sizing: border-box;
-  @include flex-grow(1);
+  flex-grow: 1;
 
-  @include display(flex);
-  @include align-items(stretch);
+  display: flex;
+  align-items: stretch;
 
   nav {
-    @include flex(0 0 300px);
+    flex: 0 0 300px;
     padding-left: 100px;
     flex-shrink: 0;
     ul, ol, li {
@@ -20,7 +20,7 @@
   }
 
   .docs {
-    @include flex(2);
+    flex: 2;
     padding: 40px 100px 40px 100px;
 
     li a {
@@ -159,25 +159,43 @@ table {
 /* # Example
 ================================================== */
 .docs .doc-demo {
+  $background: rgba(#2083c6, .03);
+  $border: rgba(#2083c6, .07);
+
   margin-bottom: 20px;
 
   .example {
-    background: #f3f3f3;
+    background: $background;
     max-width: 600px;
     overflow: scroll;
-    border: 1px solid #333;
+    border: 1px solid $border;
+    border-bottom: none;
 
     h4 {
+      user-select: none;
       text-align: center;
-      background: #333;
+      background: $border;
       padding: 4px 0;
-      color: white;
-      font-weight: normal;
+      color: #333;
       margin: 0;
+      cursor: pointer;
+
+      &:hover {
+        background: darken($border, 5%);
+        transition: background .2s;
+      }
+
+      &:active {
+        background: darken($border, 10%);
+        transition: background .2s;
+      }
     }
 
     .container {
       padding: 20px;
+      border-bottom: 1px solid $border;
+      display: flex;
+      justify-content: center;
     }
   }
 }
