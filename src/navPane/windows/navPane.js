@@ -2,14 +2,7 @@ import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import DesktopComponent from '../../desktopComponent';
 import Pane from './pane/pane';
 import Item from './item/item';
-import Content from './content/content';
-
-const styles = {
-  display: 'flex',
-  flexWrap: 'nowrap',
-  position: 'relative',
-  flex: '1'
-};
+import styles from './style/windows10';
 
 @DesktopComponent()
 class SplitView extends Component {
@@ -71,15 +64,9 @@ class SplitView extends Component {
     return `.${this.id}.$/.${key}`;
   }*/
 
-  filterSelectedChildren() {
-
-  }
-
   render() {
-    const content = this.filterSelectedChildren();
-
     return (
-      <div>
+      <div style={styles.navPane}>
         <Pane
           items={this.props.children}
           canPaneToggle={this.props.canPaneToggle}
@@ -88,6 +75,7 @@ class SplitView extends Component {
           paneCompactedLength={this.props.paneCompactedLength}
           paneExpandedLength={this.props.paneExpandedLength}
         />
+        {this.renderContent()}
       </div>
     );
     /*
@@ -124,6 +112,15 @@ class SplitView extends Component {
         {content}
       </div>
     );*/
+  }
+
+  renderContent() {
+    let content;
+    Children.map(this.props.children, child => {
+      if (child.props.selected) content = child;
+    });
+
+    return content;
   }
 }
 

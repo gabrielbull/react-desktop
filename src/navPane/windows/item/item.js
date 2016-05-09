@@ -1,78 +1,60 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent from '../../../desktopComponent';
-import Content from '../content/content';
+import DesktopComponent, { Padding, Margin, Background, Alignment} from '../../../desktopComponent';
+import Title from './title/title';
+import Content from './content/content';
+import styles from '../style/windows10';
+import { StyleRoot } from 'radium';
 
-const styles = {
-  content: {
-    position: 'relative',
-    flexGrow: '1',
-    flexShrink: '0',
-    display: 'flex'
-  }
-};
-
-@DesktopComponent
+@DesktopComponent(Padding, Margin, Background, Alignment)
 class Item extends Component {
   static propTypes = {
-    title: PropTypes.string,
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
     icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
     push: PropTypes.bool,
     onSelect: PropTypes.func,
     selected: PropTypes.bool
   };
 
-  /*constructor(props, context, updater) {
-    const { selected, ...properties } = props;
-    super(properties, context, updater);
+  constructor() {
+    super();
     this.state = {
-      selected: selected,
-      parentTheme: context.theme
+      prevTitle: null
     };
-  }*/
-
-  /*get splitView() {
-    return this.context.parent;
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ selected: nextProps.selected });
-    if (this.refs.content) {
-      this.refs.content.setState({ selected: nextProps.selected });
+    if (this.props.title !== nextProps.title) {
+      this.setState({ prevTitle: this.props.title });
     }
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    if (this.refs.content) {
-      this.refs.content.setState({ parentTheme: nextState.parentTheme });
-    }
-  }*/
-
   render() {
+    const { children, title, ...props } = this.props;
+
+    delete props.icon;
+    delete props.push;
+    delete props.onSelect;
+    delete props.selected;
+
     return (
-      <div>
-        hello my world
+      <div
+        style={styles.navPaneItem}
+      >
+        <div style={styles.contentWrapper}>
+          <StyleRoot>
+            <Title
+              key={title}
+              title={title}
+              prevTitle={this.state.prevTitle}
+            />
+          </StyleRoot>
+          <Content
+            content={children}
+            {...props}
+          />
+        </div>
       </div>
     );
-    /*const { children, style, ...props } = this.props;
-    this.splitView;
-
-    let componentStyle = { ...styles.content };
-
-    return this.state.selected ? (
-      <div
-        style={componentStyle}
-      >
-        <Content
-          ref="content"
-          selected={this.state.selected}
-          parentTheme={this.state.parentTheme}
-          style={style}
-          {...props}
-        >
-          {children}
-        </Content>
-      </div>
-    ) : null;*/
   }
 }
 

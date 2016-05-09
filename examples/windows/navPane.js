@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavPane } from 'react-desktop/windows';
+import { NavPane, Text } from 'react-desktop/windows';
 
 export default class extends Component {
   static defaultProps = {
@@ -33,9 +33,10 @@ export default class extends Component {
         background="#ffffff"
         selected={this.state.selected === title}
         onSelect={() => this.setState({ selected: title })}
+        padding="10px 20px"
         push
       >
-        {content}
+        <Text>{content}</Text>
       </NavPane.Item>
     );
   }
