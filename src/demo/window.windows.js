@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import {
   Window,
   TitleBar,
-  //Form,
-  //TextBlock,
-  //TextBox,
-  Button,
   Checkbox,
-  SplitView,
-  //IndeterminateProgressRing,
+  NavPane,
+  TextInput,
+  Text,
+  View,
+  ProgressCircle,
+  Button
 } from 'react-desktop/windows';
 import * as Icons from './windows/assets/icons';
 
@@ -17,85 +16,93 @@ export default class extends Component {
   constructor() {
     super();
     this.state = {
-      selectedTab: 'welcome'
+      selectedTab: 'welcome',
+      showLoader: false,
+      showError: false
     };
   }
 
+  submit = () => {
+    this.setState({ showLoader: true, showError: false });
+    setTimeout(() => {
+      this.setState({ showLoader: false, showError: true });
+    }, 2000);
+  };
+
+  cancel = () => {
+    this.setState({ showLoader: false, showError: false });
+  };
+
   render() {
     return (
-      <Window ref="window" chrome requestedTheme="dark" width="800px" height="600px">
+      <Window ref="window" chrome theme="dark" color="#cc7f29" width="800px" height="600px">
         <TitleBar title="My Windows Application" controls/>
+
+        <NavPane>
+          <NavPane.Item
+            title="Welcome"
+            icon={Icons.welcomeIcon}
+            selected={this.state.selectedTab === 'welcome'}
+            onSelect={() => { this.setState({ selectedTab: 'welcome' }) }}
+            color="#cc7f29"
+            theme="light"
+            push
+            style={{
+             height: '500px',
+             backgroundImage: 'url(/picture.jpg)',
+             backgroundSize: 'cover'
+           }}
+          >
+            <h1
+              style={{
+               position: 'absolute',
+               top: '25%',
+               left: '0px',
+               width: '100%',
+               textAlign: 'center',
+               lineHeight: '28px',
+               fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
+               fontSize: '45px',
+               fontWeight: '100',
+               color: '#333'
+             }}
+            >
+              Welcome to React Desktop
+            </h1>
+          </NavPane.Item>
+          <NavPane.Item
+            title="Forms"
+            icon={Icons.formIcon}
+            selected={this.state.selectedTab === 'form'}
+            onSelect={() => { this.setState({ selectedTab: 'form' }) }}
+            padding="40px 30px"
+            color="#cc7f29"
+            theme="light"
+            background="#ffffff"
+            push
+          >
+            <Text color="red" hidden={!this.state.showError}>
+              There was an error submitting this form.
+            </Text>
+
+            <View margin="0 0 20px 0">
+              <TextInput label="Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
+              <TextInput label="Longer Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
+            </View>
+
+            <View margin="0 0 20px 0">
+              <Checkbox label="Default checked" defaultChecked/>
+            </View>
+
+            <View direction="row" horizontalAlignment="right">
+              <ProgressCircle size={32} hidden={!this.state.showLoader} style={{ marginRight: '20px' }}/>
+              <Button onClick={this.submit} type="submit" color push style={{ marginRight: '8px' }}>Submit</Button>
+              <Button onClick={this.cancel}>Cancel</Button>
+            </View>
+
+          </NavPane.Item>
+        </NavPane>
       </Window>
     );
   }
 }
-
-/*
-
- <SplitView isOpen={this.state.isOpen} openLength={200} onPaneToggle={this.togglePane} push>
- <SplitView.Item
- title="Welcome"
- icon={Icons.welcomeIcon}
- selected={this.state.selectedTab === 'welcome'}
- onPress={() => { this.setState({ selectedTab: 'welcome' }) }}
- requestedTheme="light"
- background="#ffffff"
- style={{
- height: '500px',
- backgroundImage: 'url(/react-desktop/src/Demo/picture.jpg)',
- backgroundSize: 'cover'
- }}
- >
- <h1
- style={{
- position: 'absolute',
- top: '25%',
- left: '0',
- width: '100%',
- textAlign: 'center',
- lineHeight: '28px',
- fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
- fontSize: '45px',
- fontWeight: '100',
- color: '#333'
- }}
- >
- Welcome to React Desktop
- </h1>
- </SplitView.Item>
- <SplitView.Item
- title="Forms"
- icon={Icons.formIcon}
- selected={this.state.selectedTab === 'form'}
- onPress={() => { this.setState({ selectedTab: 'form' }) }}
- padding="40px 30px"
- requestedTheme="light"
- background="#ffffff"
- >
- <Form>
- <TextBlock color="red">
- There was an error submitting this form.
- </TextBlock>
-
- <Form.Row>
- <TextBox header="Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
- </Form.Row>
-
- <Form.Row>
- <TextBox header="Longer Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
- </Form.Row>
-
- <Form.Row>
- <Checkbox label="Default checked" defaultChecked/>
- </Form.Row>
-
- <Form.Row>
- <Button onPress="submit" color push>Button With Color</Button>
- <Button push>Button</Button>
-
- <IndeterminateProgressRing size={32} color absolute/>
- </Form.Row>
- </Form>
- </SplitView.Item>
- </SplitView>
- */
