@@ -176,9 +176,24 @@ table {
       text-align: center;
       background: $border;
       padding: 4px 0;
-      color: #333;
       margin: 0;
       cursor: pointer;
+      position: relative;
+
+      span {
+        color: #333;
+      }
+
+      i {
+        position: absolute;
+        top: 4px;
+        left: 8px;
+        transition: transform .4s;
+
+        &.open {
+          transform: rotateZ(90deg);
+        }
+      }
 
       &:hover {
         background: darken($border, 5%);

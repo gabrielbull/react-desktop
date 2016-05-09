@@ -26,7 +26,14 @@ class Example extends Component {
 
     return (
       <div className="example">
-        <h4 onClick={this.toggle}>Demo</h4>
+        <h4 onClick={this.toggle}>
+          <i className={this.state.expanded ? 'open' : ''}>
+            <svg x="0px" y="0px" width="6.9px" height="10px" viewBox="0 0 6.9 10">
+              <polygon points="5,3.1 1.9,0 0,1.9 3.1,5 0,8.1 1.9,10 6.9,5 "/>
+            </svg>
+          </i>
+          <span>Demo</span>
+        </h4>
         {children}
       </div>
     );
