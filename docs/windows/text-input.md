@@ -25,7 +25,7 @@ import { TextInput } from 'react-desktop/windows';
 export default class extends Component {
   static defaultProps = {
     color: '#cc7f29',
-    theme: 'dark'
+    theme: 'light'
   };
 
   change = () => console.log(this.refs.input.value);

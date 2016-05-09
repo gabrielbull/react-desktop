@@ -47,6 +47,11 @@ import React, { Component } from 'react';
 import { MasterDetailsView, Text } from 'react-desktop/windows';
 
 export default class extends Component {
+  static defaultProps = {
+    color: '#cc7f29',
+    theme: 'light'
+  };
+
   render() {
     return (
       <MasterDetailsView color={this.props.color} theme={this.props.theme}>
@@ -64,7 +69,7 @@ export default class extends Component {
           {master}
         </MasterDetailsView.Item.Master>
         <MasterDetailsView.Item.Details background>
-          <Text padding="20" color="white">{details}</Text>
+          <Text padding="20px" color="white">{details}</Text>
         </MasterDetailsView.Item.Details>
       </MasterDetailsView.Item>
     );

@@ -29,10 +29,9 @@ export default class extends Component {
   render() {
     return (
       <Text
-        width="100%"
         horizontalAlignment="center"
         verticalAlignment="center"
-        padding="100px"
+        padding="0 100px"
       >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam justo urna, posuere vitae est et, accumsan
         bibendum sapien. Suspendisse lobortis mollis finibus. Nunc tincidunt enim est, efficitur semper dolor luctus

@@ -42,7 +42,7 @@ import { NavPane, Text } from 'react-desktop/windows';
 export default class extends Component {
   static defaultProps = {
     color: '#cc7f29',
-    theme: 'dark'
+    theme: 'light'
   };
 
   constructor() {
