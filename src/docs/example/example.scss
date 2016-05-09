@@ -1,0 +1,61 @@
+.docs .doc-example {
+  $background: rgba(#2083c6, .03);
+  $border: rgba(#2083c6, .07);
+
+  .example {
+    background: $background;
+    max-width: 600px;
+    overflow: scroll;
+    border: 1px solid $border;
+    border-bottom: none;
+    margin-bottom: 20px;
+
+    h4 {
+      user-select: none;
+      text-align: center;
+      background: $border;
+      padding: 4px 0;
+      margin: 0;
+      cursor: pointer;
+      position: relative;
+
+      span {
+        color: #333;
+      }
+
+      i {
+        position: absolute;
+        top: 4px;
+        left: 8px;
+        transition: transform .4s;
+
+        &.open {
+          transform: rotateZ(90deg);
+        }
+
+        svg {
+          * {
+            fill: #333;
+          }
+        }
+      }
+
+      &:hover {
+        background: rgba(#2083c6, .1);
+        transition: background .2s;
+      }
+
+      &:active {
+        background: rgba(#2083c6, .15);
+        transition: background .2s;
+      }
+    }
+
+    .container {
+      padding: 20px;
+      border-bottom: 1px solid $border;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

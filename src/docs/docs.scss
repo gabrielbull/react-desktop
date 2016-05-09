@@ -20,6 +20,7 @@
   }
 
   .docs {
+    position: relative;
     flex: 2;
     padding: 40px 100px 40px 100px;
 
@@ -41,6 +42,60 @@
   }
 }
 
+/* # Issues
+================================================== */
+.docs .issues {
+  position: absolute;
+  top: 20px;
+  right: 80px;
+  display: flex;
+  margin-top: 16px;
+  padding: 20px;
+
+  a {
+    color: #e6e6e6;
+    font-size: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-right: 4px;
+      * {
+        fill: #e6e6e6;
+      }
+    }
+  }
+
+  a + a {
+    margin-left: 16px;
+  }
+
+  &:hover {
+    a {
+      color: #dcdcdc;
+      svg * {
+        fill: #dcdcdc;
+      }
+
+      &:hover {
+        color: #c7c7c7;
+        svg * {
+          fill: #c7c7c7;
+        }
+      }
+
+      &:active {
+        color: #b0b0b0;
+        svg * {
+          fill: #b0b0b0;
+        }
+      }
+    }
+  }
+}
+
 /* # Content
 ================================================== */
 .docs-content {
@@ -52,22 +107,29 @@
   line-height: 1.6;
 
   h1 {
-    margin-bottom: 16px;
-    font-weight: bold;
-    padding-bottom: 0.3em;
-    font-size: 2.25em;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    font-size: 30px;
     line-height: 1.2;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f4f4f4;
+    color: #333;
+    font-weight: 200;
   }
 
   h2 {
-    padding-bottom: 0.3em;
-    font-size: 1.75em;
+    font-size: 24px;
     line-height: 1.225;
-    border-bottom: 1px solid #eee;
-    margin-top: 1em;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: 200;
+  }
+
+  h3 {
+    font-size: 18px;
+    line-height: 1.225;
+    margin-top: 30px;
     margin-bottom: 16px;
-    font-weight: bold;
+    font-weight: 600;
   }
 
   p {
@@ -154,63 +216,4 @@ table {
   white-space: pre-wrap;
   border-left: 4px solid #2083c6;
   padding: 30px 20px;
-}
-
-/* # Example
-================================================== */
-.docs .doc-demo {
-  $background: rgba(#2083c6, .03);
-  $border: rgba(#2083c6, .07);
-
-  margin-bottom: 20px;
-
-  .example {
-    background: $background;
-    max-width: 600px;
-    overflow: scroll;
-    border: 1px solid $border;
-    border-bottom: none;
-
-    h4 {
-      user-select: none;
-      text-align: center;
-      background: $border;
-      padding: 4px 0;
-      margin: 0;
-      cursor: pointer;
-      position: relative;
-
-      span {
-        color: #333;
-      }
-
-      i {
-        position: absolute;
-        top: 4px;
-        left: 8px;
-        transition: transform .4s;
-
-        &.open {
-          transform: rotateZ(90deg);
-        }
-      }
-
-      &:hover {
-        background: darken($border, 5%);
-        transition: background .2s;
-      }
-
-      &:active {
-        background: darken($border, 10%);
-        transition: background .2s;
-      }
-    }
-
-    .container {
-      padding: 20px;
-      border-bottom: 1px solid $border;
-      display: flex;
-      justify-content: center;
-    }
-  }
 }
