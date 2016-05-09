@@ -4,8 +4,8 @@ import {
   Checkbox,
   Label,
   MasterDetailsView,
+  NavPane,
   ProgressCircle,
-  SplitView,
   Text,
   TextInput,
   TitleBar,
@@ -19,8 +19,8 @@ describe('Windows', () => {
     expect(Checkbox).to.exist;
     expect(Label).to.exist;
     expect(MasterDetailsView).to.exist;
+    expect(NavPane).to.exist;
     expect(ProgressCircle).to.exist;
-    expect(SplitView).to.exist;
     expect(Text).to.exist;
     expect(TextInput).to.exist;
     expect(TitleBar).to.exist;

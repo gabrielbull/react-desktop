@@ -32,6 +32,7 @@ class Pane extends Component {
   }
 
   toggleOpen = () => {
+    if (this.props.onPaneToggle) this.props.onPaneToggle(!this.state.isPaneExpanded);
     this.setState({ isPaneExpanded: !this.state.isPaneExpanded });
   };
 
