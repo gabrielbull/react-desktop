@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, Children } from 'react';
+import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import DesktopComponent from '../../desktopComponent';
 import Pane from './pane/pane';
 import Item from './item/item';
@@ -33,12 +33,11 @@ class NavPane extends Component {
   }
 
   renderContent() {
-    let content;
+    let content = null;
     Children.map(this.props.children, child => {
       if (child.props.selected) content = child;
     });
-
-    return content;
+    return content ? cloneElement(content, { ...content.props, paneTheme: this.state.theme }) : null;
   }
 }
 

@@ -7,7 +7,7 @@ import styles from './styles/windows10';
 class ProgressCircle extends Component {
   static propTypes = {
     absolute: PropTypes.bool,
-    color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+    color: PropTypes.string,
     size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   };
 
@@ -41,21 +41,7 @@ class ProgressCircle extends Component {
       componentStyle = { ...componentStyle, ...styles.absolute };
     }
 
-    let componentColor = '#1883d7';
-    switch (color) {
-    case true:
-      componentColor = this.state.color;
-      break;
-    case 'blue':
-      componentColor = '#1883d7';
-      break;
-    default:
-      if (color) {
-        componentColor = color;
-      }
-      break;
-    }
-
+    let componentColor = color ? color : this.state.color;
     if (size) {
       componentStyle = {
         ...componentStyle,

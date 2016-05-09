@@ -5,8 +5,6 @@ import styles from './styles/windows10';
 
 @DesktopComponent(Hidden)
 class Button extends Component {
-  isbutton = true;
-
   static propTypes = {
     type: PropTypes.string,
     color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
@@ -18,7 +16,6 @@ class Button extends Component {
     let { style, type, children, color, push, onClick, ...props } = this.props;
 
     let componentStyle = { ...styles.button, ...style };
-    console.log(this.state.color);
 
     if (color) {
       color = color === true ? this.state.color : color;

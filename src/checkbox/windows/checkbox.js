@@ -6,7 +6,7 @@ import styles from './styles/windows10';
 @DesktopComponent(Hidden)
 class Checkbox extends Component {
   static propTypes = {
-    color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+    color: PropTypes.string,
     label: PropTypes.string,
     onChange: PropTypes.func
   };
@@ -43,19 +43,12 @@ class Checkbox extends Component {
         ...(this.state.theme === 'dark' ? styles['checkboxDark:checked'] : styles['checkbox:checked'])
       };
 
-      if (color && color !== true) {
-        componentStyle = {
-          ...componentStyle,
-          backgroundColor: color,
-          borderColor: color
-        };
-      } else {
-        componentStyle = {
-          ...componentStyle,
-          backgroundColor: this.state.color,
-          borderColor: this.state.color
-        };
-      }
+      color = color ? color : this.context.color;
+      componentStyle = {
+        ...componentStyle,
+        backgroundColor: color,
+        borderColor: color
+      };
     }
 
     if (getState(this.state, null, ':active')) {

@@ -4,8 +4,8 @@
 
 Property            | Type         | Description
 :------------------ | :-----------:| :----------
-background          | string, bool | Sets the background color of a component, if bool, the color will be used as the background color.
-color               | string       | Sets the color of the text.
+background          | string, bool | Sets whether the background is colored (bool) or sets the color of the background (string).
+color               | string, bool | Sets whether the text is colored (bool) or sets the color of the text (string).
 height              | number       | Sets the height of a component.
 hidden              | bool         | Sets the visibility of a component.
 horizontalAlignment | string       | Sets the horizontal alignment of the component's content<br/>__Property value__ _"left"_, _"center"_, _"right"_

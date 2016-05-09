@@ -4,7 +4,7 @@
 
 Property            | Type         | Description
 :------------------ | :-----------:| :----------
-color               | string       | Sets the color of the button.
+color               | string, bool | Sets whether the button is colored (bool) or sets the color of the button (string).
 hidden              | bool         | Sets the visibility of a component.
 onClick             | function     | Callback function when the button is pressed.
 push                | bool         | Display push animation when pressing the button.

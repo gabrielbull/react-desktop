@@ -4,7 +4,7 @@
 
 Property            | Type         | Description
 :------------------ | :-----------:| :----------
-color               | string       | Sets the color of the text.
+color               | string       | Sets the color of the checkbox.
 defaultValue        | string       | Sets the default value of the input.
 defaultChecked      | string       | If true, the checkbox is checked by default.
 hidden              | bool         | Sets the visibility of a component.

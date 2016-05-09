@@ -10,7 +10,6 @@ import DesktopComponent, {
 import Width from '../style/width';
 
 var styles = {
-  flexGrow: '1',
   display: 'flex'
 };
 

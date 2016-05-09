@@ -12,7 +12,8 @@ class Item extends Component {
     icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
     push: PropTypes.bool,
     onSelect: PropTypes.func,
-    selected: PropTypes.bool
+    selected: PropTypes.bool,
+    paneTheme: PropTypes.string
   };
 
   constructor() {
@@ -29,7 +30,7 @@ class Item extends Component {
   }
 
   render() {
-    const { children, title, ...props } = this.props;
+    const { children, title, paneTheme, ...props } = this.props;
 
     delete props.icon;
     delete props.push;
@@ -45,6 +46,7 @@ class Item extends Component {
             <Title
               key={title}
               title={title}
+              theme={paneTheme}
               prevTitle={this.state.prevTitle}
             />
           </StyleRoot>
