@@ -1,3 +1,3 @@
-# Split View Component
+# NavPane
 
 Documentation is coming soon.

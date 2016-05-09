@@ -45,6 +45,17 @@ export default {
     }
   },
 
+  anchorTitle: {
+
+  },
+
+  anchorIcon: {
+    marginRight: '8px',
+    height: '44px',
+    display: 'flex',
+    alignItems: 'center'
+  },
+
   span: {
     display: 'flex',
     alignItems: 'center',
