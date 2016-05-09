@@ -1,4 +1,4 @@
-# Master/Details Component
+# MasterDetailsView
 
 ## MasterDetailsView
 

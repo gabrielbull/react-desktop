@@ -1,7 +1,7 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import DesktopComponent from '../../desktopComponent';
 import Pane from './pane/pane';
-import Item from './splitViewItem';
+import Item from './item/item';
 import Content from './content/content';
 
 const styles = {
@@ -13,45 +13,42 @@ const styles = {
 
 @DesktopComponent
 class SplitView extends Component {
-  static Pane = Pane;
-  static Content = Content;
   static Item = Item;
 
   static propTypes = {
-    id: PropTypes.string,
-    compactLength: PropTypes.number,
-    openLength: PropTypes.number,
-    placement: PropTypes.string,
-    isOpen: PropTypes.bool,
-    push: PropTypes.bool,
-    onPaneToggle: PropTypes.func
+    canPaneToggle: PropTypes.bool,
+    onPaneToggle: PropTypes.func,
+    defaultIsPaneExpanded: PropTypes.bool,
+    paneCompactedLength: PropTypes.number,
+    paneExpandedLength: PropTypes.number
   };
 
-  static childContextTypes = {
+  /*static childContextTypes = {
     id: PropTypes.string,
     compactLength: PropTypes.number,
     openLength: PropTypes.number,
     placement: PropTypes.string,
     isOpen: PropTypes.bool,
     push: PropTypes.bool
-  };
+  };*/
 
-  constructor(props, context, updater) {
-    let { id, ...properties } = props;
-    super(properties, context, updater);
-    this.id = id || 'splitview';
-    this.firstRender = true;
-  }
+  /*constructor(props, context, updater) {
+    super();
+    //let { id, ...properties } = props;
+    //super(properties, context, updater);
+    //this.id = id || 'splitview';
+    //this.firstRender = true;
+  }*/
 
-  set currentTitle(value) {
+  /*set currentTitle(value) {
     this._currentTitle = value;
   }
 
   get currentTitle() {
     return this._currentTitle || '';
-  }
+  }*/
 
-  getChildContext() {
+  /*getChildContext() {
     return {
       id: this.id,
       compactLength: this.props.compactLength,
@@ -60,9 +57,9 @@ class SplitView extends Component {
       isOpen: this.props.isOpen,
       push: this.props.push
     };
-  }
+  }*/
 
-  componentDidUpdate() {
+  /*componentDidUpdate() {
     for (var prop in this.refs) {
       if (this.refs.hasOwnProperty(prop)) {
         this.refs[prop].setState({ parentTheme: this.state.theme });
@@ -72,9 +69,29 @@ class SplitView extends Component {
 
   getItemStorageKey(key) {
     return `.${this.id}.$/.${key}`;
+  }*/
+
+  filterSelectedChildren() {
+
   }
 
   render() {
+    const content = this.filterSelectedChildren();
+
+
+    return (
+      <div>
+        <Pane
+          canPaneToggle={this.props.canPaneToggle}
+          onPaneToggle={this.props.onPaneToggle}
+          defaultIsPaneExpanded={this.props.defaultIsPaneExpanded}
+          paneCompactedLength={this.props.paneCompactedLength}
+          paneExpandedLength={this.props.paneExpandedLength}
+        >
+        </Pane>
+      </div>
+    );
+    /*
     const { children, style, ...props } = this.props;
 
     let hasSelectedItem = false;
@@ -107,7 +124,7 @@ class SplitView extends Component {
         </Pane>
         {content}
       </div>
-    );
+    );*/
   }
 }
 

@@ -76,7 +76,9 @@ class Playground extends Component {
     let example;
     if (this.state.example) {
       const Example = examples['/examples/' + this.state.example];
-      example = <Example color={this.state.color} theme={this.state.theme}/>;
+      if (Example) {
+        example = <Example color={this.state.color} theme={this.state.theme}/>;
+      }
     }
 
     return (

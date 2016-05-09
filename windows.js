@@ -3,7 +3,7 @@ export { default as Checkbox } from './src/checkbox/windows/checkbox';
 export { default as Label } from './src/label/windows/label';
 export { default as MasterDetailsView } from './src/masterDetailsView/windows/masterDetailsView';
 export { default as ProgressCircle } from './src/progressCircle/windows/progressCircle';
-export { default as SplitView } from './src/splitView/windows/splitView';
+export { default as NavPane } from './src/navPane/windows/navPane';
 export { default as Text } from './src/text/windows/text';
 export { default as TextInput } from './src/textInput/windows/textInput';
 export { default as TitleBar } from './src/titleBar/windows/titleBar';

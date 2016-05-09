@@ -2,41 +2,35 @@ import React, { Component, PropTypes, Children } from 'react';
 import DesktopComponent from '../../../desktopComponent';
 import Item from './item/item';
 import Button from './button/button';
-
-const styles = {
-  pane: {
-    display: 'flex',
-    position: 'relative',
-    flexGrow: '0',
-    flexShrink: '0',
-    flexDirection: 'column',
-    width: '200px',
-    overflow: 'hidden'
-  },
-
-  padding: {
-    height: '48px'
-  },
-
-  buttonStyle: {
-    position: 'absolute',
-    padding: '8px 10px',
-    top: '7px',
-    left: '4px',
-    width: '20px',
-    height: '20px'
-  }
-};
+import styles from './style/windows10';
 
 @DesktopComponent
 class Pane extends Component {
   static Item = Item;
 
   static propTypes = {
-    onPaneToggle: PropTypes.func
+    canPaneToggle: PropTypes.bool,
+    onPaneToggle: PropTypes.func,
+    defaultIsPaneExpanded: PropTypes.bool,
+    paneCompactedLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    paneExpandedLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   };
 
-  static contextTypes = {
+  static defaultProps = {
+    canPaneToggle: true,
+    defaultIsPaneExpanded: true,
+    paneCompactedLength: '48px',
+    paneExpandedLength: '200px'
+  };
+
+  constructor(props, ...args) {
+    super(props, ...args);
+    this.state = {
+      isPaneExpanded: props.defaultIsPaneExpanded
+    };
+  }
+
+  /*static contextTypes = {
     id: PropTypes.string,
     compactLength: PropTypes.number,
     openLength: PropTypes.number,
@@ -48,9 +42,9 @@ class Pane extends Component {
     this.state = {
       isOpen: context.isOpen !== false
     };
-  }
+  }*/
 
-  get splitView() {
+  /*get splitView() {
     return this.context.parent;
   }
 
@@ -90,9 +84,33 @@ class Pane extends Component {
         }
       }
     }
-  }
+  }*/
+
+  toggleOpen = () => {};
 
   render() {
+    const { canPaneToggle, paneCompactedLength, paneExpandedLength } = this.props;
+
+    const button = !canPaneToggle ? null : <Button style={styles.buttonStyle} onClick={this.toggleOpen}/>;
+
+    let componentStyle = { ...styles.pane };
+
+    if (canPaneToggle) {
+      if (this.state.isPaneExpanded) componentStyle.width = paneExpandedLength;
+      else componentStyle.width = paneCompactedLength;
+    } else {
+      componentStyle.width = paneExpandedLength;
+    }
+
+    return (
+      <div
+        style={componentStyle}
+      >
+        <div style={styles.padding}/>
+        {button}
+      </div>
+    );
+    /*
     let { children, style, ...props } = this.props;
     children = this.filterChildren(children);
 
@@ -114,7 +132,7 @@ class Pane extends Component {
         <Button style={styles.buttonStyle} onClick={this.toggleOpen}/>
         {children}
       </div>
-    );
+    );*/
   }
 }
 

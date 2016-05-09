@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent from '../../desktopComponent';
-import Content from './content/content';
+import DesktopComponent from '../../../desktopComponent';
+import Content from '../content/content';
 
 const styles = {
   content: {
@@ -15,26 +15,21 @@ const styles = {
 class Item extends Component {
   static propTypes = {
     title: PropTypes.string,
-    onClick: PropTypes.func,
-    margin: PropTypes.string,
-    padding: PropTypes.string,
+    icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
+    onSelect: PropTypes.func,
     selected: PropTypes.bool
   };
 
-  static contextTypes = {
-    id: PropTypes.string
-  };
-
-  constructor(props, context, updater) {
+  /*constructor(props, context, updater) {
     const { selected, ...properties } = props;
     super(properties, context, updater);
     this.state = {
       selected: selected,
       parentTheme: context.theme
     };
-  }
+  }*/
 
-  get splitView() {
+  /*get splitView() {
     return this.context.parent;
   }
 
@@ -49,10 +44,15 @@ class Item extends Component {
     if (this.refs.content) {
       this.refs.content.setState({ parentTheme: nextState.parentTheme });
     }
-  }
+  }*/
 
   render() {
-    const { children, style, ...props } = this.props;
+    return (
+      <div>
+        hello my world
+      </div>
+    );
+    /*const { children, style, ...props } = this.props;
     this.splitView;
 
     let componentStyle = { ...styles.content };
@@ -71,7 +71,7 @@ class Item extends Component {
           {children}
         </Content>
       </div>
-    ) : null;
+    ) : null;*/
   }
 }
 
