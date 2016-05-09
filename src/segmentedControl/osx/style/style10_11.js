@@ -80,7 +80,8 @@ export default {
   },
 
   lastChildSelected: {
-    borderRightWidth: '1px'
+    borderRightWidth: '1px',
+    paddingRight: '12px'
   },
 
   prevSelected: {

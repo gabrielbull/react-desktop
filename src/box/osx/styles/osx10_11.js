@@ -1,7 +1,11 @@
 export default {
-  box: {
+  wrapper: {
     WebkitUserSelect: 'none',
     cursor: 'default',
+    flex: '1'
+  },
+
+  box: {
     backgroundColor: 'rgba(0, 0, 0, .04)',
     borderWidth: '1px',
     borderStyle: 'solid',

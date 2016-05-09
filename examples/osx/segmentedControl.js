@@ -9,7 +9,7 @@ export default class extends Component {
 
   render() {
     return (
-      <SegmentedControl box width="600">
+      <SegmentedControl box>
         {this.renderItems()}
       </SegmentedControl>
     );

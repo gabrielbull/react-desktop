@@ -45,7 +45,7 @@ class Box extends Component {
 
     if (label) {
       return (
-        <div {...props}>
+        <div style={styles.wrapper} {...props}>
           <Text margin="0 0 1px 7px" size={11}>{label}</Text>
           <div
             ref="box"
@@ -56,6 +56,7 @@ class Box extends Component {
         </div>
       );
     }
+    componentStyle = { ...styles.wrapper, ...componentStyle };
     return (
       <div
         ref="box"

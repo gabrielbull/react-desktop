@@ -7,12 +7,14 @@ import DesktopComponent, {
   Hidden,
   Background
 } from '../desktopComponent';
+import Width from '../style/width';
 
 var styles = {
   flexGrow: '1',
   display: 'flex'
 };
 
+@Width()
 @DesktopComponent(Dimension, Margin, Padding, Alignment, Hidden, Background)
 class View extends Component {
   static propTypes = {

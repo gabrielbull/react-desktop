@@ -37,7 +37,7 @@ export default class extends Component {
         horizontalAlignment="center"
         verticalAlignment="center"
         width="200px"
-        height="200px"
+        height="100px"
       >
         <Text color={this.props.theme === 'dark' ? 'white' : '#333'}>Hello World</Text>
       </View>

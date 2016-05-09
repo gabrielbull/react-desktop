@@ -29,7 +29,7 @@ export default class extends Component {
         horizontalAlignment="center"
         verticalAlignment="center"
         width="200px"
-        height="200px"
+        height="100px"
       >
         <Text color="white">Hello World</Text>
       </View>

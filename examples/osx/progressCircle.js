@@ -4,7 +4,7 @@ import { ProgressCircle } from 'react-desktop/osx';
 export default class extends Component {
   render() {
     return (
-      <ProgressCircle size={50}/>
+      <ProgressCircle size={25}/>
     );
   }
 }

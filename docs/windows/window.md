@@ -19,26 +19,18 @@ width               | number       | Sets the width of a component.
 
 ```jsx
 import React, { Component } from 'react';
-import { Window, TitleBar, Text } from 'react-desktop/windows';
+import { Window, TitleBar, Text } from 'react-desktop/osx';
 
 export default class extends Component {
-  static defaultProps = {
-    color: '#cc7f29',
-    theme: 'dark'
-  };
-
   render() {
     return (
       <Window
-        color={this.props.color}
-        theme={this.props.theme}
         chrome
-        width="1000px"
-        height="600px"
-        padding="12px"
+        height="300px"
+        padding="10px"
       >
-        <TitleBar title="My Windows Application" controls/>
-        <Text color={this.props.theme === 'dark' ? 'white' : '#333'}>Hello World</Text>
+        <TitleBar title="untitled text 5" controls/>
+        <Text>Hello World</Text>
       </Window>
     );
   }

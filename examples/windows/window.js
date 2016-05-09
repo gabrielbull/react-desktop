@@ -13,8 +13,7 @@ export default class extends Component {
         color={this.props.color}
         theme={this.props.theme}
         chrome
-        width="1000px"
-        height="600px"
+        height="300px"
         padding="12px"
       >
         <TitleBar title="My Windows Application" controls/>

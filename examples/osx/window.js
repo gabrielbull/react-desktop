@@ -6,8 +6,7 @@ export default class extends Component {
     return (
       <Window
         chrome
-        width="1000px"
-        height="600px"
+        height="300px"
         padding="10px"
       >
         <TitleBar title="untitled text 5" controls/>
