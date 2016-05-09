@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import DesktopComponent from '../../../../desktopComponent';
 import { getState } from 'radium';
 import { transparentize } from '../../../../color';
@@ -12,6 +12,13 @@ const styles = {
 
 @DesktopComponent
 class Button extends Component {
+  static propTypes = {
+    onClick: PropTypes.func
+  };
+
+  static defaultProps = {
+  };
+
   render() {
     let fill = this.state.theme === 'dark' ? '#ffffff' : '#000000';
 

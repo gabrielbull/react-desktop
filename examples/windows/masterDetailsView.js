@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { MasterDetailsView, Text } from 'react-desktop/windows';
 
 export default class extends Component {
+  static defaultProps = {
+    color: '#cc7f29',
+    theme: 'dark'
+  };
+
   render() {
     return (
       <MasterDetailsView color={this.props.color} theme={this.props.theme}>

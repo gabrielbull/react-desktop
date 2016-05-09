@@ -1,67 +1,21 @@
 import React, { Component, PropTypes } from 'react';
 import DesktopComponent from '../../../../desktopComponent';
+import styles from '../style/windows10';
 import Icon from './icon';
 import { transparentize } from '../../../../color';
-
-const styles = {
-  anchor: {
-    display: 'flex',
-    alignItems: 'center',
-    height: '44px',
-
-    ':hover': {
-      backgroundColor: 'rgba(0, 0, 0, .1)',
-    },
-    ':active': {
-      backgroundColor: 'rgba(0, 0, 0, .2)',
-    }
-  },
-
-  anchorDark: {
-    ':hover': {
-      backgroundColor: 'rgba(255, 255, 255, .1)',
-    },
-    ':active': {
-      backgroundColor: 'rgba(255, 255, 255, .2)',
-    }
-  },
-
-  span: {
-    display: 'flex',
-    alignItems: 'center',
-    color: '#000000',
-    fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
-    fontSize: '15px',
-    letterSpacing: '0.4pt',
-    padding: '0 16px',
-    transition: 'transform .1s ease-in'
-  },
-
-  spanDark: {
-    color: '#ffffff',
-  },
-
-  pushTransformHover: {
-    transition: 'transform .1s ease-in'
-  },
-
-  pushTransformActive: {
-    transform: 'scale(0.97)',
-    transition: 'transform 0s ease-in'
-  }
-};
 
 @DesktopComponent
 class Item extends Component {
   static propTypes = {
-    onClick: PropTypes.func
+    isPaneExpanded: PropTypes.bool.isRequired,
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
+    icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
+    push: PropTypes.bool,
+    onSelect: PropTypes.func,
+    selected: PropTypes.bool
   };
 
-  static contextTypes = {
-    push: PropTypes.bool
-  };
-
-  constructor(props, context, updater) {
+  /*constructor(props, context, updater) {
     super(props, context, updater);
     this.state = {
       isOpen: this.props.isOpen,
@@ -80,11 +34,50 @@ class Item extends Component {
     if (this.props.onClick) {
       this.props.onClick();
     }
-  };
+  };*/
 
   render() {
-    const { children, style, onClick, isOpen, ...props } = this.props;
-    const title = this.state.isOpen ? children.props.title : null;
+    const { title, icon, selected, onSelect, isPaneExpanded } = this.props;
+
+    let componentStyle = styles.anchor;
+    let spanStyle = styles.span;
+
+    if (this.state.theme === 'dark') {
+      componentStyle = { ...componentStyle, ...styles.anchorDark };
+      spanStyle = { ...spanStyle, ...styles.spanDark };
+    }
+
+    if (selected) {
+      componentStyle = {
+        ...componentStyle,
+        backgroundColor: transparentize(this.state.color, .4),
+        ':hover': {
+          ...componentStyle[':hover'],
+          backgroundColor: transparentize(this.state.color, .2)
+        },
+        ':active': {
+          ...componentStyle[':active'],
+          backgroundColor: transparentize(this.state.color, .1)
+        }
+      };
+    }
+
+    return (
+      <a
+        onClick={onSelect}
+        style={componentStyle}
+      >
+        <span
+          ref="span"
+          style={spanStyle}
+        >
+          {icon}
+          {isPaneExpanded ? title : null}
+        </span>
+      </a>
+    );
+
+    /*const { children, style, onClick, isOpen, ...props } = this.props;
     const ItemIcon = children.props.icon;
     let anchorStyle = { ...styles.anchor, ...style };
     let spanStyle = { ...styles.span, ...style };
@@ -134,7 +127,7 @@ class Item extends Component {
           {title}
         </span>
       </a>
-    );
+    );*/
   }
 }
 

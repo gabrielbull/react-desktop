@@ -18,6 +18,7 @@ class Button extends Component {
     let { style, type, children, color, push, onClick, ...props } = this.props;
 
     let componentStyle = { ...styles.button, ...style };
+    console.log(this.state.color);
 
     if (color) {
       color = color === true ? this.state.color : color;

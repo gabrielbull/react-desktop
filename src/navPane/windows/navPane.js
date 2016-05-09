@@ -11,7 +11,7 @@ const styles = {
   flex: '1'
 };
 
-@DesktopComponent
+@DesktopComponent()
 class SplitView extends Component {
   static Item = Item;
 
@@ -78,17 +78,16 @@ class SplitView extends Component {
   render() {
     const content = this.filterSelectedChildren();
 
-
     return (
       <div>
         <Pane
+          items={this.props.children}
           canPaneToggle={this.props.canPaneToggle}
           onPaneToggle={this.props.onPaneToggle}
           defaultIsPaneExpanded={this.props.defaultIsPaneExpanded}
           paneCompactedLength={this.props.paneCompactedLength}
           paneExpandedLength={this.props.paneExpandedLength}
-        >
-        </Pane>
+        />
       </div>
     );
     /*

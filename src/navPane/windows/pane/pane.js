@@ -9,6 +9,7 @@ class Pane extends Component {
   static Item = Item;
 
   static propTypes = {
+    items: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
     canPaneToggle: PropTypes.bool,
     onPaneToggle: PropTypes.func,
     defaultIsPaneExpanded: PropTypes.bool,
@@ -46,18 +47,6 @@ class Pane extends Component {
 
   /*get splitView() {
     return this.context.parent;
-  }
-
-  filterChildren(children) {
-    return Children.map(children, (child, key) => {
-      const { onClick } = child.props;
-
-      return (
-        <Item onClick={onClick} key={key} ref={key} identifierKey={key} isOpen={this.state.isOpen}>
-          {child}
-        </Item>
-      );
-    });
   }
 
   toggleOpen = () => {
@@ -108,6 +97,7 @@ class Pane extends Component {
       >
         <div style={styles.padding}/>
         {button}
+        {this.renderItems()}
       </div>
     );
     /*
@@ -133,6 +123,36 @@ class Pane extends Component {
         {children}
       </div>
     );*/
+  }
+
+  filterChildren(children) {
+    return Children.map(children, (child, key) => {
+      const { onClick } = child.props;
+
+      return (
+        <Item onClick={onClick} key={key} ref={key} identifierKey={key} isOpen={this.state.isOpen}>
+          {child}
+        </Item>
+      );
+    });
+  }
+
+  renderItems() {
+    return Children.map(this.props.items, (item, index) => {
+      //const { onClick } = child.props;
+
+      return (
+        <Item
+          key={index}
+          isPaneExpanded={this.state.isPaneExpanded}
+          title={item.props.title}
+          icon={item.props.icon}
+          push={item.props.push}
+          onSelect={item.props.onSelect}
+          selected={item.props.selected}
+        />
+      );
+    });
   }
 }
 

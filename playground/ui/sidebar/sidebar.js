@@ -30,8 +30,8 @@ class Sidebar extends Component {
   };
 
   changeColor = (color) => {
-    this.setState({ color: `#${color.hex}` });
-    this.props.onColorChange(`#${color.hex}`);
+    this.setState({ color: color.hex });
+    this.props.onColorChange(color.hex);
   };
 
   changeTheme = () => {
@@ -44,6 +44,7 @@ class Sidebar extends Component {
 
     let colorPicker;
     if (this.state.displayColorPicker) {
+      console.log(this.state.color);
       colorPicker = (
         <div style={{ position: 'absolute', top: '140px', left: '10px' }}>
           <ColorPicker

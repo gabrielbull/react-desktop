@@ -16,6 +16,7 @@ class Item extends Component {
   static propTypes = {
     title: PropTypes.string,
     icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
+    push: PropTypes.bool,
     onSelect: PropTypes.func,
     selected: PropTypes.bool
   };
