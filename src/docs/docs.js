@@ -5,7 +5,9 @@ import hljs from 'highlight.js';
 import 'highlight.js/styles/paraiso-dark.css';
 import './docs.scss';
 import Example from './example/example';
+import LinksDecorator  from '../shared/linksDecorator/linksDecorator';
 
+@LinksDecorator
 export default class extends Component {
   constructor(props, context, updater) {
     super(props, context, updater);

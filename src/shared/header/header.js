@@ -3,7 +3,9 @@ import Logo from './Logo';
 import './header.scss';
 import { browserHistory } from 'react-router';
 import GithubSVG from './github.svg';
+import LinksDecorator  from '../../shared/linksDecorator/linksDecorator';
 
+@LinksDecorator
 export default class extends Component {
   click(event) {
     event.preventDefault();
@@ -13,7 +15,7 @@ export default class extends Component {
   render() {
     return (
       <header>
-        <a>
+        <a href="/">
           <Logo width="200px" height="40px"/>
         </a>
 
