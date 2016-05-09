@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { Padding, Margin, Background, Alignment} from '../../../desktopComponent';
+import DesktopComponent, { Padding, Margin, Background, Alignment } from '../../../desktopComponent';
 import Title from './title/title';
 import Content from './content/content';
 import styles from '../style/windows10';

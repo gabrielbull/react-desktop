@@ -1,4 +1,4 @@
-import React, { PropTypes, cloneElement } from 'react';
+import { PropTypes, cloneElement } from 'react';
 
 function Width(options, ComposedComponent) {
   return class extends ComposedComponent {

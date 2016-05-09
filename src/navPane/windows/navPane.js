@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, Children, cloneElement } from 'react';
+import React, { Component, PropTypes, Children } from 'react';
 import DesktopComponent from '../../desktopComponent';
 import Pane from './pane/pane';
 import Item from './item/item';
