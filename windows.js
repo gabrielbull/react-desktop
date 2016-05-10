@@ -4,6 +4,7 @@ export { default as Label } from './src/label/windows/label';
 export { default as MasterDetailsView } from './src/masterDetailsView/windows/masterDetailsView';
 export { default as ProgressCircle } from './src/progressCircle/windows/progressCircle';
 export { default as NavPane } from './src/navPane/windows/navPane';
+export { default as Radio } from './src/radio/windows/radio';
 export { default as Text } from './src/text/windows/text';
 export { default as TextInput } from './src/textInput/windows/textInput';
 export { default as TitleBar } from './src/titleBar/windows/titleBar';

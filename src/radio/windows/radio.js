@@ -1,12 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import DesktopComponent, { Hidden } from '../../desktopComponent';
 import { getState } from 'radium';
-import styles from './styles/windows10';
+import styles from './styles/windows';
+import Text from '../../text/windows/text';
 
 @DesktopComponent(Hidden)
-class Checkbox extends Component {
+class Radio extends Component {
   static propTypes = {
-    color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+    color: PropTypes.string,
     label: PropTypes.string,
     onChange: PropTypes.func
   };
@@ -18,6 +19,20 @@ class Checkbox extends Component {
     };
   }
 
+  componentDidMount() {
+    document.addEventListener('change', this.onSiblingChange);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('change', this.onSiblingChange);
+  }
+
+  onSiblingChange = () => {
+    if (this.refs.element.checked !== this.state.checked) {
+      this.setState({ checked: this.refs.element.checked });
+    }
+  };
+
   onChange = event => {
     this.setState({ checked: event.target.checked });
     if (this.props.onChange) {
@@ -27,65 +42,68 @@ class Checkbox extends Component {
 
   render() {
     let { style, label, color, ...props } = this.props;
-    let componentStyle = { ...styles.checkbox, ...style };
-    let checkedStyle = { display: 'none' };
+    let componentStyle = { ...styles.radio, ...style };
     let labelStyle = styles.label;
-
-    if (this.state.theme === 'dark') {
-      componentStyle = { ...componentStyle, ...styles.checkboxDark };
-      labelStyle = { ...labelStyle, ...styles.labelDark };
-    }
+    let circleStyle = { ...styles.circle };
 
     if (this.state.checked) {
-      checkedStyle = styles.svg;
       componentStyle = {
         ...componentStyle,
-        ...(this.state.theme === 'dark' ? styles['checkboxDark:checked'] : styles['checkbox:checked'])
+        ...styles['radio:checked'],
+        borderColor: color || this.context.color
       };
+    }
 
-      if (color && color !== true) {
+    if (getState(this.state, null, ':active')) {
+      if (this.state.checked) {
         componentStyle = {
           ...componentStyle,
-          backgroundColor: color,
-          borderColor: color
+          ...styles['radio:checked:active']
+        };
+        circleStyle = {
+          ...circleStyle,
+          ...styles['circle:active']
         };
       } else {
         componentStyle = {
           ...componentStyle,
-          backgroundColor: this.state.color,
-          borderColor: this.state.color
+          ...styles['radio:active']
+        };
+      }
+    } else if (getState(this.state, null, ':hover')) {
+      if (this.state.checked) {
+        circleStyle = {
+          ...circleStyle,
+          ...styles['circle:hover']
+        };
+      } else {
+        componentStyle = {
+          ...componentStyle,
+          ...styles['radio:hover']
         };
       }
     }
 
-    if (getState(this.state, null, ':active')) {
-      componentStyle = {
-        ...componentStyle,
-        ...(this.state.theme === 'dark' ? styles['checkboxDark:active'] : styles['checkbox:active'])
-      };
-    } else if (getState(this.state, null, ':hover')) {
-      componentStyle = {
-        ...componentStyle,
-        ...(this.state.theme === 'dark' ? styles['checkboxDark:hover'] : styles['checkbox:hover'])
-      };
-    }
-
     return (
-      <label style={labelStyle}>
-        <input
-          ref="element"
-          type="checkbox"
-          {...props}
-          style={componentStyle}
-          onChange={this.onChange}
-        />
-        <svg x="0px" y="0px" viewBox="0 0 6.4 6.4" style={checkedStyle}>
-          <polygon fill="#fff" points="0,3.3 2.2,5.5 6.4,1.23 6.1,0.9 2.2,4.8 0.3,2.9 "/>
-        </svg>
-        {label}
-      </label>
+      <div style={styles.container}>
+        <label style={labelStyle}>
+          <div style={styles.inputWrapper}>
+            <input
+              ref="element"
+              type="radio"
+              {...props}
+              style={componentStyle}
+              onChange={this.onChange}
+            />
+            {this.state.checked ? <div style={circleStyle}/> : null}
+          </div>
+          <Text style={styles.text}>
+            {label}
+          </Text>
+        </label>
+      </div>
     );
   }
 }
 
-export default Checkbox;
+export default Radio;
