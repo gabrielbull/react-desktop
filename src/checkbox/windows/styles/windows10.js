@@ -1,4 +1,35 @@
 export default {
+  container: {
+    display: 'flex',
+    marginBottom: '22px'
+  },
+
+  label: {
+    display: 'flex',
+    alignItems: 'center',
+    position: 'relative',
+
+    ':hover': {},
+    ':active': {}
+  },
+
+  text: {
+    fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
+    fontSize: '15px',
+    marginTop: '1px',
+    color: '#000000'
+  },
+
+  textDark: {
+    color: '#ffffff'
+  },
+
+  inputWrapper: {
+    position: 'relative',
+    marginRight: '3px',
+    paddingTop: '1px'
+  },
+
   checkbox: {
     WebkitUserSelect: 'none',
     WebkitAppearance: 'none',
@@ -8,7 +39,7 @@ export default {
     padding: '8px',
     color: '#fff',
     verticalAlign: 'bottom',
-    marginRight: '9px',
+    marginRight: '6px',
 
     ':focus': {
       outline: 'none'
@@ -45,21 +76,6 @@ export default {
   'checkboxDark:checked': {
     backgroundColor: '#007CD1',
     borderColor: '#007CD1'
-  },
-
-  label: {
-    fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
-    fontSize: '14px',
-    lineHeight: '27px',
-    position: 'relative',
-    color: '#000000',
-
-    ':hover': {},
-    ':active': {}
-  },
-
-  labelDark: {
-    color: '#ffffff'
   },
 
   svg: {

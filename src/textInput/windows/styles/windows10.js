@@ -10,6 +10,7 @@ export default {
     fontSize: '15px',
     fontWeight: '100',
     color: '#000000',
+    marginBottom: '18px',
     backgroundColor: 'rgba(255, 255, 255, .35)',
 
     ':hover': {

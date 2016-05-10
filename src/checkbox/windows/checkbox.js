@@ -27,13 +27,13 @@ class Checkbox extends Component {
 
   render() {
     let { style, label, color, ...props } = this.props;
-    let componentStyle = { ...styles.checkbox, ...style };
+    let componentStyle = { ...styles.checkbox };
     let checkedStyle = { display: 'none' };
-    let labelStyle = styles.label;
+    let textStyle = { ...styles.text };
 
     if (this.state.theme === 'dark') {
       componentStyle = { ...componentStyle, ...styles.checkboxDark };
-      labelStyle = { ...labelStyle, ...styles.labelDark };
+      textStyle = { ...textStyle, ...styles.textDark };
     }
 
     if (this.state.checked) {
@@ -64,19 +64,25 @@ class Checkbox extends Component {
     }
 
     return (
-      <label style={labelStyle}>
-        <input
-          ref="element"
-          type="checkbox"
-          {...props}
-          style={componentStyle}
-          onChange={this.onChange}
-        />
-        <svg x="0px" y="0px" viewBox="0 0 6.4 6.4" style={checkedStyle}>
-          <polygon fill="#fff" points="0,3.3 2.2,5.5 6.4,1.23 6.1,0.9 2.2,4.8 0.3,2.9 "/>
-        </svg>
-        {label}
-      </label>
+      <div style={{ ...styles.container, ...style }}>
+        <label style={styles.label}>
+          <div style={styles.inputWrapper}>
+            <input
+              ref="element"
+              type="checkbox"
+              {...props}
+              style={componentStyle}
+              onChange={this.onChange}
+            />
+            <svg x="0px" y="0px" viewBox="0 0 6.4 6.4" style={checkedStyle}>
+              <polygon fill="#fff" points="0,3.3 2.2,5.5 6.4,1.23 6.1,0.9 2.2,4.8 0.3,2.9 "/>
+            </svg>
+          </div>
+          <span style={textStyle}>
+            {label}
+          </span>
+        </label>
+      </div>
     );
   }
 }

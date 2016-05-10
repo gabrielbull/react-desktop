@@ -41,7 +41,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "chai": "^3.5.0",
     "eslint": "^2.9.0",
-    "eslint-plugin-react": "^5.0.1",
+    "eslint-plugin-react": "^5.1.1",
     "html-webpack-plugin": "^2.16.1",
     "jsdom": "^9.0.0",
     "mocha": "^2.4.5",
