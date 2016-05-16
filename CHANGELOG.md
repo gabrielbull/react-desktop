@@ -1,5 +1,5 @@
 # CHANGELOG
 
-## 0.1.0 (upcoming)
+## 0.2.0 (May 16th, 2016)
 
-- Initial release
+- Beta 1 release

@@ -30,15 +30,19 @@ can be used in any JavaScript powered project!
   * [Master/Details View](/docs/windows/master-details-view.md)
   * [Nav Pane](/docs/windows/nav-pane.md)
   * [Progress Circle](/docs/windows/progress-circle.md)
+  * [Radio](/docs/windows/radio.md)
   * [Text](/docs/windows/text.md)
   * [Text Input](/docs/windows/text-input.md)
   * [Title Bar](/docs/windows/title-bar.md)
   * [View](/docs/windows/view.md)
   * [Window](/docs/windows/window.md)
+4. [Contributing](/CONTRIBUTING.md)
+5. [Change Log](/CHANGELOG.md)
+
+<!---
 4. Advanced Usage
  * [Electron.js](/docs/advanced-usage/electron-js.md)
  * [node-webkit](/docs/advanced-usage/node-webkit.md)
-5. [Contributing](/CONTRIBUTING.md)
-6. [Testing](/docs/testing.md)
-7. [Frequently Asked Questions](/docs/faq.md)
-8. [Change Log](/CHANGELOG.md)
+5. [Testing](/docs/testing.md)
+6. [Frequently Asked Questions](/docs/faq.md)
+-->
