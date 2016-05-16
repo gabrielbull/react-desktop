@@ -21,7 +21,7 @@ function Theme(options, ComposedComponent) {
       super(props, context, updater);
       this.state = {
         ...this.state,
-        theme: context.theme
+        theme: props.theme ? props.theme : context.theme
       };
     }
 
@@ -35,8 +35,10 @@ function Theme(options, ComposedComponent) {
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
-      if (nextContext.theme !== this.state.theme) {
+      if (!nextProps.theme && nextContext.theme !== this.state.theme) {
         this.setState({ theme: nextContext.theme });
+      } else if (nextProps.theme && nextProps.theme !== this.state.theme) {
+        this.setState({ theme: nextProps.theme });
       }
 
       if (super.componentWillReceiveProps) {
