@@ -10,7 +10,7 @@ class Text extends Component {
 
   render() {
     let { children, style, color, ...props } = this.props;
-    let componentStyle = { ...styles.text, ...style };
+    let componentStyle = { ...styles.text };
 
     color = color === true ? this.context.color : color ? color : '#000000';
     if (color) componentStyle = { ...componentStyle, color: color };
@@ -19,6 +19,8 @@ class Text extends Component {
     if (props.horizontalAlignment) {
       componentStyle.textAlign = props.horizontalAlignment;
     }
+
+    componentStyle = { ...componentStyle, ...style };
 
     return (
       <div

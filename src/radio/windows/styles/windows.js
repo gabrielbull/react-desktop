@@ -18,6 +18,10 @@ export default {
     display: 'inline'
   },
 
+  textDark: {
+    color: '#ffffff'
+  },
+
   inputWrapper: {
     position: 'relative',
     marginRight: '7px',
@@ -52,6 +56,22 @@ export default {
     borderColor: '#666666'
   },
 
+  radioDark: {
+    borderColor: '#cccccc'
+  },
+
+  'radioDark:hover': {
+    borderColor: '#ffffff'
+  },
+
+  'radioDark:active': {
+    borderColor: '#999999'
+  },
+
+  'radioDark:checked:active': {
+    borderColor: '#999999'
+  },
+
   circle: {
     position: 'absolute',
     top: '7px',
@@ -68,5 +88,17 @@ export default {
 
   'circle:active': {
     background: '#666666'
+  },
+
+  circleDark: {
+    background: '#cccccc'
+  },
+
+  'circleDark:hover': {
+    background: '#ffffff'
+  },
+
+  'circleDark:active': {
+    background: '#999999'
   }
 };

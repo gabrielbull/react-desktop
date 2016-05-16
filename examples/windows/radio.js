@@ -3,12 +3,13 @@ import { View, Radio } from 'react-desktop/windows';
 
 export default class extends Component {
   static defaultProps = {
-    color: '#cc7f29'
+    color: '#cc7f29',
+    theme: 'light'
   };
 
   render() {
     return (
-      <View horizontalAlignment="center" direction="column">
+      <View horizontalAlignment="center" direction="column" theme={this.props.theme}>
           <Radio
             color={this.props.color}
             label="Check me!"

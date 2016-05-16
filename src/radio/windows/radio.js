@@ -3,7 +3,9 @@ import DesktopComponent, { Hidden } from '../../desktopComponent';
 import { getState } from 'radium';
 import styles from './styles/windows';
 import Text from '../../text/windows/text';
+import Theme from '../../style/theme';
 
+@Theme()
 @DesktopComponent(Hidden)
 class Radio extends Component {
   static propTypes = {
@@ -42,14 +44,19 @@ class Radio extends Component {
 
   render() {
     let { style, label, color, ...props } = this.props;
-    let componentStyle = { ...styles.radio, ...style };
+    let componentStyle = {
+      ...styles.radio,
+      ...(this.state.theme === 'dark' ? styles['radioDark'] : {})
+    };
     let labelStyle = styles.label;
-    let circleStyle = { ...styles.circle };
+    let circleStyle = {
+      ...styles.circle,
+      ...(this.state.theme === 'dark' ? styles['circleDark'] : {})
+    };
 
     if (this.state.checked) {
       componentStyle = {
         ...componentStyle,
-        ...styles['radio:checked'],
         borderColor: color || this.context.color
       };
     }
@@ -58,31 +65,38 @@ class Radio extends Component {
       if (this.state.checked) {
         componentStyle = {
           ...componentStyle,
-          ...styles['radio:checked:active']
+          ...styles['radio:checked:active'],
+          ...(this.state.theme === 'dark' ? styles['radioDark:checked:active'] : {})
         };
         circleStyle = {
           ...circleStyle,
-          ...styles['circle:active']
+          ...styles['circle:active'],
+          ...(this.state.theme === 'dark' ? styles['circleDark:active'] : {})
         };
       } else {
         componentStyle = {
           ...componentStyle,
-          ...styles['radio:active']
+          ...styles['radio:active'],
+          ...(this.state.theme === 'dark' ? styles['radioDark:active'] : {})
         };
       }
     } else if (getState(this.state, null, ':hover')) {
       if (this.state.checked) {
         circleStyle = {
           ...circleStyle,
-          ...styles['circle:hover']
+          ...styles['circle:hover'],
+          ...(this.state.theme === 'dark' ? styles['circleDark:hover'] : {})
         };
       } else {
         componentStyle = {
           ...componentStyle,
-          ...styles['radio:hover']
+          ...styles['radio:hover'],
+          ...(this.state.theme === 'dark' ? styles['radioDark:hover'] : {})
         };
       }
     }
+
+    componentStyle = { ...componentStyle, ...style };
 
     return (
       <div style={styles.container}>
@@ -97,7 +111,7 @@ class Radio extends Component {
             />
             {this.state.checked ? <div style={circleStyle}/> : null}
           </div>
-          <Text style={styles.text}>
+          <Text style={{ ...styles.text, ...(this.state.theme === 'dark' ? styles.textDark : {}) }}>
             {label}
           </Text>
         </label>
