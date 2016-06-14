@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/gabrielbull/react-desktop.svg?branch=master)](https://travis-ci.org/gabrielbull/react-desktop)
 [![Code Climate](https://codeclimate.com/github/gabrielbull/react-desktop/badges/gpa.svg)](https://codeclimate.com/github/gabrielbull/react-desktop)
 [![Dependency Status](https://david-dm.org/gabrielbull/react-desktop.svg)](https://david-dm.org/gabrielbull/react-desktop)
+[![peerDependency Status](https://david-dm.org/gabrielbull/react-desktop/peer-status.svg)](https://david-dm.org/gabrielbull/react-desktop#info=peerDependencies)
 [![devDependency Status](https://david-dm.org/gabrielbull/react-desktop/dev-status.svg)](https://david-dm.org/gabrielbull/react-desktop#info=devDependencies)
 [![npm downloads](http://img.shields.io/npm/dt/react-desktop.svg)](https://www.npmjs.org/package/react-desktop)
 [![npm version](https://img.shields.io/npm/v/react-desktop.svg)](https://www.npmjs.org/package/react-desktop)
