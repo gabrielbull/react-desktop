@@ -1,6 +1,6 @@
 import React, { Component, PropTypes, Children } from 'react';
 import DesktopComponent, { WindowFocus, Dimension, Alignment, Padding, Hidden, Background } from '../../desktopComponent';
-import TitleBar from '../../titleBar/osx/titleBar';
+import TitleBar from '../../titleBar/macOs/titleBar';
 import View from '../../view/view';
 import styles from './styles/osx10_11';
 

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import DesktopComponent, { Hidden } from '../../desktopComponent';
 import { getState } from 'radium';
 import styles from './styles/osx10_11';
-import Text from '../../text/osx/text';
+import Text from '../../text/macOs/text';
 import Circle from './circle';
 
 @DesktopComponent(Hidden)

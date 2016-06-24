@@ -9,7 +9,7 @@ import DesktopComponent, {
   Background
 } from '../../desktopComponent';
 import { convertColor, darkenColor } from '../../color';
-import Text from '../../text/osx/text';
+import Text from '../../text/macOs/text';
 
 @DesktopComponent(Dimension, Margin, Padding, Alignment, Hidden, Background)
 class Box extends Component {

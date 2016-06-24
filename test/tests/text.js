@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import TextOSX from '../../src/text/osx/text';
+import TextOSX from '../../src/text/macOs/text';
 import TextWindows from '../../src/text/windows/text';
 
 describe('Text', () => {

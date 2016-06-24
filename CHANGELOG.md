@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.2.2 (June 24th, 2016)
+
+- Added Link component for macOS
+- Added size to Text component
+- Added transparent option to titlebar for macOS
+- Fixed title bar size for macOS
+
 ## 0.2.1 (June 14th, 2016)
 
 - Added support for React 15.1.0

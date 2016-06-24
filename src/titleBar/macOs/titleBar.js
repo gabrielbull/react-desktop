@@ -8,6 +8,7 @@ class TitleBar extends Component {
   static propTypes = {
     title: PropTypes.string,
     controls: PropTypes.bool,
+    transparent: PropTypes.bool,
     isFullscreen: PropTypes.bool,
     onCloseClick: PropTypes.func,
     onMinimizeClick: PropTypes.func,
@@ -47,7 +48,7 @@ class TitleBar extends Component {
   };
 
   render() {
-    let { children, controls, title, ...props } = this.props;
+    let { children, controls, title, transparent, ...props } = this.props;
 
     let componentStyle = { ...styles.titleBar };
     if (children) {
@@ -67,6 +68,18 @@ class TitleBar extends Component {
           {this.props.title}
         </div>
       );
+
+    if (transparent) {
+      delete componentStyle.backgroundImage;
+      delete componentStyle.borderBottomWidth;
+      delete componentStyle.borderBottomStyle;
+      delete componentStyle.borderBottomColor;
+      delete componentStyle.borderTopWidth;
+      delete componentStyle.borderTopStyle;
+      delete componentStyle.borderTopColor;
+      delete componentStyle.borderTopLeftRadius;
+      delete componentStyle.borderTopRightRadius;
+    }
 
     return (
       <div

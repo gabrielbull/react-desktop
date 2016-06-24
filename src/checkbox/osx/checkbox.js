@@ -3,7 +3,7 @@ import DesktopComponent, { Hidden } from '../../desktopComponent';
 import { getState } from 'radium';
 import styles from './styles/osx10_11';
 import Checkmark from './checkmark';
-import Text from '../../text/osx/text';
+import Text from '../../text/macOs/text';
 
 @DesktopComponent(Hidden)
 class Checkbox extends Component {

@@ -4,6 +4,7 @@ import {
   Button,
   Checkbox,
   Label,
+  Link,
   ProgressCircle,
   SegmentedControl,
   Text,
@@ -12,7 +13,7 @@ import {
   Toolbar,
   View,
   Window
-} from '../../osx';
+} from '../../macOs';
 
 describe('OSX', () => {
   it('should be exported', () => {
@@ -20,6 +21,7 @@ describe('OSX', () => {
     expect(Button).to.exist;
     expect(Checkbox).to.exist;
     expect(Label).to.exist;
+    expect(Link).to.exist;
     expect(ProgressCircle).to.exist;
     expect(SegmentedControl).to.exist;
     expect(Text).to.exist;
