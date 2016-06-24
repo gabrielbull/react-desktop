@@ -1,6 +1,8 @@
 import { PropTypes, cloneElement } from 'react';
 
 function TextAlign(options, ComposedComponent) {
+  const allowedValues = ['left', 'right', 'center'];
+
   return class extends ComposedComponent {
     static propTypes = {
       ...ComposedComponent.propTypes,
@@ -13,7 +15,11 @@ function TextAlign(options, ComposedComponent) {
         const props = { ...super.render().props };
 
         if (!props.style) props.style = {};
-        props.style.textAlign = this.props.textAlign;
+        if (allowedValues.indexOf(props.textAlign) === -1) {
+          console.error('Unknown value for textAlign: ' + props.textAlign);
+        } else {
+          props.style.textAlign = props.textAlign;
+        }
         delete props.textAlign;
 
         return cloneElement(el, props);

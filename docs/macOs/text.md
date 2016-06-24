@@ -2,17 +2,25 @@
 
 ### Properties
 
-Property            | Type         | Description
-:------------------ | :-----------:| :----------
-background          | string       | Sets the background color of a component.
-color               | string       | Sets the color of the text.
-height              | number       | Sets the height of a component.
-hidden              | bool         | Sets the visibility of a component.
-horizontalAlignment | string       | Sets the horizontal alignment of the component's content<br/>__Property value__ _"left"_, _"center"_, _"right"_
-margin              | string       | Sets the outer margin of a component.<br/>__E.G.__ _"30px 20px"_
-padding             | string       | Sets the padding inside a component.<br/>__E.G.__ _"30px 20px"_
-verticalAlignment   | string       | Sets the vertical alignment of the component's content.<br/>__Property value__ _"top"_, _"center"_, _"bottom"_
-width               | number       | Sets the width of a component.
+Property            | Type          | Description
+:------------------ | :------------:| :----------
+background          | string        | Sets the background color of a component.
+color               | string        | Sets the color of the text.
+height              | string|number | Sets the height of a component.
+hidden              | bool          | Sets the visibility of a component.
+margin              | string|number | Sets the outer margin of a component.<br/>__E.G.__ _"30px 20px"_
+marginBottom        | string|number | Sets the outer margin bottom of a component.
+marginLeft          | string|number | Sets the outer margin left of a component.
+marginRight         | string|number | Sets the outer margin right of a component.
+marginTop           | string|number | Sets the outer margin top of a component.
+padding             | string|number | Sets the padding inside a component.<br/>__E.G.__ _"30px 20px"_
+paddingBottom       | string|number | Sets the padding bottom inside a component.
+paddingLeft         | string|number | Sets the padding left inside a component.
+paddingRight        | string|number | Sets the padding right inside a component.
+paddingTop          | string|number | Sets the padding top inside a component.
+size                | string|number | Sets the font size of a component.
+textAlign           | string|number | Sets the text alignment of the component's content.<br/>__Property value__ _"left"_, _"center"_, _"right"_
+width               | string|number | Sets the width of a component.
 
 ### Examples
 
@@ -23,11 +31,7 @@ import { Text } from 'react-desktop/macOs';
 export default class extends Component {
   render() {
     return (
-      <Text
-        horizontalAlignment="center"
-        verticalAlignment="center"
-        padding="0 100px"
-      >
+      <Text padding="0 100px" textAlign="center">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam justo urna, posuere vitae est et, accumsan
         bibendum sapien. Suspendisse lobortis mollis finibus. Nunc tincidunt enim est, efficitur semper dolor luctus
         eget. Donec faucibus dolor id leo tincidunt, condimentum mattis augue finibus. Etiam hendrerit ipsum nisi,
