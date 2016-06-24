@@ -2,7 +2,7 @@
   "name": "react-desktop",
   "author": "Gabriel Bull",
   "version": "0.2.1",
-  "description": "React UI Components for OS X El Capitan and Windows 10",
+  "description": "React UI Components for macOS Sierra and Windows 10",
   "main": "./index.js",
   "keywords": [
     "react",
@@ -16,6 +16,8 @@
     "interface",
     "component",
     "os x",
+    "macOS",
+    "mac",
     "windows"
   ],
   "license": "MIT",
@@ -57,7 +59,7 @@
     "test": "./node_modules/.bin/mocha test",
     "eslint": "./node_modules/.bin/eslint ./src ./test",
     "prebuild": "rsync -av -delete . build --exclude build --exclude .git --exclude .idea && npm run eslint && npm run test",
-    "build": "./node_modules/.bin/babel ./build/src --out-dir ./build/src && ./node_modules/.bin/babel ./build/index.js --out-file ./build/index.js && ./node_modules/.bin/babel ./build/osx.js --out-file ./build/osx.js && ./node_modules/.bin/babel ./build/windows.js --out-file ./build/windows.js",
+    "build": "./node_modules/.bin/babel ./build/src --out-dir ./build/src && ./node_modules/.bin/babel ./build/index.js --out-file ./build/index.js && ./node_modules/.bin/babel ./build/macOs.js --out-file ./build/osx.js && ./node_modules/.bin/babel ./build/macOs.js --out-file ./build/macOs.js && ./node_modules/.bin/babel ./build/windows.js --out-file ./build/windows.js",
     "playground": "./node_modules/.bin/webpack-dev-server --config ./playground/webpack.config.js --colors --inline --port 3000",
     "build-publish": "npm run build && npm publish ./build"
   }

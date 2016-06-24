@@ -11,7 +11,7 @@
 
 <a href="https://github.com/gabrielbull/react-desktop/issues" target="_blank">![This library is in beta. Please report any issues or feature request to the issues page.](https://rawgit.com/gabrielbull/react-desktop/master/docs/resources/alert.svg "This library is in beta. Please report any issues or feature request to the issues page.")</a>
 
-React UI Components for OS X El Capitan and Windows 10.
+React UI Components for macOS Sierra and Windows 10.
 
 > npm install react-desktop --save
 

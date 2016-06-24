@@ -1,7 +1,7 @@
 # Documentation
 
 **react-desktop** is a JavaScript library built on top of [Facebook's React](https://facebook.github.io/react/) library, 
-which aims to bring a native desktop experience to the web, featuring many OS X El Capitan and Windows 10 components. 
+which aims to bring a native desktop experience to the web, featuring many macOS Sierra and Windows 10 components. 
 **react-desktop** works perfectly with [node-webkit](http://nwjs.io) and [Electron.js](http://electron.atom.io), but 
 can be used in any JavaScript powered project!
 
@@ -9,20 +9,20 @@ can be used in any JavaScript powered project!
 
 1. Getting Started
   * [Installation](/docs/getting-started/installation.md)
-2. OS X
-  * [Box](/docs/osx/box.md)
-  * [Button](/docs/osx/button.md)
-  * [Checkbox](/docs/osx/checkbox.md)
-  * [Label](/docs/osx/label.md)
-  * [Progress Circle](/docs/osx/progress-circle.md)
-  * [Radio](/docs/osx/radio.md)
-  * [Segmented Control](/docs/osx/segmented-control.md)
-  * [Text](/docs/osx/text.md)
-  * [Text Input](/docs/osx/text-input.md)
-  * [Title Bar](/docs/osx/title-bar.md)
-  * [Toolbar](/docs/osx/toolbar.md)
-  * [View](/docs/osx/view.md)
-  * [Window](/docs/osx/window.md)
+2. macOS
+  * [Box](/docs/macOs/box.md)
+  * [Button](/docs/macOs/button.md)
+  * [Checkbox](/docs/macOs/checkbox.md)
+  * [Label](/docs/macOs/label.md)
+  * [Progress Circle](/docs/macOs/progress-circle.md)
+  * [Radio](/docs/macOs/radio.md)
+  * [Segmented Control](/docs/macOs/segmented-control.md)
+  * [Text](/docs/macOs/text.md)
+  * [Text Input](/docs/macOs/text-input.md)
+  * [Title Bar](/docs/macOs/title-bar.md)
+  * [Toolbar](/docs/macOs/toolbar.md)
+  * [View](/docs/macOs/view.md)
+  * [Window](/docs/macOs/window.md)
 3. Windows 10
   * [Button](/docs/windows/button.md)
   * [Checkbox](/docs/windows/checkbox.md)
