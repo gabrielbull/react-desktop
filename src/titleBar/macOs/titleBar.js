@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Controls from './controls/controls';
-import styles from './styles/osx10_11';
+import styles from './styles/10.11';
 import DesktopComponent, { WindowFocus } from '../../desktopComponent';
 
 @DesktopComponent(WindowFocus)

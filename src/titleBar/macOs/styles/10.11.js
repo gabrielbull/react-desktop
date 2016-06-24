@@ -7,7 +7,7 @@ export default {
     boxSizing: 'border-box',
     display: 'flex',
     alignItems: 'center',
-    height: '20px',
+    height: '22px',
     backgroundImage: '-webkit-linear-gradient(top, #ededed 0, #ededed 1px, #e7e7e7 2px, #d1d1d1 100%)',
     borderBottomWidth: '1px',
     borderBottomStyle: 'solid',
@@ -28,9 +28,9 @@ export default {
   },
 
   toolbar: {
-    height: '36px',
-    paddingLeft: '9px',
-    paddingRight: '9px'
+    height: '38px',
+    paddingLeft: '8px',
+    paddingRight: '8px'
   },
 
   title: {

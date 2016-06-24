@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import DesktopComponent, { WindowFocus } from '../../../desktopComponent';
-import styles from './styles/osx10_11';
+import styles from './styles/10.11';
 
 @DesktopComponent(WindowFocus)
 class Resize extends Component {
