@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.3 (June 24th, 2016)
+
+- Fixed bug with title bar in macOS
+
 ## 0.2.2 (June 24th, 2016)
 
 - Added Link component for macOS

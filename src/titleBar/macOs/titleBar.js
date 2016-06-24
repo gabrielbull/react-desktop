@@ -30,21 +30,23 @@ class TitleBar extends Component {
   }
 
   resize = () => {
-    const barRect = this.refs.element.getBoundingClientRect();
-    this.refs.title.style.overflow = 'visible';
-    this.refs.title.style.paddingRight = 0;
-    this.refs.title.style.flexGrow = 0;
-    const titleRect = this.refs.title.getBoundingClientRect();
-    this.refs.title.style.overflow = 'hidden';
-    this.refs.title.style.flexGrow = 1;
+    if (this.refs.title) {
+      const barRect = this.refs.element.getBoundingClientRect();
+      this.refs.title.style.overflow = 'visible';
+      this.refs.title.style.paddingRight = 0;
+      this.refs.title.style.flexGrow = 0;
+      const titleRect = this.refs.title.getBoundingClientRect();
+      this.refs.title.style.overflow = 'hidden';
+      this.refs.title.style.flexGrow = 1;
 
-    const barWidth = barRect.width - 6;
-    const contentWidth = titleRect.width + (this.props.controls ? 60 : 0);
+      const barWidth = barRect.width - 6;
+      const contentWidth = titleRect.width + (this.props.controls ? 60 : 0);
 
-    let padding = barWidth - contentWidth;
-    if (padding > 60) padding = 60;
+      let padding = barWidth - contentWidth;
+      if (padding > 60) padding = 60;
 
-    this.refs.title.style.paddingRight = (padding) + 'px';
+      this.refs.title.style.paddingRight = (padding) + 'px';
+    }
   };
 
   render() {
