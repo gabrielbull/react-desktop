@@ -1,13 +1,15 @@
 import React, { Component, PropTypes, Children } from 'react';
-import DesktopComponent, { Dimension, Alignment, Hidden } from '../../desktopComponent';
+import DesktopComponent, { Dimension, Hidden } from '../../desktopComponent';
 import TitleBar from '../../titleBar/macOs/titleBar';
 import View from '../../view/view';
 import styles from './styles/10.11';
 import WindowFocus from '../../windowFocus';
 import Padding, { paddingPropTypes, removePaddingProps } from '../../style/padding';
 import Background, { macOsBackgroundPropTypes, removeBackgroundProps } from '../../style/background';
+import Alignment  from '../../style/alignment';
 
 @WindowFocus()
+@Alignment()
 @DesktopComponent(Dimension('100vw', '100vh'), Alignment, Hidden)
 class Window extends Component {
   static propTypes = {

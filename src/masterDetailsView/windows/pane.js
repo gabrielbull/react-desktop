@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DesktopComponent from '../../desktopComponent';
-import { parseDimension } from '../../propsUtils';
+import { parseDimension } from '../../styleHelper';
 
 const styles = {
   pane: {

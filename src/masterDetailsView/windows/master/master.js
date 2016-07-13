@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import DesktopComponent from '../../../desktopComponent';
-import { parseDimension } from '../../../propsUtils';
+import { parseDimension } from '../../../styleHelper';
 import { convertColor, hexToRgb } from '../../../color';
 
 const styles = {

@@ -1,5 +1,5 @@
 import { PropTypes, cloneElement } from 'react';
-import { parseDimension } from '../propsUtils';
+import { parseDimension } from '../styleHelper';
 
 function Margin(options, ComposedComponent) {
   return class extends ComposedComponent {

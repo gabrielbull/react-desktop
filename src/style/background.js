@@ -1,9 +1,10 @@
 import { PropTypes } from 'react';
-import { styleHelper, extractProps } from '../propsUtils';
+import styleHelper, { extractProps } from '../styleHelper';
 
 export const macOsBackgroundPropTypes = {
   background: PropTypes.string
 };
+
 export const windowsBackgroundPropTypes = {
   background: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
 };
