@@ -3,18 +3,19 @@ import DesktopComponent, {
   Dimension,
   Margin,
   Padding,
-  Alignment,
   Hidden,
   Background
 } from '../desktopComponent';
 import Width from '../style/width';
+import Alignment from '../style/alignment';
 
 var styles = {
   display: 'flex'
 };
 
 @Width()
-@DesktopComponent(Dimension, Margin, Padding, Alignment, Hidden, Background)
+@Alignment()
+@DesktopComponent(Dimension, Margin, Padding, Hidden, Background)
 class View extends Component {
   static propTypes = {
     direction: PropTypes.string,
