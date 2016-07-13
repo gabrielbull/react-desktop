@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import Margin from '../../style/margin';
+import Margin, { marginPropTypes } from '../../style/margin';
 import Padding, { paddingPropTypes } from '../../style/padding';
-import FontSize from '../../style/fontSize';
-import Dimension from '../../style/dimension';
-import TextAlign from '../../style/textAlign';
-import Hidden from '../../style/hidden';
+import FontSize, { fontSizePropTypes } from '../../style/fontSize';
+import Dimension, { dimensionPropTypes } from '../../style/dimension';
+import TextAlign, { textAlignPropTypes } from '../../style/textAlign';
+import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Alignment, { alignmentPropTypes } from '../../style/alignment';
 import Background, { macOsBackgroundPropTypes } from '../../style/background';
 import styles from './styles/10.11';
@@ -19,10 +19,15 @@ import styles from './styles/10.11';
 @Hidden()
 class Text extends Component {
   static propTypes = {
-    color: PropTypes.string,
     ...paddingPropTypes,
     ...alignmentPropTypes,
-    ...macOsBackgroundPropTypes
+    ...macOsBackgroundPropTypes,
+    ...hiddenPropTypes,
+    ...textAlignPropTypes,
+    ...marginPropTypes,
+    ...fontSizePropTypes,
+    ...dimensionPropTypes,
+    color: PropTypes.string
   };
 
   static defaultProps = {

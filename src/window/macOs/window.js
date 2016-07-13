@@ -1,21 +1,26 @@
 import React, { Component, PropTypes, Children } from 'react';
-import DesktopComponent, { Dimension, Hidden } from '../../desktopComponent';
 import TitleBar from '../../titleBar/macOs/titleBar';
 import View from '../../view/view';
 import styles from './styles/10.11';
 import WindowFocus from '../../windowFocus';
 import Padding, { paddingPropTypes, removePaddingProps } from '../../style/padding';
 import Background, { macOsBackgroundPropTypes, removeBackgroundProps } from '../../style/background';
-import Alignment  from '../../style/alignment';
+import Alignment, { alignmentPropTypes } from '../../style/alignment';
+import Hidden, { hiddenPropTypes } from '../../style/hidden';
+import Dimension, { dimensionPropTypes }  from '../../style/dimension';
 
 @WindowFocus()
 @Alignment()
-@DesktopComponent(Dimension('100vw', '100vh'), Alignment, Hidden)
+@Hidden()
+@Dimension({ width: '100vw', height: '100vh' })
 class Window extends Component {
   static propTypes = {
-    chrome: PropTypes.bool,
     ...paddingPropTypes,
-    ...macOsBackgroundPropTypes
+    ...macOsBackgroundPropTypes,
+    ...alignmentPropTypes,
+    ...hiddenPropTypes,
+    ...dimensionPropTypes,
+    chrome: PropTypes.bool
   };
 
   filterChildren() {

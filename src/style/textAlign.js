@@ -1,34 +1,27 @@
-import { PropTypes, cloneElement } from 'react';
+import { PropTypes } from 'react';
+import styleHelper, { extractProps } from '../styleHelper';
 
-function TextAlign(options, ComposedComponent) {
-  const allowedValues = ['left', 'right', 'center'];
+const allowedValues = ['left', 'right', 'center'];
 
-  return class extends ComposedComponent {
-    static propTypes = {
-      ...ComposedComponent.propTypes,
-      textAlign: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    };
+export const textAlignPropTypes = {
+  textAlign: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+};
 
-    render() {
-      if (this.props.textAlign !== undefined) {
-        const el = super.render();
-        const props = { ...super.render().props };
+export function removeTextAlignProps(props) {
+  return extractProps(props, textAlignPropTypes)[0];
+}
 
-        if (!props.style) props.style = {};
-        if (allowedValues.indexOf(props.textAlign) === -1) {
-          console.error('Unknown value for textAlign: ' + props.textAlign);
-        } else {
-          props.style.textAlign = props.textAlign;
-        }
-        delete props.textAlign;
-
-        return cloneElement(el, props);
-      }
-      return super.render();
-    }
+function mapTextAlignStyle(key, value) {
+  let finalKey, finalValue;
+  if (allowedValues.indexOf(value) === -1) {
+    console.error('Unknown value for ' + key + ': ' + value);
+  } else {
+    finalKey = 'textAlign';
+    finalValue = value;
   }
+  return [finalKey, finalValue];
 }
 
 export default function(...options) {
-  return TextAlign.bind(null, options);
+  return styleHelper(options, textAlignPropTypes, mapTextAlignStyle);
 }

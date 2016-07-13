@@ -1,28 +1,18 @@
-import { PropTypes, cloneElement } from 'react';
+import { PropTypes } from 'react';
+import styleHelper, { extractProps } from '../styleHelper';
 
-function Hidden(options, ComposedComponent) {
-  return class extends ComposedComponent {
-    static propTypes = {
-      ...ComposedComponent.propTypes,
-      hidden: PropTypes.bool
-    };
+export const hiddenPropTypes = {
+  hidden: PropTypes.bool
+};
 
-    render() {
-      if (this.props.hidden !== undefined && this.props.hidden === true) {
-        const el = super.render();
-        const props = { ...super.render().props };
+export function removeHiddenProps(props) {
+  return extractProps(props, hiddenPropTypes)[0];
+}
 
-        if (!props.style) props.style = {};
-        props.style.display = 'none';
-        delete props.hidden;
-
-        return cloneElement(el, props);
-      }
-      return super.render();
-    }
-  }
+function mapHiddenStyle(key, value) {
+  return value ? ['display', 'none'] : null;
 }
 
 export default function(...options) {
-  return Hidden.bind(null, options);
+  return styleHelper(options, hiddenPropTypes, mapHiddenStyle);
 }
