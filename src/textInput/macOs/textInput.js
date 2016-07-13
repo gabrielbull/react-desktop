@@ -1,8 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { PlaceholderStyle, Dimension, Hidden, Margin } from '../../desktopComponent';
-import { StyleRoot, keyframes, getState } from 'radium';
-import styles from './styles/osx10_11';
+import Radium, { StyleRoot, keyframes, getState } from 'radium';
+import styles from './styles/10.11';
 import Label from '../../label/osx/label';
+import Hidden, { hiddenPropTypes } from '../../style/hidden';
+import Margin, { marginPropTypes } from '../../style/margin';
+import Dimension, { dimensionPropTypes } from '../../style/dimension';
+import PlaceholderStyle from '../../placeholderStyle';
 
 const animation = keyframes(
   {
@@ -48,15 +51,17 @@ const animation = keyframes(
   'text-input-focus'
 );
 
-@DesktopComponent(PlaceholderStyle, Hidden, Dimension, Margin)
+@Hidden()
+@Margin()
+@Dimension()
+@Radium
 class TextFieldOSX extends Component {
   static propTypes = {
+    ...hiddenPropTypes,
+    ...marginPropTypes,
+    ...dimensionPropTypes,
     label: PropTypes.string
   };
-
-  getPlaceholderStyle() {
-    return styles.textField[':placeholder'];
-  }
 
   get value() {
     return this.refs.element.value;
@@ -92,13 +97,15 @@ class TextFieldOSX extends Component {
           <StyleRoot>
             {focusElement}
           </StyleRoot>
-          <input
-            key="element"
-            ref="element"
-            type="text"
-            style={componentStyle}
-            {...props}
-          />
+          <PlaceholderStyle placeholderStyle={styles.textField[':placeholder']}>
+            <input
+              key="element"
+              ref="element"
+              type="text"
+              style={componentStyle}
+              {...props}
+            />
+          </PlaceholderStyle>
         </div>
       </div>
     );

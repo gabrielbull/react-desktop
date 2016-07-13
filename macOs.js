@@ -7,8 +7,8 @@ export { default as ProgressCircle } from './src/progressCircle/osx/progressCirc
 export { default as Radio } from './src/radio/osx/radio';
 export { default as SegmentedControl } from './src/segmentedControl/osx/segmentedControl';
 export { default as Text } from './src/text/macOs/text';
-export { default as TextInput } from './src/textInput/osx/textInput';
+export { default as TextInput } from './src/textInput/macOs/textInput';
 export { default as TitleBar } from './src/titleBar/macOs/titleBar';
-export { default as Toolbar } from './src/toolbar/osx/toolbar';
+export { default as Toolbar } from './src/toolbar/macOs/toolbar';
 export { default as View } from './src/view/view';
 export { default as Window } from './src/window/macOs/window';

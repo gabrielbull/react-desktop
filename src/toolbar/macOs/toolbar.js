@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import DesktopComponent from '../../desktopComponent';
 
 var styles = {
   toolbar: {
@@ -8,7 +7,6 @@ var styles = {
   }
 };
 
-@DesktopComponent()
 class Toolbar extends Component {
   render() {
     const { style, ...props } = this.props;
