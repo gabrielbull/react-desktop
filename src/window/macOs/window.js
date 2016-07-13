@@ -1,21 +1,19 @@
 import React, { Component, PropTypes, Children } from 'react';
-import DesktopComponent, { Dimension, Alignment, Hidden, Background } from '../../desktopComponent';
+import DesktopComponent, { Dimension, Alignment, Hidden } from '../../desktopComponent';
 import TitleBar from '../../titleBar/macOs/titleBar';
 import View from '../../view/view';
 import styles from './styles/10.11';
 import WindowFocus from '../../windowFocus';
 import Padding, { paddingPropTypes, removePaddingProps } from '../../style/padding';
+import Background, { macOsBackgroundPropTypes, removeBackgroundProps } from '../../style/background';
 
 @WindowFocus()
-@DesktopComponent(Dimension('100vw', '100vh'), Alignment, Hidden, Background)
+@DesktopComponent(Dimension('100vw', '100vh'), Alignment, Hidden)
 class Window extends Component {
   static propTypes = {
     chrome: PropTypes.bool,
-    ...paddingPropTypes
-  };
-
-  static styleRefs = {
-    background: 'content'
+    ...paddingPropTypes,
+    ...macOsBackgroundPropTypes
   };
 
   filterChildren() {
@@ -58,11 +56,15 @@ class Window extends Component {
       };
     }
 
-    let content = Padding(
-      <View style={contentStyle}>{children}</View>,
+    let content = Background(
+      Padding(
+        <View style={contentStyle}>{children}</View>,
+        props
+      ),
       props
     );
     props = removePaddingProps(props);
+    props = removeBackgroundProps(props);
 
     return (
       <div

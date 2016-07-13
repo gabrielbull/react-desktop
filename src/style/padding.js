@@ -1,5 +1,5 @@
 import React, { Component, PropTypes, cloneElement, isValidElement } from 'react';
-import { parseDimension, extractProps, hasProps } from '../propsUtils';
+import { parseDimension, extractProps, hasProps, mapStyle } from '../propsUtils';
 
 export const paddingPropTypes = {
   padding: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -13,20 +13,10 @@ export function removePaddingProps(props) {
   return extractProps(props, paddingPropTypes)[0];
 }
 
-function applyStyle(props, styles) {
-  if (!props.style) props.style = {};
-  for (let key in styles) {
-    if (styles.hasOwnProperty(key)) {
-      props.style[key] = parseDimension(styles[key]);
-    }
-  }
-  return props;
-}
-
 function Padding([element, elementProps] = null, ComposedComponent = null) {
   if (element) {
     if (hasProps(elementProps, paddingPropTypes)) {
-      const props = applyStyle(element.props, extractProps(elementProps, paddingPropTypes)[1]);
+      const props = mapStyle(element.props, extractProps(elementProps, paddingPropTypes)[1], parseDimension);
       return cloneElement(element, props);
     }
     return element;
@@ -34,7 +24,7 @@ function Padding([element, elementProps] = null, ComposedComponent = null) {
     return class extends Component {
       render() {
         if (hasProps(this.props, paddingPropTypes)) {
-          const props = applyStyle(...extractProps(this.props, paddingPropTypes));
+          const props = mapStyle(...extractProps(this.props, paddingPropTypes), parseDimension);
           return <ComposedComponent {...props}/>;
         }
         return <ComposedComponent {...this.props}/>

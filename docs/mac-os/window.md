@@ -4,7 +4,7 @@
 
 Property            | Type         | Description
 :------------------ | :-----------:| :----------
-background          | string       | Sets the background color of a component, if bool, the color will be used as the background color.
+background          | string       | Sets the background color of a component.
 chrome              | bool         | Sets the chrome of the window.
 height              | number       | Sets the height of a component.
 hidden              | bool         | Sets the visibility of a component.
