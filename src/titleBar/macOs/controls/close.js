@@ -1,30 +1,28 @@
 import React, { Component, PropTypes } from 'react';
 import WindowFocus from '../../../windowFocus';
 import styles from './styles/10.11';
+import Radium from 'radium';
 
 @WindowFocus()
+@Radium
 class Close extends Component {
   static propTypes = {
-    style: PropTypes.object
+    style: PropTypes.object,
+    showIcon: PropTypes.bool
   };
 
-  constructor() {
-    super();
-    this.state = { iconVisible: false };
-  }
-
   render() {
-    const { style, isWindowFocused, ...props } = this.props;
+    const { style, isWindowFocused, showIcon, ...props } = this.props;
 
     delete props.isFullscreen;
 
     const iconStyle = {
       ...styles.close.icon,
-      opacity: this.state.iconVisible ? 1 : 0
+      opacity: showIcon ? 1 : 0
     };
 
     let componentStyle = { ...styles.close.button, ...style };
-    if (!isWindowFocused && !this.state.iconVisible) {
+    if (!isWindowFocused && !showIcon) {
       componentStyle = { ...componentStyle, ...styles.close.unfocused };
     }
 

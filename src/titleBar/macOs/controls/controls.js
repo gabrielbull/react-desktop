@@ -21,32 +21,27 @@ class Controls extends Component {
     onResizeClick: PropTypes.func
   };
 
-  mouseEnter = () => {
-    for (let prop in this.refs) {
-      if(this.refs.hasOwnProperty(prop)) {
-        this.refs[prop].setState({ iconVisible: true });
-      }
-    }
-  };
-
-  mouseLeave = () => {
-    for (let prop in this.refs) {
-      if(this.refs.hasOwnProperty(prop)) {
-        this.refs[prop].setState({ iconVisible: false });
-      }
-    }
-  };
+  constructor() {
+    super();
+    this.state = {
+      isOver: false
+    };
+  }
 
   render() {
     return (
-      <div style={styles.controls} onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
-        <Close onClick={this.props.onCloseClick} ref="close"/>
-        <Minimize onClick={this.props.onMinimizeClick} ref="minimize"/>
+      <div
+        style={styles.controls}
+        onMouseEnter={() => this.setState({ isOver: true })}
+        onMouseLeave={() => this.setState({ isOver: false })}
+      >
+        <Close onClick={this.props.onCloseClick} showIcon={this.state.isOver}/>
+        <Minimize onClick={this.props.onMinimizeClick} showIcon={this.state.isOver}/>
         <Resize
           isFullscreen={this.props.isFullscreen}
           onClick={this.props.onResizeClick}
           onMaximizeClick={this.props.onMaximizeClick}
-          ref="resize"
+          showIcon={this.state.isOver}
         />
       </div>
     );

@@ -4,7 +4,8 @@ import styleHelper, { extractProps } from '../styleHelper';
 const allowedValues = ['left', 'right', 'center'];
 
 export const alignmentPropTypes = {
-  background: PropTypes.string
+  horizontalAlignment: PropTypes.string,
+  verticalAlignment: PropTypes.string
 };
 
 export function removeAlignmentProps(props) {

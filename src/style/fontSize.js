@@ -10,12 +10,16 @@ export function removeFontSizeProps(props) {
 }
 
 function mapFontSizeStyle(key, value) {
-  return [
-    ['fontSize', parseDimension(value)],
-    ['lineHeight', parseDimension(parseInt(value) * 1.2)]
-  ];
+  return ['fontSize', parseDimension(value)];
+}
+
+function mapFontSizeStyles(styles) {
+  if (styles.fontSize && !styles.lineHeight) {
+    styles.lineHeight = parseDimension(parseInt(styles.fontSize) * 1.2);
+  }
+  return styles;
 }
 
 export default function(...options) {
-  return styleHelper(options, fontSizePropTypes, mapFontSizeStyle);
+  return styleHelper(options, fontSizePropTypes, mapFontSizeStyle, mapFontSizeStyles);
 }

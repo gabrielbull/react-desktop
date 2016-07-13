@@ -39,7 +39,7 @@ export function extractProps(props, proptypes) {
   return [finalProps, extractedProps];
 }
 
-export function mapStyle(prevStyles, nextStyles, callback, defaultStyles = null) {
+export function mapStyle(prevStyles, nextStyles, defaultStyles, styleCallback, styleCallbacks) {
   let finalStyles = { ...prevStyles };
   if (defaultStyles) {
     for (let key in defaultStyles) {
@@ -51,46 +51,41 @@ export function mapStyle(prevStyles, nextStyles, callback, defaultStyles = null)
 
   for (let key in nextStyles) {
     if (nextStyles.hasOwnProperty(key)) {
-      if (callback) {
-        const result = callback(key, nextStyles[key]);
+      if (styleCallback) {
+        const result = styleCallback(key, nextStyles[key]);
         if (result) {
-          if (Object.prototype.toString.call(result[0]) === '[object Array]') {
-            result.forEach(([key, value]) => {
-              finalStyles[key] = value;
-            });
-          } else {
-            finalStyles[result[0]] = result[1];
-          }
+          finalStyles[result[0]] = result[1];
         }
       } else finalStyles[key] = nextStyles[key];
     }
   }
 
+  if (typeof styleCallbacks === 'function') return styleCallbacks(finalStyles);
   return finalStyles;
 }
 
-export default function styleHelper(options, propTypes, callback) {
+export default function styleHelper(options, propTypes, mapStyleCallback, mapStyleCallbacks) {
   function doStyleHelper(WrappedComponent) {
-    const [element, elementProps, defaultProps] = options;
+    const [element, elementProps, defaultStyles] = options;
     if (isValidElement(element)) {
       if (hasProps(elementProps, propTypes)) {
         const styles = extractProps(elementProps, propTypes)[1];
         const props = element.props ? { ...element.props } : {};
-        props.style = mapStyle(props.style, styles, callback, defaultProps);
+        props.style = mapStyle(props.style, styles, defaultStyles, mapStyleCallback, mapStyleCallbacks);
         return cloneElement(element, props);
       }
       return element;
     } else {
-      let defaultProps;
+      let defaultStyles;
       if (options && Object.prototype.toString.call(options) === '[object Array]') {
-        defaultProps = options[0];
+        defaultStyles = options[0];
       }
       return class extends Component {
         render() {
           if (hasProps(this.props, propTypes)) {
             let [props, styles] = extractProps(this.props, propTypes);
             if (!props) props = {};
-            props.style = mapStyle(props.style, styles, callback, defaultProps);
+            props.style = mapStyle(props.style, styles, defaultStyles, mapStyleCallback, mapStyleCallbacks);
             return <WrappedComponent {...props}/>;
           }
           return <WrappedComponent {...this.props}/>

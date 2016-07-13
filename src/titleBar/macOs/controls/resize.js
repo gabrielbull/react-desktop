@@ -1,17 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import WindowFocus from '../../../windowFocus';
 import styles from './styles/10.11';
+import Radium from 'radium';
 
 @WindowFocus()
+@Radium
 class Resize extends Component {
   static propTypes = {
-    isFullscreen: PropTypes.bool
+    isFullscreen: PropTypes.bool,
+    showIcon: PropTypes.bool
   };
-
-  constructor() {
-    super();
-    this.state = { iconVisible: false };
-  }
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeydown);
@@ -27,17 +25,17 @@ class Resize extends Component {
   };
 
   render() {
-    let { style, onClick, onMaximizeClick, isWindowFocused, ...props } = this.props;
+    let { style, onClick, onMaximizeClick, isWindowFocused, showIcon, ...props } = this.props;
 
     delete props.isFullscreen;
 
     let iconStyle = {
       ...styles.resize.icon,
-      opacity: this.state.iconVisible ? 1 : 0
+      opacity: showIcon ? 1 : 0
     };
 
     let componentStyle = { ...styles.resize.button, ...style };
-    if (!isWindowFocused && !this.state.iconVisible) {
+    if (!isWindowFocused && !showIcon) {
       componentStyle = { ...componentStyle, ...styles.resize.unfocused };
     }
 

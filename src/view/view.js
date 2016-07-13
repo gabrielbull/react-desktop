@@ -1,23 +1,32 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, {
-  Dimension,
-  Margin,
-  Padding,
-  Hidden,
-  Background
-} from '../desktopComponent';
-import Width from '../style/width';
-import Alignment from '../style/alignment';
+import Width, { widthPropTypes } from '../style/width';
+import Margin, { marginPropTypes } from '../style/margin';
+import Padding, { paddingPropTypes } from '../style/padding';
+import Alignment, { alignmentPropTypes } from '../style/alignment';
+import Background, { macOsBackgroundPropTypes } from '../style/background';
+import Hidden, { hiddenPropTypes } from '../style/hidden';
+import Dimension, { dimensionPropTypes } from '../style/dimension';
 
 var styles = {
   display: 'flex'
 };
 
 @Width()
+@Dimension()
 @Alignment()
-@DesktopComponent(Dimension, Margin, Padding, Hidden, Background)
+@Margin()
+@Padding()
+@Background()
+@Hidden()
 class View extends Component {
   static propTypes = {
+    ...alignmentPropTypes,
+    ...widthPropTypes,
+    ...marginPropTypes,
+    ...paddingPropTypes,
+    ...macOsBackgroundPropTypes,
+    ...hiddenPropTypes,
+    ...dimensionPropTypes,
     direction: PropTypes.string,
     layout: PropTypes.string
   };

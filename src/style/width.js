@@ -1,31 +1,29 @@
-import { PropTypes, cloneElement } from 'react';
+import { PropTypes } from 'react';
+import styleHelper, { extractProps, parseDimension } from '../styleHelper';
 
-function Width(options, ComposedComponent) {
-  return class extends ComposedComponent {
-    static propTypes = {
-      ...ComposedComponent.propTypes,
-      width: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    };
+export const widthPropTypes = {
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+};
 
-    render() {
-      if (this.props.width !== undefined) {
-        const el = super.render();
-        const props = { ...super.render().props };
-        delete props.width;
-        if (!props.style) props.style = {};
-        props.style.width = this.props.width;
-        if (props.style.flex) {
-          delete props.style.flex;
-        } else if (props.style.flexGrow) {
-          delete props.style.flexGrow;
-        }
-        return cloneElement(el, props);
-      }
-      return super.render();
+export function removeWidthProps(props) {
+  return extractProps(props, widthPropTypes)[0];
+}
+
+function mapWidthStyle(key, value) {
+  return [key, parseDimension(value)];
+}
+
+function mapWidthStyles(styles) {
+  if (styles.width) {
+    if (styles.flex) {
+      delete styles.flex;
+    } else if (styles.flexGrow) {
+      delete styles.flexGrow;
     }
   }
+  return styles;
 }
 
 export default function(...options) {
-  return Width.bind(null, options);
+  return styleHelper(options, widthPropTypes, mapWidthStyle, mapWidthStyles);
 }
