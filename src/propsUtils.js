@@ -50,27 +50,31 @@ export function mapStyle(props, styles, callback) {
   return props;
 }
 
-export function styleHelper(component, elementProps, propTypes, callback) {
-  function doStyleHelper() {
-    if (isValidElement(component)) {
+export function styleHelper(options, propTypes, callback) {
+  function doStyleHelper(WrappedComponent) {
+    const [element, elementProps] = options;
+    if (isValidElement(element)) {
       if (hasProps(elementProps, propTypes)) {
-        const props = mapStyle(component.props, extractProps(elementProps, propTypes)[1], callback);
-        return cloneElement(component, props);
+        const props = mapStyle(element.props, extractProps(elementProps, propTypes)[1], callback);
+        return cloneElement(element, props);
       }
-      return component;
+      return element;
     } else {
-      const ComposedComponent = component;
       return class extends Component {
         render() {
           if (hasProps(this.props, propTypes)) {
             const props = mapStyle(...extractProps(this.props, propTypes, callback));
-            return <ComposedComponent {...props}/>;
+            return <WrappedComponent {...props}/>;
           }
-          return <ComposedComponent {...this.props}/>
+          return <WrappedComponent {...this.props}/>
         }
       }
     }
   }
 
-  return isValidElement(component) ? doStyleHelper() : doStyleHelper;
+  if (options[0] && isValidElement(options[0])) {
+    return doStyleHelper();
+  }
+
+  return doStyleHelper;
 }

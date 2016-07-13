@@ -13,6 +13,5 @@ export function removeBackgroundProps(props) {
 }
 
 export default function(...options) {
-  if (options[1] === undefined) options[1] = null;
-  return styleHelper(...options, macOsBackgroundPropTypes);
+  return styleHelper(options, macOsBackgroundPropTypes);
 }

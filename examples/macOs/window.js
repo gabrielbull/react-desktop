@@ -8,7 +8,6 @@ export default class extends Component {
         chrome
         height="300px"
         padding="10px"
-        background="red"
       >
         <TitleBar title="untitled text 5" controls/>
         <Text>Hello World</Text>
