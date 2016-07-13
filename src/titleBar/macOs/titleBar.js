@@ -50,7 +50,19 @@ class TitleBar extends Component {
   };
 
   render() {
-    let { children, controls, title, transparent, ...props } = this.props;
+    let {
+      children,
+      controls,
+      title,
+      transparent,
+      ...props
+    } = this.props;
+
+    delete props.isFullscreen;
+    delete props.onCloseClick;
+    delete props.onMinimizeClick;
+    delete props.onMaximizeClick;
+    delete props.onResizeClick;
 
     let componentStyle = { ...styles.titleBar };
     if (children) {
@@ -67,7 +79,7 @@ class TitleBar extends Component {
     controls = !controls || <Controls ref="controls" {...this.props}/>;
     title = !title || (
         <div ref="title" style={titleStyle}>
-          {this.props.title}
+          {title}
         </div>
       );
 

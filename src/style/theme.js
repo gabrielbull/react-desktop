@@ -49,6 +49,5 @@ function Theme(options, ComposedComponent) {
 }
 
 export default function(...options) {
-  if (options.length === 1 && typeof options[0] === 'function') return Theme.apply(null, [[], options[0]]);
   return Theme.bind(null, options);
 }

@@ -30,6 +30,5 @@ function TextAlign(options, ComposedComponent) {
 }
 
 export default function(...options) {
-  if (options.length === 1 && typeof options[0] === 'function') return TextAlign.apply(null, [[], options[0]]);
   return TextAlign.bind(null, options);
 }

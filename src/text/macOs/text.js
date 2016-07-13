@@ -8,7 +8,7 @@ import TextAlign from '../../style/textAlign';
 import Hidden from '../../style/hidden';
 import styles from './styles/10.11';
 
-@Margin @Padding @FontSize @Dimension @TextAlign @Hidden
+@Margin() @Padding() @FontSize() @Dimension() @TextAlign() @Hidden()
 @DesktopComponent(Alignment, Background)
 class Text extends Component {
   static propTypes = {

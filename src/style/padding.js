@@ -1,50 +1,51 @@
-import { PropTypes, cloneElement } from 'react';
-import { parseDimension } from '../dimension';
+import React, { Component, PropTypes, cloneElement, isValidElement } from 'react';
+import { parseDimension, extractProps, hasProps } from '../propsUtils';
 
-function Padding(options, ComposedComponent) {
-  return class extends ComposedComponent {
-    static propTypes = {
-      ...ComposedComponent.propTypes,
-      padding: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      paddingTop: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      paddingLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      paddingRight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      paddingBottom: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    };
+export const paddingPropTypes = {
+  padding: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  paddingTop: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  paddingLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  paddingRight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  paddingBottom: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+};
 
-    hasPadding() {
-      return (
-        this.props.padding !== undefined ||
-        this.props.paddingTop !== undefined ||
-        this.props.paddingLeft !== undefined ||
-        this.props.paddingRight !== undefined ||
-        this.props.paddingBottom !== undefined
-      );
+export function removePaddingProps(props) {
+  return extractProps(props, paddingPropTypes)[0];
+}
+
+function applyStyle(props, styles) {
+  if (!props.style) props.style = {};
+  for (let key in styles) {
+    if (styles.hasOwnProperty(key)) {
+      props.style[key] = parseDimension(styles[key]);
     }
+  }
+  return props;
+}
 
-    render() {
-      if (this.hasPadding()) {
-        const el = super.render();
-        const props = { ...super.render().props };
-
-        if (!props.style) props.style = {};
-        for (let prop in props) {
-          if (props.hasOwnProperty(prop)) {
-            if (['padding', 'paddingTop', 'paddingLeft', 'paddingRight', 'paddingBottom'].indexOf(prop) !== -1) {
-              props.style[prop] = parseDimension(props[prop]);
-              delete props[prop];
-            }
-          }
+function Padding([element, elementProps] = null, ComposedComponent = null) {
+  if (element) {
+    if (hasProps(elementProps, paddingPropTypes)) {
+      const props = applyStyle(element.props, extractProps(elementProps, paddingPropTypes)[1]);
+      return cloneElement(element, props);
+    }
+    return element;
+  } else {
+    return class extends Component {
+      render() {
+        if (hasProps(this.props, paddingPropTypes)) {
+          const props = applyStyle(...extractProps(this.props, paddingPropTypes));
+          return <ComposedComponent {...props}/>;
         }
-
-        return cloneElement(el, props);
+        return <ComposedComponent {...this.props}/>
       }
-      return super.render();
     }
   }
 }
 
 export default function(...options) {
-  if (options.length === 1 && typeof options[0] === 'function') return Padding.apply(null, [[], options[0]]);
+  if (options[0] && isValidElement(options[0])) {
+    return Padding([...options]);
+  }
   return Padding.bind(null, options);
 }

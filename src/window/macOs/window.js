@@ -1,17 +1,20 @@
 import React, { Component, PropTypes, Children } from 'react';
-import DesktopComponent, { WindowFocus, Dimension, Alignment, Padding, Hidden, Background } from '../../desktopComponent';
+import DesktopComponent, { Dimension, Alignment, Hidden, Background } from '../../desktopComponent';
 import TitleBar from '../../titleBar/macOs/titleBar';
 import View from '../../view/view';
-import styles from './styles/osx10_11';
+import styles from './styles/10.11';
+import WindowFocus from '../../windowFocus';
+import Padding, { paddingPropTypes, removePaddingProps } from '../../style/padding';
 
-@DesktopComponent(WindowFocus, Dimension('100vw', '100vh'), Alignment, Padding, Hidden, Background)
+@WindowFocus()
+@DesktopComponent(Dimension('100vw', '100vh'), Alignment, Hidden, Background)
 class Window extends Component {
   static propTypes = {
-    chrome: PropTypes.bool
+    chrome: PropTypes.bool,
+    ...paddingPropTypes
   };
 
   static styleRefs = {
-    padding: 'content',
     background: 'content'
   };
 
@@ -30,7 +33,7 @@ class Window extends Component {
   }
 
   render() {
-    let { style, chrome, ...props } = this.props;
+    let { style, chrome, isWindowFocused, ...props } = this.props;
 
     let componentStyle = { ...styles.window, ...style };
     if (chrome) {
@@ -39,7 +42,7 @@ class Window extends Component {
         ...styles.chrome
       };
 
-      if (!this.state.windowFocused) {
+      if (!isWindowFocused) {
         componentStyle = { ...componentStyle, ...styles.unfocused }
       }
     }
@@ -55,7 +58,11 @@ class Window extends Component {
       };
     }
 
-    let content = <View ref="content" style={contentStyle}>{children}</View>;
+    let content = Padding(
+      <View style={contentStyle}>{children}</View>,
+      props
+    );
+    props = removePaddingProps(props);
 
     return (
       <div

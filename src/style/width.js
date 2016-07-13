@@ -27,6 +27,5 @@ function Width(options, ComposedComponent) {
 }
 
 export default function(...options) {
-  if (options.length === 1 && typeof options[0] === 'function') return Width.apply(null, [[], options[0]]);
   return Width.bind(null, options);
 }

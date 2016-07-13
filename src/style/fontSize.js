@@ -1,7 +1,7 @@
 import { PropTypes, cloneElement } from 'react';
-import { parseDimension } from '../dimension';
+import { parseDimension } from '../propsUtils';
 
-function Size(options, ComposedComponent) {
+function FontSize(options, ComposedComponent) {
   return class extends ComposedComponent {
     static propTypes = {
       ...ComposedComponent.propTypes,
@@ -28,6 +28,5 @@ function Size(options, ComposedComponent) {
 }
 
 export default function(...options) {
-  if (options.length === 1 && typeof options[0] === 'function') return Size.apply(null, [[], options[0]]);
-  return Size.bind(null, options);
+  return FontSize.bind(null, options);
 }

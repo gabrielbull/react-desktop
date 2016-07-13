@@ -24,6 +24,5 @@ function Hidden(options, ComposedComponent) {
 }
 
 export default function(...options) {
-  if (options.length === 1 && typeof options[0] === 'function') return Hidden.apply(null, [[], options[0]]);
   return Hidden.bind(null, options);
 }

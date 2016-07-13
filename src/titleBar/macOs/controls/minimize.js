@@ -16,6 +16,8 @@ class Minimize extends Component {
   render() {
     const { style, ...props } = this.props;
 
+    delete props.isFullscreen;
+
     const iconStyle = {
       ...styles.minimize.icon,
       opacity: this.state.iconVisible ? 1 : 0

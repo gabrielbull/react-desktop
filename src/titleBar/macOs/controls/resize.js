@@ -29,6 +29,8 @@ class Resize extends Component {
   render() {
     let { style, onClick, onMaximizeClick, ...props } = this.props;
 
+    delete props.isFullscreen;
+
     let iconStyle = {
       ...styles.resize.icon,
       opacity: this.state.iconVisible ? 1 : 0

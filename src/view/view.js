@@ -17,18 +17,24 @@ var styles = {
 @DesktopComponent(Dimension, Margin, Padding, Alignment, Hidden, Background)
 class View extends Component {
   static propTypes = {
-    direction: PropTypes.string
+    direction: PropTypes.string,
+    layout: PropTypes.string
   };
 
   static defaultProps = {
-    direction: 'column'
+    layout: 'horizontal'
   };
 
   render() {
-    const { horizontalAlignment, children, style, ...props } = this.props;
+    let { horizontalAlignment, children, style, direction, layout, ...props } = this.props;
     let componentStyle = { ...styles, ...style };
 
-    if (this.props.direction === 'column') {
+    if (direction) {
+      // direction will be deprecated on v0.3 and a warning will be shown
+      layout = direction === 'column' ? 'vertical' : 'horizontal';
+    }
+
+    if (layout === 'vertical') {
       componentStyle.flexDirection = 'column';
       if (horizontalAlignment) {
         switch(horizontalAlignment) {

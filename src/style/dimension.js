@@ -1,5 +1,5 @@
 import { PropTypes, cloneElement } from 'react';
-import { parseDimension } from '../dimension';
+import { parseDimension } from '../propsUtils';
 
 function Dimension(options, ComposedComponent) {
   return class extends ComposedComponent {
@@ -39,6 +39,5 @@ function Dimension(options, ComposedComponent) {
 }
 
 export default function(...options) {
-  if (options.length === 1 && typeof options[0] === 'function') return Dimension.apply(null, [[], options[0]]);
   return Dimension.bind(null, options);
 }

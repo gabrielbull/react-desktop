@@ -15,7 +15,7 @@ const componentStyle = {
   textDecoration: 'none'
 };
 
-@Margin @Padding @FontSize @Dimension @TextAlign @Hidden
+@Margin() @Padding() @FontSize() @Dimension() @TextAlign() @Hidden()
 class Link extends Component {
   static propTypes = {
     color: PropTypes.string
