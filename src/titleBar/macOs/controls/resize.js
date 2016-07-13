@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { WindowFocus } from '../../../desktopComponent';
+import WindowFocus from '../../../windowFocus';
 import styles from './styles/10.11';
 
-@DesktopComponent(WindowFocus)
+@WindowFocus()
 class Resize extends Component {
   static propTypes = {
     isFullscreen: PropTypes.bool
@@ -27,7 +27,7 @@ class Resize extends Component {
   };
 
   render() {
-    let { style, onClick, onMaximizeClick, ...props } = this.props;
+    let { style, onClick, onMaximizeClick, isWindowFocused, ...props } = this.props;
 
     delete props.isFullscreen;
 
@@ -37,7 +37,7 @@ class Resize extends Component {
     };
 
     let componentStyle = { ...styles.resize.button, ...style };
-    if (!this.state.windowFocused && !this.state.iconVisible) {
+    if (!isWindowFocused && !this.state.iconVisible) {
       componentStyle = { ...componentStyle, ...styles.resize.unfocused };
     }
 

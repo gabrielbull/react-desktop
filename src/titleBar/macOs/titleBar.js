@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import Controls from './controls/controls';
 import styles from './styles/10.11';
-import DesktopComponent, { WindowFocus } from '../../desktopComponent';
+import WindowFocus from '../../windowFocus';
 
-@DesktopComponent(WindowFocus)
+@WindowFocus()
 class TitleBar extends Component {
   static propTypes = {
     title: PropTypes.string,
@@ -55,6 +55,7 @@ class TitleBar extends Component {
       controls,
       title,
       transparent,
+      isWindowFocused,
       ...props
     } = this.props;
 
@@ -71,7 +72,7 @@ class TitleBar extends Component {
 
     let titleStyle = styles.title;
 
-    if (!this.state.windowFocused) {
+    if (!isWindowFocused) {
       componentStyle = { ...componentStyle, ...styles.unfocusedTitleBar };
       titleStyle = { ...titleStyle, ...styles.unfocusedTitle }
     }

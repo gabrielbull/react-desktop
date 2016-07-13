@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { WindowFocus } from '../../../desktopComponent';
+import WindowFocus from '../../../windowFocus';
 import styles from './styles/10.11';
 
-@DesktopComponent(WindowFocus)
+@WindowFocus()
 class Close extends Component {
   static propTypes = {
     style: PropTypes.object
@@ -14,7 +14,7 @@ class Close extends Component {
   }
 
   render() {
-    const { style, ...props } = this.props;
+    const { style, isWindowFocused, ...props } = this.props;
 
     delete props.isFullscreen;
 
@@ -24,7 +24,7 @@ class Close extends Component {
     };
 
     let componentStyle = { ...styles.close.button, ...style };
-    if (!this.state.windowFocused && !this.state.iconVisible) {
+    if (!isWindowFocused && !this.state.iconVisible) {
       componentStyle = { ...componentStyle, ...styles.close.unfocused };
     }
 
