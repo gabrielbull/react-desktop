@@ -24,10 +24,10 @@ export default class extends Component {
         isMaximized={this.state.isMaximized}
         theme={this.props.theme}
         background={this.props.color}
-        onClosePress={this.close}
-        onMinimizePress={this.minimize}
-        onMaximizePress={this.toggleMaximize}
-        onRestoreDownPress={this.toggleMaximize}
+        onCloseClick={this.close}
+        onMinimizeClick={this.minimize}
+        onMaximizeClick={this.toggleMaximize}
+        onRestoreDownClick={this.toggleMaximize}
       />
     );
   }
