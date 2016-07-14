@@ -1,22 +1,25 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { WindowFocus, Hidden } from '../../desktopComponent';
-import styles from './styles/osx10_11';
+import WindowFocus from '../../windowFocus';
+import Hidden, { hiddenPropTypes } from '../../style/hidden';
+import styles from './styles/10.11';
+import Radium from 'radium';
 
-@DesktopComponent(WindowFocus, Hidden)
+@WindowFocus()
+@Hidden()
+@Radium
 class Button extends Component {
-  isbutton = true;
-
   static propTypes = {
+    ...hiddenPropTypes,
     type: PropTypes.string,
     color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     onClick: PropTypes.func
   };
 
   render() {
-    let { style, type, children, color, onClick, ...props } = this.props;
+    let { style, type, children, color, onClick, isWindowFocused, ...props } = this.props;
 
     let componentStyle = { ...styles.button };
-    if (color === 'blue' && this.state.windowFocused) {
+    if (color === 'blue' && isWindowFocused) {
       componentStyle = { ...componentStyle, ...styles.blue };
     }
 

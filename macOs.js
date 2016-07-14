@@ -1,5 +1,5 @@
 export { default as Box } from './src/box/macOs/box';
-export { default as Button } from './src/button/osx/button';
+export { default as Button } from './src/button/macOs/button';
 export { default as Checkbox } from './src/checkbox/osx/checkbox';
 export { default as Label } from './src/label/macOs/label';
 export { default as Link } from './src/link/macOs/link';
