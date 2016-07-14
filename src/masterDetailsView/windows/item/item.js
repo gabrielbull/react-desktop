@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent from '../../../desktopComponent';
 import Master from '../master/master';
 import Details from '../details/details';
 
@@ -10,11 +9,32 @@ const styles = {
   flex: '1'
 };
 
-@DesktopComponent
-class Item extends Component {
-  static Master = Master;
-  static Details = Details;
+let warnOnceMaster = false;
+let warnOnceDetails = false;
+function applyChildenClasses() {
+  return function(ComposedComponent) {
+    const nextMaster = Master;
+    ComposedComponent.Master = function (...args) {
+      if (!warnOnceMaster) {
+        warnOnceMaster = true;
+        console.warn('React Desktop: Using MasterDetailsView.Item.Master is deprecated, import MasterDetailsViewItemMaster instead.');
+      }
+      return new nextMaster(...args);
+    };
+    const nextDetails = Details;
+    ComposedComponent.Details = function (...args) {
+      if (!warnOnceDetails) {
+        warnOnceDetails = true;
+        console.warn('React Desktop: Using MasterDetailsView.Item.Details is deprecated, import MasterDetailsViewItemDetails instead.');
+      }
+      return new nextDetails(...args);
+    };
+    return ComposedComponent;
+  }
+}
 
+@applyChildenClasses()
+class Item extends Component {
   static propTypes = {
     selected: PropTypes.bool
   };

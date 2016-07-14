@@ -1,17 +1,24 @@
 import React, { Component, PropTypes, Children } from 'react';
-import DesktopComponent, { WindowFocus, Dimension, Alignment, Padding, Hidden } from '../../desktopComponent';
 import TitleBar from '../../titleBar/windows/titleBar';
 import View from '../../view/view';
 import styles from './styles/windows10';
+import WindowFocus from '../../windowFocus';
+import Padding, { paddingPropTypes, removePaddingProps } from '../../style/padding';
+import Alignment, { alignmentPropTypes } from '../../style/alignment';
+import Hidden, { hiddenPropTypes } from '../../style/hidden';
+import Dimension, { dimensionPropTypes }  from '../../style/dimension';
 
-@DesktopComponent(WindowFocus, Dimension('100vw', '100vh'), Alignment, Padding, Hidden)
+@WindowFocus()
+@Alignment()
+@Hidden()
+@Dimension({ width: '100vw', height: '100vh' })
 class Window extends Component {
   static propTypes = {
+    ...paddingPropTypes,
+    ...alignmentPropTypes,
+    ...hiddenPropTypes,
+    ...dimensionPropTypes,
     chrome: PropTypes.bool
-  };
-
-  static styleRefs = {
-    padding: 'content'
   };
 
   filterChildren() {
@@ -54,7 +61,12 @@ class Window extends Component {
 
     const [titleBar, ...children] = this.filterChildren();
 
-    let content = <View ref="content" style={styles.content}>{children}</View>;
+    let content = Padding(
+      <View ref="content" style={styles.content}>{children}</View>,
+      this.props
+    );
+
+    props = removePaddingProps(props);
 
     return (
       <div

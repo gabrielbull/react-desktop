@@ -1,10 +1,8 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
-import DesktopComponent from '../../desktopComponent';
 import Pane from './pane/pane';
 import Item from './item/item';
 import styles from './style/windows10';
 
-@DesktopComponent()
 class NavPane extends Component {
   static Item = Item;
 

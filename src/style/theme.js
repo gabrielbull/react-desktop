@@ -1,20 +1,28 @@
 import { PropTypes } from 'react';
 
+export const themePropTypes = {
+  theme: PropTypes.string
+};
+
+export const themeContextTypes = {
+  theme: PropTypes.string
+};
+
 function Theme(options, ComposedComponent) {
   return class extends ComposedComponent {
     static propTypes = {
       ...ComposedComponent.propTypes,
-      theme: PropTypes.string
+      ...themePropTypes
     };
 
     static childContextTypes = {
       ...ComposedComponent.childContextTypes,
-      theme: PropTypes.string
+      ...themeContextTypes
     };
 
     static contextTypes = {
       ...ComposedComponent.contextTypes,
-      theme: PropTypes.string
+      ...themeContextTypes
     };
 
     constructor(props, context, updater) {

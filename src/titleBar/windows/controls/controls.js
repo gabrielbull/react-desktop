@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent  from '../../../desktopComponent';
 import Close from './close';
 import Minimize from './minimize';
 import Maximize from './maximize';
@@ -13,7 +12,6 @@ var styles = {
   }
 };
 
-@DesktopComponent
 class Controls extends Component {
   static propTypes = {
     onCloseClick: PropTypes.func,

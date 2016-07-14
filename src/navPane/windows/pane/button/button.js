@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent from '../../../../desktopComponent';
 import { getState } from 'radium';
 import { transparentize } from '../../../../color';
 
@@ -10,7 +9,6 @@ const styles = {
   }
 };
 
-@DesktopComponent
 class Button extends Component {
   static propTypes = {
     onClick: PropTypes.func

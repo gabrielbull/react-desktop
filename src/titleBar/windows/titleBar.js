@@ -1,11 +1,17 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { WindowFocus, Background } from '../../desktopComponent';
+import Background, { windowsBackgroundPropTypes } from '../../style/background';
+import { hiddenPropTypes } from '../../style/hidden';
+import { themeContextTypes } from '../../style/theme';
+import WindowFocus from '../../windowFocus';
 import Controls from './controls/controls';
 import styles from './styles/windows10';
 
-@DesktopComponent(WindowFocus, Background)
+@Background()
+@WindowFocus()
 class TitleBar extends Component {
   static propTypes = {
+    ...hiddenPropTypes,
+    ...windowsBackgroundPropTypes,
     title: PropTypes.string,
     controls: PropTypes.bool,
     isMaximized: PropTypes.bool,
@@ -19,6 +25,10 @@ class TitleBar extends Component {
     isMaximized: PropTypes.bool
   };
 
+  static contextTypes = {
+    ...themeContextTypes
+  };
+
   getChildContext() {
     return {
       isMaximized: this.props.isMaximized
@@ -26,26 +36,26 @@ class TitleBar extends Component {
   }
 
   render() {
-    const { children, style, controls, title, ...props } = this.props;
+    const { children, style, controls, title, isWindowFocused, hidden, ...props } = this.props;
 
     let componentStyle = { ...styles.titleBar, ...style };
     let titleStyle = styles.title;
 
-    if (!this.state.windowFocused && this.state.theme !== 'dark') {
+    if (!isWindowFocused && this.context.theme !== 'dark') {
       titleStyle = { ...titleStyle, ...styles.unfocusedTitle };
     }
 
-    if (this.state.theme === 'dark') {
+    if (this.context.theme === 'dark') {
       titleStyle = { ...titleStyle, ...styles.titleDark };
     }
 
     componentStyle = {
       ...componentStyle,
-      visibility: this.state.visible ? 'visible' : 'hidden',
-      display: this.state.display ? 'flex' : 'none'
+      visibility: !hidden ? 'visible' : 'hidden',
+      display: !hidden ? 'flex' : 'none'
     };
 
-    if (this.state.theme === 'dark') {
+    if (this.context.theme === 'dark') {
       componentStyle = { ...componentStyle, ...styles.titleBarDark };
     }
 

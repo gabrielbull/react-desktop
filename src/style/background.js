@@ -9,6 +9,10 @@ export const windowsBackgroundPropTypes = {
   background: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
 };
 
+export const windowsBackgroundContextTypes = {
+  background: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
+};
+
 export function removeBackgroundProps(props) {
   return extractProps(props, macOsBackgroundPropTypes)[0];
 }

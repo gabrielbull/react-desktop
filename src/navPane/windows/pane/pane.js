@@ -1,10 +1,8 @@
 import React, { Component, PropTypes, Children } from 'react';
-import DesktopComponent from '../../../desktopComponent';
 import Item from './item/item';
 import Button from './button/button';
 import styles from './style/windows10';
 
-@DesktopComponent
 class Pane extends Component {
   static Item = Item;
 

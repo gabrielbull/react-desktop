@@ -1,13 +1,23 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { Padding, Margin, Background, Alignment } from '../../../desktopComponent';
+import Padding, { paddingPropTypes } from '../../../style/padding';
+import Margin, { marginPropTypes } from '../../../style/margin';
+import Background, { windowsBackgroundPropTypes } from '../../../style/background';
+import Alignment, { alignmentPropTypes } from '../../../style/alignment';
 import Title from './title/title';
 import Content from './content/content';
 import styles from '../style/windows10';
 import { StyleRoot } from 'radium';
 
-@DesktopComponent(Padding, Margin, Background, Alignment)
+@Padding()
+@Margin()
+@Background()
+@Alignment()
 class Item extends Component {
   static propTypes = {
+    ...paddingPropTypes,
+    ...marginPropTypes,
+    ...windowsBackgroundPropTypes,
+    ...alignmentPropTypes,
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
     icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
     push: PropTypes.bool,

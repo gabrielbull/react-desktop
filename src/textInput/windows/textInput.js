@@ -1,20 +1,33 @@
 import React, { Component, PropTypes } from 'react';
 import Text from '../../text/windows/text';
-import DesktopComponent, { PlaceholderStyle, Hidden, Background, Dimension, Margin } from '../../desktopComponent';
+import Hidden, { hiddenPropTypes } from '../../style/hidden';
+import Dimension, { dimensionPropTypes } from '../../style/dimension';
+import Margin, { marginPropTypes } from '../../style/margin';
+import Background, { windowsBackgroundPropTypes, removeBackgroundProps } from '../../style/background';
+import { themeContextTypes } from '../../style/theme';
+import { colorContextTypes } from '../../style/color';
 import styles from './styles/windows10';
+import PlaceholderStyle from '../../placeholderStyle';
 
-@DesktopComponent(PlaceholderStyle, Hidden, Background, Dimension, Margin)
+@Hidden()
+@Dimension()
+@Margin()
 class TextInput extends Component {
-  static styleRefs = {
-    background: 'input'
-  };
-
   static propTypes = {
+    ...hiddenPropTypes,
+    ...dimensionPropTypes,
+    ...marginPropTypes,
+    ...windowsBackgroundPropTypes,
     label: PropTypes.string
   };
 
-  getPlaceholderStyle() {
-    return this.state.theme === 'dark' ? styles[':placeholderDarkTheme'] : styles[':placeholder'];
+  static contextTypes = {
+    ...themeContextTypes,
+    ...colorContextTypes
+  };
+
+  get placeholderStyle() {
+    return this.context.theme === 'dark' ? styles[':placeholderDarkTheme'] : styles[':placeholder'];
   }
 
   get value() {
@@ -22,27 +35,34 @@ class TextInput extends Component {
   }
 
   render() {
-    const { label, style, ...props } = this.props;
+    let { label, style, ...props } = this.props;
     let componentStyle = { ...styles.textBox, ...style };
 
-    if (this.state.theme === 'dark') {
+    if (this.context.theme === 'dark') {
       componentStyle = { ...componentStyle, ...styles.textBoxDarkTheme };
     }
 
-    componentStyle[':focus'] = { ...componentStyle[':focus'], borderColor: this.state.color };
+    componentStyle[':focus'] = { ...componentStyle[':focus'], borderColor: this.context.color };
 
     const input = (
-      <input
-        ref="input"
-        type="text"
-        style={componentStyle}
-        {...props}
-      />
+      <PlaceholderStyle placeholderStyle={this.placeholderStyle}>
+        {Background(
+          <input
+            ref="input"
+            type="text"
+            style={componentStyle}
+            {...props}
+          />,
+          this.props
+        )}
+      </PlaceholderStyle>
     );
+
+    props = removeBackgroundProps(props);
 
     if (label) {
       return (
-        <div {...this.props}>
+        <div {...props}>
           <Text style={{ marginBottom: '5px' }}>
             {label}
           </Text>

@@ -1,9 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent from '../../../../desktopComponent';
 import styles from '../style/windows10';
 import { transparentize } from '../../../../color';
 
-@DesktopComponent
 class Item extends Component {
   static propTypes = {
     isPaneExpanded: PropTypes.bool.isRequired,

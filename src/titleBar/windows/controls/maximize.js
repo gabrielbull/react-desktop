@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { WindowFocus } from '../../../desktopComponent';
+import WindowFocus from '../../../windowFocus';
+import { themeContextTypes } from '../../../style/theme';
+import { windowsBackgroundContextTypes } from '../../../style/background';
 import { isDarkColor } from '../../../color';
 
 var styles = {
@@ -41,22 +43,24 @@ var styles = {
   }
 };
 
-@DesktopComponent(WindowFocus)
+@WindowFocus()
 class Maximize extends Component {
   static contextTypes = {
+    ...themeContextTypes,
+    ...windowsBackgroundContextTypes,
     isMaximized: PropTypes.bool
   };
 
   render() {
-    const { style, ...props } = this.props;
+    const { style, isWindowFocused, ...props } = this.props;
 
     let svgFill = '#000000';
-    if (!this.state.windowFocused && this.state.theme !== 'dark') {
+    if (!isWindowFocused && this.context.theme !== 'dark') {
       svgFill = 'rgba(0, 0, 0, .4)';
     }
 
     let componentStyle = { ...styles.button, ...style };
-    if (this.state.theme === 'dark' || this.state.background && isDarkColor(this.state.background)) {
+    if (this.context.theme === 'dark' || this.context.background && isDarkColor(this.context.background)) {
       svgFill = '#ffffff';
       componentStyle = { ...componentStyle, ...styles.buttonColorBackground };
     }

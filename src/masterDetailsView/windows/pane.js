@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import DesktopComponent from '../../desktopComponent';
 import { parseDimension } from '../../styleHelper';
+import { themeContextTypes } from '../../style/theme';
 
 const styles = {
   pane: {
@@ -16,8 +16,11 @@ const styles = {
   }
 };
 
-@DesktopComponent
 class Pane extends Component {
+  static contextTypes = {
+    ...themeContextTypes
+  };
+
   render() {
     const { children, style, ...props } = this.props;
 

@@ -1,5 +1,4 @@
 import React, { Component, Children, cloneElement, PropTypes } from 'react';
-import DesktopComponent from '../../desktopComponent';
 import Master from './master/master';
 import Details from './details/details';
 import Pane from './pane';
@@ -21,10 +20,23 @@ const styles = {
   }
 };
 
-@DesktopComponent
-class MasterDetails extends Component {
-  static Item = Item;
+let warnOnce = false;
+function applyChildenClasses() {
+  return function(ComposedComponent) {
+    const nextItem = Item;
+    ComposedComponent.Item = function (...args) {
+      if (!warnOnce) {
+        warnOnce = true;
+        console.warn('React Desktop: Using MasterDetailsView.Item is deprecated, import MasterDetailsViewItem instead.');
+      }
+      return new nextItem(...args);
+    };
+    return ComposedComponent;
+  }
+}
 
+@applyChildenClasses()
+class MasterDetails extends Component {
   masters = [];
   details = [];
 

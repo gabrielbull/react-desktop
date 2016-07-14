@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { Hidden } from '../../desktopComponent';
+import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import { darkenColor } from '../../color';
 import styles from './styles/windows10';
 
-@DesktopComponent(Hidden)
+@Hidden()
 class Button extends Component {
   static propTypes = {
+    ...hiddenPropTypes,
     type: PropTypes.string,
     color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     push: PropTypes.bool,

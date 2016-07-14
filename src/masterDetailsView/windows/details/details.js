@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent from '../../../desktopComponent';
 import { convertColor } from '../../../color';
+import { colorContextTypes } from '../../../style/color';
 
 const styles = {
   details: {
@@ -11,8 +11,11 @@ const styles = {
   }
 };
 
-@DesktopComponent
 class Details extends Component {
+  static contextTypes = {
+    ...colorContextTypes
+  };
+
   static propTypes = {
     background: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
   };

@@ -1,10 +1,20 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { Padding, Margin, Background, Alignment } from '../../../../desktopComponent';
+import Padding, { paddingPropTypes } from '../../../../style/padding';
+import Margin, { marginPropTypes } from '../../../../style/margin';
+import Background, { windowsBackgroundPropTypes } from '../../../../style/background';
+import Alignment, { alignmentPropTypes } from '../../../../style/alignment';
 import styles from '../../style/windows10';
 
-@DesktopComponent(Padding, Margin, Background, Alignment)
+@Padding()
+@Margin()
+@Background()
+@Alignment()
 class Content extends Component {
   static propTypes = {
+    ...paddingPropTypes,
+    ...marginPropTypes,
+    ...windowsBackgroundPropTypes,
+    ...alignmentPropTypes,
     content: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array])
   };
 

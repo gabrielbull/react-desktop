@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent from '../../../desktopComponent';
 import { parseDimension } from '../../../styleHelper';
 import { convertColor, hexToRgb } from '../../../color';
+import { colorContextTypes } from '../../../style/color';
 
 const styles = {
   master: {
@@ -54,7 +54,6 @@ const styles = {
   }
 };
 
-@DesktopComponent
 class Master extends Component {
   static propTypes = {
     selected: PropTypes.bool,
@@ -63,6 +62,7 @@ class Master extends Component {
   };
 
   static contextTypes = {
+    ...colorContextTypes,
     id: PropTypes.string,
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     push: PropTypes.bool,

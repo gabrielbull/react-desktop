@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { Hidden } from '../../desktopComponent';
+import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import { getState } from 'radium';
 import styles from './styles/windows10';
 
-@DesktopComponent(Hidden)
+@Hidden()
 class Checkbox extends Component {
   static propTypes = {
+    ...hiddenPropTypes,
     color: PropTypes.string,
     label: PropTypes.string,
     onChange: PropTypes.func

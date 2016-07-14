@@ -1,17 +1,23 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { Hidden } from '../../desktopComponent';
 import { getState } from 'radium';
 import styles from './styles/windows';
 import Text from '../../text/windows/text';
 import Theme from '../../style/theme';
+import Hidden, { hiddenPropTypes } from '../../style/hidden';
+import { colorContextTypes } from '../../style/color';
 
 @Theme()
-@DesktopComponent(Hidden)
+@Hidden()
 class Radio extends Component {
   static propTypes = {
+    ...hiddenPropTypes,
     color: PropTypes.string,
     label: PropTypes.string,
     onChange: PropTypes.func
+  };
+
+  static contextTypes = {
+    ...colorContextTypes
   };
 
   constructor(props) {

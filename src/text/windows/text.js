@@ -1,11 +1,32 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { Margin, Padding, Alignment, Hidden, Background, Dimension } from '../../desktopComponent';
+import Margin, { marginPropTypes } from '../../style/margin';
+import Padding, { paddingPropTypes } from '../../style/padding';
+import Alignment, { alignmentPropTypes } from '../../style/alignment';
+import Hidden, { hiddenPropTypes } from '../../style/hidden';
+import Background, { windowsBackgroundPropTypes } from '../../style/background';
+import Dimension, { dimensionPropTypes } from '../../style/dimension';
+import { colorContextTypes } from '../../style/color';
 import styles from './styles/windows10';
 
-@DesktopComponent(Margin, Padding, Alignment, Hidden, Background, Dimension)
+@Margin()
+@Padding()
+@Alignment()
+@Hidden()
+@Background()
+@Dimension()
 class Text extends Component {
   static propTypes = {
+    ...marginPropTypes,
+    ...paddingPropTypes,
+    ...alignmentPropTypes,
+    ...hiddenPropTypes,
+    ...windowsBackgroundPropTypes,
+    ...dimensionPropTypes,
     color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
+  };
+
+  static contextTypes = {
+    ...colorContextTypes
   };
 
   render() {

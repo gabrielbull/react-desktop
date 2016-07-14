@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent from '../../../../desktopComponent';
 import { keyframes } from 'radium';
 import styles from '../../style/windows10';
 
@@ -44,7 +43,6 @@ styles.fadeSpanStyle = {
   animationName: fadeOut
 };
 
-@DesktopComponent
 class Title extends Component {
   static propTypes = {
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array])
