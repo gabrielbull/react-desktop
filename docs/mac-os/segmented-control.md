@@ -1,6 +1,6 @@
 # Segmented Control
 
-## SegmentedView
+## SegmentedControl
 
 ### Properties
 
@@ -12,7 +12,7 @@ hidden              | bool         | Sets the visibility of a component.
 margin              | string       | Sets the outer margin of a component.<br/>__E.G.__ _"30px 20px"_
 width               | number       | Sets the width of a component.
 
-## SegmentedView.Item
+## SegmentedControlItem
 
 ### Properties
 

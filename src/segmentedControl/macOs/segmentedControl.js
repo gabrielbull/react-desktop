@@ -1,19 +1,36 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, {
-  Dimension,
-  Margin,
-  Hidden
-} from '../../desktopComponent';
+import Dimension, { dimensionPropTypes } from '../../style/dimension';
+import Margin, { marginPropTypes } from '../../style/margin';
+import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Item from './item/item';
 import Tabs from './tabs/tabs';
 import styles from './style/10.11';
-import Box from '../../box/osx/box';
+import Box from '../../box/macOs/box';
 
-@DesktopComponent(Dimension, Margin, Hidden)
+let warnOnce = false;
+function applyItem() {
+  return function(ComposedComponent) {
+    const nextItem = Item;
+    ComposedComponent.Item = function (...args) {
+      if (!warnOnce) {
+        warnOnce = true;
+        console.warn('React Desktop: Using SegmentedControl.Item is deprecated, import SegmentedControlItem instead.');
+      }
+      return new nextItem(...args);
+    };
+    return ComposedComponent;
+  }
+}
+
+@applyItem()
+@Dimension()
+@Margin()
+@Hidden()
 class SegmentedControl extends Component {
-  static Item = Item;
-
   static propTypes = {
+    ...dimensionPropTypes,
+    ...marginPropTypes,
+    ...hiddenPropTypes,
     box: PropTypes.bool
   };
 

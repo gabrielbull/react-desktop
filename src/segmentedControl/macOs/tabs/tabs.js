@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Tab from './tab';
-import styles from '../style/style10_11';
+import styles from '../style/10.11';
 
 class Tabs extends Component {
   select(item) {

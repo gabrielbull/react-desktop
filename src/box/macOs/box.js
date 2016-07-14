@@ -1,19 +1,27 @@
 import React, { Component, PropTypes } from 'react';
-import styles from './styles/osx10_11';
-import DesktopComponent, {
-  Dimension,
-  Margin,
-  Padding,
-  Alignment,
-  Hidden,
-  Background
-} from '../../desktopComponent';
+import styles from './styles/10.11';
+import Dimension, { dimensionPropTypes } from '../../style/dimension';
+import Margin, { marginPropTypes } from '../../style/margin';
+import Padding, { paddingPropTypes } from '../../style/padding';
+import Alignment, { alignmentPropTypes } from '../../style/alignment';
+import Hidden, { hiddenPropTypes } from '../../style/hidden';
+import { macOsBackgroundPropTypes } from '../../style/background';
 import { convertColor, darkenColor } from '../../color';
 import Text from '../../text/macOs/text';
 
-@DesktopComponent(Dimension, Margin, Padding, Alignment, Hidden, Background)
+@Dimension()
+@Margin()
+@Padding()
+@Alignment()
+@Hidden()
 class Box extends Component {
   static propTypes = {
+    ...macOsBackgroundPropTypes,
+    ...dimensionPropTypes,
+    ...marginPropTypes,
+    ...paddingPropTypes,
+    ...alignmentPropTypes,
+    ...hiddenPropTypes,
     label: PropTypes.string
   };
 

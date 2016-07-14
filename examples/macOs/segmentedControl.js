@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SegmentedControl, Text } from 'react-desktop/macOs';
+import { SegmentedControl, SegmentedControlItem, Text } from 'react-desktop/macOs';
 
 export default class extends Component {
   constructor() {
@@ -25,14 +25,14 @@ export default class extends Component {
 
   renderItem(key, title, content) {
     return (
-      <SegmentedControl.Item
+      <SegmentedControlItem
         key={key}
         title={title}
         selected={this.state.selected === key}
         onSelect={() => this.setState({ selected: key })}
       >
         {content}
-      </SegmentedControl.Item>
+      </SegmentedControlItem>
     );
   }
 }

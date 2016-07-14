@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import styles from '../style/style10_11';
-import DesktopComponent, { WindowFocus } from '../../../desktopComponent';
+import styles from '../style/10.11';
+import WindowFocus from '../../../windowFocus';
+import Radium from 'radium';
 
-@DesktopComponent(WindowFocus)
+@WindowFocus()
+@Radium
 class Tab extends Component {
   static propTypes = {
     selected: PropTypes.bool,
@@ -14,7 +16,7 @@ class Tab extends Component {
   };
 
   render() {
-    let { children, style, onSelect, afterSelected, prevSelected, lastChild, firstChild } = this.props;
+    let { children, style, onSelect, afterSelected, prevSelected, lastChild, firstChild, isWindowFocused } = this.props;
 
     let componentStyle = { ...styles.tab, ...style };
 
@@ -26,7 +28,7 @@ class Tab extends Component {
 
     if (this.props.selected) {
       componentStyle = { ...componentStyle, ...styles.selected };
-      if (!this.state.windowFocused) componentStyle = { ...componentStyle, ...styles.selectedUnfocused };
+      if (!isWindowFocused) componentStyle = { ...componentStyle, ...styles.selectedUnfocused };
       if (firstChild) componentStyle = { ...componentStyle, ...styles.firstChildSelected };
       if (lastChild) componentStyle = { ...componentStyle, ...styles.lastChildSelected };
     }
