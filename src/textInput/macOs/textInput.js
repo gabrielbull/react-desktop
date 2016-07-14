@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import Radium, { StyleRoot, keyframes, getState } from 'radium';
 import styles from './styles/10.11';
-import Label from '../../label/osx/label';
-import Hidden, { hiddenPropTypes } from '../../style/hidden';
-import Margin, { marginPropTypes } from '../../style/margin';
-import Dimension, { dimensionPropTypes } from '../../style/dimension';
+import Label from '../../label/macOs/label';
+import Hidden, { hiddenPropTypes, removeHiddenProps, getHiddenProps } from '../../style/hidden';
+import Margin, { marginPropTypes, removeMarginProps } from '../../style/margin';
+import Dimension, { dimensionPropTypes, removeDimensionProps } from '../../style/dimension';
 import PlaceholderStyle from '../../placeholderStyle';
 
 const animation = keyframes(
@@ -52,7 +52,6 @@ const animation = keyframes(
 );
 
 @Hidden()
-@Margin()
 @Dimension()
 @Radium
 class TextFieldOSX extends Component {
@@ -72,7 +71,7 @@ class TextFieldOSX extends Component {
   }
 
   render() {
-    const { style, width, label, margin, ...props } = this.props;
+    let { style, label, ...props } = this.props;
 
     let componentStyle = { ...style, ...styles.textField };
 
@@ -90,8 +89,11 @@ class TextFieldOSX extends Component {
 
     let labelComponent = label ? <Label margin="0 0 3px 0">{label}</Label> : null;
 
-    return (
-      <div style={styles.container} {...{ width, margin }}>
+    let finalStyle = getHiddenProps(props);
+    props = removeDimensionProps(removeMarginProps(removeHiddenProps(props)));
+
+    return (Margin(
+      <div style={styles.container} {...finalStyle}>
         {labelComponent}
         <div style={styles.wrapper}>
           <StyleRoot>
@@ -107,8 +109,9 @@ class TextFieldOSX extends Component {
             />
           </PlaceholderStyle>
         </div>
-      </div>
-    );
+      </div>,
+      this.props
+    ));
   }
 }
 

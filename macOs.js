@@ -1,7 +1,7 @@
 export { default as Box } from './src/box/osx/box';
 export { default as Button } from './src/button/osx/button';
 export { default as Checkbox } from './src/checkbox/osx/checkbox';
-export { default as Label } from './src/label/osx/label';
+export { default as Label } from './src/label/macOs/label';
 export { default as Link } from './src/link/macOs/link';
 export { default as ProgressCircle } from './src/progressCircle/osx/progressCircle';
 export { default as Radio } from './src/radio/osx/radio';
