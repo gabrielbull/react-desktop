@@ -6,7 +6,7 @@ import DesktopComponent, {
 } from '../../desktopComponent';
 import Item from './item/item';
 import Tabs from './tabs/tabs';
-import styles from './style/style10_11';
+import styles from './style/10.11';
 import Box from '../../box/osx/box';
 
 @DesktopComponent(Dimension, Margin, Hidden)
