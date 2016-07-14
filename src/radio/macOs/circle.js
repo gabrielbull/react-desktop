@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Radium from 'radium';
-import styles from './styles/osx10_11';
+import styles from './styles/10.11';
 
 @Radium
 class Circle extends Component {

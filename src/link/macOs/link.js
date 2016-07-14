@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import Margin from '../../style/margin';
-import Padding from '../../style/padding';
-import FontSize from '../../style/fontSize';
-import Dimension from '../../style/dimension';
-import TextAlign from '../../style/textAlign';
-import Hidden from '../../style/hidden';
+import Margin, { marginPropTypes } from '../../style/margin';
+import Padding, { paddingPropTypes } from '../../style/padding';
+import FontSize, { fontSizePropTypes } from '../../style/fontSize';
+import Dimension, { dimensionPropTypes } from '../../style/dimension';
+import TextAlign, { textAlignPropTypes } from '../../style/textAlign';
+import Hidden, { hiddenPropTypes } from '../../style/hidden';
 
 const componentStyle = {
   display: 'inline-block',
@@ -15,9 +15,20 @@ const componentStyle = {
   textDecoration: 'none'
 };
 
-@Margin() @Padding() @FontSize() @Dimension() @TextAlign() @Hidden()
+@Margin()
+@Padding()
+@FontSize()
+@Dimension()
+@TextAlign()
+@Hidden()
 class Link extends Component {
   static propTypes = {
+    ...marginPropTypes,
+    ...paddingPropTypes,
+    ...fontSizePropTypes,
+    ...dimensionPropTypes,
+    ...textAlignPropTypes,
+    ...hiddenPropTypes,
     color: PropTypes.string
   };
 

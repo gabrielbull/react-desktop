@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { Hidden } from '../../desktopComponent';
-import styles from './styles/osx10_11';
+import { hiddenPropTypes } from '../../style/hidden';
+import styles from './styles/10.11';
 import { startAnimation, stopAnimation } from './progressCircleAnimation';
 
-@DesktopComponent(Hidden)
 class ProgressCircle extends Component {
   static propTypes = {
+    ...hiddenPropTypes,
     absolute: PropTypes.bool,
     color: PropTypes.string,
     size: PropTypes.number
@@ -25,14 +25,14 @@ class ProgressCircle extends Component {
   }
 
   render() {
-    const { size, color, style, absolute, ...props } = this.props;
+    const { size, color, style, absolute, hidden, ...props } = this.props;
 
     let containerStyle = { ...styles.container };
     let componentStyle = {
       ...styles.progress,
       ...style,
-      visibility: this.state.visible ? 'visible' : 'hidden',
-      display: this.state.display ? 'block' : 'none'
+      visibility: !hidden ? 'visible' : 'hidden',
+      display: !hidden ? 'block' : 'none'
     };
 
     if (absolute) {

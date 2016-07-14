@@ -1,7 +1,11 @@
 window.addEventListener('focus', windowFocus);
 window.addEventListener('blur', windowBlur);
 
-let isWindowFocused = document.hasFocus();
+let isWindowFocused = true;
+
+if (typeof document === 'object' && typeof document.hasFocus === 'function') {
+  isWindowFocused = document.hasFocus();
+}
 
 function windowFocus() {
   isWindowFocused = true;

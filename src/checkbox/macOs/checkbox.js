@@ -1,13 +1,15 @@
 import React, { Component, PropTypes } from 'react';
-import DesktopComponent, { Hidden } from '../../desktopComponent';
-import { getState } from 'radium';
-import styles from './styles/osx10_11';
+import Hidden, { hiddenPropTypes } from '../../style/hidden';
+import Radium, { getState } from 'radium';
+import styles from './styles/10.11';
+import Checkmark from './checkmark';
 import Text from '../../text/macOs/text';
-import Circle from './circle';
 
-@DesktopComponent(Hidden)
-class Radio extends Component {
+@Hidden()
+@Radium
+class Checkbox extends Component {
   static propTypes = {
+    ...hiddenPropTypes,
     label: PropTypes.string,
     onChange: PropTypes.func
   };
@@ -19,20 +21,6 @@ class Radio extends Component {
     };
   }
 
-  componentDidMount() {
-    document.addEventListener('change', this.onSiblingChange);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('change', this.onSiblingChange);
-  }
-
-  onSiblingChange = () => {
-    if (this.refs.element.checked !== this.state.checked) {
-      this.setState({ checked: this.refs.element.checked });
-    }
-  };
-
   onChange = event => {
     this.setState({ checked: event.target.checked });
     if (this.props.onChange) {
@@ -42,14 +30,14 @@ class Radio extends Component {
 
   render() {
     let { style, label, ...props } = this.props;
-    let componentStyle = { ...styles.radio, ...style };
+    let componentStyle = { ...styles.checkbox, ...style };
     let labelStyle = styles.label;
     let shadowColor = '#0050a5';
 
     if (this.state.checked) {
       componentStyle = {
         ...componentStyle,
-        ...styles['radio:checked']
+        ...styles['checkbox:checked']
       };
     }
 
@@ -57,13 +45,13 @@ class Radio extends Component {
       if (this.state.checked) {
         componentStyle = {
           ...componentStyle,
-          ...styles['radio:checked:active']
+          ...styles['checkbox:checked:active']
         };
         shadowColor = '#001d99';
       } else {
         componentStyle = {
           ...componentStyle,
-          ...styles['radio:active']
+          ...styles['checkbox:active']
         };
       }
     }
@@ -74,12 +62,12 @@ class Radio extends Component {
           <div style={styles.inputWrapper}>
             <input
               ref="element"
-              type="radio"
+              type="checkbox"
               {...props}
               style={componentStyle}
               onChange={this.onChange}
             />
-            <Circle show={this.state.checked} shadowColor={shadowColor}/>
+            <Checkmark show={this.state.checked} shadowColor={shadowColor}/>
           </div>
           <Text style={{ display: 'inline' }}>
             {label}
@@ -90,4 +78,4 @@ class Radio extends Component {
   }
 }
 
-export default Radio;
+export default Checkbox;

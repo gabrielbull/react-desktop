@@ -1,10 +1,10 @@
 export { default as Box } from './src/box/macOs/box';
 export { default as Button } from './src/button/macOs/button';
-export { default as Checkbox } from './src/checkbox/osx/checkbox';
+export { default as Checkbox } from './src/checkbox/macOs/checkbox';
 export { default as Label } from './src/label/macOs/label';
 export { default as Link } from './src/link/macOs/link';
-export { default as ProgressCircle } from './src/progressCircle/osx/progressCircle';
-export { default as Radio } from './src/radio/osx/radio';
+export { default as ProgressCircle } from './src/progressCircle/macOs/progressCircle';
+export { default as Radio } from './src/radio/macOs/radio';
 export { default as SegmentedControl } from './src/segmentedControl/macOs/segmentedControl';
 export { default as SegmentedControlItem } from './src/segmentedControl/macOs/item/item';
 export { default as Text } from './src/text/macOs/text';
