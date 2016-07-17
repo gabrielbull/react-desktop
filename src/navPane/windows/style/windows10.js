@@ -35,10 +35,12 @@ export default {
     fontSize: '15px',
     textTransform: 'uppercase',
     padding: '0 24px',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    cursor: 'default',
+    userSelect: 'none'
   },
 
   titleDark: {
-    color: '#ffffff',
+    color: '#ffffff'
   }
 };

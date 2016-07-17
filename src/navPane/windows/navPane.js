@@ -2,16 +2,40 @@ import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import Pane from './pane/pane';
 import Item from './item/item';
 import styles from './style/windows10';
+import { ColorContext, colorPropTypes } from '../../style/color/windows';
+import { ThemeContext, themePropTypes, themeContextTypes } from '../../style/theme/windows';
 
+let warnOnce = false;
+function applyChildenClasses() {
+  return function(ComposedComponent) {
+    const nextItem = Item;
+    ComposedComponent.Item = function (...args) {
+      if (!warnOnce) {
+        warnOnce = true;
+        console.warn('React Desktop: Using NavPane.Item is deprecated, import NavPaneItem instead.');
+      }
+      return new nextItem(...args);
+    };
+    return ComposedComponent;
+  }
+}
+
+@applyChildenClasses()
+@ColorContext()
+@ThemeContext()
 class NavPane extends Component {
-  static Item = Item;
-
   static propTypes = {
+    ...colorPropTypes,
+    ...themePropTypes,
     canPaneToggle: PropTypes.bool,
     onPaneToggle: PropTypes.func,
     defaultIsPaneExpanded: PropTypes.bool,
     paneCompactedLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     paneExpandedLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  };
+
+  static contextTypes = {
+    ...themeContextTypes
   };
 
   render() {
@@ -35,7 +59,7 @@ class NavPane extends Component {
     Children.map(this.props.children, child => {
       if (child.props.selected) content = child;
     });
-    return content ? cloneElement(content, { ...content.props, paneTheme: this.state.theme }) : null;
+    return content ? cloneElement(content, { ...content.props, paneTheme: this.context.theme }) : null;
   }
 }
 

@@ -1,7 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import styles from '../style/windows10';
 import { transparentize } from '../../../../color';
+import { ColorContext, colorContextTypes } from '../../../../style/color/windows';
+import { ThemeContext, themeContextTypes } from '../../../../style/theme/windows';
+import Radium from 'radium';
 
+@ColorContext()
+@ThemeContext()
+@Radium
 class Item extends Component {
   static propTypes = {
     isPaneExpanded: PropTypes.bool.isRequired,
@@ -12,13 +18,18 @@ class Item extends Component {
     selected: PropTypes.bool
   };
 
+  static contextTypes = {
+    ...colorContextTypes,
+    ...themeContextTypes
+  };
+
   render() {
     const { title, icon, selected, onSelect, push, isPaneExpanded } = this.props;
 
     let componentStyle = styles.anchor;
     let spanStyle = styles.span;
 
-    if (this.state.theme === 'dark') {
+    if (this.context.theme === 'dark') {
       componentStyle = { ...componentStyle, ...styles.anchorDark };
       spanStyle = { ...spanStyle, ...styles.spanDark };
     }
@@ -26,14 +37,14 @@ class Item extends Component {
     if (selected) {
       componentStyle = {
         ...componentStyle,
-        backgroundColor: transparentize(this.state.color, .4),
+        backgroundColor: transparentize(this.context.color, .4),
         ':hover': {
           ...componentStyle[':hover'],
-          backgroundColor: transparentize(this.state.color, .2)
+          backgroundColor: transparentize(this.context.color, .2)
         },
         ':active': {
           ...componentStyle[':active'],
-          backgroundColor: transparentize(this.state.color, .1)
+          backgroundColor: transparentize(this.context.color, .1)
         }
       };
     }
@@ -48,7 +59,6 @@ class Item extends Component {
         ...styles.pushTransformActive
       };
     }
-
 
     return (
       <a

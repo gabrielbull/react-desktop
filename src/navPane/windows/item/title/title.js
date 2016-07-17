@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { keyframes } from 'radium';
 import styles from '../../style/windows10';
+import Radium from 'radium';
 
 var appear = keyframes({
   '0%': {
@@ -43,8 +44,10 @@ styles.fadeSpanStyle = {
   animationName: fadeOut
 };
 
+@Radium
 class Title extends Component {
   static propTypes = {
+    theme: PropTypes.string,
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array])
   };
 

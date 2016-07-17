@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavPane, Text } from 'react-desktop/windows';
+import { NavPane, NavPaneItem, Text } from 'react-desktop/windows';
 
 export default class extends Component {
   static defaultProps = {
@@ -26,10 +26,10 @@ export default class extends Component {
 
   renderItem(title, content) {
     return (
-      <NavPane.Item
+      <NavPaneItem
         title={title}
         icon={this.renderIcon(title)}
-        requestedTheme="light"
+        theme="light"
         background="#ffffff"
         selected={this.state.selected === title}
         onSelect={() => this.setState({ selected: title })}
@@ -37,7 +37,7 @@ export default class extends Component {
         push
       >
         <Text>{content}</Text>
-      </NavPane.Item>
+      </NavPaneItem>
     );
   }
 

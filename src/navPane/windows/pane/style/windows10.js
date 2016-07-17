@@ -64,7 +64,8 @@ export default {
     fontSize: '15px',
     letterSpacing: '0.4pt',
     padding: '0 16px',
-    transition: 'transform .1s ease-in'
+    transition: 'transform .1s ease-in',
+    userSelect: 'none'
   },
 
   spanDark: {

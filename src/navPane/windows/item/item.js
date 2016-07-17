@@ -7,13 +7,19 @@ import Title from './title/title';
 import Content from './content/content';
 import styles from '../style/windows10';
 import { StyleRoot } from 'radium';
+import { ColorContext, colorPropTypes } from '../../../style/color/windows';
+import { ThemeContext, themePropTypes } from '../../../style/theme/windows';
 
 @Padding()
 @Margin()
 @Background()
 @Alignment()
+@ColorContext()
+@ThemeContext()
 class Item extends Component {
   static propTypes = {
+    ...colorPropTypes,
+    ...themePropTypes,
     ...paddingPropTypes,
     ...marginPropTypes,
     ...backgroundPropTypes,
