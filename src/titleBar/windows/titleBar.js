@@ -51,7 +51,7 @@ class TitleBar extends Component {
 
     let componentStyle = { ...styles.titleBar, ...style };
     let titleStyle = styles.title;
-
+    
     if (!isWindowFocused && this.context.theme !== 'dark') {
       titleStyle = { ...titleStyle, ...styles.unfocusedTitle };
     }

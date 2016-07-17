@@ -36,7 +36,7 @@ class Radio extends Component {
     }
   };
 
-  onChange = event => {
+  handleChange = event => {
     this.setState({ checked: event.target.checked });
     if (this.props.onChange) {
       this.props.onChange(event);
@@ -80,7 +80,7 @@ class Radio extends Component {
               type="radio"
               {...props}
               style={componentStyle}
-              onChange={this.onChange}
+              onChange={this.handleChange}
             />
             <Circle show={this.state.checked} shadowColor={shadowColor}/>
           </div>

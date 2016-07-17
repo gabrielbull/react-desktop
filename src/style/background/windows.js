@@ -37,14 +37,13 @@ export default function(...options) {
     return <BackgroundElement/>;
   }
 
-  const ComposedComponent = styleHelper(options, backgroundPropTypes, null, null, options[0]);
-  return function (...args) {
+  return function (WrappedComponent) {
+    const ComposedComponent = styleHelper(options, backgroundPropTypes, null, null, options[0])(WrappedComponent);
     @ColorContext(true)
     class BackgroundComponent extends Component {
       static contextTypes = { ...colorContextTypes };
 
       render() {
-        const WrappedComponent = ComposedComponent(...args);
         const props = { ...this.props };
         if (typeof props.background === 'boolean') {
           if (!props.background) delete props.background;
@@ -52,8 +51,7 @@ export default function(...options) {
             props.background = this.context.color;
           }
         }
-
-        return <WrappedComponent {...props}/>;
+        return <ComposedComponent {...props}/>;
       }
     }
     return BackgroundComponent;
