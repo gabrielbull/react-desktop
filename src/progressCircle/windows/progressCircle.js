@@ -1,14 +1,20 @@
 import React, { Component, PropTypes } from 'react';
 import { hiddenPropTypes } from '../../style/hidden';
+import { ColorContext, colorPropTypes, colorContextTypes } from '../../style/color/windows';
 import { startAnimation, stopAnimation } from './progressCircleAnimation';
 import styles from './styles/windows10';
 
+@ColorContext()
 class ProgressCircle extends Component {
   static propTypes = {
     ...hiddenPropTypes,
+    ...colorPropTypes,
     absolute: PropTypes.bool,
-    color: PropTypes.string,
     size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  };
+
+  static contextTypes = {
+    ...colorContextTypes
   };
 
   componentDidMount() {
@@ -27,7 +33,7 @@ class ProgressCircle extends Component {
   }
 
   render() {
-    const { size, color, style, absolute, hidden, ...props } = this.props;
+    const { size, style, absolute, hidden, ...props } = this.props;
 
     let containerStyle = { ...styles.container };
     let componentStyle = {
@@ -41,7 +47,7 @@ class ProgressCircle extends Component {
       componentStyle = { ...componentStyle, ...styles.absolute };
     }
 
-    let componentColor = color ? color : this.state.color;
+    let componentColor = this.context.color;
     if (size) {
       componentStyle = {
         ...componentStyle,
