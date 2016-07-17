@@ -11,34 +11,34 @@ export default {
     fontWeight: '100',
     color: '#000000',
     marginBottom: '18px',
-    backgroundColor: 'rgba(255, 255, 255, .35)',
+    background: 'rgba(255, 255, 255, .35)',
 
     ':hover': {
       borderColor: 'rgba(100, 100, 100, 1)',
-      backgroundColor: 'rgba(255, 255, 255, .5)'
+      background: 'rgba(255, 255, 255, .5)'
     },
 
     ':focus': {
       outline: 'none',
       borderColor: 'rgba(0, 120, 215, 1)',
-      backgroundColor: 'rgba(255, 255, 255, 1)'
+      background: 'rgba(255, 255, 255, 1)'
     }
   },
 
   textBoxDarkTheme: {
     borderColor: 'rgba(255, 255, 255, .41)',
-    backgroundColor: 'rgba(0, 0, 0, .4)',
+    background: 'rgba(0, 0, 0, .4)',
     color: '#ffffff',
 
     ':hover': {
       borderColor: 'rgba(255, 255, 255, .94)',
-      backgroundColor: 'rgba(0, 0, 0, .6)'
+      background: 'rgba(0, 0, 0, .6)'
     },
 
     ':focus': {
       outline: 'none',
       borderColor: 'rgba(0, 120, 215, 1)',
-      backgroundColor: 'rgba(255, 255, 255, 1)',
+      background: 'rgba(255, 255, 255, 1)',
       color: '#000000'
     }
   },

@@ -4,17 +4,21 @@ import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Dimension, { dimensionPropTypes } from '../../style/dimension';
 import Margin, { marginPropTypes } from '../../style/margin';
 import Background, { backgroundPropTypes, removeBackgroundProps } from '../../style/background/windows';
-import { ThemeContext, themeContextTypes } from '../../style/theme/windows';
-import { colorContextTypes } from '../../style/color/windows';
+import { ThemeContext, themePropTypes, themeContextTypes } from '../../style/theme/windows';
+import { ColorContext, colorContextTypes } from '../../style/color/windows';
 import styles from './styles/windows10';
 import PlaceholderStyle from '../../placeholderStyle';
+import Radium from 'radium';
 
 @Hidden()
 @Dimension()
 @Margin()
+@ColorContext()
 @ThemeContext()
+@Radium
 class TextInput extends Component {
   static propTypes = {
+    ...themePropTypes,
     ...hiddenPropTypes,
     ...dimensionPropTypes,
     ...marginPropTypes,
@@ -32,7 +36,11 @@ class TextInput extends Component {
   }
 
   get value() {
-    return this.refs.input.value;
+    return this.refs.element.value;
+  }
+
+  set value(value) {
+    this.refs.element.value = value;
   }
 
   render() {
@@ -45,11 +53,13 @@ class TextInput extends Component {
 
     componentStyle[':focus'] = { ...componentStyle[':focus'], borderColor: this.context.color };
 
+    props = removeBackgroundProps(props);
+
     const input = (
       <PlaceholderStyle placeholderStyle={this.placeholderStyle}>
         {Background(
           <input
-            ref="input"
+            ref="element"
             type="text"
             style={componentStyle}
             {...props}
@@ -58,8 +68,6 @@ class TextInput extends Component {
         )}
       </PlaceholderStyle>
     );
-
-    props = removeBackgroundProps(props);
 
     if (label) {
       return (
