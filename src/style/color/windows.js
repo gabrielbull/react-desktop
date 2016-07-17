@@ -11,7 +11,7 @@ export const colorContextTypes = {
 
 const applyColorProps = (props, context) => applyDefaultProps(props, context, { color: '#0063ae' });
 
-export function ColorContext() {
+export function ColorContext(preserveProperty = false) {
   return function (ComposedComponent) {
     return class extends Component {
       static propTypes = { ...colorPropTypes };
@@ -26,7 +26,7 @@ export function ColorContext() {
 
       render() {
         const { ...props } = this.props;
-        delete props.color;
+        if (!preserveProperty) delete props.color;
         return (
           <ComposedComponent {...props}/>
         );

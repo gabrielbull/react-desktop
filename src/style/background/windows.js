@@ -23,7 +23,7 @@ export default function(...options) {
 
   const ComposedComponent = component;
   return function (...args) {
-    @ColorContext()
+    @ColorContext(true)
     class BackgroundComponent extends Component {
       static contextTypes = { ...colorContextTypes };
 
