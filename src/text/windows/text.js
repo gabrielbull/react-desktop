@@ -3,9 +3,9 @@ import Margin, { marginPropTypes } from '../../style/margin';
 import Padding, { paddingPropTypes } from '../../style/padding';
 import Alignment, { alignmentPropTypes } from '../../style/alignment';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
-import Background, { windowsBackgroundPropTypes } from '../../style/background';
+import Background, { backgroundPropTypes } from '../../style/background/windows';
 import Dimension, { dimensionPropTypes } from '../../style/dimension';
-import { colorContextTypes } from '../../style/color';
+import { colorContextTypes } from '../../style/color/windows';
 import styles from './styles/windows10';
 
 @Margin()
@@ -20,7 +20,7 @@ class Text extends Component {
     ...paddingPropTypes,
     ...alignmentPropTypes,
     ...hiddenPropTypes,
-    ...windowsBackgroundPropTypes,
+    ...backgroundPropTypes,
     ...dimensionPropTypes,
     color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
   };

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import Background, { windowsBackgroundPropTypes } from '../../style/background';
+import Background, { backgroundPropTypes } from '../../style/background/windows';
 import { hiddenPropTypes } from '../../style/hidden';
-import { themeContextTypes } from '../../style/theme';
+import { themeContextTypes } from '../../style/theme/windows';
 import WindowFocus from '../../windowFocus';
 import Controls from './controls/controls';
 import styles from './styles/windows10';
@@ -11,7 +11,7 @@ import styles from './styles/windows10';
 class TitleBar extends Component {
   static propTypes = {
     ...hiddenPropTypes,
-    ...windowsBackgroundPropTypes,
+    ...backgroundPropTypes,
     title: PropTypes.string,
     controls: PropTypes.bool,
     isMaximized: PropTypes.bool,

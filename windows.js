@@ -9,5 +9,5 @@ export { default as Radio } from './src/radio/windows/radio';
 export { default as Text } from './src/text/windows/text';
 export { default as TextInput } from './src/textInput/windows/textInput';
 export { default as TitleBar } from './src/titleBar/windows/titleBar';
-export { default as View } from './src/view/view';
+export { default as View } from './src/view/windows/view';
 export { default as Window } from './src/window/windows/window';

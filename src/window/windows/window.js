@@ -1,6 +1,6 @@
 import React, { Component, PropTypes, Children } from 'react';
 import TitleBar from '../../titleBar/windows/titleBar';
-import View from '../../view/view';
+import View from '../../view/windows/view';
 import styles from './styles/windows10';
 import WindowFocus from '../../windowFocus';
 import Padding, { paddingPropTypes, removePaddingProps } from '../../style/padding';

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { parseDimension } from '../../../styleHelper';
 import { convertColor, hexToRgb } from '../../../color';
-import { colorContextTypes } from '../../../style/color';
+import { colorContextTypes } from '../../../style/color/windows';
 
 const styles = {
   master: {

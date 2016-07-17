@@ -5,7 +5,7 @@ import Margin, { marginPropTypes } from '../../style/margin';
 import Padding, { paddingPropTypes } from '../../style/padding';
 import Alignment, { alignmentPropTypes } from '../../style/alignment';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
-import { macOsBackgroundPropTypes } from '../../style/background';
+import { backgroundPropTypes } from '../../style/background/macOs';
 import { convertColor, darkenColor } from '../../color';
 import Text from '../../text/macOs/text';
 
@@ -16,7 +16,7 @@ import Text from '../../text/macOs/text';
 @Hidden()
 class Box extends Component {
   static propTypes = {
-    ...macOsBackgroundPropTypes,
+    ...backgroundPropTypes,
     ...dimensionPropTypes,
     ...marginPropTypes,
     ...paddingPropTypes,

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { convertColor } from '../../../color';
-import { colorContextTypes } from '../../../style/color';
+import { colorContextTypes } from '../../../style/color/windows';
 
 const styles = {
   details: {

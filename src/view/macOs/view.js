@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import Width, { widthPropTypes } from '../style/width';
-import Margin, { marginPropTypes } from '../style/margin';
-import Padding, { paddingPropTypes } from '../style/padding';
-import Alignment, { alignmentPropTypes } from '../style/alignment';
-import Background, { macOsBackgroundPropTypes } from '../style/background';
-import Hidden, { hiddenPropTypes } from '../style/hidden';
-import Dimension, { dimensionPropTypes } from '../style/dimension';
+import Width, { widthPropTypes } from '../../style/width';
+import Margin, { marginPropTypes } from '../../style/margin';
+import Padding, { paddingPropTypes } from '../../style/padding';
+import Alignment, { alignmentPropTypes } from '../../style/alignment';
+import Background, { backgroundPropTypes } from '../../style/background/macOs';
+import Hidden, { hiddenPropTypes } from '../../style/hidden';
+import Dimension, { dimensionPropTypes } from '../../style/dimension';
 
 var styles = {
   display: 'flex'
@@ -24,7 +24,7 @@ class View extends Component {
     ...widthPropTypes,
     ...marginPropTypes,
     ...paddingPropTypes,
-    ...macOsBackgroundPropTypes,
+    ...backgroundPropTypes,
     ...hiddenPropTypes,
     ...dimensionPropTypes,
     direction: PropTypes.string,

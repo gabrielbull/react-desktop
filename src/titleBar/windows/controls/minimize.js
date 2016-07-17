@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import WindowFocus from '../../../windowFocus';
-import { themeContextTypes } from '../../../style/theme';
-import { windowsBackgroundContextTypes } from '../../../style/background';
+import { themeContextTypes } from '../../../style/theme/windows';
+import { backgroundContextTypes } from '../../../style/background/windows';
 import { isDarkColor } from '../../../color';
+import Radium from 'radium'
 
 var styles = {
   button: {
@@ -44,10 +45,11 @@ var styles = {
 };
 
 @WindowFocus()
+@Radium
 class Minimize extends Component {
   static contextTypes = {
     ...themeContextTypes,
-    ...windowsBackgroundContextTypes
+    ...backgroundContextTypes
   };
 
   render() {

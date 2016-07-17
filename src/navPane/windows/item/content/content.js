@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Padding, { paddingPropTypes } from '../../../../style/padding';
 import Margin, { marginPropTypes } from '../../../../style/margin';
-import Background, { windowsBackgroundPropTypes } from '../../../../style/background';
+import Background, { backgroundPropTypes } from '../../../../style/background/windows';
 import Alignment, { alignmentPropTypes } from '../../../../style/alignment';
 import styles from '../../style/windows10';
 
@@ -13,7 +13,7 @@ class Content extends Component {
   static propTypes = {
     ...paddingPropTypes,
     ...marginPropTypes,
-    ...windowsBackgroundPropTypes,
+    ...backgroundPropTypes,
     ...alignmentPropTypes,
     content: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array])
   };

@@ -6,7 +6,7 @@ import Dimension, { dimensionPropTypes } from '../../style/dimension';
 import TextAlign, { textAlignPropTypes } from '../../style/textAlign';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Alignment, { alignmentPropTypes } from '../../style/alignment';
-import Background, { macOsBackgroundPropTypes } from '../../style/background';
+import Background, { backgroundPropTypes } from '../../style/background/macOs';
 import styles from './styles/10.11';
 
 @Background()
@@ -21,7 +21,7 @@ class Text extends Component {
   static propTypes = {
     ...paddingPropTypes,
     ...alignmentPropTypes,
-    ...macOsBackgroundPropTypes,
+    ...backgroundPropTypes,
     ...hiddenPropTypes,
     ...textAlignPropTypes,
     ...marginPropTypes,

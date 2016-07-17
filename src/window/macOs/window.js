@@ -1,10 +1,10 @@
 import React, { Component, PropTypes, Children } from 'react';
 import TitleBar from '../../titleBar/macOs/titleBar';
-import View from '../../view/view';
+import View from '../../view/macOs/view';
 import styles from './styles/10.11';
 import WindowFocus from '../../windowFocus';
 import Padding, { paddingPropTypes, removePaddingProps } from '../../style/padding';
-import Background, { macOsBackgroundPropTypes, removeBackgroundProps } from '../../style/background';
+import Background, { backgroundPropTypes, removeBackgroundProps } from '../../style/background/macOs';
 import Alignment, { alignmentPropTypes } from '../../style/alignment';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Dimension, { dimensionPropTypes }  from '../../style/dimension';
@@ -16,7 +16,7 @@ import Dimension, { dimensionPropTypes }  from '../../style/dimension';
 class Window extends Component {
   static propTypes = {
     ...paddingPropTypes,
-    ...macOsBackgroundPropTypes,
+    ...backgroundPropTypes,
     ...alignmentPropTypes,
     ...hiddenPropTypes,
     ...dimensionPropTypes,

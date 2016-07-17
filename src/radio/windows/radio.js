@@ -2,9 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { getState } from 'radium';
 import styles from './styles/windows';
 import Text from '../../text/windows/text';
-import Theme from '../../style/theme';
+import Theme from '../../style/theme/windows';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
-import { colorContextTypes } from '../../style/color';
+import { colorContextTypes } from '../../style/color/windows';
 
 @Theme()
 @Hidden()

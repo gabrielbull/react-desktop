@@ -3,9 +3,9 @@ import Text from '../../text/windows/text';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Dimension, { dimensionPropTypes } from '../../style/dimension';
 import Margin, { marginPropTypes } from '../../style/margin';
-import Background, { windowsBackgroundPropTypes, removeBackgroundProps } from '../../style/background';
-import { themeContextTypes } from '../../style/theme';
-import { colorContextTypes } from '../../style/color';
+import Background, { backgroundPropTypes, removeBackgroundProps } from '../../style/background/windows';
+import { themeContextTypes } from '../../style/theme/windows';
+import { colorContextTypes } from '../../style/color/windows';
 import styles from './styles/windows10';
 import PlaceholderStyle from '../../placeholderStyle';
 
@@ -17,7 +17,7 @@ class TextInput extends Component {
     ...hiddenPropTypes,
     ...dimensionPropTypes,
     ...marginPropTypes,
-    ...windowsBackgroundPropTypes,
+    ...backgroundPropTypes,
     label: PropTypes.string
   };
 

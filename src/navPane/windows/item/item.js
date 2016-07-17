@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Padding, { paddingPropTypes } from '../../../style/padding';
 import Margin, { marginPropTypes } from '../../../style/margin';
-import Background, { windowsBackgroundPropTypes } from '../../../style/background';
+import Background, { backgroundPropTypes } from '../../../style/background/windows';
 import Alignment, { alignmentPropTypes } from '../../../style/alignment';
 import Title from './title/title';
 import Content from './content/content';
@@ -16,7 +16,7 @@ class Item extends Component {
   static propTypes = {
     ...paddingPropTypes,
     ...marginPropTypes,
-    ...windowsBackgroundPropTypes,
+    ...backgroundPropTypes,
     ...alignmentPropTypes,
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
     icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
