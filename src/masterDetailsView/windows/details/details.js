@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { convertColor } from '../../../color';
-import { colorContextTypes } from '../../../style/color/windows';
+import { ColorContext, colorPropTypes, colorContextTypes } from '../../../style/color/windows';
+import { ThemeContext, themePropTypes } from '../../../style/theme/windows';
 
 const styles = {
   details: {
@@ -11,13 +12,21 @@ const styles = {
   }
 };
 
+@ColorContext()
+@ThemeContext()
 class Details extends Component {
-  static contextTypes = {
-    ...colorContextTypes
+  static propTypes = {
+    ...colorPropTypes,
+    ...themePropTypes,
+    background: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
   };
 
-  static propTypes = {
-    background: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
+  static childContextTypes = {
+    background: PropTypes.string
+  };
+
+  static contextTypes = {
+    ...colorContextTypes
   };
 
   getChildContext() {
@@ -28,6 +37,7 @@ class Details extends Component {
 
   render() {
     const { children, style, background, ...props } = this.props;
+    delete props.index;
     let componentStyle = { ...styles.details, ...style };
 
     if (background === true) {

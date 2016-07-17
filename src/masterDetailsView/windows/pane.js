@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { parseDimension } from '../../styleHelper';
-import { themeContextTypes } from '../../style/theme/windows';
+import { ThemeContext, themeContextTypes } from '../../style/theme/windows';
 
 const styles = {
   pane: {
@@ -16,6 +16,7 @@ const styles = {
   }
 };
 
+@ThemeContext()
 class Pane extends Component {
   static contextTypes = {
     ...themeContextTypes

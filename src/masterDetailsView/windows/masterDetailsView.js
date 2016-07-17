@@ -3,6 +3,8 @@ import Master from './master/master';
 import Details from './details/details';
 import Pane from './pane';
 import Item from './item/item';
+import { ColorContext, colorPropTypes } from '../../style/color/windows';
+import { ThemeContext, themePropTypes, themeContextTypes } from '../../style/theme/windows';
 
 const styles = {
   container: {
@@ -11,6 +13,7 @@ const styles = {
     position: 'relative',
     flex: '1',
     background: 'white',
+    WebkitUserSelect: 'none',
     userSelect: 'none',
     cursor: 'default'
   },
@@ -24,27 +27,42 @@ let warnOnce = false;
 function applyChildenClasses() {
   return function(ComposedComponent) {
     const nextItem = Item;
-    ComposedComponent.Item = function (...args) {
+    const item = function (...args) {
       if (!warnOnce) {
         warnOnce = true;
         console.warn('React Desktop: Using MasterDetailsView.Item is deprecated, import MasterDetailsViewItem instead.');
       }
       return new nextItem(...args);
     };
+
+    item.prototype.Master = item.Master = Master;
+    item.prototype.Details = item.Details = Details;
+    ComposedComponent.prototype.Item = ComposedComponent.Item = item;
     return ComposedComponent;
   }
 }
 
 @applyChildenClasses()
-class MasterDetails extends Component {
-  masters = [];
-  details = [];
-
-  maxWidth;
+@ColorContext()
+@ThemeContext()
+class MasterDetailsView extends Component {
+  static propTypes = {
+    ...colorPropTypes,
+    ...themePropTypes
+  };
 
   static childContextTypes = {
     masterDetails: PropTypes.object
   };
+
+  static contextTypes = {
+    ...themeContextTypes
+  };
+
+  masters = [];
+  details = [];
+
+  maxWidth;
 
   constructor(props, context, updater) {
     super(props, context, updater);
@@ -95,7 +113,7 @@ class MasterDetails extends Component {
     const { style, ...props } = this.props;
     let componentStyle = { ...styles.container, ...style };
 
-    if (this.state.theme === 'dark') {
+    if (this.context.theme === 'dark') {
       componentStyle = { ...componentStyle, ...styles.containerDark, ...style }
     }
 
@@ -133,4 +151,4 @@ class MasterDetails extends Component {
   }
 }
 
-export default MasterDetails;
+export default MasterDetailsView;

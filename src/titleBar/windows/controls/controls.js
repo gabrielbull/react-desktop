@@ -6,6 +6,7 @@ import Maximize from './maximize';
 var styles = {
   controls: {
     WebkitUserSelect: 'none',
+    userSelect: 'none',
     cursor: 'default',
     display: 'flex',
     height: '32px'

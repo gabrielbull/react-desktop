@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import Master from '../master/master';
 import Details from '../details/details';
+import { ColorContext, colorPropTypes } from '../../../style/color/windows';
+import { ThemeContext, themePropTypes } from '../../../style/theme/windows';
 
 const styles = {
   display: 'flex',
@@ -14,7 +16,7 @@ let warnOnceDetails = false;
 function applyChildenClasses() {
   return function(ComposedComponent) {
     const nextMaster = Master;
-    ComposedComponent.Master = function (...args) {
+    ComposedComponent.prototype.Master = ComposedComponent.Master = function (...args) {
       if (!warnOnceMaster) {
         warnOnceMaster = true;
         console.warn('React Desktop: Using MasterDetailsView.Item.Master is deprecated, import MasterDetailsViewItemMaster instead.');
@@ -22,7 +24,7 @@ function applyChildenClasses() {
       return new nextMaster(...args);
     };
     const nextDetails = Details;
-    ComposedComponent.Details = function (...args) {
+    ComposedComponent.prototype.Details = ComposedComponent.Details = function (...args) {
       if (!warnOnceDetails) {
         warnOnceDetails = true;
         console.warn('React Desktop: Using MasterDetailsView.Item.Details is deprecated, import MasterDetailsViewItemDetails instead.');
@@ -34,8 +36,12 @@ function applyChildenClasses() {
 }
 
 @applyChildenClasses()
+@ColorContext()
+@ThemeContext()
 class Item extends Component {
   static propTypes = {
+    ...colorPropTypes,
+    ...themePropTypes,
     selected: PropTypes.bool
   };
 

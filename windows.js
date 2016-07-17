@@ -3,6 +3,8 @@ export { default as Checkbox } from './src/checkbox/windows/checkbox';
 export { default as Label } from './src/label/windows/label';
 export { default as MasterDetailsView } from './src/masterDetailsView/windows/masterDetailsView';
 export { default as MasterDetailsViewItem } from './src/masterDetailsView/windows/item/item';
+export { default as MasterDetailsViewItemMaster } from './src/masterDetailsView/windows/master/master';
+export { default as MasterDetailsViewItemDetails } from './src/masterDetailsView/windows/details/details';
 export { default as NavPane } from './src/navPane/windows/navPane';
 export { default as NavPaneItem } from './src/navPane/windows/item/item';
 export { default as ProgressCircle } from './src/progressCircle/windows/progressCircle';

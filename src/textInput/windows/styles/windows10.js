@@ -1,5 +1,6 @@
 export default {
   textBox: {
+    WebkitUserSelect: 'none',
     userSelect: 'none',
     borderWidth: '2px',
     borderStyle: 'solid',

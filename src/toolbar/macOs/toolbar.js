@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 var styles = {
   toolbar: {
     WebkitUserSelect: 'none',
+    userSelect: 'none',
     cursor: 'default'
   }
 };

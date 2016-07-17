@@ -1,6 +1,7 @@
 export default {
   titleBar: {
     WebkitUserSelect: 'none',
+    userSelect: 'none',
     WebkitAppRegion: 'drag',
     cursor: 'default',
     width: '100%',
@@ -35,6 +36,7 @@ export default {
 
   title: {
     WebkitUserSelect: 'none',
+    userSelect: 'none',
     cursor: 'default',
     fontFamily: '-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
     fontSize: '13px',

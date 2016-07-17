@@ -1,6 +1,7 @@
 export default {
   button: {
     WebkitUserSelect: 'none',
+    userSelect: 'none',
     cursor: 'default',
     backgroundColor: '#ffffff',
     outline: 'none',

@@ -29,8 +29,10 @@ export default {
   },
 
   radio: {
+    WebkitUserSelect: 'none',
     userSelect: 'none',
     WebkitAppearance: 'none',
+    appearance: 'none',
     borderWidth: '2px',
     borderStyle: 'solid',
     borderColor: '#333333',

@@ -8,6 +8,7 @@ import Radium from 'radium'
 
 const styles = {
   button: {
+    WebkitUserSelect: 'none',
     userSelect: 'none',
     WebkitAppRegion: 'no-drag',
     cursor: 'default',

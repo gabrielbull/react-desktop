@@ -14,7 +14,7 @@ paneCompactedLength   | string, number | Sets the length of the pane when compac
 paneExpandedLength    | string, number | Sets the length of the pane when expanded.<br/>Default value _"200px"_
 theme                 | string         | Sets the UI theme that is used by this component and its children elements.<br/>__Property value__ _"light"_, _"dark"_
 
-## NavPane.Item
+## NavPaneItem
 
 ### Properties
 

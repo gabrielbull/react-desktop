@@ -1,6 +1,7 @@
 export default {
   wrapper: {
     WebkitUserSelect: 'none',
+    userSelect: 'none',
     cursor: 'default',
     flex: '1'
   },

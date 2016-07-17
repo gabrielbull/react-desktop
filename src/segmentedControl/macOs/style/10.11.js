@@ -1,12 +1,14 @@
 export default {
   sergmentedControl: {
     WebkitUserSelect: 'none',
+    userSelect: 'none',
     cursor: 'default',
     flex: '1'
   },
 
   tabs: {
     WebkitUserSelect: 'none',
+    userSelect: 'none',
     cursor: 'default',
     width: '100%',
     display: 'flex',
@@ -15,6 +17,7 @@ export default {
 
   tab: {
     WebkitUserSelect: 'none',
+    userSelect: 'none',
     cursor: 'default',
     background: '#ffffff',
     borderTopWidth: '1px',

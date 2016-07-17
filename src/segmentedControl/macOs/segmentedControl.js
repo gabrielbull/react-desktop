@@ -11,7 +11,7 @@ let warnOnce = false;
 function applyItem() {
   return function(ComposedComponent) {
     const nextItem = Item;
-    ComposedComponent.Item = function (...args) {
+    ComposedComponent.prototype.Item = ComposedComponent.Item = function (...args) {
       if (!warnOnce) {
         warnOnce = true;
         console.warn('React Desktop: Using SegmentedControl.Item is deprecated, import SegmentedControlItem instead.');

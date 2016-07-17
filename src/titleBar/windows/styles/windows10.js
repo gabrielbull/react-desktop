@@ -1,7 +1,9 @@
 export default {
   titleBar: {
+    WebkitUserSelect: 'none',
     userSelect: 'none',
     WebkitAppRegion: 'drag',
+    appRegion: 'drag',
     cursor: 'default',
     display: 'flex',
     alignItems: 'center',
@@ -16,6 +18,7 @@ export default {
 
   title: {
     WebkitUserSelect: 'none',
+    userSelect: 'none',
     cursor: 'default',
     paddingLeft: '12px',
     fontFamily: '"Segoe UI", "Arial"',

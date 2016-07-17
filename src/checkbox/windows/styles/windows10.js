@@ -31,7 +31,7 @@ export default {
   },
 
   checkbox: {
-    WebkitUserSelect: 'none',
+    userSelect: 'none',
     WebkitAppearance: 'none',
     borderWidth: '2px',
     borderStyle: 'solid',

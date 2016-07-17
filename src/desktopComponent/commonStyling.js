@@ -124,6 +124,7 @@ class CommonStylingComponent {
     return cloneElement(component, {
       ...props,
       style: {
+        WebkitUserSelect: 'none',
         userSelect: 'none',
         cursor: 'default',
         boxSizing: 'border-box',

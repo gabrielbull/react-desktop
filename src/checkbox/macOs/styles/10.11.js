@@ -19,8 +19,10 @@ export default {
   },
 
   checkbox: {
+    WebkitUserSelect: 'none',
     userSelect: 'none',
     WebkitAppearance: 'none',
+    appearance: 'none',
     borderWidth: '1px',
     borderStyle: 'solid',
     borderColor: '#b8b8b8',

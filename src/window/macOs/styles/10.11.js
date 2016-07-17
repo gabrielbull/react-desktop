@@ -1,10 +1,11 @@
 export default {
   window: {
     WebkitUserSelect: 'none',
+    userSelect: 'none',
     cursor: 'default',
     backgroundColor: '#ececec',
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column'
   },
 
   chrome: {

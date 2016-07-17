@@ -6,6 +6,7 @@ import Resize from './resize';
 var styles = {
   controls: {
     WebkitUserSelect: 'none',
+    userSelect: 'none',
     cursor: 'default',
     display: 'flex',
     width: '61px'

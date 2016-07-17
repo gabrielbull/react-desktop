@@ -9,6 +9,7 @@ import Hidden, { hiddenPropTypes } from '../../style/hidden';
 const componentStyle = {
   display: 'inline-block',
   WebkitUserSelect: 'none',
+  userSelect: 'none',
   cursor: 'default',
   fontFamily: '-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
   fontSize: '11px',

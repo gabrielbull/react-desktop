@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { parseDimension } from '../../../styleHelper';
 import { convertColor, hexToRgb } from '../../../color';
-import { colorContextTypes } from '../../../style/color/windows';
+import { ColorContext, colorPropTypes, colorContextTypes } from '../../../style/color/windows';
+import { ThemeContext, themePropTypes, themeContextTypes } from '../../../style/theme/windows';
+import Radium from 'radium';
 
 const styles = {
   master: {
@@ -10,6 +12,8 @@ const styles = {
     position: 'relative',
     width: '320px',
     boxSizing: 'border-box',
+    WebkitUserSelect: 'none',
+    userSelect: 'none',
     ':hover': {
       backgroundColor: 'rgba(0, 0, 0, .1)'
     },
@@ -54,8 +58,13 @@ const styles = {
   }
 };
 
+@ColorContext()
+@ThemeContext()
+@Radium
 class Master extends Component {
   static propTypes = {
+    ...colorPropTypes,
+    ...themePropTypes,
     selected: PropTypes.bool,
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     push: PropTypes.bool
@@ -63,17 +72,11 @@ class Master extends Component {
 
   static contextTypes = {
     ...colorContextTypes,
+    ...themeContextTypes,
     id: PropTypes.string,
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     push: PropTypes.bool,
     masterDetails: PropTypes.object
-  };
-
-  constructor(props, context, updater) {
-    super(props, context, updater);
-    this.state = {
-      selected: props.selected || false
-    };
   };
 
   select = () => {
@@ -81,11 +84,12 @@ class Master extends Component {
   };
 
   render() {
-    const { children, style, ...props } = this.props;
+    const { children, style, selected, push, ...props } = this.props;
+    delete props.index;
     let componentStyle = { ...styles.master, ...style };
     let spanStyle = { ...styles.masterSpan };
 
-    if (this.state.theme === 'dark') {
+    if (this.context.theme === 'dark') {
       componentStyle = { ...componentStyle, ...styles.masterDark };
       spanStyle = { ...spanStyle, ...styles.masterSpanDark };
     }
@@ -95,14 +99,14 @@ class Master extends Component {
       spanStyle.width = parseDimension(this.props.width);
     }
 
-    if (this.props.push) {
+    if (push) {
       spanStyle[':active'] = {
         ...spanStyle[':active'],
         ...styles.masterSpanWithPush[':active']
       }
     }
 
-    if (this.state.selected) {
+    if (selected) {
       const c = hexToRgb(convertColor(this.context.color));
       componentStyle = {
         ...componentStyle,

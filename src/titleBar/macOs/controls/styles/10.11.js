@@ -1,6 +1,7 @@
 export default {
   close: {
     button: {
+      WebkitUserSelect: 'none',
       userSelect: 'none',
       WebkitAppRegion: 'no-drag',
       cursor: 'default',
@@ -38,6 +39,7 @@ export default {
 
   minimize: {
     button: {
+      WebkitUserSelect: 'none',
       userSelect: 'none',
       WebkitAppRegion: 'no-drag',
       cursor: 'default',
@@ -75,6 +77,7 @@ export default {
 
   resize: {
     button: {
+      WebkitUserSelect: 'none',
       userSelect: 'none',
       WebkitAppRegion: 'no-drag',
       cursor: 'default',

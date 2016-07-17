@@ -1,6 +1,7 @@
 export default {
   pane: {
     cursor: 'default',
+    WebkitUserSelect: 'none',
     userSelect: 'none',
     display: 'flex',
     position: 'relative',

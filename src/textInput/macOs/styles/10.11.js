@@ -11,6 +11,7 @@ export default {
     position: 'relative',
     zIndex: '2',
     WebkitUserSelect: 'none',
+    userSelect: 'none',
     borderWidth: '1px',
     borderStyle: 'solid',
     borderColor: '#bebfbf',
