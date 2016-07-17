@@ -6,6 +6,8 @@ import Alignment, { alignmentPropTypes } from '../../style/alignment';
 import Background, { backgroundContextTypes } from '../../style/background/windows';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Dimension, { dimensionPropTypes } from '../../style/dimension';
+import { ColorContext } from '../../style/color/windows';
+import { ThemeContext } from '../../style/theme/windows';
 
 var styles = {
   display: 'flex'
@@ -18,6 +20,8 @@ var styles = {
 @Padding()
 @Background()
 @Hidden()
+@ColorContext()
+@ThemeContext()
 class View extends Component {
   static propTypes = {
     ...alignmentPropTypes,
@@ -37,6 +41,7 @@ class View extends Component {
 
   render() {
     let { horizontalAlignment, children, style, direction, layout, ...props } = this.props;
+
     let componentStyle = { ...styles, ...style };
 
     if (direction) {

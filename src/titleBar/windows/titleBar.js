@@ -1,13 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import Background, { backgroundPropTypes } from '../../style/background/windows';
 import { hiddenPropTypes } from '../../style/hidden';
-import { themeContextTypes } from '../../style/theme/windows';
+import { ThemeContext, themeContextTypes } from '../../style/theme/windows';
 import WindowFocus from '../../windowFocus';
 import Controls from './controls/controls';
 import styles from './styles/windows10';
 
-@Background()
+@Background((nextProps, prevProps, background) => ({ ...nextProps, hasBackground: background }))
 @WindowFocus()
+@ThemeContext()
 class TitleBar extends Component {
   static propTypes = {
     ...hiddenPropTypes,
@@ -36,7 +37,13 @@ class TitleBar extends Component {
   }
 
   render() {
-    const { children, style, controls, title, isWindowFocused, hidden, ...props } = this.props;
+    const { children, style, controls, title, isWindowFocused, hasBackground, hidden, ...props } = this.props;
+
+    delete props.isMaximized;
+    delete props.onCloseClick;
+    delete props.onMinimizeClick;
+    delete props.onMaximizeClick;
+    delete props.onRestoreDownClick;
 
     let componentStyle = { ...styles.titleBar, ...style };
     let titleStyle = styles.title;
@@ -65,7 +72,7 @@ class TitleBar extends Component {
         {this.props.title}
       </div>;
 
-    if (this.props.background) delete componentStyle.backgroundColor;
+    if (hasBackground) delete componentStyle.backgroundColor;
 
     return (
       <div

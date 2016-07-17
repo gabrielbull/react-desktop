@@ -56,6 +56,9 @@ class Maximize extends Component {
   render() {
     const { style, isWindowFocused, ...props } = this.props;
 
+    delete props.onMaximizeClick;
+    delete props.onRestoreDownClick;
+
     let svgFill = '#000000';
     if (!isWindowFocused && this.context.theme !== 'dark') {
       svgFill = 'rgba(0, 0, 0, .4)';

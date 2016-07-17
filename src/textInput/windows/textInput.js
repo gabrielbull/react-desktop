@@ -4,7 +4,7 @@ import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Dimension, { dimensionPropTypes } from '../../style/dimension';
 import Margin, { marginPropTypes } from '../../style/margin';
 import Background, { backgroundPropTypes, removeBackgroundProps } from '../../style/background/windows';
-import { themeContextTypes } from '../../style/theme/windows';
+import { ThemeContext, themeContextTypes } from '../../style/theme/windows';
 import { colorContextTypes } from '../../style/color/windows';
 import styles from './styles/windows10';
 import PlaceholderStyle from '../../placeholderStyle';
@@ -12,6 +12,7 @@ import PlaceholderStyle from '../../placeholderStyle';
 @Hidden()
 @Dimension()
 @Margin()
+@ThemeContext()
 class TextInput extends Component {
   static propTypes = {
     ...hiddenPropTypes,

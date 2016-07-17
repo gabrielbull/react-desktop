@@ -2,11 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import { getState } from 'radium';
 import styles from './styles/windows';
 import Text from '../../text/windows/text';
-import Theme from '../../style/theme/windows';
+import { ThemeContext } from '../../style/theme/windows';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import { colorContextTypes } from '../../style/color/windows';
 
-@Theme()
+@ThemeContext()
 @Hidden()
 class Radio extends Component {
   static propTypes = {

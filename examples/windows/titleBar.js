@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TitleBar, View } from 'react-desktop/windows';
+import { TitleBar } from 'react-desktop/windows';
 
 export default class extends Component {
   static defaultProps = {
@@ -18,19 +18,17 @@ export default class extends Component {
 
   render() {
     return (
-      <View width="100%" color={this.props.color}>
-        <TitleBar
-          title="My Windows Application"
-          controls
-          isMaximized={this.state.isMaximized}
-          theme={this.props.theme}
-          background
-          onCloseClick={this.close}
-          onMinimizeClick={this.minimize}
-          onMaximizeClick={this.toggleMaximize}
-          onRestoreDownClick={this.toggleMaximize}
-        />
-      </View>
+      <TitleBar
+        title="My Windows Application"
+        controls
+        isMaximized={this.state.isMaximized}
+        theme={this.props.theme}
+        background={this.props.color}
+        onCloseClick={this.close}
+        onMinimizeClick={this.minimize}
+        onMaximizeClick={this.toggleMaximize}
+        onRestoreDownClick={this.toggleMaximize}
+      />
     );
   }
 }

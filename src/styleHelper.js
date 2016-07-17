@@ -9,6 +9,30 @@ export function parseDimension(value) {
   return value;
 }
 
+export function applyDefaultProps(props, context, defaultProps) {
+  let finalProps = { ...props };
+
+  for (let prop in defaultProps) {
+    if (defaultProps.hasOwnProperty(prop)) {
+      if (!props[prop]) {
+        if (context[prop]) {
+          finalProps[prop] = context[prop];
+        } else {
+          finalProps[prop] = defaultProps[prop];
+        }
+      } else if (props[prop] && typeof props[prop] === 'boolean' && typeof defaultProps[prop] !== 'boolean') {
+        if (context.color) {
+          finalProps[prop] = context[prop];
+        } else {
+          finalProps[prop] = defaultProps[prop];
+        }
+      }
+    }
+  }
+
+  return finalProps;
+}
+
 export function hasProps(props, proptypes) {
   if (!proptypes) return false;
 
@@ -64,7 +88,11 @@ export function mapStyle(prevStyles, nextStyles, defaultStyles, styleCallback, s
   return finalStyles;
 }
 
-export default function styleHelper(options, propTypes, mapStyleCallback, mapStyleCallbacks) {
+export default function styleHelper(options, propTypes, mapStyleCallback, mapStyleCallbacks, mapProps) {
+  if (!mapProps || typeof mapProps !== 'function') {
+    mapProps = props => props;
+  }
+
   function doStyleHelper(WrappedComponent) {
     const [element, elementProps, defaultStyles] = options;
     if (isValidElement(element)) {
@@ -72,9 +100,9 @@ export default function styleHelper(options, propTypes, mapStyleCallback, mapSty
         const styles = extractProps(elementProps, propTypes)[1];
         const props = element.props ? { ...element.props } : {};
         props.style = mapStyle(props.style, styles, defaultStyles, mapStyleCallback, mapStyleCallbacks);
-        return cloneElement(element, props);
+        return cloneElement(element, mapProps(props, element.props, true));
       }
-      return element;
+      return cloneElement(element, mapProps(element.props, element.props, false));
     } else {
       let defaultStyles;
       if (options && Object.prototype.toString.call(options) === '[object Array]') {
@@ -86,9 +114,9 @@ export default function styleHelper(options, propTypes, mapStyleCallback, mapSty
             let [props, styles] = extractProps(this.props, propTypes);
             if (!props) props = {};
             props.style = mapStyle(props.style, styles, defaultStyles, mapStyleCallback, mapStyleCallbacks);
-            return <WrappedComponent {...props}/>;
+            return <WrappedComponent {...mapProps(props, this.props, true)}/>;
           }
-          return <WrappedComponent {...this.props}/>
+          return <WrappedComponent {...mapProps(this.props, this.props, false)}/>
         }
       }
     }
