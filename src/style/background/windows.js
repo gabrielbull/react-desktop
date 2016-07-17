@@ -25,9 +25,7 @@ export default function(...options) {
   return function (...args) {
     @ColorContext()
     class BackgroundComponent extends Component {
-      static contextTypes = {
-        ...colorContextTypes
-      };
+      static contextTypes = { ...colorContextTypes };
 
       render() {
         const WrappedComponent = ComposedComponent(...args);

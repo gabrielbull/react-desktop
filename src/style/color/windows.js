@@ -15,6 +15,7 @@ export function ColorContext() {
   return function (ComposedComponent) {
     return class extends Component {
       static propTypes = { ...colorPropTypes };
+      static contextTypes = { ...colorContextTypes };
       static childContextTypes = { ...colorContextTypes };
 
       getChildContext() {

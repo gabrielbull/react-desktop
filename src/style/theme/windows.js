@@ -15,6 +15,7 @@ export function ThemeContext() {
   return function (ComposedComponent) {
     return class extends Component {
       static propTypes = { ...themePropTypes };
+      static contextTypes = { ...themeContextTypes };
       static childContextTypes = { ...themeContextTypes };
 
       getChildContext() {

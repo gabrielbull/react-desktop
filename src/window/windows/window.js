@@ -7,18 +7,29 @@ import Padding, { paddingPropTypes, removePaddingProps } from '../../style/paddi
 import Alignment, { alignmentPropTypes } from '../../style/alignment';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Dimension, { dimensionPropTypes }  from '../../style/dimension';
+import { ColorContext, colorPropTypes, colorContextTypes }  from '../../style/color/windows';
+import { ThemeContext, themePropTypes, themeContextTypes }  from '../../style/theme/windows';
 
 @WindowFocus()
 @Alignment()
 @Hidden()
 @Dimension({ width: '100vw', height: '100vh' })
+@ColorContext()
+@ThemeContext()
 class Window extends Component {
   static propTypes = {
+    ...colorPropTypes,
+    ...themePropTypes,
     ...paddingPropTypes,
     ...alignmentPropTypes,
     ...hiddenPropTypes,
     ...dimensionPropTypes,
     chrome: PropTypes.bool
+  };
+
+  static contextTypes = {
+    ...colorContextTypes,
+    ...themeContextTypes
   };
 
   filterChildren() {
@@ -36,28 +47,28 @@ class Window extends Component {
   }
 
   render() {
-    let { style, chrome, ...props } = this.props;
+    let { style, chrome, isWindowFocused, ...props } = this.props;
 
     let componentStyle = { ...styles.window, ...style };
     if (chrome) {
       componentStyle = {
         ...componentStyle,
         ...styles.chrome,
-        borderColor: this.state.color
+        borderColor: this.context.color
       };
 
-      if (!this.state.windowFocused) {
+      if (!isWindowFocused) {
         componentStyle = { ...componentStyle, ...styles.unfocused }
       }
     }
 
-    if (this.state.theme === 'dark') {
+    if (this.context.theme === 'dark') {
       componentStyle = { ...componentStyle, ...styles.windowDark };
     }
 
-    if (this.state.background) {
-      componentStyle = { ...componentStyle, backgroundColor: this.state.background };
-    }
+    //if (this.state.background) {
+      //componentStyle = { ...componentStyle, backgroundColor: this.state.background };
+    //}
 
     const [titleBar, ...children] = this.filterChildren();
 
@@ -67,7 +78,6 @@ class Window extends Component {
     );
 
     props = removePaddingProps(props);
-
     return (
       <div
         style={componentStyle}
