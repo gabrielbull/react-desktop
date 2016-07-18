@@ -10,7 +10,8 @@ import { ColorContext } from '../../style/color/windows';
 import { ThemeContext } from '../../style/theme/windows';
 
 var styles = {
-  display: 'flex'
+  display: 'flex',
+  position: 'relative'
 };
 
 @Width()

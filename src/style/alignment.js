@@ -17,7 +17,7 @@ function mapAlignmentStyle(key, value, props) {
   if (allowedValues.indexOf(value) === -1) {
     console.error('Unknown value for ' + key + ': ' + value);
   } else {
-    let layout = 'vertical';
+    let layout = 'horizontal';
     if (props !== undefined && typeof props.layout !== 'undefined') {
       layout = props.layout;
     }

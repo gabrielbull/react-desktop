@@ -8,7 +8,8 @@ import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Dimension, { dimensionPropTypes } from '../../style/dimension';
 
 var styles = {
-  display: 'flex'
+  display: 'flex',
+  position: 'relative'
 };
 
 @Width()
