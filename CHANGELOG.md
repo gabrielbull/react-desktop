@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.5 (July 18th, 2016)
+
+- Fixed some issues with View alignment
+
 ## 0.2.4 (July 17th, 2016)
 
 - Removed all unknown props from components
