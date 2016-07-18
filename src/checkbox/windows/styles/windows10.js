@@ -14,6 +14,8 @@ export default {
   },
 
   text: {
+    WebkitUserSelect: 'none',
+    userSelect: 'none',
     fontFamily: '"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif',
     fontSize: '15px',
     marginTop: '1px',
@@ -31,8 +33,11 @@ export default {
   },
 
   checkbox: {
+    WebkitUserSelect: 'none',
     userSelect: 'none',
     WebkitAppearance: 'none',
+    appearance: 'none',
+    outline: 'none',
     borderWidth: '2px',
     borderStyle: 'solid',
     borderColor: 'rgba(0, 0, 0, .8)',

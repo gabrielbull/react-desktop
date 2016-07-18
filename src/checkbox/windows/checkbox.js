@@ -1,15 +1,25 @@
 import React, { Component, PropTypes } from 'react';
+import { ThemeContext, themePropTypes, themeContextTypes } from '../../style/theme/windows';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
-import { getState } from 'radium';
+import { colorContextTypes } from '../../style/color/windows';
+import Radium, { getState } from 'radium';
 import styles from './styles/windows10';
 
 @Hidden()
+@ThemeContext()
+@Radium
 class Checkbox extends Component {
   static propTypes = {
     ...hiddenPropTypes,
+    ...themePropTypes,
     color: PropTypes.string,
     label: PropTypes.string,
     onChange: PropTypes.func
+  };
+
+  static contextTypes = {
+    ...colorContextTypes,
+    ...themeContextTypes
   };
 
   constructor(props) {
@@ -19,7 +29,7 @@ class Checkbox extends Component {
     };
   }
 
-  onChange = event => {
+  handleChange = event => {
     this.setState({ checked: event.target.checked });
     if (this.props.onChange) {
       this.props.onChange(event);
@@ -32,7 +42,7 @@ class Checkbox extends Component {
     let checkedStyle = { display: 'none' };
     let textStyle = { ...styles.text };
 
-    if (this.state.theme === 'dark') {
+    if (this.context.theme === 'dark') {
       componentStyle = { ...componentStyle, ...styles.checkboxDark };
       textStyle = { ...textStyle, ...styles.textDark };
     }
@@ -41,7 +51,7 @@ class Checkbox extends Component {
       checkedStyle = styles.svg;
       componentStyle = {
         ...componentStyle,
-        ...(this.state.theme === 'dark' ? styles['checkboxDark:checked'] : styles['checkbox:checked'])
+        ...(this.context.theme === 'dark' ? styles['checkboxDark:checked'] : styles['checkbox:checked'])
       };
 
       color = color ? color : this.context.color;
@@ -55,12 +65,12 @@ class Checkbox extends Component {
     if (getState(this.state, null, ':active')) {
       componentStyle = {
         ...componentStyle,
-        ...(this.state.theme === 'dark' ? styles['checkboxDark:active'] : styles['checkbox:active'])
+        ...(this.context.theme === 'dark' ? styles['checkboxDark:active'] : styles['checkbox:active'])
       };
     } else if (getState(this.state, null, ':hover')) {
       componentStyle = {
         ...componentStyle,
-        ...(this.state.theme === 'dark' ? styles['checkboxDark:hover'] : styles['checkbox:hover'])
+        ...(this.context.theme === 'dark' ? styles['checkboxDark:hover'] : styles['checkbox:hover'])
       };
     }
 
@@ -73,7 +83,7 @@ class Checkbox extends Component {
               type="checkbox"
               {...props}
               style={componentStyle}
-              onChange={this.onChange}
+              onChange={this.handleChange}
             />
             <svg x="0px" y="0px" viewBox="0 0 6.4 6.4" style={checkedStyle}>
               <polygon fill="#fff" points="0,3.3 2.2,5.5 6.4,1.23 6.1,0.9 2.2,4.8 0.3,2.9 "/>
