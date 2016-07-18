@@ -44,7 +44,13 @@ theme               | string       | Sets the UI theme that is used by this comp
 
 ```jsx
 import React, { Component } from 'react';
-import { MasterDetailsView, Text } from 'react-desktop/windows';
+import {
+  MasterDetailsView,
+  MasterDetailsViewItem,
+  MasterDetailsViewItemMaster,
+  MasterDetailsViewItemDetails,
+  Text
+} from 'react-desktop/windows';
 
 export default class extends Component {
   static defaultProps = {
@@ -64,14 +70,14 @@ export default class extends Component {
 
   renderItem(master, details) {
     return (
-      <MasterDetailsView.Item>
-        <MasterDetailsView.Item.Master push>
+      <MasterDetailsViewItem>
+        <MasterDetailsViewItemMaster push>
           {master}
-        </MasterDetailsView.Item.Master>
-        <MasterDetailsView.Item.Details background>
+        </MasterDetailsViewItemMaster>
+        <MasterDetailsViewItemDetails background>
           <Text padding="20px" color="white">{details}</Text>
-        </MasterDetailsView.Item.Details>
-      </MasterDetailsView.Item>
+        </MasterDetailsViewItemDetails>
+      </MasterDetailsViewItem>
     );
   }
 }

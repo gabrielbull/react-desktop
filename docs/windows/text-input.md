@@ -28,7 +28,7 @@ export default class extends Component {
     theme: 'light'
   };
 
-  change = () => console.log(this.refs.input.value);
+  handleChange = e => console.log(e.target.value);
 
   render() {
     return (
@@ -39,8 +39,7 @@ export default class extends Component {
         background
         label="My Input"
         placeholder="My Input"
-        defaultValue="Hello!"
-        onChange={this.change}
+        onChange={this.handleChange}
       />
     );
   }
