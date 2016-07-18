@@ -63,7 +63,7 @@ export function extractProps(props, proptypes) {
   return [finalProps, extractedProps];
 }
 
-export function mapStyle(prevStyles, nextStyles, defaultStyles, styleCallback, styleCallbacks) {
+export function mapStyle(prevStyles, nextStyles, defaultStyles, styleCallback, stylesCallback, props) {
   let finalStyles = { ...prevStyles };
   if (defaultStyles) {
     for (let key in defaultStyles) {
@@ -76,7 +76,7 @@ export function mapStyle(prevStyles, nextStyles, defaultStyles, styleCallback, s
   for (let key in nextStyles) {
     if (nextStyles.hasOwnProperty(key)) {
       if (styleCallback) {
-        const result = styleCallback(key, nextStyles[key]);
+        const result = styleCallback(key, nextStyles[key], props);
         if (result) {
           finalStyles[result[0]] = result[1];
         }
@@ -84,11 +84,11 @@ export function mapStyle(prevStyles, nextStyles, defaultStyles, styleCallback, s
     }
   }
 
-  if (typeof styleCallbacks === 'function') return styleCallbacks(finalStyles);
+  if (typeof stylesCallback === 'function') return stylesCallback(finalStyles, props);
   return finalStyles;
 }
 
-export default function styleHelper(options, propTypes, mapStyleCallback, mapStyleCallbacks, mapProps) {
+export default function styleHelper(options, propTypes, mapStyleCallback, mapStylesCallback, mapProps) {
   if (!mapProps || typeof mapProps !== 'function') {
     mapProps = props => props;
   }
@@ -99,7 +99,7 @@ export default function styleHelper(options, propTypes, mapStyleCallback, mapSty
       if (hasProps(elementProps, propTypes)) {
         const styles = extractProps(elementProps, propTypes)[1];
         const props = element.props ? { ...element.props } : {};
-        props.style = mapStyle(props.style, styles, defaultStyles, mapStyleCallback, mapStyleCallbacks);
+        props.style = mapStyle(props.style, styles, defaultStyles, mapStyleCallback, mapStylesCallback, props);
         return cloneElement(element, mapProps(props, element.props, true));
       }
       return cloneElement(element, mapProps(element.props, element.props, false));
@@ -113,7 +113,7 @@ export default function styleHelper(options, propTypes, mapStyleCallback, mapSty
           if (hasProps(this.props, propTypes)) {
             let [props, styles] = extractProps(this.props, propTypes);
             if (!props) props = {};
-            props.style = mapStyle(props.style, styles, defaultStyles, mapStyleCallback, mapStyleCallbacks);
+            props.style = mapStyle(props.style, styles, defaultStyles, mapStyleCallback, mapStylesCallback, this.props);
             return <WrappedComponent {...mapProps(props, this.props, true)}/>;
           }
           return <WrappedComponent {...mapProps(this.props, this.props, false)}/>

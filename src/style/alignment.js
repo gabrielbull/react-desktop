@@ -12,35 +12,41 @@ export function removeAlignmentProps(props) {
   return extractProps(props, alignmentPropTypes)[0];
 }
 
-function mapAlignmentStyle(key, value) {
+function mapAlignmentStyle(key, value, props) {
   let finalKey, finalValue;
   if (allowedValues.indexOf(value) === -1) {
     console.error('Unknown value for ' + key + ': ' + value);
-  } else if (key === 'horizontalAlignment') {
-    finalKey = 'justifyContent';
-    switch (value) {
-    case 'center':
-      finalValue = 'center';
-      break;
-    case 'left':
-      finalValue = 'flex-start';
-      break;
-    case 'right':
-      finalValue = 'flex-end';
-      break;
+  } else {
+    let layout = 'vertical';
+    if (props !== undefined && typeof props.layout !== 'undefined') {
+      layout = props.layout;
     }
-  } else if (key === 'verticalAlignment') {
-    finalKey = 'alignItems';
-    switch (value) {
-    case 'center':
-      finalValue = 'center';
-      break;
-    case 'left':
-      finalValue = 'flex-start';
-      break;
-    case 'right':
-      finalValue = 'flex-end';
-      break;
+    if (key === 'horizontalAlignment' && layout === 'horizontal' || key === 'verticalAlignment' && layout === 'vertical') {
+      finalKey = 'justifyContent';
+      switch (value) {
+      case 'center':
+        finalValue = 'center';
+        break;
+      case 'left':
+        finalValue = 'flex-start';
+        break;
+      case 'right':
+        finalValue = 'flex-end';
+        break;
+      }
+    } else if (key === 'verticalAlignment' && layout === 'horizontal' || key === 'horizontalAlignment' && layout === 'vertical') {
+      finalKey = 'alignItems';
+      switch (value) {
+      case 'center':
+        finalValue = 'center';
+        break;
+      case 'left':
+        finalValue = 'flex-start';
+        break;
+      case 'right':
+        finalValue = 'flex-end';
+        break;
+      }
     }
   }
   return [finalKey, finalValue];
