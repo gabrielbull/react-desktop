@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, isValidElement, cloneElement } from 'react';
+import React, { Component, PropTypes, isValidElement } from 'react';
 import styleHelper, { extractProps } from '../../styleHelper';
 import { ColorContext, colorContextTypes } from '../../style/color/windows';
 import Radium from 'radium';

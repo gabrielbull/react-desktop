@@ -1,4 +1,4 @@
-import React, { Component, cloneElement, isValidElement } from 'react';
+import React, { Component } from 'react';
 import { Style } from 'radium';
 
 function generateUniqueId() {

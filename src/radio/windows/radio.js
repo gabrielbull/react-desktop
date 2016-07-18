@@ -4,17 +4,18 @@ import styles from './styles/windows';
 import Text from '../../text/windows/text';
 import { ThemeContext, themePropTypes, themeContextTypes } from '../../style/theme/windows';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
-import { colorContextTypes } from '../../style/color/windows';
+import { ColorContext, colorPropTypes, colorContextTypes } from '../../style/color/windows';
 import Radium from 'radium';
 
 @Hidden()
+@ColorContext()
 @ThemeContext()
 @Radium
 class Radio extends Component {
   static propTypes = {
     ...hiddenPropTypes,
+    ...colorPropTypes,
     ...themePropTypes,
-    color: PropTypes.string,
     label: PropTypes.string,
     onChange: PropTypes.func
   };

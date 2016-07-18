@@ -1,16 +1,26 @@
 import React, { Component, PropTypes } from 'react';
+import { colorPropTypes, colorContextTypes } from '../../style/color/windows';
+import { ThemeContext, themePropTypes } from '../../style/theme/windows';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
+import Radium from 'radium';
 import { darkenColor } from '../../color';
 import styles from './styles/windows10';
 
 @Hidden()
+@ThemeContext()
+@Radium
 class Button extends Component {
   static propTypes = {
     ...hiddenPropTypes,
+    ...colorPropTypes,
+    ...themePropTypes,
     type: PropTypes.string,
-    color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     push: PropTypes.bool,
     onClick: PropTypes.func
+  };
+
+  static contextTypes = {
+    ...colorContextTypes
   };
 
   render() {
@@ -19,7 +29,7 @@ class Button extends Component {
     let componentStyle = { ...styles.button, ...style };
 
     if (color) {
-      color = color === true ? this.state.color : color;
+      color = color === true ? this.context.color : color;
       styles.colorButton = {
         ...styles.colorButton,
         borderColor: color,

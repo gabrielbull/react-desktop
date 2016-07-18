@@ -1,18 +1,19 @@
 import React, { Component, PropTypes } from 'react';
+import { ColorContext, colorPropTypes, colorContextTypes } from '../../style/color/windows';
 import { ThemeContext, themePropTypes, themeContextTypes } from '../../style/theme/windows';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
-import { colorContextTypes } from '../../style/color/windows';
 import Radium, { getState } from 'radium';
 import styles from './styles/windows10';
 
 @Hidden()
+@ColorContext()
 @ThemeContext()
 @Radium
 class Checkbox extends Component {
   static propTypes = {
     ...hiddenPropTypes,
+    ...colorPropTypes,
     ...themePropTypes,
-    color: PropTypes.string,
     label: PropTypes.string,
     onChange: PropTypes.func
   };
