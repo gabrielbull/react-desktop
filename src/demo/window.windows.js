@@ -4,6 +4,7 @@ import {
   TitleBar,
   Checkbox,
   NavPane,
+  NavPaneItem,
   TextInput,
   Text,
   View,
@@ -39,7 +40,7 @@ export default class extends Component {
         <TitleBar title="My Windows Application" controls/>
 
         <NavPane>
-          <NavPane.Item
+          <NavPaneItem
             title="Welcome"
             icon={Icons.welcomeIcon}
             selected={this.state.selectedTab === 'welcome'}
@@ -69,8 +70,8 @@ export default class extends Component {
             >
               Welcome to React Desktop
             </h1>
-          </NavPane.Item>
-          <NavPane.Item
+          </NavPaneItem>
+          <NavPaneItem
             title="Forms"
             icon={Icons.formIcon}
             selected={this.state.selectedTab === 'form'}
@@ -81,26 +82,27 @@ export default class extends Component {
             background="#ffffff"
             push
           >
-            <Text color="red" hidden={!this.state.showError}>
-              There was an error submitting this form.
-            </Text>
+            <View layout="vertical">
+              <Text color="red" hidden={!this.state.showError}>
+                There was an error submitting this form.
+              </Text>
 
-            <View margin="0 0 20px 0">
-              <TextInput label="Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
-              <TextInput label="Longer Label" defaultValue="" placeholder="TextField" style={{width: '400px'}}/>
+              <View margin="0 0 20px 0" layout="vertical">
+                <TextInput label="Label" defaultValue="" placeholder="TextField" style={{ width: '400px' }}/>
+                <TextInput label="Longer Label" defaultValue="" placeholder="TextField" style={{ width: '400px' }}/>
+              </View>
+
+              <View margin="0 0 20px 0">
+                <Checkbox label="Default checked" defaultChecked/>
+              </View>
+
+              <View horizontalAlignment="right">
+                <ProgressCircle size={32} hidden={!this.state.showLoader} style={{ marginRight: '20px' }}/>
+                <Button onClick={this.submit} type="submit" color push style={{ marginRight: '8px' }}>Submit</Button>
+                <Button onClick={this.cancel}>Cancel</Button>
+              </View>
             </View>
-
-            <View margin="0 0 20px 0">
-              <Checkbox label="Default checked" defaultChecked/>
-            </View>
-
-            <View direction="row" horizontalAlignment="right">
-              <ProgressCircle size={32} hidden={!this.state.showLoader} style={{ marginRight: '20px' }}/>
-              <Button onClick={this.submit} type="submit" color push style={{ marginRight: '8px' }}>Submit</Button>
-              <Button onClick={this.cancel}>Cancel</Button>
-            </View>
-
-          </NavPane.Item>
+          </NavPaneItem>
         </NavPane>
       </Window>
     );

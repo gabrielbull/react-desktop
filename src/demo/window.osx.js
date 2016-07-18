@@ -5,6 +5,7 @@ import {
   TextInput,
   Toolbar,
   SegmentedControl,
+  SegmentedControlItem,
   ProgressCircle,
   Checkbox,
   Radio,
@@ -12,7 +13,7 @@ import {
   Button,
   Text,
   Label
-} from 'react-desktop/osx';
+} from 'react-desktop/macOs';
 
 export default class extends Component {
   constructor() {
@@ -43,12 +44,12 @@ export default class extends Component {
         </TitleBar>
 
         <SegmentedControl box>
-          <SegmentedControl.Item
+          <SegmentedControlItem
             title="Forms"
             selected={this.state.selectedTab === 'segmented'}
             onSelect={() => this.setState({ selectedTab: 'segmented' })}
           >
-            <View horizontalAlignment="center">
+            <View horizontalAlignment="center" layout="vertical">
               <Label color="red" width="300px" margin="0 0 10px 0" hidden={!this.state.showError}>
                 There was an error submitting this form.
               </Label>
@@ -61,7 +62,7 @@ export default class extends Component {
                 onChange={this.change}
               />
 
-              <View width="300px" margin="0 0 10px 0">
+              <View width="300px" margin="0 0 10px 0" layout="vertical">
                 <Radio
                   label="This is a radio button"
                   name="radio1"
@@ -73,7 +74,7 @@ export default class extends Component {
                 />
               </View>
 
-              <View width="300px">
+              <View width="300px" layout="vertical">
                 <Checkbox
                   label="This is a checkbox"
                   defaultChecked
@@ -83,7 +84,7 @@ export default class extends Component {
                 />
               </View>
 
-              <View direction="row" margin="14px 0 0 0">
+              <View margin="14px 0 0 0">
                 <Button onClick={this.cancel} style={{ marginRight: '10px' }}>
                   Cancel
                 </Button>
@@ -92,18 +93,18 @@ export default class extends Component {
                 </Button>
                 <ProgressCircle
                   hidden={!this.state.showLoader}
-                  style={{ position: 'absolute', marginLeft: '10px', marginTop: '3px' }}
+                  style={{ position: 'absolute', right: '-26px', top: '3px' }}
                 />
               </View>
             </View>
-          </SegmentedControl.Item>
-          <SegmentedControl.Item
+          </SegmentedControlItem>
+          <SegmentedControlItem
             title="Example"
             selected={this.state.selectedTab === 'example'}
             onSelect={() => this.setState({ selectedTab: 'example' })}
           >
             <Text>Hello World</Text>
-          </SegmentedControl.Item>
+          </SegmentedControlItem>
         </SegmentedControl>
       </Window>
     );
