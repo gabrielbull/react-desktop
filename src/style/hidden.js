@@ -9,10 +9,6 @@ export function removeHiddenProps(props) {
   return extractProps(props, hiddenPropTypes)[0];
 }
 
-export function getHiddenProps(props) {
-  return extractProps(props, hiddenPropTypes)[1];
-}
-
 function mapHiddenStyle(key, value) {
   return value ? ['display', 'none'] : null;
 }
