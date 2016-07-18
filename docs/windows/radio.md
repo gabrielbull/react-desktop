@@ -27,7 +27,7 @@ export default class extends Component {
 
   render() {
     return (
-      <View horizontalAlignment="center" direction="column" theme={this.props.theme}>
+      <View horizontalAlignment="center" layout="vertical" theme={this.props.theme}>
           <Radio
             color={this.props.color}
             label="Check me!"
