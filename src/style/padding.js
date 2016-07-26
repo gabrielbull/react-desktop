@@ -13,6 +13,23 @@ export function removePaddingProps(props) {
   return extractProps(props, paddingPropTypes)[0];
 }
 
+export function removeDuplicatePaddingProps(styles, props) {
+  if (props !== undefined && typeof props.style !== 'undefined') {
+    styles = { ...styles };
+    if (props.style.padding) {
+      delete styles.paddingBottom;
+      delete styles.paddingLeft;
+      delete styles.paddingRight;
+      delete styles.paddingTop;
+      return styles;
+    } else if (props.style.paddingBottom || props.style.paddingLeft || props.style.paddingRight || props.style.paddingTop) {
+      delete styles.padding;
+      return styles;
+    }
+  }
+  return styles;
+}
+
 function mapPaddingStyle(key, value) {
   return [key, parseDimension(value)];
 }

@@ -4,7 +4,6 @@ export default {
     userSelect: 'none',
     cursor: 'default',
     fontFamily: '-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
-    fontSize: '13px',
-    display: 'flex'
+    fontSize: '13px'
   }
 };
