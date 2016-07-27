@@ -1,0 +1,31 @@
+.warning {
+  border: 1px solid #ffb951;
+  background: rgba(#ffb951, .2);
+  padding: 8px 10px 8px 20px;
+  font-size: 11px;
+  color: #7a5727;
+  margin-bottom: 20px;
+
+  display: flex;
+  align-items: center;
+
+  >div {
+
+  }
+
+  >a {
+    margin-left: 10px;
+
+    svg * {
+      fill: #ffb951;
+    }
+
+    &:hover svg * {
+      fill: darken(#ffb951, 10%);
+    }
+
+    &:active svg * {
+      fill: darken(#ffb951, 20%);
+    }
+  }
+}

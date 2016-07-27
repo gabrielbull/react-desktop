@@ -6,6 +6,7 @@ import 'highlight.js/styles/paraiso-dark.css';
 import './docs.scss';
 import Example from './example/example';
 import LinksDecorator  from '../shared/linksDecorator/linksDecorator';
+import Warning from '../warning/warning';
 
 @LinksDecorator
 export default class extends Component {
@@ -88,6 +89,7 @@ export default class extends Component {
       <div ref="element" className="docs-container">
         <Nav/>
         <div className="docs">
+          <Warning/>
           <div className="issues">
             <a
               target="github"
