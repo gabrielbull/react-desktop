@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.2.6 (July 27th, 2016)
+
+- Added macOS pin component
+- Added size, padding and margin properties to macOS buttons
+- Fixed issues with text input for macOS
+- Added rounded corners and size properties to text input for macOS
+
 ## 0.2.5 (July 18th, 2016)
 
 - Fixed some issues with View alignment
