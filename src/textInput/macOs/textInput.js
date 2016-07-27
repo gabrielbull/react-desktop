@@ -1,12 +1,15 @@
-import React, { Component, PropTypes } from 'react';
-import Radium, { StyleRoot, keyframes, getState } from 'radium';
+import React, { Component, PropTypes, cloneElement } from 'react';
+import ReactDOM from 'react-dom';
+import Radium, { StyleRoot, keyframes } from 'radium';
 import styles from './styles/10.11';
 import Label from '../../label/macOs/label';
 import Hidden, { hiddenPropTypes, removeHiddenProps } from '../../style/hidden';
 import Margin, { marginPropTypes, removeMarginProps } from '../../style/margin';
 import Dimension, { dimensionPropTypes, removeDimensionProps } from '../../style/dimension';
+import FontSize, { fontSizePropTypes, removeFontSizeProps } from '../../style/fontSize';
 import PlaceholderStyle from '../../placeholderStyle';
 import mapStyles from '../../utils/mapStyles';
+import { parseDimension } from '../../styleHelper';
 
 const animation = keyframes(
   {
@@ -60,12 +63,21 @@ class TextFieldOSX extends Component {
     ...hiddenPropTypes,
     ...marginPropTypes,
     ...dimensionPropTypes,
-    label: PropTypes.string
+    ...fontSizePropTypes,
+    label: PropTypes.string,
+    rounded: PropTypes.oneOfType([PropTypes.bool, PropTypes.number, PropTypes.string]),
   };
 
   static mapStyles = {
     container: ['margin', 'width', 'height', 'display']
   };
+
+  constructor() {
+    super();
+    this.state = {
+      isFocused: false
+    };
+  }
 
   get value() {
     return this.refs.element.value;
@@ -75,15 +87,38 @@ class TextFieldOSX extends Component {
     this.refs.element.value = value;
   }
 
+  componentDidMount() {
+    const el = ReactDOM.findDOMNode(this).getElementsByTagName('INPUT')[0];
+    el.addEventListener('blur', this.handleBlur);
+    el.addEventListener('focus', this.handleFocus);
+  }
+
+  componentWillUnmount() {
+    const el = ReactDOM.findDOMNode(this).getElementsByTagName('INPUT')[0];
+    el.removeEventListener('blur', this.handleBlur);
+    el.removeEventListener('focus', this.handleFocus);
+  }
+
+  handleBlur = () => {
+    console.log('blur');
+    this.setState({ isFocused: false });
+  };
+
+  handleFocus = () => {
+    setTimeout(() => this.setState({ isFocused: true }));
+  };
+
   render() {
-    let { style, label, ...props } = this.props;
+    let { style, label, size, rounded, ...props } = this.props;
 
     let [inputStyle, containerStyle] = mapStyles(style, TextFieldOSX.mapStyles);
 
-    let componentStyle = { ...inputStyle, ...styles.textField };
+    let componentStyle = { ...styles.textField };
 
     let focusElement;
-    if (getState(this.state, 'element', ':focus')) {
+    if (this.state.isFocused) {
+      componentStyle = { ...componentStyle, ...styles.textFieldFocus };
+
       let focusElementStyle = {
         ...styles.focusElement,
         animation: 'x .25s linear forwards',
@@ -96,23 +131,38 @@ class TextFieldOSX extends Component {
 
     let labelComponent = label ? <Label margin="0 0 3px 0">{label}</Label> : null;
 
-    props = removeDimensionProps(removeMarginProps(removeHiddenProps(props)));
+    props = removeFontSizeProps(removeDimensionProps(removeMarginProps(removeHiddenProps(props))));
+
+    if (rounded && rounded === true) {
+      componentStyle.borderRadius = '3px';
+    } else if (rounded) {
+      componentStyle.borderRadius = parseDimension(rounded);
+    }
+
+    if (size && parseInt(size) !== 13) {
+      const ratio = size / 13;
+      componentStyle.lineHeight = parseDimension(size * 1.4);
+      componentStyle.paddingLeft = parseDimension(3.5 * ratio);
+      componentStyle.paddingRight = parseDimension(3.5 * ratio);
+    }
+
+    const input = FontSize(<input
+      key="element"
+      ref="element"
+      type="text"
+      style={componentStyle}
+      {...props}
+    />, this.props);
 
     return (Margin(
-      <div style={{ ...styles.container, ...containerStyle }}>
+      <div style={{ ...styles.container, ...(this.state.isFocused ? styles.containerFocus : {}), ...containerStyle }}>
         {labelComponent}
         <div style={styles.wrapper}>
           <StyleRoot>
             {focusElement}
           </StyleRoot>
           <PlaceholderStyle placeholderStyle={styles.textField[':placeholder']}>
-            <input
-              key="element"
-              ref="element"
-              type="text"
-              style={componentStyle}
-              {...props}
-            />
+            {cloneElement(input, { ...input.props, style: { ...input.props.style, ...inputStyle } })}
           </PlaceholderStyle>
         </div>
       </div>,

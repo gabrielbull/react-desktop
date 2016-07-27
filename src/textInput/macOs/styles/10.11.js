@@ -1,6 +1,11 @@
 export default {
   container: {
-    position: 'relative'
+    position: 'relative',
+    zIndex: '2'
+  },
+
+  containerFocus: {
+    zIndex: '3'
   },
 
   wrapper: {
@@ -17,7 +22,7 @@ export default {
     borderColor: '#bebfbf',
     boxShadow: 'inset 0 0 0 1px #f0f0f0',
     paddingTop: '4px',
-    paddingBottom: '1px',
+    paddingBottom: '3px',
     paddingLeft: '3.5px',
     paddingRight: '3.5px',
     lineHeight: '15px',
@@ -25,18 +30,17 @@ export default {
     fontSize: '13px',
     letterSpacing: '0.4px',
     width: '100%',
-    height: '100%',
     boxSizing: 'border-box',
-
-    ':focus': {
-      outline: 'none',
-      borderColor: '#64abda',
-      transition: 'border-color .22s ease-out'
-    },
+    outline: 'none',
 
     ':placeholder': {
       color: '#c0c0c0'
     }
+  },
+
+  textFieldFocus: {
+    borderColor: '#64abda',
+    transition: 'border-color .22s ease-out'
   },
 
   focusElement: {
