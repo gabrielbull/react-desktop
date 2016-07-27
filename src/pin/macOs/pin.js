@@ -1,9 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import TextInput from '../../textInput/macOs/textInput';
+import Hidden, { hiddenPropTypes } from '../../style/hidden';
+import Margin, { marginPropTypes } from '../../style/margin';
 
+@Hidden()
+@Margin()
 class Pin extends Component {
   static propTypes = {
+    ...hiddenPropTypes,
+    ...marginPropTypes,
     reveal: PropTypes.bool,
     length: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     onChange: PropTypes.func
@@ -28,22 +34,57 @@ class Pin extends Component {
       e.stopPropagation();
     }
     if (this.state.current !== null) {
-      const el = ReactDOM.findDOMNode(this.refs[this.state.current]).getElementsByTagName('INPUT')[0];
+      this.selectInput(this.state.current);
+    }
+  };
+
+  selectInput = (index) => {
+    if (this.refs[index]) {
+      const el = ReactDOM.findDOMNode(this.refs[index]).getElementsByTagName('INPUT')[0];
       el.focus();
     }
   };
 
+  setValue = (index, value) => {
+    if (this.refs[index]) {
+      const el = ReactDOM.findDOMNode(this.refs[index]).getElementsByTagName('INPUT')[0];
+      el.value = value;
+      const pin = [
+        ...this.state.pin.slice(0, index),
+        value,
+        ...this.state.pin.slice(index + 1)
+      ];
+      this.setState({ pin });
+      if (this.props.onChange) this.props.onChange(pin.join(''));
+    }
+  };
+
   handleChange = (e, index) => {
-    this.setState({
-      current: index === this.props.length - 1 ? null : index + 1
-    });
-    setTimeout(this.handleBlur);
+    if (e.target.value) {
+      const nextIndex = index === this.props.length - 1 ? index : index + 1;
+      const pin = [
+        ...this.state.pin.slice(0, index),
+        e.target.value,
+        ...this.state.pin.slice(index + 1)
+      ];
+      this.setState({ current: nextIndex, pin });
+      setTimeout(() => this.selectInput(nextIndex));
+      if (this.props.onChange) this.props.onChange(pin.join(''));
+    }
   };
 
   handleKeyDown = e => {
-    if (e.keyCode === 8 && !e.target.value) {
-      this.setState({ current: this.state.current - 1 });
-      setTimeout(this.handleBlur);
+    if (e.keyCode === 8) {
+      if (e.target.value) {
+        this.setValue(this.state.current, '');
+      } else {
+        const nextIndex = this.state.current - 1;
+        this.setState({ current: nextIndex });
+        setTimeout(() => {
+          this.selectInput(nextIndex);
+          this.setValue(nextIndex, '');
+        });
+      }
     }
   };
 
@@ -57,6 +98,7 @@ class Pin extends Component {
 
   render() {
     const { length, reveal, ...props } = this.props;
+    delete props.onChange;
 
     const children = [];
     for (let i = 0, len = parseInt(length); i < len; ++i) {
@@ -65,7 +107,7 @@ class Pin extends Component {
           ref={i}
           key={i}
           rounded
-          type={reveal ? 'text' : 'password'}
+          type={reveal ? 'tel' : 'password'}
           width="36px"
           maxLength="1"
           marginRight="8px"

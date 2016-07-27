@@ -100,7 +100,6 @@ class TextFieldOSX extends Component {
   }
 
   handleBlur = () => {
-    console.log('blur');
     this.setState({ isFocused: false });
   };
 
