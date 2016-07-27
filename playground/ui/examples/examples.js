@@ -1,15 +1,27 @@
 import React, { Component, PropTypes } from 'react';
 
 const styles = {
+  list: {
+    margin: '0px',
+    padding: '0px',
+    listStyle: 'none'
+  },
   title: {
+    display: 'block',
     color: 'white',
     fontFamily: 'sans-serif',
     fontSize: '18px',
     lineHeight: '1.4em',
     fontWeight: 'normal',
     margin: '20px 10px 10px',
-    padding: '0 0 10px',
+    padding: '0px 0px 10px',
     borderBottom: '1px solid rgba(255, 255, 255, .2)'
+  },
+  subtitle: {
+    fontSize: '15px',
+    borderBottom: 'none',
+    padding: '0px',
+    margin: '20px 10px 10px',
   },
   item: {
     display: 'block',
@@ -45,7 +57,6 @@ class Examples extends Component {
     }
   };
 
-
   click = (category, key) => {
     key = (category + '/' + key).replace(/^\//, '');
     this.context.playground.showExample(key);
@@ -55,39 +66,55 @@ class Examples extends Component {
   render() {
     return (
       <div>
-        {this.renderCategories(this.props.list)}
+        {this.renderItem(this.props.list)}
       </div>
     );
   }
 
-  renderCategories(categories) {
-    let children = [];
-    for (let prop in categories) {
-      if (categories.hasOwnProperty(prop)) {
-        children.push(<h1 key={prop} style={styles.title}>{prop}</h1>);
-        children.push(...this.renderItems(prop, categories[prop]));
+  renderItem(item, path = '', subtitle = false) {
+    let finalChildren = [];
+    for (let prop in item) {
+      if (item.hasOwnProperty(prop)) {
+        if (typeof item[prop] === 'object') {
+          let children = this.renderItem(item[prop], path ? path + '/' + prop : prop, true);
+          if (children[0] && children[0].type === 'ul') {
+            finalChildren.push(
+              <ul style={styles.list}  key={prop}>
+                <li style={styles.list}>
+                  <span style={{ ...styles.title, ...(subtitle ? styles.subtitle : {}) }}>{prop}</span>
+                  {children}
+                </li>
+              </ul>
+            );
+          } else {
+            finalChildren.push(
+              <ul style={styles.list}  key={prop}>
+                <li style={styles.list}>
+                  <span style={{ ...styles.title, ...(subtitle ? styles.subtitle : {}) }}>{prop}</span>
+                  <ul style={styles.list}>
+                    {children}
+                  </ul>
+                </li>
+              </ul>
+            );
+          }
+        } else {
+          const selected = path + '/' + prop === this.state.selected;
+          finalChildren.push(
+            <li style={styles.list} key={prop}>
+              <a
+                key={path + '/' + prop}
+                style={{ ...styles.item, ...(selected ? styles.itemSelect : {}) }}
+                onClick={() => this.click(path, prop)}
+              >
+                {prop}
+              </a>
+            </li>
+          );
+        }
       }
     }
-    return children;
-  }
-
-  renderItems(category, items) {
-    let children = [];
-    for (let prop in items) {
-      if (items.hasOwnProperty(prop)) {
-        const selected = category + '/' + prop === this.state.selected;
-        children.push(
-          <a
-            key={category + '/' + prop}
-            style={{ ...styles.item, ...(selected ? styles.itemSelect : {}) }}
-            onClick={() => this.click(category, prop)}
-          >
-            {prop}
-          </a>
-        );
-      }
-    }
-    return children;
+    return finalChildren;
   }
 }
 

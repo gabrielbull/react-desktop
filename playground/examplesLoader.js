@@ -21,7 +21,7 @@ function scanDir(dir) {
     }
   }
   return returnValue;
-};
+}
 
 module.exports = function(source) {
   var dirname = path.join(__dirname, '..');
