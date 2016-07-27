@@ -4,7 +4,9 @@ import TextInput from '../../textInput/macOs/textInput';
 
 class Pin extends Component {
   static propTypes = {
+    reveal: PropTypes.bool,
     length: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    onChange: PropTypes.func
   };
 
   constructor(props, ...args) {
@@ -25,16 +27,24 @@ class Pin extends Component {
       e.preventDefault();
       e.stopPropagation();
     }
-    const el = ReactDOM.findDOMNode(this.refs[this.state.current]).getElementsByTagName('INPUT')[0];
-    el.focus();
+    if (this.state.current !== null) {
+      const el = ReactDOM.findDOMNode(this.refs[this.state.current]).getElementsByTagName('INPUT')[0];
+      el.focus();
+    }
   };
 
   handleChange = (e, index) => {
     this.setState({
-      current: index + 1
+      current: index === this.props.length - 1 ? null : index + 1
     });
     setTimeout(this.handleBlur);
-    console.log(e.target.value, index);
+  };
+
+  handleKeyDown = e => {
+    if (e.keyCode === 8 && !e.target.value) {
+      this.setState({ current: this.state.current - 1 });
+      setTimeout(this.handleBlur);
+    }
   };
 
   handleKeyPress = e => {
@@ -46,7 +56,7 @@ class Pin extends Component {
   };
 
   render() {
-    const { length } = this.props;
+    const { length, reveal, ...props } = this.props;
 
     const children = [];
     for (let i = 0, len = parseInt(length); i < len; ++i) {
@@ -55,12 +65,13 @@ class Pin extends Component {
           ref={i}
           key={i}
           rounded
-          type="password"
+          type={reveal ? 'text' : 'password'}
           width="36px"
           maxLength="1"
           marginRight="8px"
           onChange={e => this.handleChange(e, i)}
           onBlur={e => this.handleBlur(e, i)}
+          onKeyDown={this.handleKeyDown}
           onKeyPress={this.handleKeyPress}
           style={{
             fontSize: '32px',
@@ -70,6 +81,7 @@ class Pin extends Component {
             paddingBottom: '4px',
             color: '#464646'
           }}
+          {...props}
         />
       );
     }
