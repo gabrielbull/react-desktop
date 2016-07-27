@@ -2,7 +2,7 @@
 
 **react-desktop** is a JavaScript library built on top of [Facebook's React](https://facebook.github.io/react/) library, 
 which aims to bring a native desktop experience to the web, featuring many macOS Sierra and Windows 10 components. 
-**react-desktop** works perfectly with [node-webkit](http://nwjs.io) and [Electron.js](http://electron.atom.io), but 
+**react-desktop** works perfectly with [NW.js](http://nwjs.io) and [Electron.js](http://electron.atom.io), but 
 can be used in any JavaScript powered project!
 
 ## Table of Contents
@@ -44,7 +44,7 @@ can be used in any JavaScript powered project!
 <!---
 4. Advanced Usage
  * [Electron.js](/docs/advanced-usage/electron-js.md)
- * [node-webkit](/docs/advanced-usage/node-webkit.md)
+ * [NW.js](/docs/advanced-usage/nw-js.md)
 5. [Testing](/docs/testing.md)
 6. [Frequently Asked Questions](/docs/faq.md)
 -->
