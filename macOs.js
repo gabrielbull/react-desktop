@@ -3,6 +3,7 @@ export { default as Button } from './src/button/macOs/button';
 export { default as Checkbox } from './src/checkbox/macOs/checkbox';
 export { default as Label } from './src/label/macOs/label';
 export { default as Link } from './src/link/macOs/link';
+export { default as Pin } from './src/pin/macOs/pin';
 export { default as ProgressCircle } from './src/progressCircle/macOs/progressCircle';
 export { default as Radio } from './src/radio/macOs/radio';
 export { default as SegmentedControl } from './src/segmentedControl/macOs/segmentedControl';
