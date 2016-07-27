@@ -72,6 +72,7 @@ export default class extends Component {
     let ExampleContent;
     try {
       let name = this.props.params.splat.replace(/-./g, match => match.substr(1).toUpperCase());
+      name = name.replace(/\//, '/components/');
       ExampleContent = require('../../examples/' + name);
       ExampleContent = ExampleContent.default;
     } catch (err) {
