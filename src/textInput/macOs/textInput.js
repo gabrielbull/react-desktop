@@ -145,13 +145,16 @@ class TextFieldOSX extends Component {
       componentStyle.paddingRight = parseDimension(3.5 * ratio);
     }
 
-    const input = FontSize(<input
-      key="element"
-      ref="element"
-      type="text"
-      style={componentStyle}
-      {...props}
-    />, this.props);
+    const input = FontSize(
+      <input
+        key="element"
+        ref="element"
+        type="text"
+        style={componentStyle}
+        {...props}
+      />,
+      this.props
+    );
 
     return (Margin(
       <div style={{ ...styles.container, ...(this.state.isFocused ? styles.containerFocus : {}), ...containerStyle }}>
