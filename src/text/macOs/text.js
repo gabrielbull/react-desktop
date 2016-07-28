@@ -27,7 +27,8 @@ class Text extends Component {
     ...marginPropTypes,
     ...fontSizePropTypes,
     ...dimensionPropTypes,
-    color: PropTypes.string
+    color: PropTypes.string,
+    bold: PropTypes.oneOfType([PropTypes.bool, PropTypes.number, PropTypes.string]),
   };
 
   static defaultProps = {
@@ -35,10 +36,17 @@ class Text extends Component {
   };
 
   render() {
-    const { color, children, style, ...props } = this.props;
+    const { color, children, style, bold, ...props } = this.props;
+
+    let componentStyle = { ...styles.text, color };
+    if (bold && bold === true) {
+      componentStyle = { ...componentStyle, fontWeight: 'bold' };
+    } else if (bold) {
+      componentStyle = { ...componentStyle, fontWeight: bold };
+    }
 
     return (
-      <div style={{ ...styles.text, color, ...style }} {...props}>
+      <div style={{ ...componentStyle, ...style }} {...props}>
         {children}
       </div>
     );
