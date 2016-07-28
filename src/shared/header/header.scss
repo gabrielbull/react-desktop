@@ -1,13 +1,33 @@
+#header {
+  width: 100vw;
+  flex: 0;
+  background: #31363d;
+}
+
 header {
+  max-width: 1200px;
+  margin: 0 auto;
   width: 100%;
-  background: #192436;
-  padding: 10px 100px;
+  padding: 20px 100px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
 
   &>a {
     flex-grow: 0;
+
+    svg {
+      width: 260px;
+      height: 58px;
+    }
+
+    &:hover {
+      svg {
+        * {
+          fill: white;
+        }
+      }
+    }
   }
 
   nav {
@@ -24,6 +44,7 @@ header {
       list-style: none;
       display: flex;
       align-items: center;
+      justify-content: flex-end;
 
       li {
         margin: 0;
@@ -31,11 +52,12 @@ header {
 
         a {
           display: block;
-          padding: 0 12px;
+          margin: 0 12px;
           color: white;
-          font-weight: 300;
           text-decoration: none;
-          line-height: 40px;
+          line-height: 24px;
+          font-size: 16px;
+          font-weight: 200;
 
           &.github {
             display: flex;
