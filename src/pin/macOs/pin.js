@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import TextInput from '../../textInput/macOs/textInput';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
-import Margin, { marginPropTypes } from '../../style/margin';
+import Margin, { marginPropTypes, removeMarginProps } from '../../style/margin';
 
 @Hidden()
 @Margin()
@@ -97,7 +97,7 @@ class Pin extends Component {
   };
 
   render() {
-    const { length, reveal, ...props } = this.props;
+    const { length, reveal, style, ...props } = this.props;
     delete props.onChange;
 
     const children = [];
@@ -123,13 +123,13 @@ class Pin extends Component {
             paddingBottom: '4px',
             color: '#464646'
           }}
-          {...props}
+          {...removeMarginProps(props)}
         />
       );
     }
 
     return (
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: 'flex', ...style }}>
         {children}
       </div>
     );
