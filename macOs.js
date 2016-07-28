@@ -1,6 +1,7 @@
 export { default as Box } from './src/box/macOs/box';
 export { default as Button } from './src/button/macOs/button';
 export { default as Checkbox } from './src/checkbox/macOs/checkbox';
+export { default as Dialog } from './src/dialog/macOs/dialog';
 export { default as Label } from './src/label/macOs/label';
 export { default as Link } from './src/link/macOs/link';
 export { default as Pin } from './src/pin/macOs/pin';
