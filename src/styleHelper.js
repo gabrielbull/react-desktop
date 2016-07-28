@@ -96,10 +96,10 @@ export default function styleHelper(options, propTypes, mapStyleCallback, mapSty
   function doStyleHelper(WrappedComponent) {
     const [element, elementProps, defaultStyles] = options;
     if (isValidElement(element)) {
-      if (hasProps(elementProps, propTypes)) {
+      if (hasProps(elementProps, propTypes) || hasProps(defaultStyles, propTypes)) {
         const styles = extractProps(elementProps, propTypes)[1];
         const props = element.props ? { ...element.props } : {};
-        props.style = mapStyle(props.style, styles, defaultStyles, mapStyleCallback, mapStylesCallback, props);
+        props.style = mapStyle(props.style, styles, defaultStyles, mapStyleCallback, mapStylesCallback, elementProps);
         return cloneElement(element, mapProps(props, element.props, true));
       }
       return cloneElement(element, mapProps(element.props, element.props, false));
@@ -110,7 +110,7 @@ export default function styleHelper(options, propTypes, mapStyleCallback, mapSty
       }
       return class extends Component {
         render() {
-          if (hasProps(this.props, propTypes)) {
+          if (hasProps(this.props, propTypes) || hasProps(defaultStyles, propTypes)) {
             let [props, styles] = extractProps(this.props, propTypes);
             if (!props) props = {};
             props.style = mapStyle(props.style, styles, defaultStyles, mapStyleCallback, mapStylesCallback, this.props);
