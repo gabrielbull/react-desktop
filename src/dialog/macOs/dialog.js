@@ -2,50 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Margin, { marginPropTypes } from '../../style/margin';
 import Alignment, { alignmentPropTypes, removeAlignmentProps } from '../../style/alignment';
 import Text from '../../text/macOs/text';
-
-const styles = {
-  container: {
-    MozUserSelect: 'none',
-    WebkitUserSelect: 'none',
-    MsUserSelect: 'none',
-    userSelect: 'none',
-    WebkitUserDrag: 'none',
-    userDrag: 'none',
-    WebkitTouchCallout: 'none',
-    display: 'flex'
-  },
-  icon: {
-    width: '67px',
-    marginRight: '20px',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  contentContainer: {
-    flex: 1
-  },
-  title: {
-    marginBottom: '5px'
-  },
-  message: {
-    marginBottom: '16px'
-  },
-  content: {
-    display: 'flex',
-    flexDirection: 'column', // row | row-reverse | column | column-reverse
-    flexWrap: 'nowrap', // nowrap | wrap | wrap-reverse
-    justifyContent: 'flex-start', // flex-start | flex-end | center | space-between | space-around
-    alignItems: 'flex-start', // flex-start | flex-end | center | space-between | space-around | stretch
-    alignContent: 'flex-start', // flex-start | flex-end | center | space-between | space-around | stretch
-    marginBottom: '16px'
-  },
-  buttons: {
-    display: 'flex',
-    justifyContent: 'flex-end'
-  },
-  buttonContainer: {
-    marginLeft: '14px'
-  }
-};
+import styles from './style/10.11';
 
 @Margin({ marginTop: '17px', marginBottom: '19px', marginLeft: '20px', marginRight: '20px' })
 class Dialog extends Component {
