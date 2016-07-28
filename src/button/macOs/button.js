@@ -21,15 +21,38 @@ class Button extends Component {
     ...marginPropTypes,
     type: PropTypes.string,
     color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    onEnter: PropTypes.func,
+    disabled: PropTypes.bool
+  };
+
+  componentDidMount() {
+    if (window && this.props.onEnter) {
+      window.addEventListener('keyup', this.handleKeyUp);
+    }
+  }
+
+  componentWillUnmount() {
+    if (window && this.props.onEnter) {
+      window.removeEventListener('keyup', this.handleKeyUp);
+    }
+  }
+
+  handleKeyUp = e => {
+    if (e.keyCode === 13) {
+      if (this.props.onEnter && !this.props.disabled) this.props.onEnter(e);
+    }
   };
 
   render() {
-    let { style, type, children, color, onClick, isWindowFocused, ...props } = this.props;
+    let { style, type, children, color, onClick, isWindowFocused, disabled, ...props } = this.props;
+    delete props.onEnter;
 
     let componentStyle = { ...styles.button };
-    if (color === 'blue' && isWindowFocused) {
+    if (!disabled && color === 'blue' && isWindowFocused) {
       componentStyle = { ...componentStyle, ...styles.blue };
+    } else if (disabled) {
+      componentStyle = { ...componentStyle, opacity: '.5' };
     }
 
     componentStyle = { ...componentStyle, ...style };
@@ -40,6 +63,7 @@ class Button extends Component {
         type={type || 'button'}
         onClick={onClick}
         style={removeDuplicatePaddingProps(componentStyle, this.props)}
+        disabled={disabled}
         {...props}
       >
         {children}
