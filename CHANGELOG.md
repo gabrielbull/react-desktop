@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.2.7 (July 28th, 2016)
+
+- Added macOS dialog component
+- Added bold property to macOS text
+- Added onEnter and disabled properties to macOS button
+- Fixed issues with margin on pin component for macOS
+
 ## 0.2.6 (July 27th, 2016)
 
 - Added macOS pin component

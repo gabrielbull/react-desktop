@@ -13,6 +13,7 @@ can be used in any JavaScript powered project!
   * [Box](/docs/mac-os/box.md)
   * [Button](/docs/mac-os/button.md)
   * [Checkbox](/docs/mac-os/checkbox.md)
+  * [Dialog](/docs/mac-os/dialog.md)
   * [Label](/docs/mac-os/label.md)
   * [Link](/docs/mac-os/link.md)
   * [Pin](/docs/mac-os/pin.md)
