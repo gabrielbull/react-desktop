@@ -10,11 +10,17 @@ var styles = {
     cursor: 'default',
     display: 'flex',
     width: '61px'
+  },
+
+  inset: {
+    marginLeft: '5px',
+    marginTop: '12px'
   }
 };
 
 class Controls extends Component {
   static propTypes = {
+    inset: PropTypes.bool,
     isFullscreen: PropTypes.bool,
     onCloseClick: PropTypes.func,
     onMinimizeClick: PropTypes.func,
@@ -32,7 +38,7 @@ class Controls extends Component {
   render() {
     return (
       <div
-        style={styles.controls}
+        style={{ ...styles.controls, ...(this.props.inset ? styles.inset : {}) }}
         onMouseEnter={() => this.setState({ isOver: true })}
         onMouseLeave={() => this.setState({ isOver: false })}
       >

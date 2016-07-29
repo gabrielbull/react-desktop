@@ -8,7 +8,7 @@ export default {
     boxSizing: 'border-box',
     display: 'flex',
     alignItems: 'center',
-    height: '22px',
+    minHeight: '22px',
     backgroundImage: '-webkit-linear-gradient(top, #ededed 0, #ededed 1px, #e7e7e7 2px, #d1d1d1 100%)',
     borderBottomWidth: '1px',
     borderBottomStyle: 'solid',
@@ -19,19 +19,12 @@ export default {
     borderTopLeftRadius: '5px',
     borderTopRightRadius: '5px',
     paddingLeft: '3px',
-    paddingRight: '3px',
-    overflow: 'hidden'
+    paddingRight: '3px'
   },
 
   unfocusedTitleBar: {
     backgroundImage: '-webkit-linear-gradient(top, #fafafa 0px, #f6f6f6 2px, #f6f6f6 100%)',
     borderBottomColor: '#d1d1d1'
-  },
-
-  toolbar: {
-    height: '38px',
-    paddingLeft: '8px',
-    paddingRight: '8px'
   },
 
   title: {
@@ -48,6 +41,10 @@ export default {
     lineHeight: '22px',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis'
+  },
+
+  titleInset: {
+    paddingRight: '5px'
   },
 
   unfocusedTitle: {

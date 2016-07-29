@@ -7,6 +7,7 @@ import WindowFocus from '../../windowFocus';
 class TitleBar extends Component {
   static propTypes = {
     title: PropTypes.string,
+    inset: PropTypes.bool,
     controls: PropTypes.bool,
     transparent: PropTypes.bool,
     isFullscreen: PropTypes.bool,
@@ -52,6 +53,7 @@ class TitleBar extends Component {
   render() {
     let {
       children,
+      inset,
       controls,
       title,
       transparent,
@@ -66,18 +68,19 @@ class TitleBar extends Component {
     delete props.onResizeClick;
 
     let componentStyle = { ...styles.titleBar };
-    if (children) {
-      componentStyle = { ...componentStyle, ...styles.toolbar };
-    }
 
     let titleStyle = styles.title;
+
+    if (inset) {
+      titleStyle = { ...titleStyle, ...styles.titleInset };
+    }
 
     if (!isWindowFocused) {
       componentStyle = { ...componentStyle, ...styles.unfocusedTitleBar };
       titleStyle = { ...titleStyle, ...styles.unfocusedTitle }
     }
 
-    controls = !controls || <Controls ref="controls" {...this.props}/>;
+    controls = !controls || <Controls ref="controls" inset={inset} {...this.props}/>;
     title = !title || (
         <div ref="title" style={titleStyle}>
           {title}
