@@ -13,8 +13,7 @@ var styles = {
   },
 
   inset: {
-    marginLeft: '5px',
-    marginTop: '12px'
+    marginLeft: '5px'
   }
 };
 

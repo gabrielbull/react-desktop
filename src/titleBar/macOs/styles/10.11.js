@@ -33,12 +33,11 @@ export default {
     cursor: 'default',
     fontFamily: '-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
     fontSize: '13px',
-    letterSpacing: '0.5px',
+    letterSpacing: '0px',
     color: '#4d4d4d',
     flexGrow: '1',
     flexShrink: '1',
     textAlign: 'center',
-    lineHeight: '22px',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis'
   },

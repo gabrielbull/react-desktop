@@ -4,13 +4,17 @@
 
 ### Properties
 
-Property            | Type         | Description
-:------------------ | :-----------:| :----------
-box                 | bool         | Sets whether the item is in a box or not.
-height              | number       | Sets the height of a component.
-hidden              | bool         | Sets the visibility of a component.
-margin              | string       | Sets the outer margin of a component.<br/>__E.G.__ _"30px 20px"_
-width               | number       | Sets the width of a component.
+Property            | Type           | Description
+:------------------ | :-------------:| :----------
+box                 | bool           | Sets whether the item is in a box or not.
+height              | number         | Sets the height of a component.
+hidden              | bool           | Sets the visibility of a component.
+margin              | string, number | Sets the outer margin of a component.<br/>__E.G.__ _"30px 20px"_
+marginBottom        | string, number | Sets the outer margin bottom of a component.
+marginLeft          | string, number | Sets the outer margin left of a component.
+marginRight         | string, number | Sets the outer margin right of a component.
+marginTop           | string, number | Sets the outer margin top of a component.
+width               | number         | Sets the width of a component.
 
 ## SegmentedControlItem
 

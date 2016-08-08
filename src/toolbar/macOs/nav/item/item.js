@@ -26,13 +26,14 @@ const styles = {
 
 class Item extends Component {
   static propTypes = {
-    name: PropTypes.string,
-    icon: PropTypes.element,
-    selected: PropTypes.bool
+    titel: PropTypes.string,
+    icon: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
+    selected: PropTypes.bool,
+    onClick: PropTypes.func
   };
 
   render() {
-    const { name, icon, style, selected, ...props } = this.props;
+    const { title, icon, style, selected, ...props } = this.props;
 
     return (
       <div className={'_reactDesktop-Toolbar-Nav-Item-SVG' + (selected ? ' _selected' : '')}>
@@ -43,7 +44,7 @@ class Item extends Component {
           <div style={styles.iconContainer}>
             {icon}
           </div>
-          <Text size="11" color="#1e1c1e">{name}</Text>
+          <Text size="11" color="#1e1c1e">{title}</Text>
         </a>
       </div>
     );

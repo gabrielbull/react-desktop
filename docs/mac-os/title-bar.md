@@ -5,6 +5,7 @@
 Property            | Type         | Description
 :------------------ | :-----------:| :----------
 controls            | bool         | Sets the visibility of the controls of the title bar.
+inset               | bool         | Sets the controls of the title bar state to be inset.
 isFullscreen        | bool         | Sets the title bar state to fullscreen.
 onCloseClick        | function     | Callback function of the close button.
 onMaximizeClick     | function     | Callback function of the maximize button

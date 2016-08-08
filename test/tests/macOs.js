@@ -3,14 +3,20 @@ import {
   Box,
   Button,
   Checkbox,
+  Dialog,
   Label,
   Link,
+  Pin,
   ProgressCircle,
+  Radio,
   SegmentedControl,
+  SegmentedControlItem,
   Text,
   TextInput,
   TitleBar,
   Toolbar,
+  ToolbarNav,
+  ToolbarNavItem,
   View,
   Window
 } from '../../macOs';
@@ -20,14 +26,20 @@ describe('OSX', () => {
     expect(Box).to.exist;
     expect(Button).to.exist;
     expect(Checkbox).to.exist;
+    expect(Dialog).to.exist;
     expect(Label).to.exist;
     expect(Link).to.exist;
+    expect(Pin).to.exist;
     expect(ProgressCircle).to.exist;
+    expect(Radio).to.exist;
     expect(SegmentedControl).to.exist;
+    expect(SegmentedControlItem).to.exist;
     expect(Text).to.exist;
     expect(TextInput).to.exist;
     expect(TitleBar).to.exist;
     expect(Toolbar).to.exist;
+    expect(ToolbarNav).to.exist;
+    expect(ToolbarNavItem).to.exist;
     expect(View).to.exist;
     expect(Window).to.exist;
   });
