@@ -25,4 +25,4 @@ Everyone is welcome to contribute and add more components/documentation whilst f
 
 ## Documentation
 
-Guides on installation, components and advanced usage are found in the [documentation](/docs/README.md).
+Guides on installation, components and advanced usage are found in the [documentation](http://reactdesktop.js.org).

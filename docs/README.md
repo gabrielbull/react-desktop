@@ -24,6 +24,7 @@ can be used in any JavaScript powered project!
   * [Text Input](/docs/mac-os/text-input.md)
   * [Title Bar](/docs/mac-os/title-bar.md)
   * [Toolbar](/docs/mac-os/toolbar.md)
+  * [Toolbar Nav](/docs/mac-os/toolbar-nav.md)
   * [View](/docs/mac-os/view.md)
   * [Window](/docs/mac-os/window.md)
 3. Windows 10

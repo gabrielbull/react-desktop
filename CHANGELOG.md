@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.8 (August 8th, 2016)
+
+- Added macOS toolbar nav component
+- Added inset property to macOS title bar component
+- Added dimension and alignment properties to macOS toolbar component
+
 ## 0.2.7 (July 28th, 2016)
 
 - Added macOS dialog component
