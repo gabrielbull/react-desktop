@@ -1,18 +1,20 @@
 import React, { Component, PropTypes } from 'react';
 import { Style } from 'radium';
+import Dimension, { dimensionPropTypes } from '../../../style/dimension';
 
 const styles = {
   nav: {
     display: 'flex',
-    flexDirection: 'row', // row | row-reverse | column | column-reverse
-    flexWrap: 'nowrap', // nowrap | wrap | wrap-reverse
-    justifyContent: 'flex-start', // flex-start | flex-end | center | space-between | space-around
-    alignItems: 'flex-start', // flex-start | flex-end | center | space-between | space-around | stretch
-    alignContent: 'flex-start' // flex-start | flex-end | center | space-between | space-around | stretch
+    alignItems: 'center'
   }
 };
 
+@Dimension({ height: '54px' })
 class Nav extends Component {
+  static propTypes = {
+    ...dimensionPropTypes
+  };
+
   render() {
     const { children, style, ...props } = this.props;
 
@@ -28,6 +30,19 @@ class Nav extends Component {
             'a:active svg *': {
               fill: '#1e1c1e',
               fillOpacity: '.9'
+            }
+          }}
+        />
+        <Style
+          scopeSelector="._reactDesktop-Toolbar-Nav-Item-SVG._selected"
+          rules={{
+            'a svg *': {
+              fill: '#007bfa',
+              fillOpacity: '1'
+            },
+            'a:active svg *': {
+              fill: '#003dd6',
+              fillOpacity: '1'
             }
           }}
         />

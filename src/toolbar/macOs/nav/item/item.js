@@ -28,19 +28,14 @@ class Item extends Component {
   static propTypes = {
     name: PropTypes.string,
     icon: PropTypes.element,
+    selected: PropTypes.bool
   };
 
-  isSvg(icon) {
-    return icon.type === 'svg';
-  }
-
   render() {
-    const { name, icon, style, ...props } = this.props;
-
-    this.isSvg(icon);
+    const { name, icon, style, selected, ...props } = this.props;
 
     return (
-      <div className="_reactDesktop-Toolbar-Nav-Item-SVG">
+      <div className={'_reactDesktop-Toolbar-Nav-Item-SVG' + (selected ? ' _selected' : '')}>
         <a
           style={{ ...styles.container, ...style }}
           {...props}
