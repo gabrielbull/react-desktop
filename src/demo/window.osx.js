@@ -39,9 +39,7 @@ export default class extends Component {
   render() {
     return (
       <Window chrome width="800px" height="600px">
-        <TitleBar title="My Mac OS Application" controls>
-          <Toolbar/>
-        </TitleBar>
+        <TitleBar title="My Mac OS Application" controls/>
 
         <SegmentedControl box>
           <SegmentedControlItem

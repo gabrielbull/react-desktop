@@ -12,6 +12,7 @@ import {
   Button
 } from 'react-desktop/windows';
 import * as Icons from './windows/assets/icons';
+import picture from './picture.jpg';
 
 export default class extends Component {
   constructor() {
@@ -50,7 +51,7 @@ export default class extends Component {
             push
             style={{
              height: '500px',
-             backgroundImage: 'url(/picture.jpg)',
+             backgroundImage: 'url(' + picture + ')',
              backgroundSize: 'cover'
            }}
           >

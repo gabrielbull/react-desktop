@@ -17,15 +17,15 @@
     margin-left: 10px;
 
     svg * {
-      fill: #ffb951;
+      fill: #7a5727;
     }
 
     &:hover svg * {
-      fill: darken(#ffb951, 10%);
+      fill: darken(#7a5727, 10%);
     }
 
     &:active svg * {
-      fill: darken(#ffb951, 20%);
+      fill: darken(#7a5727, 20%);
     }
   }
 }

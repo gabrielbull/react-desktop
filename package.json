@@ -2,12 +2,12 @@
   "private": true,
   "dependencies": {
     "bourbon": "^4.2.7",
-    "highlight.js": "^9.5.0",
+    "highlight.js": "^9.6.0",
     "history": "^3.0.0",
     "react": "^15.3.0",
     "react-addons-css-transition-group": "^15.3.0",
     "react-addons-transition-group": "^15.3.0",
-    "react-desktop": "^0.2.8",
+    "react-desktop": "^0.2.10",
     "react-dom": "^15.3.0",
     "react-router": "^2.6.1"
   },

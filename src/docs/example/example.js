@@ -4,8 +4,9 @@ import './example.scss';
 class Example extends Component {
   constructor() {
     super();
-
+    const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
     this.state = {
+      hidden: !isChrome,
       expanded: localStorage['demo-expanded'] ? true : false
     };
   }
@@ -17,6 +18,8 @@ class Example extends Component {
 
   render() {
     let children;
+    if (this.state.hidden) return null;
+
     if (this.state.expanded) {
       children = (
         <div className="container">
