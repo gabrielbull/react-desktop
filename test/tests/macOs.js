@@ -9,6 +9,7 @@ import {
   Pin,
   ProgressCircle,
   Radio,
+  SearchField,
   SegmentedControl,
   SegmentedControlItem,
   Text,
@@ -32,6 +33,7 @@ describe('OSX', () => {
     expect(Pin).to.exist;
     expect(ProgressCircle).to.exist;
     expect(Radio).to.exist;
+    expect(SearchField).to.exist;
     expect(SegmentedControl).to.exist;
     expect(SegmentedControlItem).to.exist;
     expect(Text).to.exist;

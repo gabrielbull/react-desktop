@@ -11,10 +11,10 @@ export default class extends Component {
           <SearchField
             placeholder="Search"
             defaultValue=""
+            onChange={this.handleChange}
           />
         </Toolbar>
       </TitleBar>
     );
   }
 }
-//            onChange={this.handleChange}

@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.2.9 (August 11th, 2016)
+
+- Added macOS search field component
+- Added centerPlaceholder, focusRing, icon and onEnter properties to the macOS text input component
+
 ## 0.2.8 (August 8th, 2016)
 
 - Added macOS toolbar nav component

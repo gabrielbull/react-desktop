@@ -19,6 +19,7 @@ can be used in any JavaScript powered project!
   * [Pin](/docs/mac-os/pin.md)
   * [Progress Circle](/docs/mac-os/progress-circle.md)
   * [Radio](/docs/mac-os/radio.md)
+  * [Search Field](/docs/mac-os/search-field.md)
   * [Segmented Control](/docs/mac-os/segmented-control.md)
   * [Text](/docs/mac-os/text.md)
   * [Text Input](/docs/mac-os/text-input.md)

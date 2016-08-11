@@ -60,6 +60,8 @@ class SearchInput extends Component {
         this.setState({ showCancel: false });
       }
     }
+
+    if (typeof this.props.onChange === 'function') this.props.onChange(e);
   };
 
   handleKeyDown = e => {
