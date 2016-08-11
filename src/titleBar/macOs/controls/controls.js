@@ -37,7 +37,7 @@ class Controls extends Component {
   render() {
     return (
       <div
-        style={{ ...styles.controls, ...(this.props.inset ? styles.inset : {}) }}
+        style={{ ...styles.controls }}
         onMouseEnter={() => this.setState({ isOver: true })}
         onMouseLeave={() => this.setState({ isOver: false })}
       >

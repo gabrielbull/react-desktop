@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Dimension, { dimensionPropTypes } from '../../style/dimension';
 import Alignment, { alignmentPropTypes } from '../../style/alignment';
 
@@ -20,6 +20,16 @@ class Toolbar extends Component {
     ...alignmentPropTypes,
     ...dimensionPropTypes
   };
+
+  static childContextTypes = {
+    titlebarChild: PropTypes.bool
+  };
+
+  getChildContext() {
+    return {
+      titlebarChild: true
+    };
+  }
 
   render() {
     const { style, ...props } = this.props;

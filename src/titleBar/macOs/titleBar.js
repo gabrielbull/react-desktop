@@ -2,10 +2,13 @@ import React, { Component, PropTypes } from 'react';
 import Controls from './controls/controls';
 import styles from './styles/10.11';
 import WindowFocus from '../../windowFocus';
+import Dimension, { dimensionPropTypes } from '../../style/dimension';
 
+@Dimension({ width: '100%' })
 @WindowFocus()
 class TitleBar extends Component {
   static propTypes = {
+    ...dimensionPropTypes,
     title: PropTypes.string,
     inset: PropTypes.bool,
     controls: PropTypes.bool,
@@ -16,6 +19,16 @@ class TitleBar extends Component {
     onMaximizeClick: PropTypes.func,
     onResizeClick: PropTypes.func
   };
+
+  static childContextTypes = {
+    titlebarChild: PropTypes.bool
+  };
+
+  getChildContext() {
+    return {
+      titlebarChild: true
+    };
+  }
 
   componentDidMount() {
     window.addEventListener('resize', this.resize);
@@ -58,6 +71,7 @@ class TitleBar extends Component {
       title,
       transparent,
       isWindowFocused,
+      style,
       ...props
     } = this.props;
 
@@ -72,7 +86,7 @@ class TitleBar extends Component {
     let titleStyle = styles.title;
 
     if (inset) {
-      titleStyle = { ...titleStyle, ...styles.titleInset };
+      componentStyle = { ...componentStyle, ...styles.titleBarInset };
     }
 
     if (!isWindowFocused) {
@@ -102,7 +116,7 @@ class TitleBar extends Component {
     return (
       <div
         ref="element"
-        style={componentStyle}
+        style={{ ...componentStyle, ...style }}
         {...props}
       >
         {controls}

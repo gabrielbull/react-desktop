@@ -7,6 +7,7 @@ export { default as Link } from './src/link/macOs/link';
 export { default as Pin } from './src/pin/macOs/pin';
 export { default as ProgressCircle } from './src/progressCircle/macOs/progressCircle';
 export { default as Radio } from './src/radio/macOs/radio';
+export { default as SearchField } from './src/searchField/macOs/searchField';
 export { default as SegmentedControl } from './src/segmentedControl/macOs/segmentedControl';
 export { default as SegmentedControlItem } from './src/segmentedControl/macOs/item/item';
 export { default as Text } from './src/text/macOs/text';

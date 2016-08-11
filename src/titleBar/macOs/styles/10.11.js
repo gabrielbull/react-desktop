@@ -22,6 +22,11 @@ export default {
     paddingRight: '3px'
   },
 
+  titleBarInset: {
+    paddingLeft: '8px',
+    paddingRight: '8px'
+  },
+
   unfocusedTitleBar: {
     backgroundImage: '-webkit-linear-gradient(top, #fafafa 0px, #f6f6f6 2px, #f6f6f6 100%)',
     borderBottomColor: '#d1d1d1'
@@ -40,10 +45,6 @@ export default {
     textAlign: 'center',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis'
-  },
-
-  titleInset: {
-    paddingRight: '5px'
   },
 
   unfocusedTitle: {
