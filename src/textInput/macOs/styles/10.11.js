@@ -42,7 +42,10 @@ export default {
   },
 
   textFieldFocus: {
-    borderColor: '#64abda',
+    borderTopColor: '#64abda',
+    borderLeftColor: '#64abda',
+    borderRightColor: '#64abda',
+    borderBottomColor: '#64abda',
     transition: 'border-color .22s ease-out'
   },
 

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.10 (August 11th, 2016)
+
+- Quick fix for the macOS text input component border issue
+
 ## 0.2.9 (August 11th, 2016)
 
 - Added macOS search field component
