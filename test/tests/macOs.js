@@ -6,6 +6,13 @@ import {
   Dialog,
   Label,
   Link,
+  ListView,
+  ListViewFooter,
+  ListViewHeader,
+  ListViewRow,
+  ListViewSection,
+  ListViewSectionHeader,
+  ListViewSeparator,
   Pin,
   ProgressCircle,
   Radio,
@@ -30,6 +37,13 @@ describe('OSX', () => {
     expect(Dialog).to.exist;
     expect(Label).to.exist;
     expect(Link).to.exist;
+    expect(ListView).to.exist;
+    expect(ListViewFooter).to.exist;
+    expect(ListViewHeader).to.exist;
+    expect(ListViewRow).to.exist;
+    expect(ListViewSection).to.exist;
+    expect(ListViewSectionHeader).to.exist;
+    expect(ListViewSeparator).to.exist;
     expect(Pin).to.exist;
     expect(ProgressCircle).to.exist;
     expect(Radio).to.exist;
