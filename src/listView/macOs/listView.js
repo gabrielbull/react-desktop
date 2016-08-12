@@ -1,4 +1,5 @@
-import React, { Component, Children } from 'react';
+import React, { Component, Children, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import styles from './style/10.11';
 import Background, { backgroundPropTypes } from '../../style/background/macOs';
 import Dimension, { dimensionPropTypes } from '../../style/dimension';
@@ -8,6 +9,7 @@ import Padding, { paddingPropTypes } from '../../style/padding';
 import Header from './header/header';
 import Footer from './footer/footer';
 import Row from './row/row';
+import rubberBandEffect from 'rubber-band-effect';
 
 @Background()
 @Dimension()
@@ -21,7 +23,18 @@ class ListView extends Component {
     ...hiddenPropTypes,
     ...marginPropTypes,
     ...paddingPropTypes,
+    disableRubberBand: PropTypes.bool
   };
+
+  static defaultProps = {
+    disableRubberBand: false
+  };
+
+  componentDidMount() {
+    if (!this.props.disableRubberBand) {
+      rubberBandEffect(ReactDOM.findDOMNode(this.refs.scrollable));
+    }
+  }
 
   mapChildren(children) {
     let hasDirectRows = false;
@@ -44,13 +57,16 @@ class ListView extends Component {
 
   render() {
     const { children, style, ...props } = this.props;
+    delete props.disableRubberBand;
 
     const { header, items, footer } = this.mapChildren(children);
 
     return (
       <section style={{ ...styles.container, ...style }} {...props}>
         {header}
-        {items}
+        <div ref="scrollable" style={{ ...styles.scrollable }}>
+          {items}
+        </div>
         {footer}
       </section>
     );

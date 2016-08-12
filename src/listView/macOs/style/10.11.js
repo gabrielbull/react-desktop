@@ -1,7 +1,13 @@
 export default {
   container: {
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column'
+  },
+
+  scrollable: {
     overflow: 'scroll',
-    position: 'relative'
+    width: '100%'
   },
 
   list: {

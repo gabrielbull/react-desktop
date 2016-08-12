@@ -26,7 +26,8 @@
     "url": "https://github.com/gabrielbull/react-desktop.git"
   },
   "dependencies": {
-    "radium": "^0.18.1"
+    "radium": "^0.18.1",
+    "rubber-band-effect": "^0.1.1"
   },
   "peerDependencies": {
     "react": "^15.0.0",

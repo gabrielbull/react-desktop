@@ -3,5 +3,7 @@ export default {
     WebkitUserSelect: 'none',
     userSelect: 'none',
     cursor: 'default',
+    display: 'flex',
+    position: 'relative'
   }
 };
