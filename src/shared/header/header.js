@@ -14,7 +14,7 @@ export default class extends Component {
 
   render() {
     return (
-      <header>
+      <header className="main-header">
         <a href="/">
           <Logo width="200px" height="40px"/>
         </a>
