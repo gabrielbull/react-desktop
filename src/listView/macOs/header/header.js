@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import Background, { backgroundPropTypes } from '../../../style/background/macOs';
 import Dimension, { dimensionPropTypes } from '../../../style/dimension';
 import Padding, { paddingPropTypes } from '../../../style/padding';
