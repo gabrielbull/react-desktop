@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.11 (August 12th, 2016)
+
+- Added macOS list view component
+
 ## 0.2.10 (August 11th, 2016)
 
 - Quick fix for the macOS text input component border issue

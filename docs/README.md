@@ -16,6 +16,7 @@ can be used in any JavaScript powered project!
   * [Dialog](/docs/mac-os/dialog.md)
   * [Label](/docs/mac-os/label.md)
   * [Link](/docs/mac-os/link.md)
+  * [List View](/docs/mac-os/list-view.md)
   * [Pin](/docs/mac-os/pin.md)
   * [Progress Circle](/docs/mac-os/progress-circle.md)
   * [Radio](/docs/mac-os/radio.md)
