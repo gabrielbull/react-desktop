@@ -46,9 +46,9 @@ class Text extends Component {
     }
 
     return (
-      <div style={{ ...componentStyle, ...style }} {...props}>
+      <span style={{ ...componentStyle, ...style }} {...props}>
         {children}
-      </div>
+      </span>
     );
 
   }

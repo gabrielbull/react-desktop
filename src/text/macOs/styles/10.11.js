@@ -1,5 +1,6 @@
 export default {
   text: {
+    display: 'block',
     WebkitUserSelect: 'none',
     userSelect: 'none',
     cursor: 'default',
