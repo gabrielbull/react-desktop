@@ -5,7 +5,8 @@ export default {
     cursor: 'default',
     backgroundColor: '#ececec',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    boxSizing: 'border-box'
   },
 
   chrome: {

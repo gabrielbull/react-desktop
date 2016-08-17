@@ -6,7 +6,8 @@ export default {
     backgroundColor: '#ffffff',
     display: 'flex',
     flexDirection: 'column',
-    padding: 'none'
+    padding: 'none',
+    boxSizing: 'border-box'
   },
 
   windowDark: {

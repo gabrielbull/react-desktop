@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.2.12 (August 17th, 2016)
+
+- Fixed some styling issues with the list view
+- Fixed some styling issues with the windows
+
 ## 0.2.11 (August 12th, 2016)
 
 - Added macOS list view component
