@@ -30,10 +30,8 @@ export default {
     },
 
     icon: {
-      width: '6px',
-      height: '6px',
-      marginTop: '2px',
-      marginLeft: '2px'
+      width: '10px',
+      height: '10px'
     }
   },
 
@@ -68,10 +66,8 @@ export default {
     },
 
     icon: {
-      width: '8px',
-      height: '2px',
-      marginTop: '4px',
-      marginLeft: '1px'
+      width: '10px',
+      height: '10px'
     }
   },
 
@@ -106,10 +102,8 @@ export default {
     },
 
     icon: {
-      width: '6px',
-      height: '6px',
-      marginTop: '2px',
-      marginLeft: '2px'
+      width: '10px',
+      height: '10px'
     }
   }
 };
