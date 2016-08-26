@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.13 (August 25th, 2016)
+
+- Improve macOS title bar control icons
+
 ## 0.2.12 (August 17th, 2016)
 
 - Fixed some styling issues with the list view
