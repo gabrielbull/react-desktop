@@ -41,7 +41,12 @@ class Resize extends Component {
 
     let icon;
     if (this.props.isFullscreen) {
-      icon = (
+      icon = window && window.devicePixelRatio > 1.5 ? (
+        <svg x="0px" y="0px" width="10px" height="10px" viewBox="0 0 20 20" style={iconStyle}>
+          <path fill="#006400" d="M8.7,10H1l9,8.8v-7.5C9.3,11.2,8.7,10.7,8.7,10z"/>
+          <path fill="#006400" d="M11.3,10H19l-9-8.8v7.5C10.7,8.8,11.3,9.3,11.3,10z"/>
+        </svg>
+      ) : (
         <svg x="0px" y="0px" width="10px" height="10px" viewBox="0 0 10 10" style={iconStyle}>
           <path fill="#006400" d="M5,10c0,0 0,-2.744 0,-4.167c0,-0.221 -0.088,-0.433 -0.244,-0.589c-0.156,-0.156 -0.368,-0.244 -0.589,-0.244c-1.423,0 -4.167,0 -4.167,0l5,5Z" />
           <path fill="#006400" d="M5,0c0,0 0,2.744 0,4.167c0,0.221 0.088,0.433 0.244,0.589c0.156,0.156 0.368,0.244 0.589,0.244c1.423,0 4.167,0 4.167,0l-5,-5Z" />
@@ -49,7 +54,11 @@ class Resize extends Component {
       );
     } else if (this.state.altKey) {
       onClick = onMaximizeClick;
-      icon = (
+      icon = window && window.devicePixelRatio > 1.5 ? (
+        <svg x="0px" y="0px" width="10px" height="10px" viewBox="0 0 20 20" style={iconStyle}>
+          <polygon fill="#006400" points="17.5,9 11,9 11,2.5 9,2.5 9,9 2.5,9 2.5,11 9,11 9,17.5 11,17.5 11,11 17.5,11 "/>
+        </svg>
+      ) : (
         <svg x="0px" y="0px" width="10px" height="10px" viewBox="0 0 10 10" style={iconStyle}>
           <path
             fill="#006400"
@@ -58,7 +67,12 @@ class Resize extends Component {
         </svg>
       );
     } else {
-      icon = (
+      icon = window && window.devicePixelRatio > 1.5 ? (
+        <svg x="0px" y="0px" width="10px" height="10px" viewBox="0 0 20 20" style={iconStyle}>
+          <path fill="#006400" d="M5.3,16H13L4,7v7.7C4.6,14.7,5.3,15.4,5.3,16z"/>
+          <path fill="#006400" d="M14.7,4H7l9,9V5.3C15.4,5.3,14.7,4.6,14.7,4z"/>
+        </svg>
+      ) : (
         <svg x="0px" y="0px" width="10px" height="10px" viewBox="0 0 10 10" style={iconStyle}>
           <path fill="#006400" d="M2,3c0,0 0,2.744 0,4.167c0,0.221 0.088,0.433 0.244,0.589c0.156,0.156 0.368,0.244 0.589,0.244c1.423,0 4.167,0 4.167,0l-5,-5Z" />
           <path fill="#006400" d="M8,7c0,0 0,-2.744 0,-4.167c0,-0.221 -0.088,-0.433 -0.244,-0.589c-0.156,-0.156 -0.368,-0.244 -0.589,-0.244c-1.423,0 -4.167,0 -4.167,0l5,5Z" />
