@@ -71,7 +71,7 @@ class TextInput extends Component {
 
     if (label) {
       return (
-        <div {...props}>
+        <div>
           <Text style={{ marginBottom: '5px' }}>
             {label}
           </Text>

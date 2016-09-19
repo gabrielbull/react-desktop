@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.14 (September 19th, 2016)
+
+- Fixed duplicate onChange events on the windows textInput
+
 ## 0.2.13 (August 25th, 2016)
 
 - Improve macOS title bar control icons
