@@ -33,8 +33,7 @@ class Close extends Component {
       >
         {window && window.devicePixelRatio > 1.5 ? (
           <svg x="0px" y="0px" width="10px" height="10px" viewBox="0 0 20 20" style={iconStyle}>
-            <polygon fill="#4d0000" points="15.9,5.2 14.8,4.1 10,8.9 5.2,4.1 4.1,5.2 8.9,10 4.1,14.8 5.2,15.9 10,11.1 14.8,15.9 15.9,14.8
-	11.1,10 "/>
+            <polygon fill="#4d0000" points="15.9,5.2 14.8,4.1 10,8.9 5.2,4.1 4.1,5.2 8.9,10 4.1,14.8 5.2,15.9 10,11.1 14.8,15.9 15.9,14.8 11.1,10 "/>
           </svg>
         ) : (
           <svg x="0px" y="0px" width="10px" height="10px" viewBox="0 0 10 10" style={iconStyle}>
