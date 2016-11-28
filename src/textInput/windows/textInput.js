@@ -23,7 +23,8 @@ class TextInput extends Component {
     ...dimensionPropTypes,
     ...marginPropTypes,
     ...backgroundPropTypes,
-    label: PropTypes.string
+    label: PropTypes.string,
+    password: PropTypes.bool
   };
 
   static contextTypes = {
@@ -44,7 +45,7 @@ class TextInput extends Component {
   }
 
   render() {
-    let { label, style, ...props } = this.props;
+    let { label, style, password, ...props } = this.props;
     let componentStyle = { ...styles.textBox, ...style };
 
     if (this.context.theme === 'dark') {
@@ -60,7 +61,7 @@ class TextInput extends Component {
         {Background(
           <input
             ref="element"
-            type="text"
+            type={`${password ? 'password' : 'text'}`}
             style={componentStyle}
             {...props}
           />,

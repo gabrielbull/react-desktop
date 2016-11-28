@@ -6,12 +6,19 @@ export default class extends Component {
 
   render() {
     return (
-      <TextInput
-        label="My Input"
-        placeholder="My Input"
-        defaultValue=""
-        onChange={this.handleChange}
-      />
+      <div>
+        <TextInput
+          label="My Input"
+          placeholder="My Input"
+          defaultValue=""
+          onChange={this.handleChange}
+        />
+        <TextInput
+          label="My Password"
+          password
+          onChange={this.handleChange}
+        />
+      </div>
     );
   }
 }

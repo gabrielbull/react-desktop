@@ -29,7 +29,8 @@ class TextFieldOSX extends Component {
     onEnter: PropTypes.func,
     centerPlaceholder: PropTypes.bool,
     icon: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
-    placeholder: PropTypes.string
+    placeholder: PropTypes.string,
+    password: PropTypes.bool
   };
 
   static defaultProps = {
@@ -135,7 +136,7 @@ class TextFieldOSX extends Component {
   };
 
   render() {
-    let { style, label, size, rounded, focusRing, placeholder, centerPlaceholder, icon, ...props } = this.props;
+    let { style, label, size, rounded, focusRing, placeholder, centerPlaceholder, icon, password, ...props } = this.props;
     delete props.onEnter;
 
     let [inputStyle, containerStyle] = mapStyles(style, TextFieldOSX.mapStyles);
@@ -177,8 +178,11 @@ class TextFieldOSX extends Component {
       <input
         key="element"
         ref="element"
-        type="text"
+        type={`${password ? 'password' : 'text'}`}
         style={componentStyle}
+        // If we're centering the place holder, we don't want to set the `placeholder`
+        // property. Otherwise we'll end up with two placeholders.
+        placeholder={!centerPlaceholder ? placeholder : undefined}
         {...props}
       />,
       this.props
