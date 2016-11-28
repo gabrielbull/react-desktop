@@ -11,26 +11,15 @@ export default class extends Component {
 
   render() {
     return (
-      <div>
-        <TextInput
-          ref="input"
-          theme={this.props.theme}
-          color={this.props.color}
-          background
-          label="My Input"
-          placeholder="My Input"
-          onChange={this.handleChange}
-        />
-        <TextInput
-          ref="input"
-          theme={this.props.theme}
-          color={this.props.color}
-          background
-          label="My Password"
-          password
-          onChange={this.handleChange}
-        />
-      </div>
+      <TextInput
+        ref="input"
+        theme={this.props.theme}
+        color={this.props.color}
+        background
+        label="My Input"
+        placeholder="My Input"
+        onChange={this.handleChange}
+      />
     );
   }
 }
