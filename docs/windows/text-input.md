@@ -15,6 +15,7 @@ placeholder         | function     | Adds a placeholder to the input.
 theme               | string       | Sets the UI theme that is used by this component and its children elements.<br/>__Property value__ _"light"_, _"dark"_
 value               | string       | Sets the value of the input.
 width               | number       | Sets the width of a component.
+password            | bool         | Sets the input type to password.
 
 ### Examples
 
