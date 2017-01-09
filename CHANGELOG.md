@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.2.17 (January 9th, 2017)
+
+- Fixed issue with windows window background color
+- Added ref value for input elements
+- CheckBoxes and Radios now changes style when window is unfocused
+- Can now import components based on OS from 'react-desktop'
+
 ## 0.2.16 (January 9th, 2017)
 
 - Custom styles for Windows text field's label
