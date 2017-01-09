@@ -6,8 +6,10 @@ import Text from '../../text/macOs/text';
 import Circle from './circle';
 import Radium from 'radium';
 import ValueRef from '../../ValueRef';
+import WindowFocus from '../../windowFocus';
 
 @ValueRef()
+@WindowFocus()
 @Hidden()
 @Radium
 class Radio extends Component {
@@ -20,7 +22,8 @@ class Radio extends Component {
   constructor(props) {
     super();
     this.state = {
-      checked: props.defaultChecked === true
+      checked: props.defaultChecked === true,
+      transition: true
     };
   }
 
@@ -30,6 +33,18 @@ class Radio extends Component {
 
   componentWillUnmount() {
     document.removeEventListener('change', this.onSiblingChange);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isWindowFocused !== this.props.isWindowFocused) {
+      this.setState({ transition: false });
+    }
+  }
+
+  componentDidUpdate() {
+    if (!this.state.transition) {
+      setTimeout(() => this.setState({ transition: true }), 0);
+    }
   }
 
   onSiblingChange = () => {
@@ -46,16 +61,28 @@ class Radio extends Component {
   };
 
   render() {
-    let { style, label, ...props } = this.props;
+    let { style, label, isWindowFocused, ...props } = this.props;
+    const { transition } = this.state;
     let componentStyle = { ...styles.radio, ...style };
     let labelStyle = styles.label;
+    let circleColor = '#FFFFFF';
     let shadowColor = '#0050a5';
 
     if (this.state.checked) {
-      componentStyle = {
-        ...componentStyle,
-        ...styles['radio:checked']
-      };
+      if (isWindowFocused) {
+        componentStyle = {
+          ...componentStyle,
+          ...styles['radio:checked']
+        };
+        if (!transition) componentStyle.transition = 'none';
+      } else {
+        componentStyle = {
+          ...componentStyle,
+          ...styles['radio:checked:unfocused']
+        };
+        circleColor = '#404040';
+        shadowColor = '#FFFFFF';
+      }
     }
 
     if (getState(this.state, null, ':active')) {
@@ -84,7 +111,7 @@ class Radio extends Component {
               style={componentStyle}
               onChange={this.handleChange}
             />
-            <Circle show={this.state.checked} shadowColor={shadowColor}/>
+            <Circle show={this.state.checked} color={circleColor} shadowColor={shadowColor}/>
           </div>
           <Text style={{ display: 'inline' }}>
             {label}

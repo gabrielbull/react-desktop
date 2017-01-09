@@ -6,10 +6,16 @@ import styles from './styles/10.11';
 class Circle extends Component {
   static propTypes = {
     show: PropTypes.bool,
+    color: PropTypes.string,
     shadowColor: PropTypes.string
   };
 
+  static defaultProps = {
+    color: '#FFFFFF'
+  };
+
   render() {
+    const { color, shadowColor } = this.props;
     let style = { ...styles.checkmark };
     style.opacity = '0';
     style.transform = 'scale(2)';
@@ -23,10 +29,10 @@ class Circle extends Component {
     return (
       <div style={style}>
         <svg viewBox="0 0 285 285" style={styles.svg}>
-          <circle fill="white" cx="142.5" cy="142.5" r="142.5"/>
+          <circle fill={color} cx="142.5" cy="142.5" r="142.5"/>
         </svg>
         <svg viewBox="0 0 285 285" style={styles.svgShadow}>
-          <circle fill={this.props.shadowColor} cx="142.5" cy="142.5" r="142.5"/>
+          <circle fill={shadowColor} cx="142.5" cy="142.5" r="142.5"/>
         </svg>
       </div>
     );

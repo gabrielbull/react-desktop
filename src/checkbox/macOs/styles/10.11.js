@@ -52,6 +52,13 @@ export default {
     transition: 'all 0.4s'
   },
 
+  'checkbox:checked:unfocused': {
+    backgroundColor: '#ffffff',
+    boxShadow: 'none',
+    borderColor: '#b8b8b8',
+    transition: 'none'
+  },
+
   'checkbox:checked:active': {
     backgroundColor: '#0080f6',
     borderColor: '#006adc',

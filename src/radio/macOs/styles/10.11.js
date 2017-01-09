@@ -52,6 +52,13 @@ export default {
     transition: 'all 0s'
   },
 
+  'radio:checked:unfocused': {
+    backgroundColor: '#FFFFFF',
+    boxShadow: 'none',
+    borderColor: '#b8b8b8',
+    transition: 'none'
+  },
+
   'radio:checked:active': {
     backgroundColor: '#0080f6',
     borderColor: '#006adc',
