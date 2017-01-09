@@ -47,7 +47,7 @@ class Window extends Component {
   }
 
   render() {
-    let { style, chrome, isWindowFocused, ...props } = this.props;
+    let { style, background, chrome, isWindowFocused, ...props } = this.props;
 
     let componentStyle = { ...styles.window, ...style };
     if (chrome) {
@@ -66,9 +66,9 @@ class Window extends Component {
       componentStyle = { ...componentStyle, ...styles.windowDark };
     }
 
-    //if (this.state.background) {
-      //componentStyle = { ...componentStyle, backgroundColor: this.state.background };
-    //}
+    if (background) {
+      componentStyle = { ...componentStyle, backgroundColor: background };
+    }
 
     const [titleBar, ...children] = this.filterChildren();
 
