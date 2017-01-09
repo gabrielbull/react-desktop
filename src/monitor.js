@@ -1,5 +1,7 @@
-window.addEventListener('focus', windowFocus);
-window.addEventListener('blur', windowBlur);
+if (typeof window !== 'undefined') {
+  window.addEventListener('focus', windowFocus);
+  window.addEventListener('blur', windowBlur);
+}
 
 let isWindowFocused = true;
 
