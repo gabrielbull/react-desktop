@@ -6,7 +6,9 @@ import { ThemeContext, themePropTypes, themeContextTypes } from '../../style/the
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import { ColorContext, colorPropTypes, colorContextTypes } from '../../style/color/windows';
 import Radium from 'radium';
+import ValueRef from '../../ValueRef';
 
+@ValueRef()
 @Hidden()
 @ColorContext()
 @ThemeContext()

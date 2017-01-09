@@ -4,7 +4,9 @@ import Radium, { getState } from 'radium';
 import styles from './styles/10.11';
 import Checkmark from './checkmark';
 import Text from '../../text/macOs/text';
+import ValueRef from '../../ValueRef';
 
+@ValueRef()
 @Hidden()
 @Radium
 class Checkbox extends Component {

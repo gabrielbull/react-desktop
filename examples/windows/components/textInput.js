@@ -12,7 +12,6 @@ export default class extends Component {
   render() {
     return (
       <TextInput
-        ref="input"
         theme={this.props.theme}
         color={this.props.color}
         background

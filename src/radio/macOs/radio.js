@@ -5,7 +5,9 @@ import styles from './styles/10.11';
 import Text from '../../text/macOs/text';
 import Circle from './circle';
 import Radium from 'radium';
+import ValueRef from '../../ValueRef';
 
+@ValueRef()
 @Hidden()
 @Radium
 class Radio extends Component {

@@ -3,6 +3,7 @@ import Text from '../../text/windows/text';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Dimension, { dimensionPropTypes } from '../../style/dimension';
 import Margin, { marginPropTypes } from '../../style/margin';
+import ValueRef from '../../ValueRef';
 import Background, { backgroundPropTypes, removeBackgroundProps } from '../../style/background/windows';
 import { ThemeContext, themePropTypes, themeContextTypes } from '../../style/theme/windows';
 import { ColorContext, colorContextTypes } from '../../style/color/windows';
@@ -10,6 +11,7 @@ import styles from './styles/windows10';
 import PlaceholderStyle from '../../placeholderStyle';
 import Radium from 'radium';
 
+@ValueRef()
 @Hidden()
 @Dimension()
 @Margin()
@@ -38,14 +40,6 @@ class TextInput extends Component {
     return this.context.theme === 'dark' ? styles[':placeholderDarkTheme'] : styles[':placeholder'];
   }
 
-  get value() {
-    return this.refs.element.value;
-  }
-
-  set value(value) {
-    this.refs.element.value = value;
-  }
-
   render() {
     let { label, labelColor, labelStyle, style, password, ...props } = this.props;
     let componentStyle = { ...styles.textBox, ...style };
@@ -66,7 +60,6 @@ class TextInput extends Component {
       <PlaceholderStyle placeholderStyle={this.placeholderStyle}>
         {Background(
           <input
-            ref="element"
             type={`${password ? 'password' : 'text'}`}
             style={componentStyle}
             {...props}

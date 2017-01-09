@@ -13,7 +13,9 @@ import mapStyles from '../../utils/mapStyles';
 import { parseDimension } from '../../styleHelper';
 import focusRingAnimation from './focusRingAnimation';
 import { pullLeft, pushCenter } from './centerPlaceholderAnimation';
+import ValueRef from '../../ValueRef';
 
+@ValueRef()
 @Hidden()
 @Dimension()
 @Radium
@@ -52,14 +54,6 @@ class TextFieldOSX extends Component {
       showPlaceholder: true,
       iconPadding: null
     };
-  }
-
-  get value() {
-    return this.refs.element.value;
-  }
-
-  set value(value) {
-    this.refs.element.value = value;
   }
 
   componentDidMount() {

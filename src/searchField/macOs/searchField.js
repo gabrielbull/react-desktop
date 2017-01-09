@@ -4,7 +4,9 @@ import TextInput from '../../textInput/macOs/textInput';
 import * as icon from './icons';
 import styles from './styles/10.11';
 import cancelAnimation from './cancelAnimation';
+import ValueRef from '../../ValueRef';
 
+@ValueRef()
 class SearchInput extends Component {
   static propTypes = {
     onCancel: PropTypes.func,

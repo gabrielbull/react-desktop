@@ -4,7 +4,9 @@ import { ThemeContext, themePropTypes, themeContextTypes } from '../../style/the
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Radium, { getState } from 'radium';
 import styles from './styles/windows10';
+import ValueRef from '../../ValueRef';
 
+@ValueRef()
 @Hidden()
 @ColorContext()
 @ThemeContext()
