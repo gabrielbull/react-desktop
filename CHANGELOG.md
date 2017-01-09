@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.2.16 (January 9th, 2017)
+
+- Custom styles for Windows text field's label
+- Default color for Windows text field's label changes based on theme
+
 ## 0.2.15 (January 9th, 2017)
 
 - Fixed bug with macOs text field’s placeholder
