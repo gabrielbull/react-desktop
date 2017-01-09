@@ -216,7 +216,7 @@ class TextFieldOSX extends Component {
     } else if (placeholder) {
       input = (
         <PlaceholderStyle placeholderStyle={styles.textField[':placeholder']}>
-          {cloneElement(input, { ...input.props, style: { ...input.props.style, ...inputStyle } })}
+          {cloneElement(input, { ...input.props, style: { ...input.props.style, ...inputStyle }, placeholder })}
         </PlaceholderStyle>
       );
     }

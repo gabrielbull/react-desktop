@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.15 (January 9th, 2017)
+
+- Fixed bug with macOs text field’s placeholder
+
 ## 0.2.14 (September 19th, 2016)
 
 - Fixed duplicate onChange events on the windows textInput
