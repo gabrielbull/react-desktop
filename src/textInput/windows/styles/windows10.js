@@ -54,5 +54,9 @@ export default {
     ':focus': {
       color: 'rgba(0, 0, 0, .41)'
     }
+  },
+
+  labalDarkTheme: {
+
   }
 };

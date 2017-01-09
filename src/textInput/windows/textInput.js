@@ -24,6 +24,8 @@ class TextInput extends Component {
     ...marginPropTypes,
     ...backgroundPropTypes,
     label: PropTypes.string,
+    labelColor: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+    labelStyle: PropTypes.object,
     password: PropTypes.bool
   };
 
@@ -45,12 +47,16 @@ class TextInput extends Component {
   }
 
   render() {
-    let { label, style, password, ...props } = this.props;
+    let { label, labelColor, labelStyle, style, password, ...props } = this.props;
     let componentStyle = { ...styles.textBox, ...style };
 
     if (this.context.theme === 'dark') {
+      labelStyle = { ...styles.labalDarkTheme, ...labelStyle };
       componentStyle = { ...componentStyle, ...styles.textBoxDarkTheme };
     }
+
+    labelColor = labelColor === true ? this.context.color : labelColor ? labelColor : this.context.theme === 'dark' ? '#FFFFFF' : null;
+    if (labelColor) labelStyle = { color: labelColor, ...labelStyle };
 
     componentStyle[':focus'] = { ...componentStyle[':focus'], borderColor: this.context.color };
 
@@ -73,7 +79,7 @@ class TextInput extends Component {
     if (label) {
       return (
         <div>
-          <Text style={{ marginBottom: '5px' }}>
+          <Text style={{ marginBottom: '5px', ...labelStyle }} color={this.context.theme === 'dark' ? '#FFFFFF' : null}>
             {label}
           </Text>
           {input}

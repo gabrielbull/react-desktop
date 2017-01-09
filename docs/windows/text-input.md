@@ -9,6 +9,8 @@ color               | string       | Sets the main color of a component and it's
 defaultValue        | string       | Sets the default value of the input.
 hidden              | bool         | Sets the visibility of a component.
 label               | string       | Adds a label to the input.
+labelColor          | string, bool | Sets whether the label text is colored (bool) or sets the color of the label text (string).
+labelStyle          | object       | Custom styles for the label.
 margin              | string       | Sets the outer margin of a component.<br/>__E.G.__ _"30px 20px"_
 onChange            | function     | Callback function when the input changes.
 placeholder         | function     | Adds a placeholder to the input.
