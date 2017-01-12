@@ -19,7 +19,7 @@ marginTop           | string, number       | Sets the outer margin top of a comp
 onCancel            | function             | Callback function when the user press the cancel button.
 onChange            | function             | Callback function when the input changes.
 onEnter             | function             | Callback function when the enter key is pressed.
-placeholder         | function             | Adds a placeholder to the input.
+placeholder         | string               | Adds a placeholder to the input.
 rounded             | bool, number, string | Sets the roundness of the input border
 size                | string, number       | Sets the font size of a component.
 value               | string               | Sets the value of the input.
