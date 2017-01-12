@@ -4,7 +4,7 @@ import styleHelper, { extractProps } from '../styleHelper';
 const allowedValues = ['left', 'right', 'center'];
 
 export const textAlignPropTypes = {
-  textAlign: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  textAlign: PropTypes.string
 };
 
 export function removeTextAlignProps(props) {
