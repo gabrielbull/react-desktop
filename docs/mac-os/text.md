@@ -20,7 +20,7 @@ paddingLeft         | string, number       | Sets the padding left inside a comp
 paddingRight        | string, number       | Sets the padding right inside a component.
 paddingTop          | string, number       | Sets the padding top inside a component.
 size                | string, number       | Sets the font size of a component.
-textAlign           | string, number       | Sets the text alignment of the component's content.<br/>__Property value__ _"left"_, _"center"_, _"right"_
+textAlign           | string               | Sets the text alignment of the component's content.<br/>__Property value__ _"left"_, _"center"_, _"right"_
 width               | string, number       | Sets the width of a component.
 
 ### Examples
