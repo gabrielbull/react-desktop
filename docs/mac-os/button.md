@@ -12,6 +12,7 @@ marginLeft          | string, number | Sets the outer margin left of a component
 marginRight         | string, number | Sets the outer margin right of a component.
 marginTop           | string, number | Sets the outer margin top of a component.
 onClick             | function       | Callback function when the button is pressed.
+onEnter             | function       | Callback function when the the enter key is pressed.
 padding             | string, number | Sets the padding inside a component.<br/>__E.G.__ _"30px 20px"_
 paddingBottom       | string, number | Sets the padding bottom inside a component.
 paddingLeft         | string, number | Sets the padding left inside a component.
