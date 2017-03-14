@@ -7,7 +7,6 @@
 Property            | Type           | Description
 :------------------ | :-------------:| :----------
 background          | string         | Sets the background color of a component.
-disableRubberBand   | bool           | Disables the rubber band effect on the list view.
 height              | number         | Sets the height of a component.
 hidden              | bool           | Sets the visibility of a component.
 margin              | string, number | Sets the outer margin of a component.<br/>__E.G.__ _"30px 20px"_

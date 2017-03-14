@@ -9,7 +9,6 @@ import Padding, { paddingPropTypes } from '../../style/padding';
 import Header from './header/header';
 import Footer from './footer/footer';
 import Row from './row/row';
-import rubberBandEffect from 'rubber-band-effect';
 
 @Background()
 @Dimension()
@@ -22,19 +21,8 @@ class ListView extends Component {
     ...dimensionPropTypes,
     ...hiddenPropTypes,
     ...marginPropTypes,
-    ...paddingPropTypes,
-    disableRubberBand: PropTypes.bool
+    ...paddingPropTypes
   };
-
-  static defaultProps = {
-    disableRubberBand: false
-  };
-
-  componentDidMount() {
-    if (!this.props.disableRubberBand) {
-      rubberBandEffect(ReactDOM.findDOMNode(this.refs.scrollable));
-    }
-  }
 
   mapChildren(children) {
     let hasDirectRows = false;
@@ -57,7 +45,6 @@ class ListView extends Component {
 
   render() {
     const { children, style, ...props } = this.props;
-    delete props.disableRubberBand;
 
     const { header, items, footer } = this.mapChildren(children);
 

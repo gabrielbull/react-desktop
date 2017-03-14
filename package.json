@@ -1,7 +1,7 @@
 {
   "name": "react-desktop",
   "author": "Gabriel Bull",
-  "version": "0.2.18",
+  "version": "0.2.19",
   "description": "React UI Components for macOS Sierra and Windows 10",
   "main": "./index.js",
   "keywords": [
@@ -34,8 +34,7 @@
     "build-publish": "npm run build && npm publish ./build"
   },
   "dependencies": {
-    "radium": "^0.18.1",
-    "rubber-band-effect": "^0.1.1"
+    "radium": "^0.18.1"
   },
   "peerDependencies": {
     "react": "^15.0.0",

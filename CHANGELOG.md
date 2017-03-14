@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.19 (March 14th, 2017)
+
+- Removed rubber band effect from list view
+
 ## 0.2.18 (March 14th, 2017)
 
 - Fixed an issue with OS detection
