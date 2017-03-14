@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ColorPicker from 'react-color';
-import examples from 'examples';
+import examples from 'examples-loader!examples';
 import Examples from '../examples/examples';
 import Logo from './logo';
 

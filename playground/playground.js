@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import examples from 'examples';
+import examples from 'examples-loader!examples';
 import Sidebar from './ui/sidebar/sidebar';
 
 const styles = {

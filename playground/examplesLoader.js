@@ -33,7 +33,7 @@ module.exports = function(source) {
     file = files[i];
     var filename = file.file.replace(dirname, '').replace(/\.js$/, '');
     var key = filename.replace(/[\/\-]/g, '_');
-    source += 'import ' + key + ' from \'..' + filename + '\';\n';
+    source += 'import ' + key + ' from \'.' + filename + '\';\n';
     source += 'data[\'' + filename + '\'] = ' + key + ';\n';
   }
 
