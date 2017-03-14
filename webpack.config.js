@@ -8,7 +8,7 @@ module.exports = {
   entry: './src/app.js',
 
   output: {
-    path: '.',
+    path: __dirname,
     filename: './bundle.js',
     libraryTarget: "var"
   },
@@ -17,43 +17,41 @@ module.exports = {
     contentBase: './assets'
   },
 
-  devtool: PROD ? null : 'source-map',
+  devtool: PROD ? false : 'source-map',
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js/,
         exclude: /node_modules|examples/,
-        loader: 'babel'
+        use: 'babel-loader'
       },
       {
         test: /\.scss|\.css$/,
-        loaders: [
-          'style',
-          'css',
-          'postcss',
-          (
-            'sass?' +
-            'includePaths[]=./node_modules/bourbon/app/assets/stylesheets'
-          )
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [autoprefixer]
+            }
+          },
+          'sass-loader?includePaths[]=./node_modules/bourbon/app/assets/stylesheets'
         ]
       },
       {
         test: /\.(png|jpg|jpeg|gif|woff|woff2)$/,
-        loader: 'url'
+        loader: 'url-loader'
       },
       {
         test: /\.(eot|ttf)$/,
-        loader: 'file'
+        loader: 'file-loader'
       },
       {
         test: /\.(html|svg)/,
-        loader: 'raw'
+        loader: 'raw-loader'
       }
     ]
-  },
-
-  postcss: function () {
-    return [autoprefixer];
   }
 };

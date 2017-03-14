@@ -1,5 +1,3 @@
-@import "bourbon";
-
 nav.nav {
   background: #f3f3f3;
 
@@ -19,7 +17,7 @@ nav.nav {
       font-weight: 300;
       line-height: 22px;
       font-size: 14px;
-      @include transition(padding .1s);
+      transition: padding .1s;
       position: relative;
 
       &:hover {
@@ -39,7 +37,7 @@ nav.nav {
         height: 0;
         width: 0;
         border: 4px solid transparent;
-        @include transition(border .1s);
+        transition: border .1s;
       }
 
       &.selected {
