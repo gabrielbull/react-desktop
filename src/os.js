@@ -3,26 +3,26 @@ export const WINDOWS = 'windows';
 
 export default function os() {
   // explicitly set these to avoid issues
-  const window = window || null;
-  const navigator = navigator || null;
-  const process = process || (window && window.process) || null;
+  const w = window || null;
+  const n = navigator || null;
+  const p = process || (window && window.process) || null;
 
   // via node
-  if (process && process.platform) {
-    if (process.platform === 'darwin') {
+  if (p && p.platform) {
+    if (p.platform === 'darwin') {
       return MACOS;
     }
-    if (process.platform.includes('win')) {
+    if (p.platform.includes('win')) {
       return WINDOWS;
     }
   }
 
   // via user agent
-  if (navigator && navigator.userAgent) {
-    if (navigator.userAgent.includes('Macintosh')) {
+  if (n && n.userAgent) {
+    if (n.userAgent.includes('Macintosh')) {
       return MACOS;
     }
-    if (navigator.userAgent.includes('Windows')) {
+    if (n.userAgent.includes('Windows')) {
       return WINDOWS;
     }
   }
