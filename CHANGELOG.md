@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.18 (March 14th, 2017)
+
+- Fixed an issue with OS detection
+
 ## 0.2.17 (January 9th, 2017)
 
 - Fixed issue with windows window background color
