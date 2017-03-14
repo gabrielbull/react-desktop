@@ -9,13 +9,15 @@
 [![npm version](https://img.shields.io/npm/v/react-desktop.svg)](https://www.npmjs.org/package/react-desktop)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gabrielbull/react-desktop?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-<a href="https://github.com/gabrielbull/react-desktop/issues" target="_blank">![This library is in beta. Please report any issues or feature request to the issues page.](https://rawgit.com/gabrielbull/react-desktop/master/docs/resources/alert.svg "This library is in beta. Please report any issues or feature request to the issues page.")</a>
-
 React UI Components for macOS Sierra and Windows 10.
 
 > npm install react-desktop --save
 
 <a href="http://reactdesktop.js.org/demo/" target="_blank">![Demo](https://rawgit.com/gabrielbull/react-desktop/master/docs/resources/demo.svg "Demo")</a>
+
+## Help wanted!
+
+I am looking for developers to help me develop this project. Please contact me at [me@gabrielbull.com](mailto:me@gabrielbull.com) if you are interested.
 
 ## Contributing
 
