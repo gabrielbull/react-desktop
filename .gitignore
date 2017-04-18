@@ -10,6 +10,7 @@ Thumbs.db
 
 # Node
 /node_modules
+yarn.lock
 
 # react-desktop #
 ########
