@@ -1,4 +1,4 @@
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 import styleHelper, { extractProps, parseDimension } from '../styleHelper';
 
 export const fontSizePropTypes = {

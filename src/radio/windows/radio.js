@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { getState } from 'radium';
 import styles from './styles/windows';
 import Text from '../../text/windows/text';

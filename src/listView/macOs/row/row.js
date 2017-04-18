@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Background, { backgroundPropTypes } from '../../../style/background/macOs';
 import Alignment, { alignmentPropTypes } from '../../../style/alignment';
 import Dimension, { dimensionPropTypes } from '../../../style/dimension';

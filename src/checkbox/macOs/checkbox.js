@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import WindowFocus from '../../windowFocus';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Radium, { getState } from 'radium';

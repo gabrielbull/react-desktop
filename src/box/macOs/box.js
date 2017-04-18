@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styles from './styles/10.11';
 import Dimension, { dimensionPropTypes } from '../../style/dimension';
 import Margin, { marginPropTypes } from '../../style/margin';

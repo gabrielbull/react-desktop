@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Text from '../../text/windows/text';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Dimension, { dimensionPropTypes } from '../../style/dimension';

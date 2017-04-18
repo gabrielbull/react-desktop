@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Controls from './controls/controls';
 import styles from './styles/10.11';
 import WindowFocus from '../../windowFocus';

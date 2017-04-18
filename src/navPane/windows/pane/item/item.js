@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styles from '../style/windows10';
 import { transparentize } from '../../../../color';
 import { ColorContext, colorContextTypes } from '../../../../style/color/windows';

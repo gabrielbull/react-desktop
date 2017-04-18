@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styles from './style/10.11';
 import Text from '../../../../text/macOs/text';
 import Margin, { marginPropTypes, removeMarginProps } from '../../../../style/margin';

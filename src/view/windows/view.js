@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Width, { widthPropTypes } from '../../style/width';
 import Margin, { marginPropTypes } from '../../style/margin';
 import Padding, { paddingPropTypes } from '../../style/padding';

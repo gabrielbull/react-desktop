@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Background, { backgroundPropTypes } from '../../style/background/windows';
 import { hiddenPropTypes } from '../../style/hidden';
 import { ColorContext, colorPropTypes } from '../../style/color/windows';
@@ -51,7 +52,7 @@ class TitleBar extends Component {
 
     let componentStyle = { ...styles.titleBar, ...style };
     let titleStyle = styles.title;
-    
+
     if (!isWindowFocused && this.context.theme !== 'dark') {
       titleStyle = { ...titleStyle, ...styles.unfocusedTitle };
     }

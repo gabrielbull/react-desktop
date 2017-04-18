@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Master from '../master/master';
 import Details from '../details/details';
 import { ColorContext, colorPropTypes } from '../../../style/color/windows';

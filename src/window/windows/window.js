@@ -1,4 +1,5 @@
-import React, { Component, PropTypes, Children } from 'react';
+import React, { Component, Children } from 'react';
+import PropTypes from 'prop-types';
 import TitleBar from '../../titleBar/windows/titleBar';
 import View from '../../view/windows/view';
 import styles from './styles/windows10';

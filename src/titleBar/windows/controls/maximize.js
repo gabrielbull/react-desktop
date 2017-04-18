@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import WindowFocus from '../../../windowFocus';
 import { themeContextTypes } from '../../../style/theme/windows';
 import { backgroundContextTypes } from '../../../style/background/windows';

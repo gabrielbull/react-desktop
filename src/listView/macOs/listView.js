@@ -1,5 +1,4 @@
-import React, { Component, Children, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component, Children } from 'react';
 import styles from './style/10.11';
 import Background, { backgroundPropTypes } from '../../style/background/macOs';
 import Dimension, { dimensionPropTypes } from '../../style/dimension';

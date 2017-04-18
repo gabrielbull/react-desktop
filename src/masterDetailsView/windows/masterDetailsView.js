@@ -1,4 +1,5 @@
-import React, { Component, Children, cloneElement, PropTypes } from 'react';
+import React, { Component, Children, cloneElement } from 'react';
+import PropTypes from 'prop-types';
 import Master from './master/master';
 import Details from './details/details';
 import Pane from './pane';

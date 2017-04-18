@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { hiddenPropTypes } from '../../style/hidden';
 import styles from './styles/10.11';
 import { startAnimation, stopAnimation } from './progressCircleAnimation';

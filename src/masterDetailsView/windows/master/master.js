@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { parseDimension } from '../../../styleHelper';
 import { convertColor, hexToRgb } from '../../../color';
 import { ColorContext, colorPropTypes, colorContextTypes } from '../../../style/color/windows';

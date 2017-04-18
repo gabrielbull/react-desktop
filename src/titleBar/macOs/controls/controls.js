@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Close from './close';
 import Minimize from './minimize';
 import Resize from './resize';

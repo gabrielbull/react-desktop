@@ -1,4 +1,5 @@
-import React, { Component, PropTypes, Children } from 'react';
+import React, { Component, Children } from 'react';
+import PropTypes from 'prop-types';
 import Item from './item/item';
 import Button from './button/button';
 import styles from './style/windows10';
