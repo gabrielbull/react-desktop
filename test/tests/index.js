@@ -1,11 +1,10 @@
 import { expect } from 'chai';
-import { os } from '../../index';
 import { MACOS, WINDOWS } from '../../src/os';
 import * as components from '../../index'
 
 describe('index', () => {
   it('detect os', () => {
-    expect(os()).to.be.oneOf([MACOS, WINDOWS]);
+    expect(components.os()).to.be.oneOf([MACOS, WINDOWS]);
   });
 
   it('should be exported', () => {

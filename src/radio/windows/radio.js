@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getState } from 'radium';
+import Radium, { getState } from 'radium';
 import styles from './styles/windows';
 import Text from '../../text/windows/text';
 import { ThemeContext, themePropTypes, themeContextTypes } from '../../style/theme/windows';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import { ColorContext, colorPropTypes, colorContextTypes } from '../../style/color/windows';
-import Radium from 'radium';
 import ValueRef from '../../ValueRef';
 
 @ValueRef()

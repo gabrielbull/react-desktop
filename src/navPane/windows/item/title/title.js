@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { keyframes } from 'radium';
+import Radium, { keyframes } from 'radium';
 import styles from '../../style/windows10';
-import Radium from 'radium';
 
 var appear = keyframes({
   '0%': {

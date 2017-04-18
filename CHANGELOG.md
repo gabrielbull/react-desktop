@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.3.0 (April 17th, 2017)
+
+- Added prop-types dependency to avoid deprecation in React 16
+
 ## 0.2.19 (March 14th, 2017)
 
 - Removed rubber band effect from list view

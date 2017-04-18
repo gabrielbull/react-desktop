@@ -1,7 +1,7 @@
 {
   "name": "react-desktop",
   "author": "Gabriel Bull",
-  "version": "0.2.19",
+  "version": "0.3.0",
   "description": "React UI Components for macOS Sierra and Windows 10",
   "main": "./index.js",
   "keywords": [
@@ -52,6 +52,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "chai": "^3.5.0",
     "eslint": "^3.19.0",
+    "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-react": "^6.10.3",
     "html-webpack-plugin": "^2.28.0",
     "jsdom": "^9.12.0",

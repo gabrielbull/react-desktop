@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
-import { getState } from 'radium';
+import Radium, { getState } from 'radium';
 import styles from './styles/10.11';
 import Text from '../../text/macOs/text';
 import Circle from './circle';
-import Radium from 'radium';
 import ValueRef from '../../ValueRef';
 import WindowFocus from '../../windowFocus';
 

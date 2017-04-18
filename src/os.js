@@ -5,7 +5,7 @@ export default function os() {
   // explicitly set these to avoid issues
   const w = window || null;
   const n = navigator || null;
-  const p = process || (window && window.process) || null;
+  const p = process || (w && w.process) || null;
 
   // via node
   if (p && p.platform) {

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { getState } from 'radium';
+import Radium, { getState } from 'radium';
 import WindowFocus from '../../../windowFocus';
 import { themeContextTypes } from '../../../style/theme/windows';
 import { backgroundContextTypes } from '../../../style/background/windows';
 import { isDarkColor } from '../../../color';
-import Radium from 'radium'
 
 const styles = {
   button: {
