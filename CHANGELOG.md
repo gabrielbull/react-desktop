@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.3.1 (June 21th, 2017)
+
+- Updated dependencies
+
 ## 0.3.0 (April 17th, 2017)
 
 - Added prop-types dependency to avoid deprecation in React 16

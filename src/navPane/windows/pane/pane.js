@@ -61,7 +61,7 @@ class Pane extends Component {
   }
 
   renderItems() {
-    return Children.map(this.props.items, (item, index) =>
+    return Children.map(this.props.items, (item, index) => (
       <Item
         key={index}
         isPaneExpanded={this.state.isPaneExpanded}
@@ -71,7 +71,7 @@ class Pane extends Component {
         onSelect={item.props.onSelect}
         selected={item.props.selected}
       />
-    );
+    ));
   }
 }
 
