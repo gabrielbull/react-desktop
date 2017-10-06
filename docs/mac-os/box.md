@@ -22,6 +22,14 @@ paddingTop          | string, number | Sets the padding top inside a component.
 verticalAlignment   | string         | Sets the vertical alignment of the component's content.<br/>__Property value__ _"top"_, _"center"_, _"bottom"_
 width               | number         | Sets the width of a component.
 
+### Methods
+
+Method              | Type           | Description
+:------------------ | :-------------:| :----------
+focus               | function       | Focus text input programmatically
+blur                | function       | Remove focus from text input programmatically
+
+
 ### Examples
 
 ```jsx
