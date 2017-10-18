@@ -81,11 +81,6 @@ class MasterDetailsView extends Component {
 
   select(index) {
     this.setState({ selected: index });
-    for (var prop in this.refs) {
-      if (this.refs.hasOwnProperty(prop) && prop.indexOf('master') === 0) {
-        this.refs[prop].setState({ selected: prop === 'master' + index });
-      }
-    }
   }
 
   filterChildren(children) {
@@ -98,12 +93,12 @@ class MasterDetailsView extends Component {
           }
           this.masters = [
             ...this.masters,
-            cloneElement(child, { key: key, ref: 'master' + key, index: key })
+            cloneElement(child, { key: key, index: key })
           ];
         } else if (child.type === Details) {
           this.details = [
             ...this.details,
-            cloneElement(child, { key: key, ref: 'details' + key, index: key })
+            cloneElement(child, { key: key, index: key })
           ];
         }
       });

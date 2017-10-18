@@ -9,7 +9,7 @@
 [![npm version](https://img.shields.io/npm/v/react-desktop.svg)](https://www.npmjs.org/package/react-desktop)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gabrielbull/react-desktop?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-React UI Components for macOS Sierra and Windows 10.
+React UI Components for macOS High Sierra and Windows 10.
 
 > npm install react-desktop --save
 
