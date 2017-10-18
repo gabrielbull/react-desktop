@@ -24,6 +24,13 @@ value               | string               | Sets the value of the input.
 width               | number               | Sets the width of a component.
 password            | bool                 | Sets the input type to password.
 
+### Methods
+
+Method              | Type           | Description
+:------------------ | :-------------:| :----------
+focus               | function       | Focus text input programmatically
+blur                | function       | Remove focus from text input programmatically
+
 ### Examples
 
 ```jsx

@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.3.2 (October 17th, 2017)
+
+- Updated dependencies
+- Fixed unit tests
+- Fixed unit playground
+- Add public `focus` and `blur` methods to TextInput
+- Prop title of TitleBar now supports element node
+
 ## 0.3.1 (June 21th, 2017)
 
 - Updated dependencies

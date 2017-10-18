@@ -13,9 +13,6 @@ env:
   es6: true
   mocha: true
 
-ecmaFeatures:
-  jsx: true
-
 rules:
   # Strict mode
   strict: [2, never]
