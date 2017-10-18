@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 export const home = (
   <svg width="1792" height="1792" viewBox="0 0 1792 1792">

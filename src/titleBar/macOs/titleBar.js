@@ -97,10 +97,10 @@ class TitleBar extends Component {
 
     controls = !controls || <Controls ref="controls" inset={inset} {...this.props}/>;
     title = !title || (
-        <div ref="title" style={titleStyle}>
-          {title}
-        </div>
-      );
+      <div ref="title" style={titleStyle}>
+        {title}
+      </div>
+    );
 
     if (transparent) {
       delete componentStyle.backgroundImage;

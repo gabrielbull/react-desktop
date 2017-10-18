@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import ColorPicker from 'react-color';
 import examples from 'examples-loader!examples';
 import Examples from '../examples/examples';
@@ -15,7 +15,7 @@ const styles = {
   }
 };
 
-class Sidebar extends Component {
+class Sidebar extends React.Component {
   constructor(...args) {
     super(...args);
     this.state = {

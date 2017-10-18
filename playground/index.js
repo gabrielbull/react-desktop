@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import {render} from 'react-dom';
 import Playground from './playground';
 
 document.title = 'React Desktop Playground';
@@ -18,4 +18,4 @@ document.body.innerHTML = `
   <div id="main" style="width: 100%; height: 100%;"></div>
 `;
 
-ReactDOM.render(<Playground/>, document.getElementById('main'));
+render(<Playground/>, document.getElementById('main'));

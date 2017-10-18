@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import * as React from 'react';
 
-class Logo extends Component {
+class Logo extends React.Component {
   render() {
     return (
       <svg x="0px" y="0px" viewBox="0 0 302.6 49.2" width="116" height="20" style={{ padding: '10px 10px 0 10px' }}>

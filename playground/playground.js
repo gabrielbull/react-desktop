@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import examples from 'examples-loader!examples';
 import Sidebar from './ui/sidebar/sidebar';
 
@@ -21,7 +22,7 @@ const styles = {
   }
 };
 
-class Playground extends Component {
+class Playground extends React.Component {
   static childContextTypes = {
     playground: PropTypes.object
   };

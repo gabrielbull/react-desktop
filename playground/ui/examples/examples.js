@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 
 const styles = {
   list: {
@@ -40,7 +41,7 @@ const styles = {
   }
 };
 
-class Examples extends Component {
+class Examples extends React.Component {
   static contextTypes = {
     playground: PropTypes.object
   };
