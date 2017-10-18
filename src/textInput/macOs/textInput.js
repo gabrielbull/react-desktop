@@ -130,6 +130,24 @@ class TextFieldOSX extends Component {
     setTimeout(() => this.setState({ isFocused: true }));
   };
 
+  /**
+   * Remove the focus programmatically
+   * @public
+   * */
+  blur() {
+    const inputEl = ReactDOM.findDOMNode(this.refs.element)
+    inputEl.blur();
+  }
+
+  /**
+   * Focus the input programmatically
+   * @public
+   */
+  focus() {
+    const inputEl = ReactDOM.findDOMNode(this.refs.element)
+    inputEl.focus();
+  }
+
   render() {
     let { style, label, size, rounded, focusRing, placeholder, centerPlaceholder, icon, password, ...props } = this.props;
     delete props.onEnter;

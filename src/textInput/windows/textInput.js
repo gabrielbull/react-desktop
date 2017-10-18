@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
 import Text from '../../text/windows/text';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Dimension, { dimensionPropTypes } from '../../style/dimension';
@@ -41,6 +42,24 @@ class TextInput extends Component {
     return this.context.theme === 'dark' ? styles[':placeholderDarkTheme'] : styles[':placeholder'];
   }
 
+  /**
+   * Remove the focus programmatically
+   * @public
+   * */
+  blur() {
+    const inputEl = ReactDOM.findDOMNode(this.refs.element)
+    inputEl.blur();
+  }
+
+  /**
+   * Focus the input programmatically
+   * @public
+   */
+  focus() {
+    const inputEl = ReactDOM.findDOMNode(this.refs.element)
+    inputEl.focus();
+  }
+
   render() {
     let { label, labelColor, labelStyle, style, password, ...props } = this.props;
     let componentStyle = { ...styles.textBox, ...style };
@@ -61,6 +80,7 @@ class TextInput extends Component {
       <PlaceholderStyle placeholderStyle={this.placeholderStyle}>
         {Background(
           <input
+            ref="element"
             type={`${password ? 'password' : 'text'}`}
             style={componentStyle}
             {...props}
