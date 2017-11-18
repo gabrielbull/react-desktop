@@ -10,7 +10,7 @@ import Dimension, { dimensionPropTypes } from '../../style/dimension';
 class TitleBar extends Component {
   static propTypes = {
     ...dimensionPropTypes,
-    title: PropTypes.object,
+    title: PropTypes.node,
     inset: PropTypes.bool,
     controls: PropTypes.bool,
     transparent: PropTypes.bool,

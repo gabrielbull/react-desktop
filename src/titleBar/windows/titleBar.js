@@ -18,7 +18,7 @@ class TitleBar extends Component {
     ...themePropTypes,
     ...colorPropTypes,
     ...backgroundPropTypes,
-    title: PropTypes.object,
+    title: PropTypes.node,
     controls: PropTypes.bool,
     isMaximized: PropTypes.bool,
     onCloseClick: PropTypes.func,
