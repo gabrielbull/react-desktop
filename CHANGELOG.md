@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.3.3 (November 21st, 2017)
+
+- Updated dependencies
+- Fixed title props
+
 ## 0.3.2 (October 17th, 2017)
 
 - Updated dependencies
