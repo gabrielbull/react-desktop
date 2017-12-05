@@ -20,6 +20,7 @@ export { default as SegmentedControlItem } from './src/segmentedControl/macOs/it
 export { default as Text } from './src/text/macOs/text';
 export { default as TextInput } from './src/textInput/macOs/textInput';
 export { default as TitleBar } from './src/titleBar/macOs/titleBar';
+export { default as TitleBarControls } from './src/titleBar/macOs/controls/controls'
 export { default as Toolbar } from './src/toolbar/macOs/toolbar';
 export { default as ToolbarNav } from './src/toolbar/macOs/nav/nav';
 export { default as ToolbarNavItem } from './src/toolbar/macOs/nav/item/item';
