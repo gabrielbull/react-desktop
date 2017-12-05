@@ -36,6 +36,7 @@ export const SegmentedControlItem = macOs.SegmentedControlItem;
 export const Text = select(macOs.Text, windows.Text);
 export const TextInput = select(macOs.TextInput, windows.TextInput);
 export const TitleBar = select(macOs.TitleBar, windows.TitleBar);
+export const TitleBarControls = select(macOs.TitleBarControls, windows.TitleBarControls);
 export const Toolbar = macOs.Toolbar;
 export const ToolbarNav = macOs.ToolbarNav;
 export const ToolbarNavItem = macOs.ToolbarNavItem;
