@@ -17,7 +17,7 @@ React UI Components for macOS High Sierra and Windows 10.
 
 ## Help wanted!
 
-I am looking for developers to help me develop this project. Please contact me at [me@gabrielbull.com](mailto:me@gabrielbull.com) if you are interested.
+I am looking for developers to help me develop this project. Please submit some ideas in the issues section or some PRs to get this project going. If you are interested, you can become a collaborator on the project. Thanks.
 
 ## Contributing
 
