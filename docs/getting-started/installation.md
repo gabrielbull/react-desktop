@@ -2,6 +2,8 @@
 
 To install the stable version:
 
+## [NPM](https://www.npmjs.com/)
 > npm install react-desktop --save
 
-This assumes you are using [npm](https://www.npmjs.com/) as your package manager.
+## [Yarn](https://yarnpkg.com)
+> yarn add react-desktop
