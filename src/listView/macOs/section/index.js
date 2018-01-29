@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Header from './header/header';
+import Header from './header';
 import styles from './style/10.11';
 
 class Section extends Component {

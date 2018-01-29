@@ -5,9 +5,9 @@ import Dimension, { dimensionPropTypes } from '../../style/dimension';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Margin, { marginPropTypes } from '../../style/margin';
 import Padding, { paddingPropTypes } from '../../style/padding';
-import Header from './header/header';
-import Footer from './footer/footer';
-import Row from './row/row';
+import Header from './header';
+import Footer from './footer';
+import Row from './row';
 
 @Background()
 @Dimension()

@@ -5,7 +5,7 @@ import { hiddenPropTypes } from '../../style/hidden';
 import { ColorContext, colorPropTypes } from '../../style/color/windows';
 import { ThemeContext, themePropTypes, themeContextTypes } from '../../style/theme/windows';
 import WindowFocus from '../../windowFocus';
-import Controls from './controls/controls';
+import Controls from './controls';
 import styles from './styles/windows10';
 
 @Background((nextProps, prevProps, background) => ({ ...nextProps, hasBackground: background }))

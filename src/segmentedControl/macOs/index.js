@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import Dimension, { dimensionPropTypes } from '../../style/dimension';
 import Margin, { marginPropTypes } from '../../style/margin';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
-import Item from './item/item';
-import Tabs from './tabs/tabs';
+import Item from './item';
+import Tabs from './tabs';
 import styles from './style/10.11';
 import Box from '../../box/macOs';
 

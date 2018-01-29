@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Master from '../master/master';
-import Details from '../details/details';
+import Master from '../master';
+import Details from '../details';
 import { ColorContext, colorPropTypes } from '../../../style/color/windows';
 import { ThemeContext, themePropTypes } from '../../../style/theme/windows';
 

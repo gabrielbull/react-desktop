@@ -1,9 +1,9 @@
 import React, { Component, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
-import Master from './master/master';
-import Details from './details/details';
+import Master from './master';
+import Details from './details';
 import Pane from './pane';
-import Item from './item/item';
+import Item from './item';
 import { ColorContext, colorPropTypes } from '../../style/color/windows';
 import { ThemeContext, themePropTypes, themeContextTypes } from '../../style/theme/windows';
 

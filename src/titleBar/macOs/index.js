@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Controls from './controls/controls';
+import Controls from './controls';
 import styles from './styles/10.11';
 import WindowFocus from '../../windowFocus';
 import Dimension, { dimensionPropTypes } from '../../style/dimension';

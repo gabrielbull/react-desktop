@@ -1,7 +1,7 @@
 import React, { Component, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
-import Pane from './pane/pane';
-import Item from './item/item';
+import Pane from './pane';
+import Item from './item';
 import styles from './style/windows10';
 import { ColorContext, colorPropTypes } from '../../style/color/windows';
 import { ThemeContext, themePropTypes, themeContextTypes } from '../../style/theme/windows';
