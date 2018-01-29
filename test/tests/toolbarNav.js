@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import ToolbarNav from '../../src/toolbar/macOs/nav/nav';
-import ToolbarNavItem from '../../src/toolbar/macOs/nav/item/item';
+import ToolbarNav from '../../src/toolbar/macOs/nav';
+import ToolbarNavItem from '../../src/toolbar/macOs/nav/item';
 
 describe('ToolbarNav', () => {
   it('create toolbar nav component', () => {

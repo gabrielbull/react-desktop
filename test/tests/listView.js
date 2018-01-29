@@ -2,12 +2,12 @@ import { expect } from 'chai';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import ListView from '../../src/listView/macOs';
-import ListViewFooter from '../../src/listView/macOs/footer/footer';
-import ListViewHeader from '../../src/listView/macOs/header/header';
-import ListViewRow from '../../src/listView/macOs/row/row';
-import ListViewSection from '../../src/listView/macOs/section/section';
-import ListViewSectionHeader from '../../src/listView/macOs/section/header/header';
-import ListViewSeparator from '../../src/listView/macOs/separator/separator';
+import ListViewFooter from '../../src/listView/macOs/footer';
+import ListViewHeader from '../../src/listView/macOs/header';
+import ListViewRow from '../../src/listView/macOs/row';
+import ListViewSection from '../../src/listView/macOs/section';
+import ListViewSectionHeader from '../../src/listView/macOs/section/header';
+import ListViewSeparator from '../../src/listView/macOs/separator';
 
 describe('ListView', () => {
   it('create list view component', () => {
