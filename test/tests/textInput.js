@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import TextInput from '../../src/textInput/windows/textInput';
-import TextFieldOSX from '../../src/textInput/macOs/textInput';
+import TextInput from '../../src/textInput/windows';
+import TextFieldOSX from '../../src/textInput/macOs';
 
 describe('TextInput', () => {
   describe('Windows', () => {

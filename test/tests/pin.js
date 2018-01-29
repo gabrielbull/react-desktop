@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import Pin from '../../src/pin/macOs/pin';
+import Pin from '../../src/pin/macOs';
 
 describe('Pin', () => {
   it('create osx pin', () => {

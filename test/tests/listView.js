@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import ListView from '../../src/listView/macOs/listView';
+import ListView from '../../src/listView/macOs';
 import ListViewFooter from '../../src/listView/macOs/footer/footer';
 import ListViewHeader from '../../src/listView/macOs/header/header';
 import ListViewRow from '../../src/listView/macOs/row/row';

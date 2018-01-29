@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import Toolbar from '../../src/toolbar/macOs/toolbar';
+import Toolbar from '../../src/toolbar/macOs';
 
 describe('Toolbar', () => {
   it('create toolbar component', () => {

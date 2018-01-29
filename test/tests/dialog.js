@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import Dialog from '../../src/dialog/macOs/dialog';
+import Dialog from '../../src/dialog/macOs';
 
 describe('Dialog', () => {
   it('create osx dialog', () => {

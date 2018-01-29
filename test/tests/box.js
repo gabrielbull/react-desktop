@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import Box from '../../src/box/macOs/box';
+import Box from '../../src/box/macOs';
 
 describe('Box', () => {
   it('create box component with label', () => {

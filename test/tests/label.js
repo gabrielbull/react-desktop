@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import Label from '../../src/label/windows/label';
+import Label from '../../src/label/windows';
 
 describe('Label', () => {
   it('create label component with text', () => {

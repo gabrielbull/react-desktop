@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import ProgressCirecleOSX from '../../src/progressCircle/macOs/progressCircle';
-import ProgressCirecleWindows from '../../src/progressCircle/windows/progressCircle';
+import ProgressCirecleOSX from '../../src/progressCircle/macOs';
+import ProgressCirecleWindows from '../../src/progressCircle/windows';
 
 describe('Progress Circle', () => {
   it('create osx progress circle', () => {

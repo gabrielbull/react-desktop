@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import Button from '../../src/button/windows/button';
+import Button from '../../src/button/windows';
 
 describe('Button', () => {
   it('create button component with text', () => {
