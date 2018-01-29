@@ -35,7 +35,7 @@ class Box extends Component {
     let { children, style, background, label, ...props } = this.props;
     const hasSegmentedControls = false;
 
-    let componentStyle = { ...styles.box ,...style };
+    let componentStyle = { ...styles.box, ...style };
     if (hasSegmentedControls) {
       componentStyle = { ...styles.segmentedControls };
     }
