@@ -1,7 +1,7 @@
 import React, { Component, Children } from 'react';
 import PropTypes from 'prop-types';
-import Item from './item/item';
-import Button from './button/button';
+import Item from './item';
+import Button from './button';
 import styles from './style/windows10';
 
 class Pane extends Component {
