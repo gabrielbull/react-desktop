@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import TextInput from '../../textInput/macOs/textInput';
+import TextInput from '../../textInput/macOs';
 import * as icon from './icons';
 import styles from './styles/10.11';
 import cancelAnimation from './cancelAnimation';

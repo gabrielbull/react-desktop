@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Radium, { getState } from 'radium';
 import styles from './styles/windows';
-import Text from '../../text/windows/text';
+import Text from '../../text/windows';
 import { ThemeContext, themePropTypes, themeContextTypes } from '../../style/theme/windows';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import { ColorContext, colorPropTypes, colorContextTypes } from '../../style/color/windows';

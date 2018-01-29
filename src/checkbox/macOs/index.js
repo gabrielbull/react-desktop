@@ -5,7 +5,7 @@ import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Radium, { getState } from 'radium';
 import styles from './styles/10.11';
 import Checkmark from './checkmark';
-import Text from '../../text/macOs/text';
+import Text from '../../text/macOs';
 import ValueRef from '../../ValueRef';
 
 @ValueRef()

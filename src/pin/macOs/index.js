@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import TextInput from '../../textInput/macOs/textInput';
+import TextInput from '../../textInput/macOs';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Margin, { marginPropTypes, removeMarginProps } from '../../style/margin';
 

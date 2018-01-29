@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './style/10.11';
-import Text from '../../../../text/macOs/text';
+import Text from '../../../../text/macOs';
 import Margin, { marginPropTypes, removeMarginProps } from '../../../../style/margin';
 import Padding, { paddingPropTypes, removePaddingProps } from '../../../../style/padding';
 import { fontSizePropTypes } from '../../../../style/fontSize';

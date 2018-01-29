@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Margin, { marginPropTypes } from '../../style/margin';
 import Alignment, { alignmentPropTypes, removeAlignmentProps } from '../../style/alignment';
-import Text from '../../text/macOs/text';
+import Text from '../../text/macOs';
 import styles from './style/10.11';
 
 @Margin({ marginTop: '17px', marginBottom: '19px', marginLeft: '20px', marginRight: '20px' })

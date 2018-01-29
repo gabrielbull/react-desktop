@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import Text from '../../text/windows/text';
+import Text from '../../text/windows';
 import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Dimension, { dimensionPropTypes } from '../../style/dimension';
 import Margin, { marginPropTypes } from '../../style/margin';

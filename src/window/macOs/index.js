@@ -1,7 +1,7 @@
 import React, { Component, Children } from 'react';
 import PropTypes from 'prop-types';
-import TitleBar from '../../titleBar/macOs/titleBar';
-import View from '../../view/macOs/view';
+import TitleBar from '../../titleBar/macOs';
+import View from '../../view/macOs';
 import styles from './styles/10.11';
 import WindowFocus from '../../windowFocus';
 import Padding, { paddingPropTypes, removePaddingProps } from '../../style/padding';

@@ -1,3 +1,3 @@
-import Label from '../../text/windows/text';
+import Label from '../../text/windows';
 
 export default Label;

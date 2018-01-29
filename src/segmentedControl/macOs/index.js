@@ -6,7 +6,7 @@ import Hidden, { hiddenPropTypes } from '../../style/hidden';
 import Item from './item/item';
 import Tabs from './tabs/tabs';
 import styles from './style/10.11';
-import Box from '../../box/macOs/box';
+import Box from '../../box/macOs';
 
 let warnOnce = false;
 function applyItem() {

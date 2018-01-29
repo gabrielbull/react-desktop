@@ -1,3 +1,3 @@
-import Label from '../../text/macOs/text';
+import Label from '../../text/macOs';
 
 export default Label;
