@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import Link from '../../src/link/macOs';
+import Link from '../../src/Link/macOs';
 
 describe('Link', () => {
   it('create osx link', () => {

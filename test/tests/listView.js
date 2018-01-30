@@ -1,47 +1,47 @@
 import { expect } from 'chai';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import ListView from '../../src/listView/macOs';
-import ListViewFooter from '../../src/listView/macOs/footer';
-import ListViewHeader from '../../src/listView/macOs/header';
-import ListViewRow from '../../src/listView/macOs/row';
-import ListViewSection from '../../src/listView/macOs/section';
-import ListViewSectionHeader from '../../src/listView/macOs/section/header';
-import ListViewSeparator from '../../src/listView/macOs/separator';
+import ListView from '../../src/ListView/macOs';
+import ListViewFooter from '../../src/ListView/macOs/Footer';
+import ListViewHeader from '../../src/ListView/macOs/Header';
+import ListViewRow from '../../src/ListView/macOs/Row';
+import ListViewSection from '../../src/ListView/macOs/Section';
+import ListViewSectionHeader from '../../src/ListView/macOs/Section/Header';
+import ListViewSeparator from '../../src/ListView/macOs/Separator';
 
 describe('ListView', () => {
   it('create list view component', () => {
-    const string = renderToString(<ListView/>);
+    const string = renderToString(<ListView />);
     expect(string).to.match(/<section/);
   });
 
   it('create list view footer component', () => {
-    const string = renderToString(<ListViewFooter/>);
+    const string = renderToString(<ListViewFooter />);
     expect(string).to.match(/<footer/);
   });
 
   it('create list view header component', () => {
-    const string = renderToString(<ListViewHeader/>);
+    const string = renderToString(<ListViewHeader />);
     expect(string).to.match(/<header/);
   });
 
   it('create list view row component', () => {
-    const string = renderToString(<ListViewRow/>);
+    const string = renderToString(<ListViewRow />);
     expect(string).to.match(/<li/);
   });
 
   it('create list view section component', () => {
-    const string = renderToString(<ListViewSection/>);
+    const string = renderToString(<ListViewSection />);
     expect(string).to.match(/<section/);
   });
 
   it('create list view section header component', () => {
-    const string = renderToString(<ListViewSectionHeader/>);
+    const string = renderToString(<ListViewSectionHeader />);
     expect(string).to.match(/<header/);
   });
 
   it('create list view separator component', () => {
-    const string = renderToString(<ListViewSeparator/>);
+    const string = renderToString(<ListViewSeparator />);
     expect(string).to.match(/<hr/);
   });
 });

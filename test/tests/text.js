@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import TextOSX from '../../src/text/macOs';
-import TextWindows from '../../src/text/windows';
+import TextOSX from '../../src/Text/macOs';
+import TextWindows from '../../src/Text/windows';
 
 describe('Text', () => {
   it('create osx text', () => {
