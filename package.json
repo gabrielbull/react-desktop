@@ -34,7 +34,7 @@
     "build-publish": "npm run build && npm publish ./build"
   },
   "dependencies": {
-    "radium": "^0.21.2"
+    "radium": "=0.19.6"
   },
   "peerDependencies": {
     "prop-types": "^15.0 || ^16.0",
