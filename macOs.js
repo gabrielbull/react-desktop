@@ -21,6 +21,7 @@ export {
 } from './src/SegmentedControl/macOs/Item';
 export { default as Text } from './src/Text/macOs';
 export { default as TextInput } from './src/TextInput/macOs';
+export { default as TextArea } from './src/TextArea/macOs';
 export { default as TitleBar } from './src/TitleBar/macOs';
 export { default as Toolbar } from './src/Toolbar/macOs';
 export { default as ToolbarNav } from './src/Toolbar/macOs/Nav';

@@ -17,6 +17,7 @@ export { default as ProgressCircle } from './src/ProgressCircle/windows';
 export { default as Radio } from './src/Radio/windows';
 export { default as Text } from './src/Text/windows';
 export { default as TextInput } from './src/TextInput/windows';
+export { default as TextArea } from './src/TextArea/windows';
 export { default as TitleBar } from './src/TitleBar/windows';
 export { default as View } from './src/View/windows';
 export { default as Window } from './src/Window/windows';
