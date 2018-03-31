@@ -42,7 +42,7 @@ var styles = {
 
   icon: {
     width: '10px',
-    height: '10px'
+    height: '1px'
   }
 };
 
