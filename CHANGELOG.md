@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.3.5 (April 6th, 2018)
+
+- Fixed issue with case sensitivity
+
+## 0.3.4 (April 4th, 2018)
+
+- Added TextArea component
+- Several minor fixes
+
 ## 0.3.3 (November 21st, 2017)
 
 - Updated dependencies
