@@ -64,7 +64,6 @@ class Close extends Component {
 
     return (
       <a
-        title="Close"
         style={componentStyle}
         {...props}
       >

@@ -97,7 +97,6 @@ class Maximize extends Component {
 
     return (
       <a
-        title={title}
         style={componentStyle}
         onClick={onClick}
         {...props}
