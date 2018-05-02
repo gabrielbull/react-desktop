@@ -22,7 +22,7 @@ class Checkbox extends Component {
   constructor(props) {
     super();
     this.state = {
-      checked: props.defaultChecked === true,
+      checked: !!props.defaultChecked === true,
       transition: true
     };
   }
