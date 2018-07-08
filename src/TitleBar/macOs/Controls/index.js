@@ -25,7 +25,10 @@ class Controls extends Component {
     onCloseClick: PropTypes.func,
     onMinimizeClick: PropTypes.func,
     onMaximizeClick: PropTypes.func,
-    onResizeClick: PropTypes.func
+    onResizeClick: PropTypes.func,
+    disableClose: PropTypes.bool,
+    disableMinimize: PropTypes.bool,
+    disableResize: PropTypes.bool
   };
 
   constructor() {
@@ -42,16 +45,22 @@ class Controls extends Component {
         onMouseEnter={() => this.setState({ isOver: true })}
         onMouseLeave={() => this.setState({ isOver: false })}
       >
-        <Close onClick={this.props.onCloseClick} showIcon={this.state.isOver} />
+        <Close
+          onClick={this.props.onCloseClick}
+          showIcon={this.state.isOver}
+          disabled={this.props.disableClose}
+        />
         <Minimize
           onClick={this.props.onMinimizeClick}
           showIcon={this.state.isOver}
+          disabled={this.props.disableMinimize}
         />
         <Resize
           isFullscreen={this.props.isFullscreen}
           onClick={this.props.onResizeClick}
           onMaximizeClick={this.props.onMaximizeClick}
           showIcon={this.state.isOver}
+          disabled={this.props.disableResize}
         />
       </div>
     );

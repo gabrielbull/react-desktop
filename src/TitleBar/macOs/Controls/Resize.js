@@ -9,7 +9,8 @@ import Radium from 'radium';
 class Resize extends Component {
   static propTypes = {
     isFullscreen: PropTypes.bool,
-    showIcon: PropTypes.bool
+    showIcon: PropTypes.bool,
+    disabled: PropTypes.bool
   };
 
   componentDidMount() {
@@ -26,18 +27,29 @@ class Resize extends Component {
   };
 
   render() {
-    let { style, onClick, onMaximizeClick, isWindowFocused, showIcon, ...props } = this.props;
+    let {
+      style,
+      onClick,
+      onMaximizeClick,
+      isWindowFocused,
+      showIcon,
+      disabled,
+      ...props
+    } = this.props;
 
     delete props.isFullscreen;
 
     let iconStyle = {
       ...styles.resize.icon,
-      opacity: showIcon ? 1 : 0
+      opacity: showIcon && !disabled ? 1 : 0
     };
 
     let componentStyle = { ...styles.resize.button, ...style };
     if (!isWindowFocused && !showIcon) {
       componentStyle = { ...componentStyle, ...styles.resize.unfocused };
+    }
+    if (disabled) {
+      componentStyle = { ...componentStyle, ...styles.resize.disabled };
     }
 
     let icon;

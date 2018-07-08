@@ -29,6 +29,15 @@ export default {
       borderColor: '#d0d0d0',
     },
 
+    disabled: {
+      backgroundColor: '#dddddd',
+      borderColor: '#d0d0d0',
+      ':active': {
+        backgroundColor: '#dddddd',
+        borderColor: '#d0d0d0'
+      }
+    },
+
     icon: {
       width: '10px',
       height: '10px'
@@ -65,6 +74,15 @@ export default {
       borderColor: '#d0d0d0',
     },
 
+    disabled: {
+      backgroundColor: '#dddddd',
+      borderColor: '#d0d0d0',
+      ':active': {
+        backgroundColor: '#dddddd',
+        borderColor: '#d0d0d0'
+      }
+    },
+
     icon: {
       width: '10px',
       height: '10px'
@@ -99,6 +117,15 @@ export default {
     unfocused: {
       backgroundColor: '#dddddd',
       borderColor: '#d0d0d0'
+    },
+
+    disabled: {
+      backgroundColor: '#dddddd',
+      borderColor: '#d0d0d0',
+      ':active': {
+        backgroundColor: '#dddddd',
+        borderColor: '#d0d0d0'
+      }
     },
 
     icon: {
