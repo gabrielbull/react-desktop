@@ -21,7 +21,8 @@ class TitleBar extends Component {
     onResizeClick: PropTypes.func,
     disableClose: PropTypes.bool,
     disableMinimize: PropTypes.bool,
-    disableResize: PropTypes.bool
+    disableResize: PropTypes.bool,
+    disableFullscreen: PropTypes.bool
   };
 
   static childContextTypes = {

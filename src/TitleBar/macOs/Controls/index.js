@@ -28,7 +28,8 @@ class Controls extends Component {
     onResizeClick: PropTypes.func,
     disableClose: PropTypes.bool,
     disableMinimize: PropTypes.bool,
-    disableResize: PropTypes.bool
+    disableResize: PropTypes.bool,
+    disableFullscreen: PropTypes.bool
   };
 
   constructor() {
@@ -61,6 +62,7 @@ class Controls extends Component {
           onMaximizeClick={this.props.onMaximizeClick}
           showIcon={this.state.isOver}
           disabled={this.props.disableResize}
+          disableFullscreen={this.props.disableFullscreen}
         />
       </div>
     );
