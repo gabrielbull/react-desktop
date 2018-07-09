@@ -85,6 +85,10 @@ class TitleBar extends Component {
     delete props.onMinimizeClick;
     delete props.onMaximizeClick;
     delete props.onResizeClick;
+    delete props.disableClose;
+    delete props.disableMinimize;
+    delete props.disableResize;
+    delete props.disableFullscreen;
 
     let componentStyle = { ...styles.titleBar };
 
