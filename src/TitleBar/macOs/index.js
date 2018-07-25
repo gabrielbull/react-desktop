@@ -18,7 +18,11 @@ class TitleBar extends Component {
     onCloseClick: PropTypes.func,
     onMinimizeClick: PropTypes.func,
     onMaximizeClick: PropTypes.func,
-    onResizeClick: PropTypes.func
+    onResizeClick: PropTypes.func,
+    disableClose: PropTypes.bool,
+    disableMinimize: PropTypes.bool,
+    disableResize: PropTypes.bool,
+    disableFullscreen: PropTypes.bool
   };
 
   static childContextTypes = {
@@ -81,6 +85,10 @@ class TitleBar extends Component {
     delete props.onMinimizeClick;
     delete props.onMaximizeClick;
     delete props.onResizeClick;
+    delete props.disableClose;
+    delete props.disableMinimize;
+    delete props.disableResize;
+    delete props.disableFullscreen;
 
     let componentStyle = { ...styles.titleBar };
 

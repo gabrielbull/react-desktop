@@ -13,6 +13,10 @@ onMinimizeClick     | function     | Callback function of the minimize button
 onResizeClick       | function     | Callback function of the resize button
 title               | string       | Sets the title of the title bar.
 transparent         | bool         | Make the title bar background transparent.
+disableClose        | bool         | Disable the close button.
+disableMinimize     | bool         | Disable the minimize button.
+disableResize       | bool         | Disable the resize button.
+disableFullscreen   | bool         | Disable fullscreen, will show the '+' maximize icon instead.
 
 ### Examples
 

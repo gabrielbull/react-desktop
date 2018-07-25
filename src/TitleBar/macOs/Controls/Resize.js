@@ -9,7 +9,9 @@ import Radium from 'radium';
 class Resize extends Component {
   static propTypes = {
     isFullscreen: PropTypes.bool,
-    showIcon: PropTypes.bool
+    showIcon: PropTypes.bool,
+    disabled: PropTypes.bool,
+    disableFullscreen: PropTypes.bool,
   };
 
   componentDidMount() {
@@ -26,22 +28,34 @@ class Resize extends Component {
   };
 
   render() {
-    let { style, onClick, onMaximizeClick, isWindowFocused, showIcon, ...props } = this.props;
+    let {
+      style,
+      onClick,
+      onMaximizeClick,
+      isWindowFocused,
+      showIcon,
+      disabled,
+      disableFullscreen,
+      ...props
+    } = this.props;
 
     delete props.isFullscreen;
 
     let iconStyle = {
       ...styles.resize.icon,
-      opacity: showIcon ? 1 : 0
+      opacity: showIcon && !disabled ? 1 : 0
     };
 
     let componentStyle = { ...styles.resize.button, ...style };
     if (!isWindowFocused && !showIcon) {
       componentStyle = { ...componentStyle, ...styles.resize.unfocused };
     }
+    if (disabled) {
+      componentStyle = { ...componentStyle, ...styles.resize.disabled };
+    }
 
     let icon;
-    if (this.props.isFullscreen) {
+    if (this.props.isFullscreen && !disableFullscreen) {
       icon = window && window.devicePixelRatio > 1.5 ? (
         <svg x="0px" y="0px" width="10px" height="10px" viewBox="0 0 20 20" style={iconStyle}>
           <path fill="#006400" d="M8.7,10H1l9,8.8v-7.5C9.3,11.2,8.7,10.7,8.7,10z"/>
@@ -53,7 +67,7 @@ class Resize extends Component {
           <path fill="#006400" d="M5,0c0,0 0,2.744 0,4.167c0,0.221 0.088,0.433 0.244,0.589c0.156,0.156 0.368,0.244 0.589,0.244c1.423,0 4.167,0 4.167,0l-5,-5Z" />
         </svg>
       );
-    } else if (this.state.altKey) {
+    } else if (this.state.altKey || disableFullscreen) {
       onClick = onMaximizeClick;
       icon = window && window.devicePixelRatio > 1.5 ? (
         <svg x="0px" y="0px" width="10px" height="10px" viewBox="0 0 20 20" style={iconStyle}>

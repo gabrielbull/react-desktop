@@ -9,22 +9,26 @@ import Radium from 'radium';
 class Minimize extends Component {
   static propTypes = {
     style: PropTypes.object,
-    showIcon: PropTypes.bool
+    showIcon: PropTypes.bool,
+    disabled: PropTypes.bool
   };
 
   render() {
-    const { style, isWindowFocused, showIcon, ...props } = this.props;
+    const { style, isWindowFocused, showIcon, disabled, ...props } = this.props;
 
     delete props.isFullscreen;
 
     const iconStyle = {
       ...styles.minimize.icon,
-      opacity: showIcon ? 1 : 0
+      opacity: showIcon && !disabled ? 1 : 0
     };
 
     let componentStyle = { ...styles.minimize.button, ...style };
     if (!isWindowFocused && !showIcon) {
       componentStyle = { ...componentStyle, ...styles.minimize.unfocused };
+    }
+    if (disabled) {
+      componentStyle = { ...componentStyle, ...styles.minimize.disabled };
     }
 
     return (
