@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.3.6 (July 25th, 2018)
+
+- Add ability to disable individual titlebar controls (#125)
+- Allow end-user to force `isWindowFocused` prop (#126)
+- Allow defaultChecked to be string as well as boolean (#123) (Fixes #90)
+
 ## 0.3.5 (April 6th, 2018)
 
 - Fixed issue with case sensitivity
