@@ -42,16 +42,22 @@ class Controls extends Component {
         onMouseEnter={() => this.setState({ isOver: true })}
         onMouseLeave={() => this.setState({ isOver: false })}
       >
-        <Close onClick={this.props.onCloseClick} showIcon={this.state.isOver} />
+        <Close
+          onClick={this.props.onCloseClick}
+          showIcon={this.state.isOver}
+          isWindowFocused={this.props.isWindowFocused}
+        />
         <Minimize
           onClick={this.props.onMinimizeClick}
           showIcon={this.state.isOver}
+          isWindowFocused={this.props.isWindowFocused}
         />
         <Resize
           isFullscreen={this.props.isFullscreen}
           onClick={this.props.onResizeClick}
           onMaximizeClick={this.props.onMaximizeClick}
           showIcon={this.state.isOver}
+          isWindowFocused={this.props.isWindowFocused}
         />
       </div>
     );
