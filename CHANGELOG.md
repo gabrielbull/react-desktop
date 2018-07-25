@@ -1,10 +1,14 @@
 # CHANGELOG
 
-## 0.3.6 (July 25th, 2018)
+## 0.3.7 (July 25th, 2018)
 
 - Add ability to disable individual titlebar controls (#125)
 - Allow end-user to force `isWindowFocused` prop (#126)
 - Allow defaultChecked to be string as well as boolean (#123) (Fixes #90)
+
+## 0.3.6 (July 25th, 2018)
+
+- This release was published incorrectly. Use 0.3.7 instead.
 
 ## 0.3.5 (April 6th, 2018)
 
@@ -113,7 +117,7 @@
 ## 0.2.4 (July 17th, 2016)
 
 - Removed all unknown props from components
-- Intial window focus is now the real window focus instead of being always true 
+- Intial window focus is now the real window focus instead of being always true
 
 ## 0.2.3 (June 24th, 2016)
 
