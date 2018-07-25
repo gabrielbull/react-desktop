@@ -1,7 +1,7 @@
 {
   "name": "react-desktop",
   "author": "Gabriel Bull",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "React UI Components for macOS High Sierra and Windows 10",
   "main": "./index.js",
   "keywords": [
