@@ -50,11 +50,13 @@ class Controls extends Component {
           onClick={this.props.onCloseClick}
           showIcon={this.state.isOver}
           disabled={this.props.disableClose}
+          isWindowFocused={this.props.isWindowFocused}
         />
         <Minimize
           onClick={this.props.onMinimizeClick}
           showIcon={this.state.isOver}
           disabled={this.props.disableMinimize}
+          isWindowFocused={this.props.isWindowFocused}
         />
         <Resize
           isFullscreen={this.props.isFullscreen}
@@ -63,6 +65,7 @@ class Controls extends Component {
           showIcon={this.state.isOver}
           disabled={this.props.disableResize}
           disableFullscreen={this.props.disableFullscreen}
+          isWindowFocused={this.props.isWindowFocused}
         />
       </div>
     );
