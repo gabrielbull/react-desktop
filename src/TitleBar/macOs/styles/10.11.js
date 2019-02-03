@@ -24,8 +24,8 @@ export default {
   },
 
   titleBarInset: {
-    paddingTop: '8px',
-    paddingBottom: '8px',
+    paddingTop: '11px',
+    paddingBottom: '11px',
     paddingLeft: '8px',
     paddingRight: '8px'
   },
