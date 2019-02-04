@@ -54,7 +54,10 @@ class Pin extends Component {
       const el = ReactDOM.findDOMNode(this.refs[index]).getElementsByTagName(
         'INPUT'
       )[0];
-      el.value = value;
+      // Use execCommand instead of direct assignment to keep the browser's undo stack
+      // This currently only handles delete, add conditions if use for other purposes
+      el.focus();
+      document.execCommand('delete', false);
       const pin = [
         ...this.state.pin.slice(0, index),
         value,
@@ -66,8 +69,9 @@ class Pin extends Component {
   };
 
   handleChange = (e, index) => {
-    if (e.target.value) {
-      const nextIndex = index === this.props.length - 1 ? index : index + 1;
+    if (e.target.value || this.state.current === index + 1) {
+      // In case of undoing insert, switch back to previous pin
+      let nextIndex = (index === this.props.length - 1 || !e.target.value) ? index : index + 1;
       const pin = [
         ...this.state.pin.slice(0, index),
         e.target.value,
