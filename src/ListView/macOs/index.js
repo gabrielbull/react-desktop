@@ -29,9 +29,13 @@ class ListView extends Component {
       items = null,
       footer = null;
     Children.map(children, child => {
-      if (child.type === Header) return (header = child);
-      else if (child.type === Footer) return (footer = child);
-      else if (child.type === Row) hasDirectRows = true;
+      const HeaderEl = <Header />;
+      const FooterEl = <Footer />;
+      const RowEl = <Row />;
+
+      if (child.type === HeaderEl.type) return (header = child);
+      else if (child.type === FooterEl.type) return (footer = child);
+      else if (child.type === RowEl.type) hasDirectRows = true;
 
       if (!items) items = [];
       items.push(child);

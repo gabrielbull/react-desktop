@@ -48,7 +48,8 @@ class Window extends Component {
     let titleBar = '';
     let otherChildren = [];
     Children.map(this.props.children, element => {
-      if (element.type === TitleBar) {
+      const TitleBarEl = <TitleBar />;
+      if (element.type === TitleBarEl.type) {
         titleBar = element;
       } else {
         otherChildren = [...otherChildren, element];
