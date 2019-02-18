@@ -93,7 +93,9 @@ class MasterDetailsView extends Component {
     this.maxWidth = null;
     Children.map(children, (item, key) => {
       Children.map(item.props.children, child => {
-        if (child.type === Master) {
+        const MasterEl = <Master />;
+        const DetailsEl = <Details />;
+        if (child.type === MasterEl.type) {
           if (
             child.props.width !== undefined &&
             child.props.width > this.maxWidth
@@ -104,7 +106,7 @@ class MasterDetailsView extends Component {
             ...this.masters,
             cloneElement(child, { key: key, index: key })
           ];
-        } else if (child.type === Details) {
+        } else if (child.type === DetailsEl.type) {
           this.details = [
             ...this.details,
             cloneElement(child, { key: key, index: key })
