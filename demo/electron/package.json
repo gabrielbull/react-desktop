@@ -2,63 +2,40 @@
   "name": "react-desktop-electron-demo",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "start": "electron ./index.js --inspect=5858",
-    "watch": "watchify ./localScripts/localViewManager/mainViewRender.js -t babelify -o public/bundle.js --release --verbose",
-    "build": "browserify ./localScripts/localViewManager/mainViewRender.js -o public/js/bundle.js -t babelify",
-    "package": "electron-packager ./ MCBBS-Client --all --overwrite --out=./packaged/ --icon=./public/img/logo.ico",
-    "package:windows": "electron-packager ./ MCBBS-Client --platform=win32 --overwrite --out=./packaged/ --icon=./public/img/logo.ico",
+    "start": "electron ./index.js",
+    "watch": "webpack-dev-server --config ./webpack.config.js --colors --inline --port 16000",
+    "build": "webpack --config ./webpack.config.js",
+    "package": "electron-packager ./ ReactDesktop --all --overwrite --out=./packaged/",
+    "package:windows": "electron-packager ./ ReactDesktop --platform=win32 --overwrite --out=./packaged/",
     "package:mac": "electron-builder build --mac --config electron-builder.json --publish never",
     "test": "jest --watch"
   },
   "author": "langyo",
   "license": "MIT",
   "dependencies": {
-    "@babel/cli": "^7.2.0",
-    "@babel/core": "^7.2.0",
-    "@babel/plugin-proposal-class-properties": "^7.2.1",
-    "@babel/preset-env": "^7.2.0",
-    "@babel/preset-react": "^7.0.0",
-    "@material-ui/core": "^3.6.1",
-    "babel-jest": "^24.1.0",
-    "babel-loader": "^8.0.0-beta.0",
-    "classnames": "^2.2.6",
-    "prop-types": "^15.6.2",
-    "react": "^16.6.3",
-    "react-desktop": "^0.3.7",
-    "react-dom": "^16.6.3",
-    "watchify": "^3.11.1",
-    "webpack": "^4.26.1"
+    "@babel/cli": "latest",
+    "@babel/core": "latest",
+    "@babel/plugin-proposal-class-properties": "latest",
+    "@babel/preset-env": "latest",
+    "@babel/preset-react": "latest",
+    "@material-ui/core": "latest",
+    "babel-jest": "latest",
+    "babel-loader": "latest",
+    "classnames": "latest",
+    "prop-types": "latest",
+    "react": "latest",
+    "react-dom": "latest"
   },
   "keywords": [],
   "devDependencies": {
-    "babelify": "^10.0.0",
-    "browserify": "^16.2.3",
-    "electron": "^3.0.10",
-    "electron-builder": "^20.39.0",
-    "electron-packager": "^13.0.1",
-    "jest": "^24.1.0"
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "modules": "commonjs",
-          "targets": {
-            "node": "current"
-          }
-        }
-      ],
-      [
-        "@babel/preset-react"
-      ]
-    ],
-    "plugins": [
-      [
-        "@babel/plugin-proposal-class-properties"
-      ]
-    ]
+    "electron": "latest",
+    "electron-builder": "latest",
+    "electron-packager": "latest",
+    "jest": "latest",
+    "webpack": "latest",
+    "webpack-cli": "latest",
+    "webpack-dev-server": "latest"
   }
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
 import Playground from './playground';
 
 document.title = 'React Desktop Playground';

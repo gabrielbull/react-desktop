@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.3.10 (July 28th, 2019)
+
+- Add the Electron framework demo
+
 ## 0.3.7 (July 25th, 2018)
 
 - Add ability to disable individual titlebar controls (#125)
