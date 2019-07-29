@@ -10,17 +10,16 @@ function createMainWnd() {
     maxWidth: 800,
     minHeight: 600,
     maxHeight: 600,
-    backgroundColor:'#fbf2db',
     useContentSize: true,
     show: false,
     webPreferences: {
       webSecurity: false
-    }
-    // frame: false,
-    // titleBarStyle: 'hidden'
+    },
+    frame: false,
+    titleBarStyle: 'hidden'
   });
 
-  mainWnd.loadURL('http://127.0.0.1:6000/index.html');
+  mainWnd.loadURL('http://127.0.0.1:16000/index.html');
 
   mainWnd.on('ready-to-show', ()=>{
     Menu.setApplicationMenu(null);
