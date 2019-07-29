@@ -20,7 +20,7 @@ export default function(...options) {
   if (options[0] && isValidElement(options[0])) {
     @ColorContext(true)
     @Radium
-    class BackgroundElement extends Component {
+    class BackgroundElementRet extends Component {
       static contextTypes = { ...colorContextTypes };
 
       render () {
@@ -35,7 +35,7 @@ export default function(...options) {
         return styleHelper(options, backgroundPropTypes);
       }
     }
-    return <BackgroundElement/>;
+    return <BackgroundElementRet />;
   }
 
   return function (WrappedComponent) {

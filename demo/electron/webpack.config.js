@@ -13,7 +13,7 @@ module.exports = {
 
   resolve: {
     alias: {
-      'react-desktop': path.join(__dirname, '../../src')
+      'react-desktop': path.join(__dirname, '..', '..')
     }
   },
 

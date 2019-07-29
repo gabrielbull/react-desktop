@@ -15,27 +15,29 @@
   "author": "langyo",
   "license": "MIT",
   "dependencies": {
-    "@babel/cli": "latest",
-    "@babel/core": "latest",
-    "@babel/plugin-proposal-class-properties": "latest",
-    "@babel/preset-env": "latest",
-    "@babel/preset-react": "latest",
-    "@material-ui/core": "latest",
-    "babel-jest": "latest",
-    "babel-loader": "latest",
-    "classnames": "latest",
-    "prop-types": "latest",
-    "react": "latest",
-    "react-dom": "latest"
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/plugin-transform-flow-strip-types": "^7.4.4",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@material-ui/core": "^4.3.0",
+    "babel-jest": "^24.8.0",
+    "babel-loader": "^8.0.6",
+    "classnames": "^2.2.6",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "keywords": [],
   "devDependencies": {
-    "electron": "latest",
-    "electron-builder": "latest",
-    "electron-packager": "latest",
-    "jest": "latest",
-    "webpack": "latest",
-    "webpack-cli": "latest",
-    "webpack-dev-server": "latest"
+    "electron": "^5.0.8",
+    "electron-builder": "^21.1.5",
+    "electron-packager": "^14.0.3",
+    "jest": "^24.8.0",
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
   }
 }
