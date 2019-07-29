@@ -28,6 +28,7 @@
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-desktop": "^0.3.9",
     "react-dom": "^16.8.6"
   },
   "keywords": [],

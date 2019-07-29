@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Window, TitleBar, Text } from 'react-desktop/windows';
+import { Window, TitleBar } from 'react-desktop/windows';
+import Button from '@material-ui/core/Button';
 
 ReactDOM.render(<Window
-  color={this.props.color}
-  theme={this.props.theme}
   chrome
-  height="300px"
+  height="600px"
+  width="800px"
   padding="12px">
-  <TitleBar title="My Windows Application" controls/>
-  <Text color={this.props.theme === 'dark' ? 'white' : '#333'}>Hello World</Text>
+  <TitleBar title="My Windows Application" controls onCloseClick={() => process.exit()}/>
+  <div>
+    <Button color="primary" variant="outlined">
+      {'Hello world!'}
+    </Button>
+  </div>
 </Window>, document.querySelector('#content'));

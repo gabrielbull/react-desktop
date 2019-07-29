@@ -11,11 +11,11 @@ module.exports = {
 
   devtool: 'source-map',
 
-  resolve: {
-    alias: {
-      'react-desktop': path.join(__dirname, '..', '..')
-    }
-  },
+  // resolve: {
+  //   alias: {
+  //     'react-desktop': path.join(__dirname, '..', '..')
+  //   }
+  // },
 
   module: {
     rules: [
