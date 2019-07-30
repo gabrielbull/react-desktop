@@ -35,7 +35,7 @@ export default function(...options) {
         return styleHelper(options, backgroundPropTypes);
       }
     }
-    return <BackgroundElement/>;
+    return <BackgroundElement />;
   }
 
   return function (WrappedComponent) {

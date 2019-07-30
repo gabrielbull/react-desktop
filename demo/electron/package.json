@@ -1,0 +1,44 @@
+{
+  "name": "react-desktop-electron-demo",
+  "version": "0.1.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "start": "electron ./index.js",
+    "watch": "webpack-dev-server --config ./webpack.config.js --colors --inline --port 16000",
+    "build": "webpack --config ./webpack.config.js",
+    "package": "electron-packager ./ ReactDesktop --all --overwrite --out=./packaged/",
+    "package:windows": "electron-packager ./ ReactDesktop --platform=win32 --overwrite --out=./packaged/",
+    "package:mac": "electron-builder build --mac --config electron-builder.json --publish never",
+    "test": "jest --watch"
+  },
+  "author": "langyo",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/plugin-transform-flow-strip-types": "^7.4.4",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@material-ui/core": "^4.3.0",
+    "babel-jest": "^24.8.0",
+    "babel-loader": "^8.0.6",
+    "classnames": "^2.2.6",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-desktop": "^0.3.9",
+    "react-dom": "^16.8.6"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "electron": "^5.0.8",
+    "electron-builder": "^21.1.5",
+    "electron-packager": "^14.0.3",
+    "jest": "^24.8.0",
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
+  }
+}
