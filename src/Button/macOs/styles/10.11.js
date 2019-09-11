@@ -1,51 +1,48 @@
-export default {
-  button: {
-    WebkitUserSelect: 'none',
-    userSelect: 'none',
-    cursor: 'default',
-    backgroundColor: '#ffffff',
-    outline: 'none',
-    borderWidth: '1px',
-    borderStyle: 'solid',
-    borderRadius: '5px',
-    borderTopColor: '#c8c8c8',
-    borderBottomColor: '#acacac',
-    borderLeftColor: '#c2c2c2',
-    borderRightColor: '#c2c2c2',
-    boxShadow: '0 1px rgba(0, 0, 0, .039)',
-    paddingTop: 0,
-    paddingBottom: 0,
-    paddingLeft: '13px',
-    paddingRight: '13px',
-    lineHeight: '19px',
-    fontFamily: '-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
-    fontSize: '13px',
+import { css } from 'styled-components';
 
-    ':active': {
-      backgroundImage: '-webkit-linear-gradient(top, #4c98fe 0%, #0564e3 100%)',
-      borderTopColor: '#247fff',
-      borderBottomColor: '#003ddb',
-      borderLeftColor: '#125eed',
-      borderRightColor: '#125eed',
-      color: 'rgba(255, 255, 255, .9  )'
+export default css`
+  user-select: none;
+  cursor: default;
+  outline: none;
+  border: 1px solid;
+  border-radius: 5px;
+  box-shadow: 0 1px rgba(0, 0, 0, .039);
+  padding: 0 13px;
+  line-height: 19px;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+
+  ${props => props.color === 'blue' ? css`
+    background-image: linear-gradient(180deg, #6cb3fa 0%, #087eff 100%);
+    border-top-color: #4ca2f9;
+    border-bottom-color: #015cff;
+    border-left-color: #267ffc;
+    border-right-color: #267ffc;
+    color: rgba(255, 255, 255, .9);
+
+    &:active {
+      background-image: linear-gradient(180deg, #4c98fe 0%, #0564e3 100%);
+      border-top-color: #247fff;
+      border-bottom-color: #003ddb;
+      border-left-color: #125eed;
+      border-right-color: #125eed;
+      color: rgba(255, 255, 255, .9  );
     }
-  },
+  ` : css`
+      background-color: #ffffff;
+      border-top-color: #c8c8c8;
+      border-bottom-color: #acacac;
+      border-left-color: #c2c2c2;
+      border-right-color: #c2c2c2;
+      color: rgba(255, 255, 255, .9);
 
-  blue: {
-    backgroundImage: '-webkit-linear-gradient(top, #6cb3fa 0%, #087eff 100%)',
-    borderTopColor: '#4ca2f9',
-    borderBottomColor: '#015cff',
-    borderLeftColor: '#267ffc',
-    borderRightColor: '#267ffc',
-    color: 'rgba(255, 255, 255, .9)',
-
-    ':active': {
-      backgroundImage: '-webkit-linear-gradient(top, #4c98fe 0%, #0564e3 100%)',
-      borderTopColor: '#247fff',
-      borderBottomColor: '#003ddb',
-      borderLeftColor: '#125eed',
-      borderRightColor: '#125eed',
-      color: 'rgba(255, 255, 255, .9  )'
-    }
-  }
-};
+      &:active {
+        background-image: linear-gradient(180deg, #4c98fe 0%, #0564e3 100%);
+        border-top-color: #247fff;
+        border-bottom-color: #003ddb;
+        border-left-color: #125eed;
+        border-right-color: #125eed;
+        color: rgba(255, 255, 255, .9 ) ;
+      }
+  `}
+`;
