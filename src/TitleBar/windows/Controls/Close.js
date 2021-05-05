@@ -17,6 +17,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    display: 'flex',
 
     ':hover': {
       transition: 'background-color 0.1s',
