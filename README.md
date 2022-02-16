@@ -11,7 +11,7 @@
 
 React UI Components for macOS High Sierra and Windows 10.
 
-> npm install react-desktop --save
+`npm install react-desktop --save`
 
 <a href="http://reactdesktop.js.org/demo/" target="_blank">![Demo](https://rawgit.com/gabrielbull/react-desktop/master/docs/resources/demo.svg "Demo")</a>
 
