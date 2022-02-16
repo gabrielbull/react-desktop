@@ -29,7 +29,7 @@ Everyone is welcome to contribute and add more components/documentation whilst f
 
 Guides on installation, components and advanced usage are found in the [documentation](http://reactdesktop.js.org).
 
-## Contributers
+## Contributors
 <a href="https://github.com/gabrielbull/react-desktop/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=gabrielbull/react-desktop" />
 </a>
