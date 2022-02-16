@@ -32,4 +32,4 @@ Guides on installation, components and advanced usage are found in the [document
 ## Contributors
 <a href="https://github.com/gabrielbull/react-desktop/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=gabrielbull/react-desktop" />
-</a>
+</a> 
