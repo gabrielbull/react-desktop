@@ -1,76 +1,26 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import WindowFocus from '../../windowFocus';
-import Hidden, { hiddenPropTypes } from '../../style/hidden';
-import FontSize, { fontSizePropTypes } from '../../style/fontSize';
-import Padding, { paddingPropTypes, removeDuplicatePaddingProps } from '../../style/padding';
-import Margin, { marginPropTypes } from '../../style/margin';
-import styles from './styles/10.11';
-import Radium from 'radium';
+import React from 'react';
+import styled from 'styled-components';
+import x_11 from './styles/10.11';
 
-@WindowFocus()
-@Padding()
-@Margin()
-@Hidden()
-@FontSize()
-@Radium
-class Button extends Component {
-  static propTypes = {
-    ...hiddenPropTypes,
-    ...fontSizePropTypes,
-    ...paddingPropTypes,
-    ...marginPropTypes,
-    type: PropTypes.string,
-    color: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-    onClick: PropTypes.func,
-    onEnter: PropTypes.func,
-    disabled: PropTypes.bool
-  };
+const styles = { x_11 };
 
-  componentDidMount() {
-    if (window && this.props.onEnter) {
-      window.addEventListener('keyup', this.handleKeyUp);
-    }
-  }
+const StyledButton = styled.button`
+  ${({ version }) => styles[version]}
+`;
 
-  componentWillUnmount() {
-    if (window && this.props.onEnter) {
-      window.removeEventListener('keyup', this.handleKeyUp);
-    }
-  }
+const Button = (props) => {
+  // Add React.hooks here
+  return <StyledButton {...props}/>
+};
 
-  handleKeyUp = e => {
-    if (e.keyCode === 13) {
-      if (this.props.onEnter && !this.props.disabled) this.props.onEnter(e);
-    }
-  };
+Button.defaultProps = {
+  version: 'x_11'
+};
 
-  render() {
-    let { style, type, children, color, onClick, isWindowFocused, disabled, ...props } = this.props;
-    delete props.onEnter;
-
-    let componentStyle = { ...styles.button };
-    if (!disabled && color === 'blue' && isWindowFocused) {
-      componentStyle = { ...componentStyle, ...styles.blue };
-    } else if (disabled) {
-      componentStyle = { ...componentStyle, opacity: '.5' };
-    }
-
-    componentStyle = { ...componentStyle, ...style };
-
-    return (
-      <button
-        ref="element"
-        type={type || 'button'}
-        onClick={onClick}
-        style={removeDuplicatePaddingProps(componentStyle, this.props)}
-        disabled={disabled}
-        {...props}
-      >
-        {children}
-      </button>
-    );
-  }
+Button.propTypes = {
+  color: PropTypes.string,
+  version: PropTypes.oneOf(Object.keys(styles))
 }
 
 export default Button;
